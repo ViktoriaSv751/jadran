@@ -107,6 +107,9 @@ export interface Listing {
   plotArea?: number; // telekméret m² (ház / villa / telek)
   monthlyCommonCost?: number; // közös költség (EUR / hó, társasházi lakás)
   heatingType?: string; // fűtés típusa (kulcs a heatingLabels-ből)
+
+  /** Kiemelés vége (ISO). Ha a jövőben van, a hirdetés kiemelt. */
+  featuredUntil?: string | null;
 }
 
 export interface Profile {

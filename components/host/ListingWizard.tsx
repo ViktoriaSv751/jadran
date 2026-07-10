@@ -16,7 +16,7 @@ import { cities } from "@/lib/data";
 import { formatPrice } from "@/lib/format";
 import * as db from "@/lib/db";
 import { toast } from "@/lib/ui";
-import { extractFromText } from "@/lib/import/ai-extract";
+import { extractSmart } from "@/lib/import/ai-extract-remote";
 import type {
   Amenity,
   Condition,
@@ -176,9 +176,13 @@ export default function ListingWizard() {
   // --- "Varázs-feltöltés": paste free text → AI prefill the form ---
   const [magicText, setMagicText] = useState("");
   const [magicOpen, setMagicOpen] = useState(false);
+  const [magicBusy, setMagicBusy] = useState(false);
 
-  const runMagic = () => {
-    const { fields, detected, notes } = extractFromText(magicText);
+  const runMagic = async () => {
+    if (!magicText.trim() || magicBusy) return;
+    setMagicBusy(true);
+    const { fields, detected, notes } = await extractSmart(magicText);
+    setMagicBusy(false);
     if (detected.length === 0) {
       toast(notes.includes("social-link-only") ? tr("magic_link_note", lang) : tr("magic_empty", lang));
       return;
@@ -355,7 +359,12 @@ export default function ListingWizard() {
                 rows={5}
                 placeholder={tr("magic_placeholder", lang)}
               />
-              <Button onClick={runMagic} disabled={!magicText.trim()} className="w-full sm:w-auto">
+              <Button
+                onClick={runMagic}
+                loading={magicBusy}
+                disabled={!magicText.trim()}
+                className="w-full sm:w-auto"
+              >
                 <Icon name="sparkles" size={16} strokeWidth={2.4} className="mr-1.5" />
                 {tr("magic_btn", lang)}
               </Button>

@@ -9,6 +9,7 @@ import { toast } from "@/lib/ui";
 import Photo from "@/components/Photo";
 import Button from "@/components/ui/Button";
 import Icon from "@/components/ui/Icon";
+import PromoteButton from "@/components/host/PromoteButton";
 
 export default function ManageListings() {
   const { lang } = useLang();
@@ -92,6 +93,7 @@ export default function ManageListings() {
                 <Button size="sm" variant="ghost" onClick={() => togglePause(l.id, l.status)}>
                   {l.status === "active" ? tr("pause_listing", lang) : tr("activate_listing", lang)}
                 </Button>
+                <PromoteButton listing={l} />
                 <Button size="sm" variant="danger" onClick={() => remove(l.id)}>
                   {tr("delete_btn", lang)}
                 </Button>

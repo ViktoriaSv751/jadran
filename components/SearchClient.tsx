@@ -7,6 +7,7 @@ import type { Listing } from "@/lib/types";
 import { useLang, useListings, useAuth } from "@/lib/store";
 import { tr } from "@/lib/i18n";
 import { pricePerM2 } from "@/lib/format";
+import { isFeatured } from "@/lib/mappers";
 import * as db from "@/lib/db";
 import { toast, openAuth } from "@/lib/ui";
 import Filters, { FilterState, emptyFilters } from "./Filters";
@@ -85,6 +86,8 @@ function applyFilters(items: Listing[], f: FilterState): Listing[] {
     default:
       out = out.sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt));
   }
+  // Kiemelt hirdetések mindig elöl (a kiválasztott rendezésen belül, stabilan).
+  out = out.sort((a, b) => (isFeatured(b) ? 1 : 0) - (isFeatured(a) ? 1 : 0));
   return out;
 }
 

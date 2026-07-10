@@ -7,6 +7,7 @@ import { useLang, useFavorites, useCompare } from "@/lib/store";
 import { tr, typeLabels, modeLabels } from "@/lib/i18n";
 import { formatPrice, pricePerM2, distanceLabel, formatNumber } from "@/lib/format";
 import VerificationBadge from "./VerificationBadge";
+import { isFeatured } from "@/lib/mappers";
 import Photo from "./Photo";
 import Icon from "./ui/Icon";
 
@@ -78,6 +79,12 @@ export default function ListingCard({
 
         {/* top badges */}
         <div className="pointer-events-none absolute left-3 top-3 z-10 flex flex-wrap gap-1.5">
+          {isFeatured(listing) && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-amber-400 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-amber-950 shadow-soft">
+              <Icon name="star" size={11} strokeWidth={2.6} />
+              {tr("featured_badge", lang)}
+            </span>
+          )}
           <span
             className={`rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide shadow-soft ${
               listing.mode === "rent" ? "bg-brand-500 text-white" : "bg-ink-950/90 text-white backdrop-blur"

@@ -55,8 +55,14 @@ export function rowToListing(r: any): Listing {
     petsAllowed: r.pets_allowed ?? undefined,
     plotArea: numOrNull(r.plot_area),
     monthlyCommonCost: numOrNull(r.monthly_common_cost),
-    heatingType: r.heating_type ?? undefined
+    heatingType: r.heating_type ?? undefined,
+    featuredUntil: r.featured_until ?? null
   };
+}
+
+/** Igaz, ha a hirdetés kiemelése még érvényes (a jövőben jár le). */
+export function isFeatured(l: { featuredUntil?: string | null }): boolean {
+  return !!l.featuredUntil && new Date(l.featuredUntil).getTime() > Date.now();
 }
 
 /** App Listing -> DB sor (insert/update). Csak a megadott mezőket adja vissza. */
