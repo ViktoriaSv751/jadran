@@ -1,0 +1,27 @@
+import type { MetadataRoute } from "next";
+import { supabaseServer, SITE_URL } from "@/lib/supabase-server";
+
+/** Dinamikus sitemap: statikus oldalak + minden aktív hirdetés. */
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const staticRoutes = ["", "/search", "/listings", "/guide", "/favorites"].map((p) => ({
+    url: `${SITE_URL}${p}`,
+    changeFrequency: "daily" as const,
+    priority: p === "" ? 1 : 0.7
+  }));
+
+  let listingRoutes: MetadataRoute.Sitemap = [];
+  if (supabaseServer) {
+    const { data } = await supabaseServer
+      .from("listings")
+      .select("id, created_at")
+      .eq("status", "active");
+    listingRoutes = (data ?? []).map((l) => ({
+      url: `${SITE_URL}/listing/${l.id}`,
+      lastModified: l.created_at ? new Date(l.created_at) : undefined,
+      changeFrequency: "weekly" as const,
+      priority: 0.8
+    }));
+  }
+
+  return [...staticRoutes, ...listingRoutes];
+}
