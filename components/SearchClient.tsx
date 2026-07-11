@@ -293,7 +293,7 @@ export default function SearchClient() {
           ) : results.length === 0 ? (
             <EmptyState title={tr("no_results", lang)} hint={tr("no_results_hint", lang)} />
           ) : view === "map" ? (
-            <div className="h-[calc(100vh-7rem)] overflow-hidden rounded-3xl border border-ink-100 shadow-card">
+            <div className="h-[calc(100vh-11rem)] overflow-hidden rounded-3xl border border-ink-100 shadow-card md:h-[calc(100vh-7rem)]">
               <MapView listings={results} lang={lang} activeId={activeId} onActivate={setActiveId} />
             </div>
           ) : view === "list" ? (
@@ -320,6 +320,18 @@ export default function SearchClient() {
           )}
         </div>
       </div>
+
+      {/* Mobil lebegő térkép/lista váltó (Airbnb-minta) — asztali nézeten a
+          fenti szegmenskapcsoló él, mobilon ez az egyetlen út a térképhez. */}
+      {!loading && results.length > 0 && (
+        <button
+          onClick={() => setView(view === "map" ? "list" : "map")}
+          className="fixed bottom-28 left-1/2 z-30 flex -translate-x-1/2 items-center gap-2 rounded-full bg-ink-900 px-5 py-3 text-sm font-semibold text-white shadow-pop transition active:scale-95 md:hidden"
+        >
+          <Icon name={view === "map" ? "menu" : "globe"} size={16} strokeWidth={2.2} />
+          {view === "map" ? tr("list", lang) : tr("map", lang)}
+        </button>
+      )}
 
       {/* Mobile filter bottom sheet */}
       {mobileFilters && (
