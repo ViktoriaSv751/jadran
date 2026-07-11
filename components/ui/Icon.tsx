@@ -48,7 +48,15 @@ export type IconName =
   | "menu"
   | "compass"
   | "wallet"
-  | "bell";
+  | "bell"
+  | "villa"
+  | "plot"
+  | "store"
+  | "briefcase"
+  | "factory"
+  | "warehouse"
+  | "landmark"
+  | "sprout";
 
 const PATHS: Record<IconName, JSX.Element> = {
   search: (
@@ -251,6 +259,66 @@ const PATHS: Record<IconName, JSX.Element> = {
     <>
       <path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z" />
       <path d="M10.5 19a1.6 1.6 0 0 0 3 0" />
+    </>
+  ),
+  // Kategória-ikonok — a 3D matricák helyett, egységes vonalnyelven.
+  villa: (
+    <>
+      <path d="M2.5 21h19" />
+      <path d="M4 21v-8M20 21v-8" />
+      <path d="M2.5 13 12 5.5 21.5 13" />
+      <path d="M9.5 21v-5.5h5V21" />
+    </>
+  ),
+  plot: (
+    <>
+      <path d="M4 4h4M16 4h4M4 20h4M16 20h4" />
+      <path d="M4 4v4M4 16v4M20 4v4M20 16v4" />
+      <circle cx="12" cy="12" r="2.2" />
+    </>
+  ),
+  store: (
+    <>
+      <path d="m5 7 1.5-4h11L19 7" />
+      <path d="M4 7h16v2.5a2.5 2.5 0 0 1-5 0 2.5 2.5 0 0 1-5 0 2.5 2.5 0 0 1-5 0z" />
+      <path d="M5 13v8h14v-8" />
+      <path d="M9.5 21v-5h5v5" />
+    </>
+  ),
+  briefcase: (
+    <>
+      <rect x="3" y="8" width="18" height="12" rx="2" />
+      <path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" />
+      <path d="M3 13h18" />
+    </>
+  ),
+  factory: (
+    <>
+      <path d="M3 21V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v9l5-3.5V13l6-4v12" />
+      <path d="M2.5 21h19" />
+      <path d="M7 17h2M12.5 17h2" />
+    </>
+  ),
+  warehouse: (
+    <>
+      <path d="M3 21V9.5L12 4l9 5.5V21" />
+      <path d="M7 21v-8h10v8" />
+      <path d="M7 16.5h10" />
+    </>
+  ),
+  landmark: (
+    <>
+      <path d="M3 21h18" />
+      <path d="M12 3 3.5 9h17z" />
+      <path d="M5.5 9v9M10 9v9M14 9v9M18.5 9v9" />
+      <path d="M4.5 18h15" />
+    </>
+  ),
+  sprout: (
+    <>
+      <path d="M12 21v-7.5" />
+      <path d="M12 13.5A5.5 5.5 0 0 0 6.5 8H4a5.5 5.5 0 0 0 5.5 5.5z" />
+      <path d="M12 11a5.5 5.5 0 0 1 5.5-5.5H20A5.5 5.5 0 0 1 14.5 11z" />
     </>
   )
 };

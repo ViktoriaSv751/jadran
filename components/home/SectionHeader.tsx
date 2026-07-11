@@ -14,7 +14,7 @@ export default function SectionHeader({
 }) {
   return (
     <div className="mb-5 flex items-end justify-between">
-      <h2 className="text-2xl font-black tracking-tight text-ink-900 sm:text-3xl">{title}</h2>
+      <h2 className="display text-2xl text-ink-900 sm:text-3xl">{title}</h2>
       {href && cta && (
         <Link
           href={href}

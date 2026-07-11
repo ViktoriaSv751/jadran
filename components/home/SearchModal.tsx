@@ -7,6 +7,7 @@ import { useLang, useListings } from "@/lib/store";
 import { tr, typeLabels, viewLabels, conditionLabels, amenityLabels, heatingLabels } from "@/lib/i18n";
 import { cities, montenegroPlaces } from "@/lib/data";
 import Icon from "@/components/ui/Icon";
+import { TYPE_ICONS } from "@/lib/category-icons";
 
 type Mode = "" | "sale" | "rent";
 
@@ -255,7 +256,7 @@ export default function SearchModal({
           >
             <Icon name="close" size={18} strokeWidth={2.2} />
           </button>
-          <h2 className="display relative text-2xl font-black leading-none tracking-tight sm:text-3xl">
+          <h2 className="display relative text-2xl sm:text-3xl">
             {tr("search_cta", lang)}
           </h2>
           <p className="relative mt-2 text-xs font-medium uppercase tracking-[0.18em] text-white/55">
@@ -349,15 +350,13 @@ export default function SearchModal({
                         : "border-ink-100 bg-gradient-to-br from-white to-ink-50 hover:-translate-y-0.5 hover:border-ink-200 hover:shadow-card"
                     }`}
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`/cat/${k}.png`}
-                      alt={typeLabels[k][lang]}
-                      loading="lazy"
-                      className={`h-14 w-14 object-contain transition duration-300 group-hover:scale-110 sm:h-16 sm:w-16 ${
-                        active ? "" : "opacity-95"
+                    <span
+                      className={`grid h-12 w-12 place-items-center rounded-full transition sm:h-14 sm:w-14 ${
+                        active ? "bg-brand-500 text-white" : "bg-ink-50 text-ink-700 group-hover:bg-ink-100"
                       }`}
-                    />
+                    >
+                      <Icon name={TYPE_ICONS[k] ?? "building"} size={24} strokeWidth={1.7} />
+                    </span>
                     <span
                       className={`mt-1.5 text-xs font-bold leading-tight ${
                         active ? "text-brand-700" : "text-ink-700"

@@ -2,24 +2,24 @@
 
 import { useLang } from "@/lib/store";
 import { tr } from "@/lib/i18n";
-import Icon from "@/components/ui/Icon";
+import Icon, { type IconName } from "@/components/ui/Icon";
 
-// "all" keeps a line icon; every concrete type shows its playful 3D sticker so
-// the search type selector matches the home "browse by type" tiles.
-const cats: { type: string; labelKey: string; img?: string }[] = [
-  { type: "", labelKey: "cat_all" },
-  { type: "apartment", labelKey: "cat_apartment", img: "/cat/apartment.png" },
-  { type: "house", labelKey: "cat_house", img: "/cat/house.png" },
-  { type: "villa", labelKey: "cat_villa", img: "/cat/villa.png" },
-  { type: "new", labelKey: "cat_new", img: "/cat/new.png" },
-  { type: "land", labelKey: "cat_land", img: "/cat/land.png" },
-  { type: "commercial", labelKey: "cat_commercial", img: "/cat/commercial.png" },
-  { type: "office", labelKey: "cat_office", img: "/cat/office.png" },
-  { type: "hospitality", labelKey: "cat_hospitality", img: "/cat/hospitality.png" },
-  { type: "institution", labelKey: "cat_institution", img: "/cat/institution.png" },
-  { type: "garage", labelKey: "cat_garage", img: "/cat/garage.png" },
-  { type: "industrial", labelKey: "cat_industrial", img: "/cat/industrial.png" },
-  { type: "agricultural", labelKey: "cat_agricultural", img: "/cat/agricultural.png" }
+// Egységes vonalikon minden típushoz — a korábbi 3D matricák helyett,
+// hogy a teljes felület egyetlen, profi vizuális nyelvet beszéljen.
+const cats: { type: string; labelKey: string; icon: IconName }[] = [
+  { type: "", labelKey: "cat_all", icon: "compass" },
+  { type: "apartment", labelKey: "cat_apartment", icon: "building" },
+  { type: "house", labelKey: "cat_house", icon: "home" },
+  { type: "villa", labelKey: "cat_villa", icon: "villa" },
+  { type: "new", labelKey: "cat_new", icon: "sparkles" },
+  { type: "land", labelKey: "cat_land", icon: "plot" },
+  { type: "commercial", labelKey: "cat_commercial", icon: "store" },
+  { type: "office", labelKey: "cat_office", icon: "briefcase" },
+  { type: "hospitality", labelKey: "cat_hospitality", icon: "bed" },
+  { type: "institution", labelKey: "cat_institution", icon: "landmark" },
+  { type: "garage", labelKey: "cat_garage", icon: "warehouse" },
+  { type: "industrial", labelKey: "cat_industrial", icon: "factory" },
+  { type: "agricultural", labelKey: "cat_agricultural", icon: "sprout" }
 ];
 
 export default function CategoryTabs({
@@ -38,27 +38,13 @@ export default function CategoryTabs({
           <button
             key={c.type || "all"}
             onClick={() => onChange(c.type)}
-            className={`group flex shrink-0 flex-col items-center gap-1 border-b-2 px-4 py-2 text-xs font-semibold transition ${
+            className={`group flex shrink-0 flex-col items-center gap-1.5 border-b-2 px-4 py-2.5 text-xs font-semibold transition ${
               active
                 ? "border-ink-900 text-ink-900"
                 : "border-transparent text-ink-400 hover:border-ink-200 hover:text-ink-700"
             }`}
           >
-            <span className="grid h-10 w-10 place-items-center">
-              {c.img ? (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={c.img}
-                  alt={tr(c.labelKey, lang)}
-                  loading="lazy"
-                  className={`h-10 w-10 object-contain transition ${
-                    active ? "scale-100 opacity-100" : "scale-90 opacity-60 grayscale group-hover:scale-100 group-hover:opacity-100 group-hover:grayscale-0"
-                  }`}
-                />
-              ) : (
-                <Icon name="compass" size={24} strokeWidth={active ? 2 : 1.8} />
-              )}
-            </span>
+            <Icon name={c.icon} size={22} strokeWidth={active ? 2 : 1.7} />
             <span className="whitespace-nowrap">{tr(c.labelKey, lang)}</span>
           </button>
         );

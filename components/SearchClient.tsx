@@ -191,14 +191,16 @@ export default function SearchClient() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+        {/* Egyetlen kompakt sor mobilon: kereső + szűrő-ikon. A rendezés
+            asztali nézeten inline select, mobilon a szűrő-lapban él. */}
+        <div className="flex items-center gap-2">
           <div className="relative flex-1">
             <input
               list="place-suggestions"
               value={filters.q}
               onChange={(e) => update({ ...filters, q: e.target.value })}
               placeholder={tr("search_placeholder", lang)}
-              className="w-full rounded-2xl border border-ink-200 bg-white py-3.5 pl-11 pr-4 text-sm shadow-soft transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
+              className="w-full rounded-full border border-ink-200 bg-white py-3.5 pl-11 pr-4 text-sm shadow-soft transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
             />
             <Icon name="search" size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-ink-400" />
             <datalist id="place-suggestions">
@@ -211,7 +213,7 @@ export default function SearchClient() {
           <select
             value={filters.sort}
             onChange={(e) => update({ ...filters, sort: e.target.value })}
-            className="rounded-2xl border border-ink-200 bg-white px-3 py-3.5 text-sm shadow-soft focus:outline-none"
+            className="hidden rounded-full border border-ink-200 bg-white px-3 py-3.5 text-sm shadow-soft focus:outline-none sm:block"
           >
             <option value="newest">{tr("sort_newest", lang)}</option>
             <option value="price_asc">{tr("sort_price_asc", lang)}</option>
@@ -221,11 +223,12 @@ export default function SearchClient() {
 
           <button
             onClick={() => setMobileFilters(true)}
-            className="flex items-center justify-center gap-2 rounded-2xl border border-ink-200 bg-white px-4 py-3.5 text-sm font-medium shadow-soft lg:hidden"
+            aria-label={tr("filters", lang)}
+            className="relative grid h-12 w-12 shrink-0 place-items-center rounded-full border border-ink-200 bg-white shadow-soft lg:hidden"
           >
-            <Icon name="sliders" size={18} /> {tr("filters", lang)}
+            <Icon name="sliders" size={18} />
             {activeFilterCount > 0 && (
-              <span className="grid h-5 min-w-5 place-items-center rounded-full bg-ink-900 px-1 text-[10px] font-bold text-white">
+              <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-brand-500 px-1 text-[10px] font-bold text-white">
                 {activeFilterCount}
               </span>
             )}
@@ -353,6 +356,20 @@ export default function SearchClient() {
             </div>
 
             <div className="flex-1 overflow-y-auto px-5 py-4">
+              {/* Rendezés — mobilon itt él (asztali nézeten inline select) */}
+              <div className="mb-4">
+                <span className="mb-1.5 block text-sm font-semibold text-ink-900">{tr("sort_label", lang)}</span>
+                <select
+                  value={filters.sort}
+                  onChange={(e) => update({ ...filters, sort: e.target.value })}
+                  className="w-full rounded-xl border border-ink-200 bg-white px-3 py-3 text-sm focus:outline-none"
+                >
+                  <option value="newest">{tr("sort_newest", lang)}</option>
+                  <option value="price_asc">{tr("sort_price_asc", lang)}</option>
+                  <option value="price_desc">{tr("sort_price_desc", lang)}</option>
+                  <option value="ppm2">{tr("sort_ppm2", lang)}</option>
+                </select>
+              </div>
               <Filters value={filters} onChange={update} onReset={() => setFilters({ ...emptyFilters })} />
             </div>
 

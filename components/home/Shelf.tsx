@@ -50,7 +50,7 @@ export default function Shelf({
   return (
     <section className="py-7">
       <div className="mx-auto flex max-w-7xl flex-col items-start gap-1.5 px-4 text-left">
-        <h2 className="text-2xl font-black tracking-tight text-ink-900 sm:text-3xl">{title}</h2>
+        <h2 className="display text-2xl text-ink-900 sm:text-3xl">{title}</h2>
         {subtitle && <p className="text-sm text-ink-500">{subtitle}</p>}
         {href && cta && (
           <Link

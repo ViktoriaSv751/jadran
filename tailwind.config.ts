@@ -56,7 +56,8 @@ const config: Config = {
         }
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"]
+        sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
+        display: ["var(--font-display)", "Georgia", "serif"]
       },
       borderRadius: {
         xl: "0.875rem",

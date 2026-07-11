@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Fraunces } from "next/font/google";
 import "./globals.css";
 import { LangProvider, AuthProvider } from "@/lib/store";
 import Header from "@/components/layout/Header";
@@ -12,6 +12,14 @@ const inter = Inter({
   subsets: ["latin", "latin-ext", "cyrillic"],
   variable: "--font-inter",
   display: "swap"
+});
+
+// Display betű a nagy címsorokhoz — ez adja az "ingatlan-magazin" karaktert.
+const fraunces = Fraunces({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-display",
+  display: "swap",
+  axes: ["opsz"]
 });
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/$/, "");
@@ -56,7 +64,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="hu" className={inter.variable}>
+    <html lang="hu" className={`${inter.variable} ${fraunces.variable}`}>
       <body className="font-sans">
         <LangProvider>
           <AuthProvider>

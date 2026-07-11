@@ -86,6 +86,7 @@ export const t: Dict = {
   max_sea_dist: { hu: "Tengertől max (m)", me: "Najviše do mora (m)", en: "Max distance to sea (m)", ru: "Макс. до моря (м)" },
   any: { hu: "Bármilyen", me: "Bilo koji", en: "Any", ru: "Любой" },
   sort: { hu: "Rendezés", me: "Sortiraj", en: "Sort", ru: "Сортировка" },
+  sort_label: { hu: "Rendezés", me: "Sortiranje", en: "Sort by", ru: "Сортировка" },
   sort_newest: { hu: "Legújabb", me: "Najnovije", en: "Newest", ru: "Новые" },
   sort_price_asc: { hu: "Ár növekvő", me: "Cijena rastuće", en: "Price ↑", ru: "Цена ↑" },
   sort_price_desc: { hu: "Ár csökkenő", me: "Cijena opadajuće", en: "Price ↓", ru: "Цена ↓" },

@@ -21,10 +21,14 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* Tight, confident display headings — the editorial voice of the brand. */
+/* Tight, confident display headings — the editorial voice of the brand.
+   Fraunces (optical serif): ez adja a prémium ingatlan-magazin karaktert. */
 .display {
-  letter-spacing: -0.035em;
-  line-height: 0.98;
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 620;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+  font-variation-settings: "opsz" 72;
 }
 
 @layer utilities {

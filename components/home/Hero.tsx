@@ -47,7 +47,7 @@ export default function Hero() {
           {tr("hero_eyebrow", lang)}
         </div>
 
-        <h1 className="display mt-5 max-w-3xl text-[2.75rem] font-black leading-[1.02] tracking-tight text-ink-900 sm:text-6xl lg:text-7xl lg:text-white">
+        <h1 className="display mt-5 max-w-3xl text-[2.75rem] text-ink-900 sm:text-6xl lg:text-7xl lg:text-white">
           {tr("hero_headline", lang)}
         </h1>
         <p className="mt-4 max-w-xl text-base text-ink-500 sm:text-lg lg:text-white/70">{tr("hero_sub", lang)}</p>

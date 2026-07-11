@@ -30,7 +30,7 @@ export default function HomeClient() {
 
       {/* Categories */}
       <section className="mx-auto max-w-7xl px-4 pt-10">
-        <h2 className="mb-5 text-center text-2xl font-black tracking-tight text-ink-900 sm:text-3xl">
+        <h2 className="display mb-5 text-center text-2xl text-ink-900 sm:text-3xl">
           {tr("browse_by_type", lang)}
         </h2>
         <CategoryRow />
@@ -66,7 +66,7 @@ export default function HomeClient() {
       {/* Average price by city */}
       <section className="mx-auto max-w-7xl px-4 py-14">
         <div className="mb-6 flex flex-col items-start gap-2 text-left">
-          <h2 className="text-2xl font-black tracking-tight text-ink-900 sm:text-3xl">{tr("avg_by_city", lang)}</h2>
+          <h2 className="display text-2xl text-ink-900 sm:text-3xl">{tr("avg_by_city", lang)}</h2>
         </div>
         <CityGrid />
       </section>
