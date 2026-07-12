@@ -28,8 +28,8 @@ export default function LogoutButton({
 
       {ask && (
         <div className="fixed inset-0 z-[120] flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-ink-900/50 backdrop-blur-sm" onClick={() => setAsk(false)} />
-          <div className="animate-pop-in relative w-full max-w-sm rounded-3xl border border-ink-100 bg-white p-6 text-center shadow-pop">
+          <div className="absolute inset-0 bg-white" onClick={() => setAsk(false)} />
+          <div className="animate-pop-in relative w-full max-w-sm rounded-3xl border-2 border-ink-950 bg-white p-6 text-center shadow-pop">
             <span className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-rose-50 text-rose-500">
               <Icon name="key" size={22} strokeWidth={2} />
             </span>

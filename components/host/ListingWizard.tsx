@@ -337,10 +337,15 @@ export default function ListingWizard() {
   })();
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
-      <h1 className="text-2xl font-bold text-ink-900">
-        {editId ? tr("edit_listing", lang) : tr("new_listing", lang)}
-      </h1>
+    <div className="mx-auto max-w-3xl px-4 py-6 sm:py-8">
+      <div className="flex items-end justify-between">
+        <h1 className="display text-3xl text-ink-900 sm:text-4xl">
+          {editId ? tr("edit_listing", lang) : tr("new_listing", lang)}
+        </h1>
+        <span className="pb-1 text-sm font-semibold text-ink-400">
+          {step + 1} / {STEPS.length}
+        </span>
+      </div>
 
       {/* Step indicator */}
       <div className="mt-5 flex items-center gap-2">
@@ -497,12 +502,29 @@ export default function ListingWizard() {
               value={form.area}
               onChange={(e) => set("area", e.target.value)}
             />
-            <Input
-              label={tr("rooms_label", lang)}
-              type="number"
-              value={form.rooms}
-              onChange={(e) => set("rooms", e.target.value)}
-            />
+            <div>
+              <Input
+                label={tr("rooms_label", lang)}
+                type="number"
+                value={form.rooms}
+                onChange={(e) => set("rooms", e.target.value)}
+              />
+              {/* Gyors kiválasztás */}
+              <div className="mt-1.5 flex flex-wrap gap-1.5">
+                {["1", "2", "3", "4", "5", "6"].map((r) => (
+                  <button
+                    key={r}
+                    type="button"
+                    onClick={() => set("rooms", r)}
+                    className={`rounded-full px-3 py-1 text-xs font-semibold transition ${
+                      form.rooms === r ? "bg-ink-900 text-white" : "border border-ink-200 text-ink-600 hover:border-ink-400"
+                    }`}
+                  >
+                    {r === "6" ? "6+" : r}
+                  </button>
+                ))}
+              </div>
+            </div>
             <Input
               label={tr("floor_label", lang)}
               type="number"
@@ -537,11 +559,18 @@ export default function ListingWizard() {
                 </option>
               ))}
             </Select>
-            <Input
+            <Select
               label={tr("energy_label", lang)}
               value={form.energy}
               onChange={(e) => set("energy", e.target.value)}
-            />
+            >
+              <option value="">—</option>
+              {["A", "B", "C", "D", "E", "F", "G"].map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              ))}
+            </Select>
             <Input
               label={tr("distance_label", lang)}
               type="number"

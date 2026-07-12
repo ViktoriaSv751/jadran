@@ -150,6 +150,39 @@ async function hydrateUser(): Promise<void> {
   emit();
 }
 
+/**
+ * A beszélgetések + üzenetek újratöltése a DB-ből (az üzenetek oldal frissen
+ * tartásához — így a session közben beérkező üzenetek/új beszélgetések is
+ * megjelennek, valós idejű előfizetés nélkül is). Csak a saját optimista
+ * (még be nem szinkronizált) üzeneteket megtartja, hogy ne "villanjanak" el.
+ */
+export async function refreshConversations(): Promise<void> {
+  if (!supabase || !cache.currentUser) return;
+  const uidp = cache.currentUser.id;
+  const cs = await supabase
+    .from("conversations")
+    .select("*")
+    .or(`buyer_id.eq.${uidp},seller_id.eq.${uidp}`)
+    .order("last_message_at", { ascending: false });
+  if (!cs.data) return;
+  cache.conversations = cs.data.map(rowToConversation);
+  const ids = cache.conversations.map((c) => c.id);
+  if (!ids.length) {
+    cache.messages = [];
+    emit();
+    return;
+  }
+  const ms = await supabase.from("messages").select("*").in("conversation_id", ids);
+  if (ms.data) {
+    const fromDb = ms.data.map(rowToMessage);
+    const dbIds = new Set(fromDb.map((m) => m.id));
+    // A cache-ben lévő, DB-ben még nem szereplő (épp küldött) üzeneteket megtartjuk.
+    const pendingLocal = cache.messages.filter((m) => !dbIds.has(m.id) && ids.includes(m.conversationId));
+    cache.messages = [...fromDb, ...pendingLocal];
+  }
+  emit();
+}
+
 async function loadSessionUser(): Promise<void> {
   if (!supabase) return;
   const { data } = await supabase.auth.getUser();

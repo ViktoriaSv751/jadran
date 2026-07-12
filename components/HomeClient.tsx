@@ -6,7 +6,6 @@ import Hero from "./home/Hero";
 import CategoryRow from "./home/CategoryRow";
 import CityGrid from "./home/CityGrid";
 import Shelf from "./home/Shelf";
-import Icon, { type IconName } from "./ui/Icon";
 
 export default function HomeClient() {
   const { lang } = useLang();
@@ -18,20 +17,14 @@ export default function HomeClient() {
   const seaview = active.filter((l) => l.view === "sea").slice(0, 8);
   const newBuilds = active.filter((l) => l.type === "new").slice(0, 8);
 
-  const trust: { icon: IconName; title: string }[] = [
-    { icon: "shield", title: tr("trust_verified", lang) },
-    { icon: "euro", title: tr("trust_prices", lang) },
-    { icon: "mapPin", title: tr("trust_map", lang) }
-  ];
-
   return (
     <div className="flex flex-col pb-4">
       <div className="order-1">
         <Hero />
       </div>
 
-      {/* Categories — mobilon az „Új építésű" alá kerül (order), asztalin felül */}
-      <section className="order-5 mx-auto w-full max-w-7xl px-4 pt-6 lg:order-2 lg:pt-10">
+      {/* Categories — minden méreten az „Új építésű" polc alá kerül (order-5) */}
+      <section className="order-5 mx-auto w-full max-w-7xl px-4 pt-6 lg:pt-10">
         <h2 className="display mb-5 text-center text-2xl text-ink-900 sm:text-3xl">
           {tr("browse_by_type", lang)}
         </h2>
@@ -78,19 +71,6 @@ export default function HomeClient() {
         <CityGrid />
       </section>
 
-      {/* Trust strip — bold dark editorial band (desktop only) */}
-      <section className="order-7 hidden bg-ink-950 text-white lg:block">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-14 sm:grid-cols-3 sm:py-16">
-          {trust.map((b, i) => (
-            <div key={i} className="flex items-start justify-center gap-4 sm:justify-start">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-brand-500 text-white">
-                <Icon name={b.icon} size={24} />
-              </span>
-              <span className="pt-1 text-base font-semibold text-white/90">{b.title}</span>
-            </div>
-          ))}
-        </div>
-      </section>
     </div>
   );
 }

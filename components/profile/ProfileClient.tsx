@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { useAuth, useLang, useListingsByOwner, useFavorites, useUnreadCount } from "@/lib/store";
 import { tr } from "@/lib/i18n";
-import Avatar from "@/components/ui/Avatar";
 import Icon, { type IconName } from "@/components/ui/Icon";
 import LogoutButton from "@/components/auth/LogoutButton";
+import AvatarUpload from "@/components/profile/AvatarUpload";
 
 export default function ProfileClient() {
   const { lang } = useLang();
@@ -49,12 +49,10 @@ export default function ProfileClient() {
     <div className="mx-auto max-w-3xl px-4 py-6 sm:py-8">
       {/* Fejléc-kártya borító-gradienssel */}
       <div className="overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-card">
-        <div className="h-24 bg-gradient-to-r from-ink-900 via-ink-800 to-brand-700 sm:h-28" />
+        <div className="h-24 bg-[linear-gradient(115deg,#070708_0%,#0d0d10_50%,#3a4a00_78%,#c8ff00_100%)] sm:h-28" />
         <div className="px-5 pb-5 sm:px-6 sm:pb-6">
           <div className="-mt-10 flex flex-col items-center gap-3 sm:-mt-12 sm:flex-row sm:items-end sm:gap-5">
-            <span className="rounded-full ring-4 ring-white">
-              <Avatar name={user.name} src={user.avatar} size={88} />
-            </span>
+            <AvatarUpload size={88} />
             <div className="min-w-0 flex-1 text-center sm:pb-1 sm:text-left">
               <div className="flex items-center justify-center gap-2 sm:justify-start">
                 <h1 className="display text-2xl text-ink-900">{user.name}</h1>
@@ -91,36 +89,20 @@ export default function ProfileClient() {
         </div>
       </div>
 
-      {/* Szerepkör-tudatos kiemelt akció */}
-      {isSeller ? (
-        <Link
-          href="/listings/new"
-          className="mt-5 flex items-center gap-4 rounded-2xl bg-ink-950 p-5 text-white shadow-card transition hover:bg-ink-900"
-        >
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-[#c8ff00] text-ink-950">
-            <Icon name="plus" size={24} strokeWidth={2.6} />
-          </span>
-          <div className="flex-1">
-            <div className="font-bold">{tr("new_listing", lang)}</div>
-            <div className="text-sm text-white/80">{tr("create_first_listing", lang)}</div>
-          </div>
-          <Icon name="arrowRight" size={22} />
-        </Link>
-      ) : (
-        <Link
-          href="/search"
-          className="mt-5 flex items-center gap-4 rounded-2xl bg-ink-950 p-5 text-white shadow-card transition hover:bg-ink-900"
-        >
-          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-[#c8ff00] text-ink-950">
-            <Icon name="search" size={24} strokeWidth={2.4} />
-          </span>
-          <div className="flex-1">
-            <div className="font-bold">{tr("search", lang)}</div>
-            <div className="text-sm text-white/80">{tr("brand_tagline", lang)}</div>
-          </div>
-          <Icon name="arrowRight" size={22} />
-        </Link>
-      )}
+      {/* Kiemelt akció — bárki feladhat hirdetést (magasabb kártya) */}
+      <Link
+        href="/listings/new"
+        className="mt-5 flex items-center gap-4 rounded-2xl bg-ink-950 p-6 text-white shadow-card transition hover:bg-ink-900"
+      >
+        <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl border-2 border-ink-800 bg-[#c8ff00] text-ink-950">
+          <Icon name="plus" size={26} strokeWidth={2.8} />
+        </span>
+        <div className="flex-1">
+          <div className="text-lg font-bold">{tr("post_first_listing", lang)}</div>
+          <div className="text-sm text-white/70">{tr("post_listing_sub", lang)}</div>
+        </div>
+        <Icon name="arrowRight" size={22} />
+      </Link>
 
       {/* Menü lista */}
       <div className="mt-5 overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-soft">
