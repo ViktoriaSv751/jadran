@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
-import { useLang, useListing } from "@/lib/store";
+import { useLang, useListing, useAuth } from "@/lib/store";
 import { tr } from "@/lib/i18n";
 import * as db from "@/lib/db";
 import ListingDetail from "@/components/ListingDetail";
@@ -10,13 +10,30 @@ import Icon from "@/components/ui/Icon";
 
 export default function ListingPageClient({ id }: { id: string }) {
   const { lang } = useLang();
+  const { user } = useAuth();
   const { listing, ready } = useListing(id);
 
-  // Count a view once per mount (client-only).
+  // Megtekintés-számlálás DEDUP-pal: (1) a SAJÁT hirdetés megtekintése nem
+  // számít; (2) egy böngésző-munkameneten belül egy hirdetés csak EGYSZER
+  // számít (újratöltés nem húzza fel a számot).
   useEffect(() => {
-    if (id) db.incrementViews(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id]);
+    if (!listing) return;
+    if (user && user.id === listing.ownerId) return;
+    const key = "jadran_viewed_session";
+    let seen: string[] = [];
+    try {
+      seen = JSON.parse(sessionStorage.getItem(key) || "[]");
+    } catch {
+      seen = [];
+    }
+    if (seen.includes(listing.id)) return;
+    db.incrementViews(listing.id);
+    try {
+      sessionStorage.setItem(key, JSON.stringify([...seen, listing.id]));
+    } catch {
+      /* private mode — ignore */
+    }
+  }, [listing, user]);
 
   if (ready && !listing) {
     return (

@@ -252,6 +252,21 @@ export function getListingsByOwner(ownerId: string): Listing[] {
   return cache.listings.filter((l) => l.ownerId === ownerId);
 }
 
+/**
+ * Hány hirdetést adhat fel a felhasználó. Magánszemély: 3 INGYENES. Iroda:
+ * a csomag szerint (amíg nincs élő fizetés, a „Start" alap-limit érvényes).
+ * Amint bekötjük a Stripe-ot, a tier a profil előfizetéséből jön.
+ */
+export function listingLimitFor(user: Profile | null): number {
+  if (!user) return 0;
+  return user.role === "agency" ? 10 : 3;
+}
+
+/** A felhasználó jelenlegi (nem-törölt) hirdetéseinek száma. */
+export function ownerListingCount(ownerId: string): number {
+  return cache.listings.filter((l) => l.ownerId === ownerId).length;
+}
+
 export function createListing(
   data: Omit<Listing, "id" | "createdAt" | "views" | "priceHistory">
 ): Listing {
@@ -480,10 +495,15 @@ export async function loginOAuth(
 
 export async function login(email: string, password: string): Promise<AuthResult> {
   if (!supabase) return { ok: false, error: "no_backend" };
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: email.trim().toLowerCase(),
-    password
-  });
+  const creds = { email: email.trim().toLowerCase(), password };
+  // Egy AUTOMATIKUS újrapróbálkozás — a Supabase auth néha átmenetileg (hálózat/
+  // rate-limit) hibázik, és a második próbálkozás már sikeres.
+  let res = await supabase.auth.signInWithPassword(creds);
+  if (res.error || !res.data.user) {
+    await new Promise((r) => setTimeout(r, 500));
+    res = await supabase.auth.signInWithPassword(creds);
+  }
+  const { data, error } = res;
   if (error || !data.user) return { ok: false, error: "bad_password" };
   const profile = await fetchProfileByAuthId(data.user.id);
   if (!profile) return { ok: false, error: "no_user" };
@@ -591,6 +611,18 @@ async function hydrateFavorites(): Promise<void> {
   // fiók belépésekor nem „öröklődnek" át az előző kedvencei ezen az eszközön.
   writeLS(K_FAV, []);
   emit();
+}
+
+/* Kitűzött beszélgetések (eszköz-lokális) — a kitűzöttek mindig felül, a lista
+ * tetején maradnak. */
+const K_PIN = "jadran_pinned_convs";
+export function getPinnedConversations(): string[] {
+  return readLS<string[]>(K_PIN, []);
+}
+export function togglePinnedConversation(id: string): void {
+  const cur = getPinnedConversations();
+  const next = cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id];
+  writeLS(K_PIN, next); // emitel is → a lista újrarendeződik
 }
 
 export function getCompare(): string[] {
@@ -711,7 +743,29 @@ export function sendMessage(conversationId: string, senderId: string, text: stri
   return msg;
 }
 
+/* Eszköz-lokális „elolvasva" időbélyegek — MEGBÍZHATÓ olvasottság-jelölés, ami
+ * túléli az oldalváltást/újratöltést akkor is, ha a szerver-oldali read_by
+ * frissítés nem megy át (pl. RLS). Kulcs: beszélgetés-id → ISO időbélyeg. */
+const K_CONV_READ = "jadran_conv_read";
+function getReadMap(): Record<string, string> {
+  return readLS<Record<string, string>>(K_CONV_READ, {});
+}
+function localReadAt(conversationId: string): number {
+  const v = getReadMap()[conversationId];
+  return v ? +new Date(v) : 0;
+}
+
 export function markConversationRead(conversationId: string, userId: string): void {
+  // 1) Helyi „elolvasva"-bélyeg: mostantól minden korábbi üzenet olvasottnak
+  //    számít ebben a beszélgetésben (ez sosem „ugrik vissza" olvasatlanra).
+  const map = getReadMap();
+  const latest = cache.messages
+    .filter((m) => m.conversationId === conversationId)
+    .reduce((t, m) => Math.max(t, +new Date(m.createdAt)), 0);
+  map[conversationId] = new Date(Math.max(latest, Date.now())).toISOString();
+  writeLS(K_CONV_READ, map); // ez emitel is
+
+  // 2) A szerver-oldali readBy frissítése (best-effort).
   const changedIds: string[] = [];
   cache.messages = cache.messages.map((m) => {
     if (m.conversationId === conversationId && !m.readBy.includes(userId)) {
@@ -720,9 +774,8 @@ export function markConversationRead(conversationId: string, userId: string): vo
     }
     return m;
   });
-  if (!changedIds.length) return;
   emit();
-  if (supabase) {
+  if (supabase && changedIds.length) {
     for (const m of cache.messages) {
       if (changedIds.includes(m.id)) {
         void supabase.from("messages").update({ read_by: m.readBy }).eq("id", m.id);
@@ -731,11 +784,21 @@ export function markConversationRead(conversationId: string, userId: string): vo
   }
 }
 
+/** Van-e olvasatlan (beérkező) üzenet a beszélgetésben — a helyi olvasottság-
+ *  bélyeget IS figyelembe véve, így megnyitás után nem marad olvasatlan. */
+export function conversationHasUnread(conversationId: string, userId: string): boolean {
+  const readAt = localReadAt(conversationId);
+  return cache.messages.some(
+    (m) =>
+      m.conversationId === conversationId &&
+      m.senderId !== userId &&
+      !m.readBy.includes(userId) &&
+      +new Date(m.createdAt) > readAt
+  );
+}
+
 export function unreadCount(userId: string): number {
-  const myConvIds = new Set(getConversationsForUser(userId).map((c) => c.id));
-  return cache.messages.filter(
-    (m) => myConvIds.has(m.conversationId) && m.senderId !== userId && !m.readBy.includes(userId)
-  ).length;
+  return getConversationsForUser(userId).filter((c) => conversationHasUnread(c.id, userId)).length;
 }
 
 /* ----------------------------- reviews ----------------------------- */

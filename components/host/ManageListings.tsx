@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useAuth, useLang, useListingsByOwner } from "@/lib/store";
 import { tr, typeLabels, modeLabels, loc } from "@/lib/i18n";
@@ -10,16 +11,35 @@ import Photo from "@/components/Photo";
 import Button from "@/components/ui/Button";
 import Icon from "@/components/ui/Icon";
 import PageHeading from "@/components/ui/PageHeading";
+import Pagination, { paginate } from "@/components/ui/Pagination";
 import PromoteButton from "@/components/host/PromoteButton";
 
 export default function ManageListings() {
   const { lang } = useLang();
   const { user } = useAuth();
-  const listings = useListingsByOwner(user?.id);
+  const all = useListingsByOwner(user?.id);
+
+  const [status, setStatus] = useState<"" | "active" | "paused">("");
+  const [mode, setMode] = useState<"" | "sale" | "rent">("");
+  const [q, setQ] = useState("");
+  const [page, setPage] = useState(0);
+
+  const listings = useMemo(() => {
+    const query = q.trim().toLowerCase();
+    return all.filter((l) => {
+      if (status && l.status !== status) return false;
+      if (mode && l.mode !== mode) return false;
+      if (query && !`${l.city} ${l.district} ${loc(l.title, lang)}`.toLowerCase().includes(query)) return false;
+      return true;
+    });
+  }, [all, status, mode, q, lang]);
+
+  const { slice, pageCount, page: safePage, total } = paginate(listings, page);
+
   if (!user) return null;
 
-  const togglePause = (id: string, status: string) =>
-    db.updateListing(id, { status: status === "active" ? "paused" : "active" });
+  const togglePause = (id: string, s: string) =>
+    db.updateListing(id, { status: s === "active" ? "paused" : "active" });
 
   const remove = (id: string) => {
     if (window.confirm(tr("confirm_delete", lang))) {
@@ -28,13 +48,29 @@ export default function ManageListings() {
     }
   };
 
+  const chip = (label: string, on: boolean, onClick: () => void) => (
+    <button
+      onClick={() => {
+        onClick();
+        setPage(0);
+      }}
+      className={`rounded-full px-4 py-1.5 text-sm font-semibold transition ${
+        on ? "bg-ink-900 text-white" : "text-ink-600 hover:bg-ink-50"
+      }`}
+    >
+      {label}
+    </button>
+  );
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
       <PageHeading
         icon="building"
         className="mb-6"
         right={
-          <Link href="/listings/new">
+          // Telefonon rejtve — az alsó menüsor közepén ott a „+" gomb; itt csak
+          // asztali nézetben mutatjuk.
+          <Link href="/listings/new" className="hidden sm:block">
             <Button>
               <span className="inline-flex items-center gap-1.5">
                 <Icon name="plus" size={16} strokeWidth={2.2} /> {tr("new_listing", lang)}
@@ -46,7 +82,37 @@ export default function ManageListings() {
         {tr("manage_listings", lang)}
       </PageHeading>
 
-      {listings.length === 0 ? (
+      {/* Szűrő a saját hirdetésekre — állapot, mód, kereső. */}
+      {all.length > 0 && (
+        <div className="mb-6 flex flex-col gap-3">
+          <div className="flex flex-wrap gap-2">
+            <div className="inline-flex rounded-full border border-ink-200 bg-white p-1 shadow-soft">
+              {chip(tr("my_listings_filter_all", lang), status === "", () => setStatus(""))}
+              {chip(tr("status_active_f", lang), status === "active", () => setStatus("active"))}
+              {chip(tr("status_paused_f", lang), status === "paused", () => setStatus("paused"))}
+            </div>
+            <div className="inline-flex rounded-full border border-ink-200 bg-white p-1 shadow-soft">
+              {chip(tr("cat_all", lang), mode === "", () => setMode(""))}
+              {chip(tr("buy", lang), mode === "sale", () => setMode("sale"))}
+              {chip(tr("rent_tab", lang), mode === "rent", () => setMode("rent"))}
+            </div>
+          </div>
+          <div className="relative">
+            <Icon name="search" size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-ink-400" />
+            <input
+              value={q}
+              onChange={(e) => {
+                setQ(e.target.value);
+                setPage(0);
+              }}
+              placeholder={tr("search_placeholder", lang)}
+              className="w-full rounded-full border border-ink-200 bg-white py-3 pl-11 pr-4 text-sm shadow-soft transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
+            />
+          </div>
+        </div>
+      )}
+
+      {all.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-ink-200 bg-white p-12 text-center">
           <div className="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-2xl bg-ink-50 text-ink-600">
             <Icon name="home" size={28} />
@@ -59,9 +125,14 @@ export default function ManageListings() {
             {tr("create_first_listing", lang)} <Icon name="arrowRight" size={16} />
           </Link>
         </div>
+      ) : listings.length === 0 ? (
+        <div className="rounded-2xl border border-dashed border-ink-200 bg-white p-10 text-center text-ink-500 shadow-soft">
+          {tr("no_results", lang)}
+        </div>
       ) : (
+        <>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {listings.map((l) => (
+          {slice.map((l) => (
             <div key={l.id} className="overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-soft">
               {/* Teljes kép — mint a keresés-listanézet kártyáján */}
               <Link href={`/listing/${l.id}`} className="relative block">
@@ -111,6 +182,8 @@ export default function ManageListings() {
             </div>
           ))}
         </div>
+        <Pagination page={safePage} pageCount={pageCount} total={total} onPage={setPage} lang={lang} />
+        </>
       )}
     </div>
   );

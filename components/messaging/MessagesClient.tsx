@@ -89,6 +89,12 @@ export default function MessagesClient() {
     );
   }
 
+  // Kitűzött beszélgetések MINDIG felül.
+  const pinnedSet = new Set(user ? db.getPinnedConversations() : []);
+  const sorted = [...filtered].sort(
+    (a, b) => (pinnedSet.has(b.id) ? 1 : 0) - (pinnedSet.has(a.id) ? 1 : 0)
+  );
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-5">
       {/* Cím ikonnal — ugyanúgy, mint a Mentett oldalon a „Kedvencek". */}
@@ -108,19 +114,20 @@ export default function MessagesClient() {
             </div>
           </div>
           <div className="no-scrollbar min-h-0 flex-1 space-y-0.5 overflow-y-auto p-2">
-            {filtered.map((c) => {
+            {sorted.map((c) => {
               const listing = listingFor(c.listingId);
               const otherId = c.buyerId === user!.id ? c.sellerId : c.buyerId;
               const other = profileFor(otherId);
               const isActive = c.id === activeId;
               const msgs = db.getMessagesForConversation(c.id);
               const last = msgs[msgs.length - 1];
-              const unread = msgs.some((m) => m.senderId !== user!.id && !m.readBy.includes(user!.id));
+              const unread = db.conversationHasUnread(c.id, user!.id);
+              const pinned = pinnedSet.has(c.id);
               return (
-                <button
+                <div
                   key={c.id}
                   onClick={() => setActiveId(c.id)}
-                  className={`flex w-full items-center gap-3 rounded-2xl p-2.5 text-left transition ${
+                  className={`group relative flex w-full cursor-pointer items-center gap-3 rounded-2xl p-2.5 pr-9 text-left transition ${
                     isActive ? "bg-brand-50 ring-1 ring-brand-200" : "hover:bg-ink-50"
                   }`}
                 >
@@ -132,8 +139,9 @@ export default function MessagesClient() {
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center justify-between gap-2">
-                      <span className={`truncate text-sm ${unread ? "font-bold text-ink-900" : "font-semibold text-ink-800"}`}>
-                        {other?.name ?? "—"}
+                      <span className={`flex min-w-0 items-center gap-1 truncate text-sm ${unread ? "font-bold text-ink-900" : "font-semibold text-ink-800"}`}>
+                        {pinned && <Icon name="star" size={12} strokeWidth={2.4} className="shrink-0 text-amber-400" />}
+                        <span className="truncate">{other?.name ?? "—"}</span>
                       </span>
                       {last && <span className="shrink-0 text-[11px] text-ink-400">{shortTime(last.createdAt, lang)}</span>}
                     </div>
@@ -145,14 +153,37 @@ export default function MessagesClient() {
                       </div>
                     )}
                   </div>
-                </button>
+                  {/* Kitűzés — a kitűzött beszélgetés a lista tetejére kerül. */}
+                  <button
+                    type="button"
+                    aria-label={tr("pin_conversation", lang)}
+                    title={tr("pin_conversation", lang)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      db.togglePinnedConversation(c.id);
+                    }}
+                    className={`absolute right-1.5 top-1/2 grid h-7 w-7 -translate-y-1/2 place-items-center rounded-full transition ${
+                      pinned
+                        ? "text-amber-400"
+                        : "text-ink-300 opacity-60 hover:text-ink-600 sm:opacity-0 sm:group-hover:opacity-100"
+                    }`}
+                  >
+                    <Icon name="star" size={16} strokeWidth={2.2} />
+                  </button>
+                </div>
               );
             })}
           </div>
         </aside>
 
-        {/* Chat */}
-        <section className={`${active ? "flex" : "hidden lg:flex"} min-w-0 min-h-0 flex-col`}>
+        {/* Chat — TELEFONON teljes képernyős réteg (fedi a fejlécet és az alsó
+            menüsort is), így a lap nem görgethető és az „Írj üzenetet" mező
+            görgetés nélkül látszik. ASZTALON a rácsban marad. */}
+        <section
+          className={`${
+            active ? "fixed inset-0 z-[60] flex bg-white lg:static lg:z-auto" : "hidden lg:flex"
+          } min-w-0 min-h-0 flex-col`}
+        >
           {active ? (
             <ChatView
               key={active.id}
@@ -291,7 +322,10 @@ function ChatView({
       </div>
 
       {/* Szövegdoboz */}
-      <div className="flex items-center gap-2 border-t border-ink-100 bg-white p-3">
+      <div
+        className="flex items-center gap-2 border-t border-ink-100 bg-white p-3"
+        style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 0.75rem)" }}
+      >
         <input
           value={text}
           onChange={(e) => setText(e.target.value)}

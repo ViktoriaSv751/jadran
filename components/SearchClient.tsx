@@ -18,6 +18,7 @@ import FilterChips from "./FilterChips";
 import CategoryTabs from "./search/CategoryTabs";
 import SearchModal from "./home/SearchModal";
 import ListingCard from "./ListingCard";
+import Pagination, { paginate } from "./ui/Pagination";
 import Icon from "./ui/Icon";
 import { CardSkeletonGrid } from "./Skeleton";
 import EmptyState from "./EmptyState";
@@ -120,6 +121,7 @@ export default function SearchClient() {
   const [areaBounds, setAreaBounds] = useState<MapBounds | null>(null);
   const [selected, setSelected] = useState<Listing | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 767px)");
@@ -169,6 +171,10 @@ export default function SearchClient() {
         l.lng <= areaBounds.east
     );
   }, [results, areaSearch, areaBounds]);
+
+  // Lapozás: max 25 hirdetés / oldal a listanézetben. Szűrő-váltáskor 1. oldal.
+  useEffect(() => setPage(0), [filters, areaSearch, areaBounds]);
+  const paged = paginate(visible, page);
 
   const suggestions = useMemo(
     () => Array.from(new Set(items.flatMap((l) => [l.city, l.district]))).sort(),
@@ -419,21 +425,39 @@ export default function SearchClient() {
               />
             </div>
           ) : view === "list" ? (
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
-              {visible.map((l) => (
-                <div key={l.id} className="animate-fade-in">
-                  <ListingCard listing={l} active={l.id === activeId} onActivate={setActiveId} />
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)]">
-              <div className="results-scroll grid grid-cols-1 gap-5 sm:grid-cols-2 lg:max-h-[calc(100vh-7rem)] lg:grid-cols-1 lg:overflow-y-auto lg:pr-2 xl:grid-cols-2">
-                {visible.map((l) => (
+            <>
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+                {paged.slice.map((l) => (
                   <div key={l.id} className="animate-fade-in">
                     <ListingCard listing={l} active={l.id === activeId} onActivate={setActiveId} />
                   </div>
                 ))}
+              </div>
+              <Pagination
+                page={paged.page}
+                pageCount={paged.pageCount}
+                total={paged.total}
+                onPage={setPage}
+                lang={lang}
+              />
+            </>
+          ) : (
+            <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)]">
+              <div>
+                <div className="results-scroll grid grid-cols-1 gap-5 sm:grid-cols-2 lg:max-h-[calc(100vh-7rem)] lg:grid-cols-1 lg:overflow-y-auto lg:pr-2 xl:grid-cols-2">
+                  {paged.slice.map((l) => (
+                    <div key={l.id} className="animate-fade-in">
+                      <ListingCard listing={l} active={l.id === activeId} onActivate={setActiveId} />
+                    </div>
+                  ))}
+                </div>
+                <Pagination
+                  page={paged.page}
+                  pageCount={paged.pageCount}
+                  total={paged.total}
+                  onPage={setPage}
+                  lang={lang}
+                />
               </div>
               <div className="sticky top-24 hidden h-[calc(100vh-7rem)] overflow-hidden rounded-3xl border border-ink-100 shadow-card lg:block">
                 <MapView

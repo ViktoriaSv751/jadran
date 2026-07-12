@@ -204,6 +204,13 @@ export default function ListingWizard() {
   const [seeded, setSeeded] = useState(false);
   const [step, setStep] = useState(0);
 
+  // Lépésváltáskor MINDIG az oldal tetejére ugrunk, hogy az új lépés űrlapja a
+  // képernyő tetejéről induljon (ne középről/aljáról).
+  const goStep = (n: number) => {
+    setStep(n);
+    if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   // --- "Varázs-feltöltés": paste free text → AI prefill the form ---
   const [magicText, setMagicText] = useState("");
   const [magicOpen, setMagicOpen] = useState(false);
@@ -327,6 +334,15 @@ export default function ListingWizard() {
       db.updateListing(editId, payload);
       toast(tr("listing_updated_toast", lang));
     } else {
+      // Limit-ellenőrzés ÚJ hirdetésnél: magánszemély 3 ingyenes, iroda a csomag
+      // szerint. Túllépéskor nem hozzuk létre, hanem az előfizetésre irányítunk.
+      const count = db.ownerListingCount(user.id);
+      const limit = db.listingLimitFor(user);
+      if (count >= limit) {
+        toast(user.role === "agency" ? tr("limit_agency", lang) : tr("limit_private", lang), "error");
+        router.push("/pricing");
+        return;
+      }
       db.createListing(payload);
       toast(tr("listing_published_toast", lang));
     }
@@ -368,7 +384,7 @@ export default function ListingWizard() {
             return (
               <button
                 key={s}
-                onClick={() => i <= step && setStep(i)}
+                onClick={() => i <= step && goStep(i)}
                 disabled={i > step}
                 className="flex flex-col items-center gap-1.5 disabled:cursor-not-allowed"
                 style={{ width: `${100 / STEPS.length}%` }}
@@ -805,12 +821,12 @@ export default function ListingWizard() {
         <Button
           variant="ghost"
           size="lg"
-          onClick={() => (step === 0 ? router.back() : setStep((s) => s - 1))}
+          onClick={() => (step === 0 ? router.back() : goStep(step - 1))}
         >
           {step === 0 ? tr("cancel", lang) : tr("prev_step", lang)}
         </Button>
         {step < STEPS.length - 1 ? (
-          <Button size="lg" onClick={() => setStep((s) => s + 1)} disabled={!canContinue()} className="min-w-[9rem]">
+          <Button size="lg" onClick={() => goStep(step + 1)} disabled={!canContinue()} className="min-w-[9rem]">
             {tr("next_step", lang)}
             <Icon name="arrowRight" size={17} strokeWidth={2.4} className="ml-1.5" />
           </Button>

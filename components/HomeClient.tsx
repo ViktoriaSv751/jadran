@@ -19,28 +19,33 @@ export default function HomeClient() {
 
   return (
     <div className="flex flex-col pb-4">
-      <Hero />
+      <div className="order-1">
+        <Hero />
+      </div>
 
-      {/* „Böngéssz típus szerint" — közvetlenül a hero alatt, a polcok FÖLÖTT. */}
-      <section className="mx-auto w-full max-w-7xl px-4 pt-6 lg:pt-10">
+      {/* „Böngéssz típus szerint" — a hero alatt (order-2). */}
+      <section className="order-2 mx-auto w-full max-w-7xl px-4 pt-6 lg:pt-10">
         <h2 className="display mb-5 text-center text-2xl text-ink-900 sm:text-3xl">
           {tr("browse_by_type", lang)}
         </h2>
         <CategoryRow />
       </section>
 
-      {/* Polcok — a kategóriák ALATT, szélesebb kártyákkal, középre igazított
-          fejléccel és a cím fölötti 3D képpel. */}
-      <Shelf
-        title={tr("featured", lang)}
-        subtitle={tr("shelf_featured_sub", lang)}
-        href="/search?mode=sale"
-        cta={tr("view_all", lang)}
-        listings={featured}
-        image="/cat/villa.png"
-      />
+      {/* Polcok — szélesebb, középre igazított kártyákkal + a cím fölötti 3D
+          képpel. TELEFONON a polcok az „átlagár" ALÁ kerülnek (order 4–6),
+          ASZTALON a kategóriák alá, az átlagár FÖLÉ (lg:order 3–5). */}
+      <div className="order-4 lg:order-3">
+        <Shelf
+          title={tr("featured", lang)}
+          subtitle={tr("shelf_featured_sub", lang)}
+          href="/search?mode=sale"
+          cta={tr("view_all", lang)}
+          listings={featured}
+          image="/cat/villa.png"
+        />
+      </div>
 
-      <div className="bg-white">
+      <div className="order-5 bg-white lg:order-4">
         <Shelf
           title={tr("shelf_sea_title", lang)}
           subtitle={tr("shelf_sea_sub", lang)}
@@ -51,17 +56,20 @@ export default function HomeClient() {
         />
       </div>
 
-      <Shelf
-        title={tr("shelf_new_title", lang)}
-        subtitle={tr("shelf_new_sub", lang)}
-        href="/search?type=new"
-        cta={tr("view_all", lang)}
-        listings={newBuilds}
-        image="/cat/new.png"
-      />
+      <div className="order-6 lg:order-5">
+        <Shelf
+          title={tr("shelf_new_title", lang)}
+          subtitle={tr("shelf_new_sub", lang)}
+          href="/search?type=new"
+          cta={tr("view_all", lang)}
+          listings={newBuilds}
+          image="/cat/new.png"
+        />
+      </div>
 
-      {/* Average price by city */}
-      <section className="mx-auto w-full max-w-7xl px-4 py-10">
+      {/* Átlagár városonként — TELEFONON a böngéssz alatt (order-3), ASZTALON az
+          oldal alján (lg:order-6). */}
+      <section className="order-3 mx-auto w-full max-w-7xl px-4 py-10 lg:order-6">
         <div className="mx-auto mb-6 max-w-xl text-center">
           {/* Látványos 3D ingatlan-ikon, hogy a szekció ne legyen „üres" a cím fölött. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}

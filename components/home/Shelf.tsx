@@ -121,7 +121,10 @@ export default function Shelf({
         <div
           ref={scroller}
           style={{ scrollSnapType: "x proximity" }}
-          className="no-scrollbar flex gap-4 overflow-x-auto px-0 pb-2 sm:px-4"
+          // TELEFONON `overflow-x-hidden` → kézzel NEM lehet húzva lapozni, csak a
+          // nyilakkal (a programozott görgetés így is működik). Asztalon marad a
+          // szabad görgetés.
+          className="no-scrollbar flex gap-4 overflow-x-hidden px-0 pb-2 sm:overflow-x-auto sm:px-4"
         >
           {listings.map((l) => (
             // TELEFONON: teljes szélességű „dia" (100vw) → mindig CSAK EGY hirdetés

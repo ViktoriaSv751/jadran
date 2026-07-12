@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useAuth, useLang } from "@/lib/store";
 import { tr } from "@/lib/i18n";
 import { useLogoutConfirm, closeLogoutConfirm, toast } from "@/lib/ui";
@@ -15,6 +16,7 @@ export default function LogoutConfirmHost() {
   const open = useLogoutConfirm();
   const { lang } = useLang();
   const { logout } = useAuth();
+  const router = useRouter();
 
   // Amíg nyitva van: a mögöttes oldal NE legyen görgethető (fix, stabil).
   useEffect(() => {
@@ -31,6 +33,9 @@ export default function LogoutConfirmHost() {
   const confirm = async () => {
     closeLogoutConfirm();
     await logout();
+    // Kijelentkezés után MINDIG a főoldalra (ne ragadjunk egy belépést kérő
+    // oldalon, aminek az alját eltakarja az alsó menüsor).
+    router.push("/");
     toast(tr("logout_done", lang), "success");
   };
 

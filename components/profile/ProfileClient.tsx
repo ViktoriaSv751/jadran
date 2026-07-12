@@ -57,7 +57,7 @@ export default function ProfileClient() {
             <AvatarUpload size={88} />
             <div className="min-w-0 flex-1 text-center sm:pb-1 sm:text-left">
               <div className="flex items-center justify-center gap-2 sm:justify-start">
-                <h1 className="display text-2xl text-ink-900">{user.name}</h1>
+                <h1 className="text-2xl font-black tracking-tight text-ink-900">{user.name}</h1>
                 {user.verified && (
                   <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500 px-2 py-0.5 text-xs font-semibold text-white">
                     <Icon name="check" size={12} strokeWidth={2.6} /> {tr("verified_badge", lang)}
