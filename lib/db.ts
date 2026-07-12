@@ -543,20 +543,21 @@ export function getFavorites(): string[] {
 
 export function toggleFavorite(id: string): void {
   const cur = getFavorites();
-  const next = cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id];
+  const wasFav = cur.includes(id);
+  const next = wasFav ? cur.filter((x) => x !== id) : [...cur, id];
   cache.favorites = next;
-  emit();
+  // MINDIG eszköz-lokálisan is elmentjük (ez az emitet is elküldi) — így a
+  // kedvenc soha nem „tűnik el", akkor sem, ha a felhasználó be van jelentkezve,
+  // de a háttér-mentés (Supabase) épp nem érhető el. Bejelentkezve ezen felül a
+  // fiókhoz is szinkronizáljuk.
+  writeLS(K_FAV, next);
   const uidp = cache.currentUser?.id;
   if (supabase && uidp) {
-    // Bejelentkezve: a fiókhoz kötve, a Supabase favorites táblában.
-    if (cur.includes(id)) {
+    if (wasFav) {
       void supabase.from("favorites").delete().eq("user_id", uidp).eq("listing_id", id);
     } else {
       void supabase.from("favorites").insert({ user_id: uidp, listing_id: id });
     }
-  } else {
-    // Kijelentkezve: eszköz-lokális.
-    writeLS(K_FAV, next);
   }
 }
 
@@ -572,9 +573,10 @@ async function hydrateFavorites(): Promise<void> {
   if (toUpload.length) {
     await supabase.from("favorites").insert(toUpload.map((id) => ({ user_id: uidp, listing_id: id })));
   }
-  cache.favorites = Array.from(new Set([...dbFavs, ...localFavs]));
+  const merged = Array.from(new Set([...dbFavs, ...localFavs]));
+  cache.favorites = merged;
   favInit = true;
-  writeLS(K_FAV, []); // a helyi listát ürítjük, a fiók a forrás
+  writeLS(K_FAV, merged); // helyi másolat marad (offline-biztos), a fiók a fő forrás
   emit();
 }
 

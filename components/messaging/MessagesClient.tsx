@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useAuth, useLang, useConversations, useMessages, useListings, useProfiles } from "@/lib/store";
-import type { Lang } from "@/lib/types";
+import type { Lang, Message } from "@/lib/types";
 import { tr, loc } from "@/lib/i18n";
 import { formatPrice } from "@/lib/format";
 import { translateText } from "@/lib/translate";
@@ -22,6 +22,7 @@ export default function MessagesClient() {
   const { profiles } = useProfiles();
 
   const [activeId, setActiveId] = useState<string | null>(params.get("c"));
+  const [query, setQuery] = useState("");
 
   // Asztali nézeten az első beszélgetés nyíljon meg alapból; mobilon a
   // beszélgetés-LISTÁVAL indulunk (a felhasználó választ, majd megnyílik).
@@ -49,6 +50,22 @@ export default function MessagesClient() {
   const listingFor = (id: string) => listings.find((l) => l.id === id);
   const profileFor = (id: string) => profiles.find((p) => p.id === id);
 
+  const filtered = useMemo(() => {
+    if (!user) return conversations;
+    const q = query.trim().toLowerCase();
+    if (!q) return conversations;
+    return conversations.filter((c) => {
+      const otherId = c.buyerId === user.id ? c.sellerId : c.buyerId;
+      const other = profileFor(otherId);
+      const listing = listingFor(c.listingId);
+      return (
+        (other?.name ?? "").toLowerCase().includes(q) ||
+        (listing ? loc(listing.title, lang) : "").toLowerCase().includes(q)
+      );
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [conversations, query, user, profiles, listings, lang]);
+
   if (!authReady || !ready) {
     return <div className="mx-auto max-w-6xl px-4 py-20 text-center text-ink-400">{tr("loading", lang)}</div>;
   }
@@ -72,43 +89,73 @@ export default function MessagesClient() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-5">
-      <h1 className="mb-4 text-2xl font-bold text-ink-900">{tr("conversations", lang)}</h1>
-      <div className="grid gap-4 lg:grid-cols-[320px_1fr]">
-        {/* List */}
-        <aside className={`${active ? "hidden lg:block" : "block"} space-y-2`}>
-          {conversations.map((c) => {
-            const listing = listingFor(c.listingId);
-            const otherId = c.buyerId === user!.id ? c.sellerId : c.buyerId;
-            const other = profileFor(otherId);
-            const isActive = c.id === activeId;
-            const msgs = db.getMessagesForConversation(c.id);
-            const last = msgs[msgs.length - 1];
-            const unread = msgs.some((m) => m.senderId !== user!.id && !m.readBy.includes(user!.id));
-            return (
-              <button
-                key={c.id}
-                onClick={() => setActiveId(c.id)}
-                className={`flex w-full items-center gap-3 rounded-2xl border p-3 text-left transition ${
-                  isActive ? "border-brand-300 bg-brand-50" : "border-ink-100 bg-white hover:bg-ink-50"
-                }`}
-              >
-                <Avatar name={other?.name ?? "?"} src={other?.avatar} size={44} />
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="truncate text-sm font-semibold text-ink-900">{other?.name ?? "—"}</span>
-                    {unread && <span className="h-2 w-2 shrink-0 rounded-full bg-rose-500" />}
+    <div className="mx-auto max-w-6xl px-0 sm:px-4 sm:py-5">
+      <h1 className="mb-4 hidden px-4 text-2xl font-black tracking-tight text-ink-900 sm:block sm:px-0">
+        {tr("conversations", lang)}
+      </h1>
+      <div className="grid h-[calc(100vh-8.5rem)] overflow-hidden border-ink-100 bg-white sm:h-[76vh] sm:rounded-3xl sm:border sm:shadow-card lg:grid-cols-[340px_1fr]">
+        {/* Lista */}
+        <aside className={`${active ? "hidden lg:flex" : "flex"} min-h-0 flex-col border-ink-100 lg:border-r`}>
+          <div className="border-b border-ink-100 p-3">
+            <h2 className="mb-2 px-1 text-lg font-black tracking-tight text-ink-900 lg:hidden">
+              {tr("conversations", lang)}
+            </h2>
+            <div className="flex items-center gap-2 rounded-full bg-ink-100/70 px-3.5 py-2">
+              <Icon name="search" size={16} className="text-ink-400" />
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder={tr("chat_search", lang)}
+                className="w-full bg-transparent text-sm text-ink-800 placeholder:text-ink-400 focus:outline-none"
+              />
+            </div>
+          </div>
+          <div className="no-scrollbar min-h-0 flex-1 space-y-0.5 overflow-y-auto p-2">
+            {filtered.map((c) => {
+              const listing = listingFor(c.listingId);
+              const otherId = c.buyerId === user!.id ? c.sellerId : c.buyerId;
+              const other = profileFor(otherId);
+              const isActive = c.id === activeId;
+              const msgs = db.getMessagesForConversation(c.id);
+              const last = msgs[msgs.length - 1];
+              const unread = msgs.some((m) => m.senderId !== user!.id && !m.readBy.includes(user!.id));
+              return (
+                <button
+                  key={c.id}
+                  onClick={() => setActiveId(c.id)}
+                  className={`flex w-full items-center gap-3 rounded-2xl p-2.5 text-left transition ${
+                    isActive ? "bg-brand-50 ring-1 ring-brand-200" : "hover:bg-ink-50"
+                  }`}
+                >
+                  <div className="relative shrink-0">
+                    <Avatar name={other?.name ?? "?"} src={other?.avatar} size={48} />
+                    {unread && (
+                      <span className="absolute -right-0.5 -top-0.5 h-3.5 w-3.5 rounded-full border-2 border-white bg-brand-500" />
+                    )}
                   </div>
-                  <div className="truncate text-xs text-ink-400">{listing ? loc(listing.title, lang) : ""}</div>
-                  {last && <div className="truncate text-xs text-ink-500">{last.text}</div>}
-                </div>
-              </button>
-            );
-          })}
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className={`truncate text-sm ${unread ? "font-bold text-ink-900" : "font-semibold text-ink-800"}`}>
+                        {other?.name ?? "—"}
+                      </span>
+                      {last && <span className="shrink-0 text-[11px] text-ink-400">{shortTime(last.createdAt, lang)}</span>}
+                    </div>
+                    <div className="truncate text-xs text-ink-400">{listing ? loc(listing.title, lang) : ""}</div>
+                    {last && (
+                      <div className={`truncate text-xs ${unread ? "font-semibold text-ink-700" : "text-ink-500"}`}>
+                        {last.senderId === user!.id ? "· " : ""}
+                        {last.text}
+                      </div>
+                    )}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
         </aside>
 
         {/* Chat */}
-        <section className={`${active ? "block" : "hidden lg:block"}`}>
+        <section className={`${active ? "flex" : "hidden lg:flex"} min-h-0 flex-col`}>
           {active ? (
             <ChatView
               key={active.id}
@@ -120,8 +167,11 @@ export default function MessagesClient() {
               lang={lang}
             />
           ) : (
-            <div className="grid h-full place-items-center rounded-2xl border border-dashed border-ink-200 p-10 text-ink-400">
-              {tr("conversations", lang)}
+            <div className="grid h-full place-items-center p-10 text-center text-ink-300">
+              <div>
+                <Icon name="message" size={40} className="mx-auto" />
+                <p className="mt-3 text-sm font-medium text-ink-400">{tr("conversations", lang)}</p>
+              </div>
             </div>
           )}
         </section>
@@ -164,53 +214,101 @@ function ChatView({
     setText("");
   };
 
+  const lastMine = [...messages].reverse().find((m) => m.senderId === meId);
+
   return (
-    <div className="flex h-[72vh] flex-col overflow-hidden rounded-2xl border border-ink-100 bg-white">
-      {/* Header */}
-      <div className="flex items-center gap-3 border-b border-ink-100 p-3">
-        <button onClick={onBack} className="grid h-9 w-9 place-items-center rounded-full text-ink-700 hover:bg-ink-50 lg:hidden">
+    <div className="flex h-full min-h-0 flex-col bg-ink-50/50">
+      {/* Fejléc */}
+      <div className="flex items-center gap-3 border-b border-ink-100 bg-white/90 p-3 backdrop-blur">
+        <button
+          onClick={onBack}
+          className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-ink-700 hover:bg-ink-100 lg:hidden"
+        >
           <Icon name="arrowLeft" size={18} />
         </button>
-        <Avatar name={other?.name ?? "?"} src={other?.avatar} size={40} />
-        <div className="min-w-0 flex-1">
-          <div className="truncate text-sm font-bold text-ink-900">{other?.name ?? "—"}</div>
-          <div className="truncate text-xs text-ink-400">{other?.responseTime}</div>
+        <div className="relative shrink-0">
+          <Avatar name={other?.name ?? "?"} src={other?.avatar} size={42} />
+          <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white bg-emerald-400" />
         </div>
+        {other ? (
+          <Link href={`/u/${other.id}`} className="min-w-0 flex-1">
+            <div className="truncate text-sm font-bold text-ink-900">{other.name}</div>
+            <div className="truncate text-xs text-ink-400">{other.responseTime}</div>
+          </Link>
+        ) : (
+          <div className="min-w-0 flex-1">
+            <div className="truncate text-sm font-bold text-ink-900">—</div>
+          </div>
+        )}
         {listing && (
           <Link
             href={`/listing/${listing.id}`}
-            className="flex items-center gap-2 rounded-xl border border-ink-100 p-1.5 pr-3 transition hover:bg-ink-50"
+            className="flex items-center gap-2 rounded-2xl border border-ink-100 p-1.5 pr-3 transition hover:bg-ink-50"
           >
-            <Photo src={listing.images[0]} alt={loc(listing.title, lang)} className="h-9 w-9 rounded-lg" />
-            <span className="hidden text-xs font-semibold text-ink-700 sm:block">
-              {formatPrice(listing.price, lang)}
+            <Photo src={listing.images[0]} alt={loc(listing.title, lang)} className="h-10 w-10 rounded-xl" />
+            <span className="hidden text-right sm:block">
+              <span className="block max-w-[9rem] truncate text-[11px] font-medium text-ink-500">
+                {loc(listing.title, lang)}
+              </span>
+              <span className="block text-xs font-bold text-ink-900">{formatPrice(listing.price, lang)}</span>
             </span>
           </Link>
         )}
       </div>
 
-      {/* Messages */}
-      <div className="flex-1 space-y-2 overflow-y-auto bg-ink-50/40 p-4">
-        {messages.map((m) => (
-          <MessageBubble key={m.id} text={m.text} mine={m.senderId === meId} createdAt={m.createdAt} lang={lang} />
-        ))}
+      {/* Üzenetek */}
+      <div className="no-scrollbar min-h-0 flex-1 space-y-1 overflow-y-auto px-3 py-4 sm:px-5">
+        {messages.length === 0 && (
+          <div className="grid h-full place-items-center text-sm text-ink-400">{tr("chat_empty_thread", lang)}</div>
+        )}
+        {messages.map((m, i) => {
+          const prev = messages[i - 1];
+          const showDay = !prev || dayKey(prev.createdAt) !== dayKey(m.createdAt);
+          const mine = m.senderId === meId;
+          // Csoportosítás: az azonos feladótól, rövid időn belül érkező üzenetek
+          // szorosabban tapadnak (csak az utolsón látszik az idő).
+          const next = messages[i + 1];
+          const grouped = next && next.senderId === m.senderId && !showDayBetween(m, next);
+          const isLastMine = mine && lastMine?.id === m.id;
+          return (
+            <div key={m.id}>
+              {showDay && (
+                <div className="my-3 flex justify-center">
+                  <span className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-ink-500 shadow-soft">
+                    {dayLabel(m.createdAt, lang)}
+                  </span>
+                </div>
+              )}
+              <MessageBubble
+                text={m.text}
+                mine={mine}
+                createdAt={m.createdAt}
+                lang={lang}
+                grouped={!!grouped}
+                seen={isLastMine ? seenByOther(m, meId) : false}
+              />
+            </div>
+          );
+        })}
         <div ref={bottomRef} />
       </div>
 
-      {/* Composer */}
-      <div className="flex items-center gap-2 border-t border-ink-100 p-3">
+      {/* Szövegdoboz */}
+      <div className="flex items-center gap-2 border-t border-ink-100 bg-white p-3">
         <input
           value={text}
           onChange={(e) => setText(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && send()}
           placeholder={tr("message_placeholder", lang)}
-          className="flex-1 rounded-full border border-ink-200 bg-white px-4 py-2.5 text-sm focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
+          className="min-w-0 flex-1 rounded-full border border-ink-200 bg-ink-50 px-4 py-3 text-sm text-ink-900 placeholder:text-ink-400 focus:border-brand-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-100"
         />
         <button
           onClick={send}
-          className="rounded-full bg-gradient-to-r from-brand-500 to-brand-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-95"
+          disabled={!text.trim()}
+          aria-label={tr("send_message", lang)}
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand-500 text-white shadow-glow transition hover:bg-brand-600 active:scale-90 disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none"
         >
-          {tr("send_message", lang)}
+          <Icon name="arrowUpRight" size={20} strokeWidth={2.4} />
         </button>
       </div>
     </div>
@@ -220,19 +318,21 @@ function ChatView({
 /**
  * Üzenetbuborék élő fordítással. A BEÉRKEZŐ üzeneteket a felhasználó nyelvére
  * fordítja (ha van fordító-kulcs), és ad egy „eredeti / fordítás" kapcsolót.
- * Ha nincs kulcs vagy a szöveg már a cél nyelven van, egyszerűen az eredetit
- * mutatja — kapcsoló nélkül.
  */
 function MessageBubble({
   text,
   mine,
   createdAt,
-  lang
+  lang,
+  grouped,
+  seen
 }: {
   text: string;
   mine: boolean;
   createdAt: string;
   lang: Lang;
+  grouped: boolean;
+  seen: boolean;
 }) {
   const [translated, setTranslated] = useState<string | null>(null);
   const [showOriginal, setShowOriginal] = useState(false);
@@ -251,31 +351,69 @@ function MessageBubble({
   const body = translated && !showOriginal ? translated : text;
 
   return (
-    <div className={`flex ${mine ? "justify-end" : "justify-start"}`}>
+    <div className={`flex ${mine ? "justify-end" : "justify-start"} ${grouped ? "mb-0.5" : "mb-1.5"}`}>
       <div
-        className={`max-w-[80%] rounded-2xl px-3.5 py-2 text-sm ${
-          mine ? "bg-brand-600 text-white" : "bg-white text-ink-800 shadow-soft"
+        className={`max-w-[82%] px-3.5 py-2 text-[14px] leading-relaxed shadow-sm sm:max-w-[70%] ${
+          mine
+            ? `bg-brand-600 text-white ${grouped ? "rounded-2xl" : "rounded-2xl rounded-br-md"}`
+            : `bg-white text-ink-800 ${grouped ? "rounded-2xl" : "rounded-2xl rounded-bl-md"}`
         }`}
       >
-        {body}
+        <span className="whitespace-pre-wrap break-words">{body}</span>
         {translated && (
           <button
             onClick={() => setShowOriginal((v) => !v)}
-            className="mt-1 flex items-center gap-1 text-[10px] font-medium text-ink-400 hover:text-ink-700"
+            className={`mt-1 flex items-center gap-1 text-[10px] font-medium ${
+              mine ? "text-white/70 hover:text-white" : "text-ink-400 hover:text-ink-700"
+            }`}
           >
             <Icon name="globe" size={11} />
             {showOriginal ? tr("show_translation", lang) : tr("show_original", lang)}
           </button>
         )}
-        <div className={`mt-0.5 text-[10px] ${mine ? "text-white/70" : "text-ink-400"}`}>
-          {new Date(createdAt).toLocaleString(lang === "hu" ? "hu-HU" : "en-GB", {
-            month: "short",
-            day: "numeric",
-            hour: "2-digit",
-            minute: "2-digit"
-          })}
-        </div>
+        {!grouped && (
+          <div className={`mt-0.5 flex items-center gap-1 text-[10px] ${mine ? "justify-end text-white/70" : "text-ink-400"}`}>
+            {shortTime(createdAt, lang)}
+            {mine && seen && (
+              <span className="inline-flex items-center gap-0.5">
+                · <Icon name="check" size={10} strokeWidth={2.8} /> {tr("chat_seen", lang)}
+              </span>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
+}
+
+/* ------------------------------- helpers ------------------------------- */
+
+function locale(lang: Lang): string {
+  return lang === "hu" ? "hu-HU" : lang === "ru" ? "ru-RU" : "en-GB";
+}
+
+function shortTime(iso: string, lang: Lang): string {
+  return new Date(iso).toLocaleTimeString(locale(lang), { hour: "2-digit", minute: "2-digit" });
+}
+
+function dayKey(iso: string): string {
+  return new Date(iso).toISOString().slice(0, 10);
+}
+
+function showDayBetween(a: Message, b: Message): boolean {
+  return dayKey(a.createdAt) !== dayKey(b.createdAt);
+}
+
+function dayLabel(iso: string, lang: Lang): string {
+  const d = new Date(iso);
+  const today = new Date();
+  const yesterday = new Date();
+  yesterday.setDate(today.getDate() - 1);
+  if (dayKey(iso) === dayKey(today.toISOString())) return tr("chat_today", lang);
+  if (dayKey(iso) === dayKey(yesterday.toISOString())) return tr("chat_yesterday", lang);
+  return d.toLocaleDateString(locale(lang), { month: "short", day: "numeric", year: "numeric" });
+}
+
+function seenByOther(m: Message, meId: string): boolean {
+  return m.readBy.some((id) => id !== meId);
 }

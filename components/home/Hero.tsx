@@ -103,11 +103,6 @@ export default function Hero() {
             </div>
           ))}
         </div>
-
-        <div className="mt-5 flex items-center justify-center gap-2 text-sm text-ink-500">
-          <Icon name="shield" size={18} className="text-brand-500" />
-          <span>{tr("trust_verified", lang)}</span>
-        </div>
       </div>
 
       <SearchModal open={open} onClose={() => setOpen(false)} initialMode={mode} />

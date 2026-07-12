@@ -91,6 +91,7 @@ const VIEWS: ViewType[] = ["sea", "mountain", "city"];
 const HEATINGS = Object.keys(heatingLabels);
 const AMENITIES = Object.keys(amenityLabels) as Amenity[];
 const STEPS = ["wizard_basics", "wizard_details", "wizard_photos", "wizard_pricing", "wizard_preview"] as const;
+const STEP_ICONS = ["home", "sliders", "eye", "euro", "check"] as const;
 
 interface FormState {
   mode: ListingMode;
@@ -336,41 +337,69 @@ export default function ListingWizard() {
     return urls.length ? urls : sampleImages("preview");
   })();
 
+  const progressPct = Math.round((step / (STEPS.length - 1)) * 100);
+
   return (
     <div className="mx-auto max-w-3xl px-4 py-6 sm:py-8">
       <div className="flex items-end justify-between">
         <h1 className="display text-3xl text-ink-900 sm:text-4xl">
           {editId ? tr("edit_listing", lang) : tr("new_listing", lang)}
         </h1>
-        <span className="pb-1 text-sm font-semibold text-ink-400">
+        <span className="rounded-full bg-ink-100 px-3 py-1 text-xs font-bold text-ink-600">
           {step + 1} / {STEPS.length}
         </span>
       </div>
 
-      {/* Step indicator */}
-      <div className="mt-5 flex items-center gap-2">
-        {STEPS.map((s, i) => (
-          <div key={s} className="flex flex-1 items-center gap-2">
-            <button
-              onClick={() => i <= step && setStep(i)}
-              className={cn(
-                "flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold transition",
-                i === step
-                  ? "bg-ink-900 text-white"
-                  : i < step
-                  ? "bg-brand-500 text-white"
-                  : "bg-ink-100 text-ink-400"
-              )}
-            >
-              {i < step ? <Icon name="check" size={15} strokeWidth={2.5} /> : i + 1}
-            </button>
-            {i < STEPS.length - 1 && (
-              <div className={cn("h-0.5 flex-1 rounded", i < step ? "bg-brand-400" : "bg-ink-100")} />
-            )}
-          </div>
-        ))}
+      {/* Step indicator — ikonos, kattintható lépések + kitöltöttség-sáv */}
+      <div className="relative mt-6">
+        <div className="absolute left-0 right-0 top-5 h-0.5 rounded bg-ink-100" />
+        <div
+          className="absolute left-0 top-5 h-0.5 rounded bg-brand-500 transition-all duration-300"
+          style={{ width: `${progressPct}%` }}
+        />
+        <div className="relative flex items-start justify-between">
+          {STEPS.map((s, i) => {
+            const done = i < step;
+            const current = i === step;
+            return (
+              <button
+                key={s}
+                onClick={() => i <= step && setStep(i)}
+                disabled={i > step}
+                className="flex flex-col items-center gap-1.5 disabled:cursor-not-allowed"
+                style={{ width: `${100 / STEPS.length}%` }}
+              >
+                <span
+                  className={cn(
+                    "grid h-10 w-10 place-items-center rounded-full border-2 bg-white transition",
+                    current
+                      ? "border-ink-900 text-ink-900 shadow-soft"
+                      : done
+                      ? "border-brand-500 bg-brand-500 text-white"
+                      : "border-ink-200 text-ink-400"
+                  )}
+                >
+                  {done ? <Icon name="check" size={17} strokeWidth={2.6} /> : <Icon name={STEP_ICONS[i]} size={17} />}
+                </span>
+                <span
+                  className={cn(
+                    "hidden text-[11px] font-bold sm:block",
+                    current ? "text-ink-900" : done ? "text-brand-600" : "text-ink-400"
+                  )}
+                >
+                  {tr(s, lang)}
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </div>
-      <p className="mt-2 text-sm font-semibold text-ink-600">{tr(STEPS[step], lang)}</p>
+
+      {/* Aktuális lépés fejléce */}
+      <div className="mt-5">
+        <h2 className="text-lg font-black tracking-tight text-ink-900">{tr(STEPS[step], lang)}</h2>
+        <p className="mt-0.5 text-sm text-ink-500">{tr(`${STEPS[step]}_desc`, lang)}</p>
+      </div>
 
       {/* ---- Varázs-feltöltés (AI) — only on the first step of a new listing ---- */}
       {step === 0 && !editId && (
@@ -460,13 +489,13 @@ export default function ListingWizard() {
             </div>
 
             <Input
-              label={tr("title_label", lang)}
+              label={`${tr("title_label", lang)} *`}
               value={form.title}
               onChange={(e) => set("title", e.target.value)}
               placeholder={lang === "hu" ? "Pl. Tengerre néző lakás Budva központjában" : ""}
             />
             <Textarea
-              label={tr("desc_label", lang)}
+              label={`${tr("desc_label", lang)} *`}
               value={form.description}
               onChange={(e) => set("description", e.target.value)}
               rows={5}
@@ -497,7 +526,7 @@ export default function ListingWizard() {
               onChange={(e) => set("district", e.target.value)}
             />
             <Input
-              label={tr("area_label", lang)}
+              label={`${tr("area_label", lang)} *`}
               type="number"
               value={form.area}
               onChange={(e) => set("area", e.target.value)}
@@ -696,7 +725,7 @@ export default function ListingWizard() {
         {step === 3 && (
           <div className="space-y-4">
             <Input
-              label={isRent ? tr("monthly_rent_label", lang) : tr("price_eur_label", lang)}
+              label={`${isRent ? tr("monthly_rent_label", lang) : tr("price_eur_label", lang)} *`}
               type="number"
               value={form.price}
               onChange={(e) => set("price", e.target.value)}
@@ -748,16 +777,22 @@ export default function ListingWizard() {
       </div>
 
       {/* Nav buttons */}
-      <div className="mt-6 flex items-center justify-between">
-        <Button variant="ghost" onClick={() => (step === 0 ? router.back() : setStep((s) => s - 1))}>
+      <div className="mt-6 flex items-center justify-between gap-3">
+        <Button
+          variant="ghost"
+          size="lg"
+          onClick={() => (step === 0 ? router.back() : setStep((s) => s - 1))}
+        >
           {step === 0 ? tr("cancel", lang) : tr("prev_step", lang)}
         </Button>
         {step < STEPS.length - 1 ? (
-          <Button onClick={() => setStep((s) => s + 1)} disabled={!canContinue()}>
+          <Button size="lg" onClick={() => setStep((s) => s + 1)} disabled={!canContinue()} className="min-w-[9rem]">
             {tr("next_step", lang)}
+            <Icon name="arrowRight" size={17} strokeWidth={2.4} className="ml-1.5" />
           </Button>
         ) : (
-          <Button variant="accent" onClick={submit}>
+          <Button variant="accent" size="lg" onClick={submit} className="min-w-[9rem]">
+            <Icon name="check" size={17} strokeWidth={2.6} className="mr-1.5" />
             {editId ? tr("save_changes", lang) : tr("publish", lang)}
           </Button>
         )}

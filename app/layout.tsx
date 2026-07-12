@@ -6,6 +6,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import MobileNav from "@/components/layout/MobileNav";
 import AuthModalHost from "@/components/auth/AuthModalHost";
+import LogoutConfirmHost from "@/components/auth/LogoutConfirmHost";
 import Toaster from "@/components/ui/Toaster";
 
 const inter = Inter({
@@ -75,6 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <MobileNav />
             </div>
             <AuthModalHost />
+            <LogoutConfirmHost />
             <Toaster />
           </AuthProvider>
         </LangProvider>
