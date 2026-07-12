@@ -219,8 +219,11 @@ export function extractFromText(input: string): ExtractResult {
     .filter(Boolean);
   if (lines.length) {
     const firstLine = lines[0];
-    // A good title is short; if the first line is a paragraph, take its first sentence.
-    fields.title = (firstLine.length <= 80 ? firstLine : firstLine.split(/[.!?]/)[0]).slice(0, 90).trim();
+    // Jó cím rövid: ha az első sor egy hosszú bekezdés, a legelső tagmondatot
+    // vesszük (vessző / mondatvég előtt), és legfeljebb ~60 karakterre vágjuk —
+    // így nem az egész beillesztett szöveg kerül a címbe.
+    const clause = firstLine.length <= 60 ? firstLine : firstLine.split(/[,.!?;]/)[0];
+    fields.title = clause.slice(0, 70).trim();
   }
   fields.description = text;
 

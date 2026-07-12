@@ -557,7 +557,10 @@ export function getOrCreateConversation(
   cache.conversations = [...cache.conversations, conv];
   emit();
   if (supabase) {
-    void supabase
+    // Elmentjük a beszúrás promise-át, hogy az azonnal küldött első üzenet
+    // MEGVÁRHASSA — különben a message-insert az RLS-ellenőrzéskor még nem
+    // találná a beszélgetést (versenyhelyzet → elveszne az érdeklődő üzenet).
+    const p = supabase
       .from("conversations")
       .insert({
         id: conv.id,
@@ -567,10 +570,16 @@ export function getOrCreateConversation(
         created_at: now,
         last_message_at: now
       })
-      .then(({ error }) => error && console.error("getOrCreateConversation", error.message));
+      .then(({ error }) => {
+        if (error) console.error("getOrCreateConversation", error.message);
+      });
+    convInsertPromises.set(conv.id, p);
   }
   return conv;
 }
+
+/** Beszélgetésenként a folyamatban lévő beszúrás promise-a (üzenet-sorrendhez). */
+const convInsertPromises = new Map<string, PromiseLike<unknown>>();
 
 export function sendMessage(conversationId: string, senderId: string, text: string): Message {
   const now = nowIso();
@@ -588,21 +597,23 @@ export function sendMessage(conversationId: string, senderId: string, text: stri
   );
   emit();
   if (supabase) {
-    void supabase
-      .from("messages")
-      .insert({
+    const sb = supabase;
+    void (async () => {
+      // Megvárjuk, hogy az (esetleg most létrehozott) beszélgetés a DB-ben
+      // legyen, mielőtt beszúrjuk az üzenetet — így az RLS check átmegy.
+      const pending = convInsertPromises.get(conversationId);
+      if (pending) await pending;
+      const { error } = await sb.from("messages").insert({
         id: msg.id,
         conversation_id: conversationId,
         sender_id: senderId,
         text: msg.text,
         created_at: now,
         read_by: [senderId]
-      })
-      .then(({ error }) => error && console.error("sendMessage", error.message));
-    void supabase
-      .from("conversations")
-      .update({ last_message_at: now })
-      .eq("id", conversationId);
+      });
+      if (error) console.error("sendMessage", error.message);
+      await sb.from("conversations").update({ last_message_at: now }).eq("id", conversationId);
+    })();
   }
   return msg;
 }

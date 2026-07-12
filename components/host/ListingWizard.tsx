@@ -12,7 +12,7 @@ import {
   amenityLabels,
   heatingLabels
 } from "@/lib/i18n";
-import { cities } from "@/lib/data";
+import { cities, montenegroPlaces } from "@/lib/data";
 import { formatPrice } from "@/lib/format";
 import * as db from "@/lib/db";
 import { toast } from "@/lib/ui";
@@ -33,14 +33,42 @@ import ImageUploader from "@/components/host/ImageUploader";
 import Icon from "@/components/ui/Icon";
 import { cn } from "@/lib/cn";
 
-/** Approximate coordinates per coastal city, used to place new listings on the map. */
+/** Közelítő koordináták településenként — az új hirdetés térképi elhelyezéséhez.
+ *  Mind a 25 község + a fő parti települések, hogy ne essen minden Budvára. */
 const CITY_COORDS: Record<string, { lat: number; lng: number }> = {
   Budva: { lat: 42.2864, lng: 18.84 },
   Tivat: { lat: 42.4347, lng: 18.6963 },
   Kotor: { lat: 42.4247, lng: 18.7712 },
   "Herceg Novi": { lat: 42.4531, lng: 18.5375 },
   Bar: { lat: 42.0931, lng: 19.1003 },
-  Podgorica: { lat: 42.441, lng: 19.2627 }
+  Podgorica: { lat: 42.441, lng: 19.2627 },
+  Ulcinj: { lat: 41.9294, lng: 19.2244 },
+  Nikšić: { lat: 42.7731, lng: 18.9483 },
+  Cetinje: { lat: 42.3906, lng: 18.9116 },
+  Pljevlja: { lat: 43.357, lng: 19.3583 },
+  "Bijelo Polje": { lat: 43.0383, lng: 19.7475 },
+  Berane: { lat: 42.8425, lng: 19.8719 },
+  Rožaje: { lat: 42.8408, lng: 20.1664 },
+  Danilovgrad: { lat: 42.5539, lng: 19.1058 },
+  Kolašin: { lat: 42.8231, lng: 19.5175 },
+  Mojkovac: { lat: 42.9603, lng: 19.5831 },
+  Plav: { lat: 42.5964, lng: 19.9439 },
+  Žabljak: { lat: 43.155, lng: 19.1225 },
+  Andrijevica: { lat: 42.7339, lng: 19.7906 },
+  Plužine: { lat: 43.1531, lng: 18.8433 },
+  Šavnik: { lat: 42.9569, lng: 19.0967 },
+  Gusinje: { lat: 42.5619, lng: 19.8331 },
+  Petnjica: { lat: 42.9106, lng: 19.9628 },
+  Tuzi: { lat: 42.365, lng: 19.3311 },
+  Sutomore: { lat: 42.1417, lng: 19.0483 },
+  Petrovac: { lat: 42.205, lng: 18.9439 },
+  "Sveti Stefan": { lat: 42.2578, lng: 18.8917 },
+  Bečići: { lat: 42.2778, lng: 18.8639 },
+  Dobrota: { lat: 42.442, lng: 18.764 },
+  Perast: { lat: 42.4869, lng: 18.6989 },
+  Risan: { lat: 42.5142, lng: 18.6947 },
+  Igalo: { lat: 42.4569, lng: 18.51 },
+  Bijela: { lat: 42.4553, lng: 18.6217 }
 };
 
 const TYPES: PropertyType[] = [
@@ -225,11 +253,17 @@ export default function ListingWizard() {
 
   const isRent = form.mode === "rent";
 
-  const sampleImages = (seed: string) =>
-    Array.from({ length: 5 }, (_, i) => `https://picsum.photos/seed/jadran-${seed}-${i}/1200/800`);
+  // Ha a felhasználó nem tölt fel képet, HELYI mintaképekkel töltjük fel (ezek
+  // mindig betöltenek, szemben a külső picsum-mal). Kategóriánként egy-egy.
+  const sampleImages = (seed: string): string[] => {
+    const pools: [string, number][] = [["ext", 10], ["liv", 7], ["kit", 5], ["bed", 5], ["view", 5]];
+    const h = Array.from(seed).reduce((a, c) => a + c.charCodeAt(0), 0);
+    return pools.map(([cat, max], i) => `/p/${cat}${((h + i) % max) + 1}.jpg`);
+  };
 
   const buildPayload = (): Omit<Listing, "id" | "createdAt" | "views" | "priceHistory"> => {
-    const coords = CITY_COORDS[form.city] ?? CITY_COORDS.Budva;
+    // Ismert koordináta a településhez; ha nincs, az ország közepe (Podgorica).
+    const coords = CITY_COORDS[form.city] ?? CITY_COORDS.Podgorica;
     const urls = form.images
       .split("\n")
       .map((s) => s.trim())
@@ -277,7 +311,9 @@ export default function ListingWizard() {
 
   const canContinue = (): boolean => {
     if (step === 0) return form.title.trim().length > 0 && form.description.trim().length > 0;
-    if (step === 1) return form.area !== "" && form.rooms !== "" && form.district.trim().length > 0;
+    // Csak az alapterület kötelező itt (a kerület és a szobaszám opcionális —
+    // pl. telek/üzlethelyiség esetén nincs is szoba). A város előre ki van töltve.
+    if (step === 1) return form.area !== "" && Number(form.area) > 0;
     if (step === 3) return form.price !== "" && Number(form.price) > 0;
     return true;
   };
@@ -435,13 +471,20 @@ export default function ListingWizard() {
         {/* STEP 1 — Details */}
         {step === 1 && (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <Select label={tr("city", lang)} value={form.city} onChange={(e) => set("city", e.target.value)}>
-              {cities.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </Select>
+            {/* Bármely montenegrói település kereshető — nem csak a 6 nagyváros */}
+            <div>
+              <Input
+                label={tr("city", lang)}
+                value={form.city}
+                list="wizard-places"
+                onChange={(e) => set("city", e.target.value)}
+              />
+              <datalist id="wizard-places">
+                {montenegroPlaces.map((p) => (
+                  <option key={p} value={p} />
+                ))}
+              </datalist>
+            </div>
             <Input
               label={tr("district_label", lang)}
               value={form.district}
