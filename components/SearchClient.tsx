@@ -2,12 +2,14 @@
 
 import { useMemo, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import type { Listing } from "@/lib/types";
 import { useLang, useListings, useAuth } from "@/lib/store";
 import { tr } from "@/lib/i18n";
-import { pricePerM2 } from "@/lib/format";
+import { pricePerM2, formatPrice } from "@/lib/format";
 import { isFeatured } from "@/lib/mappers";
+import type { MapBounds } from "./MapView";
 import * as db from "@/lib/db";
 import { toast, openAuth } from "@/lib/ui";
 import Filters, { FilterState, emptyFilters } from "./Filters";
@@ -112,6 +114,29 @@ export default function SearchClient() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
+  // Térkép 2.0: terület-keresés + mobil bottom-sheet előnézet
+  const [areaSearch, setAreaSearch] = useState(false);
+  const [areaBounds, setAreaBounds] = useState<MapBounds | null>(null);
+  const [selected, setSelected] = useState<Listing | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const sync = () => setIsMobile(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  // Teljes képernyős mobil térképnél a háttér ne görögjön.
+  useEffect(() => {
+    const lock = isMobile && view === "map";
+    document.body.style.overflow = lock ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobile, view]);
+
   useEffect(() => {
     const seeded: FilterState = { ...emptyFilters };
     (Object.keys(emptyFilters) as (keyof FilterState)[]).forEach((k) => {
@@ -139,6 +164,18 @@ export default function SearchClient() {
   }, [mobileFilters]);
 
   const results = useMemo(() => applyFilters(items, filters), [items, filters]);
+
+  // Terület-keresés: a lista a térkép aktuális kivágatát tükrözi (Airbnb-minta).
+  const visible = useMemo(() => {
+    if (!areaSearch || !areaBounds) return results;
+    return results.filter(
+      (l) =>
+        l.lat >= areaBounds.south &&
+        l.lat <= areaBounds.north &&
+        l.lng >= areaBounds.west &&
+        l.lng <= areaBounds.east
+    );
+  }, [results, areaSearch, areaBounds]);
 
   const suggestions = useMemo(
     () => Array.from(new Set(items.flatMap((l) => [l.city, l.district]))).sort(),
@@ -279,7 +316,18 @@ export default function SearchClient() {
         <div className="min-w-0 flex-1">
           <div className="mb-3 flex items-center justify-between text-sm text-ink-500">
             <span>
-              <span className="font-bold text-ink-900">{results.length}</span> {tr("results", lang)}
+              <span className="font-bold text-ink-900">{visible.length}</span> {tr("results", lang)}
+              {areaSearch && areaBounds && (
+                <button
+                  onClick={() => {
+                    setAreaSearch(false);
+                    setAreaBounds(null);
+                  }}
+                  className="ml-2 inline-flex items-center gap-1 rounded-full bg-ink-900 px-2.5 py-0.5 text-[11px] font-semibold text-white"
+                >
+                  {tr("map_area_chip", lang)} <Icon name="close" size={11} strokeWidth={2.6} />
+                </button>
+              )}
             </span>
             {hasActiveFilters && (
               <button
@@ -296,12 +344,33 @@ export default function SearchClient() {
           ) : results.length === 0 ? (
             <EmptyState title={tr("no_results", lang)} hint={tr("no_results_hint", lang)} />
           ) : view === "map" ? (
-            <div className="h-[calc(100vh-11rem)] overflow-hidden rounded-3xl border border-ink-100 shadow-card md:h-[calc(100vh-7rem)]">
-              <MapView listings={results} lang={lang} activeId={activeId} onActivate={setActiveId} />
+            <div
+              className={
+                isMobile
+                  ? "fixed inset-x-0 bottom-0 top-16 z-20"
+                  : "h-[calc(100vh-7rem)] overflow-hidden rounded-3xl border border-ink-100 shadow-card"
+              }
+            >
+              <MapView
+                listings={visible}
+                lang={lang}
+                activeId={activeId}
+                onActivate={setActiveId}
+                onSelect={isMobile ? setSelected : undefined}
+                areaSearchable
+                areaSearch={areaSearch}
+                onToggleAreaSearch={() =>
+                  setAreaSearch((s) => {
+                    if (s) setAreaBounds(null);
+                    return !s;
+                  })
+                }
+                onBoundsChange={setAreaBounds}
+              />
             </div>
           ) : view === "list" ? (
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
-              {results.map((l) => (
+              {visible.map((l) => (
                 <div key={l.id} className="animate-fade-in">
                   <ListingCard listing={l} active={l.id === activeId} onActivate={setActiveId} />
                 </div>
@@ -310,25 +379,77 @@ export default function SearchClient() {
           ) : (
             <div className="grid grid-cols-1 gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)]">
               <div className="results-scroll grid grid-cols-1 gap-5 sm:grid-cols-2 lg:max-h-[calc(100vh-7rem)] lg:grid-cols-1 lg:overflow-y-auto lg:pr-2 xl:grid-cols-2">
-                {results.map((l) => (
+                {visible.map((l) => (
                   <div key={l.id} className="animate-fade-in">
                     <ListingCard listing={l} active={l.id === activeId} onActivate={setActiveId} />
                   </div>
                 ))}
               </div>
               <div className="sticky top-24 hidden h-[calc(100vh-7rem)] overflow-hidden rounded-3xl border border-ink-100 shadow-card lg:block">
-                <MapView listings={results} lang={lang} activeId={activeId} onActivate={setActiveId} />
+                <MapView
+                  listings={visible}
+                  lang={lang}
+                  activeId={activeId}
+                  onActivate={setActiveId}
+                  areaSearchable
+                  areaSearch={areaSearch}
+                  onToggleAreaSearch={() =>
+                    setAreaSearch((s) => {
+                      if (s) setAreaBounds(null);
+                      return !s;
+                    })
+                  }
+                  onBoundsChange={setAreaBounds}
+                />
               </div>
             </div>
           )}
         </div>
       </div>
 
+      {/* Mobil bottom-sheet előnézet — pin-koppintásra (Térkép 2.0) */}
+      {selected && view === "map" && (
+        <div className="fixed inset-x-3 bottom-24 z-40 animate-sheet-up md:hidden">
+          <div className="relative rounded-2xl border border-ink-100 bg-white p-2.5 shadow-pop">
+            <button
+              onClick={() => setSelected(null)}
+              aria-label={tr("close", lang)}
+              className="absolute -right-2 -top-2 z-10 grid h-7 w-7 place-items-center rounded-full border border-ink-100 bg-white text-ink-600 shadow-float"
+            >
+              <Icon name="close" size={14} strokeWidth={2.4} />
+            </button>
+            <Link href={`/listing/${selected.id}`} className="flex gap-3">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={selected.images[0]}
+                alt={selected.title[lang]}
+                className="h-20 w-24 shrink-0 rounded-xl object-cover"
+              />
+              <div className="min-w-0 flex-1 py-0.5">
+                <div className="font-extrabold text-ink-900">
+                  {formatPrice(selected.price, lang)}
+                  {selected.mode === "rent" && (
+                    <span className="text-xs font-semibold text-ink-400">{tr("per_month", lang)}</span>
+                  )}
+                </div>
+                <div className="truncate text-sm font-medium text-ink-700">{selected.title[lang]}</div>
+                <div className="mt-0.5 flex items-center gap-1 text-xs text-ink-400">
+                  <Icon name="mapPin" size={12} /> {selected.city} · {selected.district}
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
+      )}
+
       {/* Mobil lebegő térkép/lista váltó (Airbnb-minta) — asztali nézeten a
           fenti szegmenskapcsoló él, mobilon ez az egyetlen út a térképhez. */}
       {!loading && results.length > 0 && (
         <button
-          onClick={() => setView(view === "map" ? "list" : "map")}
+          onClick={() => {
+            setSelected(null);
+            setView(view === "map" ? "list" : "map");
+          }}
           className="fixed bottom-28 left-1/2 z-30 flex -translate-x-1/2 items-center gap-2 rounded-full bg-ink-900 px-5 py-3 text-sm font-semibold text-white shadow-pop transition active:scale-95 md:hidden"
         >
           <Icon name={view === "map" ? "menu" : "globe"} size={16} strokeWidth={2.2} />

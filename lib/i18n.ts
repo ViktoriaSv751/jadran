@@ -190,6 +190,8 @@ export const t: Dict = {
   chip_verified: { hu: "Csak verifikált", me: "Samo verifikovano", en: "Verified only", ru: "Только проверенные" },
   chip_furnished: { hu: "Bútorozott", me: "Namešteno", en: "Furnished", ru: "Меблированные" },
   close: { hu: "Bezárás", me: "Zatvori", en: "Close", ru: "Закрыть" },
+  map_area_search: { hu: "Keresés ezen a területen", me: "Traži u ovom području", en: "Search this area", ru: "Искать в этой области" },
+  map_area_chip: { hu: "Térkép területe", me: "Područje mape", en: "Map area", ru: "Область карты" },
   home: { hu: "Főoldal", me: "Početna", en: "Home", ru: "Главная" },
 
   /* ---------------- Sale / rent modes ---------------- */

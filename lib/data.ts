@@ -16,7 +16,10 @@ function hashStr(s: string): number {
 }
 
 function pickPhoto(cat: keyof typeof PHOTO_POOL, salt: number): string {
-  return `/p/${cat}${(salt % PHOTO_POOL[cat]) + 1}.jpg`;
+  // A hash-eltolás (h >> …) negatív is lehet — a dupla modulo garantálja az 1..pool indexet.
+  const pool = PHOTO_POOL[cat];
+  const idx = ((salt % pool) + pool) % pool;
+  return `/p/${cat}${idx + 1}.jpg`;
 }
 
 function imgs(id: string, n = 5): string[] {
