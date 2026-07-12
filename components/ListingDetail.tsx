@@ -21,6 +21,7 @@ import InquiryButton from "./listing/InquiryButton";
 import MortgageCalculator from "./MortgageCalculator";
 import ForeignBuyerInfo from "./ForeignBuyerInfo";
 import InvestorCard from "./listing/InvestorCard";
+import CurrencyHint from "./listing/CurrencyHint";
 
 const MapView = dynamic(() => import("./MapView"), {
   ssr: false,
@@ -345,6 +346,7 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
                       {formatNumber(ppm2, lang)} €{tr("per_m2", lang)}
                     </div>
                   )}
+                  <CurrencyHint amount={listing.price} />
                 </div>
                 <button
                   onClick={() => favorites.toggle(listing.id)}

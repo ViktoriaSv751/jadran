@@ -12,6 +12,9 @@ export default function SellerCard({ listing }: { listing: Listing }) {
   const seller = useProfile(listing.ownerId);
   if (!seller) return null;
 
+  // Determinisztikus URL (SSR és kliens ugyanazt rendereli — nincs hydration-hiba).
+  const shareUrl = `${process.env.NEXT_PUBLIC_SITE_URL ?? ""}/listing/${listing.id}`;
+
   return (
     <section className="mt-7 rounded-2xl border border-ink-100 bg-white p-5 shadow-soft">
       <h2 className="text-lg font-bold text-ink-900">{tr("about_seller", lang)}</h2>
@@ -37,12 +40,35 @@ export default function SellerCard({ listing }: { listing: Listing }) {
               <dd className="inline font-medium">{seller.responseTime}</dd>
             </div>
           </dl>
-          <Link
-            href={`/u/${seller.id}`}
-            className="mt-3 inline-block rounded-xl border border-ink-200 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:bg-ink-50"
-          >
-            {tr("view_profile", lang)}
-          </Link>
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <Link
+              href={`/u/${seller.id}`}
+              className="inline-block rounded-xl border border-ink-200 px-4 py-2 text-sm font-semibold text-ink-800 transition hover:bg-ink-50"
+            >
+              {tr("view_profile", lang)}
+            </Link>
+            {/* WhatsApp / Viber — a montenegrói piacon ezek a fő csatornák */}
+            {seller.phone && (
+              <>
+                <a
+                  href={`https://wa.me/${seller.phone.replace(/[^\d]/g, "")}?text=${encodeURIComponent(
+                    `${listing.title[lang]} — ${shareUrl}`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#25D366] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+                >
+                  <Icon name="message" size={15} strokeWidth={2.2} /> WhatsApp
+                </a>
+                <a
+                  href={`viber://chat?number=%2B${seller.phone.replace(/[^\d]/g, "")}`}
+                  className="inline-flex items-center gap-1.5 rounded-xl bg-[#7360F2] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+                >
+                  <Icon name="message" size={15} strokeWidth={2.2} /> Viber
+                </a>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </section>

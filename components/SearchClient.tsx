@@ -11,6 +11,7 @@ import { pricePerM2, formatPrice } from "@/lib/format";
 import { isFeatured } from "@/lib/mappers";
 import type { MapBounds } from "./MapView";
 import * as db from "@/lib/db";
+import { extractSmart } from "@/lib/import/ai-extract-remote";
 import { toast, openAuth } from "@/lib/ui";
 import Filters, { FilterState, emptyFilters } from "./Filters";
 import FilterChips from "./FilterChips";
@@ -192,6 +193,36 @@ export default function SearchClient() {
 
   const update = (next: FilterState) => setFilters(next);
 
+  // AI-keresés: szabad szöveg ("napfényes lakás Kotorban 300k alatt") → szűrők.
+  const [aiBusy, setAiBusy] = useState(false);
+  const runAiSearch = async () => {
+    const text = filters.q.trim();
+    if (!text || aiBusy) return;
+    setAiBusy(true);
+    const { fields, detected } = await extractSmart(text);
+    setAiBusy(false);
+    if (!detected.length) {
+      toast(tr("ai_search_none", lang));
+      return;
+    }
+    const next: FilterState = { ...filters };
+    if (fields.mode) next.mode = fields.mode;
+    if (fields.type) next.type = fields.type;
+    if (fields.view) next.view = fields.view;
+    if (fields.condition) next.condition = fields.condition;
+    if (fields.price) next.priceMax = String(fields.price);
+    if (fields.rooms) next.roomsMin = String(fields.rooms);
+    if (fields.area) next.areaMin = String(fields.area);
+    if (fields.furnished) next.furnished = "1";
+    if (fields.petsAllowed) next.petsOnly = "1";
+    if (fields.amenities?.length) next.amenities = fields.amenities.join(",");
+    if (fields.city && suggestions.includes(fields.city)) next.city = fields.city;
+    // A szabad szöveget kiürítjük, hogy ne szűkítse tovább a strukturált találatokat.
+    next.q = fields.city && !suggestions.includes(fields.city) ? fields.city : "";
+    update(next);
+    toast(tr("ai_search_done", lang).replace("{n}", String(detected.length)));
+  };
+
   const saveSearch = () => {
     if (!user) {
       openAuth("login");
@@ -236,10 +267,27 @@ export default function SearchClient() {
               list="place-suggestions"
               value={filters.q}
               onChange={(e) => update({ ...filters, q: e.target.value })}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") void runAiSearch();
+              }}
               placeholder={tr("search_placeholder", lang)}
-              className="w-full rounded-full border border-ink-200 bg-white py-3.5 pl-11 pr-4 text-sm shadow-soft transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
+              className="w-full rounded-full border border-ink-200 bg-white py-3.5 pl-11 pr-12 text-sm shadow-soft transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
             />
             <Icon name="search" size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-ink-400" />
+            {/* AI-keresés: a beírt szabad szövegből szűrőket készít */}
+            <button
+              onClick={() => void runAiSearch()}
+              disabled={!filters.q.trim() || aiBusy}
+              aria-label={tr("ai_search_hint", lang)}
+              title={tr("ai_search_hint", lang)}
+              className={`absolute right-2 top-1/2 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full transition ${
+                filters.q.trim()
+                  ? "bg-ink-900 text-white hover:bg-ink-800"
+                  : "text-ink-300"
+              } ${aiBusy ? "animate-pulse" : ""}`}
+            >
+              <Icon name="sparkles" size={17} strokeWidth={2} />
+            </button>
             <datalist id="place-suggestions">
               {suggestions.map((s) => (
                 <option key={s} value={s} />

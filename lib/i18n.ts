@@ -209,6 +209,9 @@ export const t: Dict = {
   chip_furnished: { hu: "Bútorozott", me: "Namešteno", en: "Furnished", ru: "Меблированные" },
   close: { hu: "Bezárás", me: "Zatvori", en: "Close", ru: "Закрыть" },
   map_area_search: { hu: "Keresés ezen a területen", me: "Traži u ovom području", en: "Search this area", ru: "Искать в этой области" },
+  ai_search_hint: { hu: "AI-keresés: írd le szabadon, mit keresel", me: "AI pretraga: opišite šta tražite", en: "AI search: describe what you're looking for", ru: "ИИ-поиск: опишите, что ищете" },
+  ai_search_done: { hu: "{n} szűrő beállítva a leírásod alapján.", me: "{n} filtera postavljeno iz opisa.", en: "{n} filters set from your description.", ru: "Установлено фильтров: {n}." },
+  ai_search_none: { hu: "Nem ismertem fel szűrőket — próbáld részletesebben.", me: "Nisam prepoznao filtere — pokušajte detaljnije.", en: "Couldn't detect filters — try more detail.", ru: "Фильтры не распознаны — опишите подробнее." },
   map_area_chip: { hu: "Térkép területe", me: "Područje mape", en: "Map area", ru: "Область карты" },
   home: { hu: "Főoldal", me: "Početna", en: "Home", ru: "Главная" },
 
