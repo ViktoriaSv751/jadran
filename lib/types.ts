@@ -1,4 +1,16 @@
-export type Lang = "hu" | "me" | "en" | "ru";
+export type Lang =
+  | "hu" // magyar
+  | "me" // montenegrói (crnogorski)
+  | "sr" // szerb
+  | "bs" // bosnyák
+  | "hr" // horvát
+  | "en" // angol
+  | "ru" // orosz
+  | "uk" // ukrán
+  | "sq" // albán
+  | "el" // görög
+  | "tr" // török
+  | "es"; // spanyol
 
 export type PropertyType =
   | "apartment"
@@ -25,8 +37,9 @@ export type ListingMode = "sale" | "rent";
 
 export type ListingStatus = "active" | "paused";
 
-/** Account roles. */
-export type UserRole = "buyer" | "seller" | "agency";
+/** Account roles. A "private" (magánszemély) kereshet ÉS eladhat is; a
+ *  korábbi buyer/seller ennek felel meg (a felületen mind Magánszemély). */
+export type UserRole = "buyer" | "seller" | "private" | "agency";
 
 /**
  * Amenities = physical features of the property (valid for both sale & rent).

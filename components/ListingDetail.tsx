@@ -7,7 +7,7 @@ import { useMemo, useState } from "react";
 import type { Listing } from "@/lib/types";
 import { useLang, useFavorites, useListings } from "@/lib/store";
 import { toast } from "@/lib/ui";
-import { tr, typeLabels, conditionLabels, viewLabels, modeLabels, heatingLabels } from "@/lib/i18n";
+import { tr, typeLabels, conditionLabels, viewLabels, modeLabels, heatingLabels, loc } from "@/lib/i18n";
 import { formatPrice, formatNumber, pricePerM2, distanceLabel } from "@/lib/format";
 import { cityTrend, cityAvgPricePerM2, similarListings } from "@/lib/data";
 import VerificationBadge from "./VerificationBadge";
@@ -40,7 +40,7 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
     const url = typeof window !== "undefined" ? window.location.href : "";
     try {
       if (navigator.share) {
-        await navigator.share({ title: listing.title[lang], url });
+        await navigator.share({ title: loc(listing.title, lang), url });
       } else {
         await navigator.clipboard.writeText(url);
         toast(tr("link_copied", lang));
@@ -76,7 +76,7 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
     ...f(listing.rooms > 0, ["bed", tr("rooms", lang), String(listing.rooms)]),
     ...f(listing.floor !== null, ["building", tr("floor", lang), String(listing.floor)]),
     ...f(listing.year > 0, ["calendar", tr("year_built", lang), String(listing.year)]),
-    ["eye", tr("view", lang), viewLabels[listing.view][lang]],
+    ["eye", tr("view", lang), (viewLabels[listing.view][lang] ?? "")],
     ["bolt", tr("energy", lang), listing.energy],
     ["waves", tr("to_sea", lang), distanceLabel(listing.distanceToSea)],
     ...(isRent
@@ -93,7 +93,7 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
           ["paw", tr("pets_allowed", lang), listing.petsAllowed ? tr("yes", lang) : tr("no", lang)] as Fact
         ]
       : [
-          ["star", tr("condition", lang), conditionLabels[listing.condition][lang]] as Fact,
+          ["star", tr("condition", lang), (conditionLabels[listing.condition][lang] ?? "")] as Fact,
           ...f(!!listing.heatingType, [
             "flame",
             tr("heating_label", lang),
@@ -117,14 +117,14 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
   const highlights: Highlight[] = [
     ["area", `${formatNumber(listing.area, lang)} m²`],
     ...(listing.rooms > 0 ? ([["bed", `${listing.rooms} ${tr("rooms", lang).toLowerCase()}`]] as Highlight[]) : []),
-    ["eye", viewLabels[listing.view][lang]],
+    ["eye", (viewLabels[listing.view][lang] ?? "")],
     ["bolt", `${tr("energy", lang)} ${listing.energy}`],
     ...(listing.verification !== "none" ? ([["shield", tr("chip_verified", lang)]] as Highlight[]) : []),
     ...(!isRent && goodDeal && cityAvg > 0 ? ([["trendUp", tr("good_deal", lang)]] as Highlight[]) : [])
   ];
 
   const histData = listing.priceHistory.map((p) => ({ label: p.date.slice(5), value: p.price }));
-  const desc = listing.description[lang];
+  const desc = loc(listing.description, lang);
   const longDesc = desc.length > 260;
 
   return (
@@ -168,7 +168,7 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
                 </button>
               </div>
             </div>
-            <Gallery images={listing.images} alt={listing.title[lang]} />
+            <Gallery images={listing.images} alt={loc(listing.title, lang)} />
           </div>
 
           <div className="mt-5 flex flex-wrap items-center gap-2">
@@ -186,7 +186,7 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
           </div>
 
           <h1 className="mt-2 text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl">
-            {listing.title[lang]}
+            {loc(listing.title, lang)}
           </h1>
           <p className="mt-1.5 flex items-center gap-1.5 text-ink-500">
             <Icon name="mapPin" size={16} className="text-brand-500" />

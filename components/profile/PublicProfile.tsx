@@ -58,7 +58,7 @@ export default function PublicProfile({ id }: { id: string }) {
               )}
             </div>
             <p className="mt-0.5 text-sm font-medium text-ink-600">
-              {profile.role === "agency" ? tr("role_agency", lang) : tr("role_seller", lang)}
+              {profile.role === "agency" ? tr("role_agency", lang) : tr("role_private", lang)}
               {profile.location ? ` · ${profile.location}` : ""}
             </p>
             <p className="mt-1 text-sm text-ink-400">

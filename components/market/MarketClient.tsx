@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useLang, useListings } from "@/lib/store";
-import { tr, typeLabels } from "@/lib/i18n";
+import { tr, typeLabels, loc } from "@/lib/i18n";
 import { formatPrice, formatNumber } from "@/lib/format";
 import { cityTrend } from "@/lib/data";
 import { cityMarketStats, priceDrops } from "@/lib/market";
@@ -127,13 +127,13 @@ export default function MarketClient() {
                 href={`/listing/${l.id}`}
                 className="group flex gap-3 rounded-2xl border border-ink-100 bg-white p-2.5 shadow-soft transition hover:-translate-y-0.5 hover:shadow-card"
               >
-                <Photo src={l.images[0]} alt={l.title[lang]} className="h-20 w-24 shrink-0 rounded-xl" />
+                <Photo src={l.images[0]} alt={loc(l.title, lang)} className="h-20 w-24 shrink-0 rounded-xl" />
                 <div className="min-w-0 flex-1 py-0.5">
                   <span className="inline-flex items-center gap-1 rounded-md bg-emerald-50 px-1.5 py-0.5 text-[11px] font-bold text-emerald-700">
                     <Icon name="trendUp" size={11} className="rotate-180" /> −{dropPct}%
                   </span>
                   <div className="mt-1 truncate text-sm font-semibold text-ink-900 group-hover:text-brand-700">
-                    {l.title[lang]}
+                    {loc(l.title, lang)}
                   </div>
                   <div className="text-xs text-ink-400">
                     <span className="line-through">{formatPrice(from, lang)}</span>{" "}

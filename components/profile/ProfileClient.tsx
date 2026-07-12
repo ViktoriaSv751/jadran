@@ -19,7 +19,7 @@ export default function ProfileClient() {
   const active = listings.filter((l) => l.status === "active").length;
   const totalViews = listings.reduce((acc, l) => acc + l.views, 0);
   const roleLabel =
-    user.role === "agency" ? tr("role_agency", lang) : user.role === "seller" ? tr("role_seller", lang) : tr("role_buyer", lang);
+    user.role === "agency" ? tr("role_agency", lang) : tr("role_private", lang);
 
   // Szerepkör-tudatos statisztika
   const stats = isSeller
@@ -34,13 +34,11 @@ export default function ProfileClient() {
         { label: tr("member_since", lang), value: new Date(user.joinedAt).getFullYear() }
       ];
 
+  // Bárki (magánszemély és iroda is) kereshet ÉS eladhat — a hirdetés-kezelés
+  // ezért mindig látszik.
   const menu: { href: string; label: string; icon: IconName; badge?: number }[] = [
-    ...(isSeller
-      ? [
-          { href: "/listings", label: tr("my_listings", lang), icon: "building" as IconName },
-          { href: "/listings/new", label: tr("new_listing", lang), icon: "plus" as IconName }
-        ]
-      : []),
+    { href: "/listings", label: tr("my_listings", lang), icon: "building" as IconName },
+    { href: "/listings/new", label: tr("new_listing", lang), icon: "plus" as IconName },
     { href: "/favorites", label: tr("favorites", lang), icon: "heart", badge: favorites.ids.length },
     { href: "/messages", label: tr("messages", lang), icon: "message", badge: unread },
     { href: "/compare", label: tr("compare", lang), icon: "sliders" },

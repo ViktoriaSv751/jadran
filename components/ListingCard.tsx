@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import type { Listing } from "@/lib/types";
 import { useLang, useFavorites, useCompare } from "@/lib/store";
-import { tr, typeLabels, modeLabels } from "@/lib/i18n";
+import { tr, typeLabels, modeLabels, loc } from "@/lib/i18n";
 import { formatPrice, pricePerM2, distanceLabel, formatNumber } from "@/lib/format";
 import VerificationBadge from "./VerificationBadge";
 import { isFeatured } from "@/lib/mappers";
@@ -68,11 +68,11 @@ export default function ListingCard({
             <Link
               key={i}
               href={`/listing/${listing.id}`}
-              aria-label={listing.title[lang]}
+              aria-label={loc(listing.title, lang)}
               className="h-full w-full shrink-0 snap-center"
               style={{ flex: "0 0 100%" }}
             >
-              <Photo src={img} alt={listing.title[lang]} eager={i === 0} className="h-full w-full" />
+              <Photo src={img} alt={loc(listing.title, lang)} eager={i === 0} className="h-full w-full" />
             </Link>
           ))}
         </div>
@@ -167,7 +167,7 @@ export default function ListingCard({
 
         <Link href={`/listing/${listing.id}`} className="mt-2">
           <h3 className="line-clamp-1 text-[15px] font-bold tracking-tight text-ink-900 transition group-hover:text-brand-600">
-            {listing.title[lang]}
+            {loc(listing.title, lang)}
           </h3>
         </Link>
         <p className="mt-0.5 inline-flex items-center gap-1 text-xs text-ink-400">
@@ -194,7 +194,7 @@ export default function ListingCard({
             {listing.mode === "rent" ? (
               <span className="text-sm font-semibold text-ink-400">{tr("per_month", lang)}</span>
             ) : (
-              <span className="block text-[11px] font-medium text-ink-400">
+              <span className="mt-1.5 block text-xs font-medium text-ink-400">
                 {formatNumber(pricePerM2(listing.price, listing.area), lang)} €{tr("per_m2", lang)}
               </span>
             )}

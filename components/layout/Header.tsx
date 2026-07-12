@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Logo from "./Logo";
+import LangSwitcher from "./LangSwitcher";
 import LogoutButton from "@/components/auth/LogoutButton";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -41,7 +42,7 @@ export default function Header() {
             <span className="font-semibold text-ink-800">{tr("rent_tab", lang)}</span>
             <span className="h-4 w-px bg-ink-200" />
             <span className="text-ink-400">{tr("where_q", lang)}</span>
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-[#c8ff00] text-ink-950 transition group-hover:brightness-95">
+            <span className="grid h-8 w-8 place-items-center rounded-full border-2 border-ink-950 bg-[#c8ff00] text-ink-950 transition group-hover:brightness-95">
               <Icon name="search" size={16} strokeWidth={2.4} />
             </span>
           </button>
@@ -61,7 +62,7 @@ export default function Header() {
             {tr("become_host", lang)}
           </Link>
 
-          <LangSwitcher lang={lang} setLang={setLang} />
+          <LangSwitcher />
 
           <AccountMenu
             user={user}
@@ -74,26 +75,6 @@ export default function Header() {
         </div>
       </div>
     </header>
-  );
-}
-
-function LangSwitcher({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
-  return (
-    <div className="hidden items-center gap-0.5 rounded-full border border-ink-100 bg-white p-0.5 sm:flex">
-      {LANGS.map((l) => (
-        <button
-          key={l.code}
-          onClick={() => setLang(l.code)}
-          title={l.label}
-          aria-label={l.label}
-          className={`rounded-full px-1.5 py-1 text-sm transition ${
-            lang === l.code ? "bg-ink-100" : "opacity-60 hover:opacity-100"
-          }`}
-        >
-          {l.flag}
-        </button>
-      ))}
-    </div>
   );
 }
 

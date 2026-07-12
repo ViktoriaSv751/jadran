@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useAuth, useLang, useConversations, useMessages, useListings, useProfiles } from "@/lib/store";
 import type { Lang } from "@/lib/types";
-import { tr } from "@/lib/i18n";
+import { tr, loc } from "@/lib/i18n";
 import { formatPrice } from "@/lib/format";
 import * as db from "@/lib/db";
 import Avatar from "@/components/ui/Avatar";
@@ -82,7 +82,7 @@ export default function MessagesClient() {
                     <span className="truncate text-sm font-semibold text-ink-900">{other?.name ?? "—"}</span>
                     {unread && <span className="h-2 w-2 shrink-0 rounded-full bg-rose-500" />}
                   </div>
-                  <div className="truncate text-xs text-ink-400">{listing?.title[lang] ?? ""}</div>
+                  <div className="truncate text-xs text-ink-400">{listing ? loc(listing.title, lang) : ""}</div>
                   {last && <div className="truncate text-xs text-ink-500">{last.text}</div>}
                 </div>
               </button>
@@ -164,7 +164,7 @@ function ChatView({
             href={`/listing/${listing.id}`}
             className="flex items-center gap-2 rounded-xl border border-ink-100 p-1.5 pr-3 transition hover:bg-ink-50"
           >
-            <Photo src={listing.images[0]} alt={listing.title[lang]} className="h-9 w-9 rounded-lg" />
+            <Photo src={listing.images[0]} alt={loc(listing.title, lang)} className="h-9 w-9 rounded-lg" />
             <span className="hidden text-xs font-semibold text-ink-700 sm:block">
               {formatPrice(listing.price, lang)}
             </span>

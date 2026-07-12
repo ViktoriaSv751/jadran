@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useLang, useCompare, useListings } from "@/lib/store";
-import { tr, typeLabels, conditionLabels, viewLabels, modeLabels } from "@/lib/i18n";
+import { tr, typeLabels, conditionLabels, viewLabels, modeLabels, loc } from "@/lib/i18n";
 import { formatPrice, formatNumber, pricePerM2, distanceLabel } from "@/lib/format";
 import Photo from "@/components/Photo";
 import Icon from "@/components/ui/Icon";
@@ -98,14 +98,14 @@ export default function ComparePage() {
                         </span>
                       )}
                       <Link href={`/listing/${l.id}`} className="block">
-                        <Photo src={l.images[0]} alt={l.title[lang]} className="mb-2 h-28 w-full rounded-xl" />
+                        <Photo src={l.images[0]} alt={loc(l.title, lang)} className="mb-2 h-28 w-full rounded-xl" />
                       </Link>
                       <span className="inline-block rounded-md bg-ink-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-ink-600">
                         {modeLabels[l.mode][lang]}
                       </span>
                       <Link href={`/listing/${l.id}`}>
                         <span className="mt-1 line-clamp-2 block text-left text-[13px] font-semibold text-ink-800 hover:text-brand-700">
-                          {l.title[lang]}
+                          {loc(l.title, lang)}
                         </span>
                       </Link>
                       <div className="mt-1 text-left text-xl font-black tracking-tight text-ink-900">

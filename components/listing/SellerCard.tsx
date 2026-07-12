@@ -3,7 +3,7 @@
 import Link from "next/link";
 import type { Listing } from "@/lib/types";
 import { useLang, useProfile } from "@/lib/store";
-import { tr } from "@/lib/i18n";
+import { tr, loc } from "@/lib/i18n";
 import Avatar from "@/components/ui/Avatar";
 import Icon from "@/components/ui/Icon";
 
@@ -30,7 +30,7 @@ export default function SellerCard({ listing }: { listing: Listing }) {
             )}
           </div>
           <div className="mt-0.5 text-sm text-ink-500">
-            {seller.role === "agency" ? tr("role_agency", lang) : tr("role_seller", lang)}
+            {seller.role === "agency" ? tr("role_agency", lang) : tr("role_private", lang)}
             {seller.location ? ` · ${seller.location}` : ""}
           </div>
           {seller.bio && <p className="mt-2 text-sm leading-relaxed text-ink-600">{seller.bio}</p>}
@@ -52,7 +52,7 @@ export default function SellerCard({ listing }: { listing: Listing }) {
               <>
                 <a
                   href={`https://wa.me/${seller.phone.replace(/[^\d]/g, "")}?text=${encodeURIComponent(
-                    `${listing.title[lang]} — ${shareUrl}`
+                    `${loc(listing.title, lang)} — ${shareUrl}`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"

@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth, useLang, useListing } from "@/lib/store";
 import {
   tr,
+  loc,
   typeLabels,
   conditionLabels,
   viewLabels,
@@ -169,8 +170,8 @@ export default function ListingWizard() {
     return {
       mode: editing.mode,
       type: editing.type,
-      title: editing.title[lang] || editing.title.hu,
-      description: editing.description[lang] || editing.description.hu,
+      title: loc(editing.title, lang) || editing.title.hu,
+      description: loc(editing.description, lang) || editing.description.hu,
       city: editing.city,
       district: editing.district,
       area: String(editing.area),

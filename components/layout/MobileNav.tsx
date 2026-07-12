@@ -97,7 +97,7 @@ export default function MobileNav() {
           <button
             onClick={addListing}
             aria-label={tr("new_listing", lang)}
-            className="-mt-5 grid h-14 w-14 place-items-center rounded-full bg-[#c8ff00] text-ink-950 shadow-[0_8px_20px_-6px_rgba(160,200,0,0.7)] ring-4 ring-white transition-transform active:scale-95"
+            className="-mt-5 grid h-14 w-14 place-items-center rounded-full border-[3px] border-ink-950 bg-[#c8ff00] text-ink-950 shadow-[0_8px_20px_-6px_rgba(160,200,0,0.7)] ring-4 ring-white transition-transform active:scale-95"
           >
             <Icon name="plus" size={26} strokeWidth={2.8} />
           </button>

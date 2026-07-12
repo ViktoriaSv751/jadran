@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import type { Listing } from "@/lib/types";
 import { useLang, useListings, useAuth } from "@/lib/store";
-import { tr } from "@/lib/i18n";
+import { tr, loc } from "@/lib/i18n";
 import { pricePerM2, formatPrice } from "@/lib/format";
 import { isFeatured } from "@/lib/mappers";
 import type { MapBounds } from "./MapView";
@@ -472,7 +472,7 @@ export default function SearchClient() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={selected.images[0]}
-                alt={selected.title[lang]}
+                alt={loc(selected.title, lang)}
                 className="h-20 w-24 shrink-0 rounded-xl object-cover"
               />
               <div className="min-w-0 flex-1 py-0.5">
@@ -482,7 +482,7 @@ export default function SearchClient() {
                     <span className="text-xs font-semibold text-ink-400">{tr("per_month", lang)}</span>
                   )}
                 </div>
-                <div className="truncate text-sm font-medium text-ink-700">{selected.title[lang]}</div>
+                <div className="truncate text-sm font-medium text-ink-700">{loc(selected.title, lang)}</div>
                 <div className="mt-0.5 flex items-center gap-1 text-xs text-ink-400">
                   <Icon name="mapPin" size={12} /> {selected.city} · {selected.district}
                 </div>

@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import type { Listing } from "@/lib/types";
 import { useAuth, useLang } from "@/lib/store";
-import { tr } from "@/lib/i18n";
+import { tr, loc } from "@/lib/i18n";
 import * as db from "@/lib/db";
 import { openAuth, toast } from "@/lib/ui";
 import Button from "@/components/ui/Button";
@@ -23,7 +23,7 @@ export default function InquiryButton({ listing }: { listing: Listing }) {
       const conv = db.getOrCreateConversation(listing.id, me.id, listing.ownerId);
       const existing = db.getMessagesForConversation(conv.id);
       if (existing.length === 0) {
-        db.sendMessage(conv.id, me.id, `${tr("inquiry_default", lang)}${listing.title[lang]}`);
+        db.sendMessage(conv.id, me.id, `${tr("inquiry_default", lang)}${loc(listing.title, lang)}`);
       }
       toast(tr("inquiry_sent_toast", lang));
       router.push(`/messages?c=${conv.id}`);

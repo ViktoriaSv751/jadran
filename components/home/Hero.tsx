@@ -33,7 +33,7 @@ export default function Hero() {
 
   return (
     <section className="relative isolate overflow-hidden bg-gradient-to-b from-ink-50 to-white text-ink-900">
-      <div className="mx-auto flex max-w-4xl flex-col items-center justify-center px-4 py-12 text-center lg:py-20">
+      <div className="mx-auto flex max-w-4xl flex-col items-center justify-center px-4 py-8 text-center lg:py-16">
         <div className="inline-flex w-fit items-center gap-2 rounded-full border border-ink-200 bg-white px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink-600 shadow-soft">
           <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
           {tr("hero_eyebrow", lang)}
@@ -73,14 +73,14 @@ export default function Hero() {
                 {tr("anywhere", lang)} · {mode === "sale" ? tr("buy", lang) : tr("rent_tab", lang)}
               </span>
             </span>
-            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-[#c8ff00] text-ink-950 shadow-[0_10px_24px_-8px_rgba(160,200,0,0.7)] transition group-hover:brightness-95">
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border-2 border-ink-950 bg-[#c8ff00] text-ink-950 shadow-[0_10px_24px_-8px_rgba(160,200,0,0.7)] transition group-hover:brightness-95">
               <Icon name="search" size={22} strokeWidth={2.6} />
             </span>
           </button>
         </div>
 
         {/* City quick chips — strictly uniform */}
-        <div className="mt-7 flex flex-wrap justify-center gap-2">
+        <div className="mt-6 flex flex-wrap justify-center gap-2">
           {cities.map((c) => (
             <button
               key={c}
@@ -93,7 +93,7 @@ export default function Hero() {
         </div>
 
         {/* Live stats band — fills the hero with trust signals + "wow" */}
-        <div className="mt-9 grid w-full max-w-2xl grid-cols-3 gap-2.5 sm:gap-4">
+        <div className="mt-6 grid w-full max-w-2xl grid-cols-3 gap-2.5 sm:gap-4">
           {stats.map((s, i) => (
             <div key={i} className="rounded-2xl border border-ink-100 bg-white px-3 py-4 text-center shadow-soft">
               <div className="text-2xl font-black tracking-tight text-ink-900 sm:text-3xl">{s.value}</div>

@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { Listing, Lang } from "@/lib/types";
 import { formatPrice } from "@/lib/format";
-import { tr } from "@/lib/i18n";
+import { tr, loc } from "@/lib/i18n";
 import Icon from "./ui/Icon";
 
 export interface MapBounds {
@@ -210,12 +210,12 @@ export default function MapView({
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={l.images[0]}
-                    alt={l.title[lang]}
+                    alt={loc(l.title, lang)}
                     className="h-28 w-full rounded-xl object-cover"
                   />
                   <div className="px-0.5 pt-2">
                     <div className="text-sm font-extrabold text-ink-900">{formatPrice(l.price, lang)}</div>
-                    <div className="truncate text-[13px] font-medium text-ink-700">{l.title[lang]}</div>
+                    <div className="truncate text-[13px] font-medium text-ink-700">{loc(l.title, lang)}</div>
                     <div className="mt-0.5 flex items-center gap-1 text-xs text-ink-400">
                       <Icon name="mapPin" size={12} /> {l.city} · {l.district}
                     </div>

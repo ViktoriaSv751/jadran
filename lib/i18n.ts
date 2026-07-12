@@ -3,11 +3,42 @@ import type { Lang } from "./types";
 export const LANGS: { code: Lang; label: string; flag: string }[] = [
   { code: "hu", label: "Magyar", flag: "🇭🇺" },
   { code: "me", label: "Crnogorski", flag: "🇲🇪" },
+  { code: "sr", label: "Српски", flag: "🇷🇸" },
+  { code: "bs", label: "Bosanski", flag: "🇧🇦" },
+  { code: "hr", label: "Hrvatski", flag: "🇭🇷" },
   { code: "en", label: "English", flag: "🇬🇧" },
-  { code: "ru", label: "Русский", flag: "🇷🇺" }
+  { code: "es", label: "Español", flag: "🇪🇸" },
+  { code: "ru", label: "Русский", flag: "🇷🇺" },
+  { code: "uk", label: "Українська", flag: "🇺🇦" },
+  { code: "sq", label: "Shqip", flag: "🇦🇱" },
+  { code: "el", label: "Ελληνικά", flag: "🇬🇷" },
+  { code: "tr", label: "Türkçe", flag: "🇹🇷" }
 ];
 
-type L4 = { hu: string; me: string; en: string; ru: string };
+// Ha egy nyelvre nincs saját fordítás, melyik nyelvből vegye a szöveget.
+// A dél-szláv nyelvek (sr/bs/hr) a montenegrói szöveget használják (közel azonos).
+const FALLBACK_SRC: Record<Lang, Lang> = {
+  hu: "hu", me: "me", en: "en", ru: "ru",
+  sr: "me", bs: "me", hr: "me",
+  uk: "ru",
+  sq: "en", el: "en", tr: "en", es: "en"
+};
+
+/** A dinamikus tartalom (hirdetés-szöveg) csak 4 nyelvű — ide képezzük a nyelvet. */
+const CONTENT_SRC: Record<Lang, "hu" | "me" | "en" | "ru"> = {
+  hu: "hu", me: "me", en: "en", ru: "ru",
+  sr: "me", bs: "me", hr: "me", uk: "ru",
+  sq: "en", el: "en", tr: "en", es: "en"
+};
+export function contentLang(lang: Lang): "hu" | "me" | "en" | "ru" {
+  return CONTENT_SRC[lang] ?? "en";
+}
+/** Lokalizált szöveg (hirdetés cím/leírás) feloldása a felület nyelvére, fallbackkel. */
+export function loc(obj: { hu: string; me: string; en: string; ru: string }, lang: Lang): string {
+  return obj[contentLang(lang)];
+}
+
+type L4 = Partial<Record<Lang, string>>;
 type Dict = Record<string, L4>;
 
 export const t: Dict = {
@@ -209,6 +240,8 @@ export const t: Dict = {
   chip_verified: { hu: "Csak verifikált", me: "Samo verifikovano", en: "Verified only", ru: "Только проверенные" },
   chip_furnished: { hu: "Bútorozott", me: "Namešteno", en: "Furnished", ru: "Меблированные" },
   close: { hu: "Bezárás", me: "Zatvori", en: "Close", ru: "Закрыть" },
+  language: { hu: "Nyelv", me: "Jezik", en: "Language", ru: "Язык" },
+  choose_language: { hu: "Válassz nyelvet", me: "Izaberi jezik", en: "Choose a language", ru: "Выберите язык" },
   map_area_search: { hu: "Keresés ezen a területen", me: "Traži u ovom području", en: "Search this area", ru: "Искать в этой области" },
   ai_search_hint: { hu: "AI-keresés: írd le szabadon, mit keresel", me: "AI pretraga: opišite šta tražite", en: "AI search: describe what you're looking for", ru: "ИИ-поиск: опишите, что ищете" },
   ai_search_done: { hu: "{n} szűrő beállítva a leírásod alapján.", me: "{n} filtera postavljeno iz opisa.", en: "{n} filters set from your description.", ru: "Установлено фильтров: {n}." },
@@ -239,6 +272,8 @@ export const t: Dict = {
   role_buyer_desc: { hu: "Keresek, mentek és kapcsolatba lépek hirdetőkkel.", me: "Pretražujem i kontaktiram oglašivače.", en: "Browse, save and contact sellers.", ru: "Просмотр, сохранение и связь с продавцами." },
   role_seller_desc: { hu: "Saját ingatlant adok el vagy adok ki.", me: "Prodajem ili izdajem svoju nekretninu.", en: "Sell or rent out my own property.", ru: "Продаю или сдаю свою недвижимость." },
   role_agency_desc: { hu: "Több hirdetést kezelek iroda nevében.", me: "Upravljam više oglasa kao agencija.", en: "Manage multiple listings as an agency.", ru: "Управляю объявлениями как агентство." },
+  role_private: { hu: "Magánszemély", me: "Fizičko lice", en: "Individual", ru: "Частное лицо" },
+  role_private_desc: { hu: "Keresek és/vagy eladok — céljaimtól függően.", me: "Pretražujem i/ili prodajem — po potrebi.", en: "Search and/or sell — whatever you need.", ru: "Ищу и/или продаю — по необходимости." },
   agency_name_label: { hu: "Iroda neve", me: "Naziv agencije", en: "Agency name", ru: "Название агентства" },
   sign_in_cta: { hu: "Belépés", me: "Prijavi se", en: "Sign in", ru: "Войти" },
   create_account_cta: { hu: "Fiók létrehozása", me: "Kreiraj nalog", en: "Create account", ru: "Создать аккаунт" },
@@ -481,7 +516,7 @@ export const t: Dict = {
 export function tr(key: string, lang: Lang): string {
   const entry = t[key];
   if (!entry) return key;
-  return entry[lang];
+  return entry[lang] ?? entry[FALLBACK_SRC[lang]] ?? entry.en ?? key;
 }
 
 export const typeLabels: Record<string, L4> = {
@@ -541,3 +576,21 @@ export const amenityLabels: Record<string, { icon: string } & L4> = {
   storage: { icon: "📦", hu: "Tároló", me: "Ostava", en: "Storage", ru: "Кладовая" },
   heating: { icon: "🔥", hu: "Fűtés", me: "Grijanje", en: "Heating", ru: "Отопление" }
 };
+
+/* ------------------------------------------------------------------ *
+ * Nyelvi kitöltés: minden szótár-bejegyzéshez feltöltjük a hiányzó
+ * nyelveket a FALLBACK_SRC szerint (sr/bs/hr → me, a többi → en),
+ * hogy egyetlen felület se maradjon üres az új nyelveken.
+ * ------------------------------------------------------------------ */
+function expandDict(dict: Record<string, Record<string, string | undefined>>): void {
+  for (const key of Object.keys(dict)) {
+    const e = dict[key];
+    for (const { code } of LANGS) {
+      if (e[code] == null) e[code] = e[FALLBACK_SRC[code]] ?? e.en ?? e.hu ?? key;
+    }
+  }
+}
+
+[t, typeLabels, conditionLabels, viewLabels, modeLabels, heatingLabels, amenityLabels].forEach((d) =>
+  expandDict(d as unknown as Record<string, Record<string, string | undefined>>)
+);

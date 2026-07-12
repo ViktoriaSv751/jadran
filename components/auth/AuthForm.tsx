@@ -50,7 +50,7 @@ export default function AuthForm({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [role, setRole] = useState<UserRole>("buyer");
+  const [role, setRole] = useState<UserRole>("private");
   const [agencyName, setAgencyName] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -118,8 +118,7 @@ export default function AuthForm({
   };
 
   const roles: { value: UserRole; label: string; desc: string; icon: IconName }[] = [
-    { value: "buyer", label: tr("role_buyer", lang), desc: tr("role_buyer_desc", lang), icon: "search" },
-    { value: "seller", label: tr("role_seller", lang), desc: tr("role_seller_desc", lang), icon: "home" },
+    { value: "private", label: tr("role_private", lang), desc: tr("role_private_desc", lang), icon: "user" },
     { value: "agency", label: tr("role_agency", lang), desc: tr("role_agency_desc", lang), icon: "building" }
   ];
 

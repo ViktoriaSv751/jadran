@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useAuth, useLang, useListingsByOwner } from "@/lib/store";
-import { tr, typeLabels, modeLabels } from "@/lib/i18n";
+import { tr, typeLabels, modeLabels, loc } from "@/lib/i18n";
 import { formatPrice } from "@/lib/format";
 import * as db from "@/lib/db";
 import { toast } from "@/lib/ui";
@@ -54,49 +54,53 @@ export default function ManageListings() {
           </Link>
         </div>
       ) : (
-        <div className="space-y-3">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {listings.map((l) => (
-            <div
-              key={l.id}
-              className="flex flex-col gap-3 rounded-2xl border border-ink-100 bg-white p-3 shadow-soft sm:flex-row sm:items-center"
-            >
-              <Link href={`/listing/${l.id}`} className="shrink-0">
-                <Photo src={l.images[0]} alt={l.title[lang]} className="h-24 w-full rounded-xl sm:w-36" />
+            <div key={l.id} className="overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-soft">
+              {/* Teljes kép — mint a keresés-listanézet kártyáján */}
+              <Link href={`/listing/${l.id}`} className="relative block">
+                <Photo src={l.images[0]} alt={loc(l.title, lang)} className="aspect-[4/3] w-full" />
+                <span
+                  className={`absolute left-3 top-3 rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide shadow-soft ${
+                    l.status === "active" ? "bg-emerald-500 text-white" : "bg-amber-500 text-white"
+                  }`}
+                >
+                  {l.status === "active" ? tr("status_active", lang) : tr("status_paused", lang)}
+                </span>
+                <span className="absolute bottom-3 right-3 inline-flex items-center gap-1 rounded-full bg-ink-900/80 px-2.5 py-1 text-[11px] font-semibold text-white backdrop-blur">
+                  <Icon name="eye" size={12} /> {l.views}
+                </span>
               </Link>
-              <div className="min-w-0 flex-1">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span
-                    className={`rounded-md px-2 py-0.5 text-[11px] font-semibold ${
-                      l.status === "active" ? "bg-emerald-50 text-emerald-700" : "bg-amber-50 text-amber-700"
-                    }`}
-                  >
-                    {l.status === "active" ? tr("status_active", lang) : tr("status_paused", lang)}
-                  </span>
-                  <span className="rounded-md bg-ink-50 px-2 py-0.5 text-[11px] font-semibold text-ink-600">
-                    {modeLabels[l.mode][lang]} · {typeLabels[l.type][lang]}
-                  </span>
-                </div>
+
+              <div className="p-4">
+                <span className="rounded-md bg-ink-50 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-ink-600">
+                  {modeLabels[l.mode][lang]} · {typeLabels[l.type][lang]}
+                </span>
                 <Link href={`/listing/${l.id}`}>
-                  <h3 className="mt-1 line-clamp-1 font-semibold text-ink-900 hover:text-brand-700">{l.title[lang]}</h3>
+                  <h3 className="mt-2 line-clamp-1 font-bold tracking-tight text-ink-900 hover:text-brand-700">
+                    {loc(l.title, lang)}
+                  </h3>
                 </Link>
-                <div className="mt-0.5 text-sm text-ink-500">
+                <div className="mt-1 text-xl font-black tracking-tight text-ink-900">
                   {formatPrice(l.price, lang)}
-                  {l.mode === "rent" && tr("per_month", lang)} · {l.views} {tr("views_label", lang)}
+                  {l.mode === "rent" && <span className="text-xs font-semibold text-ink-400">{tr("per_month", lang)}</span>}
                 </div>
-              </div>
-              <div className="flex shrink-0 flex-wrap gap-2">
-                <Link href={`/listings/new?id=${l.id}`}>
-                  <Button size="sm" variant="outline">
-                    {tr("edit_btn", lang)}
+
+                {/* Kezelő-gombok */}
+                <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-ink-100 pt-3">
+                  <Link href={`/listings/new?id=${l.id}`} className="flex-1">
+                    <Button size="sm" variant="outline" full>
+                      <Icon name="sliders" size={14} className="mr-1" /> {tr("edit_btn", lang)}
+                    </Button>
+                  </Link>
+                  <Button size="sm" variant="ghost" onClick={() => togglePause(l.id, l.status)}>
+                    {l.status === "active" ? tr("pause_listing", lang) : tr("activate_listing", lang)}
                   </Button>
-                </Link>
-                <Button size="sm" variant="ghost" onClick={() => togglePause(l.id, l.status)}>
-                  {l.status === "active" ? tr("pause_listing", lang) : tr("activate_listing", lang)}
-                </Button>
-                <PromoteButton listing={l} />
-                <Button size="sm" variant="danger" onClick={() => remove(l.id)}>
-                  {tr("delete_btn", lang)}
-                </Button>
+                  <PromoteButton listing={l} />
+                  <Button size="sm" variant="danger" onClick={() => remove(l.id)} aria-label={tr("delete_btn", lang)}>
+                    <Icon name="close" size={15} strokeWidth={2.4} />
+                  </Button>
+                </div>
               </div>
             </div>
           ))}

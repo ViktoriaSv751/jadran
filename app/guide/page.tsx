@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { useLang } from "@/lib/store";
-import { tr } from "@/lib/i18n";
-import type { Lang } from "@/lib/types";
+import { tr, loc, contentLang } from "@/lib/i18n";
 
-const steps: { title: Record<Lang, string>; body: Record<Lang, string> }[] = [
+type GL = { hu: string; me: string; en: string; ru: string };
+
+const steps: { title: GL; body: GL }[] = [
   {
     title: {
       hu: "1. Keresés és válogatás",
@@ -64,7 +65,7 @@ const steps: { title: Record<Lang, string>; body: Record<Lang, string> }[] = [
   }
 ];
 
-const foreignTrack: Record<Lang, string[]> = {
+const foreignTrack: { hu: string[]; me: string[]; en: string[]; ru: string[] } = {
   hu: [
     "Külföldiek korlátozás nélkül vásárolhatnak lakást/házat; mezőgazdasági földet cégen keresztül.",
     "Tartózkodáshoz fontold meg a cégalapítást vagy a tartózkodási engedélyt.",
@@ -102,10 +103,10 @@ export default function GuidePage() {
               onClick={() => setOpen(open === i ? -1 : i)}
               className="flex w-full items-center justify-between p-4 text-left font-semibold text-ink-800"
             >
-              {s.title[lang]}
+              {loc(s.title, lang)}
               <span className="text-ink-400">{open === i ? "−" : "+"}</span>
             </button>
-            {open === i && <p className="px-4 pb-4 leading-relaxed text-ink-600">{s.body[lang]}</p>}
+            {open === i && <p className="px-4 pb-4 leading-relaxed text-ink-600">{loc(s.body, lang)}</p>}
           </div>
         ))}
       </div>
@@ -121,7 +122,7 @@ export default function GuidePage() {
                 : "For foreign buyers"}
         </h2>
         <ul className="mt-3 list-disc space-y-2 pl-5 text-ink-600">
-          {foreignTrack[lang].map((p, i) => (
+          {foreignTrack[contentLang(lang)].map((p, i) => (
             <li key={i}>{p}</li>
           ))}
         </ul>
