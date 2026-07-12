@@ -55,7 +55,7 @@ export default function AuthForm({
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const [oauthBusy, setOauthBusy] = useState<"google" | "apple" | null>(null);
-  const [demoBusy, setDemoBusy] = useState<"buyer" | "seller" | null>(null);
+  const [demoBusy, setDemoBusy] = useState<"buyer" | "seller" | "agency" | null>(null);
 
   const done = () => {
     toast(mode === "login" ? tr("welcome_back_toast", lang) : tr("account_created_toast", lang));
@@ -107,7 +107,7 @@ export default function AuthForm({
     // siker esetén átirányít
   };
 
-  const demo = async (r: "buyer" | "seller") => {
+  const demo = async (r: "buyer" | "seller" | "agency") => {
     setDemoBusy(r);
     setError("");
     const res = await db.loginDemo(r);
@@ -155,12 +155,15 @@ export default function AuthForm({
         <p className="mb-2 text-center text-xs font-semibold uppercase tracking-wide text-ink-500">
           {tr("demo_try_title", lang)}
         </p>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-3 gap-2">
           <Button variant="outline" size="sm" loading={demoBusy === "buyer"} onClick={() => demo("buyer")}>
             <Icon name="search" size={14} className="mr-1" /> {tr("demo_buyer", lang)}
           </Button>
           <Button variant="outline" size="sm" loading={demoBusy === "seller"} onClick={() => demo("seller")}>
             <Icon name="home" size={14} className="mr-1" /> {tr("demo_seller", lang)}
+          </Button>
+          <Button variant="outline" size="sm" loading={demoBusy === "agency"} onClick={() => demo("agency")}>
+            <Icon name="building" size={14} className="mr-1" /> {tr("demo_agency", lang)}
           </Button>
         </div>
       </div>

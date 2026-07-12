@@ -266,17 +266,32 @@ export default function SearchClient() {
             ))}
           </div>
 
-          <button
-            onClick={toggleMap}
-            className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold shadow-soft transition ${
-              view === "map"
-                ? "border-ink-900 bg-ink-900 text-white"
-                : "border-ink-200 bg-white text-ink-800 hover:border-ink-400"
-            }`}
-          >
-            <Icon name={view === "map" ? "menu" : "globe"} size={16} strokeWidth={2.2} />
-            <span className="hidden sm:inline">{view === "map" ? tr("list", lang) : tr("map", lang)}</span>
-          </button>
+          <div className="flex shrink-0 items-center gap-2">
+            {/* Részletes kereső — a mód-váltó mellett, felül (mobil: a modált nyitja) */}
+            <button
+              onClick={() => setDetailedOpen(true)}
+              className="relative inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white px-3.5 py-2 text-sm font-semibold text-ink-800 shadow-soft transition hover:border-ink-400 lg:hidden"
+            >
+              <Icon name="sliders" size={16} strokeWidth={2.2} />
+              <span className="hidden sm:inline">{tr("filters", lang)}</span>
+              {activeFilterCount > 0 && (
+                <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-brand-500 px-1 text-[10px] font-bold text-white">
+                  {activeFilterCount}
+                </span>
+              )}
+            </button>
+            <button
+              onClick={toggleMap}
+              className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-semibold shadow-soft transition ${
+                view === "map"
+                  ? "border-ink-900 bg-ink-900 text-white"
+                  : "border-ink-200 bg-white text-ink-800 hover:border-ink-400"
+              }`}
+            >
+              <Icon name={view === "map" ? "menu" : "globe"} size={16} strokeWidth={2.2} />
+              <span className="hidden sm:inline">{view === "map" ? tr("list", lang) : tr("map", lang)}</span>
+            </button>
+          </div>
         </div>
 
         {/* 2. sor: kereső + rendezés + szűrő. A rendezés mobilon is látszik. */}
@@ -324,20 +339,6 @@ export default function SearchClient() {
             <option value="price_desc">{tr("sort_price_desc", lang)}</option>
             <option value="ppm2">{tr("sort_ppm2", lang)}</option>
           </select>
-
-          {/* Mobil: a részletes keresőt nyitja; asztalin a sidebar szűrők élnek */}
-          <button
-            onClick={() => setDetailedOpen(true)}
-            aria-label={tr("filters", lang)}
-            className="relative grid h-12 w-12 shrink-0 place-items-center rounded-full border border-ink-200 bg-white shadow-soft lg:hidden"
-          >
-            <Icon name="sliders" size={18} />
-            {activeFilterCount > 0 && (
-              <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-brand-500 px-1 text-[10px] font-bold text-white">
-                {activeFilterCount}
-              </span>
-            )}
-          </button>
         </div>
       </div>
 
@@ -366,29 +367,32 @@ export default function SearchClient() {
 
         {/* Results + map */}
         <div className="min-w-0 flex-1">
-          <div className="mb-3 flex items-center justify-between text-sm text-ink-500">
-            <span>
-              <span className="font-bold text-ink-900">{visible.length}</span> {tr("results", lang)}
+          <div className="mb-3 flex items-center justify-between gap-2 text-sm text-ink-500">
+            {/* Bal: törlés (ha van szűrő) — jobbra a találatszám */}
+            <span className="min-w-0">
+              {hasActiveFilters && (
+                <button
+                  onClick={() => setFilters({ ...emptyFilters })}
+                  className="font-medium text-brand-600 hover:underline"
+                >
+                  {tr("clear_all", lang)}
+                </button>
+              )}
+            </span>
+            <span className="shrink-0 text-right">
               {areaSearch && areaBounds && (
                 <button
                   onClick={() => {
                     setAreaSearch(false);
                     setAreaBounds(null);
                   }}
-                  className="ml-2 inline-flex items-center gap-1 rounded-full bg-ink-900 px-2.5 py-0.5 text-[11px] font-semibold text-white"
+                  className="mr-2 inline-flex items-center gap-1 rounded-full bg-ink-900 px-2.5 py-0.5 text-[11px] font-semibold text-white"
                 >
                   {tr("map_area_chip", lang)} <Icon name="close" size={11} strokeWidth={2.6} />
                 </button>
               )}
+              <span className="font-bold text-ink-900">{visible.length}</span> {tr("results", lang)}
             </span>
-            {hasActiveFilters && (
-              <button
-                onClick={() => setFilters({ ...emptyFilters })}
-                className="font-medium text-brand-600 hover:underline"
-              >
-                {tr("clear_all", lang)}
-              </button>
-            )}
           </div>
 
           {loading ? (

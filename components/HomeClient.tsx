@@ -65,8 +65,9 @@ export default function HomeClient() {
 
       {/* Average price by city */}
       <section className="mx-auto max-w-7xl px-4 py-14">
-        <div className="mb-6 flex flex-col items-start gap-2 text-left">
+        <div className="mx-auto mb-7 max-w-xl text-center">
           <h2 className="display text-2xl text-ink-900 sm:text-3xl">{tr("avg_by_city", lang)}</h2>
+          <p className="mt-2 text-sm text-ink-500">{tr("avg_by_city_sub", lang)}</p>
         </div>
         <CityGrid />
       </section>

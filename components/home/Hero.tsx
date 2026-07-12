@@ -32,38 +32,28 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative isolate overflow-hidden bg-white text-ink-900 lg:bg-ink-950 lg:text-white">
-      {/* Full-bleed photo — desktop only; on phones the hero is clean white */}
-      <div className="absolute inset-0 -z-10 hidden lg:block">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/p/view4.jpg" alt="" className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/55 to-ink-950/35" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/70 to-transparent" />
-      </div>
-
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-center px-4 py-10 text-center lg:min-h-[80vh] lg:items-start lg:py-20 lg:text-left">
-        <div className="inline-flex w-fit items-center gap-2 rounded-full border border-ink-200 bg-ink-50 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink-600 lg:border-white/20 lg:bg-white/10 lg:text-white/90 lg:backdrop-blur">
+    <section className="relative isolate overflow-hidden bg-gradient-to-b from-ink-50 to-white text-ink-900">
+      <div className="mx-auto flex max-w-4xl flex-col items-center justify-center px-4 py-12 text-center lg:py-20">
+        <div className="inline-flex w-fit items-center gap-2 rounded-full border border-ink-200 bg-white px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink-600 shadow-soft">
           <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
           {tr("hero_eyebrow", lang)}
         </div>
 
-        <h1 className="display mt-5 max-w-3xl text-[2.75rem] text-ink-900 sm:text-6xl lg:text-7xl lg:text-white">
+        <h1 className="display mt-5 max-w-3xl text-[2.75rem] text-ink-900 sm:text-6xl lg:text-7xl">
           {tr("hero_headline", lang)}
         </h1>
-        <p className="mt-4 max-w-xl text-base text-ink-500 sm:text-lg lg:text-white/70">{tr("hero_sub", lang)}</p>
+        <p className="mt-4 max-w-xl text-base text-ink-500 sm:text-lg">{tr("hero_sub", lang)}</p>
 
         {/* Search bar */}
-        <div className="mt-7 flex w-full max-w-2xl flex-col items-center lg:items-start">
+        <div className="mt-7 flex w-full max-w-2xl flex-col items-center">
           {/* Mode toggle */}
-          <div className="inline-flex rounded-full bg-ink-100 p-1 lg:bg-white/10 lg:backdrop-blur">
+          <div className="inline-flex rounded-full bg-ink-100 p-1">
             {(["sale", "rent"] as const).map((m) => (
               <button
                 key={m}
                 onClick={() => setMode(m)}
                 className={`rounded-full px-6 py-2 text-sm font-semibold transition ${
-                  mode === m
-                    ? "bg-ink-900 text-white shadow-soft lg:bg-white lg:text-ink-900"
-                    : "text-ink-500 hover:text-ink-900 lg:text-white/80 lg:hover:text-white"
+                  mode === m ? "bg-ink-900 text-white shadow-soft" : "text-ink-500 hover:text-ink-900"
                 }`}
               >
                 {m === "sale" ? tr("buy", lang) : tr("rent_tab", lang)}
@@ -83,19 +73,19 @@ export default function Hero() {
                 {tr("anywhere", lang)} · {mode === "sale" ? tr("buy", lang) : tr("rent_tab", lang)}
               </span>
             </span>
-            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand-500 text-white shadow-glow transition group-hover:bg-brand-600">
-              <Icon name="search" size={22} strokeWidth={2.2} />
+            <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-[#c8ff00] text-ink-950 shadow-[0_10px_24px_-8px_rgba(160,200,0,0.7)] transition group-hover:brightness-95">
+              <Icon name="search" size={22} strokeWidth={2.6} />
             </span>
           </button>
         </div>
 
         {/* City quick chips — strictly uniform */}
-        <div className="mt-7 flex flex-wrap justify-center gap-2 lg:justify-start">
+        <div className="mt-7 flex flex-wrap justify-center gap-2">
           {cities.map((c) => (
             <button
               key={c}
               onClick={() => router.push(`/search?city=${encodeURIComponent(c)}&mode=${mode}`)}
-              className="rounded-full border border-ink-200 px-4 py-2 text-sm font-medium text-ink-600 transition hover:border-ink-900 hover:bg-ink-900 hover:text-white lg:border-white/25 lg:text-white/85 lg:backdrop-blur lg:hover:border-white lg:hover:bg-white lg:hover:text-ink-900"
+              className="rounded-full border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-600 transition hover:border-ink-900 hover:bg-ink-900 hover:text-white"
             >
               {c}
             </button>
@@ -105,22 +95,17 @@ export default function Hero() {
         {/* Live stats band — fills the hero with trust signals + "wow" */}
         <div className="mt-9 grid w-full max-w-2xl grid-cols-3 gap-2.5 sm:gap-4">
           {stats.map((s, i) => (
-            <div
-              key={i}
-              className="rounded-2xl border border-ink-100 bg-white/90 px-3 py-4 text-center shadow-soft lg:border-white/15 lg:bg-white/10 lg:backdrop-blur lg:shadow-none"
-            >
-              <div className="text-2xl font-black tracking-tight text-ink-900 sm:text-3xl lg:text-white">
-                {s.value}
-              </div>
-              <div className="mt-1 text-[11px] font-semibold uppercase tracking-wide text-ink-500 sm:text-xs lg:text-white/70">
+            <div key={i} className="rounded-2xl border border-ink-100 bg-white px-3 py-4 text-center shadow-soft">
+              <div className="text-2xl font-black tracking-tight text-ink-900 sm:text-3xl">{s.value}</div>
+              <div className="mt-1 text-[11px] font-semibold uppercase tracking-wide text-ink-500 sm:text-xs">
                 {s.label}
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-5 flex items-center justify-center gap-2 text-sm text-ink-500 lg:justify-start lg:text-white/65">
-          <Icon name="shield" size={18} className="text-brand-500 lg:text-brand-400" />
+        <div className="mt-5 flex items-center justify-center gap-2 text-sm text-ink-500">
+          <Icon name="shield" size={18} className="text-brand-500" />
           <span>{tr("trust_verified", lang)}</span>
         </div>
       </div>

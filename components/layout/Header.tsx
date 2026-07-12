@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Logo from "./Logo";
+import LogoutButton from "@/components/auth/LogoutButton";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useLang, useAuth, useUnreadCount, useCompare } from "@/lib/store";
@@ -24,9 +25,9 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-30 border-b border-ink-100 bg-white/85 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-3">
-        <Link href="/" className="flex items-center gap-2">
-          <Logo size={34} wordmark={false} />
-          <span className="hidden text-xl font-black tracking-tight text-ink-900 sm:block">PROOPIFY</span>
+        <Link href="/" className="flex shrink-0 items-center gap-2">
+          <Logo size={32} wordmark={false} />
+          <span className="text-lg font-black tracking-tight text-ink-900 sm:text-xl">PROOPIFY</span>
         </Link>
 
         {/* Center search pill — jumps to the search page */}
@@ -40,8 +41,8 @@ export default function Header() {
             <span className="font-semibold text-ink-800">{tr("rent_tab", lang)}</span>
             <span className="h-4 w-px bg-ink-200" />
             <span className="text-ink-400">{tr("where_q", lang)}</span>
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-brand-500 text-white transition group-hover:bg-brand-600">
-              <Icon name="search" size={16} strokeWidth={2.2} />
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-[#c8ff00] text-ink-950 transition group-hover:brightness-95">
+              <Icon name="search" size={16} strokeWidth={2.4} />
             </span>
           </button>
         )}
@@ -161,12 +162,9 @@ function AccountMenu({
               <div className="my-1 h-px bg-ink-100" />
               <MenuLink href="/profile" label={tr("profile", lang)} />
               <MenuLink href="/settings" label={tr("settings", lang)} />
-              <button
-                onClick={onLogout}
-                className="block w-full px-4 py-2 text-left text-sm text-ink-600 transition hover:bg-ink-50"
-              >
+              <LogoutButton className="block w-full px-4 py-2 text-left text-sm text-ink-600 transition hover:bg-ink-50">
                 {tr("logout", lang)}
-              </button>
+              </LogoutButton>
             </>
           ) : (
             <>

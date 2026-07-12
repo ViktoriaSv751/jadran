@@ -1,30 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import { useLang } from "@/lib/store";
 import { tr } from "@/lib/i18n";
 
+/**
+ * Lábléc — MINDEN oldalon látszik. Mobilon csak a logó + PROOPIFY név
+ * (középen); a navigációs linkek csak asztali nézetben. Nincs felső
+ * elválasztó vonal. Az alsó padding gondoskodik róla, hogy a fix alsó
+ * menüsor ne vágja le a tartalmat mobilon.
+ */
 export default function Footer() {
   const { lang } = useLang();
-  const pathname = usePathname();
-  // App-jellegű oldalakon mobilon nincs footer (csak asztalin); a hirdetés-
-  // adatlapon szintén csak asztalin. A marketing-oldalakon (főoldal, útmutató,
-  // piactér) mobilon is látszik.
-  const appRoute = /^\/(search|favorites|listing|messages|compare|settings|listings)(\/|$)/.test(
-    pathname
-  );
-
   return (
-    <footer
-      className={`mt-8 border-t border-ink-100 bg-white pb-[calc(6rem+env(safe-area-inset-bottom))] lg:pb-0 ${
-        appRoute ? "hidden lg:block" : ""
-      }`}
-    >
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 px-4 py-8 text-sm text-ink-500 sm:flex-row sm:justify-between">
+    <footer className="mt-8 bg-white pb-[calc(5.5rem+env(safe-area-inset-bottom))] lg:pb-0">
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 px-4 py-8 text-sm text-ink-500 lg:flex-row lg:justify-between">
         <Logo size={28} />
-        <nav className="flex flex-wrap justify-center gap-4">
+        <nav className="hidden flex-wrap justify-center gap-4 lg:flex">
           <Link href="/search" className="hover:text-ink-900">
             {tr("search", lang)}
           </Link>

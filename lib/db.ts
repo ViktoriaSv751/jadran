@@ -44,6 +44,7 @@ interface Cache {
   messages: Message[];
   reviews: Review[];
   savedSearches: SavedSearch[];
+  favorites: string[]; // kedvenc listing id-k (bejelentkezve a DB-ből, egyébként localStorage)
   currentUser: Profile | null;
   hydrated: boolean;
 }
@@ -55,6 +56,7 @@ const cache: Cache = {
   messages: [],
   reviews: [],
   savedSearches: [],
+  favorites: [],
   currentUser: null,
   hydrated: false
 };
@@ -141,6 +143,7 @@ async function hydrateUser(): Promise<void> {
     }
   }
   if (ss.data) cache.savedSearches = ss.data.map(rowToSavedSearch);
+  await hydrateFavorites();
   // A bejelentkezett tulaj a saját (akár szüneteltetett) hirdetéseit is látja.
   const ls = await supabase.from("listings").select("*").order("created_at", { ascending: false });
   if (ls.data) cache.listings = ls.data.map(rowToListing);
@@ -412,10 +415,11 @@ async function fetchProfileByAuthId(authId: string): Promise<Profile | null> {
 /** Egykattintásos demo-belépés — előre beállított demo fiókok. */
 export const DEMO_ACCOUNTS = {
   buyer: { email: "demo@jadran.me", password: "demo1234" },
-  seller: { email: "hello@adriatichomes.me", password: "demo1234" }
+  seller: { email: "jelena.k@example.com", password: "demo1234" },
+  agency: { email: "hello@adriatichomes.me", password: "demo1234" }
 } as const;
 
-export function loginDemo(role: "buyer" | "seller"): Promise<AuthResult> {
+export function loginDemo(role: "buyer" | "seller" | "agency"): Promise<AuthResult> {
   const acc = DEMO_ACCOUNTS[role];
   return login(acc.email, acc.password);
 }
@@ -483,6 +487,8 @@ export async function logout(): Promise<void> {
   cache.conversations = [];
   cache.messages = [];
   cache.savedSearches = [];
+  cache.favorites = [];
+  favInit = false; // következő olvasásnál újra a localStorage-ból
   emit();
 }
 
@@ -491,13 +497,52 @@ export async function logout(): Promise<void> {
 const K_FAV = "jadran_favorites";
 const K_CMP = "jadran_compare";
 
+let favInit = false;
+
 export function getFavorites(): string[] {
-  return readLS<string[]>(K_FAV, []);
+  // Első hívásnál a localStorage-ból töltjük (bejelentkezéskor felülírja a DB).
+  if (!favInit) {
+    favInit = true;
+    cache.favorites = readLS<string[]>(K_FAV, []);
+  }
+  return cache.favorites;
 }
 
 export function toggleFavorite(id: string): void {
   const cur = getFavorites();
-  writeLS(K_FAV, cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id]);
+  const next = cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id];
+  cache.favorites = next;
+  emit();
+  const uidp = cache.currentUser?.id;
+  if (supabase && uidp) {
+    // Bejelentkezve: a fiókhoz kötve, a Supabase favorites táblában.
+    if (cur.includes(id)) {
+      void supabase.from("favorites").delete().eq("user_id", uidp).eq("listing_id", id);
+    } else {
+      void supabase.from("favorites").insert({ user_id: uidp, listing_id: id });
+    }
+  } else {
+    // Kijelentkezve: eszköz-lokális.
+    writeLS(K_FAV, next);
+  }
+}
+
+/** Bejelentkezéskor: a DB-kedvencek betöltése + a helyi (anonim) kedvencek átvitele. */
+async function hydrateFavorites(): Promise<void> {
+  if (!supabase || !cache.currentUser) return;
+  const uidp = cache.currentUser.id;
+  const localFavs = readLS<string[]>(K_FAV, []);
+  const { data } = await supabase.from("favorites").select("listing_id").eq("user_id", uidp);
+  const dbFavs = (data ?? []).map((r: { listing_id: string }) => r.listing_id);
+  // Az anonim kedvenceket feltöltjük a fiókhoz, ha még nincsenek benne.
+  const toUpload = localFavs.filter((id) => !dbFavs.includes(id));
+  if (toUpload.length) {
+    await supabase.from("favorites").insert(toUpload.map((id) => ({ user_id: uidp, listing_id: id })));
+  }
+  cache.favorites = Array.from(new Set([...dbFavs, ...localFavs]));
+  favInit = true;
+  writeLS(K_FAV, []); // a helyi listát ürítjük, a fiók a forrás
+  emit();
 }
 
 export function getCompare(): string[] {

@@ -190,7 +190,7 @@ export default function ListingCard({
 
         <div className="mt-3 flex items-end justify-between border-t border-ink-100 pt-3">
           <div>
-            <span className="text-lg font-black tracking-tight text-ink-900">{formatPrice(listing.price, lang)}</span>
+            <span className="text-2xl font-black tracking-tight text-ink-900">{formatPrice(listing.price, lang)}</span>
             {listing.mode === "rent" ? (
               <span className="text-sm font-semibold text-ink-400">{tr("per_month", lang)}</span>
             ) : (

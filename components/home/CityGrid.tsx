@@ -6,13 +6,18 @@ import { tr } from "@/lib/i18n";
 import { formatNumber } from "@/lib/format";
 import { cities, cityAvgPricePerM2 } from "@/lib/data";
 
+// A hirdetéssel bíró városok + néhány további népszerű település, hogy a
+// lefedettség látsszon (ezeknél az átlagár még '—', de a link működik).
+const EXTRA_CITIES = ["Ulcinj", "Cetinje", "Nikšić", "Sutomore"];
+
 export default function CityGrid() {
   const { lang } = useLang();
   const { items } = useListings();
+  const showcase = Array.from(new Set([...cities, ...EXTRA_CITIES]));
 
   return (
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-      {cities.map((c) => {
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+      {showcase.map((c) => {
         const avg = cityAvgPricePerM2(c, items);
         return (
           <Link

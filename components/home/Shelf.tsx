@@ -39,7 +39,7 @@ export default function Shelf({
       type="button"
       aria-label={dir === 1 ? "next" : "previous"}
       onClick={() => scrollBy(dir)}
-      className={`absolute top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-ink-200 bg-white/95 text-ink-800 shadow-float backdrop-blur transition hover:bg-white hover:text-brand-600 active:scale-90 ${
+      className={`absolute top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-ink-200 bg-white/95 text-ink-800 shadow-float backdrop-blur transition hover:bg-white hover:text-brand-600 active:scale-90 sm:grid ${
         dir === 1 ? "right-1" : "left-1"
       }`}
     >
@@ -68,7 +68,7 @@ export default function Shelf({
         <ArrowBtn dir={1} />
         <div
           ref={scroller}
-          className="no-scrollbar flex snap-x-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-2"
+          className="no-scrollbar flex snap-x-mandatory gap-4 overflow-x-auto scroll-smooth px-5 pb-2 sm:px-4"
         >
           {listings.map((l) => (
             <div key={l.id} className="w-[78%] shrink-0 snap-start sm:w-[20rem] lg:w-[22rem]">
