@@ -19,6 +19,9 @@ export default function Footer() {
           <Link href="/search" className="hover:text-ink-900">
             {tr("search", lang)}
           </Link>
+          <Link href="/market" className="hover:text-ink-900">
+            {tr("market_nav", lang)}
+          </Link>
           <Link href="/guide" className="hover:text-ink-900">
             {tr("guide", lang)}
           </Link>

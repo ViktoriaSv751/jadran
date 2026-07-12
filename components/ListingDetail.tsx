@@ -20,6 +20,7 @@ import SellerCard from "./listing/SellerCard";
 import InquiryButton from "./listing/InquiryButton";
 import MortgageCalculator from "./MortgageCalculator";
 import ForeignBuyerInfo from "./ForeignBuyerInfo";
+import InvestorCard from "./listing/InvestorCard";
 
 const MapView = dynamic(() => import("./MapView"), {
   ssr: false,
@@ -387,6 +388,9 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
                 </dl>
               </div>
             )}
+
+            {/* Befektetői nézet: hozam + Deal Score (eladó módban) */}
+            {!isRent && <InvestorCard listing={listing} />}
 
             {/* Interaktív hitelkalkulátor (eladó módban) */}
             {!isRent && <MortgageCalculator price={listing.price} />}

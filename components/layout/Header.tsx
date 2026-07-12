@@ -47,6 +47,12 @@ export default function Header() {
 
         <div className="ml-auto flex items-center gap-2">
           <Link
+            href="/market"
+            className="hidden rounded-full px-3.5 py-2 text-sm font-semibold text-ink-700 transition hover:bg-ink-50 lg:block"
+          >
+            {tr("market_nav", lang)}
+          </Link>
+          <Link
             href="/listings/new"
             className="hidden rounded-full px-3.5 py-2 text-sm font-semibold text-ink-700 transition hover:bg-ink-50 lg:block"
           >
