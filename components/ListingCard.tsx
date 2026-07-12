@@ -211,7 +211,7 @@ export default function ListingCard({
             )}
           </div>
           <button
-            onClick={() => compare.toggle(listing.id)}
+            onClick={() => (user ? compare.toggle(listing.id) : openAuth("login"))}
             aria-label={tr("compare", lang)}
             title={tr("compare", lang)}
             className={`grid h-8 w-8 shrink-0 place-items-center rounded-lg border transition ${

@@ -8,8 +8,9 @@ import { cities } from "@/lib/data";
 import { formatNumber } from "@/lib/format";
 import Icon from "@/components/ui/Icon";
 import SearchModal from "./SearchModal";
+import { smoothScrollToId } from "@/lib/scroll";
 
-export default function Hero() {
+export default function Hero({ nextId }: { nextId?: string }) {
   const { lang } = useLang();
   const { items } = useListings();
   const router = useRouter();
@@ -104,6 +105,17 @@ export default function Hero() {
           ))}
         </div>
       </div>
+
+      {/* Asztali „görgess tovább" jelző — a következő szekcióra ugrik. */}
+      {nextId && (
+        <button
+          onClick={() => smoothScrollToId(nextId)}
+          aria-label={tr("browse_by_type", lang)}
+          className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 animate-bounce place-items-center rounded-full border border-ink-200 bg-white/90 p-2 text-ink-700 shadow-soft transition hover:text-brand-600 lg:grid"
+        >
+          <Icon name="chevronDown" size={22} strokeWidth={2.2} />
+        </button>
+      )}
 
       <SearchModal open={open} onClose={() => setOpen(false)} initialMode={mode} />
     </section>

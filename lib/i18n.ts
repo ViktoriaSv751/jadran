@@ -363,6 +363,19 @@ export const t: Dict = {
     ru: "Частное лицо? Разместите до 3 объявлений бесплатно — без подписки."
   },
   pricing_faq_title: { hu: "Gyakori kérdések", me: "Česta pitanja", en: "FAQ", ru: "Вопросы" },
+  pricing_private_title: { hu: "Magánszemélyként", me: "Kao fizičko lice", en: "As a private seller", ru: "Как частное лицо" },
+  pricing_private_sub: {
+    hu: "Neked nem kell előfizetés. Adj fel ingyen, és ha szeretnéd, egy-egy hirdetést kiemelhetsz, hogy többen lássák.",
+    me: "Nije potrebna pretplata. Objavljuj besplatno, a po želji istakni pojedini oglas.",
+    en: "No subscription needed. Post for free, and optionally boost a listing so more people see it.",
+    ru: "Подписка не нужна. Публикуйте бесплатно и при желании продвигайте объявление."
+  },
+  pricing_free_name: { hu: "Ingyenes", me: "Besplatno", en: "Free", ru: "Бесплатно" },
+  pricing_boost_title: { hu: "Kiemelés (opcionális)", me: "Isticanje (opciono)", en: "Boost (optional)", ru: "Продвижение (опц.)" },
+  pricing_boost_7: { hu: "7 napos kiemelés", me: "Isticanje 7 dana", en: "7-day boost", ru: "Продвижение 7 дней" },
+  pricing_boost_30: { hu: "30 napos kiemelés", me: "Isticanje 30 dana", en: "30-day boost", ru: "Продвижение 30 дней" },
+  pricing_per_listing: { hu: "/ hirdetés", me: "/ oglas", en: "/ listing", ru: "/ объявление" },
+  pricing_want_agency: { hu: "Ingatlanirodát üzemeltetsz? Nézd meg az irodai csomagokat.", me: "Vodiš agenciju? Pogledaj pakete za agencije.", en: "Run an agency? See the agency plans.", ru: "У вас агентство? Смотрите тарифы для агентств." },
   edit_profile: { hu: "Profil szerkesztése", me: "Uredi profil", en: "Edit profile", ru: "Редактировать профиль" },
   save_changes: { hu: "Változások mentése", me: "Sačuvaj izmjene", en: "Save changes", ru: "Сохранить" },
   profile_saved: { hu: "Profil elmentve.", me: "Profil sačuvan.", en: "Profile saved.", ru: "Профиль сохранён." },

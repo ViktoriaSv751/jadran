@@ -19,7 +19,7 @@ export default function Footer() {
   if (pathname === "/listings/new") return null;
 
   return (
-    <footer className="mt-2 bg-white pb-[calc(5.5rem+env(safe-area-inset-bottom))] lg:pb-0">
+    <footer className="mt-2 bg-white pb-[calc(6.5rem+env(safe-area-inset-bottom))] lg:pb-0">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-3 px-4 py-5 text-sm text-ink-500 lg:flex-row lg:justify-between">
         <Logo size={28} />
         <nav className="hidden flex-wrap justify-center gap-4 lg:flex">

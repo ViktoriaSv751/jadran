@@ -5,7 +5,7 @@ import { useAuth, useLang } from "@/lib/store";
 import { tr } from "@/lib/i18n";
 import { Input, Textarea } from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
-import Avatar from "@/components/ui/Avatar";
+import AvatarUpload from "@/components/profile/AvatarUpload";
 import PageHeading from "@/components/ui/PageHeading";
 import { toast } from "@/lib/ui";
 
@@ -16,13 +16,12 @@ export default function SettingsClient() {
   const [phone, setPhone] = useState(user?.phone ?? "");
   const [location, setLocation] = useState(user?.location ?? "");
   const [bio, setBio] = useState(user?.bio ?? "");
-  const [avatar, setAvatar] = useState(user?.avatar ?? "");
 
   if (!user) return null;
 
   const save = (e: React.FormEvent) => {
     e.preventDefault();
-    updateProfile({ name: name.trim(), phone, location, bio, avatar: avatar.trim() || null });
+    updateProfile({ name: name.trim(), phone, location, bio });
     toast(tr("profile_saved", lang));
   };
 
@@ -31,15 +30,13 @@ export default function SettingsClient() {
       <PageHeading icon="sliders">{tr("settings", lang)}</PageHeading>
 
       <form onSubmit={save} className="space-y-4 rounded-2xl border border-ink-100 bg-white p-6 shadow-soft">
+        {/* Profilkép — VALÓDI feltöltés a galériából (nem URL). */}
         <div className="flex items-center gap-4">
-          <Avatar name={name || user.name} src={avatar || null} size={64} />
-          <Input
-            className="flex-1"
-            label={tr("avatar_label", lang)}
-            value={avatar}
-            onChange={(e) => setAvatar(e.target.value)}
-            placeholder="https://…"
-          />
+          <AvatarUpload size={72} />
+          <div>
+            <div className="text-sm font-semibold text-ink-800">{tr("avatar_label", lang)}</div>
+            <div className="text-xs text-ink-400">{tr("change_photo", lang)}</div>
+          </div>
         </div>
         <Input label={tr("full_name", lang)} value={name} onChange={(e) => setName(e.target.value)} />
         <Input label={tr("phone_label", lang)} value={phone} onChange={(e) => setPhone(e.target.value)} />
