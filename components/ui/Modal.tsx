@@ -38,16 +38,13 @@ export default function Modal({ open, onClose, children, size = "md", title, cla
 
   return (
     <div className="fixed inset-0 z-[100] flex items-end justify-center sm:items-center">
-      <div
-        className="absolute inset-0 bg-ink-900/40 backdrop-blur-sm animate-fade-in"
-        onClick={onClose}
-        aria-hidden
-      />
+      {/* 100% fehér, fix (nem átlátszó, nem görgethető) háttér */}
+      <div className="absolute inset-0 bg-white animate-fade-in" onClick={onClose} aria-hidden />
       <div
         role="dialog"
         aria-modal="true"
         className={cn(
-          "relative z-10 flex max-h-[92vh] w-full flex-col overflow-hidden rounded-t-3xl bg-white shadow-pop animate-pop-in sm:rounded-3xl",
+          "relative z-10 flex max-h-[92vh] w-full flex-col overflow-hidden rounded-t-3xl border border-ink-100 bg-white shadow-pop animate-pop-in sm:rounded-3xl",
           sizes[size],
           className
         )}

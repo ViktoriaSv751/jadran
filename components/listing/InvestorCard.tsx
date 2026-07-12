@@ -8,7 +8,7 @@ import { estimateMonthlyRent, grossYield, dealScore } from "@/lib/market";
 import Icon from "@/components/ui/Icon";
 
 /**
- * Befektetői nézet — a Jadran ütőkártyája: bérleti komparábilisekből becsült
+ * Befektetői nézet — a Proopify ütőkártyája: bérleti komparábilisekből becsült
  * hozam + Deal Score. Csak eladó, lakható ingatlanon jelenik meg.
  */
 export default function InvestorCard({ listing }: { listing: Listing }) {

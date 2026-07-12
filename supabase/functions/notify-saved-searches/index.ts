@@ -99,7 +99,7 @@ Deno.serve(async (req: Request) => {
       <table style="width:100%;border-collapse:collapse">${rows}</table>
       <p style="margin-top:20px"><a href="${SITE_URL}/search?${ss.query}"
         style="background:#0f172a;color:#fff;padding:10px 18px;border-radius:10px;text-decoration:none">Összes megtekintése</a></p>
-      <p style="color:#94a3b8;font-size:12px;margin-top:24px">Jadran · leiratkozás a profilod beállításaiban.</p>
+      <p style="color:#94a3b8;font-size:12px;margin-top:24px">Proopify · leiratkozás a profilod beállításaiban.</p>
     </div>`;
 
     const r = await fetch("https://api.resend.com/emails", {
@@ -108,7 +108,7 @@ Deno.serve(async (req: Request) => {
       body: JSON.stringify({
         from,
         to: email,
-        subject: `${fresh.length} új ingatlan a keresésedre — Jadran`,
+        subject: `${fresh.length} új ingatlan a keresésedre — Proopify`,
         html
       })
     });

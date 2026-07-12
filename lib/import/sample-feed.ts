@@ -52,7 +52,7 @@ export const SAMPLE_FIELD_MAP: ImportConfig["fieldMap"] = {
 
 export const SAMPLE_CONFIG: ImportConfig = {
   source: "demo",
-  agencyName: "JADRAN Demo Feed",
+  agencyName: "PROOPIFY Demo Feed",
   format: "csv",
   fieldMap: SAMPLE_FIELD_MAP
 };

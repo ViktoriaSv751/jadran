@@ -40,25 +40,27 @@ export default function MobileNav() {
   const Tab = ({ it }: { it: Item }) => {
     const active = pathname === it.href;
     const guard = it.requiresAuth && !user;
-    const cls = "group relative flex flex-1 flex-col items-center justify-center gap-0.5 py-2";
+    const cls = "group relative flex flex-1 flex-col items-center justify-center gap-1 py-2";
     const inner = (
       <>
         <span className="relative">
-          <Icon
-            name={it.icon}
-            size={22}
-            strokeWidth={active ? 2.4 : 2}
-            className={`transition-colors ${active ? "text-brand-600" : "text-ink-400 group-hover:text-ink-700"}`}
-          />
+          {/* Fekete körvonalas korong — aktívan feketén kitöltve */}
+          <span
+            className={`grid h-10 w-10 place-items-center rounded-full border-2 border-ink-900 transition-colors ${
+              active ? "bg-ink-900 text-white" : "bg-white text-ink-900 group-hover:bg-ink-50"
+            }`}
+          >
+            <Icon name={it.icon} size={19} strokeWidth={2} />
+          </span>
           {it.badge ? (
-            <span className="absolute -right-2 -top-1.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-brand-500 px-1 text-[9px] font-black text-white">
+            <span className="absolute -right-1 -top-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-brand-500 px-1 text-[9px] font-black text-white ring-2 ring-white">
               {it.badge > 9 ? "9+" : it.badge}
             </span>
           ) : null}
         </span>
         <span
           className={`text-[10px] font-semibold transition-colors ${
-            active ? "text-brand-600" : "text-ink-400"
+            active ? "text-ink-900" : "text-ink-400"
           }`}
         >
           {it.label}
@@ -81,20 +83,23 @@ export default function MobileNav() {
     router.push("/listings/new");
   };
 
+  // Az ingatlan-adatlapon nincs alsó menüsor (tiszta, fókuszált nézet).
+  if (/^\/listing\//.test(pathname)) return null;
+
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-ink-100 bg-white/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden">
+    <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-ink-100 bg-white pb-[env(safe-area-inset-bottom)] lg:hidden">
       <div className="mx-auto flex max-w-md items-stretch justify-around px-2">
         <Tab it={left[0]} />
         <Tab it={left[1]} />
 
-        {/* Kiemelt középső akció — új hirdetés */}
+        {/* Kiemelt középső akció — új hirdetés, fehér gyűrűvel */}
         <div className="flex w-16 shrink-0 items-center justify-center">
           <button
             onClick={addListing}
             aria-label={tr("new_listing", lang)}
-            className="-mt-5 grid h-12 w-12 place-items-center rounded-full bg-brand-500 text-white shadow-[0_8px_20px_-6px_rgba(230,30,77,0.6)] transition-transform active:scale-95"
+            className="-mt-5 grid h-14 w-14 place-items-center rounded-full bg-brand-500 text-white shadow-[0_8px_20px_-6px_rgba(230,30,77,0.6)] ring-4 ring-white transition-transform active:scale-95"
           >
-            <Icon name="plus" size={24} strokeWidth={2.4} />
+            <Icon name="plus" size={26} strokeWidth={2.6} />
           </button>
         </div>
 

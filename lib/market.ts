@@ -1,7 +1,7 @@
 /**
  * Piaci intelligencia — tiszta számítások a hirdetésállomány felett.
  *
- * Ez a Jadran differenciátora: mivel az eladó ÉS kiadó hirdetések egy
+ * Ez a Proopify differenciátora: mivel az eladó ÉS kiadó hirdetések egy
  * adatbázisban élnek, bérleti komparábilisekből hozamot tudunk becsülni
  * minden eladó ingatlanra — ezt a globális portálok többsége nem tudja.
  * Minden függvény pure: a betöltött Listing[] tömbön dolgozik.

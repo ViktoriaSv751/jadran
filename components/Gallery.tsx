@@ -127,7 +127,7 @@ export default function Gallery({ images, alt }: { images: string[]; alt: string
       {/* ---------- Lightbox ---------- */}
       {open && (
         <div
-          className="fixed inset-0 z-50 flex animate-fade-in flex-col bg-ink-900/95 backdrop-blur-sm"
+          className="fixed inset-0 z-[110] flex animate-fade-in flex-col bg-black"
           onClick={() => setOpen(false)}
         >
           <div className="flex items-center justify-between px-5 py-4 text-white/80">

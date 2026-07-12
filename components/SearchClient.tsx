@@ -16,6 +16,7 @@ import { toast, openAuth } from "@/lib/ui";
 import Filters, { FilterState, emptyFilters } from "./Filters";
 import FilterChips from "./FilterChips";
 import CategoryTabs from "./search/CategoryTabs";
+import SearchModal from "./home/SearchModal";
 import ListingCard from "./ListingCard";
 import Icon from "./ui/Icon";
 import { CardSkeletonGrid } from "./Skeleton";
@@ -110,7 +111,6 @@ export default function SearchClient() {
   const { user } = useAuth();
   const params = useSearchParams();
   const [filters, setFilters] = useState<FilterState>(emptyFilters);
-  const [mobileFilters, setMobileFilters] = useState(false);
   const [view, setView] = useState<"split" | "list" | "map">("split");
   const [activeId, setActiveId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -156,14 +156,6 @@ export default function SearchClient() {
     window.history.replaceState(null, "", `/search${qs}`);
   }, [filters, loading]);
 
-  // Lock background scroll while the mobile filter sheet is open.
-  useEffect(() => {
-    document.body.style.overflow = mobileFilters ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [mobileFilters]);
-
   const results = useMemo(() => applyFilters(items, filters), [items, filters]);
 
   // Terület-keresés: a lista a térkép aktuális kivágatát tükrözi (Airbnb-minta).
@@ -192,6 +184,21 @@ export default function SearchClient() {
   ).length;
 
   const update = (next: FilterState) => setFilters(next);
+
+  // Mobil: a szűrő gomb a főoldali részletes keresőt nyitja (azonos dizájn).
+  const [detailedOpen, setDetailedOpen] = useState(false);
+  const applyQueryString = (qs: string) => {
+    const params = new URLSearchParams(qs);
+    const next: FilterState = { ...emptyFilters };
+    (Object.keys(emptyFilters) as (keyof FilterState)[]).forEach((k) => {
+      const v = params.get(k);
+      if (v !== null) (next[k] as string) = v;
+    });
+    setFilters(next);
+  };
+
+  // Egyetlen térkép/lista váltó a felső sorban (mobil + desktop).
+  const toggleMap = () => setView(view === "map" ? (isMobile ? "list" : "split") : "map");
 
   // AI-keresés: szabad szöveg ("napfényes lakás Kotorban 300k alatt") → szűrők.
   const [aiBusy, setAiBusy] = useState(false);
@@ -239,7 +246,8 @@ export default function SearchClient() {
     <div className="mx-auto max-w-7xl px-4 py-5">
       {/* Mode toggle + search bar */}
       <div className="flex flex-col gap-3">
-        <div className="flex items-center justify-center">
+        {/* 1. sor: mód-váltó balra, térkép/lista váltó jobbra-fölülre */}
+        <div className="flex items-center justify-between gap-2">
           <div className="inline-flex rounded-full border border-ink-200 bg-white p-1 shadow-soft">
             {([
               { v: "", label: tr("cat_all", lang) },
@@ -249,7 +257,7 @@ export default function SearchClient() {
               <button
                 key={m.v || "all"}
                 onClick={() => update({ ...filters, mode: m.v })}
-                className={`rounded-full px-5 py-1.5 text-sm font-semibold transition ${
+                className={`rounded-full px-4 py-1.5 text-sm font-semibold transition sm:px-5 ${
                   filters.mode === m.v ? "bg-ink-900 text-white" : "text-ink-600 hover:bg-ink-50"
                 }`}
               >
@@ -257,10 +265,21 @@ export default function SearchClient() {
               </button>
             ))}
           </div>
+
+          <button
+            onClick={toggleMap}
+            className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold shadow-soft transition ${
+              view === "map"
+                ? "border-ink-900 bg-ink-900 text-white"
+                : "border-ink-200 bg-white text-ink-800 hover:border-ink-400"
+            }`}
+          >
+            <Icon name={view === "map" ? "menu" : "globe"} size={16} strokeWidth={2.2} />
+            <span className="hidden sm:inline">{view === "map" ? tr("list", lang) : tr("map", lang)}</span>
+          </button>
         </div>
 
-        {/* Egyetlen kompakt sor mobilon: kereső + szűrő-ikon. A rendezés
-            asztali nézeten inline select, mobilon a szűrő-lapban él. */}
+        {/* 2. sor: kereső + rendezés + szűrő. A rendezés mobilon is látszik. */}
         <div className="flex items-center gap-2">
           <div className="relative flex-1">
             <input
@@ -298,7 +317,7 @@ export default function SearchClient() {
           <select
             value={filters.sort}
             onChange={(e) => update({ ...filters, sort: e.target.value })}
-            className="hidden rounded-full border border-ink-200 bg-white px-3 py-3.5 text-sm shadow-soft focus:outline-none sm:block"
+            className="shrink-0 rounded-full border border-ink-200 bg-white px-3 py-3.5 text-sm shadow-soft focus:outline-none"
           >
             <option value="newest">{tr("sort_newest", lang)}</option>
             <option value="price_asc">{tr("sort_price_asc", lang)}</option>
@@ -306,8 +325,9 @@ export default function SearchClient() {
             <option value="ppm2">{tr("sort_ppm2", lang)}</option>
           </select>
 
+          {/* Mobil: a részletes keresőt nyitja; asztalin a sidebar szűrők élnek */}
           <button
-            onClick={() => setMobileFilters(true)}
+            onClick={() => setDetailedOpen(true)}
             aria-label={tr("filters", lang)}
             className="relative grid h-12 w-12 shrink-0 place-items-center rounded-full border border-ink-200 bg-white shadow-soft lg:hidden"
           >
@@ -318,30 +338,14 @@ export default function SearchClient() {
               </span>
             )}
           </button>
-
-          <div className="hidden items-center rounded-2xl border border-ink-200 bg-white p-1 shadow-soft md:flex">
-            {(["split", "list", "map"] as const).map((v) => (
-              <button
-                key={v}
-                onClick={() => setView(v)}
-                className={`rounded-xl px-3 py-2 text-sm font-medium transition ${
-                  view === v ? "bg-ink-900 text-white" : "text-ink-600 hover:bg-ink-50"
-                }`}
-              >
-                {v === "list" ? tr("list", lang) : v === "map" ? tr("map", lang) : tr("split", lang)}
-              </button>
-            ))}
-          </div>
         </div>
       </div>
 
-      {/* Category tabs */}
-      <div className="mt-3 border-b border-ink-100 pb-1">
+      {/* Kategória-fülek + gyorschipek — csak asztali nézetben */}
+      <div className="mt-3 hidden border-b border-ink-100 pb-1 lg:block">
         <CategoryTabs value={filters.type} onChange={(type) => update({ ...filters, type })} />
       </div>
-
-      {/* Quick chips */}
-      <div className="mt-3">
+      <div className="mt-3 hidden lg:block">
         <FilterChips value={filters} onChange={update} />
       </div>
 
@@ -392,13 +396,7 @@ export default function SearchClient() {
           ) : results.length === 0 ? (
             <EmptyState title={tr("no_results", lang)} hint={tr("no_results_hint", lang)} />
           ) : view === "map" ? (
-            <div
-              className={
-                isMobile
-                  ? "fixed inset-x-0 bottom-0 top-16 z-20"
-                  : "h-[calc(100vh-7rem)] overflow-hidden rounded-3xl border border-ink-100 shadow-card"
-              }
-            >
+            <div className="h-[calc(100vh-13rem)] overflow-hidden rounded-2xl border border-ink-100 shadow-card sm:h-[calc(100vh-9rem)]">
               <MapView
                 listings={visible}
                 lang={lang}
@@ -490,75 +488,13 @@ export default function SearchClient() {
         </div>
       )}
 
-      {/* Mobil lebegő térkép/lista váltó (Airbnb-minta) — asztali nézeten a
-          fenti szegmenskapcsoló él, mobilon ez az egyetlen út a térképhez. */}
-      {!loading && results.length > 0 && (
-        <button
-          onClick={() => {
-            setSelected(null);
-            setView(view === "map" ? "list" : "map");
-          }}
-          className="fixed bottom-28 left-1/2 z-30 flex -translate-x-1/2 items-center gap-2 rounded-full bg-ink-900 px-5 py-3 text-sm font-semibold text-white shadow-pop transition active:scale-95 md:hidden"
-        >
-          <Icon name={view === "map" ? "menu" : "globe"} size={16} strokeWidth={2.2} />
-          {view === "map" ? tr("list", lang) : tr("map", lang)}
-        </button>
-      )}
-
-      {/* Mobile filter bottom sheet */}
-      {mobileFilters && (
-        <div className="fixed inset-0 z-50 lg:hidden">
-          <div
-            className="absolute inset-0 animate-fade-in bg-ink-900/40 backdrop-blur-sm"
-            onClick={() => setMobileFilters(false)}
-          />
-          <div className="absolute inset-x-0 bottom-0 flex max-h-[90vh] animate-sheet-up flex-col rounded-t-3xl bg-white shadow-pop">
-            <div className="relative flex items-center justify-center border-b border-ink-100 px-5 py-4">
-              <button
-                onClick={() => setMobileFilters(false)}
-                aria-label="close"
-                className="absolute left-4 grid h-8 w-8 place-items-center rounded-full text-ink-600 hover:bg-ink-50"
-              >
-                <Icon name="close" size={18} strokeWidth={2.2} />
-              </button>
-              <h2 className="text-sm font-bold text-ink-900">{tr("filters", lang)}</h2>
-            </div>
-
-            <div className="flex-1 overflow-y-auto px-5 py-4">
-              {/* Rendezés — mobilon itt él (asztali nézeten inline select) */}
-              <div className="mb-4">
-                <span className="mb-1.5 block text-sm font-semibold text-ink-900">{tr("sort_label", lang)}</span>
-                <select
-                  value={filters.sort}
-                  onChange={(e) => update({ ...filters, sort: e.target.value })}
-                  className="w-full rounded-xl border border-ink-200 bg-white px-3 py-3 text-sm focus:outline-none"
-                >
-                  <option value="newest">{tr("sort_newest", lang)}</option>
-                  <option value="price_asc">{tr("sort_price_asc", lang)}</option>
-                  <option value="price_desc">{tr("sort_price_desc", lang)}</option>
-                  <option value="ppm2">{tr("sort_ppm2", lang)}</option>
-                </select>
-              </div>
-              <Filters value={filters} onChange={update} onReset={() => setFilters({ ...emptyFilters })} />
-            </div>
-
-            <div className="flex items-center gap-3 border-t border-ink-100 px-5 py-3 pb-safe">
-              <button
-                onClick={() => setFilters({ ...emptyFilters })}
-                className="rounded-xl px-4 py-3 text-sm font-semibold text-ink-700 underline-offset-2 hover:underline"
-              >
-                {tr("clear_all", lang)}
-              </button>
-              <button
-                onClick={() => setMobileFilters(false)}
-                className="flex-1 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 py-3 text-sm font-semibold text-white shadow-soft transition hover:opacity-95"
-              >
-                {results.length} {tr("results", lang)}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Mobil szűrő = a főoldali részletes kereső (azonos dizájn) */}
+      <SearchModal
+        open={detailedOpen}
+        onClose={() => setDetailedOpen(false)}
+        initialMode={(filters.mode || "sale") as "sale" | "rent"}
+        onApply={applyQueryString}
+      />
     </div>
   );
 }

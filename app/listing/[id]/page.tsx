@@ -12,12 +12,12 @@ export async function generateMetadata({
 }: {
   params: { id: string };
 }): Promise<Metadata> {
-  if (!supabaseServer) return { title: "JADRAN" };
+  if (!supabaseServer) return { title: "PROOPIFY" };
   const { data } = await supabaseServer.from("listings").select("*").eq("id", params.id).maybeSingle();
-  if (!data) return { title: "JADRAN — Ingatlan Montenegróban" };
+  if (!data) return { title: "PROOPIFY — Ingatlan Montenegróban" };
   const l = rowToListing(data);
   const title = `${l.title.hu} — ${l.city}`;
-  const ogTitle = `${title} | JADRAN`;
+  const ogTitle = `${title} | PROOPIFY`;
   const description = l.description.hu.slice(0, 160);
   const url = `${SITE_URL}/listing/${l.id}`;
   const image = l.images[0]?.startsWith("http") ? l.images[0] : `${SITE_URL}${l.images[0] ?? ""}`;

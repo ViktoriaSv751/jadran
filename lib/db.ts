@@ -409,6 +409,28 @@ async function fetchProfileByAuthId(authId: string): Promise<Profile | null> {
   return null;
 }
 
+/** Egykattintásos demo-belépés — előre beállított demo fiókok. */
+export const DEMO_ACCOUNTS = {
+  buyer: { email: "demo@jadran.me", password: "demo1234" },
+  seller: { email: "hello@adriatichomes.me", password: "demo1234" }
+} as const;
+
+export function loginDemo(role: "buyer" | "seller"): Promise<AuthResult> {
+  const acc = DEMO_ACCOUNTS[role];
+  return login(acc.email, acc.password);
+}
+
+/** Google / Apple OAuth belépés (a szolgáltatót a Supabase Auth-ban kell engedélyezni). */
+export async function loginOAuth(
+  provider: "google" | "apple"
+): Promise<{ ok: boolean; error?: string }> {
+  if (!supabase) return { ok: false, error: "no_backend" };
+  const redirectTo = isBrowser ? `${window.location.origin}/` : undefined;
+  const { error } = await supabase.auth.signInWithOAuth({ provider, options: { redirectTo } });
+  if (error) return { ok: false, error: error.message };
+  return { ok: true }; // sikeres esetben átirányít, a lap újratölt
+}
+
 export async function login(email: string, password: string): Promise<AuthResult> {
   if (!supabase) return { ok: false, error: "no_backend" };
   const { data, error } = await supabase.auth.signInWithPassword({

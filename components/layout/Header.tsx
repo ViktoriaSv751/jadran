@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Logo from "./Logo";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useLang, useAuth, useUnreadCount, useCompare } from "@/lib/store";
@@ -24,8 +25,8 @@ export default function Header() {
     <header className="sticky top-0 z-30 border-b border-ink-100 bg-white/85 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-3">
         <Link href="/" className="flex items-center gap-2">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-ink-950 text-sm font-black text-white">J</span>
-          <span className="hidden text-xl font-black tracking-tight text-ink-900 sm:block">JADRAN</span>
+          <Logo size={34} wordmark={false} />
+          <span className="hidden text-xl font-black tracking-tight text-ink-900 sm:block">PROOPIFY</span>
         </Link>
 
         {/* Center search pill — jumps to the search page */}

@@ -27,12 +27,12 @@ const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").r
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "JADRAN — Ingatlan Montenegróban",
-    template: "%s | JADRAN"
+    default: "PROOPIFY — Ingatlan Montenegróban",
+    template: "%s | PROOPIFY"
   },
   description:
     "A hely, ahol Montenegróban mindenki ingatlant keres. Verifikált hirdetések, átlátható árak, térképes keresés Budva, Kotor, Tivat, Herceg Novi és Bar térségében.",
-  applicationName: "JADRAN",
+  applicationName: "PROOPIFY",
   keywords: [
     "ingatlan Montenegró",
     "nekretnine Crna Gora",
@@ -47,8 +47,8 @@ export const metadata: Metadata = {
   alternates: { canonical: SITE_URL },
   openGraph: {
     type: "website",
-    siteName: "JADRAN",
-    title: "JADRAN — Ingatlan Montenegróban",
+    siteName: "PROOPIFY",
+    title: "PROOPIFY — Ingatlan Montenegróban",
     description:
       "Verifikált ingatlanhirdetések Montenegróban — átlátható árak, térképes keresés, 4 nyelven.",
     url: SITE_URL,
@@ -56,10 +56,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "JADRAN — Ingatlan Montenegróban",
+    title: "PROOPIFY — Ingatlan Montenegróban",
     description: "Verifikált ingatlanhirdetések Montenegróban — átlátható árak, térképes keresés."
   },
-  icons: { icon: "/nav/icon.svg" }
+  icons: { icon: "/logo.svg" }
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

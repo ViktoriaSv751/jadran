@@ -826,28 +826,51 @@ export const cities = Array.from(new Set(seedListings.map((l) => l.city))).sort(
  */
 export const montenegroPlaces: string[] = Array.from(
   new Set<string>([
-    // Municipalities / larger towns
+    // --- Mind a 25 község / nagyobb város ---
     "Podgorica", "Nikšić", "Pljevlja", "Bijelo Polje", "Cetinje", "Bar", "Herceg Novi",
     "Berane", "Budva", "Ulcinj", "Tivat", "Rožaje", "Kotor", "Danilovgrad", "Mojkovac",
     "Kolašin", "Plav", "Žabljak", "Andrijevica", "Plužine", "Šavnik", "Gusinje",
     "Petnjica", "Tuzi", "Golubovci", "Zeta",
-    // Boka Kotorska (bay) settlements
+    // --- Podgorica városrészek / kvartok ---
+    "Stara Varoš", "Nova Varoš", "Preko Morače", "Blok V", "Blok VI", "Blok IX",
+    "City Kvart", "Zabjelo", "Zagorič", "Konik", "Momišići", "Masline", "Dajbabe",
+    "Tološi", "Donja Gorica", "Gornja Gorica", "Ljubović", "Drač", "Pobrežje",
+    "Stari Aerodrom", "Murtovina", "Kruševac", "Vrela Ribnička", "Botun", "Cijevna",
+    // --- Boka Kotorska (öböl) ---
     "Dobrota", "Muo", "Prčanj", "Stoliv", "Perast", "Risan", "Morinj", "Kostanjica",
     "Kamenari", "Lepetane", "Donja Lastva", "Gornja Lastva", "Krašići", "Rose",
-    "Žanjice", "Luštica", "Radovići", "Bjelila", "Gošići", "Đuraševići",
-    // Herceg Novi riviera
+    "Žanjice", "Luštica", "Radovići", "Bjelila", "Gošići", "Đuraševići", "Škaljari",
+    "Dub", "Orahovac", "Ljuta", "Krimovica", "Nalježići", "Bogdašići", "Gornji Stoliv",
+    // --- Herceg Novi riviéra ---
     "Igalo", "Topla", "Savina", "Meljine", "Zelenika", "Kumbor", "Đenovići", "Baošići",
-    "Bijela", "Njivice", "Sutorina",
-    // Budva riviera
+    "Bijela", "Njivice", "Sutorina", "Kruševice", "Podi", "Sasovići", "Kameno", "Mojdež",
+    // --- Budva riviéra ---
     "Bečići", "Rafailovići", "Sveti Stefan", "Miločer", "Pržno", "Petrovac", "Buljarica",
-    "Bigova", "Jaz", "Maini", "Lapčići",
-    // Bar & Ulcinj riviera
+    "Bigova", "Jaz", "Maini", "Lapčići", "Bulevar", "Dubovica", "Kamenovo", "Przno",
+    "Reževići", "Katun Reževići", "Sveti Stefan", "Blizikuće", "Kuljače", "Markovići",
+    "Podkošljun", "Babin Do", "Đurići", "Tudorovići",
+    // --- Tivat ---
+    "Seljanovo", "Gradiošnica", "Mrčevac", "Donja Lastva", "Krtoli", "Kalimanj",
+    "Porto Montenegro", "Lepetani",
+    // --- Bar & Ulcinj riviéra ---
     "Sutomore", "Čanj", "Spič", "Šušanj", "Stari Bar", "Dobra Voda", "Utjeha", "Bušat",
-    "Velika Plaža", "Ada Bojana", "Valdanos", "Vladimir",
-    // Skadar lake & hinterland
-    "Virpazar", "Rijeka Crnojevića", "Murići", "Krnjice",
-    // Northern / mountain
-    "Kolašin 1450", "Bjelasica", "Durmitor", "Pošćenje"
+    "Velika Plaža", "Ada Bojana", "Valdanos", "Vladimir", "Topolica", "Ilino", "Bjeliši",
+    "Zeleni Pojas", "Polje", "Pečurice", "Kunje", "Mala Plaža", "Pinješ", "Đerane",
+    "Štoj", "Zoganje", "Krute",
+    // --- Skadar-tó & hinterland ---
+    "Virpazar", "Rijeka Crnojevića", "Murići", "Krnjice", "Godinje", "Karuč", "Dodoši",
+    "Ostros", "Ckla", "Seoca",
+    // --- Nikšić & környéke ---
+    "Ozrinići", "Zagrad", "Kličevo", "Straševina", "Rubeža", "Vidrovan", "Trebjesa",
+    // --- Cetinje & Lovćen ---
+    "Njeguši", "Bajice", "Rijeka Crnojevića", "Dobrsko Selo", "Ivanova Korita",
+    // --- Északi / hegyvidék ---
+    "Kolašin 1450", "Bjelasica", "Durmitor", "Pošćenje", "Šavnik", "Boan", "Bukovica",
+    "Tara", "Đurđevića Tara", "Pošćenski Kraj", "Vraneštica", "Njegovuđa", "Petnjica",
+    "Rudo Polje", "Lipovo",
+    // --- Egyéb keresett települések ---
+    "Spuž", "Mareza", "Farmaci", "Lekići", "Ubli", "Sukuruć", "Grbalj", "Lastva Grbaljska",
+    "Šušanj", "Prijevor", "Kavač", "Radanovići", "Glavati", "Dražin Vrt"
   ])
 ).sort((a, b) => a.localeCompare(b));
 

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- PROOPIFY — lapos ingatlankereső márkajel: monitor + ház + nagyító -->
+  <!-- Monitor talp -->
+  <rect x="20" y="34" width="8" height="6" rx="1" fill="#2f6bff"/>
+  <rect x="14" y="39" width="20" height="3.5" rx="1.75" fill="#2f6bff"/>
+  <!-- Monitor keret -->
+  <rect x="4" y="6" width="40" height="30" rx="6" fill="#2f6bff"/>
+  <!-- Képernyő -->
+  <rect x="8.5" y="10.5" width="31" height="21" rx="3" fill="#241c2b"/>
+  <!-- Ablak-pöttyök -->
+  <circle cx="12.5" cy="14.5" r="1" fill="#ffffff"/>
+  <circle cx="15.7" cy="14.5" r="1" fill="#ffffff"/>
+  <circle cx="18.9" cy="14.5" r="1" fill="#ffffff"/>
+  <!-- Sárga csempe + ház -->
+  <rect x="11" y="18" width="14" height="10.5" rx="2.2" fill="#f5b716"/>
+  <path d="M18 20.4l4.2 3.4v4.2h-2.6v-2.4h-3.2v2.4H13.8v-4.2z" fill="#ffffff"/>
+  <!-- Nagyító -->
+  <circle cx="33" cy="24" r="8.2" fill="none" stroke="#c9ced6" stroke-width="3"/>
+  <circle cx="33" cy="24" r="5.4" fill="#241c2b" fill-opacity="0.28"/>
+  <rect x="37.6" y="28.6" width="4" height="9" rx="2" transform="rotate(-45 37.6 28.6)" fill="#f5b716"/>
+</svg>
