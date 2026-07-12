@@ -4,9 +4,19 @@ import Link from "next/link";
 import { useLang, useFavorites, useListings } from "@/lib/store";
 import { tr } from "@/lib/i18n";
 import ListingCard from "@/components/ListingCard";
+import RequireAuth from "@/components/auth/RequireAuth";
+import PageHeading from "@/components/ui/PageHeading";
 import Icon from "@/components/ui/Icon";
 
 export default function FavoritesPage() {
+  return (
+    <RequireAuth message="login_to_save">
+      <FavoritesInner />
+    </RequireAuth>
+  );
+}
+
+function FavoritesInner() {
   const { lang } = useLang();
   const favorites = useFavorites();
   const { items: all } = useListings();
@@ -14,9 +24,7 @@ export default function FavoritesPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
-      <h1 className="mb-5 flex items-center gap-2 text-2xl font-black tracking-tight text-ink-900 sm:text-3xl">
-        <Icon name="heartFilled" size={24} className="text-brand-500" /> {tr("favorites", lang)}
-      </h1>
+      <PageHeading icon="heartFilled">{tr("favorites", lang)}</PageHeading>
       {!favorites.ready ? null : items.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-ink-200 bg-white p-10 text-center text-ink-500 shadow-soft">
           {tr("no_favorites", lang)}
@@ -32,7 +40,7 @@ export default function FavoritesPage() {
       ) : (
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {items.map((l) => (
-            <ListingCard key={l.id} listing={l} tall />
+            <ListingCard key={l.id} listing={l} />
           ))}
         </div>
       )}

@@ -8,7 +8,14 @@ import Button from "@/components/ui/Button";
 import Icon from "@/components/ui/Icon";
 
 /** Gates a page behind authentication, showing a friendly prompt otherwise. */
-export default function RequireAuth({ children }: { children: React.ReactNode }) {
+export default function RequireAuth({
+  children,
+  message
+}: {
+  children: React.ReactNode;
+  /** Egyedi felszólító szöveg (kulcs) — pl. „lépj be a mentéshez". */
+  message?: string;
+}) {
   const { user, ready } = useAuth();
   const { lang } = useLang();
 
@@ -22,7 +29,7 @@ export default function RequireAuth({ children }: { children: React.ReactNode })
         <div className="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-2xl bg-ink-50 text-ink-600">
           <Icon name="shield" size={28} />
         </div>
-        <p className="text-base font-semibold text-ink-800">{tr("login_to_contact", lang)}</p>
+        <p className="text-base font-semibold text-ink-800">{message ? tr(message, lang) : tr("login_to_contact", lang)}</p>
         <div className="mt-5 flex justify-center gap-2">
           <Button onClick={() => openAuth("login")}>{tr("login", lang)}</Button>
           <Button variant="outline" onClick={() => openAuth("register")}>

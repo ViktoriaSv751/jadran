@@ -12,6 +12,7 @@ import * as db from "@/lib/db";
 import Avatar from "@/components/ui/Avatar";
 import Photo from "@/components/Photo";
 import Icon from "@/components/ui/Icon";
+import PageHeading from "@/components/ui/PageHeading";
 
 export default function MessagesClient() {
   const { lang } = useLang();
@@ -91,9 +92,7 @@ export default function MessagesClient() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-5">
       {/* Cím ikonnal — ugyanúgy, mint a Mentett oldalon a „Kedvencek". */}
-      <h1 className="mb-4 flex items-center gap-2 text-2xl font-black tracking-tight text-ink-900 sm:text-3xl">
-        <Icon name="message" size={24} className="text-brand-500" /> {tr("conversations", lang)}
-      </h1>
+      <PageHeading icon="message" className="mb-4">{tr("conversations", lang)}</PageHeading>
       <div className="grid h-[calc(100vh-11rem)] overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-card sm:h-[72vh] lg:grid-cols-[340px_1fr]">
         {/* Lista */}
         <aside className={`${active ? "hidden lg:flex" : "flex"} min-w-0 min-h-0 flex-col border-ink-100 lg:border-r`}>

@@ -29,7 +29,8 @@ export default function MobileNav() {
       href: "/favorites",
       label: tr("favorites", lang),
       icon: "heart",
-      badge: favorites.ready ? favorites.ids.length : 0
+      badge: user && favorites.ready ? favorites.ids.length : 0,
+      requiresAuth: true
     }
   ];
   const right: Item[] = [

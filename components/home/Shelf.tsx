@@ -21,13 +21,16 @@ export default function Shelf({
   subtitle,
   href,
   cta,
-  listings
+  listings,
+  image
 }: {
   title: string;
   subtitle?: string;
   href?: string;
   cta?: string;
   listings: Listing[];
+  /** Látványos 3D kép a cím fölé (mint az „átlagár városonként" szekció). */
+  image?: string;
 }) {
   const scroller = useRef<HTMLDivElement>(null);
   const [idx, setIdx] = useState(0);
@@ -88,7 +91,17 @@ export default function Shelf({
 
   return (
     <section className="py-7">
-      <div className="mx-auto flex max-w-7xl flex-col items-start gap-1.5 px-4 text-left">
+      {/* Fejléc — KÖZÉPRE igazítva, a cím fölött látványos 3D képpel. */}
+      <div className="mx-auto flex max-w-7xl flex-col items-center gap-1.5 px-4 text-center">
+        {image && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={image}
+            alt=""
+            aria-hidden
+            className="mb-1 h-20 w-20 object-contain drop-shadow-[0_12px_24px_rgba(16,26,38,0.18)] sm:h-24 sm:w-24"
+          />
+        )}
         <h2 className="display text-2xl text-ink-900 sm:text-3xl">{title}</h2>
         {subtitle && <p className="text-sm text-ink-500">{subtitle}</p>}
         {href && cta && (
@@ -115,8 +128,8 @@ export default function Shelf({
             // látszik, a szomszédok teljesen leesnek (nincs kikandikáló kártya).
             // A dián belül a kártya KISEBB és KÖZÉPRE igazított. Asztalon a régi,
             // egymás melletti több-kártyás elrendezés marad.
-            <div key={l.id} className="w-full shrink-0 snap-start sm:w-[20rem] lg:w-[22rem]">
-              <div className="mx-auto max-w-[17rem] px-1 sm:max-w-none sm:px-0">
+            <div key={l.id} className="w-full shrink-0 snap-start sm:w-[22rem] lg:w-[24rem]">
+              <div className="mx-auto max-w-[21rem] px-2 sm:max-w-none sm:px-0">
                 <ListingCard listing={l} />
               </div>
             </div>

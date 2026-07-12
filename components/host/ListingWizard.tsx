@@ -32,6 +32,7 @@ import { Input, Textarea, Select } from "@/components/ui/Input";
 import Photo from "@/components/Photo";
 import ImageUploader from "@/components/host/ImageUploader";
 import Icon from "@/components/ui/Icon";
+import PageHeading from "@/components/ui/PageHeading";
 import { cn } from "@/lib/cn";
 
 /** Közelítő koordináták településenként — az új hirdetés térképi elhelyezéséhez.
@@ -341,14 +342,17 @@ export default function ListingWizard() {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-6 sm:py-8">
-      <div className="flex items-end justify-between">
-        <h1 className="display text-3xl text-ink-900 sm:text-4xl">
-          {editId ? tr("edit_listing", lang) : tr("new_listing", lang)}
-        </h1>
-        <span className="rounded-full bg-ink-100 px-3 py-1 text-xs font-bold text-ink-600">
-          {step + 1} / {STEPS.length}
-        </span>
-      </div>
+      <PageHeading
+        icon={editId ? "sliders" : "plus"}
+        className="mb-0"
+        right={
+          <span className="shrink-0 rounded-full bg-ink-100 px-3 py-1 text-xs font-bold text-ink-600">
+            {step + 1} / {STEPS.length}
+          </span>
+        }
+      >
+        {editId ? tr("edit_listing", lang) : tr("new_listing", lang)}
+      </PageHeading>
 
       {/* Step indicator — ikonos, kattintható lépések + kitöltöttség-sáv */}
       <div className="relative mt-6">

@@ -6,6 +6,7 @@ import { tr } from "@/lib/i18n";
 import { Input, Textarea } from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import Avatar from "@/components/ui/Avatar";
+import PageHeading from "@/components/ui/PageHeading";
 import { toast } from "@/lib/ui";
 
 export default function SettingsClient() {
@@ -27,7 +28,7 @@ export default function SettingsClient() {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-8">
-      <h1 className="mb-5 text-2xl font-bold text-ink-900">{tr("settings", lang)}</h1>
+      <PageHeading icon="sliders">{tr("settings", lang)}</PageHeading>
 
       <form onSubmit={save} className="space-y-4 rounded-2xl border border-ink-100 bg-white p-6 shadow-soft">
         <div className="flex items-center gap-4">

@@ -61,6 +61,12 @@ export default function Header() {
           >
             {tr("become_host", lang)}
           </Link>
+          <Link
+            href="/pricing"
+            className="hidden rounded-full px-3.5 py-2 text-sm font-semibold text-ink-700 transition hover:bg-ink-50 lg:block"
+          >
+            {tr("pricing_nav", lang)}
+          </Link>
 
           <LangSwitcher />
 
@@ -140,6 +146,7 @@ function AccountMenu({
               <MenuLink href="/listings" label={tr("my_listings", lang)} />
               <MenuLink href="/listings/new" label={tr("new_listing", lang)} />
               <MenuLink href="/compare" label={tr("compare", lang)} badge={compareCount} />
+              <MenuLink href="/pricing" label={tr("pricing_nav", lang)} />
               <div className="my-1 h-px bg-ink-100" />
               <MenuLink href="/profile" label={tr("profile", lang)} />
               <MenuLink href="/settings" label={tr("settings", lang)} />

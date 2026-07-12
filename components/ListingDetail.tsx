@@ -5,8 +5,8 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import type { Listing } from "@/lib/types";
-import { useLang, useFavorites, useListings } from "@/lib/store";
-import { toast } from "@/lib/ui";
+import { useLang, useFavorites, useListings, useAuth } from "@/lib/store";
+import { openAuth, toast } from "@/lib/ui";
 import { tr, typeLabels, conditionLabels, viewLabels, modeLabels, heatingLabels, loc } from "@/lib/i18n";
 import { formatPrice, formatNumber, pricePerM2, distanceLabel } from "@/lib/format";
 import { cityTrend, cityAvgPricePerM2, similarListings } from "@/lib/data";
@@ -33,7 +33,10 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
   const { items } = useListings();
   const favorites = useFavorites();
   const router = useRouter();
+  const { user } = useAuth();
   const isFav = favorites.has(listing.id);
+  // Mentéshez be kell jelentkezni — kilépve a belépő-ablakot nyitjuk.
+  const toggleFav = () => (user ? favorites.toggle(listing.id) : openAuth("login"));
   const isRent = listing.mode === "rent";
 
   const share = async () => {
@@ -158,7 +161,7 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
                   <Icon name="share" size={16} strokeWidth={2} />
                 </button>
                 <button
-                  onClick={() => favorites.toggle(listing.id)}
+                  onClick={toggleFav}
                   aria-label="favorite"
                   className={`pointer-events-auto grid h-9 w-9 place-items-center rounded-full shadow-float backdrop-blur transition active:scale-90 ${
                     isFav ? "bg-brand-500 text-white" : "bg-white/95 text-ink-700"
@@ -349,7 +352,7 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
                   <CurrencyHint amount={listing.price} />
                 </div>
                 <button
-                  onClick={() => favorites.toggle(listing.id)}
+                  onClick={toggleFav}
                   className={`grid h-11 w-11 place-items-center rounded-full transition active:scale-90 ${
                     isFav ? "bg-brand-500 text-white" : "border border-ink-200 text-ink-500 hover:text-brand-500"
                   }`}

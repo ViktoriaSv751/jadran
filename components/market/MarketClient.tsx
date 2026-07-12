@@ -10,6 +10,7 @@ import { cityMarketStats, priceDrops } from "@/lib/market";
 import Chart from "@/components/Chart";
 import Icon from "@/components/ui/Icon";
 import Photo from "@/components/Photo";
+import PageHeading from "@/components/ui/PageHeading";
 
 /**
  * Piactér — városonkénti piaci intelligencia: €/m² trend, kínálat,
@@ -43,8 +44,8 @@ export default function MarketClient() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <h1 className="display text-3xl text-ink-900 sm:text-4xl">{tr("market_title", lang)}</h1>
-      <p className="mt-2 max-w-2xl text-ink-500">{tr("market_sub", lang)}</p>
+      <PageHeading icon="trendUp" className="mb-2">{tr("market_title", lang)}</PageHeading>
+      <p className="max-w-2xl text-ink-500">{tr("market_sub", lang)}</p>
 
       {/* Városválasztó */}
       <div className="no-scrollbar mt-5 flex gap-2 overflow-x-auto">

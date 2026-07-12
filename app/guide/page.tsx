@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useLang } from "@/lib/store";
 import { tr, loc, contentLang } from "@/lib/i18n";
+import PageHeading from "@/components/ui/PageHeading";
 
 type GL = { hu: string; me: string; en: string; ru: string };
 
@@ -94,7 +95,7 @@ export default function GuidePage() {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
-      <h1 className="text-2xl font-bold text-ink-900">{tr("guide_title", lang)}</h1>
+      <PageHeading icon="compass">{tr("guide_title", lang)}</PageHeading>
 
       <div className="mt-6 space-y-3">
         {steps.map((s, i) => (

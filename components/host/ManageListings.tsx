@@ -9,6 +9,7 @@ import { toast } from "@/lib/ui";
 import Photo from "@/components/Photo";
 import Button from "@/components/ui/Button";
 import Icon from "@/components/ui/Icon";
+import PageHeading from "@/components/ui/PageHeading";
 import PromoteButton from "@/components/host/PromoteButton";
 
 export default function ManageListings() {
@@ -29,16 +30,21 @@ export default function ManageListings() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
-      <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-ink-900">{tr("manage_listings", lang)}</h1>
-        <Link href="/listings/new">
-          <Button>
-            <span className="inline-flex items-center gap-1.5">
-              <Icon name="plus" size={16} strokeWidth={2.2} /> {tr("new_listing", lang)}
-            </span>
-          </Button>
-        </Link>
-      </div>
+      <PageHeading
+        icon="building"
+        className="mb-6"
+        right={
+          <Link href="/listings/new">
+            <Button>
+              <span className="inline-flex items-center gap-1.5">
+                <Icon name="plus" size={16} strokeWidth={2.2} /> {tr("new_listing", lang)}
+              </span>
+            </Button>
+          </Link>
+        }
+      >
+        {tr("manage_listings", lang)}
+      </PageHeading>
 
       {listings.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-ink-200 bg-white p-12 text-center">

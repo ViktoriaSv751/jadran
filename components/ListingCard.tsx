@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useRef, useState } from "react";
 import type { Listing } from "@/lib/types";
-import { useLang, useFavorites, useCompare } from "@/lib/store";
+import { useLang, useFavorites, useCompare, useAuth } from "@/lib/store";
+import { openAuth } from "@/lib/ui";
 import { tr, typeLabels, modeLabels, loc } from "@/lib/i18n";
 import { formatPrice, pricePerM2, distanceLabel, formatNumber } from "@/lib/format";
 import VerificationBadge from "./VerificationBadge";
@@ -26,6 +27,7 @@ export default function ListingCard({
   tall?: boolean;
 }) {
   const { lang } = useLang();
+  const { user } = useAuth();
   const favorites = useFavorites();
   const compare = useCompare();
   const trackRef = useRef<HTMLDivElement>(null);
@@ -115,6 +117,8 @@ export default function ListingCard({
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
+            // Mentéshez BE KELL jelentkezni — kilépve a belépő-ablakot hozzuk fel.
+            if (!user) return openAuth("login");
             favorites.toggle(listing.id);
           }}
           aria-pressed={isFav}

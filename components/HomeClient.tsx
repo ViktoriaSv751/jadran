@@ -19,53 +19,49 @@ export default function HomeClient() {
 
   return (
     <div className="flex flex-col pb-4">
-      <div className="order-1">
-        <Hero />
-      </div>
+      <Hero />
 
-      {/* Categories („böngéssz típus szerint") — asztalon az „Új építésű" polc
-          alá kerül (order-5), TELEFONON viszont az egész oldal aljára, az
-          „átlagár városonként" szekció alá (order-6). */}
-      <section className="order-6 mx-auto w-full max-w-7xl px-4 pt-6 lg:order-5 lg:pt-10">
+      {/* „Böngéssz típus szerint" — közvetlenül a hero alatt, a polcok FÖLÖTT. */}
+      <section className="mx-auto w-full max-w-7xl px-4 pt-6 lg:pt-10">
         <h2 className="display mb-5 text-center text-2xl text-ink-900 sm:text-3xl">
           {tr("browse_by_type", lang)}
         </h2>
         <CategoryRow />
       </section>
 
-      {/* Shelves */}
-      <div className="order-2">
-        <Shelf
-          title={tr("featured", lang)}
-          subtitle={tr("shelf_featured_sub", lang)}
-          href="/search?mode=sale"
-          cta={tr("view_all", lang)}
-          listings={featured}
-        />
-      </div>
+      {/* Polcok — a kategóriák ALATT, szélesebb kártyákkal, középre igazított
+          fejléccel és a cím fölötti 3D képpel. */}
+      <Shelf
+        title={tr("featured", lang)}
+        subtitle={tr("shelf_featured_sub", lang)}
+        href="/search?mode=sale"
+        cta={tr("view_all", lang)}
+        listings={featured}
+        image="/cat/villa.png"
+      />
 
-      <div className="order-3 bg-white">
+      <div className="bg-white">
         <Shelf
           title={tr("shelf_sea_title", lang)}
           subtitle={tr("shelf_sea_sub", lang)}
           href="/search?view=sea"
           cta={tr("view_all", lang)}
           listings={seaview}
+          image="/cat/house.png"
         />
       </div>
 
-      <div className="order-4">
-        <Shelf
-          title={tr("shelf_new_title", lang)}
-          subtitle={tr("shelf_new_sub", lang)}
-          href="/search?type=new"
-          cta={tr("view_all", lang)}
-          listings={newBuilds}
-        />
-      </div>
+      <Shelf
+        title={tr("shelf_new_title", lang)}
+        subtitle={tr("shelf_new_sub", lang)}
+        href="/search?type=new"
+        cta={tr("view_all", lang)}
+        listings={newBuilds}
+        image="/cat/new.png"
+      />
 
       {/* Average price by city */}
-      <section className="order-5 mx-auto w-full max-w-7xl px-4 py-10 lg:order-6">
+      <section className="mx-auto w-full max-w-7xl px-4 py-10">
         <div className="mx-auto mb-6 max-w-xl text-center">
           {/* Látványos 3D ingatlan-ikon, hogy a szekció ne legyen „üres" a cím fölött. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}

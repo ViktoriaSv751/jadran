@@ -23,15 +23,19 @@ export default function LangSwitcher({ compact = false }: { compact?: boolean })
 
   useEffect(() => setMounted(true), []);
 
-  // Görgés-zár, amíg a modál nyitva van.
+  // Görgés-zár, amíg a modál nyitva van — a HTML és a BODY elemet is lezárjuk,
+  // így a mögöttes (fehér) oldal egyáltalán nem görgethető.
   useEffect(() => {
     if (!open) return;
-    const prev = document.body.style.overflow;
+    const prevBody = document.body.style.overflow;
+    const prevHtml = document.documentElement.style.overflow;
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     document.addEventListener("keydown", onKey);
     return () => {
-      document.body.style.overflow = prev;
+      document.body.style.overflow = prevBody;
+      document.documentElement.style.overflow = prevHtml;
       document.removeEventListener("keydown", onKey);
     };
   }, [open]);
@@ -53,7 +57,7 @@ export default function LangSwitcher({ compact = false }: { compact?: boolean })
             <Icon name="close" size={18} strokeWidth={2.2} />
           </button>
         </div>
-        <div className="grid grid-cols-2 gap-2 overflow-y-auto p-4 sm:grid-cols-3">
+        <div className="grid grid-cols-2 gap-2.5 overflow-y-auto overscroll-contain p-4 sm:grid-cols-3">
           {LANGS.map((l) => (
             <button
               key={l.code}
@@ -61,13 +65,13 @@ export default function LangSwitcher({ compact = false }: { compact?: boolean })
                 setLang(l.code);
                 setOpen(false);
               }}
-              className={`flex items-center gap-2.5 rounded-xl border p-3 text-left transition ${
+              className={`flex min-h-[3.75rem] items-center gap-2.5 rounded-2xl border p-4 text-left transition ${
                 lang === l.code
                   ? "border-ink-900 bg-ink-900/[0.03] ring-2 ring-ink-900/10"
                   : "border-ink-200 hover:border-ink-400 hover:bg-ink-50"
               }`}
             >
-              <span className="text-xl">{l.flag}</span>
+              <span className="text-2xl">{l.flag}</span>
               <span className="min-w-0">
                 <span className="block truncate text-sm font-semibold text-ink-900">{l.label}</span>
               </span>

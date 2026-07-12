@@ -17,6 +17,8 @@ import { formatPrice, formatNumber, pricePerM2, distanceLabel } from "@/lib/form
 import type { Amenity, Listing } from "@/lib/types";
 import Photo from "@/components/Photo";
 import Icon from "@/components/ui/Icon";
+import PageHeading from "@/components/ui/PageHeading";
+import RequireAuth from "@/components/auth/RequireAuth";
 
 type Dir = "min" | "max";
 
@@ -36,6 +38,14 @@ interface Section {
 }
 
 export default function ComparePage() {
+  return (
+    <RequireAuth message="login_to_compare">
+      <CompareInner />
+    </RequireAuth>
+  );
+}
+
+function CompareInner() {
   const { lang } = useLang();
   const compare = useCompare();
   const { items: all } = useListings();
@@ -227,7 +237,9 @@ export default function ComparePage() {
     <div className="mx-auto max-w-6xl px-4 py-6 sm:py-8">
       <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="display text-3xl text-ink-900 sm:text-4xl">{tr("compare_title", lang)}</h1>
+          <PageHeading icon="sliders" className="mb-0">
+            {tr("compare_title", lang)}
+          </PageHeading>
           {items.length > 0 && (
             <p className="mt-1.5 max-w-2xl text-sm text-ink-500">
               {mixedModes ? tr("value_mixed_note", lang) : tr("cmp_best_hint", lang)}
