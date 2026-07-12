@@ -470,21 +470,39 @@ export default function ListingWizard() {
 
             <div>
               <span className="mb-1.5 block text-sm font-medium text-ink-700">{tr("choose_type", lang)}</span>
-              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-                {TYPES.map((tp) => (
-                  <button
-                    key={tp}
-                    onClick={() => set("type", tp)}
-                    className={cn(
-                      "rounded-2xl border p-3 text-sm font-semibold transition",
-                      form.type === tp
-                        ? "border-brand-500 bg-brand-50 text-brand-700"
-                        : "border-ink-200 text-ink-600 hover:border-ink-300"
-                    )}
-                  >
-                    {typeLabels[tp][lang]}
-                  </button>
-                ))}
+              {/* Látványos 3D csempék — ugyanúgy, mint a keresőben. */}
+              <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4">
+                {TYPES.map((tp) => {
+                  const activeType = form.type === tp;
+                  return (
+                    <button
+                      key={tp}
+                      onClick={() => set("type", tp)}
+                      className={cn(
+                        "group flex flex-col items-center rounded-2xl border p-2.5 text-center transition",
+                        activeType
+                          ? "border-brand-500 bg-brand-50 ring-2 ring-brand-200"
+                          : "border-ink-100 bg-gradient-to-br from-white to-ink-50 hover:-translate-y-0.5 hover:border-ink-200 hover:shadow-card"
+                      )}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={`/cat/${tp}.png`}
+                        alt={typeLabels[tp][lang]}
+                        loading="lazy"
+                        className="h-12 w-12 object-contain transition duration-300 group-hover:scale-110 sm:h-14 sm:w-14"
+                      />
+                      <span
+                        className={cn(
+                          "mt-1 text-xs font-bold leading-tight",
+                          activeType ? "text-brand-700" : "text-ink-700"
+                        )}
+                      >
+                        {typeLabels[tp][lang]}
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
@@ -776,8 +794,10 @@ export default function ListingWizard() {
         )}
       </div>
 
-      {/* Nav buttons */}
-      <div className="mt-6 flex items-center justify-between gap-3">
+      {/* Nav buttons — RAGADÓS alsó sáv, mindig látható (a menüsor itt rejtve van). */}
+      <div className="sticky bottom-0 z-30 -mx-4 mt-6 flex items-center justify-between gap-3 border-t border-ink-100 bg-white/95 px-4 pt-3 backdrop-blur"
+        style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 0.75rem)" }}
+      >
         <Button
           variant="ghost"
           size="lg"

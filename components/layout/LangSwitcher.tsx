@@ -38,7 +38,8 @@ export default function LangSwitcher({ compact = false }: { compact?: boolean })
 
   const modal = (
     <div className="fixed inset-0 z-[200] flex items-end justify-center sm:items-center">
-      <div className="absolute inset-0 bg-ink-900/50 backdrop-blur-sm" onClick={() => setOpen(false)} />
+      {/* 100% fehér, fix háttér — a mögöttes oldal nem látszik és nem görgethető. */}
+      <div className="absolute inset-0 bg-white" onClick={() => setOpen(false)} />
       <div className="animate-pop-in relative z-10 flex max-h-[85vh] w-full flex-col overflow-hidden rounded-t-3xl border border-ink-100 bg-white shadow-pop sm:max-w-xl sm:rounded-3xl">
         <div className="flex items-center justify-between border-b border-ink-100 px-5 py-4">
           <h2 className="flex items-center gap-2 text-base font-bold text-ink-900">

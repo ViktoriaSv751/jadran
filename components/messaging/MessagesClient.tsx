@@ -89,24 +89,22 @@ export default function MessagesClient() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-0 sm:px-4 sm:py-5">
-      <h1 className="mb-4 hidden px-4 text-2xl font-black tracking-tight text-ink-900 sm:block sm:px-0">
-        {tr("conversations", lang)}
+    <div className="mx-auto max-w-6xl px-4 py-5">
+      {/* Cím ikonnal — ugyanúgy, mint a Mentett oldalon a „Kedvencek". */}
+      <h1 className="mb-4 flex items-center gap-2 text-2xl font-black tracking-tight text-ink-900 sm:text-3xl">
+        <Icon name="message" size={24} className="text-brand-500" /> {tr("conversations", lang)}
       </h1>
-      <div className="grid h-[calc(100vh-8.5rem)] overflow-hidden border-ink-100 bg-white sm:h-[76vh] sm:rounded-3xl sm:border sm:shadow-card lg:grid-cols-[340px_1fr]">
+      <div className="grid h-[calc(100vh-11rem)] overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-card sm:h-[72vh] lg:grid-cols-[340px_1fr]">
         {/* Lista */}
-        <aside className={`${active ? "hidden lg:flex" : "flex"} min-h-0 flex-col border-ink-100 lg:border-r`}>
+        <aside className={`${active ? "hidden lg:flex" : "flex"} min-w-0 min-h-0 flex-col border-ink-100 lg:border-r`}>
           <div className="border-b border-ink-100 p-3">
-            <h2 className="mb-2 px-1 text-lg font-black tracking-tight text-ink-900 lg:hidden">
-              {tr("conversations", lang)}
-            </h2>
             <div className="flex items-center gap-2 rounded-full bg-ink-100/70 px-3.5 py-2">
-              <Icon name="search" size={16} className="text-ink-400" />
+              <Icon name="search" size={16} className="shrink-0 text-ink-400" />
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={tr("chat_search", lang)}
-                className="w-full bg-transparent text-sm text-ink-800 placeholder:text-ink-400 focus:outline-none"
+                className="w-full min-w-0 bg-transparent text-sm text-ink-800 placeholder:text-ink-400 focus:outline-none"
               />
             </div>
           </div>
@@ -155,7 +153,7 @@ export default function MessagesClient() {
         </aside>
 
         {/* Chat */}
-        <section className={`${active ? "flex" : "hidden lg:flex"} min-h-0 flex-col`}>
+        <section className={`${active ? "flex" : "hidden lg:flex"} min-w-0 min-h-0 flex-col`}>
           {active ? (
             <ChatView
               key={active.id}

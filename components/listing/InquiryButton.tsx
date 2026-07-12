@@ -8,7 +8,18 @@ import * as db from "@/lib/db";
 import { openAuth, toast } from "@/lib/ui";
 import Button from "@/components/ui/Button";
 
-export default function InquiryButton({ listing }: { listing: Listing }) {
+export default function InquiryButton({
+  listing,
+  size = "lg",
+  full = true,
+  compact = false
+}: {
+  listing: Listing;
+  size?: "sm" | "md" | "lg";
+  full?: boolean;
+  /** Rövid felirat („Kapcsolat") — a szűk mobil alsó sávban, hogy az ár mellett elférjen. */
+  compact?: boolean;
+}) {
   const { lang } = useLang();
   const { user } = useAuth();
   const router = useRouter();
@@ -45,8 +56,8 @@ export default function InquiryButton({ listing }: { listing: Listing }) {
   }
 
   return (
-    <Button full size="lg" variant="accent" onClick={startInquiry}>
-      {isAgency ? tr("contact_agency", lang) : tr("contact_seller", lang)}
+    <Button full={full} size={size} variant="accent" onClick={startInquiry} className="whitespace-nowrap">
+      {compact ? tr("contact_short", lang) : isAgency ? tr("contact_agency", lang) : tr("contact_seller", lang)}
     </Button>
   );
 }

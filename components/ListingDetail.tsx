@@ -337,7 +337,7 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
             <div className="rounded-2xl border border-ink-100 bg-white p-5 shadow-card">
               <div className="flex items-start justify-between">
                 <div>
-                  <div className="text-3xl font-black tracking-tight text-ink-900">
+                  <div className="text-4xl font-black tracking-tight text-ink-900">
                     {formatPrice(listing.price, lang)}
                     {isRent && <span className="text-base font-semibold text-ink-400">{tr("per_month", lang)}</span>}
                   </div>
@@ -400,10 +400,12 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
         </aside>
       </div>
 
-      {/* Mobile sticky price + CTA bar (sits over the bottom nav, Airbnb-style) */}
-      <div className="fixed inset-x-0 bottom-0 z-40 flex items-center gap-3 border-t border-ink-100 bg-white px-4 py-3 pb-safe shadow-[0_-6px_24px_-12px_rgba(16,26,38,0.35)] lg:hidden">
+      {/* Mobile sticky price + CTA bar (sits over the bottom nav, Airbnb-style).
+          Az ár NAGY és látványos; a „Kapcsolat" gomb kisebb (nowrap), hogy a kettő
+          mindig kényelmesen kiférjen egymás mellett. A sáv magassága nem csökken. */}
+      <div className="fixed inset-x-0 bottom-0 z-40 flex items-center gap-3 border-t border-ink-100 bg-white px-4 py-3.5 pb-safe shadow-[0_-6px_24px_-12px_rgba(16,26,38,0.35)] lg:hidden">
         <div className="min-w-0 flex-1">
-          <div className="text-lg font-extrabold tracking-tight text-ink-900">
+          <div className="truncate text-2xl font-black tracking-tight text-ink-900">
             {formatPrice(listing.price, lang)}
             {isRent && <span className="text-sm font-semibold text-ink-400">{tr("per_month", lang)}</span>}
           </div>
@@ -414,7 +416,7 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
           )}
         </div>
         <div className="shrink-0">
-          <InquiryButton listing={listing} />
+          <InquiryButton listing={listing} size="md" full={false} compact />
         </div>
       </div>
     </div>

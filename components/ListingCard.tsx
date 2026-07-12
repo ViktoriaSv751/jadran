@@ -16,11 +16,14 @@ const TODAY = new Date("2026-05-31");
 export default function ListingCard({
   listing,
   active = false,
-  onActivate
+  onActivate,
+  tall = false
 }: {
   listing: Listing;
   active?: boolean;
   onActivate?: (id: string | null) => void;
+  /** Magasabb kártya (nagyobb kép) — a Mentett oldalon használjuk. */
+  tall?: boolean;
 }) {
   const { lang } = useLang();
   const favorites = useFavorites();
@@ -62,7 +65,7 @@ export default function ListingCard({
         active ? "shadow-card -translate-y-1 ring-2 ring-ink-900" : "shadow-soft hover:-translate-y-1 hover:shadow-card"
       }`}
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden">
+      <div className={`relative w-full overflow-hidden ${tall ? "aspect-[4/5]" : "aspect-[4/3]"}`}>
         <div ref={trackRef} onScroll={onScroll} className="no-scrollbar flex h-full snap-x-mandatory overflow-x-auto">
           {listing.images.map((img, i) => (
             <Link
@@ -105,14 +108,18 @@ export default function ListingCard({
           )}
         </div>
 
-        {/* favorite */}
+        {/* favorite — mindig megbízhatóan bekapcsol; a stopPropagation megakadályozza,
+            hogy a kártya körüli görgetés/link „elnyelje" a koppintást. */}
         <button
+          type="button"
           onClick={(e) => {
             e.preventDefault();
+            e.stopPropagation();
             favorites.toggle(listing.id);
           }}
+          aria-pressed={isFav}
           aria-label="favorite"
-          className={`absolute right-3 top-3 z-10 grid h-9 w-9 place-items-center rounded-full shadow-float transition active:scale-90 ${
+          className={`absolute right-2.5 top-2.5 z-20 grid h-10 w-10 place-items-center rounded-full shadow-float transition active:scale-90 ${
             isFav ? "bg-brand-500 text-white" : "bg-white/95 text-ink-700 backdrop-blur hover:text-brand-500"
           }`}
         >

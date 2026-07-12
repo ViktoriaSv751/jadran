@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useLang } from "@/lib/store";
 import { tr } from "@/lib/i18n";
 import Modal from "@/components/ui/Modal";
@@ -18,6 +19,7 @@ export default function AuthModal({
   onSuccess?: () => void;
 }) {
   const { lang } = useLang();
+  const router = useRouter();
   const [mode, setMode] = useState<"login" | "register">(initialMode);
 
   // Tartsuk szinkronban, ha új módban nyílik újra a modál.
@@ -34,7 +36,10 @@ export default function AuthModal({
         onModeChange={setMode}
         onSuccess={() => {
           onClose();
-          onSuccess?.();
+          // Ha van folytatás (pl. érdeklődés befejezése), azt futtatjuk; egyébként
+          // MINDIG a főoldalra irányítunk belépés után.
+          if (onSuccess) onSuccess();
+          else router.push("/");
         }}
       />
     </Modal>

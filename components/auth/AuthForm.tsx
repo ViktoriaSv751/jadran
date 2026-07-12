@@ -149,20 +149,17 @@ export default function AuthForm({
         </button>
       </div>
 
-      {/* Demo belépés */}
+      {/* Demo belépés — a rendszerben KÉT szerepkör van: Magánszemély és Iroda. */}
       <div className="mt-3 rounded-2xl border border-dashed border-ink-200 bg-ink-50/60 p-3">
         <p className="mb-2 text-center text-xs font-semibold uppercase tracking-wide text-ink-500">
           {tr("demo_try_title", lang)}
         </p>
-        <div className="grid grid-cols-3 gap-2">
-          <Button variant="outline" size="sm" loading={demoBusy === "buyer"} onClick={() => demo("buyer")}>
-            <Icon name="search" size={14} className="mr-1" /> {tr("demo_buyer", lang)}
-          </Button>
+        <div className="grid grid-cols-2 gap-2">
           <Button variant="outline" size="sm" loading={demoBusy === "seller"} onClick={() => demo("seller")}>
-            <Icon name="home" size={14} className="mr-1" /> {tr("demo_seller", lang)}
+            <Icon name="user" size={14} className="mr-1" /> {tr("role_private", lang)}
           </Button>
           <Button variant="outline" size="sm" loading={demoBusy === "agency"} onClick={() => demo("agency")}>
-            <Icon name="building" size={14} className="mr-1" /> {tr("demo_agency", lang)}
+            <Icon name="building" size={14} className="mr-1" /> {tr("role_agency", lang)}
           </Button>
         </div>
       </div>

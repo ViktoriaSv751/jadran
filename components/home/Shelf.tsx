@@ -108,11 +108,17 @@ export default function Shelf({
         <div
           ref={scroller}
           style={{ scrollSnapType: "x proximity" }}
-          className="no-scrollbar flex gap-4 overflow-x-auto px-4 pb-2"
+          className="no-scrollbar flex gap-4 overflow-x-auto px-0 pb-2 sm:px-4"
         >
           {listings.map((l) => (
+            // TELEFONON: teljes szélességű „dia" (100vw) → mindig CSAK EGY hirdetés
+            // látszik, a szomszédok teljesen leesnek (nincs kikandikáló kártya).
+            // A dián belül a kártya KISEBB és KÖZÉPRE igazított. Asztalon a régi,
+            // egymás melletti több-kártyás elrendezés marad.
             <div key={l.id} className="w-full shrink-0 snap-start sm:w-[20rem] lg:w-[22rem]">
-              <ListingCard listing={l} />
+              <div className="mx-auto max-w-[17rem] px-1 sm:max-w-none sm:px-0">
+                <ListingCard listing={l} />
+              </div>
             </div>
           ))}
           {/* trailing spacer so the last card clears the right edge in the scroll */}

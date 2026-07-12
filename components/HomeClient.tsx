@@ -67,6 +67,14 @@ export default function HomeClient() {
       {/* Average price by city */}
       <section className="order-5 mx-auto w-full max-w-7xl px-4 py-10 lg:order-6">
         <div className="mx-auto mb-6 max-w-xl text-center">
+          {/* Látványos 3D ingatlan-ikon, hogy a szekció ne legyen „üres" a cím fölött. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/cat/apartment.png"
+            alt=""
+            aria-hidden
+            className="mx-auto mb-1 h-24 w-24 object-contain drop-shadow-[0_12px_24px_rgba(16,26,38,0.18)] sm:h-28 sm:w-28"
+          />
           <h2 className="display text-2xl text-ink-900 sm:text-3xl">{tr("avg_by_city", lang)}</h2>
           <p className="mt-2 text-sm text-ink-500">{tr("avg_by_city_sub", lang)}</p>
         </div>

@@ -62,7 +62,7 @@ export default function CategoryRow() {
             onClick={() => setExpanded((v) => !v)}
             className="group inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white px-6 py-2.5 text-sm font-bold text-ink-800 shadow-soft transition hover:border-ink-900 hover:bg-ink-900 hover:text-white"
           >
-            {expanded ? tr("show_less", lang) : tr("show_more", lang)}
+            {expanded ? tr("show_less", lang) : tr("more_short", lang)}
             <Icon
               name="chevronDown"
               size={16}

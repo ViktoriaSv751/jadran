@@ -176,9 +176,19 @@ export async function refreshConversations(): Promise<void> {
   if (ms.data) {
     const fromDb = ms.data.map(rowToMessage);
     const dbIds = new Set(fromDb.map((m) => m.id));
+    const prevById = new Map(cache.messages.map((m) => [m.id, m]));
+    // A DB-ből jövő üzeneteknél EGYESÍTJÜK a readBy-t a helyi állapottal — így egy
+    // épp megnyitott (helyileg olvasottnak jelölt) beszélgetés nem „ugrik vissza"
+    // olvasatlanra, ha a szerver-oldali frissítés még nem futott le (Messenger-szerű).
+    const merged = fromDb.map((m) => {
+      const prev = prevById.get(m.id);
+      if (!prev) return m;
+      const readBy = Array.from(new Set([...m.readBy, ...prev.readBy]));
+      return readBy.length === m.readBy.length ? m : { ...m, readBy };
+    });
     // A cache-ben lévő, DB-ben még nem szereplő (épp küldött) üzeneteket megtartjuk.
     const pendingLocal = cache.messages.filter((m) => !dbIds.has(m.id) && ids.includes(m.conversationId));
-    cache.messages = [...fromDb, ...pendingLocal];
+    cache.messages = [...merged, ...pendingLocal];
   }
   emit();
 }
@@ -546,18 +556,20 @@ export function toggleFavorite(id: string): void {
   const wasFav = cur.includes(id);
   const next = wasFav ? cur.filter((x) => x !== id) : [...cur, id];
   cache.favorites = next;
-  // MINDIG eszköz-lokálisan is elmentjük (ez az emitet is elküldi) — így a
-  // kedvenc soha nem „tűnik el", akkor sem, ha a felhasználó be van jelentkezve,
-  // de a háttér-mentés (Supabase) épp nem érhető el. Bejelentkezve ezen felül a
-  // fiókhoz is szinkronizáljuk.
-  writeLS(K_FAV, next);
+  emit(); // optimista: a szív azonnal frissül
   const uidp = cache.currentUser?.id;
   if (supabase && uidp) {
+    // BEJELENTKEZVE: a kedvenc a FIÓKHOZ kötött (Supabase). NEM írjuk a
+    // localStorage-ba — különben egy másik fiók a saját eszközén „örökölné" a
+    // kedvenceket (fiókok közti adatszivárgás).
     if (wasFav) {
       void supabase.from("favorites").delete().eq("user_id", uidp).eq("listing_id", id);
     } else {
       void supabase.from("favorites").insert({ user_id: uidp, listing_id: id });
     }
+  } else {
+    // KIJELENTKEZVE: eszköz-lokális (anonim) kedvencek.
+    writeLS(K_FAV, next);
   }
 }
 
@@ -573,10 +585,11 @@ async function hydrateFavorites(): Promise<void> {
   if (toUpload.length) {
     await supabase.from("favorites").insert(toUpload.map((id) => ({ user_id: uidp, listing_id: id })));
   }
-  const merged = Array.from(new Set([...dbFavs, ...localFavs]));
-  cache.favorites = merged;
+  cache.favorites = Array.from(new Set([...dbFavs, ...localFavs]));
   favInit = true;
-  writeLS(K_FAV, merged); // helyi másolat marad (offline-biztos), a fiók a fő forrás
+  // A helyi (anonim) listát ürítjük: mostantól a FIÓK a forrás. Így egy másik
+  // fiók belépésekor nem „öröklődnek" át az előző kedvencei ezen az eszközön.
+  writeLS(K_FAV, []);
   emit();
 }
 

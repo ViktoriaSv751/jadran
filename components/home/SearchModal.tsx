@@ -250,9 +250,9 @@ export default function SearchModal({
       {/* Mobilon TELJES képernyő (a háttér nem látszik ki fölül); asztalin középre igazított kártya. */}
       <div className="absolute inset-0 flex animate-sheet-up flex-col overflow-hidden bg-white sm:inset-auto sm:left-1/2 sm:top-1/2 sm:h-auto sm:max-h-[88vh] sm:w-[42rem] sm:max-w-[calc(100vw-2rem)] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:animate-scale-in sm:rounded-3xl sm:shadow-pop">
         {/* Header — bold, tall dark band with a vivid red glow so the sheet opens with a "wow" */}
-        <div className="relative flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-ink-900 via-ink-950 to-black px-5 pb-7 pt-[calc(1.75rem+env(safe-area-inset-top))] text-center text-white sm:rounded-t-3xl sm:pt-7">
-          <div className="pointer-events-none absolute -right-10 -top-14 h-44 w-44 rounded-full bg-brand-500/40 blur-3xl" />
-          <div className="pointer-events-none absolute -left-12 bottom-[-3.5rem] h-44 w-44 rounded-full bg-brand-500/30 blur-3xl" />
+        <div className="relative flex flex-col items-center justify-center overflow-hidden bg-[linear-gradient(115deg,#070708_0%,#0d0d10_45%,#3a4a00_78%,#c8ff00_100%)] px-5 pb-7 pt-[calc(1.75rem+env(safe-area-inset-top))] text-center text-white sm:rounded-t-3xl sm:pt-7">
+          <div className="pointer-events-none absolute -right-10 -top-14 h-44 w-44 rounded-full bg-[#c8ff00]/25 blur-3xl" />
+          <div className="pointer-events-none absolute -left-12 bottom-[-3.5rem] h-44 w-44 rounded-full bg-[#c8ff00]/20 blur-3xl" />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-brand-500/60 to-transparent" />
           <button
             onClick={onClose}
