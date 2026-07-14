@@ -8,6 +8,11 @@
  */
 import type { Listing } from "./types";
 
+/** Hány helyi (adott városbeli) bérleti komparábilis van a becsléshez. */
+export function cityRentCompCount(city: string, all: Listing[]): number {
+  return all.filter((l) => l.city === city && l.mode === "rent" && l.status === "active" && l.area > 0).length;
+}
+
 /** Átlagos havi bérleti díj €/m² egy városban (kevés adatnál országos átlag). */
 export function cityRentPerM2(city: string, all: Listing[]): number {
   const pick = (pool: Listing[]) =>
@@ -72,6 +77,8 @@ export interface RentalEstimate {
   strVsLtrPct: number;
   /** Volt-e valódi bérleti komparábilis, vagy alapértelmezett kulcsszámmal becsültünk. */
   estimated: boolean;
+  /** Hány helyi bérleti komparábilison alapul a becslés (0 = országos/fix fallback). */
+  localComps: number;
 }
 
 /**
@@ -126,7 +133,8 @@ export function rentalEstimate(
     strMonthlyGross,
     strAnnualGross,
     strVsLtrPct,
-    estimated: true
+    estimated: true,
+    localComps: cityRentCompCount(city, all)
   };
 }
 

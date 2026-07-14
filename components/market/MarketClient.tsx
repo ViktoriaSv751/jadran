@@ -173,10 +173,14 @@ export default function MarketClient() {
               </label>
               <input
                 type="number"
+                inputMode="numeric"
                 min={10}
                 max={2000}
+                step={5}
                 value={calcArea}
-                onChange={(e) => setCalcArea(Math.max(0, Number(e.target.value) || 0))}
+                // Min. 10 m² a state-ben is (nem csak az attribútumban) — így nem
+                // mutat értelmetlen 0 €-s becslést.
+                onChange={(e) => setCalcArea(Math.min(2000, Math.max(10, Math.round(Number(e.target.value) || 10))))}
                 className="w-full rounded-xl border border-ink-200 bg-white px-3 py-2.5 text-sm font-medium text-ink-900 outline-none transition focus:border-ink-900"
               />
             </div>
@@ -261,7 +265,13 @@ export default function MarketClient() {
             </p>
           </div>
 
-          <p className="mt-3 text-[11px] leading-relaxed text-ink-400">{tr("rent_calc_disclaimer", lang)}</p>
+          {/* Megbízhatóság-jelző: hány valós helyi adaton alapul a becslés. */}
+          <p className="mt-3 text-[11px] font-medium text-ink-500">
+            {est.localComps >= 2
+              ? tr("rent_calc_comps", lang).replace("{n}", String(est.localComps))
+              : tr("rent_calc_fallback", lang)}
+          </p>
+          <p className="mt-1 text-[11px] leading-relaxed text-ink-400">{tr("rent_calc_disclaimer", lang)}</p>
         </div>
       </section>
 
@@ -270,7 +280,8 @@ export default function MarketClient() {
         <section className="rounded-2xl border border-ink-100 bg-white p-5 shadow-soft">
           <h2 className="flex items-center gap-2 font-bold text-ink-900">
             <span className="h-5 w-1 rounded-full bg-brand-500" />
-            {tr("market_trend", lang)} · {activeCity}
+            {tr("market_trend", lang)}
+            {activeCity ? ` · ${activeCity}` : ""}
           </h2>
           <div className="mt-4">
             <Chart data={trend} format={(v) => `${formatNumber(v, lang)} €`} height={190} />
@@ -281,7 +292,8 @@ export default function MarketClient() {
         <section className="rounded-2xl border border-ink-100 bg-white p-5 shadow-soft">
           <h2 className="flex items-center gap-2 font-bold text-ink-900">
             <span className="h-5 w-1 rounded-full bg-brand-500" />
-            {tr("supply_by_type", lang)} · {activeCity}
+            {tr("supply_by_type", lang)}
+            {activeCity ? ` · ${activeCity}` : ""}
           </h2>
           <div className="mt-4 space-y-2.5">
             {stats.byType.length === 0 && <p className="text-sm text-ink-400">–</p>}

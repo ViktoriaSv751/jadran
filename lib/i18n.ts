@@ -352,6 +352,8 @@ export const t: Dict = {
   show_original: { hu: "Eredeti megjelenítése", me: "Prikaži original", en: "Show original", ru: "Показать оригинал" },
   show_translation: { hu: "Fordítás megjelenítése", me: "Prikaži prevod", en: "Show translation", ru: "Показать перевод" },
   you: { hu: "Te", me: "Vi", en: "You", ru: "Вы" },
+  rent_calc_comps: { hu: "{n} helyi bérleti adat alapján", me: "Na osnovu {n} lokalnih najmova", en: "Based on {n} local rentals", ru: "На основе {n} местных аренд" },
+  rent_calc_fallback: { hu: "Kevés helyi adat — országos átlagból becsülve (tájékoztató).", me: "Malo lokalnih podataka — procjena iz nacionalnog prosjeka.", en: "Few local data points — estimated from the national average (indicative).", ru: "Мало локальных данных — оценка по среднему по стране." },
   rt_under_hour: { hu: "Általában egy órán belül válaszol", me: "Obično odgovara u roku od sat vremena", en: "Usually replies within an hour", ru: "Обычно отвечает в течение часа" },
   rt_few_hours: { hu: "Általában pár órán belül válaszol", me: "Obično odgovara za par sati", en: "Usually replies within a few hours", ru: "Обычно отвечает за несколько часов" },
   rt_within_day: { hu: "Általában egy napon belül válaszol", me: "Obično odgovara u toku dana", en: "Usually replies within a day", ru: "Обычно отвечает в течение дня" },
