@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth, useLang, useListing } from "@/lib/store";
 import {
@@ -130,7 +130,7 @@ const emptyForm: FormState = {
   type: "apartment",
   title: "",
   description: "",
-  city: cities[0] ?? "Budva",
+  city: "Budva",
   district: "",
   area: "",
   rooms: "",
@@ -201,7 +201,6 @@ export default function ListingWizard() {
   }, [editId, editing]);
 
   const [form, setForm] = useState<FormState>(emptyForm);
-  const [seeded, setSeeded] = useState(false);
   const [step, setStep] = useState(0);
   // Típusválasztó: először csak 6 típus, egy gombbal kinyitható a többi — mint a
   // részletes keresőben.
@@ -248,11 +247,13 @@ export default function ListingWizard() {
     toast(tr("magic_done", lang).replace("{n}", String(detected.length)));
   };
 
-  // Hydrate from the edited listing as soon as it loads.
-  if (editId && editing && !seeded) {
-    setForm(initial);
-    setSeeded(true);
-  }
+  // A szerkesztett hirdetésből hidratáljuk a formot — `useEffect`-ben, a hirdetés
+  // AZONOSÍTÓJÁRA figyelve. Így ha a listing a Supabase-hidratálás miatt később
+  // érkezik meg, akkor is helyesen betöltődik (nem egyszeri render-alatti setState).
+  useEffect(() => {
+    if (editId && editing) setForm(initial);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editId, editing?.id]);
 
   if (!user) return null;
 
@@ -267,54 +268,68 @@ export default function ListingWizard() {
 
   const isRent = form.mode === "rent";
 
+  // Nem-negatív egész egy mezőből (üres/hibás → null). A negatív értékeket sosem
+  // engedjük DB-be.
+  const nnInt = (s: string): number | null => {
+    const n = Math.floor(Number(s));
+    return s.trim() === "" || !Number.isFinite(n) || n < 0 ? null : n;
+  };
+
   const buildPayload = (): Omit<Listing, "id" | "createdAt" | "views" | "priceHistory"> => {
     // Ismert koordináta a településhez; ha nincs, az ország közepe (Podgorica).
     const coords = CITY_COORDS[form.city] ?? CITY_COORDS.Podgorica;
-    const urls = form.images
-      .split("\n")
-      .map((s) => s.trim())
-      .filter(Boolean);
+    const urls = form.images.split("\n").map((s) => s.trim()).filter(Boolean);
+    const thisYear = new Date().getFullYear();
+    const yr = nnInt(form.year) ?? thisYear;
+
+    // Mód-specifikus mezők: az AKTÍV mód mezőit töltjük, az inaktívakat EXPLICIT
+    // null-ra állítjuk — így szerkesztéskor (eladás↔bérlés) nem maradnak „árnyék-
+    // mezők" a DB-ben (a mapper a null-t kiírja, az undefined-et nem).
+    const rentFields = {
+      deposit: nnInt(form.deposit) ?? undefined,
+      minTermMonths: nnInt(form.minTermMonths) ?? undefined,
+      availableFrom: form.availableFrom || undefined,
+      utilitiesIncluded: form.utilitiesIncluded,
+      petsAllowed: form.petsAllowed
+    };
+    const saleFields = {
+      plotArea: nnInt(form.plotArea) ?? undefined,
+      monthlyCommonCost: nnInt(form.monthlyCommonCost) ?? undefined,
+      heatingType: form.heatingType || undefined
+    };
+    const clearRent = { deposit: null, minTermMonths: null, availableFrom: null, utilitiesIncluded: null, petsAllowed: null };
+    const clearSale = { plotArea: null, monthlyCommonCost: null, heatingType: null };
+
     return {
-      title: l10n(form.title.trim()),
-      description: l10n(form.description.trim()),
+      title: l10n(form.title.trim().slice(0, 120)),
+      description: l10n(form.description.trim().slice(0, 3000)),
       type: form.type,
       mode: form.mode,
       status: "active",
-      price: Number(form.price) || 0,
-      area: Number(form.area) || 0,
-      rooms: Number(form.rooms) || 0,
-      floor: form.floor === "" ? null : Number(form.floor),
-      year: Number(form.year) || new Date().getFullYear(),
+      price: Math.max(0, nnInt(form.price) ?? 0),
+      area: Math.max(0, nnInt(form.area) ?? 0),
+      rooms: nnInt(form.rooms) ?? 0,
+      floor: nnInt(form.floor),
+      year: Math.min(thisYear + 5, Math.max(1900, yr)),
       condition: form.condition,
       view: form.view,
       city: form.city,
       district: form.district.trim(),
-      distanceToSea: Number(form.distanceToSea) || 0,
+      distanceToSea: Math.max(0, nnInt(form.distanceToSea) ?? 0),
       lat: coords.lat,
       lng: coords.lng,
       verification: editing?.verification ?? "none",
-      // A fotó kötelező (lásd canContinue) — ezért itt mindig van valós URL. A
-      // korábbi hamis stock-fallbacket megszüntettük.
+      // A fotó kötelező (lásd canContinue) — ezért itt mindig van valós URL.
       images: urls,
       amenities: form.amenities,
       ownerId: user.id,
       agency: user.agencyName ?? user.name,
       furnished: form.furnished,
       energy: form.energy.trim() || "B",
-      ...(form.mode === "rent"
-        ? {
-            deposit: form.deposit === "" ? undefined : Number(form.deposit),
-            minTermMonths: form.minTermMonths === "" ? undefined : Number(form.minTermMonths),
-            availableFrom: form.availableFrom || undefined,
-            utilitiesIncluded: form.utilitiesIncluded,
-            petsAllowed: form.petsAllowed
-          }
-        : {
-            plotArea: form.plotArea === "" ? undefined : Number(form.plotArea),
-            monthlyCommonCost: form.monthlyCommonCost === "" ? undefined : Number(form.monthlyCommonCost),
-            heatingType: form.heatingType || undefined
-          })
-    };
+      ...(form.mode === "rent" ? { ...rentFields, ...clearSale } : { ...saleFields, ...clearRent })
+      // A cleared mezők explicit null-ok (DB-törléshez) — a Listing típusban ezek
+      // number|undefined-ok, ezért unknown-on át castolunk.
+    } as unknown as Omit<Listing, "id" | "createdAt" | "views" | "priceHistory">;
   };
 
   const imageCount = form.images.split("\n").map((s) => s.trim()).filter(Boolean).length;
@@ -561,12 +576,14 @@ export default function ListingWizard() {
             <Input
               label={`${tr("title_label", lang)} *`}
               value={form.title}
+              maxLength={120}
               onChange={(e) => set("title", e.target.value)}
               placeholder={lang === "hu" ? "Pl. Tengerre néző lakás Budva központjában" : ""}
             />
             <Textarea
               label={`${tr("desc_label", lang)} *`}
               value={form.description}
+              maxLength={3000}
               onChange={(e) => set("description", e.target.value)}
               rows={5}
             />
@@ -597,14 +614,14 @@ export default function ListingWizard() {
             />
             <Input
               label={`${tr("area_label", lang)} *`}
-              type="number"
+              type="number" min={0}
               value={form.area}
               onChange={(e) => set("area", e.target.value)}
             />
             <div>
               <Input
                 label={tr("rooms_label", lang)}
-                type="number"
+                type="number" min={0}
                 value={form.rooms}
                 onChange={(e) => set("rooms", e.target.value)}
               />
@@ -626,13 +643,13 @@ export default function ListingWizard() {
             </div>
             <Input
               label={tr("floor_label", lang)}
-              type="number"
+              type="number" min={0}
               value={form.floor}
               onChange={(e) => set("floor", e.target.value)}
             />
             <Input
               label={tr("year_label", lang)}
-              type="number"
+              type="number" min={0}
               value={form.year}
               onChange={(e) => set("year", e.target.value)}
             />
@@ -672,7 +689,7 @@ export default function ListingWizard() {
             </Select>
             <Input
               label={tr("distance_label", lang)}
-              type="number"
+              type="number" min={0}
               value={form.distanceToSea}
               onChange={(e) => set("distanceToSea", e.target.value)}
             />
@@ -694,7 +711,7 @@ export default function ListingWizard() {
                 {(form.type === "house" || form.type === "villa" || form.type === "land") && (
                   <Input
                     label={`${tr("plot_area_label", lang)} (m²)`}
-                    type="number"
+                    type="number" min={0}
                     value={form.plotArea}
                     onChange={(e) => set("plotArea", e.target.value)}
                   />
@@ -702,7 +719,7 @@ export default function ListingWizard() {
                 {(form.type === "apartment" || form.type === "new") && (
                   <Input
                     label={`${tr("common_cost_label", lang)} (€${tr("per_month_short", lang)})`}
-                    type="number"
+                    type="number" min={0}
                     value={form.monthlyCommonCost}
                     onChange={(e) => set("monthlyCommonCost", e.target.value)}
                   />
@@ -715,13 +732,13 @@ export default function ListingWizard() {
               <>
                 <Input
                   label={`${tr("deposit_label", lang)} (€)`}
-                  type="number"
+                  type="number" min={0}
                   value={form.deposit}
                   onChange={(e) => set("deposit", e.target.value)}
                 />
                 <Input
                   label={`${tr("min_term_label", lang)} (${tr("months_short", lang)})`}
-                  type="number"
+                  type="number" min={0}
                   value={form.minTermMonths}
                   onChange={(e) => set("minTermMonths", e.target.value)}
                 />
@@ -801,7 +818,7 @@ export default function ListingWizard() {
           <div className="space-y-4">
             <Input
               label={`${isRent ? tr("monthly_rent_label", lang) : tr("price_eur_label", lang)} *`}
-              type="number"
+              type="number" min={0}
               value={form.price}
               onChange={(e) => set("price", e.target.value)}
             />
