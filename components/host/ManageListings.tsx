@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useAuth, useLang, useListingsByOwner } from "@/lib/store";
 import { tr, typeLabels, modeLabels, loc } from "@/lib/i18n";
-import { formatPrice, pricePerM2 } from "@/lib/format";
+import { formatPrice, pricePerM2, formatCompact } from "@/lib/format";
 import type { Listing } from "@/lib/types";
 import * as db from "@/lib/db";
 import { toast } from "@/lib/ui";
@@ -55,6 +55,17 @@ export default function ManageListings() {
   }, [all, status, mode, type, q, sort, lang]);
 
   const { slice, pageCount, page: safePage, total } = paginate(listings, page);
+
+  // Dashboard-összegzés (a SZŰRETLEN teljes portfólióra).
+  const dash = useMemo(() => {
+    const activeCount = all.filter((l) => l.status === "active").length;
+    return {
+      total: all.length,
+      active: activeCount,
+      paused: all.length - activeCount,
+      views: all.reduce((s, l) => s + l.views, 0)
+    };
+  }, [all]);
 
   const applyQs = (qs: string) => {
     const p = new URLSearchParams(qs);
@@ -109,6 +120,27 @@ export default function ManageListings() {
       >
         {tr("manage_listings", lang)}
       </PageHeading>
+
+      {/* Dashboard-statisztika — a teljes portfólió egy pillantásra. */}
+      {all.length > 0 && (
+        <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {[
+            { label: tr("ml_stat_total", lang), value: String(dash.total), icon: "building" as const, tone: "text-ink-900" },
+            { label: tr("ml_stat_active", lang), value: String(dash.active), icon: "check" as const, tone: "text-emerald-600" },
+            { label: tr("ml_stat_paused", lang), value: String(dash.paused), icon: "minus" as const, tone: "text-amber-600" },
+            { label: tr("ml_stat_views", lang), value: formatCompact(dash.views, lang), icon: "eye" as const, tone: "text-ink-900" }
+          ].map((s) => (
+            <div key={s.label} className="rounded-2xl border border-ink-100 bg-white p-4 shadow-soft">
+              <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-ink-400">
+                <Icon name={s.icon} size={13} /> {s.label}
+              </div>
+              <div className={`mt-1 text-2xl font-black tracking-tight ${s.tone} [font-variant-numeric:tabular-nums]`}>
+                {s.value}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Szűrő a saját hirdetésekre — állapot, mód, kereső, rendezés, részletes,
           térkép — mint a hirdetés-lista oldalon. */}

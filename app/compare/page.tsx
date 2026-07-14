@@ -16,9 +16,12 @@ import {
 import { formatPrice, formatNumber, pricePerM2, distanceLabel } from "@/lib/format";
 import type { Amenity, Listing } from "@/lib/types";
 import Photo from "@/components/Photo";
-import Icon from "@/components/ui/Icon";
+import Icon, { type IconName } from "@/components/ui/Icon";
 import PageHeading from "@/components/ui/PageHeading";
+import VerificationBadge from "@/components/VerificationBadge";
 import RequireAuth from "@/components/auth/RequireAuth";
+
+const VERIF_RANK: Record<string, number> = { none: 0, basic: 1, deed: 2, full: 3 };
 
 type Dir = "min" | "max";
 
@@ -169,6 +172,41 @@ function CompareInner() {
           dir: "min"
         }
       ]
+    },
+    {
+      title: tr("cmp_section_trust", lang),
+      rows: [
+        {
+          label: tr("cmp_row_verification", lang),
+          render: (l) => <VerificationBadge level={l.verification} lang={lang} />,
+          best: (l) => VERIF_RANK[l.verification] ?? 0,
+          dir: "max"
+        },
+        {
+          label: tr("cmp_row_popularity", lang),
+          render: (l) => (
+            <span className="inline-flex items-center gap-1">
+              <Icon name="eye" size={14} className="text-ink-400" /> {formatNumber(l.views, lang)}
+            </span>
+          ),
+          best: (l) => l.views || null,
+          dir: "max"
+        },
+        {
+          label: tr("cmp_row_pricedrop", lang),
+          render: (l) => {
+            const ph = l.priceHistory;
+            const dropped = ph.length > 1 && ph[ph.length - 1].price < ph[0].price;
+            return dropped ? (
+              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-bold text-emerald-700">
+                <Icon name="trendUp" size={13} strokeWidth={2.4} className="rotate-90" /> {tr("cmp_price_dropped", lang)}
+              </span>
+            ) : (
+              <span className="text-xs text-ink-400">{tr("cmp_price_stable", lang)}</span>
+            );
+          }
+        }
+      ]
     }
   ];
 
@@ -278,6 +316,8 @@ function CompareInner() {
           </Link>
         </div>
       ) : (
+        <>
+        {items.length >= 2 && <WinnerSummary items={items} lang={lang} ppm2={ppm2} />}
         <div className="overflow-x-auto rounded-3xl border border-ink-100 bg-white shadow-card">
           <table className="w-full min-w-[580px] border-collapse text-sm">
             {/* Fejléc — hirdetés-kártyák */}
@@ -362,7 +402,73 @@ function CompareInner() {
             </tbody>
           </table>
         </div>
+        </>
       )}
+    </div>
+  );
+}
+
+/**
+ * „Ki nyer melyik szempontban" — gyorsan átfutható győztes-kártyák a táblázat
+ * fölött. Minden dimenzióhoz kiválasztja a legjobb hirdetést (a bérlés/eladás
+ * árakat NEM keverjük). Ha egy dimenzióban nincs egyértelmű győztes (döntetlen
+ * vagy nincs adat), kihagyjuk.
+ */
+function WinnerSummary({
+  items,
+  lang,
+  ppm2
+}: {
+  items: Listing[];
+  lang: Parameters<typeof tr>[1];
+  ppm2: (l: Listing) => number;
+}) {
+  const winner = (score: (l: Listing) => number | null, dir: Dir): Listing | null => {
+    const vals = items
+      .map((l) => ({ l, v: score(l) }))
+      .filter((x): x is { l: Listing; v: number } => x.v != null);
+    if (vals.length < 2) return null;
+    const sorted = [...vals].sort((a, b) => (dir === "min" ? a.v - b.v : b.v - a.v));
+    if (sorted[0].v === sorted[1].v) return null; // döntetlen → nincs egyértelmű győztes
+    return sorted[0].l;
+  };
+
+  const mixed = new Set(items.map((l) => l.mode)).size > 1;
+  const allCards: { icon: IconName; label: string; l: Listing | null }[] = [
+    // Vegyes módnál (eladás + bérlés) az ár-alapú győzteseket kihagyjuk, mert
+    // félrevezető lenne összemérni őket.
+    { icon: "wallet", label: tr("cmp_win_cheapest", lang), l: mixed ? null : winner((l) => l.price || null, "min") },
+    { icon: "euro", label: tr("cmp_win_value", lang), l: mixed ? null : winner((l) => ppm2(l) || null, "min") },
+    { icon: "area", label: tr("cmp_win_biggest", lang), l: winner((l) => l.area || null, "max") },
+    { icon: "calendar", label: tr("cmp_win_newest", lang), l: winner((l) => l.year || null, "max") },
+    { icon: "waves", label: tr("cmp_win_closest", lang), l: winner((l) => l.distanceToSea || null, "min") }
+  ];
+  const cards = allCards.filter((c) => c.l);
+
+  if (!cards.length) return null;
+
+  return (
+    <div className="mb-5">
+      <h3 className="mb-2.5 text-sm font-bold uppercase tracking-wide text-ink-500">{tr("cmp_summary_title", lang)}</h3>
+      <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-5">
+        {cards.map((c) => (
+          <div key={c.label} className="rounded-2xl border border-ink-100 bg-white p-3 shadow-soft">
+            <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-ink-400">
+              <span className="grid h-6 w-6 place-items-center rounded-lg bg-ink-50 text-ink-600">
+                <Icon name={c.icon} size={13} />
+              </span>
+              {c.label}
+            </div>
+            <Link href={`/listing/${c.l!.id}`} className="mt-2 flex items-center gap-2">
+              <Photo src={c.l!.images[0]} alt={loc(c.l!.title, lang)} className="h-10 w-10 shrink-0 rounded-lg" />
+              <span className="min-w-0">
+                <span className="line-clamp-1 text-[13px] font-bold text-ink-900">{loc(c.l!.title, lang)}</span>
+                <span className="block truncate text-[11px] text-ink-400">{c.l!.city}</span>
+              </span>
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
