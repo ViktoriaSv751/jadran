@@ -286,7 +286,10 @@ export default function SearchModal({
             ] as { v: Mode; label: string }[]).map((m) => (
               <button
                 key={m.v || "all"}
-                onClick={() => set("mode", m.v)}
+                onClick={() =>
+                  // Mód-váltáskor a másik mód rejtett szűrőit is nullázzuk.
+                  setD((prev) => ({ ...prev, mode: m.v, verifiedOnly: "", furnished: "", petsOnly: "", minTerm: "" }))
+                }
                 className={`flex-1 rounded-full py-2 text-sm font-bold transition ${
                   d.mode === m.v ? "bg-ink-900 text-white shadow-soft" : "text-ink-500 hover:text-ink-900"
                 }`}

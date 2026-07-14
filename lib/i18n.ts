@@ -424,6 +424,8 @@ export const t: Dict = {
   nf_title: { hu: "Ez az oldal nem található", me: "Stranica nije pronađena", en: "This page can't be found", ru: "Страница не найдена" },
   nf_body: { hu: "Lehet, hogy elavult a link, vagy a hirdetést levették. Nézz körül a keresőben.", me: "Link je možda zastario ili je oglas uklonjen.", en: "The link may be outdated or the listing was removed. Try a search instead.", ru: "Ссылка устарела или объявление удалено." },
   nf_home: { hu: "Vissza a főoldalra", me: "Nazad na početnu", en: "Back to home", ru: "На главную" },
+  no_results_area: { hu: "Nincs találat ezen a területen", me: "Nema rezultata u ovom području", en: "No results in this area", ru: "Нет результатов в этой области" },
+  no_results_area_hint: { hu: "Nagyíts ki, mozgasd a térképet, vagy kapcsold ki a terület-keresést.", me: "Umanji, pomjeri mapu ili isključi pretragu po području.", en: "Zoom out, move the map, or turn off area search.", ru: "Уменьшите масштаб, сдвиньте карту или выключите поиск по области." },
   err_page_title: { hu: "Hoppá, valami hiba történt", me: "Ups, došlo je do greške", en: "Oops, something went wrong", ru: "Ой, что-то пошло не так" },
   err_page_body: { hu: "Átmeneti hiba lépett fel. Próbáld újratölteni az oldalt.", me: "Došlo je do privremene greške. Pokušajte ponovo.", en: "A temporary error occurred. Please try reloading.", ru: "Произошла временная ошибка. Попробуйте перезагрузить." },
   err_retry: { hu: "Újratöltés", me: "Ponovo učitaj", en: "Try again", ru: "Повторить" },

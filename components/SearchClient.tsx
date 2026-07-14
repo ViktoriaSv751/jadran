@@ -83,11 +83,13 @@ function applyFilters(items: Listing[], f: FilterState): Listing[] {
     case "price_desc":
       out = out.sort((a, b) => b.price - a.price);
       break;
-    case "ppm2":
-      out = out
-        .filter((l) => l.area > 0)
-        .sort((a, b) => pricePerM2(a.price, a.area) - pricePerM2(b.price, b.area));
+    case "ppm2": {
+      // A 0-területű hirdetéseket (pl. telek) NEM dobjuk ki a találatokból —
+      // csak a lista végére tesszük (Infinity), hogy a találatszám ne essen le.
+      const ppm2 = (l: (typeof out)[number]) => (l.area > 0 ? pricePerM2(l.price, l.area) : Infinity);
+      out = out.sort((a, b) => ppm2(a) - ppm2(b));
       break;
+    }
     default:
       out = out.sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt));
   }
@@ -262,7 +264,12 @@ export default function SearchClient() {
             ] as const).map((m) => (
               <button
                 key={m.v || "all"}
-                onClick={() => update({ ...filters, mode: m.v })}
+                onClick={() =>
+                  // Mód-váltáskor a MÁSIK mód rejtett szűrőit is töröljük, hogy ne
+                  // maradjanak láthatatlanul aktívak (pl. „csak verifikált" eladásról
+                  // bérlésre váltva).
+                  update({ ...filters, mode: m.v, verifiedOnly: "", furnished: "", petsOnly: "", minTerm: "" })
+                }
                 className={`rounded-full px-4 py-1.5 text-sm font-semibold transition sm:px-5 ${
                   filters.mode === m.v ? "bg-ink-900 text-white" : "text-ink-600 hover:bg-ink-50"
                 }`}
@@ -403,8 +410,14 @@ export default function SearchClient() {
 
           {loading ? (
             <CardSkeletonGrid count={6} />
-          ) : results.length === 0 ? (
-            <EmptyState title={tr("no_results", lang)} hint={tr("no_results_hint", lang)} />
+          ) : visible.length === 0 ? (
+            // Ha a terület-keresés (rajzolt terület) szűrt ki mindent, más üzenet,
+            // mint amikor a szűrőkre egyáltalán nincs találat.
+            areaBounds && results.length > 0 ? (
+              <EmptyState title={tr("no_results_area", lang)} hint={tr("no_results_area_hint", lang)} />
+            ) : (
+              <EmptyState title={tr("no_results", lang)} hint={tr("no_results_hint", lang)} />
+            )
           ) : view === "map" ? (
             <div className="h-[calc(100vh-13rem)] overflow-hidden rounded-2xl border border-ink-100 shadow-card sm:h-[calc(100vh-9rem)]">
               <MapView
