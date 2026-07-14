@@ -206,6 +206,7 @@ export default function ListingWizard() {
   // Típusválasztó: először csak 6 típus, egy gombbal kinyitható a többi — mint a
   // részletes keresőben.
   const [typeExpanded, setTypeExpanded] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   // Lépésváltáskor MINDIG az oldal tetejére ugrunk, hogy az új lépés űrlapja a
   // képernyő tetejéről induljon (ne középről/aljáról).
@@ -266,14 +267,6 @@ export default function ListingWizard() {
 
   const isRent = form.mode === "rent";
 
-  // Ha a felhasználó nem tölt fel képet, HELYI mintaképekkel töltjük fel (ezek
-  // mindig betöltenek, szemben a külső picsum-mal). Kategóriánként egy-egy.
-  const sampleImages = (seed: string): string[] => {
-    const pools: [string, number][] = [["ext", 10], ["liv", 7], ["kit", 5], ["bed", 5], ["view", 5]];
-    const h = Array.from(seed).reduce((a, c) => a + c.charCodeAt(0), 0);
-    return pools.map(([cat, max], i) => `/p/${cat}${((h + i) % max) + 1}.jpg`);
-  };
-
   const buildPayload = (): Omit<Listing, "id" | "createdAt" | "views" | "priceHistory"> => {
     // Ismert koordináta a településhez; ha nincs, az ország közepe (Podgorica).
     const coords = CITY_COORDS[form.city] ?? CITY_COORDS.Podgorica;
@@ -300,7 +293,9 @@ export default function ListingWizard() {
       lat: coords.lat,
       lng: coords.lng,
       verification: editing?.verification ?? "none",
-      images: urls.length ? urls : sampleImages(user.id + "-" + Date.now().toString(36)),
+      // A fotó kötelező (lásd canContinue) — ezért itt mindig van valós URL. A
+      // korábbi hamis stock-fallbacket megszüntettük.
+      images: urls,
       amenities: form.amenities,
       ownerId: user.id,
       agency: user.agencyName ?? user.name,
@@ -322,40 +317,56 @@ export default function ListingWizard() {
     };
   };
 
+  const imageCount = form.images.split("\n").map((s) => s.trim()).filter(Boolean).length;
+
   const canContinue = (): boolean => {
     if (step === 0) return form.title.trim().length > 0 && form.description.trim().length > 0;
     // Csak az alapterület kötelező itt (a kerület és a szobaszám opcionális —
     // pl. telek/üzlethelyiség esetén nincs is szoba). A város előre ki van töltve.
     if (step === 1) return form.area !== "" && Number(form.area) > 0;
+    // A fotó KÖTELEZŐ: legalább 1 valódi kép kell (nincs több hamis stock-fotó).
+    if (step === 2) return imageCount >= 1;
     if (step === 3) return form.price !== "" && Number(form.price) > 0;
     return true;
   };
 
-  const submit = () => {
+  const submit = async () => {
+    if (submitting) return;
+    setSubmitting(true);
     const payload = buildPayload();
     if (editId && editing) {
       db.updateListing(editId, payload);
       toast(tr("listing_updated_toast", lang));
-    } else {
-      // Limit-ellenőrzés ÚJ hirdetésnél: magánszemély 3 ingyenes, iroda a csomag
-      // szerint. Túllépéskor nem hozzuk létre, hanem az előfizetésre irányítunk.
-      const count = db.ownerListingCount(user.id);
-      const limit = db.listingLimitFor(user);
-      if (count >= limit) {
+      router.push("/listings");
+      return;
+    }
+    // Kliens-oldali gyors ellenőrzés (UX): magánszemély 3 / iroda 10 AKTÍV. A
+    // VALÓDI kényszerítés a DB-triggerben van — ha a kliens-számláló téves lenne,
+    // a szerver akkor is elutasít, és arra a `createListing` limit-hibája reagál.
+    const count = db.ownerListingCount(user.id);
+    const limit = db.listingLimitFor(user);
+    if (count >= limit) {
+      toast(user.role === "agency" ? tr("limit_agency", lang) : tr("limit_private", lang), "error");
+      router.push("/pricing");
+      setSubmitting(false);
+      return;
+    }
+    const res = await db.createListing(payload);
+    if (!res.ok) {
+      setSubmitting(false);
+      if (res.error === "limit") {
         toast(user.role === "agency" ? tr("limit_agency", lang) : tr("limit_private", lang), "error");
         router.push("/pricing");
-        return;
+      } else {
+        toast(tr("listing_create_failed", lang), "error");
       }
-      db.createListing(payload);
-      toast(tr("listing_published_toast", lang));
+      return;
     }
+    toast(tr("listing_published_toast", lang));
     router.push("/listings");
   };
 
-  const previewImages = (() => {
-    const urls = form.images.split("\n").map((s) => s.trim()).filter(Boolean);
-    return urls.length ? urls : sampleImages("preview");
-  })();
+  const previewImages = form.images.split("\n").map((s) => s.trim()).filter(Boolean);
 
   const progressPct = Math.round((step / (STEPS.length - 1)) * 100);
 
@@ -773,10 +784,15 @@ export default function ListingWizard() {
           </div>
         )}
 
-        {/* STEP 2 — Photos */}
+        {/* STEP 2 — Photos (LEGALÁBB 1 kép kötelező) */}
         {step === 2 && (
           <div className="space-y-4">
             <ImageUploader value={form.images} onChange={(v) => set("images", v)} userId={user.id} />
+            {imageCount === 0 && (
+              <p className="flex items-center gap-1.5 text-sm font-medium text-amber-600">
+                <Icon name="eye" size={15} /> {tr("photo_required_hint", lang)}
+              </p>
+            )}
           </div>
         )}
 
@@ -852,7 +868,7 @@ export default function ListingWizard() {
             <Icon name="arrowRight" size={17} strokeWidth={2.4} className="ml-1.5" />
           </Button>
         ) : (
-          <Button variant="accent" size="lg" onClick={submit} className="min-w-[9rem]">
+          <Button variant="accent" size="lg" onClick={submit} loading={submitting} className="min-w-[9rem]">
             <Icon name="check" size={17} strokeWidth={2.6} className="mr-1.5" />
             {editId ? tr("save_changes", lang) : tr("publish", lang)}
           </Button>

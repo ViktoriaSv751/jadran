@@ -223,11 +223,23 @@ function ensureHydrated(): void {
   void loadSessionUser();
   supabase.auth.onAuthStateChange((_e, session) => {
     if (!session) {
+      // Kijelentkezés (ezen vagy másik tabon): teljes helyi állapot-törlés. A
+      // `favInit` visszaállítása fontos, hogy a kedvencek az anonim localStorage-ra
+      // essenek vissza, ne „öröklődjenek" tovább.
       cache.currentUser = null;
       cache.conversations = [];
       cache.messages = [];
       cache.savedSearches = [];
+      cache.favorites = [];
+      favInit = false;
       emit();
+      return;
+    }
+    // SIGNED_IN / TOKEN_REFRESHED (pl. Google/Apple visszatérés, vagy másik tabon
+    // történt belépés): ha még nincs betöltött profil, töltsük be. Enélkül OAuth
+    // után a felület kijelentkezettnek látszana. Ha már van user, nem terheljük.
+    if (!cache.currentUser) {
+      void loadSessionUser();
     }
   });
 }
@@ -262,14 +274,26 @@ export function listingLimitFor(user: Profile | null): number {
   return user.role === "agency" ? 10 : 3;
 }
 
-/** A felhasználó jelenlegi (nem-törölt) hirdetéseinek száma. */
+/** A felhasználó AKTÍV hirdetéseinek száma — ez számít a limitbe (a szüneteltetett
+ *  nem foglal helyet, ahogy a szerver-oldali `enforce_listing_limit` trigger is
+ *  csak az aktívakat számolja). Csak UX-jelzésre: a valódi kényszerítés a DB-ben. */
 export function ownerListingCount(ownerId: string): number {
-  return cache.listings.filter((l) => l.ownerId === ownerId).length;
+  return cache.listings.filter((l) => l.ownerId === ownerId && l.status === "active").length;
 }
 
-export function createListing(
+export type CreateListingResult =
+  | { ok: true; listing: Listing }
+  | { ok: false; error: "limit" | "other"; listing: Listing };
+
+/**
+ * Új hirdetés létrehozása. Optimista beszúrás + VALÓS szerver-ellenőrzés: a
+ * hirdetés-limitet egy DB-trigger kényszeríti ki (megkerülhetetlen), így ha a
+ * kliens-számláló téves (pl. hidratálás-verseny), a szerver akkor is elutasítja.
+ * Elutasításkor VISSZAGÖRGETJÜK az optimista beszúrást, és jelezzük a limitet.
+ */
+export async function createListing(
   data: Omit<Listing, "id" | "createdAt" | "views" | "priceHistory">
-): Listing {
+): Promise<CreateListingResult> {
   const listing: Listing = {
     ...data,
     id: uid("lst"),
@@ -279,13 +303,16 @@ export function createListing(
   };
   cache.listings = [listing, ...cache.listings];
   emit();
-  if (supabase) {
-    void supabase
-      .from("listings")
-      .insert(listingToRow(listing))
-      .then(({ error }) => error && console.error("createListing", error.message));
+  if (!supabase) return { ok: true, listing };
+  const { error } = await supabase.from("listings").insert(listingToRow(listing));
+  if (error) {
+    console.error("createListing", error.message);
+    cache.listings = cache.listings.filter((l) => l.id !== listing.id); // visszagörgetés
+    emit();
+    const isLimit = /listing_limit_exceeded|limit/i.test(error.message);
+    return { ok: false, error: isLimit ? "limit" : "other", listing };
   }
-  return listing;
+  return { ok: true, listing };
 }
 
 export function updateListing(id: string, patch: Partial<Listing>): void {
@@ -424,14 +451,28 @@ export function getProfile(id: string): Profile | undefined {
   return cache.profiles.find((p) => p.id === id);
 }
 
-export async function updateProfile(id: string, patch: Partial<Profile>): Promise<void> {
+/**
+ * Profil-frissítés. Optimista UI + VALÓS ellenőrzés: a `.select()` visszaadja a
+ * ténylegesen módosított sorokat, így ha az RLS elutasítja vagy a szűrő nem talál
+ * (0 sor), NEM hazudunk „Mentve"-t — hanem visszagörgetjük az optimista változást
+ * és `false`-t adunk vissza, hogy a hívó hibát jelezhessen.
+ */
+export async function updateProfile(id: string, patch: Partial<Profile>): Promise<boolean> {
+  const prevProfiles = cache.profiles;
+  const prevUser = cache.currentUser;
   cache.profiles = cache.profiles.map((p) => (p.id === id ? { ...p, ...patch } : p));
   if (cache.currentUser?.id === id) cache.currentUser = { ...cache.currentUser, ...patch };
   emit();
-  if (supabase) {
-    const { error } = await supabase.from("profiles").update(profileToRow(patch)).eq("id", id);
-    if (error) console.error("updateProfile", error.message);
+  if (!supabase) return true; // backend nélkül csak helyi állapot
+  const { data, error } = await supabase.from("profiles").update(profileToRow(patch)).eq("id", id).select();
+  if (error || !data || data.length === 0) {
+    console.error("updateProfile", error?.message ?? "0 sor frissült (RLS?)");
+    cache.profiles = prevProfiles;
+    cache.currentUser = prevUser;
+    emit();
+    return false;
   }
+  return true;
 }
 
 /* ----------------------------- auth ----------------------------- */

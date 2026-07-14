@@ -12,9 +12,12 @@ const cors = {
 };
 
 // Kiemelési csomagok (ár centben, EUR).
+// FONTOS: az `amount` (cent) EGYEZZEN a kliens `lib/pricing.ts` `cents` mezőivel
+// (feature_7d = 500 / 5 €, feature_30d = 1500 / 15 €), hogy a hirdetett ár = a
+// ténylegesen számlázott ár.
 const PLANS: Record<string, { amount: number; days: number; label: string }> = {
-  feature_7d: { amount: 900, days: 7, label: "Kiemelés 7 napra" },
-  feature_30d: { amount: 2900, days: 30, label: "Kiemelés 30 napra" }
+  feature_7d: { amount: 500, days: 7, label: "Kiemelés 7 napra" },
+  feature_30d: { amount: 1500, days: 30, label: "Kiemelés 30 napra" }
 };
 
 const SITE_URL = Deno.env.get("SITE_URL") ?? "https://jadran.vercel.app";

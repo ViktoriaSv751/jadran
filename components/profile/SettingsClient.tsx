@@ -16,13 +16,24 @@ export default function SettingsClient() {
   const [phone, setPhone] = useState(user?.phone ?? "");
   const [location, setLocation] = useState(user?.location ?? "");
   const [bio, setBio] = useState(user?.bio ?? "");
+  const [busy, setBusy] = useState(false);
 
   if (!user) return null;
 
-  const save = (e: React.FormEvent) => {
+  const save = async (e: React.FormEvent) => {
     e.preventDefault();
-    updateProfile({ name: name.trim(), phone, location, bio });
-    toast(tr("profile_saved", lang));
+    if (busy) return;
+    setBusy(true);
+    // Minden mezőt trimmelünk (ne mentsünk csak szóközt), és a mentés VALÓS
+    // eredményét jelezzük — hiba esetén nem hazudunk „Mentve"-t.
+    const ok = await updateProfile({
+      name: name.trim(),
+      phone: phone.trim(),
+      location: location.trim(),
+      bio: bio.trim()
+    });
+    setBusy(false);
+    toast(ok ? tr("profile_saved", lang) : tr("profile_save_failed", lang), ok ? "success" : "error");
   };
 
   return (
@@ -43,7 +54,7 @@ export default function SettingsClient() {
         <Input label={tr("location_label", lang)} value={location} onChange={(e) => setLocation(e.target.value)} />
         <Textarea label={tr("bio_label", lang)} rows={4} value={bio} onChange={(e) => setBio(e.target.value)} />
 
-        <Button type="submit" full size="lg">
+        <Button type="submit" full size="lg" loading={busy}>
           {tr("save_changes", lang)}
         </Button>
       </form>

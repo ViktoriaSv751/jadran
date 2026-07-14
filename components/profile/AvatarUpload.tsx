@@ -36,8 +36,8 @@ export default function AvatarUpload({ size = 88 }: { size?: number }) {
       return;
     }
     const { data } = supabase.storage.from("listings").getPublicUrl(path);
-    updateProfile({ avatar: data.publicUrl });
-    toast(tr("upload_done", lang));
+    const ok = await updateProfile({ avatar: data.publicUrl });
+    toast(ok ? tr("upload_done", lang) : tr("upload_failed", lang), ok ? "success" : "error");
     setBusy(false);
   }
 

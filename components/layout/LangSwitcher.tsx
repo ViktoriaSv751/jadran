@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useLang } from "@/lib/store";
-import { LANGS, tr } from "@/lib/i18n";
+import { LANGS, tr, isNativeLang } from "@/lib/i18n";
 import Icon from "@/components/ui/Icon";
 
 /**
@@ -77,11 +77,19 @@ export default function LangSwitcher({ compact = false }: { compact?: boolean })
               <span className="text-2xl">{l.flag}</span>
               <span className="min-w-0">
                 <span className="block truncate text-sm font-semibold text-ink-900">{l.label}</span>
+                {!isNativeLang(l.code) && (
+                  <span className="mt-0.5 inline-block rounded bg-ink-100 px-1.5 text-[10px] font-bold uppercase tracking-wide text-ink-400">
+                    {tr("lang_auto_badge", lang)}
+                  </span>
+                )}
               </span>
               {lang === l.code && <Icon name="check" size={16} className="ml-auto text-emerald-500" />}
             </button>
           ))}
         </div>
+        <p className="shrink-0 border-t border-ink-100 px-5 py-3 text-[11px] leading-snug text-ink-400">
+          {tr("lang_auto_note", lang)}
+        </p>
       </div>
     </div>
   );

@@ -47,7 +47,7 @@ interface AuthCtx {
   login: (email: string, password: string) => ReturnType<typeof db.login>;
   register: (input: db.RegisterInput) => ReturnType<typeof db.register>;
   logout: () => void;
-  updateProfile: (patch: Partial<Profile>) => void;
+  updateProfile: (patch: Partial<Profile>) => Promise<boolean>;
 }
 
 const AuthContext = createContext<AuthCtx | null>(null);
@@ -81,10 +81,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const updateProfile = useCallback(
-    (patch: Partial<Profile>) => {
-      if (!user) return;
-      void db.updateProfile(user.id, patch);
+    async (patch: Partial<Profile>): Promise<boolean> => {
+      if (!user) return false;
+      const ok = await db.updateProfile(user.id, patch);
       setUser(db.getProfile(user.id) ?? null);
+      return ok;
     },
     [user]
   );

@@ -15,6 +15,11 @@ export const LANGS: { code: Lang; label: string; flag: string }[] = [
   { code: "tr", label: "Türkçe", flag: "🇹🇷" }
 ];
 
+/** A ténylegesen, natívan lefordított felület-nyelvek. A többi nyelv ezekből
+ *  öröklődik (gépi/hasonló nyelvi fallback) — a nyelvválasztó „(auto)"-ként jelzi. */
+export const NATIVE_LANGS: Lang[] = ["hu", "me", "en", "ru"];
+export const isNativeLang = (l: Lang): boolean => NATIVE_LANGS.includes(l);
+
 // Ha egy nyelvre nincs saját fordítás, melyik nyelvből vegye a szöveget.
 // A dél-szláv nyelvek (sr/bs/hr) a montenegrói szöveget használják (közel azonos).
 const FALLBACK_SRC: Record<Lang, Lang> = {
@@ -305,6 +310,31 @@ export const t: Dict = {
   close: { hu: "Bezárás", me: "Zatvori", en: "Close", ru: "Закрыть" },
   language: { hu: "Nyelv", me: "Jezik", en: "Language", ru: "Язык" },
   choose_language: { hu: "Válassz nyelvet", me: "Izaberi jezik", en: "Choose a language", ru: "Выберите язык" },
+  photo_required_hint: {
+    hu: "Legalább egy valódi fotó kötelező a folytatáshoz.",
+    me: "Potrebna je bar jedna prava fotografija.",
+    en: "At least one real photo is required to continue.",
+    ru: "Для продолжения нужна хотя бы одна фотография."
+  },
+  listing_create_failed: {
+    hu: "A hirdetés létrehozása nem sikerült. Próbáld újra.",
+    me: "Kreiranje oglasa nije uspjelo. Pokušaj ponovo.",
+    en: "Couldn't create the listing. Please try again.",
+    ru: "Не удалось создать объявление. Попробуйте снова."
+  },
+  profile_save_failed: {
+    hu: "A mentés nem sikerült. Próbáld újra.",
+    me: "Čuvanje nije uspjelo. Pokušaj ponovo.",
+    en: "Couldn't save. Please try again.",
+    ru: "Не удалось сохранить. Попробуйте снова."
+  },
+  lang_auto_badge: { hu: "auto", me: "auto", en: "auto", ru: "авто" },
+  lang_auto_note: {
+    hu: "Az „auto”-jelölésű nyelvek gépi/hasonló nyelvi fordítással jelennek meg.",
+    me: "Jezici označeni „auto” prikazuju se mašinskim/sličnim prevodom.",
+    en: "Languages marked “auto” are shown via machine / closest-language translation.",
+    ru: "Языки с пометкой «авто» показываются через машинный/близкий перевод."
+  },
   show_original: { hu: "Eredeti megjelenítése", me: "Prikaži original", en: "Show original", ru: "Показать оригинал" },
   show_translation: { hu: "Fordítás megjelenítése", me: "Prikaži prevod", en: "Show translation", ru: "Показать перевод" },
   you: { hu: "Te", me: "Vi", en: "You", ru: "Вы" },

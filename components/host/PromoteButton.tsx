@@ -9,11 +9,7 @@ import { tr } from "@/lib/i18n";
 import Button from "@/components/ui/Button";
 import Icon from "@/components/ui/Icon";
 import { toast } from "@/lib/ui";
-
-const PLANS = [
-  { id: "feature_7d", price: "9 €", labelKey: "promote_7d" as const },
-  { id: "feature_30d", price: "29 €", labelKey: "promote_30d" as const }
-];
+import { BOOST_PLANS, boostPriceLabel } from "@/lib/pricing";
 
 export default function PromoteButton({ listing }: { listing: Listing }) {
   const { lang } = useLang();
@@ -59,7 +55,7 @@ export default function PromoteButton({ listing }: { listing: Listing }) {
       </Button>
       {open && (
         <div className="absolute right-0 z-20 mt-1 w-52 rounded-xl border border-ink-100 bg-white p-1.5 shadow-card">
-          {PLANS.map((p) => (
+          {BOOST_PLANS.map((p) => (
             <button
               key={p.id}
               type="button"
@@ -68,7 +64,7 @@ export default function PromoteButton({ listing }: { listing: Listing }) {
               className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm hover:bg-ink-50"
             >
               <span className="font-medium text-ink-800">{tr(p.labelKey, lang)}</span>
-              <span className="font-bold text-ink-900">{p.price}</span>
+              <span className="font-bold text-ink-900">{boostPriceLabel(p)}</span>
             </button>
           ))}
         </div>

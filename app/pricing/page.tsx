@@ -6,6 +6,7 @@ import { useAuth, useLang } from "@/lib/store";
 import { tr } from "@/lib/i18n";
 import type { Lang } from "@/lib/types";
 import { formatPrice } from "@/lib/format";
+import { BOOST_PLANS } from "@/lib/pricing";
 import { toast } from "@/lib/ui";
 import PageHeading from "@/components/ui/PageHeading";
 import Icon from "@/components/ui/Icon";
@@ -315,9 +316,11 @@ export default function PricingPage() {
 
 /** Magánszemély nézet: ingyenes csomag + opcionális kiemelés-csomagok. */
 function PrivatePlans({ lang }: { lang: Lang }) {
+  // Az árak a KÖZÖS forrásból (lib/pricing) jönnek — így nem csúszhatnak szét a
+  // ténylegesen számlázott (Stripe) összegtől.
   const boosts = [
-    { key: "pricing_boost_7", price: 5, sub: { hu: "gyors löket", me: "brz efekat", en: "quick lift", ru: "быстрый эффект" } },
-    { key: "pricing_boost_30", price: 15, sub: { hu: "legjobb érték", me: "najbolja vrijednost", en: "best value", ru: "лучшая цена" }, best: true }
+    { key: "pricing_boost_7", price: BOOST_PLANS[0].eur, sub: { hu: "gyors löket", me: "brz efekat", en: "quick lift", ru: "быстрый эффект" } },
+    { key: "pricing_boost_30", price: BOOST_PLANS[1].eur, sub: { hu: "legjobb érték", me: "najbolja vrijednost", en: "best value", ru: "лучшая цена" }, best: true }
   ];
   return (
     <div className="mt-6 space-y-8">
