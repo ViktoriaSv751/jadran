@@ -1,10 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useAuth, useLang } from "@/lib/store";
 import { tr } from "@/lib/i18n";
+import * as db from "@/lib/db";
 import { Input, Textarea } from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
+import Icon from "@/components/ui/Icon";
 import AvatarUpload from "@/components/profile/AvatarUpload";
 import PageHeading from "@/components/ui/PageHeading";
 import { toast } from "@/lib/ui";
@@ -12,6 +15,8 @@ import { toast } from "@/lib/ui";
 export default function SettingsClient() {
   const { lang } = useLang();
   const { user, updateProfile } = useAuth();
+  const router = useRouter();
+  const [deleting, setDeleting] = useState(false);
   const [name, setName] = useState(user?.name ?? "");
   const [phone, setPhone] = useState(user?.phone ?? "");
   const [location, setLocation] = useState(user?.location ?? "");
@@ -58,6 +63,30 @@ export default function SettingsClient() {
           {tr("save_changes", lang)}
         </Button>
       </form>
+
+      {/* Veszélyzóna — végleges fiók-törlés (GDPR). */}
+      <div className="mt-6 rounded-2xl border border-rose-200 bg-rose-50/50 p-6">
+        <h2 className="flex items-center gap-2 text-sm font-black uppercase tracking-wide text-rose-600">
+          <Icon name="bolt" size={15} /> {tr("danger_zone", lang)}
+        </h2>
+        <p className="mt-2 text-sm text-ink-600">{tr("delete_account_desc", lang)}</p>
+        <button
+          type="button"
+          disabled={deleting}
+          onClick={async () => {
+            if (!window.confirm(tr("delete_account_confirm", lang))) return;
+            setDeleting(true);
+            const { ok } = await db.deleteAccount();
+            setDeleting(false);
+            if (!ok) return toast(tr("delete_failed", lang), "error");
+            toast(tr("account_deleted", lang));
+            router.push("/");
+          }}
+          className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-rose-300 bg-white px-5 py-2.5 text-sm font-semibold text-rose-600 transition hover:bg-rose-600 hover:text-white disabled:opacity-60"
+        >
+          <Icon name="close" size={15} strokeWidth={2.4} /> {tr("delete_account", lang)}
+        </button>
+      </div>
     </div>
   );
 }

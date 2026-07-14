@@ -31,6 +31,12 @@ export default function InquiryButton({
     const run = () => {
       const me = db.getCurrentUser();
       if (!me) return;
+      // Ha a belépés UTÁN kiderül, hogy a saját hirdetésünkről van szó (kijelentkezve
+      // nyitottuk meg), ne hozzunk létre önmagunkkal beszélgetést.
+      if (me.id === listing.ownerId) {
+        toast(tr("own_listing_note", lang));
+        return;
+      }
       const conv = db.getOrCreateConversation(listing.id, me.id, listing.ownerId);
       const existing = db.getMessagesForConversation(conv.id);
       if (existing.length === 0) {

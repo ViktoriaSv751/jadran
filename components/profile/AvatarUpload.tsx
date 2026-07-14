@@ -22,6 +22,10 @@ export default function AvatarUpload({ size = 88 }: { size?: number }) {
   async function handle(files: FileList | null) {
     const file = files?.[0];
     if (!file || !file.type.startsWith("image/")) return;
+    if (file.size > 5 * 1024 * 1024) {
+      toast(tr("file_too_large", lang), "error");
+      return;
+    }
     if (!hasSupabase || !supabase) {
       toast(tr("upload_no_backend", lang));
       return;

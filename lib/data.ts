@@ -875,15 +875,23 @@ export const montenegroPlaces: string[] = Array.from(
 ).sort((a, b) => a.localeCompare(b));
 
 export function similarListings(listing: Listing, all: Listing[], n = 3): Listing[] {
+  // A TÍPUS-egyezést erősebben súlyozzuk (egy telek ne legyen „hasonló" egy
+  // lakáshoz), és a MÉRETET is figyelembe vesszük — nem csak az árat, hogy nagyon
+  // eltérő méretű ingatlanok ne kerüljenek egymás mellé.
+  const areaClose = (l: Listing) =>
+    listing.area > 0 && l.area > 0 && Math.abs(l.area - listing.area) < Math.max(listing.area, l.area) * 0.4;
   return all
     .filter((l) => l.id !== listing.id && l.mode === listing.mode && l.status === "active")
     .map((l) => ({
       l,
       score:
+        (l.type === listing.type ? 4 : 0) +
         (l.city === listing.city ? 3 : 0) +
-        (l.type === listing.type ? 2 : 0) +
-        (Math.abs(l.price - listing.price) < listing.price * 0.4 ? 2 : 0)
+        (Math.abs(l.price - listing.price) < listing.price * 0.35 ? 2 : 0) +
+        (areaClose(l) ? 2 : 0)
     }))
+    // Csak érdemi egyezést mutatunk (legalább a típus VAGY a város stimmel).
+    .filter((x) => x.score >= 3)
     .sort((a, b) => b.score - a.score)
     .slice(0, n)
     .map((x) => x.l);

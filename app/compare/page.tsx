@@ -154,7 +154,12 @@ function CompareInner() {
               {l.energy || "—"}
             </span>
           ),
-          best: (l) => (l.energy ? -l.energy.toUpperCase().charCodeAt(0) : null), // 'A' a legjobb
+          // Csak ÉRVÉNYES A–G besorolásra számítunk „legjobbat" (az 'A' a legjobb);
+          // üres vagy érvénytelen érték (pl. import „N/A") NEM lehet győztes.
+          best: (l) => {
+            const e = (l.energy || "").trim().toUpperCase();
+            return /^[A-G]$/.test(e) ? -e.charCodeAt(0) : null;
+          },
           dir: "max"
         },
         { label: tr("furnished", lang), render: (l) => <YesNo v={l.furnished} lang={lang} /> }

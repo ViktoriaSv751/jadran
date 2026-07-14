@@ -349,18 +349,14 @@ export function deleteListing(id: string): void {
 }
 
 export function incrementViews(id: string): void {
-  let next = 0;
-  cache.listings = cache.listings.map((l) => {
-    if (l.id !== id) return l;
-    next = l.views + 1;
-    return { ...l, views: next };
-  });
+  // Optimista +1 a helyi cache-ben.
+  cache.listings = cache.listings.map((l) => (l.id === id ? { ...l, views: l.views + 1 } : l));
   emit();
+  // Szerver-oldalon ATOMI inkrement (RPC) — az abszolút írás (views: next)
+  // versenyhelyzetben elveszhetett vagy visszaeshetett a hidratáláskor.
   if (supabase) {
     void supabase
-      .from("listings")
-      .update({ views: next })
-      .eq("id", id)
+      .rpc("increment_views", { p_listing_id: id })
       .then(({ error }) => error && console.error("incrementViews", error.message));
   }
 }
@@ -581,6 +577,15 @@ export async function updatePassword(newPassword: string): Promise<{ ok: boolean
   if (!supabase) return { ok: false };
   const { error } = await supabase.auth.updateUser({ password: newPassword });
   return { ok: !error };
+}
+
+/** Fiók + minden hozzá tartozó adat VÉGLEGES törlése (GDPR) az edge functionön át. */
+export async function deleteAccount(): Promise<{ ok: boolean }> {
+  if (!supabase) return { ok: false };
+  const { data, error } = await supabase.functions.invoke("delete-account", { body: {} });
+  if (error || !data?.ok) return { ok: false };
+  await logout();
+  return { ok: true };
 }
 
 export async function register(input: RegisterInput): Promise<AuthResult> {

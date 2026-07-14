@@ -14,8 +14,8 @@ import Avatar from "@/components/ui/Avatar";
 import Icon from "@/components/ui/Icon";
 
 export default function Header() {
-  const { lang, setLang } = useLang();
-  const { user, logout } = useAuth();
+  const { lang } = useLang();
+  const { user } = useAuth();
   const unread = useUnreadCount(user?.id);
   const pathname = usePathname();
   const router = useRouter();
@@ -71,14 +71,7 @@ export default function Header() {
 
           <LangSwitcher />
 
-          <AccountMenu
-            user={user}
-            unread={unread}
-            lang={lang}
-            onLogout={() => {
-              logout();
-            }}
-          />
+          <AccountMenu user={user} unread={unread} lang={lang} />
         </div>
       </div>
     </header>
@@ -93,7 +86,6 @@ function AccountMenu({
   user: ReturnType<typeof useAuth>["user"];
   unread: number;
   lang: Lang;
-  onLogout: () => void;
 }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
