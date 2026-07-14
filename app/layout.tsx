@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     siteName: "PROOPIFY",
     title: "PROOPIFY — Ingatlan Montenegróban",
     description:
-      "Verifikált ingatlanhirdetések Montenegróban — átlátható árak, térképes keresés, 4 nyelven.",
+      "Verifikált ingatlanhirdetések Montenegróban — átlátható árak, térképes keresés, több nyelven.",
     url: SITE_URL,
     locale: "hu_HU"
   },

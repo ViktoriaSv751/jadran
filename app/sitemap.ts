@@ -3,7 +3,9 @@ import { supabaseServer, SITE_URL } from "@/lib/supabase-server";
 
 /** Dinamikus sitemap: statikus oldalak + minden aktív hirdetés. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticRoutes = ["", "/search", "/listings", "/guide", "/favorites"].map((p) => ({
+  // Csak PUBLIKUS oldalak (a /favorites felhasználó-specifikus és a robots is
+  // tiltja — ezért kimarad a sitemapből).
+  const staticRoutes = ["", "/search", "/market", "/guide", "/pricing"].map((p) => ({
     url: `${SITE_URL}${p}`,
     changeFrequency: "daily" as const,
     priority: p === "" ? 1 : 0.7

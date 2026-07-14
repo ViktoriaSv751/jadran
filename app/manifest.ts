@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "PROOPIFY — Ingatlan Montenegróban",
     short_name: "PROOPIFY",
     description:
-      "Verifikált ingatlanhirdetések Montenegróban — átlátható árak, térképes keresés, 4 nyelven.",
+      "Verifikált ingatlanhirdetések Montenegróban — átlátható árak, térképes keresés, több nyelven.",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",
@@ -14,6 +14,10 @@ export default function manifest(): MetadataRoute.Manifest {
     lang: "hu",
     categories: ["business", "lifestyle", "shopping"],
     icons: [
+      // A `/icon` egy Next által generált 512×512 PNG (sok launcher az SVG-t nem
+      // fogadja el) — „any" és „maskable" célra is.
+      { src: "/icon", sizes: "512x512", type: "image/png", purpose: "any" },
+      { src: "/icon", sizes: "512x512", type: "image/png", purpose: "maskable" },
       { src: "/logo.svg", sizes: "any", type: "image/svg+xml", purpose: "any" }
     ]
   };

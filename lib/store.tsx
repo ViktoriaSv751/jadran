@@ -24,12 +24,15 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
     // különben a nyelvváltás nem marad meg újratöltés után.
     if (stored && (LANGS as readonly { code: string }[]).some((l) => l.code === stored)) {
       setLangState(stored);
+      document.documentElement.lang = stored;
     }
   }, []);
 
   const setLang = (l: Lang) => {
     setLangState(l);
     localStorage.setItem("jadran_lang", l);
+    // A11y/SEO: a <html lang> kövesse a választott nyelvet.
+    document.documentElement.lang = l;
   };
 
   return <LangContext.Provider value={{ lang, setLang }}>{children}</LangContext.Provider>;
