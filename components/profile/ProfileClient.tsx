@@ -16,7 +16,9 @@ export default function ProfileClient() {
   const unread = useUnreadCount(user?.id);
   if (!user) return null;
 
-  const isSeller = user.role === "agency" || user.role === "seller";
+  // A hirdetés-statisztikát iroda és bármely, már hirdetést feladott magánszemély
+  // is látja (mindenki eladhat); a tiszta böngésző a kedvenc/üzenet statokat kapja.
+  const isSeller = user.role === "agency" || listings.length > 0;
   const active = listings.filter((l) => l.status === "active").length;
   const totalViews = listings.reduce((acc, l) => acc + l.views, 0);
   const roleLabel =

@@ -511,14 +511,13 @@ async function fetchProfileByAuthId(authId: string): Promise<Profile | null> {
   return null;
 }
 
-/** Egykattintásos demo-belépés — előre beállított demo fiókok. */
+/** Egykattintásos demo-belépés — a KÉT szerepkörhöz egy-egy demo fiók. */
 export const DEMO_ACCOUNTS = {
-  buyer: { email: "demo@jadran.me", password: "demo1234" },
-  seller: { email: "jelena.k@example.com", password: "demo1234" },
+  private: { email: "jelena.k@example.com", password: "demo1234" },
   agency: { email: "hello@adriatichomes.me", password: "demo1234" }
 } as const;
 
-export function loginDemo(role: "buyer" | "seller" | "agency"): Promise<AuthResult> {
+export function loginDemo(role: "private" | "agency"): Promise<AuthResult> {
   const acc = DEMO_ACCOUNTS[role];
   return login(acc.email, acc.password);
 }
@@ -534,18 +533,33 @@ export async function loginOAuth(
   return { ok: true }; // sikeres esetben átirányít, a lap újratölt
 }
 
+/** Hitelesítési hiba-e (rossz jelszó/email), vagy átmeneti (hálózat/5xx)?
+ *  Csak az utóbbinál érdemes újrapróbálni — a rossz jelszót ne lassítsuk. */
+function isAuthError(err: { status?: number; message?: string } | null): boolean {
+  if (!err) return false;
+  if (err.status === 400 || err.status === 401 || err.status === 422) return true;
+  return /invalid|credential|not.?found|password|email/i.test(err.message ?? "");
+}
+
+/** „Maradjak bejelentkezve" beállítása belépés előtt (lásd lib/supabase tároló). */
+export function setRemember(remember: boolean): void {
+  if (isBrowser) localStorage.setItem("px_remember", remember ? "1" : "0");
+}
+
 export async function login(email: string, password: string): Promise<AuthResult> {
   if (!supabase) return { ok: false, error: "no_backend" };
   const creds = { email: email.trim().toLowerCase(), password };
-  // Egy AUTOMATIKUS újrapróbálkozás — a Supabase auth néha átmenetileg (hálózat/
-  // rate-limit) hibázik, és a második próbálkozás már sikeres.
   let res = await supabase.auth.signInWithPassword(creds);
-  if (res.error || !res.data.user) {
+  // ÚJRAPRÓBÁLKOZÁS CSAK átmeneti (hálózati/5xx) hibánál — a hitelesítési hibát
+  // (rossz jelszó) NEM ismételjük, hogy ne lassítsuk és ne merítsük a rate-limitet.
+  if (res.error && !isAuthError(res.error)) {
     await new Promise((r) => setTimeout(r, 500));
     res = await supabase.auth.signInWithPassword(creds);
   }
   const { data, error } = res;
-  if (error || !data.user) return { ok: false, error: "bad_password" };
+  if (error || !data.user) {
+    return { ok: false, error: isAuthError(error) ? "bad_password" : "network" };
+  }
   const profile = await fetchProfileByAuthId(data.user.id);
   if (!profile) return { ok: false, error: "no_user" };
   cache.currentUser = profile;
@@ -554,9 +568,27 @@ export async function login(email: string, password: string): Promise<AuthResult
   return { ok: true, user: profile };
 }
 
+/** Jelszó-visszaállító email küldése (a felhasználó a /reset-password oldalra tér vissza). */
+export async function resetPassword(email: string): Promise<{ ok: boolean }> {
+  if (!supabase) return { ok: false };
+  const redirectTo = isBrowser ? `${window.location.origin}/reset-password` : undefined;
+  const { error } = await supabase.auth.resetPasswordForEmail(email.trim().toLowerCase(), { redirectTo });
+  return { ok: !error };
+}
+
+/** Új jelszó beállítása (a recovery-linkről érkező, ideiglenes session-nel). */
+export async function updatePassword(newPassword: string): Promise<{ ok: boolean }> {
+  if (!supabase) return { ok: false };
+  const { error } = await supabase.auth.updateUser({ password: newPassword });
+  return { ok: !error };
+}
+
 export async function register(input: RegisterInput): Promise<AuthResult> {
   if (!supabase) return { ok: false, error: "no_backend" };
   const email = input.email.trim().toLowerCase();
+  // Kliens-oldali alap-ellenőrzés, hogy a nyers Supabase-hibák ne szivárogjanak ki.
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return { ok: false, error: "invalid_email" };
+  if (input.password.length < 6) return { ok: false, error: "weak_password" };
   const { data, error } = await supabase.auth.signUp({
     email,
     password: input.password,
@@ -569,7 +601,15 @@ export async function register(input: RegisterInput): Promise<AuthResult> {
     }
   });
   if (error) {
-    return { ok: false, error: error.message.includes("registered") ? "exists" : error.message };
+    const m = error.message.toLowerCase();
+    const code = m.includes("registered") || m.includes("already")
+      ? "exists"
+      : m.includes("password")
+        ? "weak_password"
+        : m.includes("email")
+          ? "invalid_email"
+          : "other";
+    return { ok: false, error: code };
   }
   // Ha nincs e-mail megerősítés, rögtön van session; egyébként belépünk.
   if (!data.session) {

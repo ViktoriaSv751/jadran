@@ -55,7 +55,25 @@ export default function AuthForm({
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const [oauthBusy, setOauthBusy] = useState<"google" | "apple" | null>(null);
-  const [demoBusy, setDemoBusy] = useState<"buyer" | "seller" | "agency" | null>(null);
+  const [demoBusy, setDemoBusy] = useState<"private" | "agency" | null>(null);
+  const [remember, setRemember] = useState(true);
+
+  // Bármelyik belépési mód fut → MINDEN gombot tiltunk (nincs dupla-submit).
+  const anyBusy = busy || !!oauthBusy || !!demoBusy;
+
+  /** A db-ből jövő hibakódot lefordított, felhasználóbarát üzenetre képezi. */
+  const mapAuthError = (code: string): string => {
+    const keys: Record<string, string> = {
+      bad_password: "err_bad_credentials",
+      exists: "err_email_exists",
+      confirm_email: "err_confirm_email",
+      weak_password: "err_weak_password",
+      invalid_email: "err_invalid_email",
+      network: "err_network",
+      no_backend: "err_network"
+    };
+    return tr(keys[code] ?? "err_generic", lang);
+  };
 
   const done = () => {
     toast(mode === "login" ? tr("welcome_back_toast", lang) : tr("account_created_toast", lang));
@@ -64,6 +82,7 @@ export default function AuthForm({
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (anyBusy) return;
     setBusy(true);
     setError("");
     if (mode === "login") {
@@ -72,28 +91,38 @@ export default function AuthForm({
         setBusy(false);
         return;
       }
+      db.setRemember(remember);
       const res = await login(email, password);
       setBusy(false);
-      if (!res.ok) return setError(tr("err_bad_credentials", lang));
+      if (!res.ok) return setError(mapAuthError(res.error));
     } else {
       if (!email || !password || !name || (role === "agency" && !agencyName)) {
         setError(tr("err_fill_all", lang));
         setBusy(false);
         return;
       }
+      if (password.length < 6) {
+        setError(tr("err_weak_password", lang));
+        setBusy(false);
+        return;
+      }
+      db.setRemember(remember);
       const res = await register({ email, password, name, role, agencyName });
       setBusy(false);
-      if (!res.ok) {
-        return setError(
-          res.error === "exists"
-            ? tr("err_email_exists", lang)
-            : res.error === "confirm_email"
-              ? tr("err_confirm_email", lang)
-              : tr("err_fill_all", lang)
-        );
-      }
+      if (!res.ok) return setError(mapAuthError(res.error));
     }
     done();
+  };
+
+  const [resetBusy, setResetBusy] = useState(false);
+  const forgotPassword = async () => {
+    if (!email) return setError(tr("reset_need_email", lang));
+    setResetBusy(true);
+    setError("");
+    await db.resetPassword(email);
+    setResetBusy(false);
+    // Mindig sikeres visszajelzés (nem áruljuk el, létezik-e a fiók).
+    toast(tr("reset_email_sent", lang));
   };
 
   const oauth = async (provider: "google" | "apple") => {
@@ -107,7 +136,7 @@ export default function AuthForm({
     // siker esetén átirányít
   };
 
-  const demo = async (r: "buyer" | "seller" | "agency") => {
+  const demo = async (r: "private" | "agency") => {
     setDemoBusy(r);
     setError("");
     const res = await db.loginDemo(r);
@@ -134,7 +163,7 @@ export default function AuthForm({
         <button
           type="button"
           onClick={() => oauth("google")}
-          disabled={!!oauthBusy}
+          disabled={anyBusy}
           className="flex items-center justify-center gap-2.5 rounded-xl border border-ink-200 bg-white py-3 text-sm font-semibold text-ink-800 transition hover:bg-ink-50 disabled:opacity-60"
         >
           <GoogleG /> {tr("continue_google", lang)}
@@ -142,7 +171,7 @@ export default function AuthForm({
         <button
           type="button"
           onClick={() => oauth("apple")}
-          disabled={!!oauthBusy}
+          disabled={anyBusy}
           className="flex items-center justify-center gap-2 rounded-xl bg-ink-900 py-3 text-sm font-semibold text-white transition hover:bg-ink-800 disabled:opacity-60"
         >
           <AppleLogo /> {tr("continue_apple", lang)}
@@ -155,10 +184,10 @@ export default function AuthForm({
           {tr("demo_try_title", lang)}
         </p>
         <div className="grid grid-cols-2 gap-2">
-          <Button variant="outline" size="sm" loading={demoBusy === "seller"} onClick={() => demo("seller")}>
+          <Button variant="outline" size="sm" loading={demoBusy === "private"} disabled={anyBusy} onClick={() => demo("private")}>
             <Icon name="user" size={14} className="mr-1" /> {tr("role_private", lang)}
           </Button>
-          <Button variant="outline" size="sm" loading={demoBusy === "agency"} onClick={() => demo("agency")}>
+          <Button variant="outline" size="sm" loading={demoBusy === "agency"} disabled={anyBusy} onClick={() => demo("agency")}>
             <Icon name="building" size={14} className="mr-1" /> {tr("role_agency", lang)}
           </Button>
         </div>
@@ -232,9 +261,32 @@ export default function AuthForm({
           autoComplete={mode === "login" ? "current-password" : "new-password"}
         />
 
+        {/* Maradjak bejelentkezve + elfelejtett jelszó — csak belépésnél. */}
+        {mode === "login" && (
+          <div className="flex items-center justify-between gap-2 pt-0.5">
+            <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-600">
+              <input
+                type="checkbox"
+                checked={remember}
+                onChange={(e) => setRemember(e.target.checked)}
+                className="h-4 w-4 rounded border-ink-300 text-brand-600 focus:ring-brand-200"
+              />
+              {tr("remember_me", lang)}
+            </label>
+            <button
+              type="button"
+              onClick={forgotPassword}
+              disabled={resetBusy}
+              className="text-sm font-semibold text-brand-600 hover:underline disabled:opacity-60"
+            >
+              {tr("forgot_password", lang)}
+            </button>
+          </div>
+        )}
+
         {error && <p className="rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-600">{error}</p>}
 
-        <Button type="submit" full loading={busy} size="lg">
+        <Button type="submit" full loading={busy} disabled={anyBusy} size="lg">
           {mode === "login" ? tr("sign_in_cta", lang) : tr("create_account_cta", lang)}
         </Button>
       </form>

@@ -39,7 +39,7 @@ export type ListingStatus = "active" | "paused";
 
 /** Account roles. A "private" (magánszemély) kereshet ÉS eladhat is; a
  *  korábbi buyer/seller ennek felel meg (a felületen mind Magánszemély). */
-export type UserRole = "buyer" | "seller" | "private" | "agency";
+export type UserRole = "private" | "agency";
 
 /**
  * Amenities = physical features of the property (valid for both sale & rent).
