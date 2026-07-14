@@ -545,7 +545,13 @@ export async function register(input: RegisterInput): Promise<AuthResult> {
 }
 
 export async function logout(): Promise<void> {
-  if (supabase) await supabase.auth.signOut();
+  // A szerver-oldali kijelentkezés hibája (pl. hálózat) NEM akadályozhatja meg a
+  // helyi állapot törlését — különben a felhasználó „bent ragadna".
+  try {
+    if (supabase) await supabase.auth.signOut();
+  } catch {
+    /* a helyi állapotot mindenképp töröljük lentebb */
+  }
   cache.currentUser = null;
   cache.conversations = [];
   cache.messages = [];
@@ -581,12 +587,21 @@ export function toggleFavorite(id: string): void {
   if (supabase && uidp) {
     // BEJELENTKEZVE: a kedvenc a FIÓKHOZ kötött (Supabase). NEM írjuk a
     // localStorage-ba — különben egy másik fiók a saját eszközén „örökölné" a
-    // kedvenceket (fiókok közti adatszivárgás).
-    if (wasFav) {
-      void supabase.from("favorites").delete().eq("user_id", uidp).eq("listing_id", id);
-    } else {
-      void supabase.from("favorites").insert({ user_id: uidp, listing_id: id });
-    }
+    // kedvenceket (fiókok közti adatszivárgás). A hibát NAPLÓZZUK (korábban némán
+    // elveszett), és ha a szerver elutasítja, visszaállítjuk az optimista UI-t.
+    const op = wasFav
+      ? supabase.from("favorites").delete().eq("user_id", uidp).eq("listing_id", id)
+      : supabase.from("favorites").upsert({ user_id: uidp, listing_id: id }, { onConflict: "user_id,listing_id" });
+    void Promise.resolve(op).then(({ error }) => {
+      if (error) {
+        // eslint-disable-next-line no-console
+        console.error("[favorites] mentés sikertelen:", error.message, error);
+        // Visszagörgetés: az optimista változást visszavonjuk, hogy a UI a valós
+        // állapotot tükrözze.
+        cache.favorites = wasFav ? [...cache.favorites, id] : cache.favorites.filter((x) => x !== id);
+        emit();
+      }
+    });
   } else {
     // KIJELENTKEZVE: eszköz-lokális (anonim) kedvencek.
     writeLS(K_FAV, next);

@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useAuth, useLang, useConversations, useMessages, useListings, useProfiles } from "@/lib/store";
-import type { Lang, Message } from "@/lib/types";
+import type { Lang } from "@/lib/types";
 import { tr, loc } from "@/lib/i18n";
 import { formatPrice } from "@/lib/format";
 import { translateText } from "@/lib/translate";
@@ -12,7 +12,39 @@ import * as db from "@/lib/db";
 import Avatar from "@/components/ui/Avatar";
 import Photo from "@/components/Photo";
 import Icon from "@/components/ui/Icon";
-import PageHeading from "@/components/ui/PageHeading";
+
+/* ------------------------------ dátum-segédek ------------------------------ */
+
+const locFor = (lang: Lang) => (lang === "hu" ? "hu-HU" : lang === "ru" ? "ru-RU" : lang === "me" ? "sr-Latn" : "en-GB");
+
+function sameDay(a: Date, b: Date): boolean {
+  return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+}
+
+/** Nap-chip felirata: Ma / Tegnap / dátum. */
+function dayLabel(d: Date, lang: Lang): string {
+  const now = new Date();
+  const yest = new Date(now);
+  yest.setDate(now.getDate() - 1);
+  if (sameDay(d, now)) return tr("msg_today", lang);
+  if (sameDay(d, yest)) return tr("msg_yesterday", lang);
+  return d.toLocaleDateString(locFor(lang), { year: "numeric", month: "short", day: "numeric" });
+}
+
+const timeLabel = (d: Date, lang: Lang) =>
+  d.toLocaleTimeString(locFor(lang), { hour: "2-digit", minute: "2-digit" });
+
+/** Rövid, listához való időbélyeg: ma → óra:perc, héten belül → nap, egyébként dátum. */
+function shortStamp(iso: string, lang: Lang): string {
+  const d = new Date(iso);
+  const now = new Date();
+  if (sameDay(d, now)) return timeLabel(d, lang);
+  const diff = (now.getTime() - d.getTime()) / 86400000;
+  if (diff < 7) return d.toLocaleDateString(locFor(lang), { weekday: "short" });
+  return d.toLocaleDateString(locFor(lang), { month: "short", day: "numeric" });
+}
+
+/* ================================ fő komponens ================================ */
 
 export default function MessagesClient() {
   const { lang } = useLang();
@@ -51,21 +83,19 @@ export default function MessagesClient() {
   const listingFor = (id: string) => listings.find((l) => l.id === id);
   const profileFor = (id: string) => profiles.find((p) => p.id === id);
 
+  // Kereső-szűrés: partner neve vagy hirdetés címe alapján.
   const filtered = useMemo(() => {
-    if (!user) return conversations;
     const q = query.trim().toLowerCase();
-    if (!q) return conversations;
+    if (!q || !user) return conversations;
     return conversations.filter((c) => {
       const otherId = c.buyerId === user.id ? c.sellerId : c.buyerId;
       const other = profileFor(otherId);
       const listing = listingFor(c.listingId);
-      return (
-        (other?.name ?? "").toLowerCase().includes(q) ||
-        (listing ? loc(listing.title, lang) : "").toLowerCase().includes(q)
-      );
+      const hay = `${other?.name ?? ""} ${listing ? loc(listing.title, lang) : ""}`.toLowerCase();
+      return hay.includes(q);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [conversations, query, user, profiles, listings, lang]);
+  }, [query, conversations, user, profiles, listings, lang]);
 
   if (!authReady || !ready) {
     return <div className="mx-auto max-w-6xl px-4 py-20 text-center text-ink-400">{tr("loading", lang)}</div>;
@@ -89,101 +119,86 @@ export default function MessagesClient() {
     );
   }
 
-  // Kitűzött beszélgetések MINDIG felül.
-  const pinnedSet = new Set(user ? db.getPinnedConversations() : []);
-  const sorted = [...filtered].sort(
-    (a, b) => (pinnedSet.has(b.id) ? 1 : 0) - (pinnedSet.has(a.id) ? 1 : 0)
-  );
-
   return (
-    <div className="mx-auto max-w-6xl px-4 py-5">
-      {/* Cím ikonnal — ugyanúgy, mint a Mentett oldalon a „Kedvencek". */}
-      <PageHeading icon="message" className="mb-4">{tr("conversations", lang)}</PageHeading>
-      <div className="grid h-[calc(100vh-11rem)] overflow-hidden rounded-3xl border border-ink-100 bg-white shadow-card sm:h-[72vh] lg:grid-cols-[340px_1fr]">
-        {/* Lista */}
-        <aside className={`${active ? "hidden lg:flex" : "flex"} min-w-0 min-h-0 flex-col border-ink-100 lg:border-r`}>
-          <div className="border-b border-ink-100 p-3">
-            <div className="flex items-center gap-2 rounded-full bg-ink-100/70 px-3.5 py-2">
+    <div className="mx-auto max-w-6xl px-0 sm:px-4 sm:py-5">
+      {/* Kártya-keret, ami a lista + thread két paneljét egyben tartja (mint egy
+          asztali üzenetküldő). Mobilon a kártya PONTOSAN a fejléc (≈67px) és a
+          fix alsó menü (≈76px) közötti helyet tölti ki (100dvh − 9rem), így a lap
+          maga NEM görgethető — csak a listán/threaden belül van görgetés. */}
+      <div className="flex h-[calc(100dvh-9rem)] overflow-hidden border-ink-100 bg-white sm:h-[78vh] sm:rounded-3xl sm:border sm:shadow-card">
+        {/* ---------------- Beszélgetés-lista ---------------- */}
+        <aside
+          className={`${active ? "hidden lg:flex" : "flex"} w-full shrink-0 flex-col border-ink-100 lg:w-[360px] lg:border-r`}
+        >
+          <div className="shrink-0 border-b border-ink-100 px-4 pb-3 pt-4">
+            <h1 className="text-xl font-black tracking-tight text-ink-900">{tr("conversations", lang)}</h1>
+            <div className="mt-3 flex items-center gap-2 rounded-full bg-ink-50 px-3.5 py-2">
               <Icon name="search" size={16} className="shrink-0 text-ink-400" />
               <input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder={tr("chat_search", lang)}
-                className="w-full min-w-0 bg-transparent text-sm text-ink-800 placeholder:text-ink-400 focus:outline-none"
+                placeholder={tr("search_convos", lang)}
+                className="w-full bg-transparent text-sm text-ink-800 placeholder:text-ink-400 focus:outline-none"
               />
+              {query && (
+                <button onClick={() => setQuery("")} aria-label={tr("close", lang)} className="text-ink-400 hover:text-ink-700">
+                  <Icon name="close" size={15} strokeWidth={2.2} />
+                </button>
+              )}
             </div>
           </div>
-          <div className="no-scrollbar min-h-0 flex-1 space-y-0.5 overflow-y-auto p-2">
-            {sorted.map((c) => {
-              const listing = listingFor(c.listingId);
-              const otherId = c.buyerId === user!.id ? c.sellerId : c.buyerId;
-              const other = profileFor(otherId);
-              const isActive = c.id === activeId;
-              const msgs = db.getMessagesForConversation(c.id);
-              const last = msgs[msgs.length - 1];
-              const unread = db.conversationHasUnread(c.id, user!.id);
-              const pinned = pinnedSet.has(c.id);
-              return (
-                <div
-                  key={c.id}
-                  onClick={() => setActiveId(c.id)}
-                  className={`group relative flex w-full cursor-pointer items-center gap-3 rounded-2xl p-2.5 pr-9 text-left transition ${
-                    isActive ? "bg-brand-50 ring-1 ring-brand-200" : "hover:bg-ink-50"
-                  }`}
-                >
-                  <div className="relative shrink-0">
-                    <Avatar name={other?.name ?? "?"} src={other?.avatar} size={48} />
-                    {unread && (
-                      <span className="absolute -right-0.5 -top-0.5 h-3.5 w-3.5 rounded-full border-2 border-white bg-brand-500" />
-                    )}
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className={`flex min-w-0 items-center gap-1 truncate text-sm ${unread ? "font-bold text-ink-900" : "font-semibold text-ink-800"}`}>
-                        {pinned && <Icon name="star" size={12} strokeWidth={2.4} className="shrink-0 text-amber-400" />}
-                        <span className="truncate">{other?.name ?? "—"}</span>
-                      </span>
-                      {last && <span className="shrink-0 text-[11px] text-ink-400">{shortTime(last.createdAt, lang)}</span>}
-                    </div>
-                    <div className="truncate text-xs text-ink-400">{listing ? loc(listing.title, lang) : ""}</div>
-                    {last && (
-                      <div className={`truncate text-xs ${unread ? "font-semibold text-ink-700" : "text-ink-500"}`}>
-                        {last.senderId === user!.id ? "· " : ""}
-                        {last.text}
-                      </div>
-                    )}
-                  </div>
-                  {/* Kitűzés — a kitűzött beszélgetés a lista tetejére kerül. */}
+
+          <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain py-1">
+            {filtered.length === 0 ? (
+              <p className="px-4 py-10 text-center text-sm text-ink-400">{tr("no_convo_results", lang)}</p>
+            ) : (
+              filtered.map((c) => {
+                const listing = listingFor(c.listingId);
+                const otherId = c.buyerId === user!.id ? c.sellerId : c.buyerId;
+                const other = profileFor(otherId);
+                const isActive = c.id === activeId;
+                const msgs = db.getMessagesForConversation(c.id);
+                const last = msgs[msgs.length - 1];
+                const unread = msgs.some((m) => m.senderId !== user!.id && !m.readBy.includes(user!.id));
+                const mine = last && last.senderId === user!.id;
+                return (
                   <button
-                    type="button"
-                    aria-label={tr("pin_conversation", lang)}
-                    title={tr("pin_conversation", lang)}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      db.togglePinnedConversation(c.id);
-                    }}
-                    className={`absolute right-1.5 top-1/2 grid h-7 w-7 -translate-y-1/2 place-items-center rounded-full transition ${
-                      pinned
-                        ? "text-amber-400"
-                        : "text-ink-300 opacity-60 hover:text-ink-600 sm:opacity-0 sm:group-hover:opacity-100"
+                    key={c.id}
+                    onClick={() => setActiveId(c.id)}
+                    className={`flex w-full items-center gap-3 px-3 py-2.5 text-left transition ${
+                      isActive ? "bg-ink-50" : "hover:bg-ink-50/70"
                     }`}
                   >
-                    <Icon name="star" size={16} strokeWidth={2.2} />
+                    <span className="relative shrink-0">
+                      <Avatar name={other?.name ?? "?"} src={other?.avatar} size={52} />
+                      {unread && (
+                        <span className="absolute -right-0.5 -top-0.5 h-3.5 w-3.5 rounded-full border-2 border-white bg-[#c8ff00]" />
+                      )}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className={`truncate text-[15px] ${unread ? "font-black text-ink-900" : "font-semibold text-ink-800"}`}>
+                          {other?.name ?? "—"}
+                        </span>
+                        <span className={`shrink-0 text-[11px] ${unread ? "font-bold text-ink-700" : "text-ink-400"}`}>
+                          {last ? shortStamp(last.createdAt, lang) : ""}
+                        </span>
+                      </div>
+                      <div className="mt-0.5 flex items-center gap-1">
+                        <span className={`truncate text-[13px] ${unread ? "font-semibold text-ink-800" : "text-ink-400"}`}>
+                          {last ? `${mine ? `${tr("you", lang)}: ` : ""}${last.text}` : listing ? loc(listing.title, lang) : ""}
+                        </span>
+                      </div>
+                    </div>
                   </button>
-                </div>
-              );
-            })}
+                );
+              })
+            )}
           </div>
         </aside>
 
-        {/* Chat — TELEFONON teljes képernyős réteg (fedi a fejlécet és az alsó
-            menüsort is), így a lap nem görgethető és az „Írj üzenetet" mező
-            görgetés nélkül látszik. ASZTALON a rácsban marad. */}
-        <section
-          className={`${
-            active ? "fixed inset-0 z-[60] flex bg-white lg:static lg:z-auto" : "hidden lg:flex"
-          } min-w-0 min-h-0 flex-col`}
-        >
+        {/* ---------------- Thread ---------------- */}
+        <section className={`${active ? "flex" : "hidden lg:flex"} min-w-0 flex-1 flex-col bg-ink-50/30`}>
           {active ? (
             <ChatView
               key={active.id}
@@ -195,11 +210,11 @@ export default function MessagesClient() {
               lang={lang}
             />
           ) : (
-            <div className="grid h-full place-items-center p-10 text-center text-ink-300">
-              <div>
-                <Icon name="message" size={40} className="mx-auto" />
-                <p className="mt-3 text-sm font-medium text-ink-400">{tr("conversations", lang)}</p>
+            <div className="hidden flex-1 flex-col items-center justify-center gap-3 p-10 text-center text-ink-400 lg:flex">
+              <div className="grid h-16 w-16 place-items-center rounded-full bg-white shadow-soft">
+                <Icon name="message" size={28} className="text-ink-300" />
               </div>
+              <p className="text-sm font-medium">{tr("conversations", lang)}</p>
             </div>
           )}
         </section>
@@ -207,6 +222,8 @@ export default function MessagesClient() {
     </div>
   );
 }
+
+/* ================================ Thread nézet ================================ */
 
 function ChatView({
   conversationId,
@@ -226,6 +243,7 @@ function ChatView({
   const messages = useMessages(conversationId);
   const [text, setText] = useState("");
   const bottomRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     db.markConversationRead(conversationId, meId);
@@ -240,109 +258,139 @@ function ChatView({
     if (!t) return;
     db.sendMessage(conversationId, meId, t);
     setText("");
+    // A textarea magasságát visszaállítjuk egy sorra.
+    if (inputRef.current) inputRef.current.style.height = "auto";
   };
 
-  const lastMine = [...messages].reverse().find((m) => m.senderId === meId);
+  // Az utolsó SAJÁT üzenet indexe — csak alá teszünk olvasottság-jelet.
+  const lastMineIdx = (() => {
+    for (let i = messages.length - 1; i >= 0; i--) if (messages[i].senderId === meId) return i;
+    return -1;
+  })();
 
   return (
-    <div className="flex h-full min-h-0 flex-col bg-ink-50/50">
-      {/* Fejléc */}
-      <div className="flex items-center gap-3 border-b border-ink-100 bg-white/90 p-3 backdrop-blur">
+    <div className="flex h-full min-h-0 flex-col">
+      {/* Fejléc — ragadós felül */}
+      <div className="flex shrink-0 items-center gap-3 border-b border-ink-100 bg-white/95 px-3 py-2.5 backdrop-blur">
         <button
           onClick={onBack}
-          className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-ink-700 hover:bg-ink-100 lg:hidden"
+          className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-ink-700 transition hover:bg-ink-100 lg:hidden"
+          aria-label={tr("close", lang)}
         >
-          <Icon name="arrowLeft" size={18} />
+          <Icon name="arrowLeft" size={20} strokeWidth={2.2} />
         </button>
-        <div className="relative shrink-0">
-          <Avatar name={other?.name ?? "?"} src={other?.avatar} size={42} />
-          <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-white bg-emerald-400" />
+        <Avatar name={other?.name ?? "?"} src={other?.avatar} size={42} />
+        <div className="min-w-0 flex-1">
+          <div className="truncate text-[15px] font-bold text-ink-900">{other?.name ?? "—"}</div>
+          {other?.responseTime && (
+            <div className="flex items-center gap-1.5 truncate text-[11px] text-ink-400">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              {other.responseTime}
+            </div>
+          )}
         </div>
-        {other ? (
-          <Link href={`/u/${other.id}`} className="min-w-0 flex-1">
-            <div className="truncate text-sm font-bold text-ink-900">{other.name}</div>
-            <div className="truncate text-xs text-ink-400">{other.responseTime}</div>
-          </Link>
-        ) : (
-          <div className="min-w-0 flex-1">
-            <div className="truncate text-sm font-bold text-ink-900">—</div>
-          </div>
-        )}
         {listing && (
           <Link
             href={`/listing/${listing.id}`}
-            className="flex items-center gap-2 rounded-2xl border border-ink-100 p-1.5 pr-3 transition hover:bg-ink-50"
+            className="flex shrink-0 items-center gap-2 rounded-2xl border border-ink-100 p-1 pr-3 transition hover:bg-ink-50"
           >
             <Photo src={listing.images[0]} alt={loc(listing.title, lang)} className="h-10 w-10 rounded-xl" />
-            <span className="hidden text-right sm:block">
-              <span className="block max-w-[9rem] truncate text-[11px] font-medium text-ink-500">
-                {loc(listing.title, lang)}
-              </span>
-              <span className="block text-xs font-bold text-ink-900">{formatPrice(listing.price, lang)}</span>
-            </span>
+            <span className="hidden text-xs font-bold text-ink-800 sm:block">{formatPrice(listing.price, lang)}</span>
           </Link>
         )}
       </div>
 
-      {/* Üzenetek */}
-      <div className="no-scrollbar min-h-0 flex-1 space-y-1 overflow-y-auto px-3 py-4 sm:px-5">
+      {/* Üzenetfolyam */}
+      <div className="min-h-0 flex-1 space-y-1 overflow-y-auto overscroll-contain px-3 py-4 sm:px-5">
         {messages.length === 0 && (
-          <div className="grid h-full place-items-center text-sm text-ink-400">{tr("chat_empty_thread", lang)}</div>
+          <p className="py-10 text-center text-sm text-ink-400">{tr("msg_empty_thread", lang)}</p>
         )}
         {messages.map((m, i) => {
-          const prev = messages[i - 1];
-          const showDay = !prev || dayKey(prev.createdAt) !== dayKey(m.createdAt);
           const mine = m.senderId === meId;
-          // Csoportosítás: az azonos feladótól, rövid időn belül érkező üzenetek
-          // szorosabban tapadnak (csak az utolsón látszik az idő).
+          const prev = messages[i - 1];
           const next = messages[i + 1];
-          const grouped = next && next.senderId === m.senderId && !showDayBetween(m, next);
-          const isLastMine = mine && lastMine?.id === m.id;
+          const showDay = !prev || !sameDay(new Date(prev.createdAt), new Date(m.createdAt));
+          // Buborék-csoportosítás: az azonos feladótól, közel érkező üzenetek
+          // „összetapadnak" (kisebb köz, farok csak a csoport alján).
+          const grouped = !!next && next.senderId === m.senderId && !showDayBetween(m, next);
           return (
             <div key={m.id}>
               {showDay && (
                 <div className="my-3 flex justify-center">
-                  <span className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-ink-500 shadow-soft">
-                    {dayLabel(m.createdAt, lang)}
+                  <span className="rounded-full bg-ink-100 px-3 py-1 text-[11px] font-semibold text-ink-500">
+                    {dayLabel(new Date(m.createdAt), lang)}
                   </span>
                 </div>
               )}
-              <MessageBubble
-                text={m.text}
-                mine={mine}
-                createdAt={m.createdAt}
-                lang={lang}
-                grouped={!!grouped}
-                seen={isLastMine ? seenByOther(m, meId) : false}
-              />
+              <div className={`flex items-end gap-2 ${mine ? "justify-end" : "justify-start"} ${grouped ? "mb-0.5" : "mb-1.5"}`}>
+                {!mine && (
+                  <span className={`w-7 shrink-0 ${grouped ? "opacity-0" : ""}`}>
+                    {!grouped && <Avatar name={other?.name ?? "?"} src={other?.avatar} size={28} />}
+                  </span>
+                )}
+                <MessageBubble
+                  text={m.text}
+                  mine={mine}
+                  createdAt={m.createdAt}
+                  lang={lang}
+                  endGroup={!grouped}
+                />
+              </div>
+              {mine && i === lastMineIdx && (
+                <div className="mb-1 mr-1 mt-0.5 text-right text-[10px] font-medium text-ink-400">
+                  {other && m.readBy.includes(other.id) ? tr("msg_read", lang) : tr("msg_delivered", lang)}
+                </div>
+              )}
             </div>
           );
         })}
         <div ref={bottomRef} />
       </div>
 
-      {/* Szövegdoboz */}
-      <div
-        className="flex items-center gap-2 border-t border-ink-100 bg-white p-3"
-        style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 0.75rem)" }}
-      >
-        <input
+      {/* Szerkesztő — ragadós alul, kör alakú neon küldés-gomb */}
+      <div className="flex shrink-0 items-end gap-2 border-t border-ink-100 bg-white px-3 py-2.5 sm:px-4">
+        <textarea
+          ref={inputRef}
           value={text}
-          onChange={(e) => setText(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && send()}
+          rows={1}
+          onChange={(e) => {
+            setText(e.target.value);
+            e.target.style.height = "auto";
+            e.target.style.height = `${Math.min(e.target.scrollHeight, 120)}px`;
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault();
+              send();
+            }
+          }}
           placeholder={tr("message_placeholder", lang)}
-          className="min-w-0 flex-1 rounded-full border border-ink-200 bg-ink-50 px-4 py-3 text-sm text-ink-900 placeholder:text-ink-400 focus:border-brand-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-100"
+          className="max-h-[120px] flex-1 resize-none rounded-3xl border border-ink-200 bg-ink-50 px-4 py-2.5 text-sm text-ink-900 placeholder:text-ink-400 focus:border-ink-400 focus:bg-white focus:outline-none"
         />
         <button
           onClick={send}
           disabled={!text.trim()}
           aria-label={tr("send_message", lang)}
-          className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-brand-500 text-white shadow-glow transition hover:bg-brand-600 active:scale-90 disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none"
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-full border-2 border-ink-950 bg-[#c8ff00] text-ink-950 shadow-[0_8px_20px_-8px_rgba(160,200,0,0.8)] transition hover:brightness-95 active:scale-90 disabled:cursor-not-allowed disabled:border-ink-200 disabled:bg-ink-100 disabled:text-ink-300 disabled:shadow-none"
         >
-          <Icon name="arrowUpRight" size={20} strokeWidth={2.4} />
+          <PaperPlane />
         </button>
       </div>
     </div>
+  );
+}
+
+/** Két üzenet közt nap-váltás van-e (a csoportosításhoz). */
+function showDayBetween(a: { createdAt: string }, b: { createdAt: string }): boolean {
+  return !sameDay(new Date(a.createdAt), new Date(b.createdAt));
+}
+
+function PaperPlane() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 2 11 13" />
+      <path d="M22 2 15 22l-4-9-9-4 20-7Z" />
+    </svg>
   );
 }
 
@@ -355,15 +403,13 @@ function MessageBubble({
   mine,
   createdAt,
   lang,
-  grouped,
-  seen
+  endGroup
 }: {
   text: string;
   mine: boolean;
   createdAt: string;
   lang: Lang;
-  grouped: boolean;
-  seen: boolean;
+  endGroup: boolean;
 }) {
   const [translated, setTranslated] = useState<string | null>(null);
   const [showOriginal, setShowOriginal] = useState(false);
@@ -381,70 +427,31 @@ function MessageBubble({
 
   const body = translated && !showOriginal ? translated : text;
 
+  // A buborék sarkai: a csoport tetején/alján „farok" (kisebb sarok a feladó
+  // felőli alsó sarokban), közben lekerekített — mint az Instagram/Messenger.
+  const corners = mine
+    ? `rounded-3xl ${endGroup ? "rounded-br-md" : "rounded-br-3xl"}`
+    : `rounded-3xl ${endGroup ? "rounded-bl-md" : "rounded-bl-3xl"}`;
+
   return (
-    <div className={`flex ${mine ? "justify-end" : "justify-start"} ${grouped ? "mb-0.5" : "mb-1.5"}`}>
-      <div
-        className={`max-w-[82%] px-3.5 py-2 text-[14px] leading-relaxed shadow-sm sm:max-w-[70%] ${
-          mine
-            ? `bg-brand-600 text-white ${grouped ? "rounded-2xl" : "rounded-2xl rounded-br-md"}`
-            : `bg-white text-ink-800 ${grouped ? "rounded-2xl" : "rounded-2xl rounded-bl-md"}`
-        }`}
-      >
-        <span className="whitespace-pre-wrap break-words">{body}</span>
-        {translated && (
-          <button
-            onClick={() => setShowOriginal((v) => !v)}
-            className={`mt-1 flex items-center gap-1 text-[10px] font-medium ${
-              mine ? "text-white/70 hover:text-white" : "text-ink-400 hover:text-ink-700"
-            }`}
-          >
-            <Icon name="globe" size={11} />
-            {showOriginal ? tr("show_translation", lang) : tr("show_original", lang)}
-          </button>
-        )}
-        {!grouped && (
-          <div className={`mt-0.5 flex items-center gap-1 text-[10px] ${mine ? "justify-end text-white/70" : "text-ink-400"}`}>
-            {shortTime(createdAt, lang)}
-            {mine && seen && (
-              <span className="inline-flex items-center gap-0.5">
-                · <Icon name="check" size={10} strokeWidth={2.8} /> {tr("chat_seen", lang)}
-              </span>
-            )}
-          </div>
-        )}
+    <div
+      className={`max-w-[76%] px-3.5 py-2 text-[14px] leading-snug ${corners} ${
+        mine ? "bg-ink-950 text-white" : "border border-ink-100 bg-white text-ink-800 shadow-soft"
+      }`}
+    >
+      <span className="whitespace-pre-wrap break-words">{body}</span>
+      {translated && (
+        <button
+          onClick={() => setShowOriginal((v) => !v)}
+          className={`mt-1 flex items-center gap-1 text-[10px] font-medium ${mine ? "text-white/60 hover:text-white" : "text-ink-400 hover:text-ink-700"}`}
+        >
+          <Icon name="globe" size={11} />
+          {showOriginal ? tr("show_translation", lang) : tr("show_original", lang)}
+        </button>
+      )}
+      <div className={`mt-0.5 text-right text-[10px] ${mine ? "text-white/50" : "text-ink-300"}`}>
+        {timeLabel(new Date(createdAt), lang)}
       </div>
     </div>
   );
-}
-
-/* ------------------------------- helpers ------------------------------- */
-
-function locale(lang: Lang): string {
-  return lang === "hu" ? "hu-HU" : lang === "ru" ? "ru-RU" : "en-GB";
-}
-
-function shortTime(iso: string, lang: Lang): string {
-  return new Date(iso).toLocaleTimeString(locale(lang), { hour: "2-digit", minute: "2-digit" });
-}
-
-function dayKey(iso: string): string {
-  return new Date(iso).toISOString().slice(0, 10);
-}
-
-function showDayBetween(a: Message, b: Message): boolean {
-  return dayKey(a.createdAt) !== dayKey(b.createdAt);
-}
-
-function dayLabel(iso: string, lang: Lang): string {
-  const d = new Date(iso);
-  const today = new Date();
-  const yesterday = new Date();
-  yesterday.setDate(today.getDate() - 1);
-  if (dayKey(iso) === dayKey(today.toISOString())) return tr("chat_today", lang);
-  if (dayKey(iso) === dayKey(yesterday.toISOString())) return tr("chat_yesterday", lang);
-  return d.toLocaleDateString(locale(lang), { month: "short", day: "numeric", year: "numeric" });
-}
-
-function seenByOther(m: Message, meId: string): boolean {
-  return m.readBy.some((id) => id !== meId);
 }

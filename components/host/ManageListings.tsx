@@ -1,10 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useAuth, useLang, useListingsByOwner } from "@/lib/store";
 import { tr, typeLabels, modeLabels, loc } from "@/lib/i18n";
-import { formatPrice } from "@/lib/format";
+import { formatPrice, pricePerM2 } from "@/lib/format";
+import type { Listing } from "@/lib/types";
 import * as db from "@/lib/db";
 import { toast } from "@/lib/ui";
 import Photo from "@/components/Photo";
@@ -12,7 +14,13 @@ import Button from "@/components/ui/Button";
 import Icon from "@/components/ui/Icon";
 import PageHeading from "@/components/ui/PageHeading";
 import Pagination, { paginate } from "@/components/ui/Pagination";
+import SearchModal from "@/components/home/SearchModal";
 import PromoteButton from "@/components/host/PromoteButton";
+
+const MapView = dynamic(() => import("@/components/MapView"), {
+  ssr: false,
+  loading: () => <div className="shimmer h-full w-full rounded-3xl" />
+});
 
 export default function ManageListings() {
   const { lang } = useLang();
@@ -21,20 +29,40 @@ export default function ManageListings() {
 
   const [status, setStatus] = useState<"" | "active" | "paused">("");
   const [mode, setMode] = useState<"" | "sale" | "rent">("");
+  const [type, setType] = useState("");
   const [q, setQ] = useState("");
+  const [sort, setSort] = useState("newest");
   const [page, setPage] = useState(0);
+  const [view, setView] = useState<"list" | "map">("list");
+  const [detailedOpen, setDetailedOpen] = useState(false);
 
   const listings = useMemo(() => {
     const query = q.trim().toLowerCase();
-    return all.filter((l) => {
+    const out = all.filter((l) => {
       if (status && l.status !== status) return false;
       if (mode && l.mode !== mode) return false;
+      if (type && l.type !== type) return false;
       if (query && !`${l.city} ${l.district} ${loc(l.title, lang)}`.toLowerCase().includes(query)) return false;
       return true;
     });
-  }, [all, status, mode, q, lang]);
+    const by: Record<string, (a: Listing, b: Listing) => number> = {
+      newest: (a, b) => +new Date(b.createdAt) - +new Date(a.createdAt),
+      price_asc: (a, b) => a.price - b.price,
+      price_desc: (a, b) => b.price - a.price,
+      ppm2: (a, b) => pricePerM2(a.price, a.area) - pricePerM2(b.price, b.area)
+    };
+    return [...out].sort(by[sort] ?? by.newest);
+  }, [all, status, mode, type, q, sort, lang]);
 
   const { slice, pageCount, page: safePage, total } = paginate(listings, page);
+
+  const applyQs = (qs: string) => {
+    const p = new URLSearchParams(qs);
+    setMode((p.get("mode") as "" | "sale" | "rent") || "");
+    setType(p.get("type") || "");
+    setQ(p.get("q") || p.get("city") || "");
+    setPage(0);
+  };
 
   if (!user) return null;
 
@@ -82,35 +110,70 @@ export default function ManageListings() {
         {tr("manage_listings", lang)}
       </PageHeading>
 
-      {/* Szűrő a saját hirdetésekre — állapot, mód, kereső. */}
+      {/* Szűrő a saját hirdetésekre — állapot, mód, kereső, rendezés, részletes,
+          térkép — mint a hirdetés-lista oldalon. */}
       {all.length > 0 && (
         <div className="mb-6 flex flex-col gap-3">
-          <div className="flex flex-wrap gap-2">
-            <div className="inline-flex rounded-full border border-ink-200 bg-white p-1 shadow-soft">
-              {chip(tr("my_listings_filter_all", lang), status === "", () => setStatus(""))}
-              {chip(tr("status_active_f", lang), status === "active", () => setStatus("active"))}
-              {chip(tr("status_paused_f", lang), status === "paused", () => setStatus("paused"))}
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="flex flex-wrap gap-2">
+              <div className="inline-flex rounded-full border border-ink-200 bg-white p-1 shadow-soft">
+                {chip(tr("my_listings_filter_all", lang), status === "", () => setStatus(""))}
+                {chip(tr("status_active_f", lang), status === "active", () => setStatus("active"))}
+                {chip(tr("status_paused_f", lang), status === "paused", () => setStatus("paused"))}
+              </div>
+              <div className="inline-flex rounded-full border border-ink-200 bg-white p-1 shadow-soft">
+                {chip(tr("cat_all", lang), mode === "", () => setMode(""))}
+                {chip(tr("buy", lang), mode === "sale", () => setMode("sale"))}
+                {chip(tr("rent_tab", lang), mode === "rent", () => setMode("rent"))}
+              </div>
             </div>
-            <div className="inline-flex rounded-full border border-ink-200 bg-white p-1 shadow-soft">
-              {chip(tr("cat_all", lang), mode === "", () => setMode(""))}
-              {chip(tr("buy", lang), mode === "sale", () => setMode("sale"))}
-              {chip(tr("rent_tab", lang), mode === "rent", () => setMode("rent"))}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setDetailedOpen(true)}
+                className="inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white px-3.5 py-2 text-sm font-semibold text-ink-800 shadow-soft transition hover:border-ink-400"
+              >
+                <Icon name="sliders" size={16} strokeWidth={2.2} />
+                <span className="hidden sm:inline">{tr("filters", lang)}</span>
+              </button>
+              <button
+                onClick={() => setView((v) => (v === "map" ? "list" : "map"))}
+                className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-semibold shadow-soft transition ${
+                  view === "map" ? "border-ink-900 bg-ink-900 text-white" : "border-ink-200 bg-white text-ink-800 hover:border-ink-400"
+                }`}
+              >
+                <Icon name={view === "map" ? "menu" : "globe"} size={16} strokeWidth={2.2} />
+                <span className="hidden sm:inline">{view === "map" ? tr("list", lang) : tr("map", lang)}</span>
+              </button>
             </div>
           </div>
-          <div className="relative">
-            <Icon name="search" size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-ink-400" />
-            <input
-              value={q}
-              onChange={(e) => {
-                setQ(e.target.value);
-                setPage(0);
-              }}
-              placeholder={tr("search_placeholder", lang)}
-              className="w-full rounded-full border border-ink-200 bg-white py-3 pl-11 pr-4 text-sm shadow-soft transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
-            />
+          <div className="flex items-center gap-2">
+            <div className="relative flex-1">
+              <Icon name="search" size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-ink-400" />
+              <input
+                value={q}
+                onChange={(e) => {
+                  setQ(e.target.value);
+                  setPage(0);
+                }}
+                placeholder={tr("search_placeholder", lang)}
+                className="w-full rounded-full border border-ink-200 bg-white py-3 pl-11 pr-4 text-sm shadow-soft transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100"
+              />
+            </div>
+            <select
+              value={sort}
+              onChange={(e) => setSort(e.target.value)}
+              className="shrink-0 rounded-full border border-ink-200 bg-white px-3 py-3 text-sm shadow-soft focus:outline-none"
+            >
+              <option value="newest">{tr("sort_newest", lang)}</option>
+              <option value="price_asc">{tr("sort_price_asc", lang)}</option>
+              <option value="price_desc">{tr("sort_price_desc", lang)}</option>
+              <option value="ppm2">{tr("sort_ppm2", lang)}</option>
+            </select>
           </div>
         </div>
       )}
+
+      <SearchModal open={detailedOpen} onClose={() => setDetailedOpen(false)} initialMode={mode || "sale"} onApply={applyQs} />
 
       {all.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-ink-200 bg-white p-12 text-center">
@@ -124,6 +187,10 @@ export default function ManageListings() {
           >
             {tr("create_first_listing", lang)} <Icon name="arrowRight" size={16} />
           </Link>
+        </div>
+      ) : view === "map" ? (
+        <div className="h-[70vh] overflow-hidden rounded-3xl border border-ink-100 shadow-card">
+          <MapView listings={listings} lang={lang} />
         </div>
       ) : listings.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-ink-200 bg-white p-10 text-center text-ink-500 shadow-soft">

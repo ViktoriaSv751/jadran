@@ -3,6 +3,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import type { Conversation, Lang, Listing, Message, Profile, Review } from "./types";
 import { seedListings, seedProfiles } from "./data";
+import { LANGS } from "./i18n";
 import * as db from "./db";
 
 /* ============================ Language ============================ */
@@ -19,7 +20,11 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const stored = localStorage.getItem("jadran_lang") as Lang | null;
-    if (stored === "hu" || stored === "me" || stored === "en" || stored === "ru") setLangState(stored);
+    // Mind a 12 támogatott nyelvet vissza kell állítani (nem csak a régi 4-et),
+    // különben a nyelvváltás nem marad meg újratöltés után.
+    if (stored && (LANGS as readonly { code: string }[]).some((l) => l.code === stored)) {
+      setLangState(stored);
+    }
   }, []);
 
   const setLang = (l: Lang) => {

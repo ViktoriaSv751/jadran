@@ -41,11 +41,14 @@ export default function LangSwitcher({ compact = false }: { compact?: boolean })
   }, [open]);
 
   const modal = (
-    <div className="fixed inset-0 z-[200] flex items-end justify-center sm:items-center">
+    <div className="fixed inset-0 z-[200] flex items-end justify-center p-0 sm:items-center sm:p-4">
       {/* 100% fehér, fix háttér — a mögöttes oldal nem látszik és nem görgethető. */}
       <div className="absolute inset-0 bg-white" onClick={() => setOpen(false)} />
-      <div className="animate-pop-in relative z-10 flex max-h-[85vh] w-full flex-col overflow-hidden rounded-t-3xl border border-ink-100 bg-white shadow-pop sm:max-w-xl sm:rounded-3xl">
-        <div className="flex items-center justify-between border-b border-ink-100 px-5 py-4">
+      {/* A panel MAGASSÁGA korlátozott (max-h), a fejléc fix, a nyelvrács pedig
+          a maradék helyen GÖRGETHETŐ. A `min-h-0` elengedhetetlen: enélkül a
+          flex-gyerek (a rács) tartalom-magasságúra nő és túlnyúlik/levágódik. */}
+      <div className="animate-pop-in relative z-10 flex max-h-[85vh] w-full flex-col overflow-hidden rounded-t-3xl border border-ink-100 bg-white shadow-pop sm:max-h-[80vh] sm:max-w-xl sm:rounded-3xl">
+        <div className="flex shrink-0 items-center justify-between border-b border-ink-100 px-5 py-4">
           <h2 className="flex items-center gap-2 text-base font-bold text-ink-900">
             <Icon name="globe" size={18} /> {tr("choose_language", lang)}
           </h2>
@@ -57,7 +60,7 @@ export default function LangSwitcher({ compact = false }: { compact?: boolean })
             <Icon name="close" size={18} strokeWidth={2.2} />
           </button>
         </div>
-        <div className="grid grid-cols-2 gap-2.5 overflow-y-auto overscroll-contain p-4 sm:grid-cols-3">
+        <div className="grid min-h-0 flex-1 grid-cols-2 gap-2.5 overflow-y-auto overscroll-contain p-4 sm:grid-cols-3">
           {LANGS.map((l) => (
             <button
               key={l.code}

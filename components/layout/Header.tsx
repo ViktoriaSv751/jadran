@@ -5,8 +5,7 @@ import Logo from "./Logo";
 import LangSwitcher from "./LangSwitcher";
 import LogoutButton from "@/components/auth/LogoutButton";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
+import { useEffect, useRef, useState } from "react";
 import { useLang, useAuth, useUnreadCount, useCompare } from "@/lib/store";
 import { LANGS, tr } from "@/lib/i18n";
 import type { Lang } from "@/lib/types";
@@ -97,94 +96,21 @@ function AccountMenu({
   onLogout: () => void;
 }) {
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
   const compare = useCompare();
   // Kijelentkezve NINCS összehasonlítás-szám (a funkció csak belépve elérhető).
   const compareCount = user && compare.ready ? compare.ids.length : 0;
 
-  useEffect(() => setMounted(true), []);
-
-  // Nyitva: a mögöttes oldal 100% fehér és NEM görgethető (fix, stabil) — mint
-  // a belépésnél.
   useEffect(() => {
-    if (!open) return;
-    const prevBody = document.body.style.overflow;
-    const prevHtml = document.documentElement.style.overflow;
-    document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = prevBody;
-      document.documentElement.style.overflow = prevHtml;
-      document.removeEventListener("keydown", onKey);
+    const onClick = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
     };
-  }, [open]);
-
-  const close = () => setOpen(false);
-  const gotoCompare = () => (user ? undefined : openAuth("login"));
-
-  const overlay = (
-    <div className="fixed inset-0 z-[200]">
-      {/* 100% fehér, fix háttér */}
-      <div className="absolute inset-0 bg-white" onClick={close} />
-      {/* Menü — TELJES fekete körszegéllyel */}
-      <div
-        className="animate-pop-in absolute right-3 top-16 w-64 max-w-[calc(100vw-1.5rem)] overflow-hidden rounded-3xl border-2 border-ink-950 bg-white py-2 shadow-pop"
-        onClick={close}
-      >
-        {user ? (
-          <>
-            <div className="px-4 py-2">
-              <div className="truncate text-sm font-bold text-ink-900">{user.name}</div>
-              <div className="truncate text-xs text-ink-400">{user.email}</div>
-            </div>
-            <div className="my-1 h-px bg-ink-100" />
-            <MenuLink href="/messages" label={tr("messages", lang)} badge={unread} />
-            <MenuLink href="/favorites" label={tr("favorites", lang)} />
-            <MenuLink href="/listings" label={tr("my_listings", lang)} />
-            <MenuLink href="/listings/new" label={tr("new_listing", lang)} />
-            <MenuLink href="/compare" label={tr("compare", lang)} badge={compareCount} />
-            <MenuLink href="/pricing" label={tr("pricing_nav", lang)} />
-            <div className="my-1 h-px bg-ink-100" />
-            <MenuLink href="/profile" label={tr("profile", lang)} />
-            <MenuLink href="/settings" label={tr("settings", lang)} />
-            <LogoutButton className="block w-full px-4 py-2 text-left text-sm text-ink-600 transition hover:bg-ink-50">
-              {tr("logout", lang)}
-            </LogoutButton>
-          </>
-        ) : (
-          <>
-            <button
-              onClick={() => openAuth("register")}
-              className="block w-full px-4 py-2 text-left text-sm font-semibold text-ink-900 transition hover:bg-ink-50"
-            >
-              {tr("register", lang)}
-            </button>
-            <button
-              onClick={() => openAuth("login")}
-              className="block w-full px-4 py-2 text-left text-sm text-ink-600 transition hover:bg-ink-50"
-            >
-              {tr("login", lang)}
-            </button>
-            <div className="my-1 h-px bg-ink-100" />
-            <MenuLink href="/search" label={tr("search", lang)} />
-            {/* Összehasonlítás csak belépve — kilépve a belépő-ablakot nyitja. */}
-            <button
-              onClick={gotoCompare}
-              className="flex w-full items-center justify-between px-4 py-2 text-left text-sm text-ink-600 transition hover:bg-ink-50"
-            >
-              {tr("compare", lang)}
-            </button>
-            <MenuLink href="/guide" label={tr("guide", lang)} />
-          </>
-        )}
-      </div>
-    </div>
-  );
+    document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
+  }, []);
 
   return (
-    <div className="relative">
+    <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((v) => !v)}
         className="flex items-center gap-2 rounded-full border border-ink-200 bg-white py-1.5 pl-3 pr-1.5 shadow-soft transition hover:shadow-card"
@@ -204,7 +130,59 @@ function AccountMenu({
         )}
       </button>
 
-      {open && mounted && createPortal(overlay, document.body)}
+      {open && (
+        <div
+          className="absolute right-0 top-12 z-50 w-60 overflow-hidden rounded-2xl border border-ink-100 bg-white py-2 shadow-pop animate-pop-in"
+          onClick={() => setOpen(false)}
+        >
+          {user ? (
+            <>
+              <div className="px-4 py-2">
+                <div className="truncate text-sm font-bold text-ink-900">{user.name}</div>
+                <div className="truncate text-xs text-ink-400">{user.email}</div>
+              </div>
+              <div className="my-1 h-px bg-ink-100" />
+              <MenuLink href="/messages" label={tr("messages", lang)} badge={unread} />
+              <MenuLink href="/favorites" label={tr("favorites", lang)} />
+              <MenuLink href="/listings" label={tr("my_listings", lang)} />
+              <MenuLink href="/listings/new" label={tr("new_listing", lang)} />
+              <MenuLink href="/compare" label={tr("compare", lang)} badge={compareCount} />
+              <MenuLink href="/pricing" label={tr("pricing_nav", lang)} />
+              <div className="my-1 h-px bg-ink-100" />
+              <MenuLink href="/profile" label={tr("profile", lang)} />
+              <MenuLink href="/settings" label={tr("settings", lang)} />
+              <LogoutButton className="block w-full px-4 py-2 text-left text-sm text-ink-600 transition hover:bg-ink-50">
+                {tr("logout", lang)}
+              </LogoutButton>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={() => openAuth("register")}
+                className="block w-full px-4 py-2 text-left text-sm font-semibold text-ink-900 transition hover:bg-ink-50"
+              >
+                {tr("register", lang)}
+              </button>
+              <button
+                onClick={() => openAuth("login")}
+                className="block w-full px-4 py-2 text-left text-sm text-ink-600 transition hover:bg-ink-50"
+              >
+                {tr("login", lang)}
+              </button>
+              <div className="my-1 h-px bg-ink-100" />
+              <MenuLink href="/search" label={tr("search", lang)} />
+              {/* Összehasonlítás csak belépve — kilépve a belépő-ablakot nyitja. */}
+              <button
+                onClick={() => openAuth("login")}
+                className="flex w-full items-center justify-between px-4 py-2 text-left text-sm text-ink-600 transition hover:bg-ink-50"
+              >
+                {tr("compare", lang)}
+              </button>
+              <MenuLink href="/guide" label={tr("guide", lang)} />
+            </>
+          )}
+        </div>
+      )}
     </div>
   );
 }

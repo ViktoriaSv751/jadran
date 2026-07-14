@@ -47,18 +47,22 @@ export default function HomeClient() {
     <div className="flex flex-col pb-4">
       <SectionNav sections={sections} />
 
-      <div id="home-hero" className={`order-1 ${sec}`}>
-        <Hero nextId="home-browse" />
+      <div id="home-hero" className={`order-1 lg:order-1 ${sec}`}>
+        <Hero />
+        <NextButton to="home-browse" />
       </div>
 
-      <section id="home-browse" className={`order-2 mx-auto w-full max-w-7xl px-4 pt-6 lg:pt-10 ${sec}`}>
+      {/* TELEFONON a „Böngéssz típus" az oldal LEGALJÁRA kerül (order-last), az
+          átlagár szekció alá — DESKTOPON viszont marad a 2. helyen (lg:order-2). */}
+      <section id="home-browse" className={`order-last lg:order-2 mx-auto w-full max-w-7xl px-4 pt-6 lg:pt-10 ${sec}`}>
         <div className="w-full">
           <h2 className="display mb-5 text-center text-2xl text-ink-900 sm:text-3xl">{tr("browse_by_type", lang)}</h2>
           <CategoryRow />
         </div>
+        <NextButton to="home-avg" />
       </section>
 
-      <section id="home-avg" className={`order-3 mx-auto w-full max-w-7xl px-4 py-10 ${sec}`}>
+      <section id="home-avg" className={`order-2 lg:order-3 mx-auto w-full max-w-7xl px-4 py-10 ${sec}`}>
         <div className="w-full">
           <div className="mx-auto mb-6 max-w-xl text-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -73,9 +77,10 @@ export default function HomeClient() {
           </div>
           <CityGrid />
         </div>
+        <NextButton to="home-featured" />
       </section>
 
-      <div id="home-featured" className={`order-4 ${sec}`}>
+      <div id="home-featured" className={`order-3 lg:order-4 ${sec}`}>
         <Shelf
           title={tr("featured", lang)}
           subtitle={tr("shelf_featured_sub", lang)}
@@ -84,9 +89,10 @@ export default function HomeClient() {
           listings={featured}
           image="/cat/villa.png"
         />
+        <NextButton to="home-sea" />
       </div>
 
-      <div id="home-sea" className={`order-5 bg-white ${sec}`}>
+      <div id="home-sea" className={`order-4 lg:order-5 bg-white ${sec}`}>
         <Shelf
           title={tr("shelf_sea_title", lang)}
           subtitle={tr("shelf_sea_sub", lang)}
@@ -95,9 +101,10 @@ export default function HomeClient() {
           listings={seaview}
           image="/cat/house.png"
         />
+        <NextButton to="home-new" />
       </div>
 
-      <div id="home-new" className={`order-6 ${sec}`}>
+      <div id="home-new" className={`order-5 lg:order-6 ${sec}`}>
         <Shelf
           title={tr("shelf_new_title", lang)}
           subtitle={tr("shelf_new_sub", lang)}
@@ -107,6 +114,24 @@ export default function HomeClient() {
           image="/cat/new.png"
         />
       </div>
+    </div>
+  );
+}
+
+/**
+ * „Tovább a következő szekcióra" gomb — CSAK asztalon, a szekció tartalma ALATT,
+ * középre igazítva (nem lóg rá az utolsó blokkra).
+ */
+function NextButton({ to }: { to: string }) {
+  return (
+    <div className="mt-10 hidden w-full justify-center lg:flex">
+      <button
+        onClick={() => smoothScrollToId(to)}
+        aria-label="↓"
+        className="grid h-12 w-12 place-items-center rounded-full border-2 border-ink-950 bg-white text-ink-950 shadow-soft transition hover:bg-ink-950 hover:text-white active:scale-95"
+      >
+        <Icon name="chevronDown" size={24} strokeWidth={2.4} />
+      </button>
     </div>
   );
 }

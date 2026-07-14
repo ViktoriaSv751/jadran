@@ -15,8 +15,9 @@ import { tr } from "@/lib/i18n";
 export default function Footer() {
   const { lang } = useLang();
   const pathname = usePathname();
-  // A hirdetésfeltöltő fókuszált flow — ott nincs lábléc.
-  if (pathname === "/listings/new") return null;
+  // Fókuszált, „app-szerű" oldalak — ott nincs lábléc (a hirdetésfeltöltő és az
+  // üzenetek teljes-magasságú chat-nézete).
+  if (pathname === "/listings/new" || pathname === "/messages") return null;
 
   return (
     <footer className="mt-2 bg-white pb-[calc(6.5rem+env(safe-area-inset-bottom))] lg:pb-0">

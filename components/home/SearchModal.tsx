@@ -104,10 +104,16 @@ export default function SearchModal({
     if (open) setD((prev) => ({ ...prev, mode: initialMode }));
   }, [open, initialMode]);
 
+  // A mögöttes oldal fix, nem görgethető (html + body zár).
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    if (!open) return;
+    const prevBody = document.body.style.overflow;
+    const prevHtml = document.documentElement.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = prevBody;
+      document.documentElement.style.overflow = prevHtml;
     };
   }, [open]);
 
@@ -245,25 +251,22 @@ export default function SearchModal({
   };
 
   return createPortal(
-    // A KÖZÉPRE igazítást flexbox adja (nem transform), mert a nyíló-animáció
-    // maga is `transform`-ot használ — a régi `-translate-x/y-1/2` így elcsúszott
-    // asztali nézetben (oldalt, használhatatlanul jött be). Flexszel mindig a
-    // képernyő közepén nyílik, magasságban és szélességben is.
-    <div className="fixed inset-0 z-[1100] flex items-stretch justify-center sm:items-center sm:p-4">
-      <div className="absolute inset-0 animate-fade-in bg-ink-900/50 backdrop-blur-sm" onClick={onClose} />
-      {/* Mobilon TELJES képernyő; asztalin középre igazított kártya. */}
-      <div className="relative z-10 flex w-full animate-sheet-up flex-col overflow-hidden bg-white sm:h-auto sm:max-h-[88vh] sm:w-[42rem] sm:max-w-full sm:animate-scale-in sm:rounded-3xl sm:shadow-pop">
-        {/* Header — bold, tall dark band with a vivid red glow so the sheet opens with a "wow" */}
-        <div className="relative flex flex-col items-center justify-center overflow-hidden bg-[linear-gradient(115deg,#070708_0%,#0d0d10_45%,#3a4a00_78%,#c8ff00_100%)] px-5 pb-7 pt-[calc(1.75rem+env(safe-area-inset-top))] text-center text-white sm:rounded-t-3xl sm:pt-7">
+    // TELJES OLDALAS minden méreten (asztalon is), FEKETE kerettel; a mögöttes
+    // oldal 100% fehér és fix (nem görgethető).
+    <div className="fixed inset-0 z-[1100]">
+      <div className="absolute inset-0 bg-white" onClick={onClose} />
+      <div className="absolute inset-0 flex animate-sheet-up flex-col overflow-hidden border-2 border-ink-950 bg-white">
+        {/* Header — bold dark band with neon glow */}
+        <div className="relative flex flex-col items-center justify-center overflow-hidden bg-[linear-gradient(115deg,#070708_0%,#0d0d10_45%,#3a4a00_78%,#c8ff00_100%)] px-5 pb-7 pt-[calc(1.75rem+env(safe-area-inset-top))] text-center text-white sm:pt-7">
           <div className="pointer-events-none absolute -right-10 -top-14 h-44 w-44 rounded-full bg-[#c8ff00]/25 blur-3xl" />
           <div className="pointer-events-none absolute -left-12 bottom-[-3.5rem] h-44 w-44 rounded-full bg-[#c8ff00]/20 blur-3xl" />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-brand-500/60 to-transparent" />
           <button
             onClick={onClose}
             aria-label={tr("close", lang)}
-            className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-white/10 text-white/90 transition hover:bg-white/20"
+            className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-white text-ink-950 shadow-soft transition hover:bg-ink-100"
           >
-            <Icon name="close" size={18} strokeWidth={2.2} />
+            <Icon name="close" size={18} strokeWidth={2.4} />
           </button>
           <h2 className="display relative text-2xl sm:text-3xl">
             {tr("search_cta", lang)}
@@ -273,7 +276,7 @@ export default function SearchModal({
           </p>
         </div>
 
-        <div className="flex-1 space-y-6 overflow-y-auto px-5 py-5">
+        <div className="mx-auto w-full max-w-2xl flex-1 space-y-6 overflow-y-auto px-5 py-5">
           {/* Mode */}
           <div className="mx-auto flex w-full max-w-sm rounded-full border border-ink-200 bg-ink-50 p-1">
             {([
@@ -733,7 +736,7 @@ export default function SearchModal({
 
         {/* Footer — extra breathing room below so it isn't jammed to the screen edge */}
         <div
-          className="flex items-center justify-between gap-3 border-t border-ink-100 px-5 pt-4"
+          className="mx-auto flex w-full max-w-2xl items-center justify-between gap-3 border-t border-ink-100 px-5 pt-4"
           style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 1.5rem)" }}
         >
           <button
