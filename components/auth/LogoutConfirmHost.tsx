@@ -41,8 +41,12 @@ export default function LogoutConfirmHost() {
 
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
-      {/* 100% fehér, fix háttér — a mögöttes oldal egyáltalán nem látszik. */}
-      <div className="absolute inset-0 bg-white" onClick={closeLogoutConfirm} />
+      {/* MOBILON 100% fehér, fix háttér (a mögöttes oldal nem látszik).
+          ASZTALON viszont csak halvány, elmosott dim — a lap látható marad. */}
+      <div
+        className="absolute inset-0 bg-white lg:bg-ink-950/40 lg:backdrop-blur-sm"
+        onClick={closeLogoutConfirm}
+      />
       <div className="animate-pop-in relative w-full max-w-sm rounded-3xl border-2 border-ink-950 bg-white p-6 text-center shadow-pop">
         <span className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-rose-50 text-rose-500">
           <Icon name="key" size={22} strokeWidth={2} />

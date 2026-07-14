@@ -43,7 +43,7 @@ export default function ProfileClient() {
     { href: "/listings/new", label: tr("new_listing", lang), icon: "plus" as IconName },
     { href: "/favorites", label: tr("favorites", lang), icon: "heart", badge: favorites.ids.length },
     { href: "/messages", label: tr("messages", lang), icon: "message", badge: unread },
-    { href: "/compare", label: tr("compare", lang), icon: "sliders" },
+    { href: "/compare", label: tr("compare", lang), icon: "compare" },
     { href: "/settings", label: tr("settings", lang), icon: "sliders" }
   ];
 

@@ -34,6 +34,102 @@ export function grossYield(l: Listing, all: Listing[]): number | null {
   return Math.round(((12 * rent) / l.price) * 1000) / 10; // 1 tizedes
 }
 
+/* ----------------------------- Bérbeadási hozam-becslő ----------------------------- */
+
+/** Tengerparti / turisztikai települések — itt erős a rövid-távú (Airbnb) piac. */
+const COASTAL_TOWNS = new Set([
+  "Budva", "Kotor", "Tivat", "Herceg Novi", "Bar", "Ulcinj", "Sveti Stefan",
+  "Petrovac", "Bečići", "Sutomore", "Dobrota", "Perast", "Risan", "Igalo",
+  "Bijela", "Rafailovići", "Rafailović", "Pržno", "Przno", "Kumbor", "Đenovići"
+]);
+
+/** Ingatlantípus-szorzó a rövid-távú kiadásban (nagyobb/prémium → jobb hozam). */
+const STR_TYPE_FACTOR: Record<string, number> = {
+  villa: 1.18,
+  house: 1.1,
+  new: 1.06,
+  apartment: 1.0,
+  hospitality: 1.2,
+  commercial: 0.8,
+  office: 0.7
+};
+
+export interface RentalEstimate {
+  city: string;
+  coastal: boolean;
+  area: number;
+  /** Hosszú táv: egy bérlőnek, havi (€). */
+  longTermMonthly: number;
+  longTermAnnual: number;
+  /** Rövid táv (Airbnb): átlagos éjszakai díj (€). */
+  nightly: number;
+  nightlyPeak: number; // főszezon (nyár)
+  nightlyOff: number; // holtszezon
+  occupancyPct: number; // becsült éves kihasználtság
+  strMonthlyGross: number; // Airbnb havi bruttó (átlag)
+  strAnnualGross: number; // Airbnb éves bruttó
+  /** Mennyivel hoz többet az Airbnb az egész éves hosszú-távúhoz képest (%). */
+  strVsLtrPct: number;
+  /** Volt-e valódi bérleti komparábilis, vagy alapértelmezett kulcsszámmal becsültünk. */
+  estimated: boolean;
+}
+
+/**
+ * Bérbeadási hozam-becslő egy adott városra + típusra + alapterületre.
+ *
+ * A hosszú-távú havi díjat a helyi bérleti komparábilisekből (€/m²) számoljuk;
+ * ha nincs elég helyi adat, tengerparti/szárazföldi alapértékből. A rövid-távú
+ * (Airbnb) számokat ebből vezetjük le egy napi-díj szorzóval + becsült szezonális
+ * kihasználtsággal — Montenegró parti piacára hangolva. Minden szám BECSLÉS.
+ */
+export function rentalEstimate(
+  city: string,
+  area: number,
+  type: string,
+  all: Listing[]
+): RentalEstimate {
+  const coastal = COASTAL_TOWNS.has(city);
+  const a = Math.max(0, area);
+
+  // €/m²/hó hosszú-távú bérleti kulcs — helyi komparábilis, vagy alapérték.
+  let perM2 = cityRentPerM2(city, all);
+  if (!perM2 || perM2 <= 0) perM2 = coastal ? 11 : 6.5;
+
+  const typeFactor = STR_TYPE_FACTOR[type] ?? 0.9;
+
+  const longTermMonthly = Math.round(perM2 * a);
+  const longTermAnnual = longTermMonthly * 12;
+
+  // Rövid-táv: a napi díj a hosszú-távú napi (havi/30) többszöröse. Parti
+  // turisztikai piacon lényegesen magasabb; a típus is módosít.
+  const strDailyMultiplier = (coastal ? 3.2 : 1.9) * typeFactor;
+  const nightly = Math.round((longTermMonthly / 30) * strDailyMultiplier);
+  const nightlyPeak = Math.round(nightly * 1.7);
+  const nightlyOff = Math.round(nightly * 0.55);
+
+  const occupancyPct = coastal ? 62 : 47;
+  const strMonthlyGross = Math.round((nightly * 30 * occupancyPct) / 100);
+  const strAnnualGross = strMonthlyGross * 12;
+
+  const strVsLtrPct = longTermAnnual > 0 ? Math.round((strAnnualGross / longTermAnnual - 1) * 100) : 0;
+
+  return {
+    city,
+    coastal,
+    area: a,
+    longTermMonthly,
+    longTermAnnual,
+    nightly,
+    nightlyPeak,
+    nightlyOff,
+    occupancyPct,
+    strMonthlyGross,
+    strAnnualGross,
+    strVsLtrPct,
+    estimated: true
+  };
+}
+
 export interface DealScoreBreakdown {
   score: number; // 0-100
   vsCityAvgPct: number; // €/m² eltérés a városátlagtól (negatív = olcsóbb)

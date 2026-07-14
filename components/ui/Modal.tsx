@@ -38,8 +38,13 @@ export default function Modal({ open, onClose, children, size = "md", title, cla
 
   return (
     <div className="fixed inset-0 z-[100] flex items-end justify-center sm:items-center">
-      {/* 100% fehér, fix (nem átlátszó, nem görgethető) háttér */}
-      <div className="absolute inset-0 bg-white animate-fade-in" onClick={onClose} aria-hidden />
+      {/* MOBILON 100% fehér, fix háttér (a mögöttes oldal nem látszik/görgethető).
+          ASZTALON csak halvány, elmosott dim — a lap tartalma látható marad. */}
+      <div
+        className="absolute inset-0 bg-white animate-fade-in lg:bg-ink-950/40 lg:backdrop-blur-sm"
+        onClick={onClose}
+        aria-hidden
+      />
       <div
         role="dialog"
         aria-modal="true"

@@ -87,7 +87,9 @@ export default function MobileNav() {
   // Az ingatlan-adatlapon ÉS a hirdetésfeltöltő varázslóban nincs alsó menüsor
   // (tiszta, fókuszált nézet) — így a varázsló saját „Tovább/Mégse" sávja mindig
   // látható marad, nem takarja el a menü.
-  if (/^\/listing\//.test(pathname) || pathname === "/listings/new") return null;
+  // Csak a hirdetés-ADATLAPON rejtjük (ott saját alsó kapcsolat-sáv van). Az új
+  // hirdetés / szerkesztés oldalon MARADJON látható, mint a többi oldalon.
+  if (/^\/listing\//.test(pathname)) return null;
 
   return (
     <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-ink-100 bg-white pb-[env(safe-area-inset-bottom)] lg:hidden">

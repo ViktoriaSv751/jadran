@@ -23,6 +23,7 @@ export type IconName =
   | "shield"
   | "euro"
   | "sliders"
+  | "compare"
   | "chevronLeft"
   | "chevronRight"
   | "chevronDown"
@@ -154,6 +155,12 @@ const PATHS: Record<IconName, JSX.Element> = {
       <path d="M4 7h10M18 7h2M4 17h2M10 17h10" />
       <circle cx="16" cy="7" r="2" />
       <circle cx="8" cy="17" r="2" />
+    </>
+  ),
+  compare: (
+    <>
+      <rect x="4" y="7" width="6" height="13" rx="1.2" />
+      <rect x="14" y="4" width="6" height="16" rx="1.2" />
     </>
   ),
   chevronLeft: <path d="m14 6-6 6 6 6" />,

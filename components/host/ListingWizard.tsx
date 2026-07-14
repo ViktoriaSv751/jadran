@@ -203,6 +203,9 @@ export default function ListingWizard() {
   const [form, setForm] = useState<FormState>(emptyForm);
   const [seeded, setSeeded] = useState(false);
   const [step, setStep] = useState(0);
+  // Típusválasztó: először csak 6 típus, egy gombbal kinyitható a többi — mint a
+  // részletes keresőben.
+  const [typeExpanded, setTypeExpanded] = useState(false);
 
   // Lépésváltáskor MINDIG az oldal tetejére ugrunk, hogy az új lépés űrlapja a
   // képernyő tetejéről induljon (ne középről/aljáról).
@@ -490,9 +493,10 @@ export default function ListingWizard() {
 
             <div>
               <span className="mb-1.5 block text-sm font-medium text-ink-700">{tr("choose_type", lang)}</span>
-              {/* Látványos 3D csempék — ugyanúgy, mint a keresőben. */}
+              {/* Látványos 3D csempék — előbb csak 6 típus, a többi gombra nyílik
+                  (mint a részletes keresőben). */}
               <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4">
-                {TYPES.map((tp) => {
+                {(typeExpanded || !TYPES.slice(0, 6).includes(form.type) ? TYPES : TYPES.slice(0, 6)).map((tp) => {
                   const activeType = form.type === tp;
                   return (
                     <button
@@ -524,6 +528,23 @@ export default function ListingWizard() {
                   );
                 })}
               </div>
+              {TYPES.length > 6 && (
+                <div className="mt-3 flex justify-center">
+                  <button
+                    type="button"
+                    onClick={() => setTypeExpanded((v) => !v)}
+                    className="group inline-flex items-center gap-1.5 rounded-full border border-ink-200 bg-white px-5 py-2 text-sm font-bold text-ink-700 transition hover:border-ink-900 hover:bg-ink-900 hover:text-white"
+                  >
+                    {typeExpanded ? tr("show_less", lang) : tr("show_more", lang)}
+                    <Icon
+                      name="chevronDown"
+                      size={15}
+                      strokeWidth={2.4}
+                      className={cn("transition-transform duration-300", typeExpanded && "rotate-180")}
+                    />
+                  </button>
+                </div>
+              )}
             </div>
 
             <Input
@@ -814,10 +835,10 @@ export default function ListingWizard() {
         )}
       </div>
 
-      {/* Nav buttons — RAGADÓS alsó sáv, mindig látható (a menüsor itt rejtve van). */}
-      <div className="sticky bottom-0 z-30 -mx-4 mt-6 flex items-center justify-between gap-3 border-t border-ink-100 bg-white/95 px-4 pt-3 backdrop-blur"
-        style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 0.75rem)" }}
-      >
+      {/* Nav buttons — RAGADÓS alsó sáv. Mobilon az app alsó menüsora FÖLÖTT ül
+          (≈4.75rem), hogy ne takarja ki egymást; asztalon a menüsor rejtett, így
+          a sáv a képernyő aljára simul. */}
+      <div className="sticky bottom-[calc(4.75rem+env(safe-area-inset-bottom))] z-30 -mx-4 mt-6 flex items-center justify-between gap-3 border-t border-ink-100 bg-white/95 px-4 py-3 backdrop-blur lg:bottom-0">
         <Button
           variant="ghost"
           size="lg"

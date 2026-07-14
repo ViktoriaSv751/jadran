@@ -120,17 +120,24 @@ export default function HomeClient() {
 
 /**
  * „Tovább a következő szekcióra" gomb — CSAK asztalon, a szekció tartalma ALATT,
- * középre igazítva (nem lóg rá az utolsó blokkra).
+ * bőséges térközzel és pontosan középre igazítva. Feliratos pill (Tovább +
+ * lefelé nyíl), hogy egyértelmű legyen: ez visz a következő szekcióra.
  */
 function NextButton({ to }: { to: string }) {
+  const { lang } = useLang();
   return (
-    <div className="mt-10 hidden w-full justify-center lg:flex">
+    <div className="mt-16 hidden w-full justify-center lg:flex">
       <button
         onClick={() => smoothScrollToId(to)}
-        aria-label="↓"
-        className="grid h-12 w-12 place-items-center rounded-full border-2 border-ink-950 bg-white text-ink-950 shadow-soft transition hover:bg-ink-950 hover:text-white active:scale-95"
+        className="group inline-flex items-center gap-2 rounded-full border-2 border-ink-950 bg-white px-6 py-3 text-sm font-black uppercase tracking-wide text-ink-950 shadow-soft transition hover:bg-ink-950 hover:text-white active:scale-95"
       >
-        <Icon name="chevronDown" size={24} strokeWidth={2.4} />
+        {tr("next_step", lang)}
+        <Icon
+          name="chevronDown"
+          size={20}
+          strokeWidth={2.6}
+          className="transition-transform duration-300 group-hover:translate-y-0.5"
+        />
       </button>
     </div>
   );
