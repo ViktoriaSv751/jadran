@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useAuth, useLang, useConversations, useMessages, useListings, useProfiles } from "@/lib/store";
 import type { Lang } from "@/lib/types";
-import { tr, loc } from "@/lib/i18n";
+import { tr, loc, localizeResponseTime } from "@/lib/i18n";
 import { formatPrice } from "@/lib/format";
 import { translateText } from "@/lib/translate";
 import * as db from "@/lib/db";
@@ -15,7 +15,12 @@ import Icon from "@/components/ui/Icon";
 
 /* ------------------------------ dátum-segédek ------------------------------ */
 
-const locFor = (lang: Lang) => (lang === "hu" ? "hu-HU" : lang === "ru" ? "ru-RU" : lang === "me" ? "sr-Latn" : "en-GB");
+// Dátum/idő-formázás locale-ja mind a 12 nyelvre (nem esik mind angolra).
+const LOCALE_MAP: Record<Lang, string> = {
+  hu: "hu-HU", me: "sr-Latn", sr: "sr-Latn", bs: "bs-Latn", hr: "hr-HR",
+  en: "en-GB", es: "es-ES", ru: "ru-RU", uk: "uk-UA", sq: "sq-AL", el: "el-GR", tr: "tr-TR"
+};
+const locFor = (lang: Lang) => LOCALE_MAP[lang] ?? "en-GB";
 
 function sameDay(a: Date, b: Date): boolean {
   return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
@@ -69,12 +74,21 @@ export default function MessagesClient() {
   useEffect(() => {
     if (!user) return;
     void db.refreshConversations();
-    const iv = setInterval(() => void db.refreshConversations(), 8000);
-    const onFocus = () => void db.refreshConversations();
-    window.addEventListener("focus", onFocus);
+    // Polling CSAK amíg a lap látható — háttérben (másik tab) felesleges a
+    // 8 mp-es teljes újratöltés. Fókuszba/láthatóba kerüléskor azonnal frissítünk.
+    const tick = () => {
+      if (typeof document === "undefined" || document.visibilityState === "visible") {
+        void db.refreshConversations();
+      }
+    };
+    const iv = setInterval(tick, 8000);
+    const onVisible = () => document.visibilityState === "visible" && db.refreshConversations();
+    window.addEventListener("focus", onVisible);
+    document.addEventListener("visibilitychange", onVisible);
     return () => {
       clearInterval(iv);
-      window.removeEventListener("focus", onFocus);
+      window.removeEventListener("focus", onVisible);
+      document.removeEventListener("visibilitychange", onVisible);
     };
   }, [user]);
 
@@ -282,10 +296,10 @@ function ChatView({
         <Avatar name={other?.name ?? "?"} src={other?.avatar} size={42} />
         <div className="min-w-0 flex-1">
           <div className="truncate text-[15px] font-bold text-ink-900">{other?.name ?? "—"}</div>
-          {other?.responseTime && (
+          {localizeResponseTime(other?.responseTime, lang) && (
             <div className="flex items-center gap-1.5 truncate text-[11px] text-ink-400">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-              {other.responseTime}
+              {localizeResponseTime(other?.responseTime, lang)}
             </div>
           )}
         </div>

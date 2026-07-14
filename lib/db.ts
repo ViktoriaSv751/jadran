@@ -852,16 +852,26 @@ function localReadAt(conversationId: string): number {
 }
 
 export function markConversationRead(conversationId: string, userId: string): void {
-  // 1) Helyi „elolvasva"-bélyeg: mostantól minden korábbi üzenet olvasottnak
-  //    számít ebben a beszélgetésben (ez sosem „ugrik vissza" olvasatlanra).
+  // Csak akkor írunk/emittálunk, ha TÉNYLEGESEN változott valami — enélkül a
+  // 8 mp-es polling + minden render felesleges emit-hullámokat és localStorage-
+  // írásokat okozna (zajos, akár villódzó UI).
+  let changed = false;
+
+  // 1) Helyi „elolvasva"-bélyeg (csak ha új a legfrissebb olvasott üzenet).
   const map = getReadMap();
   const latest = cache.messages
     .filter((m) => m.conversationId === conversationId)
     .reduce((t, m) => Math.max(t, +new Date(m.createdAt)), 0);
-  map[conversationId] = new Date(Math.max(latest, Date.now())).toISOString();
-  writeLS(K_CONV_READ, map); // ez emitel is
+  const stamp = new Date(Math.max(latest, Date.now())).toISOString();
+  const prevStamp = map[conversationId];
+  if (!prevStamp || +new Date(stamp) > +new Date(prevStamp)) {
+    map[conversationId] = stamp;
+    writeLS(K_CONV_READ, map); // ez emitel is
+    changed = true;
+  }
 
-  // 2) A szerver-oldali readBy frissítése (best-effort).
+  // 2) A szerver-oldali readBy frissítése (best-effort) — csak a ténylegesen
+  //    olvasatlan üzenetekre.
   const changedIds: string[] = [];
   cache.messages = cache.messages.map((m) => {
     if (m.conversationId === conversationId && !m.readBy.includes(userId)) {
@@ -870,7 +880,10 @@ export function markConversationRead(conversationId: string, userId: string): vo
     }
     return m;
   });
-  emit();
+  if (changedIds.length) {
+    changed = true;
+  }
+  if (changed) emit();
   if (supabase && changedIds.length) {
     for (const m of cache.messages) {
       if (changedIds.includes(m.id)) {

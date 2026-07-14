@@ -17,6 +17,20 @@ export const LANGS: { code: Lang; label: string; flag: string }[] = [
 
 /** A ténylegesen, natívan lefordított felület-nyelvek. A többi nyelv ezekből
  *  öröklődik (gépi/hasonló nyelvi fallback) — a nyelvválasztó „(auto)"-ként jelzi. */
+/**
+ * A profil „válaszidő" mezője a seed-adatban magyar szabad-szöveg. A chat-fejlécben
+ * viszont a felhasználó nyelvén kell megjelennie — ez a helper a ismert értékeket
+ * lefordított, teljes mondattá képezi. Ismeretlen érték esetén üres (elrejtjük).
+ */
+export function localizeResponseTime(raw: string | null | undefined, lang: Lang): string {
+  const r = (raw ?? "").toLowerCase();
+  if (!r) return "";
+  if (r.includes("egy órán") || r.includes("within an hour") || r.includes("sat")) return tr("rt_under_hour", lang);
+  if (r.includes("néhány") || r.includes("pár") || r.includes("few hours") || r.includes("par sat")) return tr("rt_few_hours", lang);
+  if (r.includes("napon") || r.includes("within a day") || r.includes("dana")) return tr("rt_within_day", lang);
+  return tr("rt_few_hours", lang);
+}
+
 export const NATIVE_LANGS: Lang[] = ["hu", "me", "en", "ru"];
 export const isNativeLang = (l: Lang): boolean => NATIVE_LANGS.includes(l);
 
@@ -338,6 +352,9 @@ export const t: Dict = {
   show_original: { hu: "Eredeti megjelenítése", me: "Prikaži original", en: "Show original", ru: "Показать оригинал" },
   show_translation: { hu: "Fordítás megjelenítése", me: "Prikaži prevod", en: "Show translation", ru: "Показать перевод" },
   you: { hu: "Te", me: "Vi", en: "You", ru: "Вы" },
+  rt_under_hour: { hu: "Általában egy órán belül válaszol", me: "Obično odgovara u roku od sat vremena", en: "Usually replies within an hour", ru: "Обычно отвечает в течение часа" },
+  rt_few_hours: { hu: "Általában pár órán belül válaszol", me: "Obično odgovara za par sati", en: "Usually replies within a few hours", ru: "Обычно отвечает за несколько часов" },
+  rt_within_day: { hu: "Általában egy napon belül válaszol", me: "Obično odgovara u toku dana", en: "Usually replies within a day", ru: "Обычно отвечает в течение дня" },
   msg_today: { hu: "Ma", me: "Danas", en: "Today", ru: "Сегодня" },
   msg_yesterday: { hu: "Tegnap", me: "Juče", en: "Yesterday", ru: "Вчера" },
   msg_read: { hu: "Olvasva", me: "Pročitano", en: "Seen", ru: "Прочитано" },

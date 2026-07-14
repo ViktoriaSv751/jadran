@@ -15,16 +15,18 @@ function key(text: string, target: Lang): string {
   return `${target}:${text}`;
 }
 
+// v2 prefix: a korábbi verzió (px_tr:) tévesen az eredeti szöveget is cache-elte
+// hibánál — az új prefix egyszer s mindenkorra kiüríti a „mérgezett" bejegyzéseket.
 function fromLS(k: string): string | null {
   try {
-    return localStorage.getItem(`px_tr:${k}`);
+    return localStorage.getItem(`px_tr2:${k}`);
   } catch {
     return null;
   }
 }
 function toLS(k: string, v: string): void {
   try {
-    localStorage.setItem(`px_tr:${k}`, v);
+    localStorage.setItem(`px_tr2:${k}`, v);
   } catch {
     /* tele a tár — nem baj */
   }
@@ -45,10 +47,16 @@ export async function translateText(text: string, target: Lang): Promise<string>
     const { data, error } = await supabase.functions.invoke("translate", {
       body: { text: t, target }
     });
-    const out = !error && data?.text ? (data.text as string) : text;
-    mem.set(k, out);
-    toLS(k, out);
-    return out;
+    // CSAK a ténylegesen lefordított kimenetet cache-eljük. Hibánál (501/hálózat)
+    // az EREDETIT adjuk vissza, de NEM tartósítjuk — különben egy átmeneti hiba
+    // után a szöveg soha többé nem fordulna le ezen az eszközön.
+    if (!error && data?.text) {
+      const out = data.text as string;
+      mem.set(k, out);
+      toLS(k, out);
+      return out;
+    }
+    return text;
   } catch {
     return text;
   }
