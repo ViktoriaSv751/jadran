@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import type { Listing } from "@/lib/types";
 import { useLang, useProfile } from "@/lib/store";
@@ -11,7 +10,6 @@ import Icon from "@/components/ui/Icon";
 export default function SellerCard({ listing }: { listing: Listing }) {
   const { lang } = useLang();
   const seller = useProfile(listing.ownerId);
-  const [phoneShown, setPhoneShown] = useState(false);
   if (!seller) return null;
 
   const isAgency = seller.role === "agency";
@@ -52,26 +50,15 @@ export default function SellerCard({ listing }: { listing: Listing }) {
               <dd className="inline font-medium">{seller.responseTime}</dd>
             </div>
           </dl>
-          {/* Telefonszám: egykattintásos felfedés, majd közvetlen hívás (tel:) —
-              mint az ingatlan.com „Telefonszám megjelenítése" gombja. */}
+          {/* Telefonszám + közvetlen hívás (tel:) — azonnal látszik, egy
+              koppintással hív, mint az ingatlan.com hirdetéseinél. */}
           {seller.phone && (
-            <div className="mt-3">
-              {phoneShown ? (
-                <a
-                  href={telHref}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-ink-900 px-4 py-3 text-base font-bold text-white shadow-soft transition hover:bg-ink-800 sm:w-auto"
-                >
-                  <Icon name="phone" size={18} strokeWidth={2.2} /> {tr("call_btn", lang)} · {seller.phone}
-                </a>
-              ) : (
-                <button
-                  onClick={() => setPhoneShown(true)}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-ink-900 px-4 py-3 text-base font-bold text-white shadow-soft transition hover:bg-ink-800 sm:w-auto"
-                >
-                  <Icon name="phone" size={18} strokeWidth={2.2} /> {tr("show_phone", lang)}
-                </button>
-              )}
-            </div>
+            <a
+              href={telHref}
+              className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-ink-900 px-4 py-3 text-base font-bold text-white shadow-soft transition hover:bg-ink-800 sm:w-auto"
+            >
+              <Icon name="phone" size={18} strokeWidth={2.2} /> {tr("call_btn", lang)} · {seller.phone}
+            </a>
           )}
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <Link

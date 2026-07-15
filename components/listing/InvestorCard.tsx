@@ -124,12 +124,28 @@ export default function InvestorCard({ listing }: { listing: Listing }) {
             <Row
               label={tr("rent_calc_str_monthly", lang)}
               value={`${formatPrice(str.strMonthlyGross, lang)}${tr("per_month", lang)}`}
-              strong
             />
             <Row
               label={tr("rent_calc_str_annual", lang)}
               value={`${formatPrice(str.strAnnualGross, lang)}${tr("per_year", lang)}`}
             />
+          </div>
+          {/* NETTÓ — a tényleges, üzemeltetési költségek utáni bevétel. */}
+          <div className="mt-2.5 space-y-1.5 border-t border-ink-900/10 pt-2.5">
+            <div className="flex items-baseline justify-between gap-3">
+              <span className="text-sm font-semibold text-ink-700">{tr("rent_calc_net_monthly", lang)}</span>
+              <span className="font-black text-emerald-700">
+                {formatPrice(str.strMonthlyNet, lang)}
+                {tr("per_month", lang)}
+              </span>
+            </div>
+            <Row
+              label={tr("rent_calc_net_annual", lang)}
+              value={`${formatPrice(str.strAnnualNet, lang)}${tr("per_year", lang)}`}
+            />
+            <p className="text-[11px] leading-snug text-ink-400">
+              {tr("rent_calc_costs_note", lang).replace("{pct}", String(str.costRatioPct))}
+            </p>
           </div>
           {str.strVsLtrPct > 0 && (
             <p className="mt-2 flex items-center gap-1 text-[12px] font-semibold text-emerald-700">
@@ -140,6 +156,30 @@ export default function InvestorCard({ listing }: { listing: Listing }) {
         </div>
       )}
 
+      {str && (showLTR || showSTR) && (
+        <div className="mt-3 flex items-center gap-2 border-t border-ink-100 pt-3">
+          <span className="text-[11px] font-semibold text-ink-500">{tr("rent_calc_confidence", lang)}:</span>
+          <span
+            className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-bold ${
+              str.confidence === "high"
+                ? "bg-emerald-50 text-emerald-700"
+                : str.confidence === "medium"
+                  ? "bg-amber-50 text-amber-700"
+                  : "bg-ink-100 text-ink-600"
+            }`}
+          >
+            <span className={`h-1.5 w-1.5 rounded-full ${
+              str.confidence === "high" ? "bg-emerald-500" : str.confidence === "medium" ? "bg-amber-500" : "bg-ink-400"
+            }`} />
+            {tr(str.confidence === "high" ? "conf_high" : str.confidence === "medium" ? "conf_medium" : "conf_low", lang)}
+          </span>
+          <span className="text-[11px] text-ink-400">
+            {str.localComps > 0
+              ? `· ${str.localComps} ${tr("rent_calc_local_comps", lang)}`
+              : `· ${tr("rent_calc_national", lang)}`}
+          </span>
+        </div>
+      )}
       <p className="mt-3 text-[11px] leading-snug text-ink-400">{tr("investor_disclaimer", lang)}</p>
     </div>
   );
