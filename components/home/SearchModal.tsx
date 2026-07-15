@@ -14,6 +14,7 @@ interface Draft {
   mode: Mode;
   loc: string; // free-text location (matched against city/district/title)
   city: string; // exact city chosen from the quick chips
+  sellerType: string; // "" | "private" | "agency"
   type: string;
   priceMin: string;
   priceMax: string;
@@ -49,6 +50,7 @@ const empty: Draft = {
   mode: "sale",
   loc: "",
   city: "",
+  sellerType: "",
   type: "",
   priceMin: "",
   priceMax: "",
@@ -194,6 +196,7 @@ export default function SearchModal({
     if (d.mode) p.set("mode", d.mode);
     if (d.loc.trim()) p.set("q", d.loc.trim());
     if (d.city) p.set("city", d.city);
+    if (d.sellerType) p.set("sellerType", d.sellerType);
     if (d.type) p.set("type", d.type);
     if (d.priceMin) p.set("priceMin", d.priceMin);
     if (d.priceMax) p.set("priceMax", d.priceMax);
@@ -251,11 +254,11 @@ export default function SearchModal({
   };
 
   return createPortal(
-    // TELJES OLDALAS minden méreten (asztalon is), FEKETE kerettel; a mögöttes
-    // oldal 100% fehér és fix (nem görgethető).
-    <div className="fixed inset-0 z-[1100]">
-      <div className="absolute inset-0 bg-white" onClick={onClose} />
-      <div className="absolute inset-0 flex animate-sheet-up flex-col overflow-hidden border-2 border-ink-950 bg-white">
+    // TELEFONON teljes-képernyős lap; ASZTALON középre igazított, szélesebb
+    // dialógus sötétített háttérrel (nem „össze szűkült" fehér űr).
+    <div className="fixed inset-0 z-[1100] flex sm:items-center sm:justify-center sm:p-6">
+      <div className="absolute inset-0 bg-white sm:bg-ink-950/60 sm:backdrop-blur-sm" onClick={onClose} />
+      <div className="relative flex h-full w-full animate-sheet-up flex-col overflow-hidden border-2 border-ink-950 bg-white sm:h-auto sm:max-h-[92vh] sm:max-w-3xl sm:rounded-3xl sm:shadow-pop">
         {/* Header — bold dark band with neon glow */}
         <div className="relative flex flex-col items-center justify-center overflow-hidden bg-[linear-gradient(115deg,#070708_0%,#0d0d10_45%,#3a4a00_78%,#c8ff00_100%)] px-5 pb-7 pt-[calc(1.75rem+env(safe-area-inset-top))] text-center text-white sm:pt-7">
           <div className="pointer-events-none absolute -right-10 -top-14 h-44 w-44 rounded-full bg-[#c8ff00]/25 blur-3xl" />
@@ -276,7 +279,7 @@ export default function SearchModal({
           </p>
         </div>
 
-        <div className="mx-auto w-full max-w-2xl flex-1 space-y-6 overflow-y-auto px-5 py-5">
+        <div className="mx-auto w-full max-w-2xl flex-1 space-y-6 overflow-y-auto px-5 py-5 sm:max-w-none sm:px-8">
           {/* Mode */}
           <div className="mx-auto flex w-full max-w-sm rounded-full border border-ink-200 bg-ink-50 p-1">
             {([
@@ -343,6 +346,31 @@ export default function SearchModal({
                   }`}
                 >
                   {c}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Hirdető típusa — magánszemély vagy ingatlaniroda (mint az ingatlan.com). */}
+          <div>
+            <span className={sectionLabel}>{tr("seller_type_label", lang)}</span>
+            <div className="flex flex-wrap gap-2">
+              {([
+                { v: "", label: tr("any", lang) },
+                { v: "private", label: tr("role_private", lang), icon: "user" as const },
+                { v: "agency", label: tr("role_agency", lang), icon: "building" as const }
+              ]).map((o) => (
+                <button
+                  key={o.v || "any"}
+                  onClick={() => set("sellerType", o.v)}
+                  className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-medium transition ${
+                    d.sellerType === o.v
+                      ? "border-ink-900 bg-ink-900 text-white"
+                      : "border-ink-200 text-ink-700 hover:border-ink-300"
+                  }`}
+                >
+                  {o.icon && <Icon name={o.icon} size={15} strokeWidth={2.2} />}
+                  {o.label}
                 </button>
               ))}
             </div>

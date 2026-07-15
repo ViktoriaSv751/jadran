@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import type { Listing } from "@/lib/types";
 import { useLang, useProfile } from "@/lib/store";
@@ -10,7 +11,11 @@ import Icon from "@/components/ui/Icon";
 export default function SellerCard({ listing }: { listing: Listing }) {
   const { lang } = useLang();
   const seller = useProfile(listing.ownerId);
+  const [phoneShown, setPhoneShown] = useState(false);
   if (!seller) return null;
+
+  const isAgency = seller.role === "agency";
+  const telHref = `tel:${seller.phone.replace(/[^\d+]/g, "")}`;
 
   // Determinisztikus URL (SSR és kliens ugyanazt rendereli — nincs hydration-hiba).
   const shareUrl = `${process.env.NEXT_PUBLIC_SITE_URL ?? ""}/listing/${listing.id}`;
@@ -29,9 +34,16 @@ export default function SellerCard({ listing }: { listing: Listing }) {
               </span>
             )}
           </div>
-          <div className="mt-0.5 text-sm text-ink-500">
-            {seller.role === "agency" ? tr("role_agency", lang) : tr("role_private", lang)}
-            {seller.location ? ` · ${seller.location}` : ""}
+          <div className="mt-1 flex flex-wrap items-center gap-2">
+            <span
+              className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-bold ${
+                isAgency ? "bg-brand-50 text-brand-700" : "bg-ink-100 text-ink-700"
+              }`}
+            >
+              <Icon name={isAgency ? "building" : "user"} size={12} strokeWidth={2.4} />
+              {isAgency ? tr("role_agency", lang) : tr("role_private", lang)}
+            </span>
+            {seller.location && <span className="text-sm text-ink-500">· {seller.location}</span>}
           </div>
           {seller.bio && <p className="mt-2 text-sm leading-relaxed text-ink-600">{seller.bio}</p>}
           <dl className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-sm text-ink-600">
@@ -40,6 +52,27 @@ export default function SellerCard({ listing }: { listing: Listing }) {
               <dd className="inline font-medium">{seller.responseTime}</dd>
             </div>
           </dl>
+          {/* Telefonszám: egykattintásos felfedés, majd közvetlen hívás (tel:) —
+              mint az ingatlan.com „Telefonszám megjelenítése" gombja. */}
+          {seller.phone && (
+            <div className="mt-3">
+              {phoneShown ? (
+                <a
+                  href={telHref}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-ink-900 px-4 py-3 text-base font-bold text-white shadow-soft transition hover:bg-ink-800 sm:w-auto"
+                >
+                  <Icon name="phone" size={18} strokeWidth={2.2} /> {tr("call_btn", lang)} · {seller.phone}
+                </a>
+              ) : (
+                <button
+                  onClick={() => setPhoneShown(true)}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-ink-900 px-4 py-3 text-base font-bold text-white shadow-soft transition hover:bg-ink-800 sm:w-auto"
+                >
+                  <Icon name="phone" size={18} strokeWidth={2.2} /> {tr("show_phone", lang)}
+                </button>
+              )}
+            </div>
+          )}
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <Link
               href={`/u/${seller.id}`}

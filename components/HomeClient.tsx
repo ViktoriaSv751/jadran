@@ -83,8 +83,6 @@ export default function HomeClient() {
         <Shelf
           title={tr("featured", lang)}
           subtitle={tr("shelf_featured_sub", lang)}
-          href="/search?mode=sale"
-          cta={tr("view_all", lang)}
           listings={featured}
           image="/cat/villa.png"
         />
@@ -94,8 +92,6 @@ export default function HomeClient() {
         <Shelf
           title={tr("shelf_sea_title", lang)}
           subtitle={tr("shelf_sea_sub", lang)}
-          href="/search?view=sea"
-          cta={tr("view_all", lang)}
           listings={seaview}
           image="/cat/house.png"
         />
@@ -105,8 +101,6 @@ export default function HomeClient() {
         <Shelf
           title={tr("shelf_new_title", lang)}
           subtitle={tr("shelf_new_sub", lang)}
-          href="/search?type=new"
-          cta={tr("view_all", lang)}
           listings={newBuilds}
           image="/cat/new.png"
         />

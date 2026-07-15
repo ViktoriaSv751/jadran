@@ -34,6 +34,7 @@ export type IconName =
   | "close"
   | "user"
   | "message"
+  | "phone"
   | "plus"
   | "minus"
   | "star"
@@ -267,6 +268,9 @@ const PATHS: Record<IconName, JSX.Element> = {
       <path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6z" />
       <path d="M10.5 19a1.6 1.6 0 0 0 3 0" />
     </>
+  ),
+  phone: (
+    <path d="M6.6 3.5 4 4c-.7 2.2.2 6 3 8.8s6.6 3.7 8.8 3l.5-2.6-2.6-1.3-1.4 1.4c-1-.5-2-1.2-2.9-2.1s-1.6-1.9-2.1-2.9l1.4-1.4z" />
   ),
   // Kategória-ikonok — a 3D matricák helyett, egységes vonalnyelven.
   villa: (

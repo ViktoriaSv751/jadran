@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import type { Listing } from "@/lib/types";
-import { useLang, useListings, useAuth } from "@/lib/store";
+import { useLang, useListings, useAuth, useProfiles } from "@/lib/store";
 import { tr, loc } from "@/lib/i18n";
 import { pricePerM2, formatPrice } from "@/lib/format";
 import { isFeatured } from "@/lib/mappers";
@@ -28,11 +28,12 @@ const MapView = dynamic(() => import("./MapView"), {
   loading: () => <div className="shimmer h-full w-full" />
 });
 
-function applyFilters(items: Listing[], f: FilterState): Listing[] {
+function applyFilters(items: Listing[], f: FilterState, roleOf?: Map<string, string>): Listing[] {
   const q = f.q.trim().toLowerCase();
   let out = items.filter((l) => {
     if (l.status !== "active") return false;
     if (f.mode && l.mode !== f.mode) return false;
+    if (f.sellerType && roleOf && roleOf.get(l.ownerId) !== f.sellerType) return false;
     if (q) {
       const hay =
         `${l.city} ${l.district} ${l.title.hu} ${l.title.me} ${l.title.en} ${l.title.ru} ${l.agency}`.toLowerCase();
@@ -111,6 +112,7 @@ function filtersToQuery(f: FilterState): string {
 export default function SearchClient() {
   const { lang } = useLang();
   const { items } = useListings();
+  const { profiles } = useProfiles();
   const { user } = useAuth();
   const params = useSearchParams();
   const [filters, setFilters] = useState<FilterState>(emptyFilters);
@@ -160,7 +162,8 @@ export default function SearchClient() {
     window.history.replaceState(null, "", `/search${qs}`);
   }, [filters, loading]);
 
-  const results = useMemo(() => applyFilters(items, filters), [items, filters]);
+  const roleOf = useMemo(() => new Map(profiles.map((p) => [p.id, p.role])), [profiles]);
+  const results = useMemo(() => applyFilters(items, filters, roleOf), [items, filters, roleOf]);
 
   // Terület-keresés: a lista a térkép aktuális kivágatát tükrözi (Airbnb-minta).
   const visible = useMemo(() => {
@@ -205,8 +208,16 @@ export default function SearchClient() {
     setFilters(next);
   };
 
-  // Egyetlen térkép/lista váltó a felső sorban (mobil + desktop).
-  const toggleMap = () => setView(view === "map" ? (isMobile ? "list" : "split") : "map");
+  // Térkép/lista váltó. ASZTALON a térkép ki/be: split (lista + térkép) ↔ list
+  // (csak lista, 3 oszlopos rács). TELEFONON teljes térkép ↔ lista.
+  const mapVisible = view === "map" || (!isMobile && view === "split");
+  const toggleMap = () => {
+    if (isMobile) {
+      setView(view === "map" ? "list" : "map");
+      return;
+    }
+    setView(view === "split" ? "list" : "split");
+  };
 
   // AI-keresés: szabad szöveg ("napfényes lakás Kotorban 300k alatt") → szűrők.
   const [aiBusy, setAiBusy] = useState(false);
@@ -305,13 +316,13 @@ export default function SearchClient() {
             <button
               onClick={toggleMap}
               className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-sm font-semibold shadow-soft transition ${
-                view === "map"
+                mapVisible
                   ? "border-ink-900 bg-ink-900 text-white"
                   : "border-ink-200 bg-white text-ink-800 hover:border-ink-400"
               }`}
             >
-              <Icon name={view === "map" ? "menu" : "globe"} size={16} strokeWidth={2.2} />
-              <span className="hidden sm:inline">{view === "map" ? tr("list", lang) : tr("map", lang)}</span>
+              <Icon name={mapVisible ? "menu" : "globe"} size={16} strokeWidth={2.2} />
+              <span className="hidden sm:inline">{mapVisible ? tr("list", lang) : tr("map", lang)}</span>
             </button>
           </div>
         </div>
@@ -435,7 +446,8 @@ export default function SearchClient() {
             </div>
           ) : view === "list" ? (
             <>
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
+              {/* Csak lista (térkép nélkül) — asztalon 3 hirdetés egy sorban. */}
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {paged.slice.map((l) => (
                   <div key={l.id} className="animate-fade-in">
                     <ListingCard listing={l} active={l.id === activeId} onActivate={setActiveId} />
@@ -469,6 +481,15 @@ export default function SearchClient() {
                 />
               </div>
               <div className="sticky top-24 hidden h-[calc(100vh-7rem)] overflow-hidden rounded-3xl border border-ink-100 shadow-card lg:block">
+                {/* Térkép bezárása (X) → csak a hirdetéslista marad, 3 oszlopban. */}
+                <button
+                  onClick={() => setView("list")}
+                  aria-label={tr("close", lang)}
+                  title={tr("close", lang)}
+                  className="absolute right-3 top-3 z-[500] inline-flex items-center gap-1.5 rounded-full border border-ink-200 bg-white/95 px-3 py-1.5 text-xs font-bold text-ink-800 shadow-float backdrop-blur transition hover:bg-white hover:text-brand-600"
+                >
+                  <Icon name="close" size={14} strokeWidth={2.6} /> {tr("map", lang)}
+                </button>
                 <MapView
                   listings={visible}
                   lang={lang}

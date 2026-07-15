@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useLang, useFavorites, useListings } from "@/lib/store";
+import { useLang, useFavorites, useListings, useProfiles } from "@/lib/store";
 import { tr, loc } from "@/lib/i18n";
 import { pricePerM2 } from "@/lib/format";
 import type { Listing } from "@/lib/types";
@@ -31,8 +31,11 @@ function FavoritesInner() {
   const { lang } = useLang();
   const favorites = useFavorites();
   const { items: all } = useListings();
+  const { profiles } = useProfiles();
+  const roleOf = useMemo(() => new Map(profiles.map((p) => [p.id, p.role])), [profiles]);
 
   const [mode, setMode] = useState<"" | "sale" | "rent">("");
+  const [sellerType, setSellerType] = useState("");
   const [type, setType] = useState("");
   const [q, setQ] = useState("");
   const [sort, setSort] = useState("newest");
@@ -46,6 +49,7 @@ function FavoritesInner() {
     const query = q.trim().toLowerCase();
     const out = saved.filter((l) => {
       if (mode && l.mode !== mode) return false;
+      if (sellerType && roleOf.get(l.ownerId) !== sellerType) return false;
       if (type && l.type !== type) return false;
       if (query) {
         const hay = `${l.city} ${l.district} ${loc(l.title, lang)} ${l.agency}`.toLowerCase();
@@ -60,7 +64,7 @@ function FavoritesInner() {
       ppm2: (a, b) => pricePerM2(a.price, a.area) - pricePerM2(b.price, b.area)
     };
     return [...out].sort(by[sort] ?? by.newest);
-  }, [saved, mode, type, q, sort, lang]);
+  }, [saved, mode, sellerType, roleOf, type, q, sort, lang]);
 
   const { slice, pageCount, page: safePage, total } = paginate(filtered, page);
 
@@ -68,6 +72,7 @@ function FavoritesInner() {
   const applyQs = (qs: string) => {
     const p = new URLSearchParams(qs);
     setMode((p.get("mode") as "" | "sale" | "rent") || "");
+    setSellerType(p.get("sellerType") || "");
     setType(p.get("type") || "");
     setQ(p.get("q") || p.get("city") || "");
     setPage(0);

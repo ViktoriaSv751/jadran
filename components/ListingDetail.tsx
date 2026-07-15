@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import type { Listing } from "@/lib/types";
-import { useLang, useFavorites, useListings, useAuth } from "@/lib/store";
+import { useLang, useFavorites, useListings, useAuth, useProfile } from "@/lib/store";
 import { openAuth, toast } from "@/lib/ui";
 import { tr, typeLabels, conditionLabels, viewLabels, modeLabels, heatingLabels, loc } from "@/lib/i18n";
 import { formatPrice, formatNumber, pricePerM2, distanceLabel } from "@/lib/format";
@@ -35,6 +35,7 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
   const favorites = useFavorites();
   const router = useRouter();
   const { user } = useAuth();
+  const seller = useProfile(listing.ownerId);
   const isFav = favorites.has(listing.id);
   // Mentéshez be kell jelentkezni — kilépve a belépő-ablakot nyitjuk.
   const toggleFav = () => (user ? favorites.toggle(listing.id) : openAuth("login"));
@@ -187,6 +188,16 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
               {typeLabels[listing.type][lang]}
             </span>
             <VerificationBadge level={listing.verification} lang={lang} withText />
+            {seller && (
+              <span
+                className={`inline-flex items-center gap-1 rounded-lg px-2.5 py-1 text-xs font-semibold ${
+                  seller.role === "agency" ? "bg-brand-50 text-brand-700" : "bg-ink-100 text-ink-700"
+                }`}
+              >
+                <Icon name={seller.role === "agency" ? "building" : "user"} size={12} strokeWidth={2.4} />
+                {seller.role === "agency" ? tr("role_agency", lang) : tr("role_private", lang)}
+              </span>
+            )}
           </div>
 
           <h1 className="mt-2 text-2xl font-extrabold tracking-tight text-ink-900 sm:text-3xl">

@@ -10,6 +10,7 @@ export interface FilterState {
   q: string;
   mode: string;
   city: string;
+  sellerType: string; // "" | "private" | "agency"
   type: string;
   priceMin: string;
   priceMax: string;
@@ -45,6 +46,7 @@ export const emptyFilters: FilterState = {
   q: "",
   mode: "",
   city: "",
+  sellerType: "",
   type: "",
   priceMin: "",
   priceMax: "",

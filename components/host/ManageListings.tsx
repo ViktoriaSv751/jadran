@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useAuth, useLang, useListingsByOwner } from "@/lib/store";
+import { useAuth, useLang, useListingsByOwner, useProfiles } from "@/lib/store";
 import { tr, typeLabels, modeLabels, loc } from "@/lib/i18n";
 import { formatPrice, pricePerM2, formatCompact } from "@/lib/format";
 import type { Listing } from "@/lib/types";
@@ -26,9 +26,12 @@ export default function ManageListings() {
   const { lang } = useLang();
   const { user } = useAuth();
   const all = useListingsByOwner(user?.id);
+  const { profiles } = useProfiles();
+  const roleOf = useMemo(() => new Map(profiles.map((p) => [p.id, p.role])), [profiles]);
 
   const [status, setStatus] = useState<"" | "active" | "paused">("");
   const [mode, setMode] = useState<"" | "sale" | "rent">("");
+  const [sellerType, setSellerType] = useState("");
   const [type, setType] = useState("");
   const [q, setQ] = useState("");
   const [sort, setSort] = useState("newest");
@@ -41,6 +44,7 @@ export default function ManageListings() {
     const out = all.filter((l) => {
       if (status && l.status !== status) return false;
       if (mode && l.mode !== mode) return false;
+      if (sellerType && roleOf.get(l.ownerId) !== sellerType) return false;
       if (type && l.type !== type) return false;
       if (query && !`${l.city} ${l.district} ${loc(l.title, lang)}`.toLowerCase().includes(query)) return false;
       return true;
@@ -52,7 +56,7 @@ export default function ManageListings() {
       ppm2: (a, b) => pricePerM2(a.price, a.area) - pricePerM2(b.price, b.area)
     };
     return [...out].sort(by[sort] ?? by.newest);
-  }, [all, status, mode, type, q, sort, lang]);
+  }, [all, status, mode, sellerType, roleOf, type, q, sort, lang]);
 
   const { slice, pageCount, page: safePage, total } = paginate(listings, page);
 
@@ -70,6 +74,7 @@ export default function ManageListings() {
   const applyQs = (qs: string) => {
     const p = new URLSearchParams(qs);
     setMode((p.get("mode") as "" | "sale" | "rent") || "");
+    setSellerType(p.get("sellerType") || "");
     setType(p.get("type") || "");
     setQ(p.get("q") || p.get("city") || "");
     setPage(0);
