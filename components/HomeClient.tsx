@@ -24,6 +24,24 @@ export default function HomeClient() {
   const { lang } = useLang();
   const { items } = useListings();
 
+  // SZÁMÍTÓGÉPES NÉZET: a főoldalon NINCS szabad görgetés — szekciót váltani csak
+  // a pont-navigációval / „Tovább" gombbal lehet (programozott scroll, ez működik).
+  // A wheel/touch görgetést letiltjuk; ha modál van nyitva (body lock), átengedjük,
+  // hogy a modálon belül lehessen görgetni. Telefonon nincs korlátozás.
+  useEffect(() => {
+    if (!window.matchMedia("(min-width: 1024px)").matches) return;
+    const block = (e: Event) => {
+      if (document.body.style.overflow === "hidden") return; // nyitott modál → engedjük
+      e.preventDefault();
+    };
+    window.addEventListener("wheel", block, { passive: false });
+    window.addEventListener("touchmove", block, { passive: false });
+    return () => {
+      window.removeEventListener("wheel", block);
+      window.removeEventListener("touchmove", block);
+    };
+  }, []);
+
   const active = items.filter((l) => l.status === "active");
   const featured = active.filter((l) => l.mode === "sale" && l.verification === "full").slice(0, 8);
   const seaview = active.filter((l) => l.view === "sea").slice(0, 8);
@@ -76,7 +94,6 @@ export default function HomeClient() {
           </div>
           <CityGrid />
         </div>
-        <NextButton to="home-featured" />
       </section>
 
       <div id="home-featured" className={`order-3 lg:order-4 ${sec}`}>

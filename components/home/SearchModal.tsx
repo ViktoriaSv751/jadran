@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
-import { useLang, useListings } from "@/lib/store";
+import { useLang, useListings, useProfiles } from "@/lib/store";
 import { tr, typeLabels, viewLabels, conditionLabels, amenityLabels, heatingLabels } from "@/lib/i18n";
 import { cities, montenegroPlaces } from "@/lib/data";
 import Icon from "@/components/ui/Icon";
@@ -94,6 +94,8 @@ export default function SearchModal({
 }) {
   const { lang } = useLang();
   const { items } = useListings();
+  const { profiles } = useProfiles();
+  const roleOf = useMemo(() => new Map(profiles.map((p) => [p.id, p.role])), [profiles]);
   const router = useRouter();
   const [d, setD] = useState<Draft>({ ...empty, mode: initialMode });
   const [mounted, setMounted] = useState(false);
@@ -147,6 +149,7 @@ export default function SearchModal({
     return items.filter((l) => {
       if (l.status !== "active") return false;
       if (d.mode && l.mode !== d.mode) return false;
+      if (d.sellerType && roleOf.get(l.ownerId) !== d.sellerType) return false;
       if (q) {
         const hay =
           `${l.city} ${l.district} ${l.title.hu} ${l.title.me} ${l.title.en} ${l.title.ru} ${l.agency}`.toLowerCase();
@@ -187,7 +190,7 @@ export default function SearchModal({
       if (d.maxDeposit && l.deposit != null && l.deposit > Number(d.maxDeposit)) return false;
       return true;
     }).length;
-  }, [items, d]);
+  }, [items, d, roleOf]);
 
   if (!open || !mounted) return null;
 

@@ -212,7 +212,7 @@ export default function ManageListings() {
         </div>
       )}
 
-      <SearchModal open={detailedOpen} onClose={() => setDetailedOpen(false)} initialMode={mode || "sale"} onApply={applyQs} />
+      <SearchModal open={detailedOpen} onClose={() => setDetailedOpen(false)} initialMode={mode} onApply={applyQs} />
 
       {all.length === 0 ? (
         <div className="rounded-2xl border border-dashed border-ink-200 bg-white p-12 text-center">

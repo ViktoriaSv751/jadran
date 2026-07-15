@@ -3,31 +3,47 @@
 import type { Listing } from "@/lib/types";
 import { useLang, useListings } from "@/lib/store";
 import { tr } from "@/lib/i18n";
-import { formatPrice } from "@/lib/format";
-import { estimateMonthlyRent, grossYield, dealScore, rentalEstimate } from "@/lib/market";
-import { formatNumber } from "@/lib/format";
+import { formatPrice, formatNumber } from "@/lib/format";
+import { grossYield, dealScore, rentalEstimate } from "@/lib/market";
 import Icon from "@/components/ui/Icon";
 
+// Airbnb (rövid-táv) csak lakáson / házon / villán / új építésűn értelmes.
+const STR_TYPES = new Set(["apartment", "house", "villa", "new"]);
+// Hosszú-távú lakhatási bérleti becslés a nyers telekre nem értelmes.
+const NO_LTR_TYPES = new Set(["land", "agricultural"]);
+
 /**
- * Befektetői nézet — a Proopify ütőkártyája: bérleti komparábilisekből becsült
- * hozam + Deal Score. Csak eladó, lakható ingatlanon jelenik meg.
+ * Befektetői nézet / kiadhatósági kalkulátor — a Proopify ütőkártyája.
+ * Eladó ingatlanon: Deal Score + becsült hosszú-távú bérleti díj (minden épület-
+ * típusnál) + Airbnb rövid-távú becslés (napi/havi/éves + kihasználtság, csak
+ * lakás/ház/villa/új). A bérleti komparábilisekből becsülve.
  */
 export default function InvestorCard({ listing }: { listing: Listing }) {
   const { lang } = useLang();
   const { items } = useListings();
 
   if (listing.mode !== "sale") return null;
+
   const y = grossYield(listing, items);
   const ds = dealScore(listing, items);
-  if (y == null && !ds) return null;
-
-  const rent = estimateMonthlyRent(listing, items);
-  // Airbnb (rövid-táv) becslés ERRE az ingatlanra — a hozam-motor a hirdetés arcán.
   const str = listing.area > 0 ? rentalEstimate(listing.city, listing.area, listing.type, items) : null;
+
+  const showLTR = str && !NO_LTR_TYPES.has(listing.type) && str.longTermMonthly > 0;
+  const showSTR = str && STR_TYPES.has(listing.type) && str.nightly > 0;
+
+  if (!ds && !showLTR && !showSTR) return null;
+
   const scoreColor =
     (ds?.score ?? 0) >= 70 ? "text-emerald-600" : (ds?.score ?? 0) >= 45 ? "text-amber-600" : "text-rose-600";
   const barColor =
     (ds?.score ?? 0) >= 70 ? "bg-emerald-500" : (ds?.score ?? 0) >= 45 ? "bg-amber-500" : "bg-rose-500";
+
+  const Row = ({ label, value, strong }: { label: string; value: string; strong?: boolean }) => (
+    <div className="flex items-baseline justify-between gap-3">
+      <span className="text-sm text-ink-600">{label}</span>
+      <span className={strong ? "font-black text-ink-900" : "font-semibold text-ink-900"}>{value}</span>
+    </div>
+  );
 
   return (
     <div className="rounded-2xl border border-ink-100 bg-white p-5 shadow-soft">
@@ -59,37 +75,61 @@ export default function InvestorCard({ listing }: { listing: Listing }) {
         </div>
       )}
 
-      {y != null && (
-        <dl className="mt-4 space-y-2 border-t border-ink-100 pt-3 text-sm">
-          <div className="flex justify-between">
-            <dt className="text-ink-600">{tr("est_rent", lang)}</dt>
-            <dd className="font-semibold text-ink-900">
-              {formatPrice(rent, lang)}
-              {tr("per_month", lang)}
-            </dd>
+      {/* Hosszú-távú bérbeadás — minden épület-típusnál (befektetői becslés). */}
+      {showLTR && str && (
+        <div className="mt-4 rounded-xl border border-ink-100 bg-ink-50/60 p-3.5">
+          <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-ink-500">
+            <Icon name="key" size={12} /> {tr("rent_calc_ltr", lang)}
           </div>
-          <div className="flex justify-between">
-            <dt className="text-ink-600">{tr("gross_yield", lang)}</dt>
-            <dd className="font-bold text-emerald-600">{y.toFixed(1).replace(".", ",")}%</dd>
+          <div className="mt-2 space-y-1.5">
+            <Row
+              label={tr("rent_calc_monthly_est", lang)}
+              value={`${formatPrice(str.longTermMonthly, lang)}${tr("per_month", lang)}`}
+              strong
+            />
+            <Row
+              label={tr("annual_label", lang)}
+              value={`${formatPrice(str.longTermAnnual, lang)}${tr("per_year", lang)}`}
+            />
+            {y != null && (
+              <div className="flex items-baseline justify-between gap-3">
+                <span className="text-sm text-ink-600">{tr("gross_yield", lang)}</span>
+                <span className="font-bold text-emerald-600">{y.toFixed(1).replace(".", ",")}%</span>
+              </div>
+            )}
           </div>
-        </dl>
+        </div>
       )}
 
-      {/* Airbnb (rövid-táv) — a Proopify egyedi ütőkártyája: mennyit hozhat kiadva. */}
-      {str && (
-        <div className="mt-4 rounded-xl bg-ink-50 p-3.5">
+      {/* Airbnb (rövid-táv) — csak lakás/ház/villa/új: napi + havi + éves + kihasználtság. */}
+      {showSTR && str && (
+        <div className="mt-3 rounded-xl bg-[linear-gradient(135deg,#f7fbe9,#eef7d6)] p-3.5">
           <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-ink-500">
-            <Icon name="key" size={12} /> {tr("rent_calc_str", lang)}
+            <Icon name="sparkles" size={12} /> {tr("rent_calc_str", lang)}
           </div>
           <div className="mt-2 flex items-end justify-between">
             <div>
-              <span className="text-xl font-black tracking-tight text-ink-900">{formatNumber(str.nightly, lang)} €</span>
+              <span className="text-2xl font-black tracking-tight text-ink-900">
+                {formatNumber(str.nightly, lang)} €
+              </span>
               <span className="text-xs font-semibold text-ink-400"> / {tr("night", lang)}</span>
             </div>
-            <div className="text-right">
-              <div className="text-sm font-bold text-ink-900">{formatPrice(str.strMonthlyGross, lang)}{tr("per_month", lang)}</div>
-              <div className="text-[11px] text-ink-400">{str.occupancyPct}% · {tr("rent_calc_str_monthly", lang)}</div>
+            <div className="text-right text-[11px] text-ink-500">
+              <div>{tr("rent_calc_peak", lang)}: <b className="text-ink-800">{formatNumber(str.nightlyPeak, lang)} €</b></div>
+              <div>{tr("rent_calc_off", lang)}: <b className="text-ink-800">{formatNumber(str.nightlyOff, lang)} €</b></div>
             </div>
+          </div>
+          <div className="mt-2.5 space-y-1.5 border-t border-ink-900/5 pt-2.5">
+            <Row label={tr("rent_calc_occupancy", lang)} value={`${str.occupancyPct}%`} />
+            <Row
+              label={tr("rent_calc_str_monthly", lang)}
+              value={`${formatPrice(str.strMonthlyGross, lang)}${tr("per_month", lang)}`}
+              strong
+            />
+            <Row
+              label={tr("rent_calc_str_annual", lang)}
+              value={`${formatPrice(str.strAnnualGross, lang)}${tr("per_year", lang)}`}
+            />
           </div>
           {str.strVsLtrPct > 0 && (
             <p className="mt-2 flex items-center gap-1 text-[12px] font-semibold text-emerald-700">

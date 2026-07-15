@@ -181,7 +181,7 @@ function FavoritesInner() {
         </>
       )}
 
-      <SearchModal open={detailedOpen} onClose={() => setDetailedOpen(false)} initialMode={mode || "sale"} onApply={applyQs} />
+      <SearchModal open={detailedOpen} onClose={() => setDetailedOpen(false)} initialMode={mode} onApply={applyQs} />
     </div>
   );
 }

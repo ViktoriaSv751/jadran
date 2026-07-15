@@ -550,7 +550,7 @@ export default function SearchClient() {
       <SearchModal
         open={detailedOpen}
         onClose={() => setDetailedOpen(false)}
-        initialMode={(filters.mode || "sale") as "sale" | "rent"}
+        initialMode={filters.mode as "" | "sale" | "rent"}
         onApply={applyQueryString}
       />
     </div>
