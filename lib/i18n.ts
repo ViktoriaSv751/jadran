@@ -61,6 +61,17 @@ type L4 = Partial<Record<Lang, string>>;
 type Dict = Record<string, L4>;
 
 export const t: Dict = {
+  report_listing: { hu: "Hirdetés jelentése", me: "Prijavi oglas", en: "Report listing", ru: "Пожаловаться" },
+  report_title: { hu: "Mi a probléma ezzel a hirdetéssel?", me: "Šta nije u redu s ovim oglasom?", en: "What's wrong with this listing?", ru: "Что не так с объявлением?" },
+  report_reason_fraud: { hu: "Csalás / félrevezető", me: "Prevara / obmana", en: "Scam / misleading", ru: "Мошенничество" },
+  report_reason_duplicate: { hu: "Duplikátum", me: "Duplikat", en: "Duplicate", ru: "Дубликат" },
+  report_reason_sold: { hu: "Már elkelt / nem elérhető", me: "Već prodato / nedostupno", en: "Already sold / unavailable", ru: "Уже продано" },
+  report_reason_wrong: { hu: "Hibás adatok / képek", me: "Netačni podaci / slike", en: "Wrong details / photos", ru: "Неверные данные" },
+  report_reason_other: { hu: "Egyéb", me: "Ostalo", en: "Other", ru: "Другое" },
+  report_note_ph: { hu: "Rövid leírás (opcionális)", me: "Kratak opis (opciono)", en: "Short note (optional)", ru: "Кратко (необязательно)" },
+  report_submit: { hu: "Jelentés elküldése", me: "Pošalji prijavu", en: "Submit report", ru: "Отправить" },
+  report_sent: { hu: "Köszönjük! A jelentést továbbítottuk a moderációnak.", me: "Hvala! Prijava je poslata moderaciji.", en: "Thanks! Your report was sent to moderation.", ru: "Спасибо! Жалоба отправлена модерации." },
+  dup_warn: { hu: "Úgy tűnik, van már egy nagyon hasonló aktív hirdetésed ebben a városban. Biztosan új hirdetést adsz fel?", me: "Izgleda da već imaš vrlo sličan aktivan oglas u ovom gradu. Sigurno?", en: "You seem to already have a very similar active listing in this city. Post a new one anyway?", ru: "Похоже, у вас уже есть очень похожее активное объявление. Всё равно опубликовать?" },
   brand_tagline: { hu: "A hely, ahol Montenegróban mindenki ingatlant keres.", me: "Mjesto gdje svi traže nekretnine u Crnoj Gori.", en: "The place where everyone searches for property in Montenegro.", ru: "Место, где все ищут недвижимость в Черногории.", sr: "Место где сви траже некретнине у Црној Гори.", bs: "Mjesto gdje svi traže nekretnine u Crnoj Gori.", hr: "Mjesto gdje svi traže nekretnine u Crnoj Gori.", uk: "Місце, де всі шукають нерухомість у Чорногорії.", sq: "Vendi ku të gjithë kërkojnë prona në Mal të Zi.", el: "Το μέρος όπου όλοι ψάχνουν ακίνητα στο Μαυροβούνιο.", tr: "Karadağ'da herkesin emlak aradığı yer.", es: "El lugar donde todos buscan inmuebles en Montenegro." },
   hero_eyebrow: { hu: "Montenegró · Adriai-tenger", me: "Crna Gora · Jadransko more", en: "Montenegro · Adriatic Sea", ru: "Черногория · Адриатика", sr: "Црна Гора · Јадранско море", bs: "Crna Gora · Jadransko more", hr: "Crna Gora · Jadransko more", uk: "Чорногорія · Адріатичне море", sq: "Mal i Zi · Deti Adriatik", el: "Μαυροβούνιο · Αδριατική Θάλασσα", tr: "Karadağ · Adriyatik Denizi", es: "Montenegro · Mar Adriático" },
   hero_headline: { hu: "Adriai otthonok, egy helyen.", me: "Jadranski domovi, na jednom mjestu.", en: "Adriatic homes, in one place.", ru: "Дома на Адриатике — в одном месте.", sr: "Јадрански домови, на једном месту.", bs: "Jadranski domovi, na jednom mjestu.", hr: "Jadranski domovi, na jednom mjestu.", uk: "Адріатичні оселі — в одному місці.", sq: "Shtëpitë e Adriatikut, në një vend.", el: "Κατοικίες στην Αδριατική, σε ένα μέρος.", tr: "Adriyatik'teki evler, tek bir yerde.", es: "Casas del Adriático, en un solo lugar." },

@@ -22,6 +22,7 @@ import MortgageCalculator from "./MortgageCalculator";
 import ForeignBuyerInfo from "./ForeignBuyerInfo";
 import InvestorCard from "./listing/InvestorCard";
 import CurrencyHint from "./listing/CurrencyHint";
+import ReportButton from "./listing/ReportButton";
 
 const MapView = dynamic(() => import("./MapView"), {
   ssr: false,
@@ -272,6 +273,11 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
 
           {/* Seller */}
           <SellerCard listing={listing} />
+
+          {/* Bejelentés (moderáció) — diszkréten a hirdető-kártya alatt. */}
+          <div className="mt-3 flex justify-end">
+            <ReportButton listingId={listing.id} />
+          </div>
 
           {/* Price history */}
           <section className="mt-7 rounded-2xl border border-ink-100 bg-white p-5 shadow-soft">

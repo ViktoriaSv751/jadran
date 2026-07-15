@@ -281,6 +281,44 @@ export function ownerListingCount(ownerId: string): number {
   return cache.listings.filter((l) => l.ownerId === ownerId && l.status === "active").length;
 }
 
+/** Hirdetés bejelentése (moderáció). Bárki (belépve is, anonim is) beküldheti. */
+export async function reportListing(
+  listingId: string,
+  reason: string,
+  note?: string
+): Promise<{ ok: boolean }> {
+  if (!supabase) return { ok: true };
+  const { error } = await supabase.from("listing_reports").insert({
+    id: uid("rep"),
+    listing_id: listingId,
+    reporter_id: cache.currentUser?.id ?? null,
+    reason,
+    note: note ?? null
+  });
+  return { ok: !error };
+}
+
+/** Gyanús DUPLIKÁTUM-e: ugyanaz a tulaj, város és (közel) ugyanaz az ár + terület
+ *  már aktívan fent van? A wizard erre halkan figyelmeztet (nem tilt). */
+export function findDuplicateListing(
+  ownerId: string,
+  city: string,
+  price: number,
+  area: number
+): Listing | null {
+  return (
+    cache.listings.find(
+      (l) =>
+        l.ownerId === ownerId &&
+        l.status === "active" &&
+        l.city === city &&
+        price > 0 &&
+        Math.abs(l.price - price) < price * 0.03 &&
+        (area <= 0 || Math.abs(l.area - area) < Math.max(area, 1) * 0.05)
+    ) ?? null
+  );
+}
+
 export type CreateListingResult =
   | { ok: true; listing: Listing }
   | { ok: false; error: "limit" | "other"; listing: Listing };
@@ -577,6 +615,26 @@ export async function updatePassword(newPassword: string): Promise<{ ok: boolean
   if (!supabase) return { ok: false };
   const { error } = await supabase.auth.updateUser({ password: newPassword });
   return { ok: !error };
+}
+
+/** Irodai előfizetés indítása (Stripe subscription checkout). A visszaadott
+ *  `status` alapján a UI: "redirect" → átirányít; "no_key" → „hamarosan" toast;
+ *  "error" → hibaüzenet. */
+export async function startSubscription(
+  plan: "start" | "pro" | "premium",
+  interval: "month" | "year"
+): Promise<{ status: "redirect" | "no_key" | "error"; url?: string }> {
+  if (!supabase) return { status: "no_key" };
+  const { data, error } = await supabase.functions.invoke("stripe-subscription", {
+    body: { plan, interval }
+  });
+  // A gated edge function 501-et ad kulcs nélkül → a kliens „hamarosan"-ra esik.
+  if (error) {
+    const status = (error as { context?: { status?: number } })?.context?.status;
+    return { status: status === 501 ? "no_key" : "error" };
+  }
+  if (data?.url) return { status: "redirect", url: data.url as string };
+  return { status: "no_key" };
 }
 
 /** Fiók + minden hozzá tartozó adat VÉGLEGES törlése (GDPR) az edge functionön át. */

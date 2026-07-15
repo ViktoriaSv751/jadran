@@ -5,9 +5,11 @@ import Link from "next/link";
 import { useAuth, useLang } from "@/lib/store";
 import { tr } from "@/lib/i18n";
 import type { Lang } from "@/lib/types";
+import { useRouter } from "next/navigation";
 import { formatPrice } from "@/lib/format";
-import { BOOST_PLANS } from "@/lib/pricing";
-import { toast } from "@/lib/ui";
+import { BOOST_PLANS, type SubPlanId } from "@/lib/pricing";
+import * as db from "@/lib/db";
+import { toast, openAuth } from "@/lib/ui";
 import PageHeading from "@/components/ui/PageHeading";
 import Icon from "@/components/ui/Icon";
 
@@ -169,11 +171,29 @@ const PRIVATE_FAQ: typeof FAQ = [
 export default function PricingPage() {
   const { lang } = useLang();
   const { user } = useAuth();
+  const router = useRouter();
   const [yearly, setYearly] = useState(false);
   const [faqOpen, setFaqOpen] = useState<number | null>(null);
+  const [subBusy, setSubBusy] = useState<SubPlanId | null>(null);
 
   const isAgency = user?.role === "agency";
   const isPrivate = !!user && user.role !== "agency";
+
+  // Előfizetés indítása: belépés/iroda ellenőrzés → Stripe subscription checkout.
+  // Kulcs nélkül (501) a „hamarosan” toastra esik (a demó így is teljes).
+  const subscribe = async (plan: SubPlanId) => {
+    if (!user) return openAuth("register");
+    setSubBusy(plan);
+    const res = await db.startSubscription(plan, yearly ? "year" : "month");
+    setSubBusy(null);
+    if (res.status === "redirect" && res.url) {
+      window.location.href = res.url;
+    } else if (res.status === "no_key") {
+      toast(tr("pricing_soon_toast", lang), "info");
+    } else {
+      toast(tr("err_generic", lang), "error");
+    }
+  };
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
@@ -250,14 +270,15 @@ export default function PricingPage() {
 
               <div className="mt-6 flex-1" />
               <button
-                onClick={() => toast(tr("pricing_soon_toast", lang), "info")}
-                className={`w-full rounded-2xl py-3.5 text-sm font-bold transition active:scale-[0.99] ${
+                onClick={() => subscribe(t.id as SubPlanId)}
+                disabled={subBusy === t.id}
+                className={`w-full rounded-2xl py-3.5 text-sm font-bold transition active:scale-[0.99] disabled:opacity-70 ${
                   t.popular
                     ? "bg-gradient-to-r from-brand-500 to-brand-600 text-white shadow-glow hover:from-brand-600 hover:to-brand-700"
                     : "border border-ink-200 text-ink-800 hover:border-ink-900 hover:bg-ink-50"
                 }`}
               >
-                {tr("pricing_choose", lang)}
+                {subBusy === t.id ? "…" : tr("pricing_choose", lang)}
               </button>
             </div>
           );

@@ -25,3 +25,21 @@ export const BOOST_PLANS: BoostPlan[] = [
 
 /** Ár szövegesen, pl. „5 €". */
 export const boostPriceLabel = (p: BoostPlan): string => `${p.eur} €`;
+
+/* ----------------------------- Irodai előfizetés ----------------------------- */
+
+export type SubPlanId = "start" | "pro" | "premium";
+
+export interface SubPlan {
+  id: SubPlanId;
+  monthlyEur: number;
+  yearlyEur: number;
+}
+
+/** Az irodai csomagok ára (a /pricing oldal ezekből számol, a Stripe ugyanezt
+ *  terheli — így az ígért és a számlázott ár mindig egyezik). */
+export const SUB_PLANS: Record<SubPlanId, SubPlan> = {
+  start: { id: "start", monthlyEur: 29, yearlyEur: 290 },
+  pro: { id: "pro", monthlyEur: 79, yearlyEur: 790 },
+  premium: { id: "premium", monthlyEur: 199, yearlyEur: 1990 }
+};

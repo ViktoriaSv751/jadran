@@ -366,6 +366,13 @@ export default function ListingWizard() {
       setSubmitting(false);
       return;
     }
+    // Duplikátum-figyelmeztetés (nem tilt): ha már van nagyon hasonló aktív
+    // hirdetése ebben a városban, rákérdezünk.
+    const dup = db.findDuplicateListing(user.id, payload.city, payload.price, payload.area);
+    if (dup && !window.confirm(tr("dup_warn", lang))) {
+      setSubmitting(false);
+      return;
+    }
     const res = await db.createListing(payload);
     if (!res.ok) {
       setSubmitting(false);
