@@ -31,7 +31,9 @@ export function localizeResponseTime(raw: string | null | undefined, lang: Lang)
   return tr("rt_few_hours", lang);
 }
 
-export const NATIVE_LANGS: Lang[] = ["hu", "me", "en", "ru"];
+// A FELÜLET mind a 12 nyelven natívan le van fordítva. (A HIRDETÉS-TARTALOM
+// — cím/leírás — 4 forrás-nyelvű + élő auto-fordítás; lásd a nyelvi jegyzetet.)
+export const NATIVE_LANGS: Lang[] = ["hu", "me", "sr", "bs", "hr", "en", "es", "ru", "uk", "sq", "el", "tr"];
 export const isNativeLang = (l: Lang): boolean => NATIVE_LANGS.includes(l);
 
 // Ha egy nyelvre nincs saját fordítás, melyik nyelvből vegye a szöveget.
@@ -61,6 +63,12 @@ type L4 = Partial<Record<Lang, string>>;
 type Dict = Record<string, L4>;
 
 export const t: Dict = {
+  lang_content_note: {
+    hu: "A felület teljesen le van fordítva. A hirdetések szövege a szerző nyelvén íródik, és élőben lefordul a tiédre.",
+    me: "Interfejs je potpuno preveden. Tekst oglasa se piše na jeziku autora i prevodi se uživo na tvoj.",
+    en: "The interface is fully translated. Listing text is written in the author's language and translated live into yours.",
+    ru: "Интерфейс полностью переведён. Текст объявлений пишется на языке автора и переводится вживую на ваш."
+  },
   report_listing: { hu: "Hirdetés jelentése", me: "Prijavi oglas", en: "Report listing", ru: "Пожаловаться" },
   report_title: { hu: "Mi a probléma ezzel a hirdetéssel?", me: "Šta nije u redu s ovim oglasom?", en: "What's wrong with this listing?", ru: "Что не так с объявлением?" },
   report_reason_fraud: { hu: "Csalás / félrevezető", me: "Prevara / obmana", en: "Scam / misleading", ru: "Мошенничество" },

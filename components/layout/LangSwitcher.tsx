@@ -88,7 +88,7 @@ export default function LangSwitcher({ compact = false }: { compact?: boolean })
           ))}
         </div>
         <p className="shrink-0 border-t border-ink-100 px-5 py-3 text-[11px] leading-snug text-ink-400">
-          {tr("lang_auto_note", lang)}
+          {tr("lang_content_note", lang)}
         </p>
       </div>
     </div>

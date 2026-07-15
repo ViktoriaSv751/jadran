@@ -4,7 +4,8 @@ import type { Listing } from "@/lib/types";
 import { useLang, useListings } from "@/lib/store";
 import { tr } from "@/lib/i18n";
 import { formatPrice } from "@/lib/format";
-import { estimateMonthlyRent, grossYield, dealScore } from "@/lib/market";
+import { estimateMonthlyRent, grossYield, dealScore, rentalEstimate } from "@/lib/market";
+import { formatNumber } from "@/lib/format";
 import Icon from "@/components/ui/Icon";
 
 /**
@@ -21,6 +22,8 @@ export default function InvestorCard({ listing }: { listing: Listing }) {
   if (y == null && !ds) return null;
 
   const rent = estimateMonthlyRent(listing, items);
+  // Airbnb (rövid-táv) becslés ERRE az ingatlanra — a hozam-motor a hirdetés arcán.
+  const str = listing.area > 0 ? rentalEstimate(listing.city, listing.area, listing.type, items) : null;
   const scoreColor =
     (ds?.score ?? 0) >= 70 ? "text-emerald-600" : (ds?.score ?? 0) >= 45 ? "text-amber-600" : "text-rose-600";
   const barColor =
@@ -70,6 +73,31 @@ export default function InvestorCard({ listing }: { listing: Listing }) {
             <dd className="font-bold text-emerald-600">{y.toFixed(1).replace(".", ",")}%</dd>
           </div>
         </dl>
+      )}
+
+      {/* Airbnb (rövid-táv) — a Proopify egyedi ütőkártyája: mennyit hozhat kiadva. */}
+      {str && (
+        <div className="mt-4 rounded-xl bg-ink-50 p-3.5">
+          <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-ink-500">
+            <Icon name="key" size={12} /> {tr("rent_calc_str", lang)}
+          </div>
+          <div className="mt-2 flex items-end justify-between">
+            <div>
+              <span className="text-xl font-black tracking-tight text-ink-900">{formatNumber(str.nightly, lang)} €</span>
+              <span className="text-xs font-semibold text-ink-400"> / {tr("night", lang)}</span>
+            </div>
+            <div className="text-right">
+              <div className="text-sm font-bold text-ink-900">{formatPrice(str.strMonthlyGross, lang)}{tr("per_month", lang)}</div>
+              <div className="text-[11px] text-ink-400">{str.occupancyPct}% · {tr("rent_calc_str_monthly", lang)}</div>
+            </div>
+          </div>
+          {str.strVsLtrPct > 0 && (
+            <p className="mt-2 flex items-center gap-1 text-[12px] font-semibold text-emerald-700">
+              <Icon name="trendUp" size={13} strokeWidth={2.4} />
+              {tr("rent_calc_vs_up", lang).replace("{pct}", String(str.strVsLtrPct))}
+            </p>
+          )}
+        </div>
       )}
 
       <p className="mt-3 text-[11px] leading-snug text-ink-400">{tr("investor_disclaimer", lang)}</p>
