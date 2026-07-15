@@ -442,7 +442,7 @@ export default function Filters({
                     className={sel}
                     type="number"
                     inputMode="numeric"
-                    placeholder="€/hó"
+                    placeholder={`€${tr("per_month_short", lang)}`}
                     value={value.maxCommonCost}
                     onChange={(e) => set("maxCommonCost", e.target.value)}
                   />

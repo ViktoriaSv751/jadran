@@ -2,6 +2,8 @@
 
 import React, { useEffect } from "react";
 import { cn } from "@/lib/cn";
+import { useLang } from "@/lib/store";
+import { tr } from "@/lib/i18n";
 import Icon from "./Icon";
 
 export interface ModalProps {
@@ -22,6 +24,7 @@ const sizes = {
 };
 
 export default function Modal({ open, onClose, children, size = "md", title, className }: ModalProps) {
+  const { lang } = useLang();
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
@@ -60,7 +63,7 @@ export default function Modal({ open, onClose, children, size = "md", title, cla
             <button
               onClick={onClose}
               className="grid h-9 w-9 place-items-center rounded-full text-ink-500 transition hover:bg-ink-100"
-              aria-label="Bezárás"
+              aria-label={tr("close", lang)}
             >
               <Icon name="close" size={18} strokeWidth={2.2} />
             </button>

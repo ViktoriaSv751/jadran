@@ -500,7 +500,7 @@ export default function SearchModal({
                     className={inp}
                     type="number"
                     inputMode="numeric"
-                    placeholder="€/hó"
+                    placeholder={`€${tr("per_month_short", lang)}`}
                     value={d.maxCommonCost}
                     onChange={(e) => set("maxCommonCost", e.target.value)}
                   />

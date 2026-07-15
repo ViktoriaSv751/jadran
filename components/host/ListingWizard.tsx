@@ -585,7 +585,7 @@ export default function ListingWizard() {
               value={form.title}
               maxLength={120}
               onChange={(e) => set("title", e.target.value)}
-              placeholder={lang === "hu" ? "Pl. Tengerre néző lakás Budva központjában" : ""}
+              placeholder={tr("title_placeholder", lang)}
             />
             <Textarea
               label={`${tr("desc_label", lang)} *`}
