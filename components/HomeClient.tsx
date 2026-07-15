@@ -59,7 +59,6 @@ export default function HomeClient() {
           <h2 className="display mb-5 text-center text-2xl text-ink-900 sm:text-3xl">{tr("browse_by_type", lang)}</h2>
           <CategoryRow />
         </div>
-        <NextButton to="home-avg" />
       </section>
 
       <section id="home-avg" className={`order-2 lg:order-3 mx-auto w-full max-w-7xl px-4 py-10 ${sec}`}>
@@ -89,7 +88,6 @@ export default function HomeClient() {
           listings={featured}
           image="/cat/villa.png"
         />
-        <NextButton to="home-sea" />
       </div>
 
       <div id="home-sea" className={`order-4 lg:order-5 bg-white ${sec}`}>
@@ -101,7 +99,6 @@ export default function HomeClient() {
           listings={seaview}
           image="/cat/house.png"
         />
-        <NextButton to="home-new" />
       </div>
 
       <div id="home-new" className={`order-5 lg:order-6 ${sec}`}>

@@ -13,7 +13,7 @@ import type { MapBounds } from "./MapView";
 import * as db from "@/lib/db";
 import { extractSmart } from "@/lib/import/ai-extract-remote";
 import { toast, openAuth } from "@/lib/ui";
-import Filters, { FilterState, emptyFilters } from "./Filters";
+import { FilterState, emptyFilters } from "./Filters";
 import FilterChips from "./FilterChips";
 import CategoryTabs from "./search/CategoryTabs";
 import SearchModal from "./home/SearchModal";
@@ -280,18 +280,27 @@ export default function SearchClient() {
           </div>
 
           <div className="flex shrink-0 items-center gap-2">
-            {/* Részletes kereső — a mód-váltó mellett, felül (mobil: a modált nyitja) */}
+            {/* Részletes kereső — a mód-váltó mellett, felül. Mobilon ÉS asztalon
+                ugyanazt a látványos teljes-képernyős modált nyitja. */}
             <button
               onClick={() => setDetailedOpen(true)}
-              className="relative inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white px-3.5 py-2 text-sm font-semibold text-ink-800 shadow-soft transition hover:border-ink-400 lg:hidden"
+              className="relative inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white px-3.5 py-2 text-sm font-semibold text-ink-800 shadow-soft transition hover:border-ink-400"
             >
               <Icon name="sliders" size={16} strokeWidth={2.2} />
-              <span className="hidden sm:inline">{tr("filters", lang)}</span>
+              <span className="hidden sm:inline">{tr("advanced_filters", lang)}</span>
               {activeFilterCount > 0 && (
                 <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-brand-500 px-1 text-[10px] font-bold text-white">
                   {activeFilterCount}
                 </span>
               )}
+            </button>
+            {/* Mentett keresés — az eltávolított oldalsávból ide, csak asztalon. */}
+            <button
+              onClick={saveSearch}
+              className="hidden items-center gap-2 rounded-full border border-ink-200 bg-white px-3.5 py-2 text-sm font-semibold text-ink-800 shadow-soft transition hover:border-ink-400 lg:inline-flex"
+            >
+              <Icon name="bell" size={16} strokeWidth={2.2} />
+              <span>{tr("saved_search", lang)}</span>
             </button>
             <button
               onClick={toggleMap}
@@ -363,23 +372,10 @@ export default function SearchClient() {
         <FilterChips value={filters} onChange={update} />
       </div>
 
-      <div className="mt-4 flex gap-5">
-        {/* Desktop filters sidebar */}
-        <aside className="hidden w-72 shrink-0 lg:block">
-          <div className="sticky top-24 rounded-2xl border border-ink-100 bg-white p-5 shadow-soft">
-            <h2 className="mb-4 text-sm font-bold text-ink-900">{tr("filters", lang)}</h2>
-            <Filters value={filters} onChange={update} onReset={() => setFilters({ ...emptyFilters })} />
-            <button
-              onClick={saveSearch}
-              className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-ink-900 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:bg-ink-800"
-            >
-              <Icon name="bell" size={16} /> {tr("saved_search", lang)}
-            </button>
-          </div>
-        </aside>
-
-        {/* Results + map */}
-        <div className="min-w-0 flex-1">
+      <div className="mt-4">
+        {/* Találatok + térkép — teljes szélességben (a részletes szűrő a felső
+            „Részletes" gombbal nyíló, telefonnal azonos, látványos modál). */}
+        <div className="min-w-0">
           <div className="mb-3 flex items-center justify-between gap-2 text-sm text-ink-500">
             {/* Bal: törlés (ha van szűrő) — jobbra a találatszám */}
             <span className="min-w-0">

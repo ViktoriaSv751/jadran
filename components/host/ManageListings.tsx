@@ -146,18 +146,12 @@ export default function ManageListings() {
           térkép — mint a hirdetés-lista oldalon. */}
       {all.length > 0 && (
         <div className="mb-6 flex flex-col gap-3">
+          {/* 1. sor: állapot-gombok balra, Részletes + Térképnézet jobbra. */}
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <div className="flex flex-wrap gap-2">
-              <div className="inline-flex rounded-full border border-ink-200 bg-white p-1 shadow-soft">
-                {chip(tr("my_listings_filter_all", lang), status === "", () => setStatus(""))}
-                {chip(tr("status_active_f", lang), status === "active", () => setStatus("active"))}
-                {chip(tr("status_paused_f", lang), status === "paused", () => setStatus("paused"))}
-              </div>
-              <div className="inline-flex rounded-full border border-ink-200 bg-white p-1 shadow-soft">
-                {chip(tr("cat_all", lang), mode === "", () => setMode(""))}
-                {chip(tr("buy", lang), mode === "sale", () => setMode("sale"))}
-                {chip(tr("rent_tab", lang), mode === "rent", () => setMode("rent"))}
-              </div>
+            <div className="inline-flex rounded-full border border-ink-200 bg-white p-1 shadow-soft">
+              {chip(tr("my_listings_filter_all", lang), status === "", () => setStatus(""))}
+              {chip(tr("status_active_f", lang), status === "active", () => setStatus("active"))}
+              {chip(tr("status_paused_f", lang), status === "paused", () => setStatus("paused"))}
             </div>
             <div className="flex items-center gap-2">
               <button
@@ -165,7 +159,7 @@ export default function ManageListings() {
                 className="inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white px-3.5 py-2 text-sm font-semibold text-ink-800 shadow-soft transition hover:border-ink-400"
               >
                 <Icon name="sliders" size={16} strokeWidth={2.2} />
-                <span className="hidden sm:inline">{tr("filters", lang)}</span>
+                <span className="hidden sm:inline">{tr("advanced_filters", lang)}</span>
               </button>
               <button
                 onClick={() => setView((v) => (v === "map" ? "list" : "map"))}
@@ -178,6 +172,7 @@ export default function ManageListings() {
               </button>
             </div>
           </div>
+          {/* 2. sor: kereső + rendezés. */}
           <div className="flex items-center gap-2">
             <div className="relative flex-1">
               <Icon name="search" size={18} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-ink-400" />
@@ -201,6 +196,13 @@ export default function ManageListings() {
               <option value="price_desc">{tr("sort_price_desc", lang)}</option>
               <option value="ppm2">{tr("sort_ppm2", lang)}</option>
             </select>
+          </div>
+          {/* 3. sor: mód-váltó (Összes / Vásárlás / Bérlés) — a kereső és a
+              rendezés ALÁ helyezve. */}
+          <div className="inline-flex self-start rounded-full border border-ink-200 bg-white p-1 shadow-soft">
+            {chip(tr("cat_all", lang), mode === "", () => setMode(""))}
+            {chip(tr("buy", lang), mode === "sale", () => setMode("sale"))}
+            {chip(tr("rent_tab", lang), mode === "rent", () => setMode("rent"))}
           </div>
         </div>
       )}

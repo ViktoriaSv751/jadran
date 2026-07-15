@@ -107,7 +107,7 @@ function FavoritesInner() {
                 className="inline-flex items-center gap-2 rounded-full border border-ink-200 bg-white px-3.5 py-2 text-sm font-semibold text-ink-800 shadow-soft transition hover:border-ink-400"
               >
                 <Icon name="sliders" size={16} strokeWidth={2.2} />
-                <span className="hidden sm:inline">{tr("filters", lang)}</span>
+                <span className="hidden sm:inline">{tr("advanced_filters", lang)}</span>
               </button>
               <button
                 onClick={() => setView((v) => (v === "map" ? "list" : "map"))}
