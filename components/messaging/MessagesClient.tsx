@@ -133,6 +133,15 @@ export default function MessagesClient() {
     );
   }
 
+  const pinnedSet = new Set(db.getPinnedConversations());
+  const togglePin = (id: string) => db.togglePinnedConversation(id);
+  const deleteConv = (id: string) => {
+    if (window.confirm(tr("confirm_delete_conv", lang))) {
+      if (activeId === id) setActiveId(null);
+      db.hideConversation(id);
+    }
+  };
+
   return (
     <div className="mx-auto max-w-6xl px-0 sm:px-4 sm:py-5">
       {/* Kártya-keret, ami a lista + thread két paneljét egyben tartja (mint egy
@@ -175,36 +184,63 @@ export default function MessagesClient() {
                 const last = msgs[msgs.length - 1];
                 const unread = msgs.some((m) => m.senderId !== user!.id && !m.readBy.includes(user!.id));
                 const mine = last && last.senderId === user!.id;
+                const isPinned = pinnedSet.has(c.id);
                 return (
-                  <button
+                  <div
                     key={c.id}
-                    onClick={() => setActiveId(c.id)}
-                    className={`flex w-full items-center gap-3 px-3 py-2.5 text-left transition ${
-                      isActive ? "bg-ink-50" : "hover:bg-ink-50/70"
+                    className={`group relative flex items-center transition ${
+                      isActive ? "bg-ink-50" : isPinned ? "bg-brand-50/40 hover:bg-brand-50/70" : "hover:bg-ink-50/70"
                     }`}
                   >
-                    <span className="relative shrink-0">
-                      <Avatar name={other?.name ?? "?"} src={other?.avatar} size={52} />
-                      {unread && (
-                        <span className="absolute -right-0.5 -top-0.5 h-3.5 w-3.5 rounded-full border-2 border-white bg-[#c8ff00]" />
-                      )}
-                    </span>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center justify-between gap-2">
-                        <span className={`truncate text-[15px] ${unread ? "font-black text-ink-900" : "font-semibold text-ink-800"}`}>
-                          {other?.name ?? "—"}
-                        </span>
-                        <span className={`shrink-0 text-[11px] ${unread ? "font-bold text-ink-700" : "text-ink-400"}`}>
-                          {last ? shortStamp(last.createdAt, lang) : ""}
-                        </span>
+                    <button
+                      onClick={() => setActiveId(c.id)}
+                      className="flex min-w-0 flex-1 items-center gap-3 py-2.5 pl-3 pr-1 text-left"
+                    >
+                      <span className="relative shrink-0">
+                        <Avatar name={other?.name ?? "?"} src={other?.avatar} size={52} />
+                        {unread && (
+                          <span className="absolute -right-0.5 -top-0.5 h-3.5 w-3.5 rounded-full border-2 border-white bg-[#c8ff00]" />
+                        )}
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center justify-between gap-2">
+                          <span className={`flex min-w-0 items-center gap-1 truncate text-[15px] ${unread ? "font-black text-ink-900" : "font-semibold text-ink-800"}`}>
+                            {isPinned && <Icon name="star" size={12} className="shrink-0 text-brand-500" />}
+                            <span className="truncate">{other?.name ?? "—"}</span>
+                          </span>
+                          <span className={`shrink-0 text-[11px] ${unread ? "font-bold text-ink-700" : "text-ink-400"}`}>
+                            {last ? shortStamp(last.createdAt, lang) : ""}
+                          </span>
+                        </div>
+                        <div className="mt-0.5 flex items-center gap-1">
+                          <span className={`truncate text-[13px] ${unread ? "font-semibold text-ink-800" : "text-ink-400"}`}>
+                            {last ? `${mine ? `${tr("you", lang)}: ` : ""}${last.text}` : listing ? loc(listing.title, lang) : ""}
+                          </span>
+                        </div>
                       </div>
-                      <div className="mt-0.5 flex items-center gap-1">
-                        <span className={`truncate text-[13px] ${unread ? "font-semibold text-ink-800" : "text-ink-400"}`}>
-                          {last ? `${mine ? `${tr("you", lang)}: ` : ""}${last.text}` : listing ? loc(listing.title, lang) : ""}
-                        </span>
-                      </div>
+                    </button>
+                    {/* Kitűzés + törlés — asztalon hoverre, telefonon mindig látszik. */}
+                    <div className="flex shrink-0 items-center gap-0.5 pr-2 opacity-100 lg:opacity-0 lg:transition lg:group-hover:opacity-100 lg:focus-within:opacity-100">
+                      <button
+                        onClick={() => togglePin(c.id)}
+                        aria-label={tr("pin_conversation", lang)}
+                        title={tr("pin_conversation", lang)}
+                        className={`grid h-8 w-8 place-items-center rounded-full transition hover:bg-white ${
+                          isPinned ? "text-brand-500" : "text-ink-400 hover:text-ink-700"
+                        }`}
+                      >
+                        <Icon name="star" size={17} strokeWidth={2} />
+                      </button>
+                      <button
+                        onClick={() => deleteConv(c.id)}
+                        aria-label={tr("delete_conversation", lang)}
+                        title={tr("delete_conversation", lang)}
+                        className="grid h-8 w-8 place-items-center rounded-full text-ink-400 transition hover:bg-white hover:text-rose-600"
+                      >
+                        <Icon name="trash" size={16} strokeWidth={2} />
+                      </button>
                     </div>
-                  </button>
+                  </div>
                 );
               })
             )}

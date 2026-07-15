@@ -10,8 +10,12 @@ html,
 body {
   padding: 0;
   margin: 0;
-  /* Never allow accidental horizontal scroll on any device. */
-  overflow-x: hidden;
+  /* Never allow accidental horizontal scroll on any device. `clip` (nem `hidden`)
+     azért fontos, mert az `overflow-x: hidden` a gyökéren görgető-konténert hoz
+     létre, ami ELRONTJA a `position: sticky` fejlécet (a felső menü a böngésző
+     keresősávja alá csúszhat / levágódik). A `clip` levágja a vízszintes
+     túlcsordulást, de NEM töri el a sticky-t — a fejléc mindig felül marad. */
+  overflow-x: clip;
   -webkit-text-size-adjust: 100%;
 }
 

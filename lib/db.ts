@@ -784,6 +784,27 @@ export function togglePinnedConversation(id: string): void {
   writeLS(K_PIN, next); // emitel is → a lista újrarendeződik
 }
 
+/* Törölt/elrejtett beszélgetések (eszköz-lokális). A „törlés" a saját listámból
+ * távolítja el a beszélgetést (a másik felet NEM érinti). Ha később ÚJ üzenet
+ * érkezik (lastMessageAt > elrejtés ideje), a beszélgetés automatikusan
+ * visszakerül a listába. Időbélyeg → id. */
+const K_HIDDEN = "jadran_hidden_convs";
+export function getHiddenConversations(): Record<string, string> {
+  return readLS<Record<string, string>>(K_HIDDEN, {});
+}
+export function hideConversation(id: string): void {
+  const cur = getHiddenConversations();
+  cur[id] = new Date().toISOString();
+  writeLS(K_HIDDEN, cur);
+}
+export function unhideConversation(id: string): void {
+  const cur = getHiddenConversations();
+  if (cur[id]) {
+    delete cur[id];
+    writeLS(K_HIDDEN, cur);
+  }
+}
+
 export function getCompare(): string[] {
   return readLS<string[]>(K_CMP, []);
 }
@@ -804,9 +825,19 @@ export function getConversations(): Conversation[] {
 }
 
 export function getConversationsForUser(userId: string): Conversation[] {
+  const pinned = getPinnedConversations();
+  const hidden = getHiddenConversations();
   return cache.conversations
     .filter((c) => c.buyerId === userId || c.sellerId === userId)
-    .sort((a, b) => +new Date(b.lastMessageAt) - +new Date(a.lastMessageAt));
+    // Elrejtett beszélgetés kimarad — DE ha az elrejtés óta ÚJ üzenet érkezett,
+    // visszakerül (a lastMessageAt frissebb, mint az elrejtés ideje).
+    .filter((c) => !(hidden[c.id] && +new Date(c.lastMessageAt) <= +new Date(hidden[c.id])))
+    .sort((a, b) => {
+      const pa = pinned.includes(a.id) ? 1 : 0;
+      const pb = pinned.includes(b.id) ? 1 : 0;
+      if (pa !== pb) return pb - pa; // kitűzöttek elöl
+      return +new Date(b.lastMessageAt) - +new Date(a.lastMessageAt);
+    });
 }
 
 export function getMessages(): Message[] {

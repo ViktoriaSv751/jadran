@@ -119,8 +119,21 @@ export default function InvestorCard({ listing }: { listing: Listing }) {
               <div>{tr("rent_calc_off", lang)}: <b className="text-ink-800">{formatNumber(str.nightlyOff, lang)} €</b></div>
             </div>
           </div>
+          {/* Éves kihasználtság — kiemelt, mert ez az Airbnb-bevétel kulcstényezője. */}
+          <div className="mt-2.5 flex items-center justify-between gap-3 rounded-lg bg-white/70 px-3 py-2">
+            <div className="min-w-0">
+              <div className="text-[11px] font-semibold uppercase tracking-wide text-ink-500">
+                {tr("rent_calc_occ_year", lang)}
+              </div>
+              <div className="text-[11px] text-ink-400">
+                {tr("rent_calc_nights_year", lang).replace("{n}", String(Math.round((str.occupancyPct / 100) * 365)))}
+              </div>
+            </div>
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-2xl font-black tracking-tight text-emerald-600">{str.occupancyPct}%</span>
+            </div>
+          </div>
           <div className="mt-2.5 space-y-1.5 border-t border-ink-900/5 pt-2.5">
-            <Row label={tr("rent_calc_occupancy", lang)} value={`${str.occupancyPct}%`} />
             <Row
               label={tr("rent_calc_str_monthly", lang)}
               value={`${formatPrice(str.strMonthlyGross, lang)}${tr("per_month", lang)}`}
