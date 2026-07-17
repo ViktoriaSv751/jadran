@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRef, useState } from "react";
 import type { Listing } from "@/lib/types";
 import { useLang, useMoney, useFavorites, useCompare, useAuth } from "@/lib/store";
+import { qualifiesGoldenVisa } from "@/lib/geo";
 import { openAuth } from "@/lib/ui";
 import { tr, typeLabels, modeLabels, loc } from "@/lib/i18n";
 import { pricePerM2, distanceLabel, formatNumber } from "@/lib/format";
@@ -107,6 +108,12 @@ export default function ListingCard({
             <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide text-white shadow-soft">
               <Icon name="trendUp" size={12} strokeWidth={2.4} className="rotate-90" />
               {tr("price_drop", lang)}
+            </span>
+          )}
+          {qualifiesGoldenVisa(listing.country, listing.price) && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-[#c8ff00] px-2.5 py-1 text-[11px] font-black uppercase tracking-wide text-ink-950 shadow-soft">
+              <Icon name="globe" size={11} strokeWidth={2.6} />
+              {tr("golden_visa", lang)}
             </span>
           )}
         </div>

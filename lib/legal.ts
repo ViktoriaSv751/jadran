@@ -111,6 +111,36 @@ export const RESIDENCY: Record<CountryCode, ResidencyInfo> = {
       en: "EU member: EU buyers settle freely; for others the passive-income “elective residence” visa is an option.",
       ru: "Член ЕС: покупатели из ЕС селятся свободно; для остальных — виза «elective residence»."
     }
+  },
+  GR: {
+    residenceNote: {
+      hu: "Görögország Golden Visa: 250 000–800 000 € értékű ingatlan (régiótól függően) 5 éves, megújítható tartózkodást ad.",
+      me: "Grčka Golden Visa: nekretnina od 250.000–800.000 € daje 5-godišnji boravak.",
+      en: "Greece Golden Visa: property of €250,000–800,000 (by area) grants renewable 5-year residence.",
+      ru: "Golden Visa Греции: недвижимость на €250 000–800 000 даёт ВНЖ на 5 лет."
+    },
+    citizenshipEur: 250000,
+    citizenshipNote: {
+      hu: "250 000 € fölötti ingatlan a görög Golden Visa (tartózkodás) programra jogosíthat.",
+      me: "Nekretnina iznad 250.000 € može dati pravo na grčku Golden Visa.",
+      en: "Property above €250,000 can qualify for the Greek Golden Visa (residence).",
+      ru: "Недвижимость от €250 000 может дать право на греческую Golden Visa."
+    }
+  },
+  ES: {
+    residenceNote: {
+      hu: "Spanyolország: 500 000 € fölötti ingatlan a befektetői tartózkodásra (Golden Visa) jogosíthat.",
+      me: "Španija: nekretnina iznad 500.000 € može dati investitorski boravak.",
+      en: "Spain: property above €500,000 can qualify for investor residence (Golden Visa).",
+      ru: "Испания: недвижимость от €500 000 может дать инвесторский ВНЖ."
+    },
+    citizenshipEur: 500000,
+    citizenshipNote: {
+      hu: "500 000 € fölötti ingatlan a spanyol befektetői tartózkodásra jogosíthat.",
+      me: "Nekretnina iznad 500.000 € može dati španski investitorski boravak.",
+      en: "Property above €500,000 can qualify for Spanish investor residence.",
+      ru: "Недвижимость от €500 000 может дать испанский инвесторский ВНЖ."
+    }
   }
 };
 
@@ -418,6 +448,74 @@ export const FOREIGN_BUYER: Record<CountryCode, ForeignBuyerLegal> = {
         me: "Porez na registraciju je ~2% za prvi dom, inače ~9%.",
         en: "Registration/transfer tax is ~2% for a first home, otherwise ~9%.",
         ru: "Регистрационный налог ~2% для первого жилья, иначе ~9%."
+      }
+    ]
+  },
+  GR: {
+    intro: {
+      hu: "Görögország EU-tagállam, erős Golden Visa programmal a külföldi vevőknek.",
+      me: "Grčka je članica EU sa snažnim Golden Visa programom.",
+      en: "Greece is an EU member with a strong Golden Visa program for foreign buyers.",
+      ru: "Греция — член ЕС с сильной программой Golden Visa."
+    },
+    points: [
+      {
+        hu: "Külföldiek (EU-n kívüliek is) szabadon vásárolhatnak ingatlant a saját nevükön.",
+        me: "Stranci (i van EU) mogu slobodno kupiti nekretninu na svoje ime.",
+        en: "Foreigners (including non-EU) can freely buy property in their own name.",
+        ru: "Иностранцы (в т.ч. вне ЕС) могут свободно покупать недвижимость на своё имя."
+      },
+      {
+        hu: "Golden Visa: 250 000–800 000 € ingatlan (régiótól függően) 5 éves tartózkodást ad.",
+        me: "Golden Visa: 250.000–800.000 € daje 5-godišnji boravak.",
+        en: "Golden Visa: €250,000–800,000 property grants 5-year residence.",
+        ru: "Golden Visa: недвижимость €250 000–800 000 даёт ВНЖ на 5 лет."
+      },
+      {
+        hu: "Kell görög adószám (AFM) és bankszámla; a vételt közjegyző hitelesíti.",
+        me: "Potreban je grčki poreski broj (AFM) i račun; ovjera kod notara.",
+        en: "A Greek tax number (AFM) and bank account are needed; the sale is notarised.",
+        ru: "Нужны греческий налоговый номер (AFM) и счёт; сделка заверяется нотариусом."
+      },
+      {
+        hu: "Az ingatlanátruházási adó jellemzően ~3,1% (új építésűnél ÁFA is lehet).",
+        me: "Porez na prenos je obično ~3,1%.",
+        en: "Property transfer tax is typically ~3.1% (VAT may apply on new builds).",
+        ru: "Налог на передачу обычно ~3,1% (для новостроек возможен НДС)."
+      }
+    ]
+  },
+  ES: {
+    intro: {
+      hu: "Spanyolország EU-tagállam; a külföldi vevők előtt nyitott piac, befektetői tartózkodással.",
+      me: "Španija je članica EU; otvoreno tržište uz investitorski boravak.",
+      en: "Spain is an EU member; an open market for foreign buyers with investor residence.",
+      ru: "Испания — член ЕС; открытый рынок с инвесторским ВНЖ."
+    },
+    points: [
+      {
+        hu: "Külföldiek szabadon vásárolhatnak; szükséges egy NIE (külföldi azonosító szám).",
+        me: "Stranci mogu slobodno kupiti; potreban je NIE broj.",
+        en: "Foreigners can buy freely; an NIE (foreigner ID number) is required.",
+        ru: "Иностранцы могут свободно покупать; нужен номер NIE."
+      },
+      {
+        hu: "500 000 € fölötti ingatlan a befektetői tartózkodásra (Golden Visa) jogosíthat.",
+        me: "Nekretnina iznad 500.000 € može dati investitorski boravak.",
+        en: "Property above €500,000 can qualify for investor residence (Golden Visa).",
+        ru: "Недвижимость от €500 000 может дать инвесторский ВНЖ."
+      },
+      {
+        hu: "A vételt közjegyző (notario) hitelesíti, és a tulajdon-nyilvántartásba kerül.",
+        me: "Kupovinu ovjerava notar (notario); upis u registar vlasništva.",
+        en: "The purchase is notarised (notario) and entered in the property registry.",
+        ru: "Сделку заверяет нотариус (notario); запись в реестр собственности."
+      },
+      {
+        hu: "Az átruházási adó (ITP) régiónként ~6–10%, új építésűnél 10% ÁFA.",
+        me: "Porez na prenos (ITP) je ~6–10% po regiji; kod novogradnje 10% PDV.",
+        en: "Transfer tax (ITP) is ~6–10% by region; new builds carry 10% VAT.",
+        ru: "Налог на передачу (ITP) ~6–10% по региону; для новостроек 10% НДС."
       }
     ]
   }

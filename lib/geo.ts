@@ -23,6 +23,9 @@ export interface CountryInfo {
   zoom: number;
   /** Vételi mellékköltség-kulcsok (átírási adó + közelítő járulékok). */
   costs: PurchaseCostRates;
+  /** Golden Visa / letelepedési program ingatlanbefektetés alapján (ha van).
+   *  `minEur`: a program küszöbe EUR-ban; `kind`: tartózkodás vagy állampolgárság. */
+  goldenVisa?: { minEur: number; kind: "residence" | "citizenship" };
 }
 
 export interface PurchaseCostRates {
@@ -83,7 +86,8 @@ export const COUNTRIES: CountryInfo[] = [
     cities: ["İstanbul", "Antalya", "Alanya", "Bodrum", "Fethiye", "İzmir", "Kuşadası", "Kalkan"],
     center: [38.4, 30.5],
     zoom: 6,
-    costs: { transferTaxRate: 0.04, notaryRate: 0.005, notaryFixed: 250, lawyerRate: 0.012, agencyRate: 0.02 }
+    costs: { transferTaxRate: 0.04, notaryRate: 0.005, notaryFixed: 250, lawyerRate: 0.012, agencyRate: 0.02 },
+    goldenVisa: { minEur: 370000, kind: "citizenship" }
   },
   {
     code: "ID",
@@ -103,7 +107,8 @@ export const COUNTRIES: CountryInfo[] = [
     cities: ["Budapest", "Debrecen", "Szeged", "Siófok", "Balatonfüred", "Hévíz", "Pécs", "Győr", "Sopron", "Eger"],
     center: [47.1, 19.5],
     zoom: 7,
-    costs: { transferTaxRate: 0.04, notaryRate: 0.005, notaryFixed: 150, lawyerRate: 0.01, agencyRate: 0.03 }
+    costs: { transferTaxRate: 0.04, notaryRate: 0.005, notaryFixed: 150, lawyerRate: 0.01, agencyRate: 0.03 },
+    goldenVisa: { minEur: 250000, kind: "residence" }
   },
   {
     code: "TH",
@@ -124,8 +129,42 @@ export const COUNTRIES: CountryInfo[] = [
     center: [42.5, 12.5],
     zoom: 6,
     costs: { transferTaxRate: 0.09, notaryRate: 0.01, notaryFixed: 300, lawyerRate: 0.01, agencyRate: 0.03 }
+  },
+  {
+    code: "GR",
+    flag: "🇬🇷",
+    nameKey: "country_gr",
+    currency: "EUR",
+    cities: ["Athína", "Thessaloniki", "Mykonos", "Santorini", "Chania", "Rhodes", "Corfu", "Glyfada", "Kavala", "Paros"],
+    center: [38.5, 23.8],
+    zoom: 6,
+    costs: { transferTaxRate: 0.031, notaryRate: 0.012, notaryFixed: 300, lawyerRate: 0.012, agencyRate: 0.02 },
+    goldenVisa: { minEur: 250000, kind: "residence" }
+  },
+  {
+    code: "ES",
+    flag: "🇪🇸",
+    nameKey: "country_es_name",
+    currency: "EUR",
+    cities: ["Madrid", "Barcelona", "Valencia", "Málaga", "Marbella", "Alicante", "Palma", "Sevilla", "Ibiza", "Tenerife"],
+    center: [40.0, -3.7],
+    zoom: 6,
+    costs: { transferTaxRate: 0.08, notaryRate: 0.01, notaryFixed: 300, lawyerRate: 0.01, agencyRate: 0.03 },
+    goldenVisa: { minEur: 500000, kind: "residence" }
   }
 ];
+
+/** Golden Visa országok (ingatlanbefektetéssel letelepedés/állampolgárság). */
+export const GOLDEN_VISA_COUNTRIES: CountryInfo[] = COUNTRIES.filter((c) => c.goldenVisa);
+
+/** Igaz, ha az adott országban van Golden Visa program (bármely ár). */
+export const hasGoldenVisa = (country: CountryCode): boolean => !!COUNTRY_BY_CODE[country]?.goldenVisa;
+
+/** Igaz, ha egy KONKRÉT hirdetés (ország + EUR ár) eléri a Golden Visa küszöböt. */
+export function qualifiesGoldenVisa(country: CountryCode, priceEur: number): boolean {
+  const gv = COUNTRY_BY_CODE[country]?.goldenVisa;
+  return !!gv && priceEur >= gv.minEur;
+}
 
 export const COUNTRY_BY_CODE: Record<CountryCode, CountryInfo> = COUNTRIES.reduce(
   (acc, c) => ((acc[c.code] = c), acc),

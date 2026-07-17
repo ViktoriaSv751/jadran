@@ -7,7 +7,7 @@ import { tr } from "@/lib/i18n";
 import type { Lang } from "@/lib/types";
 import { useRouter } from "next/navigation";
 import { formatPrice } from "@/lib/format";
-import { BOOST_PLANS, type SubPlanId } from "@/lib/pricing";
+import { BOOST_PLANS, SUB_PLANS, TRIAL_MONTHS, type SubPlanId } from "@/lib/pricing";
 import * as db from "@/lib/db";
 import { toast, openAuth } from "@/lib/ui";
 import PageHeading from "@/components/ui/PageHeading";
@@ -21,8 +21,6 @@ interface Tier {
   id: "start" | "pro" | "premium";
   name: string;
   tagline: PL;
-  monthly: number; // EUR / hó
-  yearly: number; // EUR / év (≈ 10 hónap ára)
   popular?: boolean;
   features: PL[];
 }
@@ -31,46 +29,41 @@ const TIERS: Tier[] = [
   {
     id: "start",
     name: "Start",
-    tagline: { hu: "Kis irodáknak, akik most kezdenek.", me: "Za male agencije na početku.", en: "For small agencies getting started.", ru: "Для небольших агентств.", sr: "За мале агенције на почетку.", bs: "Za male agencije na početku.", hr: "Za male agencije na početku.", uk: "Для невеликих агентств, що починають роботу.", sq: "Për agjenci të vogla që sapo nisin.", el: "Για μικρά μεσιτικά γραφεία που ξεκινούν.", tr: "Yeni başlayan küçük acenteler için.", es: "Para pequeñas agencias que empiezan." },
-    monthly: 29,
-    yearly: 290,
+    tagline: { hu: "Kis irodáknak, akik most kezdenek.", me: "Za male agencije na početku.", en: "For small agencies getting started.", ru: "Для небольших агентств.", sr: "За мале агенције на почетку.", bs: "Za male agencije na početku.", hr: "Za male agencije na početku.", uk: "Для невеликих агентств, що починають роботу.", sq: "Për agjenci të vogla që sapo nisin.", el: "Για μικρά μεσιτικά γραφεία που ξεκινούν.", tr: "Yeni başlayan küçük acenteler için.", es: "Para pequeñas agencias que empiezan.", it: "Per piccole agenzie che iniziano.", th: "สำหรับเอเจนซีเล็กที่เพิ่งเริ่ม" },
     features: [
-      { hu: "10 aktív hirdetés", me: "10 aktivnih oglasa", en: "10 active listings", ru: "10 активных объявлений", sr: "10 активних огласа", bs: "10 aktivnih oglasa", hr: "10 aktivnih oglasa", uk: "10 активних оголошень", sq: "10 shpallje aktive", el: "10 ενεργές αγγελίες", tr: "10 aktif ilan", es: "10 anuncios activos" },
-      { hu: "1 kiemelés / hó", me: "1 izdvajanje / mj.", en: "1 featured boost / mo", ru: "1 продвижение / мес", sr: "1 издвајање / мес.", bs: "1 izdvajanje / mj.", hr: "1 izdvajanje / mj.", uk: "1 просування / міс.", sq: "1 promovim i veçuar / muaj", el: "1 προβολή προώθησης / μήνα", tr: "Ayda 1 öne çıkarma", es: "1 impulso destacado / mes" },
-      { hu: "Alap statisztikák", me: "Osnovna statistika", en: "Basic stats", ru: "Базовая статистика", sr: "Основна статистика", bs: "Osnovna statistika", hr: "Osnovna statistika", uk: "Базова статистика", sq: "Statistika bazë", el: "Βασικά στατιστικά", tr: "Temel istatistikler", es: "Estadísticas básicas" },
-      { hu: "1 felhasználó", me: "1 korisnik", en: "1 team member", ru: "1 пользователь", sr: "1 корисник", bs: "1 korisnik", hr: "1 korisnik", uk: "1 учасник команди", sq: "1 anëtar ekipi", el: "1 μέλος ομάδας", tr: "1 ekip üyesi", es: "1 miembro del equipo" },
-      { hu: "E-mailes támogatás", me: "Email podrška", en: "Email support", ru: "Поддержка по почте", sr: "Email подршка", bs: "Email podrška", hr: "Email podrška", uk: "Підтримка електронною поштою", sq: "Mbështetje me email", el: "Υποστήριξη μέσω email", tr: "E-posta desteği", es: "Soporte por email" }
+      { hu: "20 aktív hirdetés", me: "20 aktivnih oglasa", en: "20 active listings", ru: "20 активных объявлений", sr: "20 активних огласа", bs: "20 aktivnih oglasa", hr: "20 aktivnih oglasa", uk: "20 активних оголошень", sq: "20 shpallje aktive", el: "20 ενεργές αγγελίες", tr: "20 aktif ilan", es: "20 anuncios activos", it: "20 annunci attivi", th: "20 ประกาศที่ใช้งานอยู่" },
+      { hu: "2 kiemelés / hó", me: "2 izdvajanja / mj.", en: "2 featured boosts / mo", ru: "2 продвижения / мес", sr: "2 издвајања / мес.", bs: "2 izdvajanja / mj.", hr: "2 izdvajanja / mj.", uk: "2 просування / міс.", sq: "2 promovime / muaj", el: "2 προβολές / μήνα", tr: "Ayda 2 öne çıkarma", es: "2 impulsos / mes", it: "2 promozioni / mese", th: "2 บูสต์ / เดือน" },
+      { hu: "Üzenetküldő élő fordítással", me: "Poruke uz prevod uživo", en: "Messaging with live translation", ru: "Чат с живым переводом", sr: "Поруке уз превод уживо", bs: "Poruke uz prevod uživo", hr: "Poruke uz prijevod uživo", uk: "Чат із живим перекладом", sq: "Mesazhe me përkthim të drejtpërdrejtë", el: "Μηνύματα με ζωντανή μετάφραση", tr: "Canlı çeviriyle mesajlaşma", es: "Mensajería con traducción en vivo", it: "Messaggi con traduzione dal vivo", th: "แชทพร้อมแปลสด" },
+      { hu: "Térképes + globális megjelenés", me: "Prikaz na mapi + globalno", en: "Map + global exposure", ru: "Показ на карте + глобально", sr: "Приказ на мапи + глобално", bs: "Prikaz na mapi + globalno", hr: "Prikaz na karti + globalno", uk: "Показ на карті + глобально", sq: "Në hartë + shtrirje globale", el: "Χάρτης + παγκόσμια προβολή", tr: "Haritada + küresel görünürlük", es: "Mapa + alcance global", it: "Mappa + visibilità globale", th: "แผนที่ + การมองเห็นทั่วโลก" },
+      { hu: "1 felhasználó", me: "1 korisnik", en: "1 team member", ru: "1 пользователь", sr: "1 корисник", bs: "1 korisnik", hr: "1 korisnik", uk: "1 учасник команди", sq: "1 anëtar ekipi", el: "1 μέλος ομάδας", tr: "1 ekip üyesi", es: "1 miembro del equipo", it: "1 membro del team", th: "สมาชิก 1 คน" },
+      { hu: "E-mailes támogatás", me: "Email podrška", en: "Email support", ru: "Поддержка по почте", sr: "Email подршка", bs: "Email podrška", hr: "Email podrška", uk: "Підтримка електронною поштою", sq: "Mbështetje me email", el: "Υποστήριξη μέσω email", tr: "E-posta desteği", es: "Soporte por email", it: "Supporto via email", th: "การสนับสนุนทางอีเมล" }
     ]
   },
   {
     id: "pro",
     name: "Profi",
-    tagline: { hu: "Növekvő irodáknak, több hirdetéssel.", me: "Za agencije u rastu.", en: "For growing agencies.", ru: "Для растущих агентств.", sr: "За агенције у расту.", bs: "Za agencije u rastu.", hr: "Za agencije u rastu.", uk: "Для агентств, що зростають.", sq: "Për agjenci në rritje.", el: "Για αναπτυσσόμενα μεσιτικά γραφεία.", tr: "Büyüyen acenteler için.", es: "Para agencias en crecimiento." },
-    monthly: 79,
-    yearly: 790,
+    tagline: { hu: "Növekvő irodáknak, több hirdetéssel.", me: "Za agencije u rastu.", en: "For growing agencies.", ru: "Для растущих агентств.", sr: "За агенције у расту.", bs: "Za agencije u rastu.", hr: "Za agencije u rastu.", uk: "Для агентств, що зростають.", sq: "Për agjenci në rritje.", el: "Για αναπτυσσόμενα μεσιτικά γραφεία.", tr: "Büyüyen acenteler için.", es: "Para agencias en crecimiento.", it: "Per agenzie in crescita.", th: "สำหรับเอเจนซีที่กำลังเติบโต" },
     popular: true,
     features: [
-      { hu: "50 aktív hirdetés", me: "50 aktivnih oglasa", en: "50 active listings", ru: "50 активных объявлений", sr: "50 активних огласа", bs: "50 aktivnih oglasa", hr: "50 aktivnih oglasa", uk: "50 активних оголошень", sq: "50 shpallje aktive", el: "50 ενεργές αγγελίες", tr: "50 aktif ilan", es: "50 anuncios activos" },
-      { hu: "5 kiemelés / hó", me: "5 izdvajanja / mj.", en: "5 featured boosts / mo", ru: "5 продвижений / мес", sr: "5 издвајања / мес.", bs: "5 izdvajanja / mj.", hr: "5 izdvajanja / mj.", uk: "5 просувань / міс.", sq: "5 promovime të veçuara / muaj", el: "5 προβολές προώθησης / μήνα", tr: "Ayda 5 öne çıkarma", es: "5 impulsos destacados / mes" },
-      { hu: "Részletes statisztikák", me: "Detaljna statistika", en: "Detailed stats", ru: "Подробная статистика", sr: "Детаљна статистика", bs: "Detaljna statistika", hr: "Detaljna statistika", uk: "Детальна статистика", sq: "Statistika të detajuara", el: "Λεπτομερή στατιστικά", tr: "Ayrıntılı istatistikler", es: "Estadísticas detalladas" },
-      { hu: "Kiemelt iroda-profil", me: "Istaknuti profil agencije", en: "Featured agency profile", ru: "Выделенный профиль", sr: "Истакнути профил агенције", bs: "Istaknuti profil agencije", hr: "Istaknuti profil agencije", uk: "Виділений профіль агентства", sq: "Profil agjencie i veçuar", el: "Προβεβλημένο προφίλ γραφείου", tr: "Öne çıkan acente profili", es: "Perfil de agencia destacado" },
-      { hu: "3 csapattag", me: "3 člana tima", en: "3 team members", ru: "3 пользователя", sr: "3 члана тима", bs: "3 člana tima", hr: "3 člana tima", uk: "3 учасники команди", sq: "3 anëtarë ekipi", el: "3 μέλη ομάδας", tr: "3 ekip üyesi", es: "3 miembros del equipo" },
-      { hu: "Prioritásos támogatás", me: "Prioritetna podrška", en: "Priority support", ru: "Приоритетная поддержка", sr: "Приоритетна подршка", bs: "Prioritetna podrška", hr: "Prioritetna podrška", uk: "Пріоритетна підтримка", sq: "Mbështetje me prioritet", el: "Υποστήριξη με προτεραιότητα", tr: "Öncelikli destek", es: "Soporte prioritario" }
+      { hu: "100 aktív hirdetés", me: "100 aktivnih oglasa", en: "100 active listings", ru: "100 активных объявлений", sr: "100 активних огласа", bs: "100 aktivnih oglasa", hr: "100 aktivnih oglasa", uk: "100 активних оголошень", sq: "100 shpallje aktive", el: "100 ενεργές αγγελίες", tr: "100 aktif ilan", es: "100 anuncios activos", it: "100 annunci attivi", th: "100 ประกาศที่ใช้งานอยู่" },
+      { hu: "8 kiemelés / hó", me: "8 izdvajanja / mj.", en: "8 featured boosts / mo", ru: "8 продвижений / мес", sr: "8 издвајања / мес.", bs: "8 izdvajanja / mj.", hr: "8 izdvajanja / mj.", uk: "8 просувань / міс.", sq: "8 promovime / muaj", el: "8 προβολές / μήνα", tr: "Ayda 8 öne çıkarma", es: "8 impulsos / mes", it: "8 promozioni / mese", th: "8 บูสต์ / เดือน" },
+      { hu: "Részletes statisztikák + érdeklődő-elemzés", me: "Detaljna statistika + analiza upita", en: "Detailed stats + lead analytics", ru: "Подробная аналитика + лиды", sr: "Детаљна статистика + анализа упита", bs: "Detaljna statistika + analiza upita", hr: "Detaljna statistika + analiza upita", uk: "Детальна аналітика + ліди", sq: "Statistika të detajuara + analizë kontaktesh", el: "Λεπτομερή στατιστικά + leads", tr: "Ayrıntılı istatistik + talep analizi", es: "Estadísticas detalladas + leads", it: "Statistiche dettagliate + analisi contatti", th: "สถิติละเอียด + วิเคราะห์ลูกค้า" },
+      { hu: "Kiemelt, verifikált iroda-profil", me: "Istaknuti, verifikovani profil", en: "Featured, verified agency profile", ru: "Выделенный, проверенный профиль", sr: "Истакнути, верификовани профил", bs: "Istaknuti, verifikovani profil", hr: "Istaknuti, verificirani profil", uk: "Виділений, перевірений профіль", sq: "Profil i veçuar dhe i verifikuar", el: "Προβεβλημένο, επαληθευμένο προφίλ", tr: "Öne çıkan, doğrulanmış profil", es: "Perfil destacado y verificado", it: "Profilo agenzia in evidenza e verificato", th: "โปรไฟล์เด่นที่ยืนยันแล้ว" },
+      { hu: "Golden Visa hirdetés-kiemelés", me: "Isticanje Golden Visa oglasa", en: "Golden Visa listing highlight", ru: "Выделение Golden Visa объектов", sr: "Истицање Golden Visa огласа", bs: "Isticanje Golden Visa oglasa", hr: "Isticanje Golden Visa oglasa", uk: "Виділення Golden Visa об'єктів", sq: "Theksim i shpalljeve Golden Visa", el: "Προβολή αγγελιών Golden Visa", tr: "Golden Visa ilan vurgusu", es: "Destacado de anuncios Golden Visa", it: "Evidenza annunci Golden Visa", th: "ไฮไลต์ประกาศ Golden Visa" },
+      { hu: "5 csapattag + prioritásos támogatás", me: "5 članova + prioritetna podrška", en: "5 team members + priority support", ru: "5 пользователей + приоритет", sr: "5 чланова + приоритетна подршка", bs: "5 članova + prioritetna podrška", hr: "5 članova + prioritetna podrška", uk: "5 учасників + пріоритет", sq: "5 anëtarë + mbështetje me prioritet", el: "5 μέλη + υποστήριξη προτεραιότητας", tr: "5 üye + öncelikli destek", es: "5 miembros + soporte prioritario", it: "5 membri + supporto prioritario", th: "สมาชิก 5 คน + ซัพพอร์ตเร่งด่วน" }
     ]
   },
   {
     id: "premium",
     name: "Prémium",
-    tagline: { hu: "Nagy irodáknak, korlátlan kínálattal.", me: "Za velike agencije.", en: "For large agencies.", ru: "Для крупных агентств.", sr: "За велике агенције.", bs: "Za velike agencije.", hr: "Za velike agencije.", uk: "Для великих агентств.", sq: "Për agjenci të mëdha.", el: "Για μεγάλα μεσιτικά γραφεία.", tr: "Büyük acenteler için.", es: "Para grandes agencias." },
-    monthly: 199,
-    yearly: 1990,
+    tagline: { hu: "Nagy irodáknak, korlátlan kínálattal.", me: "Za velike agencije.", en: "For large agencies.", ru: "Для крупных агентств.", sr: "За велике агенције.", bs: "Za velike agencije.", hr: "Za velike agencije.", uk: "Для великих агентств.", sq: "Për agjenci të mëdha.", el: "Για μεγάλα μεσιτικά γραφεία.", tr: "Büyük acenteler için.", es: "Para grandes agencias.", it: "Per grandi agenzie.", th: "สำหรับเอเจนซีขนาดใหญ่" },
     features: [
-      { hu: "Korlátlan hirdetés", me: "Neograničeno oglasa", en: "Unlimited listings", ru: "Безлимит объявлений", sr: "Неограничено огласа", bs: "Neograničeno oglasa", hr: "Neograničeno oglasa", uk: "Необмежена кількість оголошень", sq: "Shpallje të pakufizuara", el: "Απεριόριστες αγγελίες", tr: "Sınırsız ilan", es: "Anuncios ilimitados" },
-      { hu: "20 kiemelés / hó + főoldal", me: "20 izdvajanja + naslovna", en: "20 boosts + homepage", ru: "20 продвижений + главная", sr: "20 издвајања + насловна", bs: "20 izdvajanja + naslovna", hr: "20 izdvajanja + naslovnica", uk: "20 просувань + головна", sq: "20 promovime + faqja kryesore", el: "20 προωθήσεις + αρχική σελίδα", tr: "20 öne çıkarma + ana sayfa", es: "20 impulsos + portada" },
-      { hu: "Teljes analitika + piactér", me: "Puna analitika + tržište", en: "Full analytics + market", ru: "Полная аналитика", sr: "Пуна аналитика + тржиште", bs: "Puna analitika + tržište", hr: "Puna analitika + tržište", uk: "Повна аналітика + ринок", sq: "Analitikë e plotë + tregu", el: "Πλήρη analytics + αγορά", tr: "Tam analiz + pazar", es: "Analítica completa + mercado" },
-      { hu: "Korlátlan csapattag", me: "Neograničeno članova", en: "Unlimited members", ru: "Безлимит пользователей", sr: "Неограничено чланова", bs: "Neograničeno članova", hr: "Neograničeno članova", uk: "Необмежена кількість учасників", sq: "Anëtarë të pakufizuar", el: "Απεριόριστα μέλη", tr: "Sınırsız üye", es: "Miembros ilimitados" },
-      { hu: "Feed-import (API)", me: "Uvoz feeda (API)", en: "Feed import (API)", ru: "Импорт фида (API)", sr: "Увоз feeda (API)", bs: "Uvoz feeda (API)", hr: "Uvoz feeda (API)", uk: "Імпорт фіду (API)", sq: "Importim feedi (API)", el: "Εισαγωγή feed (API)", tr: "Feed içe aktarma (API)", es: "Importación de feed (API)" },
-      { hu: "Dedikált menedzser", me: "Posvećeni menadžer", en: "Dedicated manager", ru: "Персональный менеджер", sr: "Посвећени менаџер", bs: "Posvećeni menadžer", hr: "Posvećeni menadžer", uk: "Персональний менеджер", sq: "Menaxher i dedikuar", el: "Αποκλειστικός διαχειριστής", tr: "Özel müşteri yöneticisi", es: "Gestor dedicado" }
+      { hu: "Korlátlan hirdetés", me: "Neograničeno oglasa", en: "Unlimited listings", ru: "Безлимит объявлений", sr: "Неограничено огласа", bs: "Neograničeno oglasa", hr: "Neograničeno oglasa", uk: "Необмежена кількість оголошень", sq: "Shpallje të pakufizuara", el: "Απεριόριστες αγγελίες", tr: "Sınırsız ilan", es: "Anuncios ilimitados", it: "Annunci illimitati", th: "ประกาศไม่จำกัด" },
+      { hu: "25 kiemelés / hó + főoldali megjelenés", me: "25 izdvajanja + naslovna", en: "25 boosts + homepage feature", ru: "25 продвижений + главная", sr: "25 издвајања + насловна", bs: "25 izdvajanja + naslovna", hr: "25 izdvajanja + naslovnica", uk: "25 просувань + головна", sq: "25 promovime + faqja kryesore", el: "25 προωθήσεις + αρχική", tr: "25 öne çıkarma + ana sayfa", es: "25 impulsos + portada", it: "25 promozioni + home", th: "25 บูสต์ + หน้าแรก" },
+      { hu: "Teljes analitika + piactér-intelligencia", me: "Puna analitika + tržišna inteligencija", en: "Full analytics + market intelligence", ru: "Полная аналитика + рынок", sr: "Пуна аналитика + тржишна интелигенција", bs: "Puna analitika + tržišna inteligencija", hr: "Puna analitika + tržišna inteligencija", uk: "Повна аналітика + ринок", sq: "Analitikë e plotë + inteligjencë tregu", el: "Πλήρη analytics + αγορά", tr: "Tam analiz + pazar zekâsı", es: "Analítica completa + mercado", it: "Analytics completo + market intelligence", th: "วิเคราะห์เต็มรูปแบบ + ข้อมูลตลาด" },
+      { hu: "Korlátlan csapattag + dedikált menedzser", me: "Neograničeno članova + menadžer", en: "Unlimited members + dedicated manager", ru: "Безлимит + менеджер", sr: "Неограничено чланова + менаџер", bs: "Neograničeno članova + menadžer", hr: "Neograničeno članova + menadžer", uk: "Необмежено + менеджер", sq: "Anëtarë të pakufizuar + menaxher", el: "Απεριόριστα μέλη + διαχειριστής", tr: "Sınırsız üye + özel yönetici", es: "Miembros ilimitados + gestor", it: "Membri illimitati + manager dedicato", th: "สมาชิกไม่จำกัด + ผู้จัดการเฉพาะ" },
+      { hu: "Feed-import (API) + tömeges feltöltés", me: "Uvoz feeda (API) + masovni upload", en: "Feed import (API) + bulk upload", ru: "Импорт фида (API) + массовая загрузка", sr: "Увоз feeda (API) + масовни упис", bs: "Uvoz feeda (API) + masovni upload", hr: "Uvoz feeda (API) + skupni upload", uk: "Імпорт фіду (API) + масове завантаження", sq: "Importim feedi (API) + ngarkim masiv", el: "Εισαγωγή feed (API) + μαζική μεταφόρτωση", tr: "Feed içe aktarma (API) + toplu yükleme", es: "Importación de feed (API) + carga masiva", it: "Import feed (API) + caricamento massivo", th: "นำเข้าฟีด (API) + อัปโหลดจำนวนมาก" },
+      { hu: "Kiemelt helyezés a keresőben", me: "Prioritet u pretrazi", en: "Priority placement in search", ru: "Приоритет в поиске", sr: "Приоритет у претрази", bs: "Prioritet u pretrazi", hr: "Prioritet u pretrazi", uk: "Пріоритет у пошуку", sq: "Vend prioritar në kërkim", el: "Προτεραιότητα στην αναζήτηση", tr: "Aramada öncelikli sıralama", es: "Posición prioritaria en búsqueda", it: "Posizione prioritaria nella ricerca", th: "ตำแหน่งสำคัญในการค้นหา" }
     ]
   }
 ];
@@ -94,7 +87,7 @@ const FAQ: { q: PL; a: PL }[] = [
   },
   {
     q: { hu: "Van ingyenes próbaidőszak?", me: "Postoji li besplatan probni period?", en: "Is there a free trial?", ru: "Есть ли пробный период?", sr: "Постоји ли бесплатан пробни период?", bs: "Postoji li besplatan probni period?", hr: "Postoji li besplatno probno razdoblje?", uk: "Чи є безкоштовний пробний період?", sq: "A ka një provë falas?", el: "Υπάρχει δωρεάν δοκιμή;", tr: "Ücretsiz deneme var mı?", es: "¿Hay una prueba gratuita?" },
-    a: { hu: "Igen — az első irodai regisztrációnál 14 nap ingyenes Profi próba, kártya-terhelés nélkül.", me: "Da — 14 dana besplatne Profi probe pri prvoj registraciji agencije.", en: "Yes — a 14-day free Pro trial on your first agency sign-up, no charge upfront.", ru: "Да — 14 дней бесплатного Pro при первой регистрации агентства.", sr: "Да — 14 дана бесплатне Профи пробе при првој регистрацији агенције.", bs: "Da — 14 dana besplatne Profi probe pri prvoj registraciji agencije, bez naplate unaprijed.", hr: "Da — 14-dnevna besplatna Pro proba pri prvoj registraciji agencije, bez naplate unaprijed.", uk: "Так — 14-денна безкоштовна пробна версія Pro при першій реєстрації агентства, без оплати наперед.", sq: "Po — një provë Pro falas 14-ditore në regjistrimin e parë të agjencisë, pa asnjë tarifë paraprake.", el: "Ναι — δωρεάν δοκιμή Pro 14 ημερών κατά την πρώτη εγγραφή γραφείου, χωρίς προκαταβολική χρέωση.", tr: "Evet — ilk acente kaydınızda 14 günlük ücretsiz Pro denemesi, peşin ödeme yok.", es: "Sí: 14 días de prueba Pro gratuita al registrar tu primera agencia, sin cargo por adelantado." }
+    a: { hu: "Igen — MINDEN iroda 3 teljes hónapot kap teljesen ingyen, minden funkcióval, kártya nélkül. A számlázás csak a 3. hónap után indul, és bármikor lemondhatod.", me: "Da — SVAKA agencija dobija 3 puna mjeseca potpuno besplatno, sa svim funkcijama, bez kartice. Naplata počinje tek nakon 3. mjeseca.", en: "Yes — EVERY agency gets 3 full months completely free, with all features, no card required. Billing only starts after month 3, and you can cancel anytime.", ru: "Да — КАЖДОЕ агентство получает 3 полных месяца бесплатно, со всеми функциями, без карты. Оплата — только после 3-го месяца.", sr: "Да — СВАКА агенција добија 3 пуна месеца потпуно бесплатно, са свим функцијама, без картице.", bs: "Da — SVAKA agencija dobija 3 puna mjeseca potpuno besplatno, sa svim funkcijama, bez kartice. Naplata počinje tek nakon 3. mjeseca.", hr: "Da — SVAKA agencija dobiva 3 puna mjeseca potpuno besplatno, sa svim značajkama, bez kartice. Naplata počinje tek nakon 3. mjeseca.", uk: "Так — КОЖНЕ агентство отримує 3 повні місяці безкоштовно, з усіма функціями, без картки. Оплата — лише після 3-го місяця.", sq: "Po — ÇDO agjenci merr 3 muaj të plotë krejtësisht falas, me të gjitha funksionet, pa kartë. Faturimi fillon vetëm pas muajit të 3-të.", el: "Ναι — ΚΑΘΕ γραφείο λαμβάνει 3 πλήρεις μήνες εντελώς δωρεάν, με όλες τις λειτουργίες, χωρίς κάρτα. Η χρέωση ξεκινά μόνο μετά τον 3ο μήνα.", tr: "Evet — HER acente 3 tam ay tamamen ücretsiz, tüm özelliklerle, kart gerekmeden. Faturalandırma yalnızca 3. aydan sonra başlar.", es: "Sí: TODAS las agencias reciben 3 meses completos totalmente gratis, con todas las funciones, sin tarjeta. La facturación solo empieza tras el 3.º mes.", it: "Sì — OGNI agenzia riceve 3 mesi interi completamente gratis, con tutte le funzioni, senza carta. La fatturazione parte solo dopo il 3° mese.", th: "ใช่ — ทุกเอเจนซีได้ใช้ฟรี 3 เดือนเต็ม ครบทุกฟีเจอร์ ไม่ต้องใช้บัตร เริ่มเก็บเงินหลังเดือนที่ 3 เท่านั้น" }
   },
   {
     q: { hu: "Mit jelent a kiemelés?", me: "Šta znači isticanje?", en: "What does a boost mean?", ru: "Что такое продвижение?", sr: "Шта значи истицање?", bs: "Šta znači izdvajanje?", hr: "Što znači izdvajanje?", uk: "Що означає просування?", sq: "Çfarë do të thotë një promovim?", el: "Τι σημαίνει η προώθηση;", tr: "Öne çıkarma ne demek?", es: "¿Qué significa un impulso?" },
@@ -194,6 +187,17 @@ export default function PricingPage() {
         <PrivatePlans lang={lang} />
       ) : (
         <>
+      {/* 3 HÓNAP INGYEN — minden irodának, kártya nélkül. */}
+      <div className="mt-6 flex items-center gap-4 overflow-hidden rounded-3xl border-2 border-ink-950 bg-[linear-gradient(115deg,#070708_0%,#0d0d10_45%,#3a4a00_78%,#c8ff00_100%)] px-6 py-5 text-white">
+        <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-white/15 text-2xl">🎁</div>
+        <div className="min-w-0">
+          <div className="text-lg font-black tracking-tight sm:text-xl">
+            {tr("pricing_trial_title", lang).replace("{n}", String(TRIAL_MONTHS))}
+          </div>
+          <p className="mt-0.5 text-sm text-white/80">{tr("pricing_trial_sub", lang)}</p>
+        </div>
+      </div>
+
       {/* Havi / Éves kapcsoló */}
       <div className="mt-6 inline-flex items-center gap-1 rounded-full border border-ink-200 bg-white p-1">
         <button
@@ -220,7 +224,8 @@ export default function PricingPage() {
       {/* Csomagok */}
       <div className="mt-6 grid grid-cols-1 gap-5 lg:grid-cols-3">
         {TIERS.map((t) => {
-          const price = yearly ? Math.round(t.yearly / 12) : t.monthly;
+          const plan = SUB_PLANS[t.id];
+          const price = yearly ? Math.round(plan.yearlyEur / 12) : plan.monthlyEur;
           return (
             <div
               key={t.id}
@@ -241,7 +246,7 @@ export default function PricingPage() {
               </div>
               <p className="mt-1 text-xs text-ink-400">
                 {yearly
-                  ? tr("pricing_billed_yearly", lang).replace("{n}", formatPrice(t.yearly, lang))
+                  ? tr("pricing_billed_yearly", lang).replace("{n}", formatPrice(plan.yearlyEur, lang))
                   : " "}
               </p>
 

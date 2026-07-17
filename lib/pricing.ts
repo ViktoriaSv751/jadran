@@ -36,10 +36,19 @@ export interface SubPlan {
   yearlyEur: number;
 }
 
+/**
+ * MINDEN iroda 3 HÓNAP TELJESEN INGYEN próbaidőt kap (korlátozás nélkül),
+ * kártya nélkül. A számlázás csak a 3. hónap után indul. A növekedés érdekében
+ * az árakat lejjebb hoztuk és a csomagokat értékkel töltöttük fel.
+ */
+export const TRIAL_MONTHS = 3;
+
 /** Az irodai csomagok ára (a /pricing oldal ezekből számol, a Stripe ugyanezt
- *  terheli — így az ígért és a számlázott ár mindig egyezik). */
+ *  terheli — így az ígért és a számlázott ár mindig egyezik).
+ *  FONTOS: a `stripe-checkout` edge function unit_amount cent-értékeit ehhez
+ *  kézzel kell igazítani (start=1900, pro=4900, premium=12900 havi). */
 export const SUB_PLANS: Record<SubPlanId, SubPlan> = {
-  start: { id: "start", monthlyEur: 29, yearlyEur: 290 },
-  pro: { id: "pro", monthlyEur: 79, yearlyEur: 790 },
-  premium: { id: "premium", monthlyEur: 199, yearlyEur: 1990 }
+  start: { id: "start", monthlyEur: 19, yearlyEur: 190 },
+  pro: { id: "pro", monthlyEur: 49, yearlyEur: 490 },
+  premium: { id: "premium", monthlyEur: 129, yearlyEur: 1290 }
 };

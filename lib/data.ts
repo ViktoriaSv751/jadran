@@ -176,6 +176,34 @@ export const seedProfiles: Profile[] = [
     joinedAt: "2024-03-21"
   },
   {
+    id: "u-hellenic-gr",
+    email: "info@hellenicestates.gr",
+    name: "Hellenic Estates",
+    role: "agency",
+    avatar: "https://picsum.photos/seed/jadran-ag-hellenicgr/200/200",
+    agencyName: "Hellenic Estates",
+    bio: "Golden Visa ingatlanok Görögországban — Athén, Kükládok, Kréta, Rodosz.",
+    phone: "+30 21 100 1000",
+    location: "Athína, Görögország",
+    verified: true,
+    responseTime: "egy órán belül",
+    joinedAt: "2023-04-22"
+  },
+  {
+    id: "u-costa-es",
+    email: "hola@costaproperties.es",
+    name: "Costa Properties",
+    role: "agency",
+    avatar: "https://picsum.photos/seed/jadran-ag-costaes/200/200",
+    agencyName: "Costa Properties",
+    bio: "Ingatlan és Golden Visa Spanyolországban — Costa del Sol, Barcelona, Baleárok.",
+    phone: "+34 91 100 1000",
+    location: "Málaga, Spanyolország",
+    verified: true,
+    responseTime: "néhány órán belül",
+    joinedAt: "2023-05-30"
+  },
+  {
     id: "u-budapest-hu",
     email: "info@budapesthome.hu",
     name: "Budapest Home",
@@ -260,7 +288,9 @@ const AGENCY_TO_ID: Record<string, string> = {
   "Bali Villa Collective": "u-bali-id",
   "Budapest Home": "u-budapest-hu",
   "Siam Property": "u-siam-th",
-  "Bella Casa Italia": "u-bellacasa-it"
+  "Bella Casa Italia": "u-bellacasa-it",
+  "Hellenic Estates": "u-hellenic-gr",
+  "Costa Properties": "u-costa-es"
 };
 
 /* ------------------------------------------------------------------ *

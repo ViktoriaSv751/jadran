@@ -6,6 +6,7 @@ import { COUNTRIES } from "@/lib/geo";
 import Hero from "./home/Hero";
 import CategoryRow from "./home/CategoryRow";
 import CountryGrid from "./home/CountryGrid";
+import GoldenVisaBand from "./home/GoldenVisaBand";
 import Shelf from "./home/Shelf";
 
 /**
@@ -44,6 +45,11 @@ export default function HomeClient() {
         </div>
         <CountryGrid />
       </section>
+
+      {/* Golden Visa — egyedi differenciátor, kiemelt sáv. */}
+      <div className="order-2 lg:order-3">
+        <GoldenVisaBand />
+      </div>
 
       {/* Kiemelt — globális, minden országból. */}
       <div className="order-3 lg:order-4">

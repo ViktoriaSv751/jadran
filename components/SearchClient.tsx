@@ -8,6 +8,7 @@ import type { Listing } from "@/lib/types";
 import { useLang, useMoney, useListings, useAuth, useProfiles } from "@/lib/store";
 import { tr, loc } from "@/lib/i18n";
 import { pricePerM2 } from "@/lib/format";
+import { qualifiesGoldenVisa } from "@/lib/geo";
 import { isFeatured } from "@/lib/mappers";
 import type { MapBounds } from "./MapView";
 import * as db from "@/lib/db";
@@ -40,6 +41,7 @@ function applyFilters(items: Listing[], f: FilterState, roleOf?: Map<string, str
       if (!hay.includes(q)) return false;
     }
     if (f.country && l.country !== f.country) return false;
+    if (f.goldenVisa === "1" && !qualifiesGoldenVisa(l.country, l.price)) return false;
     if (f.city && l.city !== f.city) return false;
     if (f.type && l.type !== f.type) return false;
     if (f.view && l.view !== f.view) return false;

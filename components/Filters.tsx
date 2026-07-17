@@ -11,6 +11,7 @@ export interface FilterState {
   q: string;
   mode: string;
   country: string; // "" | CountryCode (globális piac)
+  goldenVisa: string; // "" | "1" — csak Golden Visa-jogosult hirdetések
   city: string;
   sellerType: string; // "" | "private" | "agency"
   type: string;
@@ -48,6 +49,7 @@ export const emptyFilters: FilterState = {
   q: "",
   mode: "",
   country: "",
+  goldenVisa: "",
   city: "",
   sellerType: "",
   type: "",
@@ -189,6 +191,18 @@ export default function Filters({
               </option>
             ))}
           </select>
+        </div>
+
+        {/* Golden Visa — csak a letelepedésre/állampolgárságra jogosító hirdetések. */}
+        <div className="flex items-center justify-between gap-2 rounded-xl border border-[#c8ff00] bg-[#f7ffcc]/50 px-3 py-2.5">
+          <span className="flex items-center gap-1.5 text-sm font-bold text-ink-900">
+            <Icon name="globe" size={15} /> {tr("golden_visa_filter", lang)}
+          </span>
+          <Toggle
+            label=""
+            checked={value.goldenVisa === "1"}
+            onChange={(v) => set("goldenVisa", v ? "1" : "")}
+          />
         </div>
 
         <div>
