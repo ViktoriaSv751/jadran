@@ -5,13 +5,14 @@ import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
 import { useLang, useListings, useProfiles } from "@/lib/store";
 import { tr, typeLabels, viewLabels, conditionLabels, amenityLabels, heatingLabels } from "@/lib/i18n";
-import { cities, montenegroPlaces } from "@/lib/data";
+import { ALL_CITIES, COUNTRIES, COUNTRY_BY_CODE, isCountryCode } from "@/lib/geo";
 import Icon from "@/components/ui/Icon";
 
 type Mode = "" | "sale" | "rent";
 
 interface Draft {
   mode: Mode;
+  country: string; // "" | CountryCode — először országot választunk (Airbnb-logika)
   loc: string; // free-text location (matched against city/district/title)
   city: string; // exact city chosen from the quick chips
   sellerType: string; // "" | "private" | "agency"
@@ -48,6 +49,7 @@ interface Draft {
 
 const empty: Draft = {
   mode: "sale",
+  country: "",
   loc: "",
   city: "",
   sellerType: "",
@@ -155,6 +157,7 @@ export default function SearchModal({
           `${l.city} ${l.district} ${l.title.hu} ${l.title.me} ${l.title.en} ${l.title.ru} ${l.agency}`.toLowerCase();
         if (!hay.includes(q)) return false;
       }
+      if (d.country && l.country !== d.country) return false;
       if (d.city && l.city !== d.city) return false;
       if (d.type && l.type !== d.type) return false;
       if (d.priceMin && l.price < Number(d.priceMin)) return false;
@@ -197,6 +200,7 @@ export default function SearchModal({
   const go = () => {
     const p = new URLSearchParams();
     if (d.mode) p.set("mode", d.mode);
+    if (d.country) p.set("country", d.country);
     if (d.loc.trim()) p.set("q", d.loc.trim());
     if (d.city) p.set("city", d.city);
     if (d.sellerType) p.set("sellerType", d.sellerType);
@@ -305,9 +309,33 @@ export default function SearchModal({
             ))}
           </div>
 
-          {/* Where — free-text location with full Montenegro autocomplete */}
+          {/* Hol — ELŐSZÖR ország, AZTÁN város (Airbnb-logika). */}
           <div>
-            <span className={sectionLabel}>{tr("where_q", lang)}</span>
+            <span className={sectionLabel}>{tr("country_label", lang)}</span>
+            <div className="mt-1 flex flex-wrap gap-2">
+              <button
+                onClick={() => setD((p) => ({ ...p, country: "", city: "", loc: "" }))}
+                className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
+                  d.country === "" ? "border-ink-900 bg-ink-900 text-white" : "border-ink-200 text-ink-700 hover:border-ink-300"
+                }`}
+              >
+                {tr("all_countries", lang)}
+              </button>
+              {COUNTRIES.map((c) => (
+                <button
+                  key={c.code}
+                  onClick={() => setD((p) => ({ ...p, country: c.code, city: "", loc: "" }))}
+                  className={`flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-medium transition ${
+                    d.country === c.code ? "border-ink-900 bg-ink-900 text-white" : "border-ink-200 text-ink-700 hover:border-ink-300"
+                  }`}
+                >
+                  <span className="text-base leading-none">{c.flag}</span>
+                  {tr(c.nameKey, lang)}
+                </button>
+              ))}
+            </div>
+
+            <span className={`${sectionLabel} mt-4 block`}>{tr("where_q", lang)}</span>
             <div className="relative">
               <Icon
                 name="mapPin"
@@ -315,43 +343,45 @@ export default function SearchModal({
                 className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-brand-500"
               />
               <input
-                list="mne-places"
+                list="place-options"
                 className="w-full rounded-2xl border-2 border-ink-200 bg-white py-4 pl-12 pr-4 text-lg font-bold text-ink-900 shadow-soft transition placeholder:font-semibold placeholder:text-ink-400 focus:border-brand-400 focus:ring-4 focus:ring-brand-100 focus:outline-none"
                 placeholder={tr("location_placeholder", lang)}
                 value={d.loc}
                 onChange={(e) => set("loc", e.target.value)}
               />
-              <datalist id="mne-places">
-                {montenegroPlaces.map((p) => (
+              <datalist id="place-options">
+                {(d.country && isCountryCode(d.country) ? COUNTRY_BY_CODE[d.country].cities : ALL_CITIES).map((p) => (
                   <option key={p} value={p} />
                 ))}
               </datalist>
             </div>
 
-            {/* Popular quick chips */}
-            <div className="mt-3 flex flex-wrap gap-2">
-              <button
-                onClick={() => setD((p) => ({ ...p, city: "", loc: "" }))}
-                className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
-                  d.city === "" && d.loc === ""
-                    ? "border-ink-900 bg-ink-900 text-white"
-                    : "border-ink-200 text-ink-700 hover:border-ink-300"
-                }`}
-              >
-                {tr("anywhere", lang)}
-              </button>
-              {cities.map((c) => (
+            {/* Város-chipek — CSAK ha van kiválasztott ország (nem keverednek össze). */}
+            {d.country && isCountryCode(d.country) && (
+              <div className="mt-3 flex flex-wrap gap-2">
                 <button
-                  key={c}
-                  onClick={() => setD((p) => ({ ...p, city: c, loc: "" }))}
+                  onClick={() => setD((p) => ({ ...p, city: "", loc: "" }))}
                   className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
-                    d.city === c ? "border-ink-900 bg-ink-900 text-white" : "border-ink-200 text-ink-700 hover:border-ink-300"
+                    d.city === "" && d.loc === ""
+                      ? "border-ink-900 bg-ink-900 text-white"
+                      : "border-ink-200 text-ink-700 hover:border-ink-300"
                   }`}
                 >
-                  {c}
+                  {tr("anywhere", lang)}
                 </button>
-              ))}
-            </div>
+                {COUNTRY_BY_CODE[d.country].cities.map((c) => (
+                  <button
+                    key={c}
+                    onClick={() => setD((p) => ({ ...p, city: c, loc: "" }))}
+                    className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
+                      d.city === c ? "border-ink-900 bg-ink-900 text-white" : "border-ink-200 text-ink-700 hover:border-ink-300"
+                    }`}
+                  >
+                    {c}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Hirdető típusa — magánszemély vagy ingatlaniroda (mint az ingatlan.com). */}

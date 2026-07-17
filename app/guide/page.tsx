@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import { useLang } from "@/lib/store";
-import { tr } from "@/lib/i18n";
-import type { Lang } from "@/lib/types";
+import { tr, loc } from "@/lib/i18n";
+import type { Lang, CountryCode } from "@/lib/types";
+import { COUNTRIES, COUNTRY_BY_CODE } from "@/lib/geo";
+import { FOREIGN_BUYER } from "@/lib/legal";
 import PageHeading from "@/components/ui/PageHeading";
 
 // Minden felület-nyelvet feloldó helper (a `loc()` csak 4 tartalom-nyelvet tud,
@@ -23,29 +25,43 @@ const steps: { title: GL; body: GL }[] = [
   {
     title: { hu: "3. Foglalás és szerződés", me: "3. Rezervacija i ugovor", en: "3. Reservation & contract", ru: "3. Бронирование и договор", sr: "3. Резервација и уговор", bs: "3. Rezervacija i ugovor", hr: "3. Rezervacija i ugovor", uk: "3. Бронювання і договір", sq: "3. Rezervimi dhe kontrata", el: "3. Κράτηση & συμβόλαιο", tr: "3. Rezervasyon ve sözleşme", es: "3. Reserva y contrato" },
     body: { hu: "Előszerződés a közjegyzőnél, a foglaló általában 10%. Bízz meg ügyvédet a szerződés elkészítésével.", me: "Predugovor kod notara, kapara obično 10%. Angažujte advokata za nacrt.", en: "Preliminary contract at the notary, deposit usually 10%. Engage a lawyer for drafting.", ru: "Предварительный договор у нотариуса, задаток обычно 10%. Привлеките адвоката.", sr: "Предуговор код нотара, капара обично 10%. Ангажујте адвоката за нацрт.", bs: "Predugovor kod notara, kapara obično 10%. Angažujte advokata za izradu nacrta.", hr: "Predugovor kod javnog bilježnika, kapara obično 10 %. Angažirajte odvjetnika za sastavljanje.", uk: "Попередній договір у нотаріуса, завдаток зазвичай 10%. Залучіть адвоката для складання.", sq: "Kontratë paraprake te noteri, kapari zakonisht 10%. Angazho një avokat për hartimin.", el: "Προσύμφωνο στον συμβολαιογράφο, προκαταβολή συνήθως 10%. Αναθέστε τη σύνταξη σε δικηγόρο.", tr: "Noterde ön sözleşme, kapora genellikle %10. Sözleşme taslağı için bir avukatla çalışın.", es: "Contrato preliminar ante notario, señal habitualmente del 10%. Contrata a un abogado para su redacción." }
-  },
-  {
-    title: { hu: "4. Adó és tulajdonátruházás", me: "4. Porez i prenos", en: "4. Tax & transfer", ru: "4. Налог и передача", sr: "4. Порез и пренос", bs: "4. Porez i prenos", hr: "4. Porez i prijenos", uk: "4. Податок і передача", sq: "4. Taksa dhe transferimi", el: "4. Φόρος & μεταβίβαση", tr: "4. Vergi ve devir", es: "4. Impuesto y transmisión" },
-    body: { hu: "Az átírási illeték 3%. A tulajdonjog bejegyzése a kataszterbe a fizetés után történik.", me: "Porez na prenos 3%. Upis vlasništva u katastar nakon plaćanja.", en: "Transfer tax 3%. Registration of ownership in the cadastre after payment.", ru: "Налог на передачу 3%. Регистрация права в кадастре после оплаты.", sr: "Порез на пренос 3%. Упис власништва у катастар након плаћања.", bs: "Porez na prenos 3%. Upis vlasništva u katastar nakon plaćanja.", hr: "Porez na prijenos 3 %. Upis vlasništva u katastar nakon plaćanja.", uk: "Податок на передачу 3%. Реєстрація права власності в кадастрі після сплати.", sq: "Taksa e transferimit 3%. Regjistrimi i pronësisë në kadastër pas pagesës.", el: "Φόρος μεταβίβασης 3%. Καταχώριση της ιδιοκτησίας στο κτηματολόγιο μετά την πληρωμή.", tr: "Devir vergisi %3. Ödemeden sonra mülkiyetin kadastroya tescili.", es: "Impuesto de transmisión del 3%. Inscripción de la propiedad en el catastro tras el pago." }
   }
-];
-
-const FOREIGN_TITLE: GL = { hu: "Külföldi vásárlóknak", me: "Za strane kupce", en: "For foreign buyers", ru: "Для иностранных покупателей", sr: "За стране купце", bs: "Za strane kupce", hr: "Za strane kupce", uk: "Для іноземних покупців", sq: "Për blerësit e huaj", el: "Για ξένους αγοραστές", tr: "Yabancı alıcılar için", es: "Para compradores extranjeros" };
-
-const foreignTrack: GL[] = [
-  { hu: "Külföldiek korlátozás nélkül vásárolhatnak lakást/házat; mezőgazdasági földet cégen keresztül.", me: "Stranci mogu kupiti stan/kuću bez ograničenja; poljoprivredno zemljište preko firme.", en: "Foreigners can buy apartments/houses freely; agricultural land via a company.", ru: "Иностранцы могут свободно покупать квартиры/дома; сельхозземлю — через компанию.", sr: "Странци могу купити стан/кућу без ограничења; пољопривредно земљиште преко фирме.", bs: "Stranci mogu slobodno kupiti stan/kuću; poljoprivredno zemljište preko firme.", hr: "Stranci mogu slobodno kupiti stan/kuću; poljoprivredno zemljište preko tvrtke.", uk: "Іноземці можуть вільно купувати квартири/будинки; сільськогосподарську землю — через компанію.", sq: "Të huajt mund të blejnë lirisht apartamente/shtëpi; tokë bujqësore përmes një kompanie.", el: "Οι ξένοι μπορούν να αγοράζουν διαμερίσματα/κατοικίες ελεύθερα· αγροτική γη μέσω εταιρείας.", tr: "Yabancılar daire/ev satın alabilir; tarım arazisini ise bir şirket üzerinden.", es: "Los extranjeros pueden comprar pisos/casas sin restricciones; suelo agrícola a través de una sociedad." },
-  { hu: "Tartózkodáshoz fontold meg a cégalapítást vagy a tartózkodási engedélyt.", me: "Za boravak razmislite o registraciji firme ili dozvoli boravka.", en: "For residency, consider company registration or a residence permit.", ru: "Для ВНЖ рассмотрите регистрацию компании или вид на жительство.", sr: "За боравак размислите о регистрацији фирме или дозволи боравка.", bs: "Za boravak razmislite o registraciji firme ili dozvoli boravka.", hr: "Za boravak razmislite o registraciji tvrtke ili dozvoli boravka.", uk: "Для проживання розгляньте реєстрацію компанії або дозвіл на проживання.", sq: "Për qëndrim, merr në konsideratë regjistrimin e një kompanie ose një leje qëndrimi.", el: "Για διαμονή, εξετάστε την εγγραφή εταιρείας ή μια άδεια διαμονής.", tr: "Oturum için şirket kaydını veya oturma iznini değerlendirin.", es: "Para residir, considera la constitución de una sociedad o un permiso de residencia." },
-  { hu: "Nyiss helyi bankszámlát a fizetéshez és a rezsihez.", me: "Otvorite lokalni bankovni račun za plaćanje i komunalije.", en: "Open a local bank account for payment and utilities.", ru: "Откройте местный банковский счёт для оплаты и коммунальных услуг.", sr: "Отворите локални банковни рачун за плаћање и комуналије.", bs: "Otvorite lokalni bankovni račun za plaćanja i komunalije.", hr: "Otvorite lokalni bankovni račun za plaćanje i komunalne usluge.", uk: "Відкрийте місцевий банківський рахунок для оплати та комунальних послуг.", sq: "Hap një llogari bankare lokale për pagesat dhe shërbimet komunale.", el: "Ανοίξτε έναν τοπικό τραπεζικό λογαριασμό για πληρωμές και λογαριασμούς κοινής ωφέλειας.", tr: "Ödeme ve faturalar için yerel bir banka hesabı açın.", es: "Abre una cuenta bancaria local para los pagos y los suministros." }
 ];
 
 export default function GuidePage() {
   const { lang } = useLang();
   const [open, setOpen] = useState(0);
+  const [country, setCountry] = useState<CountryCode>("ME");
+
+  const info = FOREIGN_BUYER[country];
+  const taxPct = Math.round(COUNTRY_BY_CODE[country].costs.transferTaxRate * 1000) / 10;
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
       <PageHeading icon="compass">{tr("guide_title", lang)}</PageHeading>
 
+      {/* Ország-választó — a jog/adó/mellékköltség ehhez igazodik. */}
+      <div className="mt-5">
+        <span className="mb-2 block text-xs font-semibold uppercase tracking-wide text-ink-500">
+          {tr("guide_pick_country", lang)}
+        </span>
+        <div className="flex flex-wrap gap-2">
+          {COUNTRIES.map((c) => (
+            <button
+              key={c.code}
+              onClick={() => setCountry(c.code)}
+              className={`flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-medium transition ${
+                country === c.code ? "border-ink-900 bg-ink-900 text-white" : "border-ink-200 text-ink-700 hover:border-ink-300"
+              }`}
+            >
+              <span className="text-base leading-none">{c.flag}</span>
+              {tr(c.nameKey, lang)}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Általános folyamat (1–3) + dinamikus adó-lépés (4). */}
       <div className="mt-6 space-y-3">
         {steps.map((s, i) => (
           <div key={i} className="overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-soft">
@@ -59,15 +75,41 @@ export default function GuidePage() {
             {open === i && <p className="px-4 pb-4 leading-relaxed text-ink-600">{pick(s.body, lang)}</p>}
           </div>
         ))}
+
+        {/* 4. Adó — országfüggő kulccsal. */}
+        <div className="overflow-hidden rounded-2xl border border-ink-100 bg-white shadow-soft">
+          <button
+            onClick={() => setOpen(open === 3 ? -1 : 3)}
+            className="flex w-full items-center justify-between p-4 text-left font-semibold text-ink-800"
+          >
+            {tr("guide_tax_step", lang)}
+            <span className="text-ink-400">{open === 3 ? "−" : "+"}</span>
+          </button>
+          {open === 3 && (
+            <div className="px-4 pb-4">
+              <div className="mb-3 flex items-center justify-between rounded-xl bg-ink-50 px-4 py-3">
+                <span className="text-sm font-medium text-ink-600">{tr("guide_transfer_tax", lang)}</span>
+                <span className="text-lg font-black text-ink-900">{taxPct}%</span>
+              </div>
+              <p className="leading-relaxed text-ink-600">{tr("guide_tax_body", lang)}</p>
+            </div>
+          )}
+        </div>
       </div>
 
+      {/* Külföldi vásárlóknak — ORSZÁGONKÉNTI infó a lib/legal.ts-ből. */}
       <div className="mt-8 rounded-2xl border border-brand-200 bg-brand-50 p-5">
-        <h2 className="font-bold text-brand-700">{pick(FOREIGN_TITLE, lang)}</h2>
+        <h2 className="flex items-center gap-2 font-bold text-brand-700">
+          <span className="text-lg leading-none">{COUNTRY_BY_CODE[country].flag}</span>
+          {tr("foreign_title", lang)} · {tr(COUNTRY_BY_CODE[country].nameKey, lang)}
+        </h2>
+        <p className="mt-2 text-sm text-ink-600">{loc(info.intro, lang)}</p>
         <ul className="mt-3 list-disc space-y-2 pl-5 text-ink-600">
-          {foreignTrack.map((p, i) => (
-            <li key={i}>{pick(p, lang)}</li>
+          {info.points.map((p, i) => (
+            <li key={i}>{loc(p, lang)}</li>
           ))}
         </ul>
+        <p className="mt-3 text-[11px] leading-snug text-ink-400">{tr("foreign_disclaimer", lang)}</p>
       </div>
     </div>
   );
