@@ -17,7 +17,8 @@ import Icon from "@/components/ui/Icon";
 // Dátum/idő-formázás locale-ja mind a 12 nyelvre (nem esik mind angolra).
 const LOCALE_MAP: Record<Lang, string> = {
   hu: "hu-HU", me: "sr-Latn", sr: "sr-Latn", bs: "bs-Latn", hr: "hr-HR",
-  en: "en-GB", es: "es-ES", ru: "ru-RU", uk: "uk-UA", sq: "sq-AL", el: "el-GR", tr: "tr-TR"
+  en: "en-GB", es: "es-ES", ru: "ru-RU", uk: "uk-UA", sq: "sq-AL", el: "el-GR", tr: "tr-TR",
+  it: "it-IT", th: "th-TH"
 };
 const locFor = (lang: Lang) => LOCALE_MAP[lang] ?? "en-GB";
 

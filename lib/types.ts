@@ -10,7 +10,9 @@ export type Lang =
   | "sq" // albán
   | "el" // görög
   | "tr" // török
-  | "es"; // spanyol
+  | "es" // spanyol
+  | "it" // olasz
+  | "th"; // thai
 
 export type PropertyType =
   | "apartment"
@@ -64,7 +66,7 @@ export type Amenity =
   | "heating";
 
 /** Támogatott országok (globális piac). Részletes taxonómia: lib/geo.ts. */
-export type CountryCode = "ME" | "HR" | "AL" | "RS" | "TR" | "ID";
+export type CountryCode = "ME" | "HR" | "AL" | "RS" | "TR" | "ID" | "HU" | "TH" | "IT";
 
 export interface LocalizedText {
   hu: string;

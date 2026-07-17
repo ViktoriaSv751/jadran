@@ -176,6 +176,48 @@ export const seedProfiles: Profile[] = [
     joinedAt: "2024-03-21"
   },
   {
+    id: "u-budapest-hu",
+    email: "info@budapesthome.hu",
+    name: "Budapest Home",
+    role: "agency",
+    avatar: "https://picsum.photos/seed/jadran-ag-budapesthu/200/200",
+    agencyName: "Budapest Home",
+    bio: "Belvárosi lakások és balatoni nyaralók — Budapest, Balaton, Hévíz.",
+    phone: "+36 1 100 1000",
+    location: "Budapest, Magyarország",
+    verified: true,
+    responseTime: "egy órán belül",
+    joinedAt: "2023-08-11"
+  },
+  {
+    id: "u-siam-th",
+    email: "hello@siamproperty.co.th",
+    name: "Siam Property",
+    role: "agency",
+    avatar: "https://picsum.photos/seed/jadran-ag-siamth/200/200",
+    agencyName: "Siam Property",
+    bio: "Condo és leasehold villa Thaiföldön — Bangkok, Phuket, Koh Samui.",
+    phone: "+66 2 100 1000",
+    location: "Bangkok, Thaiföld",
+    verified: true,
+    responseTime: "néhány órán belül",
+    joinedAt: "2024-01-19"
+  },
+  {
+    id: "u-bellacasa-it",
+    email: "info@bellacasaitalia.it",
+    name: "Bella Casa Italia",
+    role: "agency",
+    avatar: "https://picsum.photos/seed/jadran-ag-bellacasait/200/200",
+    agencyName: "Bella Casa Italia",
+    bio: "Lakások és villák Olaszországban — Róma, Milánó, Toszkána, Comói-tó.",
+    phone: "+39 06 100 1000",
+    location: "Roma, Olaszország",
+    verified: true,
+    responseTime: "egy órán belül",
+    joinedAt: "2023-07-03"
+  },
+  {
     id: "u-marko",
     email: "marko.petrovic@example.com",
     name: "Marko Petrović",
@@ -215,7 +257,10 @@ const AGENCY_TO_ID: Record<string, string> = {
   "Riviera Albania": "u-riviera-al",
   "Beograd Estates": "u-belgrade-rs",
   "Bosphorus Property": "u-bosphorus-tr",
-  "Bali Villa Collective": "u-bali-id"
+  "Bali Villa Collective": "u-bali-id",
+  "Budapest Home": "u-budapest-hu",
+  "Siam Property": "u-siam-th",
+  "Bella Casa Italia": "u-bellacasa-it"
 };
 
 /* ------------------------------------------------------------------ *
@@ -1312,6 +1357,329 @@ const raw: RawListing[] = [
     energy: "A",
     createdAt: "2026-06-06",
     priceHistory: [{ date: "2026-06-06", price: 240000 }]
+  },
+
+  /* ===================== MAGYARORSZÁG (HU) ===================== */
+  {
+    id: "bud-hu-101",
+    title: {
+      hu: "Felújított polgári lakás Budapest belvárosában",
+      me: "Renovirani građanski stan u centru Budimpešte",
+      en: "Renovated period apartment in central Budapest",
+      ru: "Отремонтированная квартира в центре Будапешта"
+    },
+    description: {
+      hu: "Klasszikus belvárosi lakás magas belmagassággal, felújítva, a Bazilika közelében — kiváló kiadási potenciál.",
+      me: "Klasičan stan u centru s visokim plafonima, renoviran, blizu Bazilike.",
+      en: "Classic downtown flat with high ceilings, renovated, near the Basilica — strong rental potential.",
+      ru: "Классическая квартира в центре с высокими потолками, рядом с Базиликой."
+    },
+    type: "apartment",
+    price: 285000,
+    area: 82,
+    rooms: 2,
+    floor: 3,
+    year: 1905,
+    condition: "renovated",
+    view: "city",
+    city: "Budapest",
+    district: "Lipótváros",
+    distanceToSea: 0,
+    lat: 47.5015,
+    lng: 19.0518,
+    verification: "full",
+    images: imgs("bud-hu-101"),
+    agency: "Budapest Home",
+    furnished: true,
+    energy: "C",
+    createdAt: "2026-06-04",
+    priceHistory: [{ date: "2026-06-04", price: 285000 }]
+  },
+  {
+    id: "bal-hu-102",
+    title: {
+      hu: "Vízparti nyaraló a Balatonnál, Balatonfüreden",
+      me: "Kuća uz jezero na Balatonu, Balatonfüred",
+      en: "Lakeside holiday home on Lake Balaton, Balatonfüred",
+      ru: "Дом у озера Балатон, Балатонфюред"
+    },
+    description: {
+      hu: "Napfényes nyaraló nagy kerttel, pár percre a parttól és a sétánytól — ideális nyári kiadásra.",
+      me: "Sunčana kuća s velikim vrtom, par minuta od obale i šetališta.",
+      en: "Sunny house with a large garden, minutes from the shore and promenade — great for summer lets.",
+      ru: "Солнечный дом с большим садом, в минутах от берега и набережной."
+    },
+    type: "house",
+    price: 320000,
+    area: 140,
+    rooms: 4,
+    floor: null,
+    year: 2009,
+    condition: "good",
+    view: "sea",
+    city: "Balatonfüred",
+    district: "Balatonfüred",
+    distanceToSea: 350,
+    lat: 46.9585,
+    lng: 17.8906,
+    verification: "deed",
+    images: imgs("bal-hu-102"),
+    agency: "Budapest Home",
+    furnished: true,
+    energy: "B",
+    createdAt: "2026-05-29",
+    priceHistory: [{ date: "2026-05-29", price: 320000 }]
+  },
+  {
+    id: "bud-hu-103",
+    title: {
+      hu: "Új építésű lakás kiadó, Budapest",
+      me: "Novogradnja za izdavanje, Budimpešta",
+      en: "New-build apartment for rent, Budapest",
+      ru: "Квартира в новостройке в аренду, Будапешт"
+    },
+    description: {
+      hu: "Modern, bútorozott lakás új társasházban, mélygarázzsal, metró közelében — hosszú távra.",
+      me: "Moderan, namešten stan u novoj zgradi, s garažom, blizu metroa.",
+      en: "Modern furnished flat in a new building with garage, near the metro — long-term.",
+      ru: "Современная меблированная квартира в новом доме, рядом метро."
+    },
+    type: "new",
+    mode: "rent",
+    price: 1200,
+    area: 58,
+    rooms: 2,
+    floor: 5,
+    year: 2024,
+    condition: "new",
+    view: "city",
+    city: "Budapest",
+    district: "Ferencváros",
+    distanceToSea: 0,
+    lat: 47.4696,
+    lng: 19.0691,
+    verification: "basic",
+    images: imgs("bud-hu-103", 4),
+    agency: "Budapest Home",
+    furnished: true,
+    energy: "A",
+    createdAt: "2026-06-13",
+    priceHistory: [{ date: "2026-06-13", price: 1200 }]
+  },
+
+  /* ===================== THAIFÖLD (TH) ===================== */
+  {
+    id: "bkk-th-101",
+    title: {
+      hu: "Modern condo Bangkokban, sky-train közelében",
+      me: "Moderan condo u Bangkoku, blizu sky-traina",
+      en: "Modern condo in Bangkok, near the sky-train",
+      ru: "Современный кондо в Бангкоке, рядом со sky-train"
+    },
+    description: {
+      hu: "Külföldi szabad tulajdon (condo), zárt lakóparkban medencével és edzőteremmel, a BTS-hez közel.",
+      me: "Strano puno vlasništvo (condo), u kompleksu s bazenom i teretanom, blizu BTS-a.",
+      en: "Foreign-freehold condo in a complex with pool and gym, close to the BTS.",
+      ru: "Кондо во фрихолд для иностранцев, комплекс с бассейном, рядом BTS."
+    },
+    type: "apartment",
+    price: 165000,
+    area: 45,
+    rooms: 1,
+    floor: 18,
+    year: 2021,
+    condition: "new",
+    view: "city",
+    city: "Bangkok",
+    district: "Sukhumvit",
+    distanceToSea: 0,
+    lat: 13.7373,
+    lng: 100.5601,
+    verification: "deed",
+    images: imgs("bkk-th-101"),
+    agency: "Siam Property",
+    furnished: true,
+    energy: "B",
+    createdAt: "2026-06-07",
+    priceHistory: [{ date: "2026-06-07", price: 165000 }]
+  },
+  {
+    id: "phk-th-102",
+    title: {
+      hu: "Leasehold villa medencével Phuketen",
+      me: "Leasehold vila s bazenom na Puketu",
+      en: "Leasehold villa with pool in Phuket",
+      ru: "Вилла в лизхолд с бассейном на Пхукете"
+    },
+    description: {
+      hu: "Trópusi villa privát medencével, közel a strandokhoz (Bang Tao) — erős rövidtávú kiadási hozam.",
+      me: "Tropska vila s privatnim bazenom, blizu plaža (Bang Tao).",
+      en: "Tropical villa with private pool near the beaches (Bang Tao) — strong short-let yield.",
+      ru: "Тропическая вилла с частным бассейном рядом с пляжами (Банг Тао)."
+    },
+    type: "villa",
+    price: 395000,
+    area: 220,
+    rooms: 3,
+    floor: null,
+    year: 2022,
+    condition: "new",
+    view: "sea",
+    city: "Phuket",
+    district: "Bang Tao",
+    distanceToSea: 1200,
+    lat: 7.9975,
+    lng: 98.2960,
+    verification: "deed",
+    images: imgs("phk-th-102"),
+    agency: "Siam Property",
+    furnished: true,
+    energy: "A",
+    createdAt: "2026-06-09",
+    priceHistory: [{ date: "2026-06-09", price: 395000 }]
+  },
+  {
+    id: "sam-th-103",
+    title: {
+      hu: "Kiadó tengerre néző villa Koh Samui-n",
+      me: "Vila s pogledom na more za najam, Koh Samui",
+      en: "Sea-view villa for rent, Koh Samui",
+      ru: "Вилла с видом на море в аренду, Ко Самуи"
+    },
+    description: {
+      hu: "Havi bérlésű villa infinity medencével és panorámás óceáni kilátással, Chaweng felett.",
+      me: "Vila za mesečni najam s infinity bazenom i pogledom na okean.",
+      en: "Monthly-rental villa with infinity pool and panoramic ocean views above Chaweng.",
+      ru: "Помесячная вилла с бассейном инфинити и видом на океан над Чавенгом."
+    },
+    type: "villa",
+    mode: "rent",
+    price: 2200,
+    area: 180,
+    rooms: 3,
+    floor: null,
+    year: 2020,
+    condition: "good",
+    view: "sea",
+    city: "Koh Samui",
+    district: "Chaweng Noi",
+    distanceToSea: 700,
+    lat: 9.5120,
+    lng: 100.0446,
+    verification: "basic",
+    images: imgs("sam-th-103"),
+    agency: "Siam Property",
+    furnished: true,
+    energy: "B",
+    createdAt: "2026-06-15",
+    priceHistory: [{ date: "2026-06-15", price: 2200 }]
+  },
+
+  /* ===================== OLASZORSZÁG (IT) ===================== */
+  {
+    id: "rom-it-101",
+    title: {
+      hu: "Fényes lakás Róma történelmi központjában",
+      me: "Svetao stan u istorijskom centru Rima",
+      en: "Bright apartment in Rome's historic centre",
+      ru: "Светлая квартира в историческом центре Рима"
+    },
+    description: {
+      hu: "Elegáns lakás egy klasszikus palazzóban, sétatávolságra a Pantheontól — magas bérbeadási érték.",
+      me: "Elegantan stan u klasičnom palacu, na pješačkoj udaljenosti od Panteona.",
+      en: "Elegant flat in a classic palazzo, walking distance to the Pantheon — high rental value.",
+      ru: "Элегантная квартира в классическом палаццо, рядом с Пантеоном."
+    },
+    type: "apartment",
+    price: 620000,
+    area: 95,
+    rooms: 3,
+    floor: 2,
+    year: 1930,
+    condition: "renovated",
+    view: "city",
+    city: "Roma",
+    district: "Centro Storico",
+    distanceToSea: 0,
+    lat: 41.8992,
+    lng: 12.4768,
+    verification: "full",
+    images: imgs("rom-it-101"),
+    agency: "Bella Casa Italia",
+    furnished: true,
+    energy: "C",
+    createdAt: "2026-06-02",
+    priceHistory: [{ date: "2026-06-02", price: 620000 }]
+  },
+  {
+    id: "com-it-102",
+    title: {
+      hu: "Tóra néző villa a Comói-tónál",
+      me: "Vila s pogledom na jezero, Komo",
+      en: "Lake-view villa on Lake Como",
+      ru: "Вилла с видом на озеро Комо"
+    },
+    description: {
+      hu: "Klasszikus olasz villa teraszos kerttel és panorámás kilátással a Comói-tóra, Menaggio közelében.",
+      me: "Klasična italijanska vila s terasastim vrtom i pogledom na jezero Komo.",
+      en: "Classic Italian villa with terraced garden and panoramic Lake Como views, near Menaggio.",
+      ru: "Классическая итальянская вилла с террасным садом и видом на озеро Комо."
+    },
+    type: "villa",
+    price: 1450000,
+    area: 300,
+    rooms: 5,
+    floor: null,
+    year: 2015,
+    condition: "renovated",
+    view: "mountain",
+    city: "Como",
+    district: "Menaggio",
+    distanceToSea: 200,
+    lat: 46.0169,
+    lng: 9.2394,
+    verification: "full",
+    images: imgs("com-it-102"),
+    agency: "Bella Casa Italia",
+    furnished: true,
+    energy: "B",
+    createdAt: "2026-05-27",
+    priceHistory: [{ date: "2026-05-27", price: 1450000 }]
+  },
+  {
+    id: "fir-it-103",
+    title: {
+      hu: "Tetőtéri lakás terasszal Firenzében",
+      me: "Potkrovlje s terasom u Firenci",
+      en: "Rooftop apartment with terrace in Florence",
+      ru: "Мансардная квартира с террасой во Флоренции"
+    },
+    description: {
+      hu: "Felújított tetőtéri lakás magánterasszal és a háztetőkre néző kilátással, az Arno közelében.",
+      me: "Renovirano potkrovlje s privatnom terasom i pogledom na krovove, blizu Arna.",
+      en: "Renovated rooftop flat with private terrace and rooftop views, near the Arno.",
+      ru: "Отремонтированная мансарда с частной террасой и видом на крыши, рядом с Арно."
+    },
+    type: "apartment",
+    price: 480000,
+    area: 78,
+    rooms: 2,
+    floor: 4,
+    year: 1960,
+    condition: "renovated",
+    view: "city",
+    city: "Firenze",
+    district: "Santa Croce",
+    distanceToSea: 0,
+    lat: 43.7686,
+    lng: 11.2620,
+    verification: "deed",
+    images: imgs("fir-it-103"),
+    agency: "Bella Casa Italia",
+    furnished: false,
+    energy: "C",
+    createdAt: "2026-06-11",
+    priceHistory: [{ date: "2026-06-11", price: 480000 }]
   }
 ];
 

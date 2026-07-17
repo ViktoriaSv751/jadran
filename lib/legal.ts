@@ -87,6 +87,30 @@ export const RESIDENCY: Record<CountryCode, ResidencyInfo> = {
       en: "Property alone doesn't grant residence; a KITAS/investor visa is applied for separately.",
       ru: "Недвижимость сама по себе не даёт ВНЖ; KITAS/инвесторская виза — отдельно."
     }
+  },
+  HU: {
+    residenceNote: {
+      hu: "EU-tagállam: az EU-s vevők szabadon letelepednek; nem EU-soknál a Vendégbefektetői program (ingatlanalap-befektetéssel) adhat tartózkodást.",
+      me: "Članica EU: kupci iz EU se slobodno nastanjuju; za ostale postoji program za goste-investitore.",
+      en: "EU member: EU buyers settle freely; for others the Guest Investor Programme (via a real-estate fund) can grant residence.",
+      ru: "Член ЕС: покупатели из ЕС селятся свободно; для остальных — программа гостя-инвестора."
+    }
+  },
+  TH: {
+    residenceNote: {
+      hu: "Az ingatlan önmagában nem ad letelepedést; a Thailand Elite / LTR vízum a szokásos hosszú távú út.",
+      me: "Nekretnina sama ne daje boravak; Thailand Elite / LTR viza je uobičajen dugoročni put.",
+      en: "Property alone doesn't grant residence; the Thailand Elite / LTR visa is the usual long-stay route.",
+      ru: "Недвижимость сама по себе не даёт ВНЖ; обычный путь — виза Thailand Elite / LTR."
+    }
+  },
+  IT: {
+    residenceNote: {
+      hu: "EU-tagállam: az EU-s vevők szabadon letelepednek; nem EU-soknak a passzív jövedelemre épülő „elective residence” vízum lehet út.",
+      me: "Članica EU: kupci iz EU se slobodno nastanjuju; za ostale postoji „elective residence” viza.",
+      en: "EU member: EU buyers settle freely; for others the passive-income “elective residence” visa is an option.",
+      ru: "Член ЕС: покупатели из ЕС селятся свободно; для остальных — виза «elective residence»."
+    }
   }
 };
 
@@ -292,6 +316,108 @@ export const FOREIGN_BUYER: Record<CountryCode, ForeignBuyerLegal> = {
         me: "Neophodni su pravna provjera (due diligence) i notar (PPAT).",
         en: "Legal due diligence and a notary (PPAT) are essential.",
         ru: "Обязательны юридическая проверка (due diligence) и нотариус (PPAT)."
+      }
+    ]
+  },
+  HU: {
+    intro: {
+      hu: "Magyarország EU-tagállam; az EU-s és nem EU-s vevőkre eltérő szabályok vonatkoznak.",
+      me: "Mađarska je članica EU; pravila se razlikuju za kupce iz EU i van EU.",
+      en: "Hungary is an EU member; rules differ for EU and non-EU buyers.",
+      ru: "Венгрия — член ЕС; правила различаются для покупателей из ЕС и вне ЕС."
+    },
+    points: [
+      {
+        hu: "EU-állampolgárok a helyiekkel azonos feltételekkel vásárolhatnak lakóingatlant.",
+        me: "Državljani EU kupuju stambene nekretnine pod istim uslovima kao domaći.",
+        en: "EU citizens can buy residential property on the same terms as locals.",
+        ru: "Граждане ЕС покупают жильё на тех же условиях, что и местные."
+      },
+      {
+        hu: "Nem EU-s vevőknek a kormányhivatal engedélye kell (lakóingatlanra jellemzően megadják).",
+        me: "Kupcima van EU treba dozvola nadležnog organa (za stanove se obično izdaje).",
+        en: "Non-EU buyers need government-office approval (usually granted for homes).",
+        ru: "Покупателям вне ЕС нужно разрешение госоргана (для жилья обычно выдают)."
+      },
+      {
+        hu: "Termőföld vásárlása külföldieknek erősen korlátozott.",
+        me: "Kupovina poljoprivrednog zemljišta za strance je jako ograničena.",
+        en: "Buying agricultural land is heavily restricted for foreigners.",
+        ru: "Покупка сельхозземли для иностранцев сильно ограничена."
+      },
+      {
+        hu: "A visszterhes vagyonátruházási illeték jellemzően 4%.",
+        me: "Porez na prenos imovine je obično 4%.",
+        en: "The property transfer duty is typically 4%.",
+        ru: "Налог на передачу имущества обычно 4%."
+      }
+    ]
+  },
+  TH: {
+    intro: {
+      hu: "Thaiföldön a külföldi tulajdon sajátos — társasházi lakás igen, telek/föld nem.",
+      me: "Na Tajlandu je strano vlasništvo specifično — stan da, zemljište ne.",
+      en: "In Thailand foreign ownership is specific — condos yes, land no.",
+      ru: "В Таиланде иностранное владение специфично — кондо да, земля нет."
+    },
+    points: [
+      {
+        hu: "Külföldi NEM birtokolhat telket/földet; társasházi lakást (condo) igen, szabad tulajdonként.",
+        me: "Stranac NE može posjedovati zemljište; stan (condo) može, u punom vlasništvu.",
+        en: "A foreigner CANNOT own land; a condominium unit can be owned freehold.",
+        ru: "Иностранец НЕ может владеть землёй; квартиру в кондо — можно в собственность."
+      },
+      {
+        hu: "Egy társasház lakásainak legfeljebb 49%-a lehet külföldi tulajdonban.",
+        me: "Najviše 49% stanova u zgradi može biti u stranom vlasništvu.",
+        en: "At most 49% of a building's units can be foreign-owned.",
+        ru: "Не более 49% квартир в доме может принадлежать иностранцам."
+      },
+      {
+        hu: "Villához/telekhez jellemzően hosszú távú bérlet (30 év, hosszabbítható) vagy thai cég.",
+        me: "Za vilu/zemljište obično dugoročni zakup (30 g.) ili tajlandska firma.",
+        en: "Villas/land are usually via a long lease (30 yrs, renewable) or a Thai company.",
+        ru: "Виллы/земля — обычно через долгую аренду (30 лет) или тайскую компанию."
+      },
+      {
+        hu: "Az átírási díj kb. 2%; a pénz külföldi eredetét igazolni kell (FET).",
+        me: "Naknada za prenos je oko 2%; strano porijeklo novca se dokazuje (FET).",
+        en: "The transfer fee is about 2%; foreign funds must be evidenced (FET form).",
+        ru: "Сбор за передачу около 2%; иностранное происхождение средств подтверждается (FET)."
+      }
+    ]
+  },
+  IT: {
+    intro: {
+      hu: "Olaszország EU-tagállam; az EU-s vevők szabadon, a nem EU-sok viszonossági elv alapján vásárolhatnak.",
+      me: "Italija je članica EU; kupci iz EU slobodno, ostali po reciprocitetu.",
+      en: "Italy is an EU member; EU buyers freely, non-EU under reciprocity.",
+      ru: "Италия — член ЕС; покупатели из ЕС свободно, остальные по взаимности."
+    },
+    points: [
+      {
+        hu: "EU-állampolgárok a helyiekkel azonos feltételekkel vásárolhatnak.",
+        me: "Državljani EU kupuju pod istim uslovima kao domaći.",
+        en: "EU citizens can buy on the same terms as locals.",
+        ru: "Граждане ЕС покупают на тех же условиях, что и местные."
+      },
+      {
+        hu: "Nem EU-s vevőknél a viszonosság dönt (a legtöbb országgal fennáll).",
+        me: "Za kupce van EU odlučuje reciprocitet (sa većinom zemalja postoji).",
+        en: "For non-EU buyers reciprocity applies (in place with most countries).",
+        ru: "Для покупателей вне ЕС действует взаимность (есть с большинством стран)."
+      },
+      {
+        hu: "A vételt közjegyző (notaio) hitelesíti; a tulajdon a nyilvántartásba kerül.",
+        me: "Kupovinu ovjerava notar (notaio); vlasništvo se upisuje u registar.",
+        en: "The purchase is notarised (notaio); ownership is entered in the registry.",
+        ru: "Сделку заверяет нотариус (notaio); право вносится в реестр."
+      },
+      {
+        hu: "A regisztrációs/átírási adó első lakásnál ~2%, egyébként ~9%.",
+        me: "Porez na registraciju je ~2% za prvi dom, inače ~9%.",
+        en: "Registration/transfer tax is ~2% for a first home, otherwise ~9%.",
+        ru: "Регистрационный налог ~2% для первого жилья, иначе ~9%."
       }
     ]
   }

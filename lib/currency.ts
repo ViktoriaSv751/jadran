@@ -7,7 +7,7 @@ import type { Lang } from "./types";
  * marad), így minden konzisztens és hibamentes.
  */
 
-export type CurrencyCode = "EUR" | "USD" | "TRY" | "RSD" | "ALL" | "IDR";
+export type CurrencyCode = "EUR" | "USD" | "TRY" | "RSD" | "ALL" | "IDR" | "HUF" | "THB";
 
 export interface CurrencyInfo {
   code: CurrencyCode;
@@ -27,7 +27,9 @@ export const CURRENCIES: CurrencyInfo[] = [
   { code: "TRY", flag: "🇹🇷", label: "Türk lirası", rate: 38, decimals: 0 },
   { code: "RSD", flag: "🇷🇸", label: "Srpski dinar", rate: 117, decimals: 0 },
   { code: "ALL", flag: "🇦🇱", label: "Lek shqiptar", rate: 100, decimals: 0 },
-  { code: "IDR", flag: "🇮🇩", label: "Rupiah", rate: 17000, decimals: 0 }
+  { code: "IDR", flag: "🇮🇩", label: "Rupiah", rate: 17000, decimals: 0 },
+  { code: "HUF", flag: "🇭🇺", label: "Magyar forint", rate: 395, decimals: 0 },
+  { code: "THB", flag: "🇹🇭", label: "Thai baht", rate: 38, decimals: 0 }
 ];
 
 export const CURRENCY_BY_CODE: Record<CurrencyCode, CurrencyInfo> = CURRENCIES.reduce(
@@ -46,6 +48,10 @@ function localeFor(lang: Lang): string {
       return "sr-Latn";
     case "hu":
       return "hu-HU";
+    case "it":
+      return "it-IT";
+    case "th":
+      return "th-TH";
     default:
       return "en-GB";
   }

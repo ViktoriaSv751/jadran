@@ -8,6 +8,10 @@ function localeFor(lang: Lang): string {
       return "sr-Latn";
     case "hu":
       return "hu-HU";
+    case "it":
+      return "it-IT";
+    case "th":
+      return "th-TH";
     default:
       return "en-GB";
   }

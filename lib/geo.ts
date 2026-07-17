@@ -1,4 +1,6 @@
 import type { CurrencyCode } from "./currency";
+import type { CountryCode } from "./types";
+export type { CountryCode };
 
 /**
  * Országtaxonómia — a platform globális (Airbnb-szerű) rétege. A hirdetéseknek
@@ -6,8 +8,6 @@ import type { CurrencyCode } from "./currency";
  * mellékköltség) ehhez igazodik. Az EUR marad a kanonikus tárolási pénznem;
  * a `currency` csak az adott piac ALAPÉRTELMEZETT megjelenítési pénzneme.
  */
-
-export type CountryCode = "ME" | "HR" | "AL" | "RS" | "TR" | "ID";
 
 export interface CountryInfo {
   code: CountryCode;
@@ -94,6 +94,36 @@ export const COUNTRIES: CountryInfo[] = [
     center: [-8.55, 115.15],
     zoom: 10,
     costs: { transferTaxRate: 0.05, notaryRate: 0.01, notaryFixed: 300, lawyerRate: 0.015, agencyRate: 0.05 }
+  },
+  {
+    code: "HU",
+    flag: "🇭🇺",
+    nameKey: "country_hu",
+    currency: "HUF",
+    cities: ["Budapest", "Debrecen", "Szeged", "Siófok", "Balatonfüred", "Hévíz", "Pécs", "Győr", "Sopron", "Eger"],
+    center: [47.1, 19.5],
+    zoom: 7,
+    costs: { transferTaxRate: 0.04, notaryRate: 0.005, notaryFixed: 150, lawyerRate: 0.01, agencyRate: 0.03 }
+  },
+  {
+    code: "TH",
+    flag: "🇹🇭",
+    nameKey: "country_th",
+    currency: "THB",
+    cities: ["Bangkok", "Phuket", "Pattaya", "Chiang Mai", "Koh Samui", "Krabi", "Hua Hin", "Koh Phangan"],
+    center: [13.5, 100.6],
+    zoom: 6,
+    costs: { transferTaxRate: 0.02, notaryRate: 0.005, notaryFixed: 200, lawyerRate: 0.015, agencyRate: 0.03 }
+  },
+  {
+    code: "IT",
+    flag: "🇮🇹",
+    nameKey: "country_it",
+    currency: "EUR",
+    cities: ["Roma", "Milano", "Firenze", "Venezia", "Como", "Napoli", "Olbia", "Palermo", "Torino", "Amalfi"],
+    center: [42.5, 12.5],
+    zoom: 6,
+    costs: { transferTaxRate: 0.09, notaryRate: 0.01, notaryFixed: 300, lawyerRate: 0.01, agencyRate: 0.03 }
   }
 ];
 
