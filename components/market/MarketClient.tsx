@@ -2,9 +2,9 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { useLang, useListings } from "@/lib/store";
+import { useLang, useMoney, useListings } from "@/lib/store";
 import { tr, typeLabels, loc } from "@/lib/i18n";
-import { formatPrice, formatNumber } from "@/lib/format";
+import { formatNumber } from "@/lib/format";
 import { cityTrend, montenegroPlaces } from "@/lib/data";
 import { cityMarketStats, priceDrops, rentalEstimate } from "@/lib/market";
 import Chart from "@/components/Chart";
@@ -23,6 +23,7 @@ const CALC_TYPES = [
  */
 export default function MarketClient() {
   const { lang } = useLang();
+  const money = useMoney();
   const { items } = useListings();
 
   const citiesWithData = useMemo(
@@ -195,12 +196,12 @@ export default function MarketClient() {
                 {tr("rent_calc_ltr", lang)}
               </div>
               <div className="mt-3 display text-3xl font-black tracking-tight text-ink-900">
-                {formatPrice(est.longTermMonthly, lang)}
+                {money(est.longTermMonthly)}
                 <span className="ml-1 text-sm font-semibold text-ink-400">/ {tr("mo", lang)}</span>
               </div>
               <div className="mt-1 text-xs text-ink-500">
                 {tr("rent_calc_ltr_annual", lang)}:{" "}
-                <span className="font-semibold text-ink-700">{formatPrice(est.longTermAnnual, lang)}</span>
+                <span className="font-semibold text-ink-700">{money(est.longTermAnnual)}</span>
               </div>
             </div>
 
@@ -213,12 +214,12 @@ export default function MarketClient() {
               <div className="mt-3 flex flex-wrap items-end gap-x-4 gap-y-1">
                 <div>
                   <div className="display text-3xl font-black tracking-tight text-ink-900">
-                    {formatPrice(est.nightly, lang)}
+                    {money(est.nightly)}
                     <span className="ml-1 text-sm font-semibold text-ink-400">/ {tr("night", lang)}</span>
                   </div>
                   <div className="mt-0.5 text-[11px] text-ink-400">
-                    {tr("rent_calc_peak", lang)} {formatPrice(est.nightlyPeak, lang)} · {tr("rent_calc_off", lang)}{" "}
-                    {formatPrice(est.nightlyOff, lang)}
+                    {tr("rent_calc_peak", lang)} {money(est.nightlyPeak)} · {tr("rent_calc_off", lang)}{" "}
+                    {money(est.nightlyOff)}
                   </div>
                 </div>
               </div>
@@ -228,11 +229,11 @@ export default function MarketClient() {
                   <div className="text-[10px] uppercase tracking-wide text-ink-400">{tr("rent_calc_occupancy", lang)}</div>
                 </div>
                 <div className="rounded-lg bg-ink-50 px-2 py-2">
-                  <div className="text-sm font-black text-ink-900">{formatPrice(est.strMonthlyGross, lang)}</div>
+                  <div className="text-sm font-black text-ink-900">{money(est.strMonthlyGross)}</div>
                   <div className="text-[10px] uppercase tracking-wide text-ink-400">{tr("rent_calc_str_monthly", lang)}</div>
                 </div>
                 <div className="rounded-lg bg-ink-50 px-2 py-2">
-                  <div className="text-sm font-black text-ink-900">{formatPrice(est.strAnnualGross, lang)}</div>
+                  <div className="text-sm font-black text-ink-900">{money(est.strAnnualGross)}</div>
                   <div className="text-[10px] uppercase tracking-wide text-ink-400">{tr("rent_calc_str_annual", lang)}</div>
                 </div>
               </div>
@@ -338,8 +339,8 @@ export default function MarketClient() {
                     {loc(l.title, lang)}
                   </div>
                   <div className="text-xs text-ink-400">
-                    <span className="line-through">{formatPrice(from, lang)}</span>{" "}
-                    <span className="font-bold text-ink-900">{formatPrice(to, lang)}</span>
+                    <span className="line-through">{money(from)}</span>{" "}
+                    <span className="font-bold text-ink-900">{money(to)}</span>
                   </div>
                 </div>
               </Link>

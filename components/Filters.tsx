@@ -4,11 +4,13 @@ import { useState } from "react";
 import { useLang } from "@/lib/store";
 import { tr, typeLabels, viewLabels, conditionLabels, amenityLabels, heatingLabels } from "@/lib/i18n";
 import { cities } from "@/lib/data";
+import { COUNTRIES, COUNTRY_BY_CODE, isCountryCode } from "@/lib/geo";
 import Icon from "@/components/ui/Icon";
 
 export interface FilterState {
   q: string;
   mode: string;
+  country: string; // "" | CountryCode (globális piac)
   city: string;
   sellerType: string; // "" | "private" | "agency"
   type: string;
@@ -45,6 +47,7 @@ export interface FilterState {
 export const emptyFilters: FilterState = {
   q: "",
   mode: "",
+  country: "",
   city: "",
   sellerType: "",
   type: "",
@@ -118,6 +121,8 @@ export default function Filters({
 }) {
   const { lang } = useLang();
   const set = (k: keyof FilterState, v: string) => onChange({ ...value, [k]: v });
+  // Több mező atomikus frissítése (pl. ország-váltáskor a város is nullázódhat).
+  const set2 = (patch: Partial<FilterState>) => onChange({ ...value, ...patch });
 
   const isRent = value.mode === "rent";
 
@@ -151,11 +156,34 @@ export default function Filters({
     <div className="space-y-5">
       {/* ---- Basics (always visible) ---- */}
       <div className="space-y-4">
+        {/* Ország (globális piac) — a városlistát is ehhez szűkíti. */}
+        <div>
+          <label className={labelCls}>{tr("country_label", lang)}</label>
+          <select
+            className={selectCls}
+            value={value.country}
+            onChange={(e) => {
+              const country = e.target.value;
+              // Ha országot váltunk és a kiválasztott város nem ebbe tartozik, töröljük.
+              const keepCity =
+                !country || (isCountryCode(country) && COUNTRY_BY_CODE[country].cities.includes(value.city));
+              set2({ country, city: keepCity ? value.city : "" });
+            }}
+          >
+            <option value="">{tr("all_countries", lang)}</option>
+            {COUNTRIES.map((c) => (
+              <option key={c.code} value={c.code}>
+                {c.flag} {tr(c.nameKey, lang)}
+              </option>
+            ))}
+          </select>
+        </div>
+
         <div>
           <label className={labelCls}>{tr("city", lang)}</label>
           <select className={selectCls} value={value.city} onChange={(e) => set("city", e.target.value)}>
             <option value="">{tr("any", lang)}</option>
-            {cities.map((c) => (
+            {(value.country && isCountryCode(value.country) ? COUNTRY_BY_CODE[value.country].cities : cities).map((c) => (
               <option key={c} value={c}>
                 {c}
               </option>

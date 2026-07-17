@@ -3,10 +3,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useAuth, useLang, useConversations, useMessages, useListings, useProfiles } from "@/lib/store";
+import { useAuth, useLang, useMoney, useConversations, useMessages, useListings, useProfiles } from "@/lib/store";
 import type { Lang } from "@/lib/types";
 import { tr, loc, localizeResponseTime } from "@/lib/i18n";
-import { formatPrice } from "@/lib/format";
 import { translateText } from "@/lib/translate";
 import * as db from "@/lib/db";
 import Avatar from "@/components/ui/Avatar";
@@ -291,8 +290,9 @@ function ChatView({
   lang: Lang;
 }) {
   const messages = useMessages(conversationId);
+  const money = useMoney();
   const [text, setText] = useState("");
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const streamRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
@@ -300,7 +300,12 @@ function ChatView({
   }, [conversationId, meId, messages.length]);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    // Csak a BELSŐ üzenetfolyamot görgetjük az aljára — SOHA nem a lapot/ablakot.
+    // (A korábbi `scrollIntoView` a teljes dokumentumot is legörgette: a chat
+    //  megnyitásakor a lap „leesett" az aljára, a fejléc pedig a felső menü alá
+    //  csúszott. A konténer-lokális görgetés ezt teljesen kivédi.)
+    const el = streamRef.current;
+    if (el) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
   }, [messages.length]);
 
   const send = () => {
@@ -345,13 +350,13 @@ function ChatView({
             className="flex shrink-0 items-center gap-2 rounded-2xl border border-ink-100 p-1 pr-3 transition hover:bg-ink-50"
           >
             <Photo src={listing.images[0]} alt={loc(listing.title, lang)} className="h-10 w-10 rounded-xl" />
-            <span className="hidden text-xs font-bold text-ink-800 sm:block">{formatPrice(listing.price, lang)}</span>
+            <span className="hidden text-xs font-bold text-ink-800 sm:block">{money(listing.price)}</span>
           </Link>
         )}
       </div>
 
       {/* Üzenetfolyam */}
-      <div className="min-h-0 flex-1 space-y-1 overflow-y-auto overscroll-contain px-3 py-4 sm:px-5">
+      <div ref={streamRef} className="min-h-0 flex-1 space-y-1 overflow-y-auto overscroll-contain px-3 py-4 sm:px-5">
         {messages.length === 0 && (
           <p className="py-10 text-center text-sm text-ink-400">{tr("msg_empty_thread", lang)}</p>
         )}
@@ -394,7 +399,6 @@ function ChatView({
             </div>
           );
         })}
-        <div ref={bottomRef} />
       </div>
 
       {/* Szerkesztő — ragadós alul, kör alakú neon küldés-gomb */}

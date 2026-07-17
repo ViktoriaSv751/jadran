@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { useRef, useState } from "react";
 import type { Listing } from "@/lib/types";
-import { useLang, useFavorites, useCompare, useAuth } from "@/lib/store";
+import { useLang, useMoney, useFavorites, useCompare, useAuth } from "@/lib/store";
 import { openAuth } from "@/lib/ui";
 import { tr, typeLabels, modeLabels, loc } from "@/lib/i18n";
-import { formatPrice, pricePerM2, distanceLabel, formatNumber } from "@/lib/format";
+import { pricePerM2, distanceLabel, formatNumber } from "@/lib/format";
 import VerificationBadge from "./VerificationBadge";
 import { isFeatured } from "@/lib/mappers";
 import Photo from "./Photo";
@@ -27,6 +27,7 @@ export default function ListingCard({
   tall?: boolean;
 }) {
   const { lang } = useLang();
+  const money = useMoney();
   const { user } = useAuth();
   const favorites = useFavorites();
   const compare = useCompare();
@@ -201,7 +202,7 @@ export default function ListingCard({
 
         <div className="mt-3 flex items-end justify-between border-t border-ink-100 pt-3">
           <div>
-            <span className="text-2xl font-black tracking-tight text-ink-900">{formatPrice(listing.price, lang)}</span>
+            <span className="text-2xl font-black tracking-tight text-ink-900">{money(listing.price)}</span>
             {listing.mode === "rent" ? (
               <span className="text-sm font-semibold text-ink-400">{tr("per_month", lang)}</span>
             ) : (

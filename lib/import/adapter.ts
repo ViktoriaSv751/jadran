@@ -13,6 +13,7 @@
  * Persistence lives in ./index (`importIntoDb`).
  */
 import type { Listing, LocalizedText } from "../types";
+import { countryOfCity } from "../geo";
 import {
   canonicalPlace,
   clamp,
@@ -192,6 +193,7 @@ export function mapRecord(raw: RawRecord, fieldMap: FieldMap, opts: MapOptions):
     year: yearNum != null ? clamp(Math.round(yearNum), 1800, currentYear + 5) : currentYear,
     condition: normalizeCondition(pick(raw, fieldMap.condition)),
     view: normalizeView(pick(raw, fieldMap.view)),
+    country: countryOfCity(place.recognized ? place.name : cityRaw) ?? "ME",
     city: place.recognized ? place.name : cityRaw || "Montenegró",
     district: districtRaw,
     distanceToSea: clamp(toNumber(pick(raw, fieldMap.distanceToSea)) ?? 0, 0, 100000),

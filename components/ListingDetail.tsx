@@ -5,10 +5,10 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
 import type { Listing } from "@/lib/types";
-import { useLang, useFavorites, useListings, useAuth, useProfile } from "@/lib/store";
+import { useLang, useMoney, useFavorites, useListings, useAuth, useProfile } from "@/lib/store";
 import { openAuth, toast } from "@/lib/ui";
 import { tr, typeLabels, conditionLabels, viewLabels, modeLabels, heatingLabels, loc } from "@/lib/i18n";
-import { formatPrice, formatNumber, pricePerM2, distanceLabel } from "@/lib/format";
+import { formatNumber, pricePerM2, distanceLabel } from "@/lib/format";
 import { cityTrend, cityAvgPricePerM2, similarListings } from "@/lib/data";
 import VerificationBadge from "./VerificationBadge";
 import Icon, { type IconName } from "./ui/Icon";
@@ -31,6 +31,7 @@ const MapView = dynamic(() => import("./MapView"), {
 
 export default function ListingDetail({ listing }: { listing: Listing }) {
   const { lang } = useLang();
+  const money = useMoney();
   const { items } = useListings();
   const favorites = useFavorites();
   const router = useRouter();
@@ -87,7 +88,7 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
     ...(isRent
       ? [
           ["sofa", tr("furnished", lang), listing.furnished ? tr("yes", lang) : tr("no", lang)] as Fact,
-          ...f(listing.deposit != null, ["euro", tr("deposit_label", lang), formatPrice(listing.deposit ?? 0, lang)]),
+          ...f(listing.deposit != null, ["euro", tr("deposit_label", lang), money(listing.deposit ?? 0)]),
           ...f(listing.minTermMonths != null, [
             "calendar",
             tr("min_term_label", lang),
@@ -112,7 +113,7 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
           ...f(listing.monthlyCommonCost != null, [
             "building",
             tr("common_cost_label", lang),
-            `${formatPrice(listing.monthlyCommonCost ?? 0, lang)}${tr("per_month_short", lang)}`
+            `${money(listing.monthlyCommonCost ?? 0)}${tr("per_month_short", lang)}`
           ])
         ])
   ];
@@ -298,9 +299,9 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
             </h2>
             <div className="mt-4">
               {histData.length > 1 ? (
-                <Chart data={histData} format={(v) => formatPrice(v, lang)} height={160} />
+                <Chart data={histData} format={(v) => money(v)} height={160} />
               ) : (
-                <p className="text-sm text-ink-400">{formatPrice(listing.price, lang)}</p>
+                <p className="text-sm text-ink-400">{money(listing.price)}</p>
               )}
             </div>
           </section>
@@ -333,7 +334,7 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
           </section>
 
           {/* Külföldi vásárló infó (eladó módban) */}
-          {!isRent && <ForeignBuyerInfo />}
+          {!isRent && <ForeignBuyerInfo country={listing.country} />}
 
           {/* Similar */}
           {similar.length > 0 && (
@@ -358,7 +359,7 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
               <div className="flex items-start justify-between">
                 <div>
                   <div className="text-4xl font-black tracking-tight text-ink-900">
-                    {formatPrice(listing.price, lang)}
+                    {money(listing.price)}
                     {isRent && <span className="text-base font-semibold text-ink-400">{tr("per_month", lang)}</span>}
                   </div>
                   {!isRent && (
@@ -400,12 +401,12 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
               <div className="rounded-2xl border border-ink-100 bg-white p-5 shadow-soft">
                 <h3 className="font-bold text-ink-900">{tr("costs_title", lang)}</h3>
                 <dl className="mt-3 space-y-2 text-sm">
-                  <Row label={tr("price", lang)} value={formatPrice(listing.price, lang)} />
-                  <Row label={tr("transfer_tax", lang)} value={formatPrice(transferTax, lang)} />
-                  <Row label={tr("notary", lang)} value={formatPrice(notary, lang)} />
-                  <Row label={tr("lawyer", lang)} value={formatPrice(lawyer, lang)} />
+                  <Row label={tr("price", lang)} value={money(listing.price)} />
+                  <Row label={tr("transfer_tax", lang)} value={money(transferTax)} />
+                  <Row label={tr("notary", lang)} value={money(notary)} />
+                  <Row label={tr("lawyer", lang)} value={money(lawyer)} />
                   <div className="mt-1 border-t border-ink-100 pt-2">
-                    <Row label={tr("total_est", lang)} value={formatPrice(total, lang)} bold />
+                    <Row label={tr("total_est", lang)} value={money(total)} bold />
                   </div>
                 </dl>
               </div>
@@ -426,7 +427,7 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
       <div className="fixed inset-x-0 bottom-0 z-40 flex items-center gap-3 border-t border-ink-100 bg-white px-4 py-3.5 pb-safe shadow-[0_-6px_24px_-12px_rgba(16,26,38,0.35)] lg:hidden">
         <div className="min-w-0 flex-1">
           <div className="truncate text-2xl font-black tracking-tight text-ink-900">
-            {formatPrice(listing.price, lang)}
+            {money(listing.price)}
             {isRent && <span className="text-sm font-semibold text-ink-400">{tr("per_month", lang)}</span>}
           </div>
           {!isRent && (

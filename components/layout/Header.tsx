@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Logo from "./Logo";
 import LangSwitcher from "./LangSwitcher";
+import CurrencySwitcher from "./CurrencySwitcher";
 import LogoutButton from "@/components/auth/LogoutButton";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -69,6 +70,7 @@ export default function Header() {
             {tr("pricing_nav", lang)}
           </Link>
 
+          <CurrencySwitcher />
           <LangSwitcher />
 
           <AccountMenu user={user} unread={unread} lang={lang} />

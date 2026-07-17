@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useLang, useListings } from "@/lib/store";
 import { tr } from "@/lib/i18n";
-import { cities } from "@/lib/data";
+import { COUNTRIES } from "@/lib/geo";
 import { formatNumber } from "@/lib/format";
 import Icon from "@/components/ui/Icon";
 import SearchModal from "./SearchModal";
@@ -17,18 +17,16 @@ export default function Hero() {
   const [mode, setMode] = useState<"sale" | "rent">("sale");
 
   const active = items.filter((l) => l.status === "active");
-  const count = active.length;
-  const cityCount = new Set(active.map((l) => l.city)).size;
+  const countryCount = new Set(active.map((l) => l.country)).size;
   const saleWithArea = active.filter((l) => l.mode === "sale" && l.area > 0);
   const avgPerM2 =
     saleWithArea.length > 0
       ? Math.round(saleWithArea.reduce((s, l) => s + l.price / l.area, 0) / saleWithArea.length)
       : 0;
 
-  // A „Verifikált hirdetés" statisztikát a felhasználó kérésére töröltük — csak
-  // a tengerparti városok száma és az átlagos négyzetméterár marad.
+  // Globális piac: az ORSZÁGOK száma + az átlagos négyzetméterár (EUR).
   const stats: { value: string; label: string }[] = [
-    { value: String(cityCount), label: tr("stat_cities", lang) },
+    { value: String(countryCount), label: tr("stat_countries", lang) },
     { value: avgPerM2 > 0 ? `${formatNumber(avgPerM2, lang)} €` : "—", label: tr("stat_avg_m2", lang) }
   ];
 
@@ -80,15 +78,16 @@ export default function Hero() {
           </button>
         </div>
 
-        {/* City quick chips — strictly uniform */}
+        {/* Ország-gyorschipek (globális piac) — zászló + név, a keresőbe visznek. */}
         <div className="mt-6 flex flex-wrap justify-center gap-2">
-          {cities.map((c) => (
+          {COUNTRIES.map((c) => (
             <button
-              key={c}
-              onClick={() => router.push(`/search?city=${encodeURIComponent(c)}&mode=${mode}`)}
-              className="rounded-full border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-600 transition hover:border-ink-900 hover:bg-ink-900 hover:text-white"
+              key={c.code}
+              onClick={() => router.push(`/search?country=${c.code}&mode=${mode}`)}
+              className="flex items-center gap-2 rounded-full border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-600 transition hover:border-ink-900 hover:bg-ink-900 hover:text-white"
             >
-              {c}
+              <span className="text-base leading-none">{c.flag}</span>
+              {tr(c.nameKey, lang)}
             </button>
           ))}
         </div>

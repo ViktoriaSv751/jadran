@@ -99,7 +99,7 @@ export default function Shelf({
             src={image}
             alt=""
             aria-hidden
-            className="mb-1 h-20 w-20 object-contain drop-shadow-[0_12px_24px_rgba(16,26,38,0.18)] sm:h-24 sm:w-24"
+            className="mb-1 h-20 w-20 object-contain sm:h-24 sm:w-24"
           />
         )}
         <h2 className="display text-2xl text-ink-900 sm:text-3xl">{title}</h2>

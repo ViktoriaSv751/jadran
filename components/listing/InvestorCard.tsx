@@ -1,9 +1,9 @@
 "use client";
 
 import type { Listing } from "@/lib/types";
-import { useLang, useListings } from "@/lib/store";
+import { useLang, useMoney, useListings } from "@/lib/store";
 import { tr } from "@/lib/i18n";
-import { formatPrice, formatNumber } from "@/lib/format";
+import { formatNumber } from "@/lib/format";
 import { grossYield, dealScore, rentalEstimate } from "@/lib/market";
 import Icon from "@/components/ui/Icon";
 
@@ -20,6 +20,7 @@ const NO_LTR_TYPES = new Set(["land", "agricultural"]);
  */
 export default function InvestorCard({ listing }: { listing: Listing }) {
   const { lang } = useLang();
+  const money = useMoney();
   const { items } = useListings();
 
   if (listing.mode !== "sale") return null;
@@ -84,12 +85,12 @@ export default function InvestorCard({ listing }: { listing: Listing }) {
           <div className="mt-2 space-y-1.5">
             <Row
               label={tr("rent_calc_monthly_est", lang)}
-              value={`${formatPrice(str.longTermMonthly, lang)}${tr("per_month", lang)}`}
+              value={`${money(str.longTermMonthly)}${tr("per_month", lang)}`}
               strong
             />
             <Row
               label={tr("annual_label", lang)}
-              value={`${formatPrice(str.longTermAnnual, lang)}${tr("per_year", lang)}`}
+              value={`${money(str.longTermAnnual)}${tr("per_year", lang)}`}
             />
             {y != null && (
               <div className="flex items-baseline justify-between gap-3">
@@ -136,11 +137,11 @@ export default function InvestorCard({ listing }: { listing: Listing }) {
           <div className="mt-2.5 space-y-1.5 border-t border-ink-900/5 pt-2.5">
             <Row
               label={tr("rent_calc_str_monthly", lang)}
-              value={`${formatPrice(str.strMonthlyGross, lang)}${tr("per_month", lang)}`}
+              value={`${money(str.strMonthlyGross)}${tr("per_month", lang)}`}
             />
             <Row
               label={tr("rent_calc_str_annual", lang)}
-              value={`${formatPrice(str.strAnnualGross, lang)}${tr("per_year", lang)}`}
+              value={`${money(str.strAnnualGross)}${tr("per_year", lang)}`}
             />
           </div>
           {/* NETTÓ — a tényleges, üzemeltetési költségek utáni bevétel. */}
@@ -148,13 +149,13 @@ export default function InvestorCard({ listing }: { listing: Listing }) {
             <div className="flex items-baseline justify-between gap-3">
               <span className="text-sm font-semibold text-ink-700">{tr("rent_calc_net_monthly", lang)}</span>
               <span className="font-black text-emerald-700">
-                {formatPrice(str.strMonthlyNet, lang)}
+                {money(str.strMonthlyNet)}
                 {tr("per_month", lang)}
               </span>
             </div>
             <Row
               label={tr("rent_calc_net_annual", lang)}
-              value={`${formatPrice(str.strAnnualNet, lang)}${tr("per_year", lang)}`}
+              value={`${money(str.strAnnualNet)}${tr("per_year", lang)}`}
             />
             <p className="text-[11px] leading-snug text-ink-400">
               {tr("rent_calc_costs_note", lang).replace("{pct}", String(str.costRatioPct))}

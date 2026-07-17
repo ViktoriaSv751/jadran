@@ -3,9 +3,9 @@
 import { useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useAuth, useLang, useListingsByOwner, useProfiles } from "@/lib/store";
+import { useAuth, useLang, useMoney, useListingsByOwner, useProfiles } from "@/lib/store";
 import { tr, typeLabels, modeLabels, loc } from "@/lib/i18n";
-import { formatPrice, pricePerM2, formatCompact } from "@/lib/format";
+import { pricePerM2, formatCompact } from "@/lib/format";
 import type { Listing } from "@/lib/types";
 import * as db from "@/lib/db";
 import { toast } from "@/lib/ui";
@@ -24,6 +24,7 @@ const MapView = dynamic(() => import("@/components/MapView"), {
 
 export default function ManageListings() {
   const { lang } = useLang();
+  const money = useMoney();
   const { user } = useAuth();
   const all = useListingsByOwner(user?.id);
   const { profiles } = useProfiles();
@@ -265,7 +266,7 @@ export default function ManageListings() {
                   </h3>
                 </Link>
                 <div className="mt-1 text-xl font-black tracking-tight text-ink-900">
-                  {formatPrice(l.price, lang)}
+                  {money(l.price)}
                   {l.mode === "rent" && <span className="text-xs font-semibold text-ink-400">{tr("per_month", lang)}</span>}
                 </div>
 

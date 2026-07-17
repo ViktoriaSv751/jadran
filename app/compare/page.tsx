@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React from "react";
-import { useLang, useCompare, useListings } from "@/lib/store";
+import { useLang, useMoney, useCompare, useListings } from "@/lib/store";
 import {
   tr,
   typeLabels,
@@ -13,7 +13,7 @@ import {
   heatingLabels,
   loc
 } from "@/lib/i18n";
-import { formatPrice, formatNumber, pricePerM2, distanceLabel } from "@/lib/format";
+import { formatNumber, pricePerM2, distanceLabel } from "@/lib/format";
 import type { Amenity, Listing } from "@/lib/types";
 import Photo from "@/components/Photo";
 import Icon, { type IconName } from "@/components/ui/Icon";
@@ -50,6 +50,7 @@ export default function ComparePage() {
 
 function CompareInner() {
   const { lang } = useLang();
+  const money = useMoney();
   const compare = useCompare();
   const { items: all } = useListings();
   const items = all.filter((l) => compare.has(l.id));
@@ -86,7 +87,7 @@ function CompareInner() {
           label: tr("cmp_price", lang),
           render: (l) => (
             <span className="whitespace-nowrap font-bold text-ink-900">
-              {formatPrice(l.price, lang)}
+              {money(l.price)}
               {l.mode === "rent" && <span className="text-[11px] font-medium text-ink-400">{tr("per_month", lang)}</span>}
             </span>
           ),
@@ -222,7 +223,7 @@ function CompareInner() {
       { label: tr("plot_area_label", lang), render: (l) => (l.plotArea ? `${formatNumber(l.plotArea, lang)} m²` : "—") },
       {
         label: tr("common_cost_label", lang),
-        render: (l) => (l.monthlyCommonCost ? `${formatPrice(l.monthlyCommonCost, lang)}${tr("per_month", lang)}` : "—")
+        render: (l) => (l.monthlyCommonCost ? `${money(l.monthlyCommonCost)}${tr("per_month", lang)}` : "—")
       },
       {
         label: tr("heating_label", lang),
@@ -232,7 +233,7 @@ function CompareInner() {
   }
   if (hasRent) {
     extraRows.push(
-      { label: tr("deposit_short", lang), render: (l) => (l.deposit != null ? formatPrice(l.deposit, lang) : "—") },
+      { label: tr("deposit_short", lang), render: (l) => (l.deposit != null ? money(l.deposit) : "—") },
       { label: tr("min_term_label", lang), render: (l) => (l.minTermMonths != null ? l.minTermMonths : "—") },
       { label: tr("utilities_included", lang), render: (l) => <YesNo v={!!l.utilitiesIncluded} lang={lang} /> },
       { label: tr("pets_allowed", lang), render: (l) => <YesNo v={!!l.petsAllowed} lang={lang} /> }
@@ -349,7 +350,7 @@ function CompareInner() {
                         </span>
                       </Link>
                       <div className="mt-1 text-left text-xl font-black tracking-tight text-ink-900">
-                        {formatPrice(l.price, lang)}
+                        {money(l.price)}
                         {l.mode === "rent" && (
                           <span className="text-xs font-semibold text-ink-400">{tr("per_month", lang)}</span>
                         )}

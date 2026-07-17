@@ -63,6 +63,9 @@ export type Amenity =
   | "storage"
   | "heating";
 
+/** Támogatott országok (globális piac). Részletes taxonómia: lib/geo.ts. */
+export type CountryCode = "ME" | "HR" | "AL" | "RS" | "TR" | "ID";
+
 export interface LocalizedText {
   hu: string;
   me: string;
@@ -89,6 +92,7 @@ export interface Listing {
   year: number;
   condition: Condition;
   view: ViewType;
+  country: CountryCode; // ország (globális piac) — lásd lib/geo.ts
   city: string;
   district: string;
   distanceToSea: number; // meters

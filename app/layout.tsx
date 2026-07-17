@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Fraunces } from "next/font/google";
 import "./globals.css";
-import { LangProvider, AuthProvider } from "@/lib/store";
+import { LangProvider, CurrencyProvider, AuthProvider } from "@/lib/store";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import MobileNav from "@/components/layout/MobileNav";
@@ -68,7 +68,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="hu" className={`${inter.variable} ${fraunces.variable}`}>
       <body className="font-sans">
         <LangProvider>
-          <AuthProvider>
+          <CurrencyProvider>
+            <AuthProvider>
             <div className="flex min-h-screen flex-col">
               <Header />
               <main className="flex-1">{children}</main>
@@ -78,7 +79,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <AuthModalHost />
             <LogoutConfirmHost />
             <Toaster />
-          </AuthProvider>
+            </AuthProvider>
+          </CurrencyProvider>
         </LangProvider>
       </body>
     </html>

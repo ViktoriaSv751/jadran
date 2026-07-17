@@ -1,4 +1,5 @@
-import type { Listing, Profile, Amenity, ListingMode } from "./types";
+import type { Listing, Profile, Amenity, ListingMode, CountryCode } from "./types";
+import { countryOfCity } from "./geo";
 
 // Real, locally-hosted property photos (public/p). We compose a believable
 // gallery per listing — exterior first, then living / kitchen / bedroom /
@@ -105,6 +106,76 @@ export const seedProfiles: Profile[] = [
     joinedAt: "2024-01-05"
   },
   {
+    id: "u-jadran-hr",
+    email: "info@jadrannekretnine.hr",
+    name: "Jadran Nekretnine",
+    role: "agency",
+    avatar: "https://picsum.photos/seed/jadran-ag-jadranhr/200/200",
+    agencyName: "Jadran Nekretnine",
+    bio: "Tengerparti ingatlanok a horvát Adrián — Split, Dubrovnik, Isztria.",
+    phone: "+385 21 100 100",
+    location: "Split, Horvátország",
+    verified: true,
+    responseTime: "egy órán belül",
+    joinedAt: "2023-06-14"
+  },
+  {
+    id: "u-riviera-al",
+    email: "office@rivieraalbania.al",
+    name: "Riviera Albania",
+    role: "agency",
+    avatar: "https://picsum.photos/seed/jadran-ag-rivieraal/200/200",
+    agencyName: "Riviera Albania",
+    bio: "Az albán riviéra új építésű és tengerparti ingatlanjai — Sarandë, Vlorë, Ksamil.",
+    phone: "+355 69 100 1000",
+    location: "Sarandë, Albánia",
+    verified: true,
+    responseTime: "néhány órán belül",
+    joinedAt: "2024-04-02"
+  },
+  {
+    id: "u-belgrade-rs",
+    email: "office@beogradestates.rs",
+    name: "Beograd Estates",
+    role: "agency",
+    avatar: "https://picsum.photos/seed/jadran-ag-belgraders/200/200",
+    agencyName: "Beograd Estates",
+    bio: "Városi lakások és befektetési ingatlanok Belgrádban, Újvidéken és a hegyi üdülőkben.",
+    phone: "+381 11 100 100",
+    location: "Beograd, Szerbia",
+    verified: true,
+    responseTime: "egy napon belül",
+    joinedAt: "2023-10-08"
+  },
+  {
+    id: "u-bosphorus-tr",
+    email: "info@bosphorusproperty.com.tr",
+    name: "Bosphorus Property",
+    role: "agency",
+    avatar: "https://picsum.photos/seed/jadran-ag-bosphorustr/200/200",
+    agencyName: "Bosphorus Property",
+    bio: "Isztambuli és földközi-tengeri (Antalya, Bodrum) ingatlanok — állampolgársági program is.",
+    phone: "+90 212 100 1000",
+    location: "İstanbul, Törökország",
+    verified: true,
+    responseTime: "egy órán belül",
+    joinedAt: "2023-05-19"
+  },
+  {
+    id: "u-bali-id",
+    email: "hello@balivillacollective.com",
+    name: "Bali Villa Collective",
+    role: "agency",
+    avatar: "https://picsum.photos/seed/jadran-ag-baliid/200/200",
+    agencyName: "Bali Villa Collective",
+    bio: "Leasehold és freehold villák Baliban — Canggu, Seminyak, Ubud, Uluwatu.",
+    phone: "+62 361 100 100",
+    location: "Canggu, Bali (Indonézia)",
+    verified: true,
+    responseTime: "néhány órán belül",
+    joinedAt: "2024-03-21"
+  },
+  {
     id: "u-marko",
     email: "marko.petrovic@example.com",
     name: "Marko Petrović",
@@ -139,16 +210,23 @@ const AGENCY_TO_ID: Record<string, string> = {
   "Montenegro Prime": "u-prime",
   "Boka Estates": "u-boka",
   "Coastline Invest": "u-coastline",
-  "Capital Realty": "u-capital"
+  "Capital Realty": "u-capital",
+  "Jadran Nekretnine": "u-jadran-hr",
+  "Riviera Albania": "u-riviera-al",
+  "Beograd Estates": "u-belgrade-rs",
+  "Bosphorus Property": "u-bosphorus-tr",
+  "Bali Villa Collective": "u-bali-id"
 };
 
 /* ------------------------------------------------------------------ *
  * Raw seed listings (the new fields are derived below)
  * ------------------------------------------------------------------ */
 
-type RawListing = Omit<Listing, "mode" | "status" | "amenities" | "ownerId" | "views"> & {
+type RawListing = Omit<Listing, "mode" | "status" | "amenities" | "ownerId" | "views" | "country"> & {
   mode?: ListingMode;
   ownerId?: string;
+  /** Opcionális a nyersben — ha hiányzik, a városból származtatjuk (fallback ME). */
+  country?: CountryCode;
 };
 
 const raw: RawListing[] = [
@@ -732,6 +810,508 @@ const raw: RawListing[] = [
     energy: "C",
     createdAt: "2026-05-21",
     priceHistory: [{ date: "2026-05-21", price: 520 }]
+  },
+
+  /* ===================== HORVÁTORSZÁG (HR) ===================== */
+  {
+    id: "dbv-101",
+    title: {
+      hu: "Tengerre néző apartman Dubrovnik óvárosa felett",
+      me: "Apartman s pogledom na more iznad starog grada Dubrovnika",
+      en: "Sea-view apartment above Dubrovnik Old Town",
+      ru: "Апартаменты с видом на море над Старым городом Дубровника"
+    },
+    description: {
+      hu: "Felújított kétszobás apartman panorámás terasszal az Adriára, sétatávolságra a történelmi óvárostól.",
+      me: "Renovirani dvosobni apartman s panoramskom terasom, na pješačkoj udaljenosti od starog grada.",
+      en: "Renovated two-bedroom apartment with a panoramic terrace, walking distance to the historic core.",
+      ru: "Отремонтированные апартаменты с панорамной террасой, в пешей доступности от старого города."
+    },
+    type: "apartment",
+    price: 395000,
+    area: 74,
+    rooms: 2,
+    floor: 3,
+    year: 2016,
+    condition: "renovated",
+    view: "sea",
+    city: "Dubrovnik",
+    district: "Ploče",
+    distanceToSea: 250,
+    lat: 42.6407,
+    lng: 18.1153,
+    verification: "full",
+    images: imgs("dbv-101"),
+    agency: "Jadran Nekretnine",
+    furnished: true,
+    energy: "B",
+    createdAt: "2026-06-02",
+    priceHistory: [{ date: "2026-06-02", price: 395000 }]
+  },
+  {
+    id: "spl-102",
+    title: {
+      hu: "Új építésű lakás Split tengerparti negyedében",
+      me: "Novogradnja u priobalnom dijelu Splita",
+      en: "New-build apartment in a coastal Split district",
+      ru: "Новостройка в прибрежном районе Сплита"
+    },
+    description: {
+      hu: "Energiahatékony új építésű lakás garázzsal és közös medencével, 300 m-re a strandtól.",
+      me: "Energetski efikasna novogradnja s garažom i zajedničkim bazenom, 300 m od plaže.",
+      en: "Energy-efficient new build with garage and shared pool, 300 m from the beach.",
+      ru: "Энергоэффективная новостройка с гаражом и общим бассейном, 300 м до пляжа."
+    },
+    type: "new",
+    price: 312000,
+    area: 63,
+    rooms: 2,
+    floor: 2,
+    year: 2024,
+    condition: "new",
+    view: "sea",
+    city: "Split",
+    district: "Žnjan",
+    distanceToSea: 300,
+    lat: 43.5006,
+    lng: 16.4788,
+    verification: "deed",
+    images: imgs("spl-102"),
+    agency: "Jadran Nekretnine",
+    furnished: false,
+    energy: "A",
+    createdAt: "2026-06-10",
+    priceHistory: [{ date: "2026-06-10", price: 312000 }]
+  },
+  {
+    id: "rov-103",
+    title: {
+      hu: "Isztriai kővilla medencével Rovinj mellett",
+      me: "Istarska kamena vila s bazenom kraj Rovinja",
+      en: "Istrian stone villa with pool near Rovinj",
+      ru: "Истрийская каменная вилла с бассейном рядом с Ровинем"
+    },
+    description: {
+      hu: "Gondosan felújított kővilla nagy kerttel, medencével és nyugodt, zöldövezeti környezettel.",
+      me: "Pažljivo obnovljena kamena vila s velikim vrtom, bazenom i mirnim zelenim okruženjem.",
+      en: "Carefully restored stone villa with a large garden, pool and quiet green surroundings.",
+      ru: "Тщательно отреставрированная каменная вилла с большим садом, бассейном и тихим зелёным окружением."
+    },
+    type: "villa",
+    price: 690000,
+    area: 210,
+    rooms: 4,
+    floor: null,
+    year: 2011,
+    condition: "renovated",
+    view: "city",
+    city: "Rovinj",
+    district: "Monfiorenzo",
+    distanceToSea: 1200,
+    lat: 45.0731,
+    lng: 13.6549,
+    verification: "full",
+    images: imgs("rov-103"),
+    agency: "Jadran Nekretnine",
+    furnished: true,
+    energy: "B",
+    createdAt: "2026-05-28",
+    priceHistory: [{ date: "2026-05-28", price: 690000 }]
+  },
+
+  /* ===================== ALBÁNIA (AL) ===================== */
+  {
+    id: "sar-201",
+    title: {
+      hu: "Tengerparti apartman az albán riviérán, Sarandëban",
+      me: "Apartman uz more na albanskoj rivijeri, Saranda",
+      en: "Seafront apartment on the Albanian Riviera, Sarandë",
+      ru: "Апартаменты у моря на Албанской Ривьере, Саранда"
+    },
+    description: {
+      hu: "Első vonalbeli apartman tágas erkéllyel és közvetlen tengeri kilátással, Korfu szigetére nézve.",
+      me: "Apartman u prvom redu do mora s prostranim balkonom i pogledom na Krf.",
+      en: "Front-line apartment with a spacious balcony and open sea views towards Corfu.",
+      ru: "Апартаменты в первой линии с просторным балконом и видом на море в сторону Корфу."
+    },
+    type: "apartment",
+    price: 158000,
+    area: 66,
+    rooms: 2,
+    floor: 5,
+    year: 2022,
+    condition: "new",
+    view: "sea",
+    city: "Sarandë",
+    district: "Kodra",
+    distanceToSea: 80,
+    lat: 39.8756,
+    lng: 20.0053,
+    verification: "deed",
+    images: imgs("sar-201"),
+    agency: "Riviera Albania",
+    furnished: true,
+    energy: "B",
+    createdAt: "2026-06-05",
+    priceHistory: [{ date: "2026-06-05", price: 158000 }]
+  },
+  {
+    id: "ksm-202",
+    title: {
+      hu: "Új építésű stúdió Ksamilban, a strandok mellett",
+      me: "Novi studio u Ksamilu, kraj plaža",
+      en: "New-build studio in Ksamil, next to the beaches",
+      ru: "Студия в новостройке в Ксамиле, рядом с пляжами"
+    },
+    description: {
+      hu: "Kompakt, teljesen felszerelt stúdió erős rövidtávú kiadási potenciállal, a Ksamil-szigetek közelében.",
+      me: "Kompaktan, potpuno opremljen studio s jakim potencijalom za kratkoročni najam, blizu Ksamilskih ostrva.",
+      en: "Compact, fully equipped studio with strong short-let potential, near the Ksamil islands.",
+      ru: "Компактная, полностью оборудованная студия с высоким потенциалом посуточной аренды, рядом с островами Ксамиля."
+    },
+    type: "apartment",
+    price: 92000,
+    area: 34,
+    rooms: 1,
+    floor: 2,
+    year: 2023,
+    condition: "new",
+    view: "sea",
+    city: "Ksamil",
+    district: "Ksamil Qendër",
+    distanceToSea: 150,
+    lat: 39.7660,
+    lng: 20.0016,
+    verification: "basic",
+    images: imgs("ksm-202", 4),
+    agency: "Riviera Albania",
+    furnished: true,
+    energy: "A",
+    createdAt: "2026-06-12",
+    priceHistory: [{ date: "2026-06-12", price: 92000 }]
+  },
+  {
+    id: "vlo-203",
+    title: {
+      hu: "Panorámás apartman Vlorë új sétányán",
+      me: "Apartman s pogledom na novoj rivi u Vlori",
+      en: "Panoramic apartment on Vlorë's new promenade",
+      ru: "Панорамные апартаменты на новой набережной Влёры"
+    },
+    description: {
+      hu: "Modern lakás a Lungomare sétányon, közös medencével és fitneszteremmel, egész évben élhető környezetben.",
+      me: "Moderan stan na Lungomare šetalištu, sa zajedničkim bazenom i teretanom.",
+      en: "Modern apartment on the Lungomare promenade with shared pool and gym.",
+      ru: "Современная квартира на набережной Лунгомаре с общим бассейном и спортзалом."
+    },
+    type: "apartment",
+    price: 121000,
+    area: 58,
+    rooms: 2,
+    floor: 6,
+    year: 2021,
+    condition: "new",
+    view: "sea",
+    city: "Vlorë",
+    district: "Lungomare",
+    distanceToSea: 200,
+    lat: 40.4560,
+    lng: 19.4880,
+    verification: "deed",
+    images: imgs("vlo-203"),
+    agency: "Riviera Albania",
+    furnished: true,
+    energy: "B",
+    createdAt: "2026-05-30",
+    priceHistory: [{ date: "2026-05-30", price: 121000 }]
+  },
+
+  /* ===================== SZERBIA (RS) ===================== */
+  {
+    id: "beg-301",
+    title: {
+      hu: "Design lakás Belgrád vízparti negyedében",
+      me: "Dizajnerski stan u beogradskom priobalnom kvartu",
+      en: "Design apartment in Belgrade's waterfront district",
+      ru: "Дизайнерская квартира в набережном районе Белграда"
+    },
+    description: {
+      hu: "Igényes kétszobás lakás a Belgrád Waterfront fejlesztésben, folyóra néző kilátással és mélygarázzsal.",
+      me: "Kvalitetan dvosoban stan u Beogradu na vodi, s pogledom na reku i garažom.",
+      en: "High-spec two-bedroom in the Belgrade Waterfront, with river views and underground parking.",
+      ru: "Качественная двухкомнатная квартира в Belgrade Waterfront с видом на реку и подземным паркингом."
+    },
+    type: "apartment",
+    price: 268000,
+    area: 71,
+    rooms: 2,
+    floor: 9,
+    year: 2020,
+    condition: "new",
+    view: "city",
+    city: "Beograd",
+    district: "Savski venac",
+    distanceToSea: 0,
+    lat: 44.8020,
+    lng: 20.4490,
+    verification: "full",
+    images: imgs("beg-301"),
+    agency: "Beograd Estates",
+    furnished: true,
+    energy: "A",
+    createdAt: "2026-06-01",
+    priceHistory: [{ date: "2026-06-01", price: 268000 }]
+  },
+  {
+    id: "zla-302",
+    title: {
+      hu: "Hegyi apartman Zlatiboron, sípálya közelében",
+      me: "Planinski apartman na Zlatiboru, blizu staza",
+      en: "Mountain apartment in Zlatibor, near the slopes",
+      ru: "Горные апартаменты на Златиборе, рядом со склонами"
+    },
+    description: {
+      hu: "Népszerű egész éves üdülőhely; jól kiadható apartman a központhoz és a Gold Gondola állomáshoz közel.",
+      me: "Popularno celogodišnje odmaralište; apartman za izdavanje blizu centra i Gold Gondole.",
+      en: "Popular year-round resort; a rentable apartment near the centre and the Gold Gondola.",
+      ru: "Популярный круглогодичный курорт; сдаваемые апартаменты рядом с центром и Gold Gondola."
+    },
+    type: "apartment",
+    price: 96000,
+    area: 42,
+    rooms: 1,
+    floor: 1,
+    year: 2019,
+    condition: "good",
+    view: "mountain",
+    city: "Zlatibor",
+    district: "Centar",
+    distanceToSea: 0,
+    lat: 43.7294,
+    lng: 19.7000,
+    verification: "deed",
+    images: imgs("zla-302", 4),
+    agency: "Beograd Estates",
+    furnished: true,
+    energy: "C",
+    createdAt: "2026-05-25",
+    priceHistory: [{ date: "2026-05-25", price: 96000 }]
+  },
+
+  /* ===================== TÖRÖKORSZÁG (TR) ===================== */
+  {
+    id: "ist-401",
+    title: {
+      hu: "Modern lakás Isztambulban, tenger közeli projektben",
+      me: "Moderan stan u Istanbulu, u projektu blizu mora",
+      en: "Modern apartment in Istanbul, in a sea-side project",
+      ru: "Современная квартира в Стамбуле, в проекте у моря"
+    },
+    description: {
+      hu: "Zárt lakóparki lakás medencével és biztonsági szolgálattal, az európai oldalon — állampolgársági programra alkalmas.",
+      me: "Stan u zatvorenom kompleksu s bazenom i obezbeđenjem, na evropskoj strani.",
+      en: "Gated-complex apartment with pool and security on the European side — citizenship-eligible.",
+      ru: "Квартира в закрытом комплексе с бассейном и охраной на европейской стороне — подходит для гражданства."
+    },
+    type: "apartment",
+    price: 205000,
+    area: 88,
+    rooms: 3,
+    floor: 7,
+    year: 2022,
+    condition: "new",
+    view: "city",
+    city: "İstanbul",
+    district: "Beylikdüzü",
+    distanceToSea: 700,
+    lat: 41.0035,
+    lng: 28.6360,
+    verification: "deed",
+    images: imgs("ist-401"),
+    agency: "Bosphorus Property",
+    furnished: false,
+    energy: "B",
+    createdAt: "2026-06-08",
+    priceHistory: [{ date: "2026-06-08", price: 205000 }]
+  },
+  {
+    id: "ant-402",
+    title: {
+      hu: "Villa medencével Antalyában, tengerre néző kilátással",
+      me: "Vila s bazenom u Antaliji, s pogledom na more",
+      en: "Villa with pool in Antalya, sea views",
+      ru: "Вилла с бассейном в Анталье, вид на море"
+    },
+    description: {
+      hu: "Különálló villa privát medencével és kerttel, közel a strandokhoz és a golfpályákhoz Belekben.",
+      me: "Samostalna vila s privatnim bazenom i vrtom, blizu plaža i golf terena u Beleku.",
+      en: "Detached villa with private pool and garden, close to the beaches and golf courses in Belek.",
+      ru: "Отдельная вилла с частным бассейном и садом, рядом с пляжами и полями для гольфа в Белеке."
+    },
+    type: "villa",
+    price: 430000,
+    area: 240,
+    rooms: 4,
+    floor: null,
+    year: 2023,
+    condition: "new",
+    view: "sea",
+    city: "Antalya",
+    district: "Belek",
+    distanceToSea: 900,
+    lat: 36.8630,
+    lng: 31.0560,
+    verification: "full",
+    images: imgs("ant-402"),
+    agency: "Bosphorus Property",
+    furnished: true,
+    energy: "A",
+    createdAt: "2026-06-11",
+    priceHistory: [{ date: "2026-06-11", price: 430000 }]
+  },
+  {
+    id: "bod-403",
+    title: {
+      hu: "Kiadó design apartman Bodrumban, szezonális bérlés",
+      me: "Dizajnerski apartman za najam u Bodrumu",
+      en: "Design apartment for rent in Bodrum",
+      ru: "Дизайнерские апартаменты в аренду в Бодруме"
+    },
+    description: {
+      hu: "Havi díjas, teljesen berendezett apartman a marina közelében, medencével — hosszabb tartózkodásra ideális.",
+      me: "Mesečni najam, potpuno opremljen apartman blizu marine, s bazenom.",
+      en: "Monthly, fully furnished apartment near the marina with a pool — ideal for longer stays.",
+      ru: "Помесячная, полностью меблированная квартира рядом с мариной, с бассейном."
+    },
+    type: "apartment",
+    mode: "rent",
+    price: 1400,
+    area: 70,
+    rooms: 2,
+    floor: 1,
+    year: 2021,
+    condition: "renovated",
+    view: "sea",
+    city: "Bodrum",
+    district: "Yalıkavak",
+    distanceToSea: 300,
+    lat: 37.1090,
+    lng: 27.2900,
+    verification: "basic",
+    images: imgs("bod-403", 4),
+    agency: "Bosphorus Property",
+    furnished: true,
+    energy: "B",
+    createdAt: "2026-06-14",
+    priceHistory: [{ date: "2026-06-14", price: 1400 }]
+  },
+
+  /* ===================== BALI, INDONÉZIA (ID) ===================== */
+  {
+    id: "cng-501",
+    title: {
+      hu: "Leasehold villa Cangguban, trópusi kerttel",
+      me: "Leasehold vila u Cangguu, s tropskim vrtom",
+      en: "Leasehold villa in Canggu with tropical garden",
+      ru: "Вилла в лизхолд в Чангу с тропическим садом"
+    },
+    description: {
+      hu: "Modern háromszobás villa privát medencével, a divatos Canggu szörf- és kávézónegyedében — magas kiadási hozam.",
+      me: "Moderna trosobna vila s privatnim bazenom, u popularnom surf i kafe kvartu Canggua.",
+      en: "Modern three-bedroom villa with private pool in Canggu's trendy surf-and-café district — strong rental yield.",
+      ru: "Современная вилла с тремя спальнями и частным бассейном в модном сёрф-районе Чангу — высокая доходность."
+    },
+    type: "villa",
+    price: 285000,
+    area: 180,
+    rooms: 3,
+    floor: null,
+    year: 2022,
+    condition: "new",
+    view: "city",
+    city: "Canggu",
+    district: "Berawa",
+    distanceToSea: 800,
+    lat: -8.6560,
+    lng: 115.1380,
+    verification: "deed",
+    images: imgs("cng-501"),
+    agency: "Bali Villa Collective",
+    furnished: true,
+    energy: "A",
+    createdAt: "2026-06-03",
+    priceHistory: [{ date: "2026-06-03", price: 285000 }]
+  },
+  {
+    id: "smk-502",
+    title: {
+      hu: "Kiadó villa Seminyakban, havi bérlés medencével",
+      me: "Vila za najam u Seminyaku, mesečni najam s bazenom",
+      en: "Villa for rent in Seminyak, monthly with pool",
+      ru: "Вилла в аренду в Семиньяке, помесячно с бассейном"
+    },
+    description: {
+      hu: "Teljesen felszerelt kétszobás villa privát medencével, sétatávolságra az éttermektől és a strandtól.",
+      me: "Potpuno opremljena dvosobna vila s privatnim bazenom, na pješačkoj udaljenosti od plaže.",
+      en: "Fully equipped two-bedroom villa with private pool, walking distance to restaurants and the beach.",
+      ru: "Полностью оборудованная вилла с двумя спальнями и частным бассейном, в пешей доступности от пляжа."
+    },
+    type: "villa",
+    mode: "rent",
+    price: 1650,
+    area: 130,
+    rooms: 2,
+    floor: null,
+    year: 2020,
+    condition: "good",
+    view: "city",
+    city: "Seminyak",
+    district: "Oberoi",
+    distanceToSea: 600,
+    lat: -8.6870,
+    lng: 115.1560,
+    verification: "basic",
+    images: imgs("smk-502"),
+    agency: "Bali Villa Collective",
+    furnished: true,
+    energy: "B",
+    createdAt: "2026-06-15",
+    priceHistory: [{ date: "2026-06-15", price: 1650 }]
+  },
+  {
+    id: "ubd-503",
+    title: {
+      hu: "Dzsungelre néző villa Ubudban, jóga-öböl közelében",
+      me: "Vila s pogledom na džunglu u Ubudu",
+      en: "Jungle-view villa in Ubud, near the yoga scene",
+      ru: "Вилла с видом на джунгли в Убуде, рядом с йога-центрами"
+    },
+    description: {
+      hu: "Nyugodt, természetközeli villa rizsföldre néző kilátással és úszómedencével, Bali kulturális szívében.",
+      me: "Mirna vila blizu prirode s pogledom na pirinčana polja i bazenom, u kulturnom srcu Balija.",
+      en: "Peaceful nature-close villa overlooking rice fields with a pool, in Bali's cultural heart.",
+      ru: "Спокойная вилла на природе с видом на рисовые поля и бассейном, в культурном сердце Бали."
+    },
+    type: "villa",
+    price: 240000,
+    area: 165,
+    rooms: 3,
+    floor: null,
+    year: 2021,
+    condition: "new",
+    view: "mountain",
+    city: "Ubud",
+    district: "Penestanan",
+    distanceToSea: 0,
+    lat: -8.5069,
+    lng: 115.2510,
+    verification: "deed",
+    images: imgs("ubd-503"),
+    agency: "Bali Villa Collective",
+    furnished: true,
+    energy: "A",
+    createdAt: "2026-06-06",
+    priceHistory: [{ date: "2026-06-06", price: 240000 }]
   }
 ];
 
@@ -803,6 +1383,7 @@ function contextExtras(l: RawListing): Partial<Listing> {
 
 export const seedListings: Listing[] = raw.map((l) => ({
   ...l,
+  country: l.country ?? countryOfCity(l.city) ?? "ME",
   mode: l.mode ?? "sale",
   status: "active",
   amenities: amenitiesFor(l),

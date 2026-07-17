@@ -171,13 +171,20 @@ body {
   }
 }
 
-/* Slim scrollbar */
-.results-scroll::-webkit-scrollbar {
-  width: 8px;
+/* A felhasználó kérése: SEHOL ne jelenjen meg a szürke natív görgetősáv — sem
+   telefonon, sem asztali gépen, egyetlen oldalon / szerepkörön sem. A görgetés
+   maga változatlanul működik (kereke/ujj/billentyű), csak a sáv rejtett. */
+* {
+  scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* régi Edge / IE */
 }
-.results-scroll::-webkit-scrollbar-thumb {
-  @apply bg-ink-200 rounded-full;
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;              /* WebKit: Chrome / Safari / új Edge */
 }
+
+/* A `.no-scrollbar` osztály továbbra is érvényes marad a meglévő helyeken. */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

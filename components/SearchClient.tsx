@@ -5,9 +5,9 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import type { Listing } from "@/lib/types";
-import { useLang, useListings, useAuth, useProfiles } from "@/lib/store";
+import { useLang, useMoney, useListings, useAuth, useProfiles } from "@/lib/store";
 import { tr, loc } from "@/lib/i18n";
-import { pricePerM2, formatPrice } from "@/lib/format";
+import { pricePerM2 } from "@/lib/format";
 import { isFeatured } from "@/lib/mappers";
 import type { MapBounds } from "./MapView";
 import * as db from "@/lib/db";
@@ -39,6 +39,7 @@ function applyFilters(items: Listing[], f: FilterState, roleOf?: Map<string, str
         `${l.city} ${l.district} ${l.title.hu} ${l.title.me} ${l.title.en} ${l.title.ru} ${l.agency}`.toLowerCase();
       if (!hay.includes(q)) return false;
     }
+    if (f.country && l.country !== f.country) return false;
     if (f.city && l.city !== f.city) return false;
     if (f.type && l.type !== f.type) return false;
     if (f.view && l.view !== f.view) return false;
@@ -111,6 +112,7 @@ function filtersToQuery(f: FilterState): string {
 
 export default function SearchClient() {
   const { lang } = useLang();
+  const money = useMoney();
   const { items } = useListings();
   const { profiles } = useProfiles();
   const { user } = useAuth();
@@ -531,7 +533,7 @@ export default function SearchClient() {
               />
               <div className="min-w-0 flex-1 py-0.5">
                 <div className="font-extrabold text-ink-900">
-                  {formatPrice(selected.price, lang)}
+                  {money(selected.price)}
                   {selected.mode === "rent" && (
                     <span className="text-xs font-semibold text-ink-400">{tr("per_month", lang)}</span>
                   )}

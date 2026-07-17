@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useLang } from "@/lib/store";
+import { useLang, useMoney } from "@/lib/store";
 import { tr } from "@/lib/i18n";
-import { formatPrice } from "@/lib/format";
 import { monthlyPayment, MORTGAGE_DEFAULTS } from "@/lib/montenegro";
 
 /**
@@ -12,6 +11,7 @@ import { monthlyPayment, MORTGAGE_DEFAULTS } from "@/lib/montenegro";
  */
 export default function MortgageCalculator({ price }: { price: number }) {
   const { lang } = useLang();
+  const money = useMoney();
   const [downPct, setDownPct] = useState<number>(MORTGAGE_DEFAULTS.downPct);
   const [rate, setRate] = useState<number>(MORTGAGE_DEFAULTS.ratePct);
   const [years, setYears] = useState<number>(MORTGAGE_DEFAULTS.years);
@@ -52,7 +52,7 @@ export default function MortgageCalculator({ price }: { price: number }) {
       <p className="mt-0.5 text-xs text-ink-400">{tr("mortgage_sub", lang)}</p>
 
       <div className="mt-4 space-y-3">
-        {slider(tr("down_payment", lang), `${downPct}% · ${formatPrice(down, lang)}`, 0, 80, 5, downPct, setDownPct)}
+        {slider(tr("down_payment", lang), `${downPct}% · ${money(down)}`, 0, 80, 5, downPct, setDownPct)}
         {slider(tr("interest_rate", lang), `${rate.toFixed(1)}%`, 2, 12, 0.1, rate, setRate)}
         {slider(tr("loan_term", lang), `${years} ${tr("years_short", lang)}`, 5, 30, 1, years, setYears)}
       </div>
@@ -60,13 +60,13 @@ export default function MortgageCalculator({ price }: { price: number }) {
       <div className="mt-4 rounded-xl bg-ink-900 px-4 py-3 text-white">
         <div className="text-xs text-white/60">{tr("monthly_payment", lang)}</div>
         <div className="text-2xl font-black tracking-tight">
-          {formatPrice(monthly, lang)}
+          {money(monthly)}
           <span className="text-sm font-semibold text-white/60">{tr("per_month", lang)}</span>
         </div>
       </div>
       <div className="mt-2 flex justify-between text-xs text-ink-400">
         <span>{tr("loan_amount", lang)}</span>
-        <span className="font-medium text-ink-600">{formatPrice(loan, lang)}</span>
+        <span className="font-medium text-ink-600">{money(loan)}</span>
       </div>
       <p className="mt-2 text-[11px] leading-snug text-ink-400">{tr("mortgage_disclaimer", lang)}</p>
     </div>

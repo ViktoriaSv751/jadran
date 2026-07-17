@@ -39,11 +39,11 @@ for (const p of seedProfiles) {
 
 for (const l of seedListings) {
   lines.push(
-    `insert into listings (id,title,description,type,mode,status,price,area,rooms,floor,year,condition,view,city,district,distance_to_sea,lat,lng,verification,images,amenities,owner_id,agency,furnished,energy,created_at,views,price_history,deposit,min_term_months,available_from,utilities_included,pets_allowed,plot_area,monthly_common_cost,heating_type) values (` +
+    `insert into listings (id,title,description,type,mode,status,price,area,rooms,floor,year,condition,view,country,city,district,distance_to_sea,lat,lng,verification,images,amenities,owner_id,agency,furnished,energy,created_at,views,price_history,deposit,min_term_months,available_from,utilities_included,pets_allowed,plot_area,monthly_common_cost,heating_type) values (` +
       [
         q(l.id), jsonb(l.title), jsonb(l.description), q(l.type), q(l.mode), q(l.status),
         q(l.price), q(l.area), q(l.rooms), q(l.floor), q(l.year), q(l.condition), q(l.view),
-        q(l.city), q(l.district), q(l.distanceToSea), q(l.lat), q(l.lng), q(l.verification),
+        q(l.country), q(l.city), q(l.district), q(l.distanceToSea), q(l.lat), q(l.lng), q(l.verification),
         textArr(l.images), amenityArr(l.amenities), q(l.ownerId), q(l.agency), q(l.furnished),
         q(l.energy), q(l.createdAt), q(l.views), jsonb(l.priceHistory),
         q(l.deposit ?? null), q(l.minTermMonths ?? null), q(l.availableFrom ?? null),

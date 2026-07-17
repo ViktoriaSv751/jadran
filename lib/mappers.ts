@@ -33,6 +33,7 @@ export function rowToListing(r: any): Listing {
     year: Number(r.year ?? 0),
     condition: r.condition,
     view: r.view,
+    country: r.country ?? "ME",
     city: r.city,
     district: r.district ?? "",
     distanceToSea: num(r.distance_to_sea),
@@ -84,6 +85,7 @@ export function listingToRow(l: Partial<Listing>): Record<string, unknown> {
   set("year", l.year);
   set("condition", l.condition);
   set("view", l.view);
+  set("country", l.country);
   set("city", l.city);
   set("district", l.district);
   set("distance_to_sea", l.distanceToSea);

@@ -4,6 +4,7 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useS
 import type { Conversation, Lang, Listing, Message, Profile, Review } from "./types";
 import { seedListings, seedProfiles } from "./data";
 import { LANGS } from "./i18n";
+import { formatMoney, isCurrencyCode, type CurrencyCode } from "./currency";
 import * as db from "./db";
 
 /* ============================ Language ============================ */
@@ -40,6 +41,46 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
 
 export function useLang(): LangCtx {
   return useContext(LangContext);
+}
+
+/* ============================ Currency ============================ */
+
+interface CurrencyCtx {
+  currency: CurrencyCode;
+  setCurrency: (c: CurrencyCode) => void;
+}
+
+const CurrencyContext = createContext<CurrencyCtx>({ currency: "EUR", setCurrency: () => {} });
+
+export function CurrencyProvider({ children }: { children: React.ReactNode }) {
+  const [currency, setCurrencyState] = useState<CurrencyCode>("EUR");
+
+  useEffect(() => {
+    const stored = localStorage.getItem("jadran_ccy");
+    if (stored && isCurrencyCode(stored)) setCurrencyState(stored);
+  }, []);
+
+  const setCurrency = (c: CurrencyCode) => {
+    setCurrencyState(c);
+    localStorage.setItem("jadran_ccy", c);
+  };
+
+  return <CurrencyContext.Provider value={{ currency, setCurrency }}>{children}</CurrencyContext.Provider>;
+}
+
+export function useCurrency(): CurrencyCtx {
+  return useContext(CurrencyContext);
+}
+
+/**
+ * Ár-formázó hook: a KANONIKUS EUR értéket a felhasználó választott
+ * megjelenítési pénznemében és nyelvén formázza. Ez a felület egységes,
+ * REAKTÍV ár-belépési pontja — pénznem-váltáskor minden ár frissül.
+ */
+export function useMoney(): (eur: number) => string {
+  const { lang } = useLang();
+  const { currency } = useCurrency();
+  return useCallback((eur: number) => formatMoney(eur, currency, lang), [currency, lang]);
 }
 
 /* ============================ Auth ============================ */
