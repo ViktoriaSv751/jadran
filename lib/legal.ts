@@ -19,6 +19,77 @@ export interface ForeignBuyerLegal {
   points: L4[];
 }
 
+/**
+ * Letelepedés / állampolgárság ingatlanvásárlás alapján, országonként.
+ * `residenceNote`: mit ad a vásárlás a tartózkodás szempontjából.
+ * `citizenshipEur`: ha van, ekkora (EUR-ban közelített) vételár fölött
+ * állampolgársági/„golden visa" program jöhet szóba (`citizenshipNote`).
+ * TÁJÉKOZTATÓ JELLEGŰ — a részletek változhatnak.
+ */
+export interface ResidencyInfo {
+  residenceNote: L4;
+  citizenshipEur?: number;
+  citizenshipNote?: L4;
+}
+
+export const RESIDENCY: Record<CountryCode, ResidencyInfo> = {
+  ME: {
+    residenceNote: {
+      hu: "Ingatlantulajdon támogatja az ideiglenes tartózkodási engedély kérelmét.",
+      me: "Vlasništvo nad nekretninom podržava zahtjev za privremeni boravak.",
+      en: "Property ownership supports a temporary residence permit application.",
+      ru: "Владение недвижимостью помогает в получении ВНЖ."
+    }
+  },
+  HR: {
+    residenceNote: {
+      hu: "EU-tagállam: az EU-s vevők szabadon letelepedhetnek; nem EU-s vevőknél az ingatlan segíti a tartózkodást.",
+      me: "Članica EU: kupci iz EU se slobodno nastanjuju; van EU nekretnina pomaže boravak.",
+      en: "EU member: EU buyers settle freely; for non-EU, property supports residence.",
+      ru: "Член ЕС: покупатели из ЕС селятся свободно; для остальных недвижимость помогает ВНЖ."
+    }
+  },
+  AL: {
+    residenceNote: {
+      hu: "Ingatlantulajdon alátámasztja a tartózkodási engedély iránti kérelmet.",
+      me: "Vlasništvo nad nekretninom podržava zahtjev za dozvolu boravka.",
+      en: "Property ownership supports a residence-permit application.",
+      ru: "Владение недвижимостью поддерживает заявление на ВНЖ."
+    }
+  },
+  RS: {
+    residenceNote: {
+      hu: "Ingatlantulajdon alapján kérhető ideiglenes tartózkodás.",
+      me: "Na osnovu vlasništva može se tražiti privremeni boravak.",
+      en: "Temporary residence can be applied for based on property ownership.",
+      ru: "На основании собственности можно подать на временное пребывание."
+    }
+  },
+  TR: {
+    residenceNote: {
+      hu: "Bármely ingatlan rövid távú tartózkodási engedélyre jogosíthat.",
+      me: "Bilo koja nekretnina može dati pravo na kratkoročni boravak.",
+      en: "Any property can qualify for a short-term residence permit.",
+      ru: "Любая недвижимость может дать право на краткосрочный ВНЖ."
+    },
+    citizenshipEur: 370000, // ≈ 400 000 USD
+    citizenshipNote: {
+      hu: "Kb. 400 000 USD fölötti vásárlás török állampolgársági programra jogosíthat.",
+      me: "Kupovina iznad ≈400.000 USD može dati pravo na program državljanstva.",
+      en: "A purchase above ≈USD 400,000 can qualify for the citizenship program.",
+      ru: "Покупка от ≈400 000 USD может дать право на программу гражданства."
+    }
+  },
+  ID: {
+    residenceNote: {
+      hu: "Az ingatlan önmagában nem ad tartózkodást; KITAS/befektetői vízum külön igényelhető.",
+      me: "Nekretnina sama ne daje boravak; KITAS/investitorska viza se traži posebno.",
+      en: "Property alone doesn't grant residence; a KITAS/investor visa is applied for separately.",
+      ru: "Недвижимость сама по себе не даёт ВНЖ; KITAS/инвесторская виза — отдельно."
+    }
+  }
+};
+
 export const FOREIGN_BUYER: Record<CountryCode, ForeignBuyerLegal> = {
   ME: {
     intro: {

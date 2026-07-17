@@ -20,6 +20,7 @@ import SellerCard from "./listing/SellerCard";
 import InquiryButton from "./listing/InquiryButton";
 import MortgageCalculator from "./MortgageCalculator";
 import ForeignBuyerInfo from "./ForeignBuyerInfo";
+import ResidencyInfo from "./listing/ResidencyInfo";
 import InvestorCard from "./listing/InvestorCard";
 import CurrencyHint from "./listing/CurrencyHint";
 import ReportButton from "./listing/ReportButton";
@@ -335,6 +336,7 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
 
           {/* Külföldi vásárló infó (eladó módban) */}
           {!isRent && <ForeignBuyerInfo country={listing.country} />}
+          {!isRent && <ResidencyInfo country={listing.country} priceEur={listing.price} />}
 
           {/* Similar */}
           {similar.length > 0 && (

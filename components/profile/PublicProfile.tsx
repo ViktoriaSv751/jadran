@@ -10,6 +10,7 @@ import Avatar from "@/components/ui/Avatar";
 import Button from "@/components/ui/Button";
 import Icon from "@/components/ui/Icon";
 import ListingCard from "@/components/ListingCard";
+import Reviews from "./Reviews";
 
 export default function PublicProfile({ id }: { id: string }) {
   const { lang } = useLang();
@@ -84,6 +85,8 @@ export default function PublicProfile({ id }: { id: string }) {
           ))}
         </div>
       )}
+
+      <Reviews targetUserId={profile.id} />
     </div>
   );
 }
