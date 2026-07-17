@@ -51,19 +51,61 @@ function localeFor(lang: Lang): string {
   }
 }
 
-/** EUR összeg átváltása a cél-pénznembe (kerekítve). */
-export function convertFromEur(eur: number, code: CurrencyCode): number {
-  const info = CURRENCY_BY_CODE[code] ?? CURRENCY_BY_CODE.EUR;
-  return eur * info.rate;
+/** EUR összeg átváltása a cél-pénznembe. `rate` felülírja a statikus árfolyamot
+ *  (élő feed). */
+export function convertFromEur(eur: number, code: CurrencyCode, rate?: number): number {
+  const r = rate ?? (CURRENCY_BY_CODE[code] ?? CURRENCY_BY_CODE.EUR).rate;
+  return eur * r;
+}
+
+/* --------------------------- Élő árfolyam-feed --------------------------- */
+
+const FX_CACHE_KEY = "jadran_fx_live";
+const FX_TTL_MS = 12 * 60 * 60 * 1000; // 12 óra
+
+/**
+ * Élő EUR-alapú árfolyamok lekérése egy INGYENES, kulcs nélküli forrásból
+ * (open.er-api.com). localStorage-cache 12 órára. Hiba esetén null → a hívó a
+ * statikus (indikatív) árfolyamokra esik vissza. Sosem dob.
+ */
+export async function fetchLiveRates(): Promise<Partial<Record<CurrencyCode, number>> | null> {
+  try {
+    if (typeof localStorage !== "undefined") {
+      const raw = localStorage.getItem(FX_CACHE_KEY);
+      if (raw) {
+        const cached = JSON.parse(raw) as { at: number; rates: Record<string, number> };
+        if (cached.at && Date.now() - cached.at < FX_TTL_MS) return pickRates(cached.rates);
+      }
+    }
+    const res = await fetch("https://open.er-api.com/v6/latest/EUR");
+    if (!res.ok) return null;
+    const data = (await res.json()) as { rates?: Record<string, number> };
+    if (!data.rates) return null;
+    try {
+      localStorage.setItem(FX_CACHE_KEY, JSON.stringify({ at: Date.now(), rates: data.rates }));
+    } catch {
+      /* tele a tár — nem baj */
+    }
+    return pickRates(data.rates);
+  } catch {
+    return null;
+  }
+}
+
+function pickRates(all: Record<string, number>): Partial<Record<CurrencyCode, number>> {
+  const out: Partial<Record<CurrencyCode, number>> = {};
+  for (const c of CURRENCIES) if (typeof all[c.code] === "number") out[c.code] = all[c.code];
+  return out;
 }
 
 /**
  * EUR összeg formázása a MEGJELENÍTÉSI pénznemben, a felület nyelvének
  * megfelelő tagolással. Ez a rendszer egyetlen ár-formázó belépési pontja.
+ * A `rate` (ha van) az élő árfolyam; egyébként a statikus indikatív érték.
  */
-export function formatMoney(eur: number, code: CurrencyCode, lang: Lang = "en"): string {
+export function formatMoney(eur: number, code: CurrencyCode, lang: Lang = "en", rate?: number): string {
   const info = CURRENCY_BY_CODE[code] ?? CURRENCY_BY_CODE.EUR;
-  const value = convertFromEur(eur, code);
+  const value = convertFromEur(eur, code, rate);
   return new Intl.NumberFormat(localeFor(lang), {
     style: "currency",
     currency: info.code,

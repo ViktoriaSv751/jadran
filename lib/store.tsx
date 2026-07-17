@@ -4,7 +4,7 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useS
 import type { Conversation, Lang, Listing, Message, Profile, Review } from "./types";
 import { seedListings, seedProfiles } from "./data";
 import { LANGS } from "./i18n";
-import { formatMoney, isCurrencyCode, type CurrencyCode } from "./currency";
+import { formatMoney, isCurrencyCode, fetchLiveRates, type CurrencyCode } from "./currency";
 import * as db from "./db";
 
 /* ============================ Language ============================ */
@@ -48,16 +48,21 @@ export function useLang(): LangCtx {
 interface CurrencyCtx {
   currency: CurrencyCode;
   setCurrency: (c: CurrencyCode) => void;
+  /** Élő EUR-alapú árfolyamok (ha betöltődtek); egyébként a statikus fallback. */
+  rates: Partial<Record<CurrencyCode, number>>;
 }
 
-const CurrencyContext = createContext<CurrencyCtx>({ currency: "EUR", setCurrency: () => {} });
+const CurrencyContext = createContext<CurrencyCtx>({ currency: "EUR", setCurrency: () => {}, rates: {} });
 
 export function CurrencyProvider({ children }: { children: React.ReactNode }) {
   const [currency, setCurrencyState] = useState<CurrencyCode>("EUR");
+  const [rates, setRates] = useState<Partial<Record<CurrencyCode, number>>>({});
 
   useEffect(() => {
     const stored = localStorage.getItem("jadran_ccy");
     if (stored && isCurrencyCode(stored)) setCurrencyState(stored);
+    // Élő árfolyamok háttérben (ingyenes feed, cache-elt); hiba esetén marad a statikus.
+    void fetchLiveRates().then((r) => r && setRates(r));
   }, []);
 
   const setCurrency = (c: CurrencyCode) => {
@@ -65,7 +70,7 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("jadran_ccy", c);
   };
 
-  return <CurrencyContext.Provider value={{ currency, setCurrency }}>{children}</CurrencyContext.Provider>;
+  return <CurrencyContext.Provider value={{ currency, setCurrency, rates }}>{children}</CurrencyContext.Provider>;
 }
 
 export function useCurrency(): CurrencyCtx {
@@ -79,8 +84,8 @@ export function useCurrency(): CurrencyCtx {
  */
 export function useMoney(): (eur: number) => string {
   const { lang } = useLang();
-  const { currency } = useCurrency();
-  return useCallback((eur: number) => formatMoney(eur, currency, lang), [currency, lang]);
+  const { currency, rates } = useCurrency();
+  return useCallback((eur: number) => formatMoney(eur, currency, lang, rates[currency]), [currency, lang, rates]);
 }
 
 /* ============================ Auth ============================ */

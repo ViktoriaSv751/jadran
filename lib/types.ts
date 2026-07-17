@@ -142,6 +142,18 @@ export interface Profile {
   verified: boolean; // identity / agency verified
   responseTime: string; // e.g. "egy órán belül"
   joinedAt: string; // ISO
+  isAdmin?: boolean; // platform-moderátor (jelentések kezelése)
+}
+
+/** Hirdetés-bejelentés (moderáláshoz). */
+export interface ListingReport {
+  id: string;
+  listingId: string;
+  reporterId: string | null;
+  reason: string;
+  note: string | null;
+  status: string; // "open" | "resolved"
+  createdAt: string;
 }
 
 export interface Conversation {

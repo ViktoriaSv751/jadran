@@ -145,6 +145,7 @@ function AccountMenu({
               <div className="my-1 h-px bg-ink-100" />
               <MenuLink href="/profile" label={tr("profile", lang)} />
               <MenuLink href="/settings" label={tr("settings", lang)} />
+              {user.isAdmin && <MenuLink href="/admin" label={tr("admin_reports_title", lang)} />}
               <LogoutButton className="block w-full px-4 py-2 text-left text-sm text-ink-600 transition hover:bg-ink-50">
                 {tr("logout", lang)}
               </LogoutButton>

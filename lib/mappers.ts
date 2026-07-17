@@ -127,7 +127,8 @@ export function rowToProfile(r: any): Profile {
     location: r.location ?? "",
     verified: !!r.verified,
     responseTime: r.response_time ?? "",
-    joinedAt: r.joined_at
+    joinedAt: r.joined_at,
+    isAdmin: !!r.is_admin
   };
 }
 

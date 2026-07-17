@@ -14,6 +14,7 @@
 import type {
   Conversation,
   Listing,
+  ListingReport,
   Message,
   Profile,
   Review,
@@ -295,6 +296,32 @@ export async function reportListing(
     reason,
     note: note ?? null
   });
+  return { ok: !error };
+}
+
+/** Moderátori jelentés-lekérés (csak adminnak enged az RLS). Üres, ha nincs jog. */
+export async function getListingReports(): Promise<ListingReport[]> {
+  if (!supabase) return [];
+  const { data, error } = await supabase
+    .from("listing_reports")
+    .select("*")
+    .order("created_at", { ascending: false });
+  if (error || !data) return [];
+  return data.map((r: any) => ({
+    id: r.id,
+    listingId: r.listing_id,
+    reporterId: r.reporter_id ?? null,
+    reason: r.reason,
+    note: r.note ?? null,
+    status: r.status ?? "open",
+    createdAt: r.created_at
+  }));
+}
+
+/** Jelentés lezárása (admin). */
+export async function resolveListingReport(id: string): Promise<{ ok: boolean }> {
+  if (!supabase) return { ok: true };
+  const { error } = await supabase.from("listing_reports").update({ status: "resolved" }).eq("id", id);
   return { ok: !error };
 }
 

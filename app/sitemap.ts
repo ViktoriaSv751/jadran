@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
 import { supabaseServer, SITE_URL } from "@/lib/supabase-server";
+import { COUNTRY_CODES } from "@/lib/geo";
 
-/** Dinamikus sitemap: statikus oldalak + minden aktív hirdetés. */
+/** Dinamikus sitemap: statikus oldalak + ország-landingek + minden aktív hirdetés. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Csak PUBLIKUS oldalak (a /favorites felhasználó-specifikus és a robots is
   // tiltja — ezért kimarad a sitemapből).
@@ -9,6 +10,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${SITE_URL}${p}`,
     changeFrequency: "daily" as const,
     priority: p === "" ? 1 : 0.7
+  }));
+
+  // Ország-landing oldalak (SEO).
+  const countryRoutes = COUNTRY_CODES.map((c) => ({
+    url: `${SITE_URL}/l/${c}`,
+    changeFrequency: "daily" as const,
+    priority: 0.8
   }));
 
   let listingRoutes: MetadataRoute.Sitemap = [];
@@ -25,5 +33,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
   }
 
-  return [...staticRoutes, ...listingRoutes];
+  return [...staticRoutes, ...countryRoutes, ...listingRoutes];
 }

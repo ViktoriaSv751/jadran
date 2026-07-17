@@ -51,15 +51,17 @@ function clusterIcon(count: number) {
   });
 }
 
-function FitBounds({ listings }: { listings: Listing[] }) {
+function FitBounds({ listings, fitKey }: { listings: Listing[]; fitKey?: string }) {
   const map = useMap();
   useEffect(() => {
     if (listings.length === 0) return;
     const bounds = L.latLngBounds(listings.map((l) => [l.lat, l.lng] as [number, number]));
     map.fitBounds(bounds, { padding: [50, 50], maxZoom: 13 });
-    // Csak az első betöltéskor illesztünk — mozgatás után nem rángatjuk vissza.
+    // Illesztés az első betöltéskor ÉS amikor a `fitKey` változik (pl. ország/város
+    // váltás) — így a térkép az új országra ugrik. Sima panolásnál a fitKey nem
+    // változik, ezért nem rángatjuk vissza a nézetet.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [map]);
+  }, [map, fitKey]);
   return null;
 }
 
@@ -159,10 +161,13 @@ export default function MapView({
   areaSearchable = false,
   onBoundsChange,
   areaSearch = false,
-  onToggleAreaSearch
+  onToggleAreaSearch,
+  fitKey
 }: {
   listings: Listing[];
   lang: Lang;
+  /** Ha változik (pl. ország/város szűrő), a térkép újra az adott területre illeszt. */
+  fitKey?: string;
   activeId?: string | null;
   onActivate?: (id: string | null) => void;
   /** Ha meg van adva, pin-koppintás popup helyett ezt hívja (mobil bottom-sheet). */
@@ -173,7 +178,14 @@ export default function MapView({
   areaSearch?: boolean;
   onToggleAreaSearch?: () => void;
 }) {
-  const center: [number, number] = [42.4, 18.8];
+  // Kezdő-középpont a hirdetések súlypontjából (nincs montenegrói „villanás",
+  // ha épp más országra szűrtünk); a FitBounds ezt azonnal pontosítja.
+  const center: [number, number] = listings.length
+    ? [
+        listings.reduce((s, l) => s + l.lat, 0) / listings.length,
+        listings.reduce((s, l) => s + l.lng, 0) / listings.length
+      ]
+    : [42.4, 18.8];
   const [zoom, setZoom] = useState(9);
 
   const { singles, clusters } = useMemo(() => clusterize(listings, zoom), [listings, zoom]);
@@ -185,7 +197,7 @@ export default function MapView({
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'
           url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
         />
-        <FitBounds listings={listings} />
+        <FitBounds listings={listings} fitKey={fitKey} />
         <ViewportWatcher onZoom={setZoom} areaSearch={areaSearch} onBoundsChange={onBoundsChange} />
 
         {clusters.map((c, i) => (

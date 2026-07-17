@@ -432,6 +432,7 @@ export default function SearchClient() {
               <MapView
                 listings={visible}
                 lang={lang}
+                fitKey={`${filters.country}|${filters.city}`}
                 activeId={activeId}
                 onActivate={setActiveId}
                 onSelect={isMobile ? setSelected : undefined}
@@ -495,6 +496,7 @@ export default function SearchClient() {
                 <MapView
                   listings={visible}
                   lang={lang}
+                  fitKey={`${filters.country}|${filters.city}`}
                   activeId={activeId}
                   onActivate={setActiveId}
                   areaSearchable

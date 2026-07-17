@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { Listing } from "@/lib/types";
-import { useLang, useProfile } from "@/lib/store";
+import { useLang, useProfile, useReviews } from "@/lib/store";
 import { tr, loc } from "@/lib/i18n";
 import Avatar from "@/components/ui/Avatar";
 import Icon from "@/components/ui/Icon";
@@ -10,6 +10,10 @@ import Icon from "@/components/ui/Icon";
 export default function SellerCard({ listing }: { listing: Listing }) {
   const { lang } = useLang();
   const seller = useProfile(listing.ownerId);
+  const reviews = useReviews(listing.ownerId);
+  const reviewAvg = reviews.length
+    ? Math.round((reviews.reduce((s, r) => s + r.rating, 0) / reviews.length) * 10) / 10
+    : 0;
   if (!seller) return null;
 
   const isAgency = seller.role === "agency";
@@ -42,6 +46,13 @@ export default function SellerCard({ listing }: { listing: Listing }) {
               {isAgency ? tr("role_agency", lang) : tr("role_private", lang)}
             </span>
             {seller.location && <span className="text-sm text-ink-500">· {seller.location}</span>}
+            {reviews.length > 0 && (
+              <Link href={`/u/${seller.id}`} className="inline-flex items-center gap-1 text-sm hover:underline">
+                <Icon name="star" size={14} className="text-amber-400" />
+                <span className="font-bold text-ink-900">{reviewAvg.toFixed(1)}</span>
+                <span className="text-ink-400">({reviews.length})</span>
+              </Link>
+            )}
           </div>
           {seller.bio && <p className="mt-2 text-sm leading-relaxed text-ink-600">{seller.bio}</p>}
           <dl className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-sm text-ink-600">
