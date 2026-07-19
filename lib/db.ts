@@ -22,6 +22,7 @@ import type {
   UserRole
 } from "./types";
 import { seedListings, seedProfiles } from "./data";
+import { GOLDEN_VISA_COUNTRIES } from "./geo";
 import { supabase, hasSupabase } from "./supabase";
 import {
   listingToRow,
@@ -312,6 +313,132 @@ export function getListings(): Listing[] {
 export function getListingById(id: string): Listing | undefined {
   ensureHydrated();
   return cache.listings.find((l) => l.id === id);
+}
+
+/* ------------------------- SZERVEROLDALI keresés ------------------------- *
+ * A kliens NEM tükrözi a teljes táblát: a szűrés/rendezés/lapozás a Postgres-ben
+ * fut (indexelten), és oldalanként 24–50 sor jön vissza. Ha nincs backend vagy a
+ * lekérdezés hibázik, `serverSide:false`-szal térünk vissza — a hívó ilyenkor a
+ * korábbi kliens-oldali szűrésre esik vissza (demo mód / zéró regresszió). */
+
+export interface ListingQuery {
+  q?: string; mode?: string; country?: string; city?: string; type?: string;
+  priceMin?: string; priceMax?: string; roomsMin?: string; roomsMax?: string;
+  areaMin?: string; areaMax?: string; floorMin?: string; floorMax?: string;
+  view?: string; condition?: string; maxSeaDist?: string; energyClass?: string;
+  verifiedOnly?: string; verifLevel?: string; furnished?: string; amenities?: string;
+  minYear?: string; maxYear?: string; plotMin?: string; heatingType?: string; maxCommonCost?: string;
+  petsOnly?: string; utilitiesIncluded?: string; minTerm?: string; maxDeposit?: string;
+  goldenVisa?: string; sellerType?: string; sort?: string;
+  bounds?: { north: number; south: number; east: number; west: number } | null;
+}
+
+const VERIF_RANK = ["none", "basic", "deed", "full"];
+
+export async function searchListings(
+  q: ListingQuery,
+  page = 0,
+  pageSize = 24
+): Promise<{ rows: Listing[]; total: number; serverSide: boolean }> {
+  if (!supabase) return { rows: [], total: 0, serverSide: false };
+  const num = (v?: string): number | undefined => {
+    if (v == null || v.trim() === "") return undefined;
+    const n = Number(v);
+    return Number.isFinite(n) ? n : undefined;
+  };
+  try {
+    let qb = supabase.from("listings").select("*", { count: "exact" }).eq("status", "active");
+
+    if (q.mode) qb = qb.eq("mode", q.mode);
+    if (q.country) qb = qb.eq("country", q.country);
+    if (q.city) qb = qb.eq("city", q.city);
+    if (q.type) qb = qb.eq("type", q.type);
+    if (q.view) qb = qb.eq("view", q.view);
+    if (q.condition) qb = qb.eq("condition", q.condition);
+    if (q.energyClass) qb = qb.eq("energy", q.energyClass);
+    if (q.heatingType) qb = qb.eq("heating_type", q.heatingType);
+
+    const range = (col: string, min?: string, max?: string) => {
+      const a = num(min), b = num(max);
+      if (a != null) qb = qb.gte(col, a);
+      if (b != null) qb = qb.lte(col, b);
+    };
+    range("price", q.priceMin, q.priceMax);
+    range("area", q.areaMin, q.areaMax);
+    range("rooms", q.roomsMin, q.roomsMax);
+    range("floor", q.floorMin, q.floorMax);
+    range("year", q.minYear, q.maxYear);
+
+    const lte = (col: string, v?: string) => { const n = num(v); if (n != null) qb = qb.lte(col, n); };
+    const gte = (col: string, v?: string) => { const n = num(v); if (n != null) qb = qb.gte(col, n); };
+    lte("distance_to_sea", q.maxSeaDist);
+    lte("monthly_common_cost", q.maxCommonCost);
+    lte("deposit", q.maxDeposit);
+    lte("min_term_months", q.minTerm);
+    gte("plot_area", q.plotMin);
+
+    if (q.furnished === "1") qb = qb.eq("furnished", true);
+    if (q.petsOnly === "1") qb = qb.eq("pets_allowed", true);
+    if (q.utilitiesIncluded === "1") qb = qb.eq("utilities_included", true);
+    if (q.verifiedOnly === "1") qb = qb.neq("verification", "none");
+    if (q.verifLevel) {
+      const i = VERIF_RANK.indexOf(q.verifLevel);
+      if (i > 0) qb = qb.in("verification", VERIF_RANK.slice(i));
+    }
+    if (q.amenities) {
+      const arr = q.amenities.split(",").filter(Boolean);
+      if (arr.length) qb = qb.contains("amenities", arr);
+    }
+    if (q.bounds) {
+      const b = q.bounds;
+      qb = qb.gte("lat", b.south).lte("lat", b.north).gte("lng", b.west).lte("lng", b.east);
+    }
+    // Hirdető típusa: a profilok kicsi, teljesen cache-elt halmaz → id-listával szűrünk.
+    if (q.sellerType) {
+      const ids = cache.profiles.filter((p) => p.role === q.sellerType).map((p) => p.id);
+      qb = qb.in("owner_id", ids.length ? ids : ["__none__"]);
+    }
+    // Golden Visa: országonként eltérő küszöb → (ország ÉS ár) párok VAGY-kapcsolata.
+    if (q.goldenVisa === "1") {
+      const clauses = GOLDEN_VISA_COUNTRIES.filter((c) => c.goldenVisa).map(
+        (c) => `and(country.eq.${c.code},price.gte.${c.goldenVisa!.minEur})`
+      );
+      qb = clauses.length ? qb.or(clauses.join(",")) : qb.eq("id", "__none__");
+    }
+    // Szabadszavas keresés: város/kerület/iroda + a hirdetés-cím mind a 4 nyelven.
+    const text = (q.q ?? "").trim().replace(/[,()*]/g, " ").trim();
+    if (text) {
+      qb = qb.or(
+        [
+          `city.ilike.*${text}*`,
+          `district.ilike.*${text}*`,
+          `agency.ilike.*${text}*`,
+          `title->>hu.ilike.*${text}*`,
+          `title->>en.ilike.*${text}*`,
+          `title->>me.ilike.*${text}*`,
+          `title->>ru.ilike.*${text}*`
+        ].join(",")
+      );
+    }
+
+    switch (q.sort) {
+      case "price_asc": qb = qb.order("price", { ascending: true }); break;
+      case "price_desc": qb = qb.order("price", { ascending: false }); break;
+      case "ppm2": qb = qb.order("price_per_m2", { ascending: true, nullsFirst: false }); break;
+      default: qb = qb.order("created_at", { ascending: false });
+    }
+
+    const from = page * pageSize;
+    const { data, count, error } = await qb.range(from, from + pageSize - 1);
+    if (error) {
+      console.error("searchListings", error.message);
+      return { rows: [], total: 0, serverSide: false };
+    }
+    return { rows: (data ?? []).map(rowToListing), total: count ?? 0, serverSide: true };
+  } catch (e) {
+    console.error("searchListings", e);
+    return { rows: [], total: 0, serverSide: false };
+  }
 }
 
 export function getListingsByOwner(ownerId: string): Listing[] {

@@ -7,6 +7,8 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { Listing, Lang } from "@/lib/types";
 import { formatPrice } from "@/lib/format";
+import { convertFromEur, type CurrencyCode } from "@/lib/currency";
+import { useCurrency } from "@/lib/store";
 import { tr, loc } from "@/lib/i18n";
 import Icon from "./ui/Icon";
 
@@ -65,10 +67,14 @@ function FitBounds({ listings, fitKey }: { listings: Listing[]; fitKey?: string 
   return null;
 }
 
-function priceShort(price: number): string {
-  if (price >= 1000000) return `€${(price / 1000000).toFixed(1)}M`;
-  if (price >= 1000) return `€${Math.round(price / 1000)}k`;
-  return `€${Math.round(price)}`; // bérleti díjak (< 1000) ne kerekedjenek „€0k/€1k"-ra
+/** Rövid ár a térkép-pinre a VÁLASZTOTT pénznemben (EUR-alapból átváltva).
+ *  A pin kicsi, ezért tömör alak: 1,2M / 340k / 640. */
+function pinPrice(eur: number, currency: CurrencyCode, rate?: number): string {
+  const v = convertFromEur(eur, currency, rate);
+  const short =
+    v >= 1_000_000 ? `${(v / 1_000_000).toFixed(1)}M` : v >= 1000 ? `${Math.round(v / 1000)}k` : `${Math.round(v)}`;
+  const sym = currency === "EUR" ? "€" : currency === "USD" ? "$" : "";
+  return sym ? `${sym}${short}` : `${short} ${currency}`;
 }
 
 /** Zoom + mozgás követése: klaszter-számításhoz és terület-kereséshez. */
@@ -189,6 +195,8 @@ export default function MapView({
       ]
     : [42.4, 18.8];
   const [zoom, setZoom] = useState(9);
+  // A pin-árak a felhasználó által választott pénznemben jelenjenek meg.
+  const { currency, rates } = useCurrency();
 
   const { singles, clusters } = useMemo(() => clusterize(listings, zoom), [listings, zoom]);
 
@@ -221,7 +229,7 @@ export default function MapView({
           <Marker
             key={l.id}
             position={[l.lat, l.lng]}
-            icon={priceIcon(priceShort(l.price), l.id === activeId)}
+            icon={priceIcon(pinPrice(l.price, currency, rates[currency]), l.id === activeId)}
             zIndexOffset={l.id === activeId ? 1000 : 0}
             eventHandlers={{
               mouseover: () => onActivate?.(l.id),

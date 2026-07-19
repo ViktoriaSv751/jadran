@@ -19,7 +19,7 @@ import FilterChips from "./FilterChips";
 import CategoryTabs from "./search/CategoryTabs";
 import SearchModal from "./home/SearchModal";
 import ListingCard from "./ListingCard";
-import Pagination, { paginate } from "./ui/Pagination";
+import Pagination, { paginate, PAGE_SIZE } from "./ui/Pagination";
 import Icon from "./ui/Icon";
 import { CardSkeletonGrid } from "./Skeleton";
 import EmptyState from "./EmptyState";
@@ -200,7 +200,41 @@ export default function SearchClient() {
 
   // Lapozás: max 25 hirdetés / oldal a listanézetben. Szűrő-váltáskor 1. oldal.
   useEffect(() => setPage(0), [filters, areaSearch, areaBounds]);
-  const paged = paginate(visible, page);
+
+  /* ---------------- SZERVEROLDALI szűrés + lapozás ----------------
+   * A szűrést/rendezést/lapozást a Postgres végzi (indexelten), oldalanként
+   * PAGE_SIZE sorral — a kliens nem tartja a teljes táblát. Ha nincs backend
+   * vagy a lekérdezés hibázik (`serverSide:false`), automatikusan a korábbi
+   * kliens-oldali szűrésre esünk vissza, így semmi nem törik el. */
+  const [server, setServer] = useState<{ rows: Listing[]; total: number } | null>(null);
+
+  useEffect(() => {
+    if (loading) return;
+    let alive = true;
+    const bounds = areaSearch && areaBounds ? areaBounds : null;
+    void db.searchListings({ ...filters, bounds }, page, PAGE_SIZE).then((r) => {
+      if (!alive) return;
+      setServer(r.serverSide ? { rows: r.rows, total: r.total } : null);
+    });
+    return () => {
+      alive = false;
+    };
+  }, [filters, page, areaSearch, areaBounds, loading]);
+
+  // A lapozó-objektum ALAKJA azonos szerver- és kliens-módban, így a lenti
+  // megjelenítés változatlan marad.
+  const paged = server
+    ? {
+        slice: server.rows,
+        pageCount: Math.max(1, Math.ceil(server.total / PAGE_SIZE)),
+        page,
+        total: server.total
+      }
+    : paginate(visible, page);
+  /** Összes találat (szerver-számláló, ha van). */
+  const totalCount = server ? server.total : visible.length;
+  /** A térképre kerülő hirdetések (szerver-módban az aktuális oldal). */
+  const mapListings = server ? server.rows : visible;
 
   const suggestions = useMemo(
     () => Array.from(new Set(items.flatMap((l) => [l.city, l.district]))).sort(),
@@ -440,13 +474,13 @@ export default function SearchClient() {
                   {tr("map_area_chip", lang)} <Icon name="close" size={11} strokeWidth={2.6} />
                 </button>
               )}
-              <span className="font-bold text-ink-900">{visible.length}</span> {tr("results", lang)}
+              <span className="font-bold text-ink-900">{totalCount}</span> {tr("results", lang)}
             </span>
           </div>
 
           {loading ? (
             <CardSkeletonGrid count={6} />
-          ) : visible.length === 0 ? (
+          ) : totalCount === 0 ? (
             // Ha a terület-keresés (rajzolt terület) szűrt ki mindent, más üzenet,
             // mint amikor a szűrőkre egyáltalán nincs találat.
             areaBounds && results.length > 0 ? (
@@ -457,7 +491,7 @@ export default function SearchClient() {
           ) : view === "map" ? (
             <div className="h-[calc(100vh-13rem)] overflow-hidden rounded-2xl border border-ink-100 shadow-card sm:h-[calc(100vh-9rem)]">
               <MapView
-                listings={visible}
+                listings={mapListings}
                 lang={lang}
                 fitKey={`${filters.country}|${filters.city}`}
                 activeId={activeId}
@@ -521,7 +555,7 @@ export default function SearchClient() {
                   <Icon name="close" size={14} strokeWidth={2.6} /> {tr("map", lang)}
                 </button>
                 <MapView
-                  listings={visible}
+                  listings={mapListings}
                   lang={lang}
                   fitKey={`${filters.country}|${filters.city}`}
                   activeId={activeId}
