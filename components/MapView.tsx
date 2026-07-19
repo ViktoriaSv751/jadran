@@ -66,7 +66,9 @@ function FitBounds({ listings, fitKey }: { listings: Listing[]; fitKey?: string 
 }
 
 function priceShort(price: number): string {
-  return price >= 1000000 ? `€${(price / 1000000).toFixed(1)}M` : `€${Math.round(price / 1000)}k`;
+  if (price >= 1000000) return `€${(price / 1000000).toFixed(1)}M`;
+  if (price >= 1000) return `€${Math.round(price / 1000)}k`;
+  return `€${Math.round(price)}`; // bérleti díjak (< 1000) ne kerekedjenek „€0k/€1k"-ra
 }
 
 /** Zoom + mozgás követése: klaszter-számításhoz és terület-kereséshez. */
@@ -190,6 +192,17 @@ export default function MapView({
 
   const { singles, clusters } = useMemo(() => clusterize(listings, zoom), [listings, zoom]);
 
+  // Marker-plafon: sok találatnál a Leaflet ezernyi DOM-ikonja lefagyasztaná a fő
+  // szálat. A klaszterezés ezt már nagyrészt kezeli; ez egy biztonsági korlát a
+  // szimpla markerekre (az aktív pin mindig bekerül).
+  const MAX_MARKERS = 350;
+  const cappedSingles = useMemo(() => {
+    if (singles.length <= MAX_MARKERS) return singles;
+    const head = singles.slice(0, MAX_MARKERS);
+    const active = singles.find((l) => l.id === activeId);
+    return active && !head.some((l) => l.id === active.id) ? [...head.slice(0, MAX_MARKERS - 1), active] : head;
+  }, [singles, activeId]);
+
   return (
     <div className="relative h-full w-full">
       <MapContainer center={center} zoom={9} scrollWheelZoom className="h-full w-full">
@@ -204,7 +217,7 @@ export default function MapView({
           <ClusterMarker key={`c-${i}-${c.items.length}`} lat={c.lat} lng={c.lng} count={c.items.length} />
         ))}
 
-        {singles.map((l) => (
+        {cappedSingles.map((l) => (
           <Marker
             key={l.id}
             position={[l.lat, l.lng]}

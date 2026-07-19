@@ -120,6 +120,9 @@ export default function SearchClient() {
   const { user } = useAuth();
   const params = useSearchParams();
   const [filters, setFilters] = useState<FilterState>(emptyFilters);
+  // A szabadszavas kereső AZONNALI mezőértéke; a tényleges `filters.q`-t (ami az
+  // O(n) applyFilters-t és a URL-írást hajtja) 250 ms-mal debounce-oljuk.
+  const [qInput, setQInput] = useState("");
   const [view, setView] = useState<"split" | "list" | "map">("split");
   const [activeId, setActiveId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -165,6 +168,20 @@ export default function SearchClient() {
     const qs = filtersToQuery(filters);
     window.history.replaceState(null, "", `/search${qs}`);
   }, [filters, loading]);
+
+  // A gépelt szöveget 250 ms-mal késleltetve engedjük a `filters.q`-ba.
+  useEffect(() => {
+    const t = setTimeout(() => {
+      setFilters((f) => (f.q === qInput ? f : { ...f, q: qInput }));
+    }, 250);
+    return () => clearTimeout(t);
+  }, [qInput]);
+
+  // Ha a `filters.q` KÍVÜLRŐL változik (URL-seed, AI-keresés, „mind törlése"),
+  // a mező is kövesse.
+  useEffect(() => {
+    setQInput((prev) => (prev === filters.q ? prev : filters.q));
+  }, [filters.q]);
 
   const roleOf = useMemo(() => new Map(profiles.map((p) => [p.id, p.role])), [profiles]);
   const results = useMemo(() => applyFilters(items, filters, roleOf), [items, filters, roleOf]);
@@ -283,7 +300,15 @@ export default function SearchClient() {
                   // Mód-váltáskor a MÁSIK mód rejtett szűrőit is töröljük, hogy ne
                   // maradjanak láthatatlanul aktívak (pl. „csak verifikált" eladásról
                   // bérlésre váltva).
-                  update({ ...filters, mode: m.v, verifiedOnly: "", furnished: "", petsOnly: "", minTerm: "" })
+                  update({
+                    ...filters,
+                    mode: m.v,
+                    // A kimenő mód REJTETT szűrőit is töröljük, hogy ne szűkítsék
+                    // némán a találatokat (se sale-only, se rent-only ne ragadjon).
+                    verifiedOnly: "", furnished: "", petsOnly: "", minTerm: "",
+                    utilitiesIncluded: "", maxDeposit: "",
+                    minYear: "", maxYear: "", plotMin: "", heatingType: "", maxCommonCost: ""
+                  })
                 }
                 className={`rounded-full px-4 py-1.5 text-sm font-semibold transition sm:px-5 ${
                   filters.mode === m.v ? "bg-ink-900 text-white" : "text-ink-600 hover:bg-ink-50"
@@ -336,8 +361,8 @@ export default function SearchClient() {
           <div className="relative flex-1">
             <input
               list="place-suggestions"
-              value={filters.q}
-              onChange={(e) => update({ ...filters, q: e.target.value })}
+              value={qInput}
+              onChange={(e) => setQInput(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === "Enter") void runAiSearch();
               }}

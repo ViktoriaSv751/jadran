@@ -12,9 +12,17 @@ import type {
   SavedSearch
 } from "./types";
 
-const num = (v: unknown): number => (v == null ? 0 : Number(v));
-const numOrNull = (v: unknown): number | undefined =>
-  v == null ? undefined : Number(v);
+// Nem véges érték (null, NaN, ±Infinity) SOHA ne szivárogjon tovább: a NaN ár
+// eltörné a rendezést és a formázást, a null koordináta a térképen 0,0-ra esne.
+const num = (v: unknown): number => {
+  const n = v == null ? 0 : Number(v);
+  return Number.isFinite(n) ? n : 0;
+};
+const numOrNull = (v: unknown): number | undefined => {
+  if (v == null) return undefined;
+  const n = Number(v);
+  return Number.isFinite(n) ? n : undefined;
+};
 
 /* ----------------------------- listings ----------------------------- */
 

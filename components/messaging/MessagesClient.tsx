@@ -69,23 +69,26 @@ export default function MessagesClient() {
     if (isDesktop && !activeId && conversations.length > 0) setActiveId(conversations[0].id);
   }, [conversations, activeId]);
 
-  // Frissen tartjuk a beszélgetéseket/üzeneteket: betöltéskor + 8 mp-enként,
-  // valamint amikor a lap visszakerül fókuszba (session közbeni új üzenetek).
+  // Frissen tartjuk a beszélgetéseket/üzeneteket: elsődlegesen REALTIME (delta)
+  // feliratkozással; a polling már csak ritka biztonsági háló (45 mp), nem a
+  // korábbi 8 mp-es folyamatos teljes-újratöltés.
   useEffect(() => {
     if (!user) return;
     void db.refreshConversations();
-    // Polling CSAK amíg a lap látható — háttérben (másik tab) felesleges a
-    // 8 mp-es teljes újratöltés. Fókuszba/láthatóba kerüléskor azonnal frissítünk.
-    const tick = () => {
+    const refresh = () => {
       if (typeof document === "undefined" || document.visibilityState === "visible") {
         void db.refreshConversations();
       }
     };
-    const iv = setInterval(tick, 8000);
+    // 1) Realtime: csak akkor frissít, amikor ténylegesen érkezik/változik valami.
+    const unsub = db.subscribeConversationRealtime(refresh);
+    // 2) Fallback poll (ha egy realtime esemény kimaradna) — ritkán.
+    const iv = setInterval(refresh, 45000);
     const onVisible = () => document.visibilityState === "visible" && db.refreshConversations();
     window.addEventListener("focus", onVisible);
     document.addEventListener("visibilitychange", onVisible);
     return () => {
+      unsub();
       clearInterval(iv);
       window.removeEventListener("focus", onVisible);
       document.removeEventListener("visibilitychange", onVisible);
@@ -392,7 +395,18 @@ function ChatView({
                   endGroup={!grouped}
                 />
               </div>
-              {mine && i === lastMineIdx && (
+              {mine && (m.failed || m.pending) && (
+                <div className="mb-1 mr-1 mt-0.5 text-right text-[10px] font-medium">
+                  {m.failed ? (
+                    <button onClick={() => db.retryMessage(m.id)} className="text-rose-500 hover:underline">
+                      {tr("msg_failed_retry", lang)}
+                    </button>
+                  ) : (
+                    <span className="text-ink-400">{tr("msg_sending", lang)}</span>
+                  )}
+                </div>
+              )}
+              {mine && !m.failed && !m.pending && i === lastMineIdx && (
                 <div className="mb-1 mr-1 mt-0.5 text-right text-[10px] font-medium text-ink-400">
                   {other && m.readBy.includes(other.id) ? tr("msg_read", lang) : tr("msg_delivered", lang)}
                 </div>

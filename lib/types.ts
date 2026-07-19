@@ -174,6 +174,10 @@ export interface Message {
   text: string;
   createdAt: string;
   readBy: string[]; // user ids who have read it
+  /** Kliens-oldali kézbesítési státusz (nem perzisztált). A UI ez alapján mutat
+   *  „küldés…/nem sikerült · újra" jelzést, és sikerig nem ír „kézbesítve"-t. */
+  pending?: boolean;
+  failed?: boolean;
 }
 
 export interface Review {

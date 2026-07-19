@@ -67,11 +67,11 @@ export default function Gallery({ images, alt }: { images: string[]; alt: string
               {active + 1} / {images.length}
             </div>
             <div className="pointer-events-none absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5">
-              {images.map((_, i) => (
+              {images.slice(0, 8).map((_, i) => (
                 <span
                   key={i}
                   className={`h-1.5 rounded-full transition-all ${
-                    i === active ? "w-4 bg-white" : "w-1.5 bg-white/60"
+                    i === Math.min(active, 7) ? "w-4 bg-white" : "w-1.5 bg-white/60"
                   }`}
                 />
               ))}

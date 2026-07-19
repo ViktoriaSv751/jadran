@@ -13,7 +13,9 @@ import { isFeatured } from "@/lib/mappers";
 import Photo from "./Photo";
 import Icon from "./ui/Icon";
 
-const TODAY = new Date("2026-05-31");
+// A „friss hirdetés" kort a MAI naphoz mérjük (a befagyasztott dátum idővel
+// vagy mindent, vagy semmit tett volna „új"-vá).
+const daysSince = (iso: string) => (Date.now() - +new Date(iso)) / 86400000;
 
 export default function ListingCard({
   listing,
@@ -38,7 +40,7 @@ export default function ListingCard({
   const isFav = favorites.has(listing.id);
   const inCompare = compare.has(listing.id);
 
-  const isNew = (TODAY.getTime() - new Date(listing.createdAt).getTime()) / 86400000 <= 7;
+  const isNew = daysSince(listing.createdAt) <= 7;
   const ph = listing.priceHistory;
   const priceDropped = ph.length > 1 && ph[ph.length - 1].price < ph[0].price;
 
@@ -156,10 +158,10 @@ export default function ListingCard({
               <Icon name="chevronRight" size={18} strokeWidth={2.2} />
             </button>
             <div className="pointer-events-none absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-1">
-              {listing.images.map((_, i) => (
+              {listing.images.slice(0, 8).map((_, i) => (
                 <span
                   key={i}
-                  className={`h-1.5 rounded-full transition-all ${i === idx ? "w-4 bg-white" : "w-1.5 bg-white/60"}`}
+                  className={`h-1.5 rounded-full transition-all ${i === Math.min(idx, 7) ? "w-4 bg-white" : "w-1.5 bg-white/60"}`}
                 />
               ))}
             </div>

@@ -100,7 +100,14 @@ export async function fetchLiveRates(): Promise<Partial<Record<CurrencyCode, num
 
 function pickRates(all: Record<string, number>): Partial<Record<CurrencyCode, number>> {
   const out: Partial<Record<CurrencyCode, number>> = {};
-  for (const c of CURRENCIES) if (typeof all[c.code] === "number") out[c.code] = all[c.code];
+  for (const c of CURRENCIES) {
+    const r = all[c.code];
+    // Csak ÉSSZERŰ árfolyamot fogadunk el: pozitív, véges, és a statikus tartalék
+    // 0,3×–3× sávjában — így egy hibás/elavult feed nem torzítja az összes árat.
+    if (typeof r === "number" && Number.isFinite(r) && r > 0 && r >= c.rate * 0.3 && r <= c.rate * 3) {
+      out[c.code] = r;
+    }
+  }
   return out;
 }
 

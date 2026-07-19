@@ -168,7 +168,22 @@ function useLive<T>(
   ref.current = compute;
   useEffect(() => {
     const update = () => {
-      setValue(ref.current());
+      setValue((prev) => {
+        const next = ref.current();
+        // Ha a számolt érték TARTALMILAG azonos (pl. a getterek új tömb-referenciát
+        // adnak, de ugyanazokat az elemeket), a régi referenciát adjuk vissza — így
+        // a React kihagyja a re-rendert. A 8 mp-es poll globális emitje így nem
+        // rendereli újra az összes feliratkozott komponenst feleslegesen.
+        if (
+          Array.isArray(prev) &&
+          Array.isArray(next) &&
+          prev.length === next.length &&
+          prev.every((v, i) => Object.is(v, next[i]))
+        ) {
+          return prev as T;
+        }
+        return Object.is(prev, next) ? prev : next;
+      });
       setReady(true);
     };
     update();

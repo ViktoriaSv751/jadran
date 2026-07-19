@@ -89,7 +89,11 @@ function readLS<T>(key: string, fallback: T): T {
 }
 function writeLS<T>(key: string, value: T): void {
   if (!isBrowser) return;
-  localStorage.setItem(key, JSON.stringify(value));
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch {
+    /* Safari privát mód / tele tár — a helyi állapotot memóriában így is frissítjük. */
+  }
   emit();
 }
 
@@ -102,6 +106,21 @@ export function uid(prefix = "id"): string {
 const today = () => new Date().toISOString().slice(0, 10);
 const nowIso = () => new Date().toISOString();
 
+/* Memória-védelem: a kliens SOSE tükrözze a teljes táblát. A legfrissebb N sort
+ * húzzuk le; a valódi, tetszőleges szűrésű keresés szerveroldali lapozással jön
+ * (lásd a QA-jelentést). Ezek a korlátok kis/közepes méretnél teljes lefedést
+ * adnak, nagy méretnél pedig megakadályozzák a tab összeomlását. */
+const LISTINGS_LIMIT = 2000;
+const MESSAGES_LIMIT = 2000;
+
+/** DB-ből jött friss lista + a cache-ben lévő, DB-ben MÉG NEM szereplő (optimista)
+ *  elemek megtartása — így a hidratálás nem törli le a frissen létrehozott sort. */
+function mergeById<T extends { id: string }>(fromDb: T[], prev: T[]): T[] {
+  const dbIds = new Set(fromDb.map((x) => x.id));
+  const pending = prev.filter((x) => !dbIds.has(x.id));
+  return pending.length ? [...pending, ...fromDb] : fromDb;
+}
+
 /* --------------------------- hydration --------------------------- */
 
 let hydrateStarted = false;
@@ -110,11 +129,11 @@ let hydrateStarted = false;
 async function hydratePublic(): Promise<void> {
   if (!supabase) return;
   const [ls, ps, rs] = await Promise.all([
-    supabase.from("listings").select("*").order("created_at", { ascending: false }),
-    supabase.from("profiles").select("*"),
-    supabase.from("reviews").select("*")
+    supabase.from("listings").select("*").order("created_at", { ascending: false }).limit(LISTINGS_LIMIT),
+    supabase.from("profiles").select("*").limit(5000),
+    supabase.from("reviews").select("*").limit(5000)
   ]);
-  if (ls.data) cache.listings = ls.data.map(rowToListing);
+  if (ls.data) cache.listings = mergeById(ls.data.map(rowToListing), cache.listings);
   if (ps.data) cache.profiles = ps.data.map(rowToProfile);
   if (rs.data) cache.reviews = rs.data.map(rowToReview);
   cache.hydrated = true;
@@ -137,8 +156,13 @@ async function hydrateUser(): Promise<void> {
     cache.conversations = cs.data.map(rowToConversation);
     const ids = cache.conversations.map((c) => c.id);
     if (ids.length) {
-      const ms = await supabase.from("messages").select("*").in("conversation_id", ids);
-      if (ms.data) cache.messages = ms.data.map(rowToMessage);
+      const ms = await supabase
+        .from("messages")
+        .select("*")
+        .in("conversation_id", ids)
+        .order("created_at", { ascending: false })
+        .limit(MESSAGES_LIMIT);
+      if (ms.data) cache.messages = mergeById(ms.data.map(rowToMessage), cache.messages);
     } else {
       cache.messages = [];
     }
@@ -146,8 +170,8 @@ async function hydrateUser(): Promise<void> {
   if (ss.data) cache.savedSearches = ss.data.map(rowToSavedSearch);
   await hydrateFavorites();
   // A bejelentkezett tulaj a saját (akár szüneteltetett) hirdetéseit is látja.
-  const ls = await supabase.from("listings").select("*").order("created_at", { ascending: false });
-  if (ls.data) cache.listings = ls.data.map(rowToListing);
+  const ls = await supabase.from("listings").select("*").order("created_at", { ascending: false }).limit(LISTINGS_LIMIT);
+  if (ls.data) cache.listings = mergeById(ls.data.map(rowToListing), cache.listings);
   emit();
 }
 
@@ -173,7 +197,12 @@ export async function refreshConversations(): Promise<void> {
     emit();
     return;
   }
-  const ms = await supabase.from("messages").select("*").in("conversation_id", ids);
+  const ms = await supabase
+    .from("messages")
+    .select("*")
+    .in("conversation_id", ids)
+    .order("created_at", { ascending: false })
+    .limit(MESSAGES_LIMIT);
   if (ms.data) {
     const fromDb = ms.data.map(rowToMessage);
     const dbIds = new Set(fromDb.map((m) => m.id));
@@ -187,11 +216,34 @@ export async function refreshConversations(): Promise<void> {
       const readBy = Array.from(new Set([...m.readBy, ...prev.readBy]));
       return readBy.length === m.readBy.length ? m : { ...m, readBy };
     });
-    // A cache-ben lévő, DB-ben még nem szereplő (épp küldött) üzeneteket megtartjuk.
-    const pendingLocal = cache.messages.filter((m) => !dbIds.has(m.id) && ids.includes(m.conversationId));
+    // A cache-ben lévő, DB-ben még nem szereplő (épp küldött) üzeneteket megtartjuk —
+    // AKKOR IS, ha a beszélgetésük még nincs a szerveren (frissen létrehozott szál,
+    // a `convInsertPromises` még függőben): így a kezdő érdeklődő-üzenet nem tűnik el.
+    const pendingLocal = cache.messages.filter(
+      (m) => !dbIds.has(m.id) && (ids.includes(m.conversationId) || convInsertPromises.has(m.conversationId))
+    );
     cache.messages = [...merged, ...pendingLocal];
   }
   emit();
+}
+
+/**
+ * Realtime feliratkozás a saját üzenetekre/beszélgetésekre. Delta-esemény
+ * érkezésekor hívja `onChange`-t (jellemzően `refreshConversations`). Így a 8mp-es
+ * folyamatos pollingot lecseréljük eseményvezérelt frissítésre (az RLS garantálja,
+ * hogy csak a saját sorokat kapjuk). Visszaad egy leiratkozó függvényt.
+ */
+export function subscribeConversationRealtime(onChange: () => void): () => void {
+  if (!supabase || !cache.currentUser) return () => {};
+  const sb = supabase;
+  const ch = sb
+    .channel("conv-msg-rt")
+    .on("postgres_changes", { event: "*", schema: "public", table: "messages" }, () => onChange())
+    .on("postgres_changes", { event: "*", schema: "public", table: "conversations" }, () => onChange())
+    .subscribe();
+  return () => {
+    void sb.removeChannel(ch);
+  };
 }
 
 async function loadSessionUser(): Promise<void> {
@@ -258,6 +310,7 @@ export function getListings(): Listing[] {
 }
 
 export function getListingById(id: string): Listing | undefined {
+  ensureHydrated();
   return cache.listings.find((l) => l.id === id);
 }
 
@@ -381,6 +434,7 @@ export async function createListing(
 }
 
 export function updateListing(id: string, patch: Partial<Listing>): void {
+  const prev = cache.listings.find((l) => l.id === id) ?? null; // rollbackhez
   let rowPatch: Partial<Listing> | null = null;
   cache.listings = cache.listings.map((l) => {
     if (l.id !== id) return l;
@@ -397,11 +451,20 @@ export function updateListing(id: string, patch: Partial<Listing>): void {
       .from("listings")
       .update(listingToRow(rowPatch))
       .eq("id", id)
-      .then(({ error }) => error && console.error("updateListing", error.message));
+      .then(({ error }) => {
+        if (error) {
+          console.error("updateListing", error.message);
+          if (prev) {
+            cache.listings = cache.listings.map((l) => (l.id === id ? prev : l)); // visszagörgetés
+            emit();
+          }
+        }
+      });
   }
 }
 
 export function deleteListing(id: string): void {
+  const prev = cache.listings; // rollbackhez (sorrend megőrzésével)
   cache.listings = cache.listings.filter((l) => l.id !== id);
   emit();
   if (supabase) {
@@ -409,7 +472,13 @@ export function deleteListing(id: string): void {
       .from("listings")
       .delete()
       .eq("id", id)
-      .then(({ error }) => error && console.error("deleteListing", error.message));
+      .then(({ error }) => {
+        if (error) {
+          console.error("deleteListing", error.message);
+          cache.listings = prev; // a törlés nem ment át → visszaállítjuk
+          emit();
+        }
+      });
   }
 }
 
@@ -509,6 +578,7 @@ export function getProfiles(): Profile[] {
 }
 
 export function getProfile(id: string): Profile | undefined {
+  ensureHydrated();
   return cache.profiles.find((p) => p.id === id);
 }
 
@@ -664,11 +734,33 @@ export async function startSubscription(
   return { status: "no_key" };
 }
 
-/** Fiók + minden hozzá tartozó adat VÉGLEGES törlése (GDPR) az edge functionön át. */
+/** Fiók + hozzá tartozó adatok törlése (GDPR). Ha van szerveroldali edge function
+ *  (auth-user is törlődik), azt használjuk; ha nincs, KLIENS-OLDALI best-effort
+ *  törlést végzünk (a saját sorok RLS-en át törölhetők) és kiléptetünk — így a
+ *  művelet többé nem „bukik némán", a személyes adat/tartalom eltűnik. */
 export async function deleteAccount(): Promise<{ ok: boolean }> {
   if (!supabase) return { ok: false };
-  const { data, error } = await supabase.functions.invoke("delete-account", { body: {} });
-  if (error || !data?.ok) return { ok: false };
+  const sb = supabase;
+  // 1) Elsődlegesen a szerveroldali (teljes, auth-user-t is törlő) függvény.
+  try {
+    const { data, error } = await sb.functions.invoke("delete-account", { body: {} });
+    if (!error && data?.ok) {
+      await logout();
+      return { ok: true };
+    }
+  } catch {
+    /* nincs deployolva / hálózati hiba → kliens-oldali fallback lentebb */
+  }
+  // 2) Fallback: a saját tartalom törlése (RLS engedi a saját sorokat).
+  const pid = cache.currentUser?.id;
+  if (pid) {
+    await Promise.allSettled([
+      sb.from("favorites").delete().eq("user_id", pid),
+      sb.from("saved_searches").delete().eq("user_id", pid),
+      sb.from("reviews").delete().eq("author_id", pid),
+      sb.from("listings").delete().eq("owner_id", pid)
+    ]);
+  }
   await logout();
   return { ok: true };
 }
@@ -871,9 +963,25 @@ export function getMessages(): Message[] {
   return cache.messages;
 }
 
+/* Üzenet-index beszélgetésenként — O(beszélgetés × üzenet) helyett O(üzenet).
+ * A `cache.messages` immutábilisan cserélődik, ezért a referencia-egyezés
+ * megbízhatóan jelzi, kell-e újraépíteni az indexet. */
+let _msgIndex: { ref: Message[]; map: Map<string, Message[]> } | null = null;
+function messagesByConv(): Map<string, Message[]> {
+  if (_msgIndex && _msgIndex.ref === cache.messages) return _msgIndex.map;
+  const map = new Map<string, Message[]>();
+  for (const m of cache.messages) {
+    const arr = map.get(m.conversationId);
+    if (arr) arr.push(m);
+    else map.set(m.conversationId, [m]);
+  }
+  _msgIndex = { ref: cache.messages, map };
+  return map;
+}
+
 export function getMessagesForConversation(conversationId: string): Message[] {
-  return cache.messages
-    .filter((m) => m.conversationId === conversationId)
+  return (messagesByConv().get(conversationId) ?? [])
+    .slice()
     .sort((a, b) => +new Date(a.createdAt) - +new Date(b.createdAt));
 }
 
@@ -902,16 +1010,21 @@ export function getOrCreateConversation(
     // Elmentjük a beszúrás promise-át, hogy az azonnal küldött első üzenet
     // MEGVÁRHASSA — különben a message-insert az RLS-ellenőrzéskor még nem
     // találná a beszélgetést (versenyhelyzet → elveszne az érdeklődő üzenet).
+    // upsert a (listing_id, buyer_id, seller_id) unique indexre → ha egy másik
+    // eszközön már létezik a szál, nem keletkezik duplikátum és nincs hiba-zaj.
     const p = supabase
       .from("conversations")
-      .insert({
-        id: conv.id,
-        listing_id: listingId,
-        buyer_id: buyerId,
-        seller_id: sellerId,
-        created_at: now,
-        last_message_at: now
-      })
+      .upsert(
+        {
+          id: conv.id,
+          listing_id: listingId,
+          buyer_id: buyerId,
+          seller_id: sellerId,
+          created_at: now,
+          last_message_at: now
+        },
+        { onConflict: "listing_id,buyer_id,seller_id", ignoreDuplicates: true }
+      )
       .then(({ error }) => {
         if (error) console.error("getOrCreateConversation", error.message);
       });
@@ -931,7 +1044,8 @@ export function sendMessage(conversationId: string, senderId: string, text: stri
     senderId,
     text: text.trim(),
     createdAt: now,
-    readBy: [senderId]
+    readBy: [senderId],
+    pending: !!supabase // amíg a DB-insert vissza nem igazolódik
   };
   cache.messages = [...cache.messages, msg];
   cache.conversations = cache.conversations.map((c) =>
@@ -940,6 +1054,10 @@ export function sendMessage(conversationId: string, senderId: string, text: stri
   emit();
   if (supabase) {
     const sb = supabase;
+    const markStatus = (patch: Partial<Message>) => {
+      cache.messages = cache.messages.map((m) => (m.id === msg.id ? { ...m, ...patch } : m));
+      emit();
+    };
     void (async () => {
       // Megvárjuk, hogy az (esetleg most létrehozott) beszélgetés a DB-ben
       // legyen, mielőtt beszúrjuk az üzenetet — így az RLS check átmegy.
@@ -953,11 +1071,25 @@ export function sendMessage(conversationId: string, senderId: string, text: stri
         created_at: now,
         read_by: [senderId]
       });
-      if (error) console.error("sendMessage", error.message);
-      await sb.from("conversations").update({ last_message_at: now }).eq("id", conversationId);
+      if (error) {
+        console.error("sendMessage", error.message);
+        markStatus({ pending: false, failed: true }); // a UI „nem sikerült · újra"-t mutat
+        return;
+      }
+      markStatus({ pending: false, failed: false });
+      // last_message_at csak ELŐRE léphet (óra-eltérés / poll ne rontsa a sorrendet).
+      await sb.from("conversations").update({ last_message_at: now }).eq("id", conversationId).lt("last_message_at", now);
     })();
   }
   return msg;
+}
+
+/** Sikertelen üzenet újraküldése (a régi optimista példányt lecseréli). */
+export function retryMessage(messageId: string): void {
+  const m = cache.messages.find((x) => x.id === messageId);
+  if (!m || !m.failed) return;
+  cache.messages = cache.messages.filter((x) => x.id !== messageId);
+  sendMessage(m.conversationId, m.senderId, m.text);
 }
 
 /* Eszköz-lokális „elolvasva" időbélyegek — MEGBÍZHATÓ olvasottság-jelölés, ami
@@ -980,8 +1112,7 @@ export function markConversationRead(conversationId: string, userId: string): vo
 
   // 1) Helyi „elolvasva"-bélyeg (csak ha új a legfrissebb olvasott üzenet).
   const map = getReadMap();
-  const latest = cache.messages
-    .filter((m) => m.conversationId === conversationId)
+  const latest = (messagesByConv().get(conversationId) ?? [])
     .reduce((t, m) => Math.max(t, +new Date(m.createdAt)), 0);
   const stamp = new Date(Math.max(latest, Date.now())).toISOString();
   const prevStamp = map[conversationId];
@@ -1005,12 +1136,12 @@ export function markConversationRead(conversationId: string, userId: string): vo
     changed = true;
   }
   if (changed) emit();
-  if (supabase && changedIds.length) {
-    for (const m of cache.messages) {
-      if (changedIds.includes(m.id)) {
-        void supabase.from("messages").update({ read_by: m.readBy }).eq("id", m.id);
-      }
-    }
+  // Szerveroldalon EGYETLEN RPC fűzi hozzá a user-id-t az érintett üzenetekhez
+  // (nincs N+1 írás és nincs „elveszett-írás" verseny a read_by tömbön).
+  if (supabase && changedIds.length && cache.currentUser) {
+    void supabase
+      .rpc("mark_messages_read", { p_conversation_id: conversationId, p_reader_id: userId })
+      .then(({ error }) => error && console.error("markConversationRead", error.message));
   }
 }
 
@@ -1018,12 +1149,9 @@ export function markConversationRead(conversationId: string, userId: string): vo
  *  bélyeget IS figyelembe véve, így megnyitás után nem marad olvasatlan. */
 export function conversationHasUnread(conversationId: string, userId: string): boolean {
   const readAt = localReadAt(conversationId);
-  return cache.messages.some(
-    (m) =>
-      m.conversationId === conversationId &&
-      m.senderId !== userId &&
-      !m.readBy.includes(userId) &&
-      +new Date(m.createdAt) > readAt
+  const msgs = messagesByConv().get(conversationId) ?? [];
+  return msgs.some(
+    (m) => m.senderId !== userId && !m.readBy.includes(userId) && +new Date(m.createdAt) > readAt
   );
 }
 

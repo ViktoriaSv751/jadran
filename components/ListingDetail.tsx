@@ -58,7 +58,7 @@ export default function ListingDetail({ listing }: { listing: Listing }) {
   };
 
   const similar = useMemo(() => similarListings(listing, items), [listing, items]);
-  const cityAvg = useMemo(() => cityAvgPricePerM2(listing.city, items), [listing.city, items]);
+  const cityAvg = useMemo(() => cityAvgPricePerM2(listing.city, items, listing.id), [listing.city, items, listing.id]);
   const trend = useMemo(() => cityTrend(listing.city, items), [listing.city, items]);
 
   const [descOpen, setDescOpen] = useState(false);

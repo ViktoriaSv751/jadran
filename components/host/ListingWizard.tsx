@@ -13,7 +13,7 @@ import {
   amenityLabels,
   heatingLabels
 } from "@/lib/i18n";
-import { cities, montenegroPlaces } from "@/lib/data";
+import { COUNTRIES, COUNTRY_BY_CODE, isCountryCode } from "@/lib/geo";
 import { formatPrice } from "@/lib/format";
 import * as db from "@/lib/db";
 import { toast } from "@/lib/ui";
@@ -21,6 +21,7 @@ import { extractSmart } from "@/lib/import/ai-extract-remote";
 import type {
   Amenity,
   Condition,
+  CountryCode,
   Listing,
   ListingMode,
   LocalizedText,
@@ -99,6 +100,7 @@ interface FormState {
   type: PropertyType;
   title: string;
   description: string;
+  country: CountryCode;
   city: string;
   district: string;
   area: string;
@@ -130,6 +132,7 @@ const emptyForm: FormState = {
   type: "apartment",
   title: "",
   description: "",
+  country: "ME",
   city: "Budva",
   district: "",
   area: "",
@@ -174,6 +177,7 @@ export default function ListingWizard() {
       type: editing.type,
       title: loc(editing.title, lang) || editing.title.hu,
       description: loc(editing.description, lang) || editing.description.hu,
+      country: editing.country ?? "ME",
       city: editing.city,
       district: editing.district,
       area: String(editing.area),
@@ -236,9 +240,9 @@ export default function ListingWizard() {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (next as any)[k] = v;
       }
-      // If the city was detected but isn't one of our official cities, keep the
-      // select valid and stash the detection into district instead.
-      if (fields.city && !cities.includes(fields.city)) {
+      // Ha az észlelt város nincs a KIVÁLASZTOTT ORSZÁG listájában, a kiválasztást
+      // érvényesen hagyjuk és a kerületbe tesszük az észlelt szöveget.
+      if (fields.city && !(COUNTRY_BY_CODE[f.country]?.cities.includes(fields.city))) {
         next.city = f.city;
         if (!next.district) next.district = fields.city;
       }
@@ -276,8 +280,11 @@ export default function ListingWizard() {
   };
 
   const buildPayload = (): Omit<Listing, "id" | "createdAt" | "views" | "priceHistory"> => {
-    // Ismert koordináta a településhez; ha nincs, az ország közepe (Podgorica).
-    const coords = CITY_COORDS[form.city] ?? CITY_COORDS.Podgorica;
+    // Ismert koordináta a településhez; ha nincs, a KIVÁLASZTOTT ORSZÁG középpontja
+    // (nem Montenegró) — így egy horvát/görög/bali hirdetés a helyes térkép-pontra kerül.
+    const cc = COUNTRY_BY_CODE[form.country];
+    const [clat, clng] = cc?.center ?? [42.44, 18.77];
+    const coords = CITY_COORDS[form.city] ?? { lat: clat, lng: clng };
     const urls = form.images.split("\n").map((s) => s.trim()).filter(Boolean);
     const thisYear = new Date().getFullYear();
     const yr = nnInt(form.year) ?? thisYear;
@@ -313,6 +320,7 @@ export default function ListingWizard() {
       year: Math.min(thisYear + 5, Math.max(1900, yr)),
       condition: form.condition,
       view: form.view,
+      country: form.country,
       city: form.city,
       district: form.district.trim(),
       distanceToSea: Math.max(0, nnInt(form.distanceToSea) ?? 0),
@@ -600,7 +608,28 @@ export default function ListingWizard() {
         {/* STEP 1 — Details */}
         {step === 1 && (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {/* Bármely montenegrói település kereshető — nem csak a 6 nagyváros */}
+            {/* Ország — ehhez igazodik a város-lista ÉS a térkép-pozíció. */}
+            <div>
+              <Select
+                label={tr("country_label", lang)}
+                value={form.country}
+                onChange={(e) => {
+                  const country = e.target.value as CountryCode;
+                  setForm((f) => {
+                    const cs = COUNTRY_BY_CODE[country]?.cities ?? [];
+                    const city = cs.includes(f.city) ? f.city : (cs[0] ?? f.city);
+                    return { ...f, country, city };
+                  });
+                }}
+              >
+                {COUNTRIES.map((c) => (
+                  <option key={c.code} value={c.code}>
+                    {c.flag} {tr(c.nameKey, lang)}
+                  </option>
+                ))}
+              </Select>
+            </div>
+            {/* Az adott ország népszerű települései — szabadon is beírható. */}
             <div>
               <Input
                 label={tr("city", lang)}
@@ -609,7 +638,7 @@ export default function ListingWizard() {
                 onChange={(e) => set("city", e.target.value)}
               />
               <datalist id="wizard-places">
-                {montenegroPlaces.map((p) => (
+                {(isCountryCode(form.country) ? COUNTRY_BY_CODE[form.country].cities : []).map((p) => (
                   <option key={p} value={p} />
                 ))}
               </datalist>

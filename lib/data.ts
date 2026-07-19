@@ -1877,13 +1877,17 @@ export function similarListings(listing: Listing, all: Listing[], n = 3): Listin
 }
 
 // Average €/m² per city for sale listings, used for price-transparency comparisons.
-export function cityAvgPricePerM2(city: string, all: Listing[]): number {
+/** Városi átlagos €/m² SÚLYOZOTTAN (Σár / Σterület) — így egy nagy villa és egy
+ *  kis stúdió nem egyformán számít. Az `excludeId`-t (az épp nézett hirdetést)
+ *  kizárjuk, hogy a hirdetés ne önmagához hasonlítson. */
+export function cityAvgPricePerM2(city: string, all: Listing[], excludeId?: string): number {
   const inCity = all.filter(
-    (l) => l.city === city && l.mode === "sale" && l.type !== "land" && l.area > 0
+    (l) => l.city === city && l.mode === "sale" && l.type !== "land" && l.area > 0 && l.id !== excludeId
   );
   if (inCity.length === 0) return 0;
-  const sum = inCity.reduce((acc, l) => acc + l.price / l.area, 0);
-  return Math.round(sum / inCity.length);
+  const sumPrice = inCity.reduce((acc, l) => acc + l.price, 0);
+  const sumArea = inCity.reduce((acc, l) => acc + l.area, 0);
+  return sumArea > 0 ? Math.round(sumPrice / sumArea) : 0;
 }
 
 export interface TrendPoint {
