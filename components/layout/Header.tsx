@@ -174,6 +174,7 @@ function AccountMenu({
                 {tr("compare", lang)}
               </button>
               <MenuLink href="/guide" label={tr("guide", lang)} />
+              <MenuLink href="/tudastar" label={tr("knowledge_base", lang)} />
             </>
           )}
         </div>

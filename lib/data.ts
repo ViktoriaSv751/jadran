@@ -176,6 +176,20 @@ export const seedProfiles: Profile[] = [
     joinedAt: "2024-03-21"
   },
   {
+    id: "u-kittitian-kn",
+    email: "info@kittitianestates.kn",
+    name: "Kittitian Estates",
+    role: "agency",
+    avatar: "https://picsum.photos/seed/jadran-ag-kittitiankn/200/200",
+    agencyName: "Kittitian Estates",
+    bio: "Jóváhagyott, állampolgárságra jogosító ingatlanok Saint Kitts és Nevisen — Christophe Harbour, Frigate Bay.",
+    phone: "+1 869 100 1000",
+    location: "Basseterre, Saint Kitts és Nevis",
+    verified: true,
+    responseTime: "egy órán belül",
+    joinedAt: "2023-03-15"
+  },
+  {
     id: "u-hellenic-gr",
     email: "info@hellenicestates.gr",
     name: "Hellenic Estates",
@@ -290,7 +304,8 @@ const AGENCY_TO_ID: Record<string, string> = {
   "Siam Property": "u-siam-th",
   "Bella Casa Italia": "u-bellacasa-it",
   "Hellenic Estates": "u-hellenic-gr",
-  "Costa Properties": "u-costa-es"
+  "Costa Properties": "u-costa-es",
+  "Kittitian Estates": "u-kittitian-kn"
 };
 
 /* ------------------------------------------------------------------ *

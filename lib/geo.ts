@@ -149,8 +149,22 @@ export const COUNTRIES: CountryInfo[] = [
     cities: ["Madrid", "Barcelona", "Valencia", "Málaga", "Marbella", "Alicante", "Palma", "Sevilla", "Ibiza", "Tenerife"],
     center: [40.0, -3.7],
     zoom: 6,
-    costs: { transferTaxRate: 0.08, notaryRate: 0.01, notaryFixed: 300, lawyerRate: 0.01, agencyRate: 0.03 },
-    goldenVisa: { minEur: 500000, kind: "residence" }
+    costs: { transferTaxRate: 0.08, notaryRate: 0.01, notaryFixed: 300, lawyerRate: 0.01, agencyRate: 0.03 }
+    // Az ingatlanalapú spanyol Golden Visát 2025 áprilisában megszüntették —
+    // ezért NINCS `goldenVisa` mezője. Ne kerüljön vissza aktív programként.
+  },
+  {
+    code: "KN",
+    flag: "🇰🇳",
+    nameKey: "country_kn",
+    currency: "USD",
+    cities: ["Basseterre", "Frigate Bay", "Christophe Harbour", "Charlestown", "Oualie Beach", "Dieppe Bay", "Sandy Point", "Cades Bay"],
+    center: [17.3, -62.73],
+    zoom: 11,
+    costs: { transferTaxRate: 0.1, notaryRate: 0.01, notaryFixed: 500, lawyerRate: 0.015, agencyRate: 0.05 },
+    // A világ legrégebbi (1984) állampolgárság-befektetési programja: jóváhagyott
+    // ingatlan ~325 000 USD-tól → ÁLLAMPOLGÁRSÁG (nem csak tartózkodás).
+    goldenVisa: { minEur: 300000, kind: "citizenship" }
   }
 ];
 

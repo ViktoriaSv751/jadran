@@ -23,7 +23,7 @@ export interface ForeignBuyerLegal {
  * Letelepedés / állampolgárság ingatlanvásárlás alapján, országonként.
  * `residenceNote`: mit ad a vásárlás a tartózkodás szempontjából.
  * `citizenshipEur`: ha van, ekkora (EUR-ban közelített) vételár fölött
- * állampolgársági/„golden visa" program jöhet szóba (`citizenshipNote`).
+ * állampolgársági/„golden visa” program jöhet szóba (`citizenshipNote`).
  * TÁJÉKOZTATÓ JELLEGŰ — a részletek változhatnak.
  */
 export interface ResidencyInfo {
@@ -128,18 +128,28 @@ export const RESIDENCY: Record<CountryCode, ResidencyInfo> = {
     }
   },
   ES: {
+    // Az ingatlanalapú spanyol Golden Visát 2025 áprilisában megszüntették, ezért
+    // itt nincs `citizenshipEur` — az ingatlanvásárlás nem ad tartózkodási jogot.
     residenceNote: {
-      hu: "Spanyolország: 500 000 € fölötti ingatlan a befektetői tartózkodásra (Golden Visa) jogosíthat.",
-      me: "Španija: nekretnina iznad 500.000 € može dati investitorski boravak.",
-      en: "Spain: property above €500,000 can qualify for investor residence (Golden Visa).",
-      ru: "Испания: недвижимость от €500 000 может дать инвесторский ВНЖ."
+      hu: "Spanyolország: az ingatlanalapú Golden Visát 2025 áprilisában megszüntették — ingatlanvásárlással ma nem szerezhető befektetői tartózkodás.",
+      me: "Španija: investitorska Golden Visa na osnovu nekretnine ukinuta je u aprilu 2025.",
+      en: "Spain: the real-estate Golden Visa was abolished in April 2025 — buying property no longer grants investor residence.",
+      ru: "Испания: инвесторская Golden Visa за недвижимость отменена в апреле 2025 года."
+    }
+  },
+  KN: {
+    residenceNote: {
+      hu: "Saint Kitts és Nevis: a világ legrégebbi (1984) állampolgárság-befektetési programja — jóváhagyott ingatlannal közvetlenül ÁLLAMPOLGÁRSÁG szerezhető, letelepedési kötelezettség nélkül.",
+      me: "Sveti Kits i Nevis: najstariji program državljanstva ulaganjem (1984) — odobrena nekretnina daje državljanstvo.",
+      en: "Saint Kitts and Nevis: the world's oldest citizenship-by-investment programme (1984) — approved real estate leads directly to CITIZENSHIP, with no residence requirement.",
+      ru: "Сент-Китс и Невис: старейшая программа гражданства за инвестиции (1984) — одобренная недвижимость даёт гражданство."
     },
-    citizenshipEur: 500000,
+    citizenshipEur: 300000,
     citizenshipNote: {
-      hu: "500 000 € fölötti ingatlan a spanyol befektetői tartózkodásra jogosíthat.",
-      me: "Nekretnina iznad 500.000 € može dati španski investitorski boravak.",
-      en: "Property above €500,000 can qualify for Spanish investor residence.",
-      ru: "Недвижимость от €500 000 может дать испанский инвесторский ВНЖ."
+      hu: "Kb. 325 000 USD (~300 000 €) értékű, jóváhagyott ingatlan állampolgárságra jogosíthat — az egész családra kiterjeszthetően.",
+      me: "Odobrena nekretnina od oko 325.000 USD može dati državljanstvo za cijelu porodicu.",
+      en: "Approved real estate of about USD 325,000 (~€300,000) can qualify for citizenship — extendable to the whole family.",
+      ru: "Одобренная недвижимость примерно от 325 000 USD может дать гражданство для всей семьи."
     }
   }
 };
@@ -487,10 +497,10 @@ export const FOREIGN_BUYER: Record<CountryCode, ForeignBuyerLegal> = {
   },
   ES: {
     intro: {
-      hu: "Spanyolország EU-tagállam; a külföldi vevők előtt nyitott piac, befektetői tartózkodással.",
-      me: "Španija je članica EU; otvoreno tržište uz investitorski boravak.",
-      en: "Spain is an EU member; an open market for foreign buyers with investor residence.",
-      ru: "Испания — член ЕС; открытый рынок с инвесторским ВНЖ."
+      hu: "Spanyolország EU-tagállam; a külföldi vevők előtt teljesen nyitott piac (befektetői tartózkodás 2025 áprilisa óta nincs).",
+      me: "Španija je članica EU; tržište je otvoreno za strane kupce (investitorski boravak ukinut 2025).",
+      en: "Spain is an EU member; fully open to foreign buyers (investor residence discontinued in 2025).",
+      ru: "Испания — член ЕС; рынок полностью открыт (инвесторский ВНЖ отменён в 2025)."
     },
     points: [
       {
@@ -516,6 +526,40 @@ export const FOREIGN_BUYER: Record<CountryCode, ForeignBuyerLegal> = {
         me: "Porez na prenos (ITP) je ~6–10% po regiji; kod novogradnje 10% PDV.",
         en: "Transfer tax (ITP) is ~6–10% by region; new builds carry 10% VAT.",
         ru: "Налог на передачу (ITP) ~6–10% по региону; для новостроек 10% НДС."
+      }
+    ]
+  },
+  KN: {
+    intro: {
+      hu: "Saint Kitts és Nevis nyitott a külföldi vevők előtt, és ingatlanbefektetéssel ÁLLAMPOLGÁRSÁG szerezhető.",
+      me: "Sveti Kits i Nevis je otvoren za strane kupce; ulaganjem u nekretninu dobija se državljanstvo.",
+      en: "Saint Kitts and Nevis is open to foreign buyers, and real-estate investment can lead to CITIZENSHIP.",
+      ru: "Сент-Китс и Невис открыт для иностранцев; инвестиции в недвижимость дают гражданство."
+    },
+    points: [
+      {
+        hu: "Külföldiek szabadon vásárolhatnak; nem programon belüli vételnél „alien landholding licence” szükséges.",
+        me: "Stranci mogu slobodno kupiti; van programa je potrebna posebna dozvola.",
+        en: "Foreigners can buy freely; outside the programme an alien landholding licence is required.",
+        ru: "Иностранцы могут покупать свободно; вне программы нужна лицензия на владение."
+      },
+      {
+        hu: "A JÓVÁHAGYOTT (kormány által engedélyezett) projektekben vett ingatlan ~325 000 USD-tól állampolgárságra jogosít.",
+        me: "Nekretnina u odobrenom projektu od ~325.000 USD daje pravo na državljanstvo.",
+        en: "Property in an APPROVED (government-designated) project from ~USD 325,000 qualifies for citizenship.",
+        ru: "Недвижимость в одобренном проекте от ~325 000 USD даёт право на гражданство."
+      },
+      {
+        hu: "Az eljárás átvilágítással jár, jellemzően 4–8 hónap; nincs letelepedési vagy nyelvi követelmény.",
+        me: "Postupak uključuje provjeru, obično 4–8 mjeseci; nema uslova boravka.",
+        en: "The process includes due diligence, typically 4–8 months; no residence or language requirement.",
+        ru: "Процедура включает проверку, обычно 4–8 месяцев; без требований к проживанию."
+      },
+      {
+        hu: "Nincs jövedelem-, vagyon- vagy örökösödési adó; az ingatlan jellemzően 5–7 év után továbbadható.",
+        me: "Nema poreza na dohodak ni na nasljedstvo; nekretnina se obično može preprodati nakon 5–7 godina.",
+        en: "No income, wealth or inheritance tax; the property can typically be resold after 5–7 years.",
+        ru: "Нет налога на доход, богатство и наследство; недвижимость обычно можно перепродать через 5–7 лет."
       }
     ]
   }
