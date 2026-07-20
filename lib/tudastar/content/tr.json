@@ -1,5 +1,803 @@
 {
-  "fallback": true,
-  "countries": {},
-  "articles": {}
+ "countries": {
+  "ME": {
+   "nameHu": "Karadağ",
+   "intro": "Karadağ, Adriyatik'in fiyat açısından en uygun kıyı piyasalarından biridir: para birimi eurodur ve yabancı alıcı, daire veya ev satın alırken pratikte yerel halkla aynı haklara sahiptir. Tapu devir vergisi 2024'ten bu yana kademelidir: 150.000 €'ya kadar %3, bunun üzerinde %5, 500.000 € üzerinde %6. Talebin omurgasını Budva, Kotor, Tivat (Porto Montenegro) ve Herceg Novi oluşturur; Kotor Körfezi'nin denize bakan daireleri en çok aranan yatırım ürünleridir, buna karşılık Bar ve Ulcinj hâlâ belirgin biçimde daha ucuz bir giriş imkânı sunar. Ülke AB'ye aday statüsündedir; bu, uzun vadede fiyatları yukarı çeken bir etkendir.",
+   "highlights": [
+    "Resmî para birimi euro — satın alma bedelinde kur riski yoktur",
+    "2024'ten bu yana kademeli devir vergisi: %3 / %5 / %6 (150.000 ve 500.000 euro eşikleriyle)",
+    "Yeni inşa edilmiş taşınmazda devir vergisi yoktur — bunun yerine fiyata %21 KDV dâhildir",
+    "Yabancı gerçek kişi serbestçe daire, ev ve inşaat arsası satın alabilir",
+    "AB vatandaşı için oturma izninde değer eşiği YOKTUR (üçüncü ülke vatandaşları için 2026'dan itibaren 150.000 €)",
+    "AB'ye aday ülke — uzun vadeli değer artışı potansiyeli"
+   ],
+   "faq": [
+    {
+     "q": "Yabancılar Karadağ'da taşınmaz satın alabilir mi?",
+     "a": "Evet. Yabancı gerçek kişiler Karadağ'da kendi adlarına, ayrıca bir izne gerek olmaksızın serbestçe daire, ev ve inşaat arsası satın alabilir. Kısıtlama öncelikle tarım ve orman arazileri için geçerlidir — bunlar genellikle yerel bir şirket üzerinden satın alınır."
+    },
+    {
+     "q": "Karadağ'da taşınmaz alımının yan maliyetleri ne kadardır?",
+     "a": "Devir vergisi 2024'ten bu yana kademelidir: 150.000 €'ya kadar %3; 150.000 ile 500.000 € arasında 4.500 € artı 150.000 €'yu aşan kısmın %5'i; 500.000 € üzerinde 22.000 € artı 500.000 €'yu aşan kısmın %6'sı. Matrah, vergi idaresi tarafından belirlenen rayiç değerdir, mutlaka sözleşmedeki fiyat değildir. Buna noter ücreti, yaklaşık %1 avukatlık ücreti ve emlakçı komisyonu (genellikle %3, teamül gereği satıcı öder) eklenir. 2003'ten sonra inşa edilmiş yeni bir taşınmazın ilk satışında devir vergisi yoktur — orada fiyata %21 KDV dâhildir."
+    },
+    {
+     "q": "Karadağ taşınmaz alımı karşılığında oturma izni veriyor mu?",
+     "a": "Evet, taşınmaz mülkiyetine dayalı olarak bir yıl süreli, her yıl yenilenmesi gereken bir oturma izni talep edilebilir. 17 Ocak 2026'dan itibaren üçüncü ülke vatandaşlarının bunun için vergi idaresince belirlenen değeri en az 150.000 € olan bir taşınmaza sahip olması gerekir — ancak BU DEĞER EŞİĞİ AB, AEA ve İsviçre vatandaşları için GEÇERLİ DEĞİLDİR, dolayısıyla Macar alıcı için asgari bir tutar yoktur. Önceki yatırım yoluyla vatandaşlık programı 31 Aralık 2022'de sona ermiştir; bu nedenle bugün Karadağ'da taşınmaz yoluyla vatandaşlık edinilemez — bu yolu Türkiye ile Saint Kitts ve Nevis sunmaktadır."
+    }
+   ]
+  },
+  "HR": {
+   "nameHu": "Hırvatistan",
+   "intro": "Hırvatistan, Adriyatik'in olgunlaşmış, AB üyesi piyasasıdır: 2023'ten bu yana euro bölgesi ve Schengen üyesidir; bu da Macar ve diğer AB'li alıcılar için hukuki sürtünmesi en az olan kıyı alımı anlamına gelir. AB vatandaşı gerçek kişi olarak yerel halkla aynı koşullarda satın alabilirsiniz — yabancılar için daha önce zorunlu olan bakanlık iznine gerek yoktur. İstriya (Rovinj, Poreč) şehre yakın segmentin, Dalmaçya (Split, Trogir, Šibenik) yazlık segmentin, Dubrovnik ise prömiyum segmentin motorudur. Turistik kiralamanın getirisi mevsimsellik nedeniyle yüksektir, ancak güçlü biçimde yaz aylarında yoğunlaşır.",
+   "highlights": [
+    "AB ve euro bölgesi üyesi — AB vatandaşı için izin yükümlülüğü yoktur",
+    "Taşınmaz devir vergisi sabit %3; yeni inşa edilmiş taşınmazda bunun yerine fiyata %25 KDV dâhildir",
+    "Düşük noter masrafı: noter yalnızca imza onayı yapar (birkaç euro), sözleşme düzenlemez",
+    "2025'ten bu yana YILLIK emlak vergisi de vardır: 0,60–8,00 €/m²/yıl, belediyeye göre değişir",
+    "Tarım arazilerine ilişkin moratoryum 30 Haziran 2023'te sona erdi — AB'li alıcı bugün serbestçe satın alabilir",
+    "Güçlü, ancak yüksek ölçüde mevsimsel kısa dönemli kiralama piyasası"
+   ],
+   "faq": [
+    {
+     "q": "Macar vatandaşları Hırvatistan'da taşınmaz satın alabilir mi?",
+     "a": "Evet, kısıtlama olmaksızın. Hem Macaristan hem de Hırvatistan AB üyesi olduğundan, Macar gerçek kişi Hırvat vatandaşlarıyla aynı koşullarda, kendi adına daire veya ev satın alabilir — adalet bakanlığı iznine gerek yoktur. Tarım arazilerine ilişkin geçici moratoryum 30 Haziran 2023'te sona ermiş ve uzatılmamıştır; dolayısıyla AB vatandaşı olarak bugün tarım arazisini de Hırvatlarla aynı koşullarda satın alabilirsiniz. Üçüncü ülke vatandaşı alıcılar için karşılıklılık ve bakanlık izni koşulu devam etmektedir."
+    },
+    {
+     "q": "Hırvatistan'da taşınmaz alımında ne kadar vergi ödenir?",
+     "a": "İkinci el taşınmaz alımında alıcı %3 taşınmaz devir vergisi (porez na promet nekretnina) öder — bu sabit bir orandır, kademeli değildir. KDV mükellefi bir geliştiriciden satın alınan yeni inşa edilmiş taşınmazda devir vergisi yoktur, çünkü fiyata %25 KDV dâhildir; ikisi birbirini dışlar. Önemli: Hırvat noteri satış sözleşmesi DÜZENLEMEZ, yalnızca satıcının imzasını onaylar; bu nedenle noter masrafı birkaç euro artı tapu siciline tescil ücretidir — başka yerlerde alışılmış olan \"%1 noter ücreti\" burada yanlıştır. Avukatlık ücreti genellikle %1–1,5 + KDV, emlakçı komisyonu %2–4'tür. 2025'ten bu yana mülkiyeti yıllık emlak vergisi de yükümlü kılar (0,60–8,00 €/m²/yıl); bildirilmiş ikametgâh ve en az 10 aylık uzun dönemli kiralama bu vergiden muaftır."
+    },
+    {
+     "q": "Hırvatistan'da kısa dönemli kiralama amacıyla taşınmaz almaya değer mi?",
+     "a": "Dalmaçya ve İstriya kıyısında yaz getirisi son derece yüksektir, ancak sezon genellikle 3–4 ayla sınırlıdır ve turistik kiralama için sınıflandırma kararı (rješenje o kategorizaciji) ile götürü vergilendirme gereklidir. Yıllık bazda net getiri genellikle %3–5 arasında oluşur."
+    }
+   ]
+  },
+  "AL": {
+   "nameHu": "Arnavutluk",
+   "intro": "Arnavutluk, Akdeniz'in giriş eşiği en düşük kıyı piyasasıdır: Arnavut Rivierası'nda (Sarandë, Ksamil, Himarë) denize bakan yeni inşa edilmiş dairelerin metrekare fiyatı hâlâ Hırvat veya Yunan fiyatlarının çok altındadır; üstelik Korfu ve Yunanistan sınırı bir taş atımı mesafededir. Taşınmaz devir vergisi pratikte yoktur ve yabancı alıcı kendi adına daire satın alabilir. Turizm son yıllarda rekor hızda büyümüş, bu da kısa dönemli kiralama getirisini bölgenin en üst sıralarına taşımıştır — buna karşılık piyasa daha gençtir, hukuki inceleme (tapu kaydı, inşaat ruhsatı) burada özellikle önemlidir.",
+   "highlights": [
+    "Bölgenin en düşük kıyı metrekare fiyatları",
+    "ALICI değer oranlı devir vergisi ödemez — yalnızca sabit noter harcı ve tescil ücreti",
+    "Yeni inşa edilmiş taşınmazda da alıcı tarafında KDV yoktur: taşınmaz satışı KDV'den muaftır",
+    "Yabancı gerçek kişi izin almadan, kendi adına daire ve ev satın alabilir",
+    "İnşaat ARSASI alımının koşulu, yatırım değerinin arsa değerinin üç katını aşmasıdır",
+    "Yabancılar tarım arazisi satın alamaz, yalnızca kiralayabilir"
+   ],
+   "faq": [
+    {
+     "q": "Yabancı olarak Arnavutluk'ta taşınmaz almak güvenli mi?",
+     "a": "Hukuken evet — yabancı gerçek kişi kendi adına daire satın alabilir ve mülkiyet kadastroya (ASHK) tescil edilebilir. Risk mülkiyet edinmede değil, mülkiyet geçmişindedir: Arnavut piyasasında hukuki dayanağı düzensiz ya da ruhsatsız inşa edilmiş taşınmazlara rastlanabilir; bu nedenle bağımsız bir avukatla yapılan hukuki inceleme olmadan burada kesinlikle kapora ödemeyiniz."
+    },
+    {
+     "q": "Arnavutluk'ta deniz kenarında bir daire ne kadara mal olur?",
+     "a": "Ksamil ve Sarandë'de yeni inşa edilmiş, denize bakan daireler genellikle 1.200–2.200 €/m² bandında hareket eder; Vlora ve Durrës'te ise daha da ucuza giriş yapılabilir. Bu, benzer Hırvat veya Yunan arzının yaklaşık yarısı ile üçte biri arasındadır. Alıcının yan maliyeti de bölgenin en düşüğüdür: değer oranlı devir vergisi ve KDV olmaksızın genellikle satış bedelinin %1–4'ü kadardır."
+    },
+    {
+     "q": "Arnavutluk taşınmaz alımı karşılığında oturma izni veriyor mu?",
+     "a": "Arnavutluk'un Golden Visa programı da yatırım yoluyla vatandaşlık programı da yoktur: 2020 tarihli kanunda yer alan imkân hiçbir zaman başlatılmamış, Mart 2023'ten bu yana üzerinde moratoryum uygulanmaktadır; Avrupa Adalet Divanı'nın Nisan 2025 tarihli Malta kararından sonra ise AB üyeliğine hazırlanan Arnavutluk'un bunu açması pek olası değildir. Buna karşılık taşınmaz mülkiyetine dayalı olarak bir yıl süreli, yenilenebilir bir oturma izni talep edilebilir; beş yıl sonra daimi oturma hakkı doğar. Aracıların dile getirdiği \"100.000 euro eşiği\" mevzuattan doğrulanamamaktadır — buna göre plan yapmayınız."
+    }
+   ]
+  },
+  "RS": {
+   "nameHu": "Sırbistan",
+   "intro": "Sırbistan öncelikle kentsel bir kiralama piyasasıdır, kıyı yazlık piyasası değildir. Belgrad'ın (özellikle Belgrade Waterfront, Vračar, Novi Beograd) ve Novi Sad'ın konut piyasasını güçlü iç göç, büyüyen BT sektörü ve çok sayıda gelen yabancı çalışan sıkı tutmaktadır — bu, Adriyatik piyasalarının mevsimselliğinin aksine istikrarlı, yıl boyu süren uzun dönemli kiralama talebi anlamına gelir. Dağ tatil merkezleri (Zlatibor, Kopaonik) iki sezonlu apart yatırımının alanıdır. Devir vergisi %2,5'tir; yeni inşa edilmiş taşınmazda yerini KDV alır.",
+   "highlights": [
+    "Belgrad ve Novi Sad'da yıl boyu süren, mevsimsel olmayan kiralama talebi",
+    "İkinci el taşınmazda %2,5 taşınmaz devir vergisi (kanuna göre SATICI öder, ancak sözleşmeler genellikle bunu alıcıya yükler)",
+    "Yeni inşa edilmiş taşınmazda bunun yerine fiyata %10 KDV (konut) dâhildir",
+    "Yabancı alıcı KARŞILIKLILIK esasına göre satın alabilir — Macar vatandaşları için bu koşul sağlanmaktadır, ancak her ülke için ayrı ayrı incelenmelidir",
+    "İlk konut teşvikleri yalnızca Sırp vatandaşlarına tanınır — yabancı alıcı bunlardan yararlanamaz",
+    "İki sezonlu dağ apart piyasası (Zlatibor, Kopaonik)"
+   ],
+   "faq": [
+    {
+     "q": "Macar vatandaşları Sırbistan'da taşınmaz satın alabilir mi?",
+     "a": "Evet. Sırbistan, yabancı gerçek kişilerin taşınmaz edinmesine karşılıklılık esasına göre izin vermektedir ve Macaristan ile bu karşılıklılık mevcuttur (bakanlığın listesinde yer almaktadır); böylece Macar vatandaşı kendi adına daire veya ev satın alabilir. Önemli: karşılıklılık AB düzeyinde değil, ÜLKE BAZINDA incelenir — dolayısıyla \"her AB vatandaşı serbestçe satın alabilir\" ifadesi doğru değildir. Tarım arazisi bakımından AB'li gerçek kişi ilke olarak hak sahibidir, ancak uygulamada neredeyse yerine getirilemez nitelikte birlikte aranan koşullarla (10 yıl yerinde ikamet, 3 yıl tarımsal işletme, 2 hektarlık sınır)."
+    },
+    {
+     "q": "Belgrad'da ne kadar kira getirisi elde edilebilir?",
+     "a": "Belgrad'da uzun dönemli konut kiralamasının brüt getirisi genellikle %4–6 arasında oluşur; bu, çoğu AB başkentinden yüksektir ve talep yıl boyu sürer — turizm sezonuna bağlı değildir."
+    },
+    {
+     "q": "Sırbistan'da taşınmaz alımının maliyeti ne kadardır?",
+     "a": "İkinci el taşınmazda %2,5 devir vergisi (porez na prenos apsolutnih prava). Kanun bunu SATICIYA yüklemektedir, ancak sözleşmeler bunu neredeyse her zaman alıcıya devreder — satıcı bu durumda da sorumlu kalır, bu nedenle ödemenin yapıldığını kontrol etmekte fayda vardır. 2005'ten sonra tamamlanmış yeni bir taşınmazın ilk satışında devir vergisi yerine fiyata KDV dâhildir: konutta %10, garaj ve iş yerinde %20. Noter ücreti kademeli tarifeye göre belirlenir (ortalama bir dairede birkaç yüz euro — \"%1–2 noter ücreti\" yanlıştır); buna avukatlık ücreti ve %2–4 emlakçı komisyonu eklenir. İlk konut alımına ilişkin vergi muafiyetinden ve KDV iadesinden yalnızca Sırp vatandaşları yararlanabilir."
+    }
+   ]
+  },
+  "TR": {
+   "nameHu": "Türkiye",
+   "intro": "Türkiye, dünyanın hacim bakımından en büyük taşınmaz esaslı vatandaşlık programını yürütmektedir: 400.000 USD değerinde taşınmazın satın alınması ve üç yıl boyunca elde tutulması karşılığında yatırımcı ve ailesi yalnızca oturma izni değil, Türk VATANDAŞLIĞI elde edebilir; bu genellikle 3–6 ay içinde ve ikamet zorunluluğu olmaksızın gerçekleşir. Türk pasaportu yaklaşık 118 ülkeye vizesiz giriş sağlar ve ABD E-2 yatırımcı vizesine giden yolu açar. Piyasanın iki ayağı vardır: İstanbul (kentsel kiralama ve değer artışı) ve Akdeniz kıyısı (Antalya, Alanya, Bodrum, Fethiye) yazlık ve kiralama amaçlı. Tapu devir harcı %4'tür; programda satış bedelinin döviz cinsinden belirlenmesi zorunludur.",
+   "highlights": [
+    "400.000 USD taşınmaz alımı → 3–6 ay içinde Türk VATANDAŞLIĞI",
+    "İkamet, dil veya yerleşim zorunluluğu yoktur",
+    "Ailenin tamamı (eş + 18 yaş altı çocuklar) dâhil edilebilir",
+    "Taşınmazın 3 yıl elde tutulması gerekir, sonrasında serbestçe satılabilir",
+    "Yaklaşık 118 ülkeye vizesiz giriş; ABD E-2 yatırımcı vizesine giden yol"
+   ],
+   "faq": [
+    {
+     "q": "Taşınmaz alımıyla Türk vatandaşlığı nasıl kazanılır?",
+     "a": "En az 400.000 USD değerinde bir Türk taşınmazının satın alınması ve üç yıl boyunca satılmayacağının taahhüt edilmesi gerekir — bu, tapuya \"satılamaz\" şerhi olarak da işlenir. Önemli: sözleşmedeki fiyat değil, SPK lisanslı gayrimenkul değerleme uzmanının hazırladığı resmî değerleme raporu esas alınır; eşiğin, banka aracılığıyla belgelenmiş şekilde ödenen bedel, değerleme raporu ve tapuda yer alan değer bakımından aynı anda karşılanması gerekir. Ardından oturma izni ve vatandaşlık başvurusu yapılabilir; sürecin tamamı genellikle 3–6 ay sürer ve eş ile 18 yaşından küçük çocukları kapsar."
+    },
+    {
+     "q": "Vatandaşlığı kazanmak için Türkiye'de yaşamak gerekir mi?",
+     "a": "Hayır. Türk yatırımcı vatandaşlık programının ikamet, dil veya sınav yükümlülüğü yoktur — ülkeye taşınmak gerekmez; dahası, başvurunun büyük bölümü vekâlet verilen bir avukat aracılığıyla yürütülebilir."
+    },
+    {
+     "q": "Vatandaşlığı kazandıktan sonra taşınmazı satabilir miyim?",
+     "a": "Evet, ancak yalnızca zorunlu üç yıllık elde tutma süresinin dolmasından sonra. Vatandaşlık bundan sonra da devam eder — taşınmazın satılması nedeniyle Türk vatandaşlığı geri alınmaz."
+    },
+    {
+     "q": "Türkiye'de taşınmaz alımının yan maliyetleri ne kadardır?",
+     "a": "%4 tapu (devir) harcı, yaklaşık %0,5 noter ve tercüme ücreti, yaklaşık %1,2 avukatlık ücreti ve genellikle %2 emlakçı komisyonu. Vatandaşlık programında bunlara zorunlu değerleme raporu ve resmî işlem ücretleri eklenir."
+    }
+   ]
+  },
+  "ID": {
+   "nameHu": "Bali (Endonezya)",
+   "intro": "Bali güçlü bir kısa dönemli kiralama piyasasıdır, ancak gerçek rakamlar ilan edilen getirilerin epeyce altındadır: bağımsız rezervasyon verilerine göre Canggu'da ortalama günlük fiyat yaklaşık 216 USD, buna karşılık doluluk yalnızca %38 civarındadır ve arz yılda %40 oranında artmaktadır. Gerçekçi olarak broşürlerde yazan %10–15 ile değil, %6–9 brüt ve %3–5 net getiriyle hesap yapmak gerekir. Diğer kilit konu mülkiyet biçimidir: yabancı gerçek kişi Endonezya'da freehold (Hak Milik) mülkiyeti EDİNEMEZ. Üç yasal yol vardır: sözleşmeye dayalı kiralama hakkı (Hak Sewa, genellikle 25–30 yıl), oturma iznine bağlı Hak Pakai kullanım hakkı (30 + 20 + 30 = azami 80 yıl) veya bir Endonezya PT PMA şirketi üzerinden Hak Guna Bangunan inşaat hakkı (yine 80 yıl). Bali'de hukuki yapının seçimi, taşınmazın kendisinden daha önemlidir.",
+   "highlights": [
+    "Bağımsız verilere göre gerçekçi getiri: %6–9 brüt, %3–5 net (%10–15 pazarlama rakamıdır)",
+    "Yabancılar freehold (Hak Milik) mülkiyeti EDİNEMEZ — bu anayasal bir sınırlamadır",
+    "Hak Sewa kiralama hakkı: oturma izni olmadan da, genellikle 25–30 yıl",
+    "Hak Pakai ve PT PMA üzerinden Hak Guna Bangunan: 30 + 20 + 30, toplam azami 80 yıl",
+    "TEHLİKE: \"nominee\" (Endonezyalı bir isim üzerine kaydedilen freehold) yapısı KANUNEN GEÇERSİZDİR",
+    "Hak Pakai sahibinin oturma izni sona ererse, taşınmazı bir yıl içinde satması gerekir",
+    "Alıcının yan maliyeti: kiralama hakkında %2–4, Hak Pakai'de %7–9 (%5 BPHTB nedeniyle)"
+   ],
+   "faq": [
+    {
+     "q": "Endonezya taşınmaz alımı karşılığında oturma izni veriyor mu?",
+     "a": "Sınırlı ölçüde. Endonezya Golden Visa'sının taşınmaz esaslı kolu 1.000.000 USD yatırım gerektirir ve YALNIZCA uygun hukuki statüye sahip toplu yapı dairelerini kapsar — münferit parsel üzerindeki villalar hak kazandırmaz. Bunun yanında bir \"second home\" vizesi de bulunmaktadır, ancak resmî kaynak somut bir değer eşiği açıklamamaktadır; bu nedenle aracıların dile getirdiği tutarlara ihtiyatla yaklaşmakta fayda vardır. Endonezya'da yatırım yoluyla vatandaşlık programı yoktur."
+    },
+    {
+     "q": "Yabancılar Bali'de taşınmaz satın alabilir mi?",
+     "a": "Yabancı gerçek kişi Endonezya'da tam anlamıyla freehold (Hak Milik) mülkiyeti edinemez — 1960 tarihli temel kanun bunu Endonezya vatandaşlarına saklı tutmaktadır. Üç yasal çözüm vardır: sözleşmeye dayalı kiralama hakkı (Hak Sewa, genellikle 25–30 yıl, oturma izni gerekmez), Hak Pakai kullanım hakkı (geçerli KITAS/KITAP oturma iznine bağlı olarak, 30 + 20 + 30 = azami 80 yıl) ve yabancı sermayeli bir Endonezya şirketinin (PT PMA) sahip olduğu Hak Guna Bangunan inşaat hakkı (yine 80 yıl). ÇOK ÖNEMLİ: Bali'de sıkça pazarlanan, freehold'un \"sizin lehinize\" bir Endonezya vatandaşının adına kaydedildiği \"nominee\" yapısı kanunen GEÇERSİZDİR — mahkeme önünde ileri sürülemez ve taşınmaz, adına kayıtlı kişide veya devlette kalır."
+    },
+    {
+     "q": "Bali'de bir villa ne kadar getiri sağlar?",
+     "a": "İlan edilenden daha azını. Bağımsız rezervasyon verilerine göre yaklaşık 4.000 aktif ilanın rekabet ettiği Canggu'da ortalama günlük fiyat yaklaşık 216 USD ve yıllık doluluk %38 civarındadır; bu da ortalama yılda yaklaşık 23.700 USD gelir anlamına gelir. Bundan villa yönetimi (%15–20), bakım ve vergi düşülmelidir. Gerçekçi olarak %6–9 brüt ve %3–5 net getiriyle plan yapmak gerekir. %10–15'lik net vaatler satış materyallerinden kaynaklanmaktadır ve piyasa verileriyle desteklenmemektedir — arz yılda %40'ın üzerinde bir hızla artarken talep yatay seyretmektedir; bu nedenle mal sahipleri fiyatlarda %10–30 indirim yapmaktadır."
+    },
+    {
+     "q": "Leasehold süresi dolduğunda ne olur?",
+     "a": "İyi kaleme alınmış bir kiralama sözleşmesi, önceden belirlenmiş veya endekslenmiş bir bedelle uzatma opsiyonu içerir. Satın almadan önceki en önemli kontrol tam da budur: kaç yıl kalmıştır, uzatma hakkı ne kadardır ve arsa sahibinin muvafakati nasıl güvence altına alınmıştır. Bu olmadan yatırımın değeri yıldan yıla azalır. Hak Pakai durumunda bir tuzak daha vardır: mülkiyet sahibinin oturma izni sona erer ve yenilenmezse, bir yıl içinde taşınmazı satmakla yükümlüdür; aksi hâlde devlet ihalesine konu olabilir."
+    }
+   ]
+  },
+  "HU": {
+   "nameHu": "Macaristan",
+   "intro": "Macaristan yatırımcı yerleşim programını 2024'te yeniden başlattı, ancak burada önemli bir yanlış anlamayı açıklığa kavuşturmak gerekir: Misafir Yatırımcı Programı'nda DOĞRUDAN KONUT ALIMI oturma iznine HAK KAZANDIRMAZ. Planlanan 500.000 euroluk doğrudan taşınmaz seçeneği, yürürlüğe girmeden önce Ocak 2025'te kaldırılmıştır. Geriye iki yol kalmıştır: net varlık değerinin en az %40'ı Macar konut taşınmazlarından oluşan, MNB nezdinde kayıtlı bir gayrimenkul fonunda 250.000 € değerinde katılma payı (beş yıllık elde tutma yükümlülüğüyle) veya bir Macar yükseköğretim kurumuna 1.000.000 € karşılıksız bağış. Macar taşınmaz piyasasının iki motoru Budapeşte ve Balaton'dur; ivazlı mal devri harcı bir milyar forinte kadar %4'tür.",
+   "highlights": [
+    "DİKKAT: doğrudan konut alımı misafir yatırımcı oturma iznine HAK KAZANDIRMAZ",
+    "Programda yalnızca gayrimenkul fonu katılma payı (250.000 €, 5 yıl elde tutma) veya yükseköğretim bağışı (1.000.000 €) geçerlidir",
+    "İzin 10 yıl süreli olup bir kez 10 yıl daha uzatılabilir",
+    "İvazlı mal devri harcı bir milyar forinte kadar %4, üzerinde %2 (taşınmaz başına en fazla 200 milyon Ft)",
+    "Yeni konutta 2026 sonuna kadar %5 KDV (150 m²'ye kadar daire, 300 m²'ye kadar ev)",
+    "Budapeşte: yıl boyu süren, üniversite ve kiracı talebine dayanan getiri",
+    "Balaton: kalıcı biçimde değer kazanan yerli yazlık piyasası"
+   ],
+   "faq": [
+    {
+     "q": "Macaristan'da konut alırsam Macar oturma izni alabilir miyim?",
+     "a": "Hayır. Bu, Macar programıyla ilgili en yaygın yanlış anlamadır. Misafir Yatırımcı Programı'nda doğrudan daire veya ev alımı yatırım SAYILMAZ: planlanan 500.000 euroluk doğrudan taşınmaz seçeneği, yürürlüğe girmeden önce Ocak 2025'te kaldırılmıştır. İki imkân vardır: MNB nezdinde kayıtlı, varlıklarının en az %40'ını Macar konut taşınmazlarına yatıran bir gayrimenkul fonunda 250.000 € değerinde katılma payı satın almak (5 yıllık elde tutma yükümlülüğüyle) veya bir Macar yükseköğretim kurumuna 1.000.000 € bağış yapmak. İzin 10 yıl süreli olup bir kez 10 yıl daha uzatılabilir. Macar ve AB vatandaşlarının doğal olarak buna ihtiyacı yoktur — serbest dolaşım hakkına sahiptirler."
+    },
+    {
+     "q": "Macaristan'da taşınmaz alımında ne kadar harç ödenir?",
+     "a": "İvazlı mal devri harcı, rayiç değerin bir milyar forinti aşmayan kısmı için %4, bunu aşan kısım için %2'dir; taşınmaz başına en fazla 200 milyon forinttir. Geliştiriciden alınan yeni konutta harç 15 milyon forint değerine kadar muaftır, bunun üzerinde farka %4 uygulanır. İlk konutunu edinen gençlerde, CSOK ile yapılan alımlarda ve satış ile alımın beş yıl içinde gerçekleşmesi hâlinde indirim veya muafiyet uygulanabilir — bu durumda yalnızca fiyat farkı üzerinden ödeme yapılır. Yeni konutun KDV'si %27 yerine %5'tir; dairede 150 m²'ye, evde 300 m²'ye kadar, 2026 sonuna kadar."
+    },
+    {
+     "q": "Budapeşte'de ne kadar kira getirisi elde edilebilir?",
+     "a": "Budapeşte'de uzun dönemli konut kiralamasının brüt getirisi genellikle %4–6'dır; şehir merkezindeki, üniversitelere yakın küçük dairelerde bundan daha yüksek de olabilir. Kısa dönemli kiralamanın getirisi daha yüksektir, ancak buna ilçelere göre farklı düzenlemeler uygulanmaktadır."
+    }
+   ]
+  },
+  "TH": {
+   "nameHu": "Tayland",
+   "intro": "Tayland, Güneydoğu Asya piyasaları arasında yabancılara en öngörülebilir mülkiyet yapısını sunar: yabancı gerçek kişi bir toplu yapı dairesini (condominium) KENDİ ADINA, freehold mülkiyet olarak edinebilir — ilgili toplu yapının toplam alanının en fazla %49'unun yabancı elinde bulunabilmesi koşuluyla. Buna karşılık yabancılar arsaya ve arsayla birlikte eve sahip olamaz; orada uzun dönemli kiralama hakkı veya şirket yapısı alışılmış çözümdür. Bangkok kentsel kiralamanın, Phuket ve Koh Samui turistik getirinin, Chiang Mai ise uzun süreli kalan dijital göçebelerin piyasasıdır.",
+   "highlights": [
+    "Toplu yapı dairesi yabancı olarak freehold, kendi adına edinilebilir",
+    "Toplu yapı başına %49 yabancı kotası, TABAN ALANI oranına göre — satın almadan önce yazılı olarak kontrol edilmelidir",
+    "Satış bedeli yurt dışından, döviz olarak havale edilmelidir (FET belgesi olmadan devir yapılamaz)",
+    "Yabancılar arsaya sahip olamaz; tescil edilebilir kiralamanın kanuni azami süresi 30 yıldır",
+    "\"30+30+30\" uzatma yalnızca sözleşmeye dayalı bir vaattir — mahkeme bunu yeni malike karşı geçerli saymamıştır",
+    "Devir harcı %2, teamül gereği taraflar yarı yarıya paylaşır — alıcının toplam maliyeti genellikle %1–2'dir",
+    "DİKKAT: %0,01'lik harç indirimi YALNIZCA Tayland vatandaşları için geçerlidir, yabancı alıcı için değil"
+   ],
+   "faq": [
+    {
+     "q": "Yabancılar Tayland'da taşınmaz satın alabilir mi?",
+     "a": "Toplu yapı dairesini evet, kendi adına, freehold mülkiyet olarak — ilgili binanın kayıtlı, satılabilir taban alanının en fazla %49'unun yabancı mülkiyetinde olması koşuluyla. Satış bedeli yurt dışından, döviz olarak havale edilmelidir ve tapu dairesi bunu belgeleyen FET belgesi olmadan mülkiyet hakkını tescil etmez. Yabancı gerçek kişi arsaya ve arsayla bütünleşik eve sahip olamaz; bu durumda en fazla 30 yıl için tescil edilebilir kiralama hakkı, intifa hakkı veya Tayland çoğunluklu bir şirket söz konusu olabilir. Dikkat: Tayland çoğunluklu şirket yalnızca gerçek Taylandlı ortaklarla hukuka uygundur — isim ödünç verme yapısı yabancıların ticaretine ilişkin kanuna aykırıdır ve makamlar bunu etkin biçimde denetlemektedir."
+    },
+    {
+     "q": "Tayland'da yabancı kotasının %75'e, kiralamanın 99 yıla çıkarılacağı doğru mu?",
+     "a": "Hayır, bu hâlihazırda YÜRÜRLÜKTE OLAN HUKUK DEĞİLDİR. Hükümet 2024'te yalnızca iki önerinin incelenmesini onaylamıştır; bunlardan hiçbir zaman kanun çıkmamıştır. 99 yıllık kiralamaya ilişkin plan Eylül 2025'te resmen gündemden kaldırılmıştır. 2026 ortasında yürürlükteki kural değişmeksizin %49 yabancı kotası ve 30 yıllık azami tescil edilebilir kiralamadır. 99 yıllık vade üzerinden fiyatlanmış bir taşınmaz satın alan kişi, var olmayan bir hakkın bedelini ödemektedir."
+    },
+    {
+     "q": "%49'luk yabancı kotası ne anlama gelir?",
+     "a": "Her Tayland toplu yapısında kayıtlı, satılabilir taban alanının en fazla %49'u yabancı mülkiyetinde olabilir — sınır dolayısıyla taban alanı oranlıdır, dairelerin adedine göre değildir. Satın almadan önce toplu yapı yöneticisinden kotada hâlâ boş yer bulunduğuna dair yazılı bir belge istenmelidir; bu olmadan daire yabancı alıcının adına devredilemez ve kapora kolaylıkla sıkışıp kalır."
+    },
+    {
+     "q": "Tayland'da alımın yan maliyeti ne kadardır?",
+     "a": "Resmî takdir edilen değer üzerinden %2 devir harcı (transfer fee); bunu taraflar teamül gereği yarı yarıya paylaşır. Satıcı, işletme vergisini (beş yıldan kısa süre elde tuttuysa %3,3) veya onun yerine damga harcını (en az beş yıl elde tuttuysa %0,5) ve ayrıca stopaj vergisini üstlenir. İki tarafın toplam maliyeti genellikle satış bedelinin %6–8'idir, ancak alışılmış paylaşımda YABANCI ALICI tarafında bu, avukatlık ve inceleme ücretiyle birlikte yalnızca yaklaşık %1–2'dir. Önemli: sıkça anılan %0,01'lik indirimli devir harcı yalnızca Tayland vatandaşları için geçerlidir — yabancı alıcı ve Tayland şirketi tam %2'yi öder."
+    }
+   ]
+  },
+  "IT": {
+   "nameHu": "İtalya",
+   "intro": "İtalya, AB'nin en derin ve en çeşitlenmiş yazlık ve kentsel taşınmaz piyasasıdır: Como Gölü ve Toskana'nın prömiyum segmentinden Milano'nun kiralama piyasasına, oradan Güney İtalya'nın \"1 euroluk ev\" programlarına kadar her fiyat düzeyine ulaşılabilir. AB vatandaşları kısıtlama olmaksızın satın alabilir. Kilit konu vergilendirmedir: gerçek kişiden alınan ikinci el taşınmazın devir vergisi (ikinci konut hâlinde) %9'dur, ancak mukim hâline gelen alıcı için %2'ye düşebilir; ayrıca yurt dışından taşınanlar için yurt dışı gelirlere yıllık 200.000 euroluk götürü vergi (flat tax) uygulanabilmektedir.",
+   "highlights": [
+    "AB üyesi — AB vatandaşları için satın alma kısıtlaması yoktur",
+    "Devir vergisi ikinci konutta %9, \"prima casa\" (ana konut) olacaksa %2; asgari 1.000 €",
+    "Gerçek kişiden satın alındığında verginin matrahı kadastro değeridir (prezzo-valore); bu genellikle satış bedelinin epeyce altındadır",
+    "Geliştiriciden alınan yeni taşınmazda KDV: ana konutta %4, ikinci konutta %10, lüks kategoride %22",
+    "Taşınmaz esaslı Golden Visa YOKTUR — İtalyan yatırımcı vizesinden taşınmaz açıkça dışlanmıştır",
+    "Yeni mukimler için yurt dışı gelirlere götürü vergi: 1 Ocak 2026'dan itibaren yılda 300.000 €"
+   ],
+   "faq": [
+    {
+     "q": "İtalya'da taşınmaz alımında alıcı ne kadar vergi öder?",
+     "a": "Gerçek kişiden alınan ikinci el taşınmazda devir vergisi (imposta di registro), ikinci konut söz konusuysa %9'dur; alıcı 18 ay içinde oraya ana konut olarak yerleşim kaydı yaptırırsa yalnızca %2'dir; her iki hâlde de asgari tutar 1.000 €'dur. Gerçek kişiler arasındaki satışta verginin matrahı talep üzerine kadastro değeri (prezzo-valore) olabilir; bu genellikle fiilî satış bedelinin epeyce altındadır — bu, kayda değer bir tasarruftur. Buna her biri 50 euro olan iki sabit harç eklenir. Geliştiriciden, tamamlanmasından sonraki 5 yıl içinde alınan yeni taşınmazda alımı KDV yükümlü kılar: ana konutta %4, ikinci konutta %10, A/1, A/8 ve A/9 lüks kadastro kategorilerinde %22, artı 200 euroluk üç adet sabit harç."
+    },
+    {
+     "q": "Macar vatandaşları İtalya'da taşınmaz satın alabilir mi?",
+     "a": "Evet, kısıtlama olmaksızın — her iki ülke de AB üyesidir, dolayısıyla Macar alıcı İtalyanlarla aynı koşullarda satın alabilir. Alım için İtalyan vergi kimlik numarası (codice fiscale) ve İtalyan banka hesabı gereklidir."
+    },
+    {
+     "q": "Yeni mukimler için İtalyan götürü vergisi (flat tax) nedir?",
+     "a": "Vergi mukimliğini İtalya'ya taşıyan kişi, yurt dışı kaynaklı gelirleri için en fazla 15 yıl boyunca yıllık sabit tutarlı vergi ödediği rejimi seçebilir. Tutar, 2026 bütçe kanunuyla, mukimliğini 1 Ocak 2026'dan itibaren nakledenler için yılda 300.000 euroya yükselmiştir (aile üyesi başına ilave 50.000 euro). Daha önce girenler için eski tutar geçerli kalmaktadır: 2024 öncesi girenlerde 100.000 €, 2024–2025 girişlerinde 200.000 €. Önemli: bu bir vergi hukuku düzenlemesidir, oturma programı DEĞİLDİR — İtalya'da taşınmaz alımı tek başına yerleşim hakkı vermez."
+    }
+   ]
+  },
+  "GR": {
+   "nameHu": "Yunanistan",
+   "intro": "Yunanistan, AB'nin en bilinen Golden Visa programını yürütmektedir: taşınmaz yatırımıyla beş yıl süreli, yenilenebilir bir oturma izni edinilebilir; bu izin ailenin tamamını kapsar ve ASGARİ İKAMET ZORUNLULUĞU OLMAKSIZIN Schengen içinde serbest dolaşım sağlar — programın en güçlü argümanı budur. Eşik, 5100/2024 sayılı kanundan bu yana bölgeye göre kademelidir: Attika'nın tamamında, Selanik'te, Mikonos'ta, Santorini'de ve nüfusu 3.100'den fazla adalarda 800.000 €; ülkenin geri kalanında 400.000 €; 250.000 € ise YALNIZCA konut amaçlı olmayan bir binanın konuta dönüştürülmesinde veya tarihî eser niteliğindeki bir binanın restorasyonunda geçerlidir. Sıkça gizlenen iki koşul vardır: taşınmazın tek parça hâlinde ve en az 120 m² ana yaşam alanına sahip olması gerekir ve Golden Visa'ya konu taşınmazın kısa dönemli (Airbnb tarzı) kiraya verilmesi YASAKTIR — kuralın ihlali iznin iptaline ve 50.000 euro para cezasına yol açar.",
+   "highlights": [
+    "Golden Visa kademeli olarak: 800.000 € (Attika, Selanik, Mikonos, Santorini, büyük adalar) / 400.000 € (diğer yerlerde) / 250.000 € (yalnızca niteliğin dönüştürülmesi veya tarihî eser restorasyonu)",
+    "Taşınmazın tek bir ünite olması ve en az 120 m² ana yaşam alanına sahip olması gerekir",
+    "Golden Visa'ya konu taşınmazın kısa dönemli kiraya verilmesi YASAKTIR — yaptırımı iptal ve 50.000 € para cezasıdır",
+    "Asgari ikamet zorunluluğu YOKTUR",
+    "Ailenin tamamını kapsar (eş, 21 yaşından küçük çocuklar, her iki tarafın bakmakla yükümlü olunan ebeveynleri)",
+    "5 yıl süreli olup yatırım devam ettiği sürece yenilenebilir",
+    "Taşınmaz devir vergisi %3 (+ cüzi belediye katkı payı)",
+    "Yeni inşa edilmiş taşınmazda KDV'nin askıya alınması 31 Aralık 2026'ya kadar uzatılmıştır — bu durumda da %3 devir vergisi uygulanır"
+   ],
+   "faq": [
+    {
+     "q": "Yunan Golden Visa nasıl işler?",
+     "a": "Yunanistan'da taşınmaz satın alınarak beş yıl süreli, yenilenebilir bir oturma izni talep edilebilir; bu izin eşi, 21 yaşından küçük çocukları ve her iki tarafın bakmakla yükümlü olunan ebeveynlerini kapsar. İzin Schengen içinde serbest dolaşım sağlar ve asgari ikamet öngörmez — yatırımı elde tutmanız yeterlidir."
+    },
+    {
+     "q": "Yunan Golden Visa'nın eşiği ne kadardır?",
+     "a": "5100/2024 sayılı kanuna göre üç kademe vardır. Attika'nın tamamında, Selanik bölgesel biriminde, Mikonos'ta, Santorini'de ve nüfusu 3.100'den fazla olan tüm adalarda 800.000 €. Ülkenin diğer tüm bölgelerinde 400.000 €. 250.000 € yalnızca iki hâlde geçerlidir: konut amaçlı olmayan bir binanın konut taşınmazına dönüştürülmesi (yatırımın başvurudan önce tamamlanması gerekir) veya tarihî eser koruması altındaki bir binanın restore edilmesi. 2024'teki geçiş süreleri artık tamamen sona ermiştir; dolayısıyla 2026'da tam 400/800 bin euroluk eşik geçerlidir. Satın almadan önce her zaman ilgili taşınmazın somut bölge sınıflandırması kontrol edilmelidir."
+    },
+    {
+     "q": "Yunan Golden Visa taşınmazımı kısa dönemli kiraya verebilir miyim?",
+     "a": "Hayır. 2024 reformu, Golden Visa'ya dayanak oluşturan taşınmazın kısa dönemli (Airbnb tarzı) kiraya verilmesini açıkça yasaklamaktadır. Yasağın ihlali oturma izninin iptalini ve 50.000 euro para cezasını beraberinde getirir. Uzun dönemli kiralamaya izin verilmektedir. Bu koşul, yatırımın getiri hesabını kökten değiştirmesine rağmen tekliflerin çoğunda yer almamaktadır."
+    },
+    {
+     "q": "Yunan Golden Visa vatandaşlık veriyor mu?",
+     "a": "Doğrudan hayır. Golden Visa bir oturma iznidir; Yunan vatandaşlığı, yedi yıl fiilî Yunanistan ikametinden sonra, dil ve entegrasyon koşullarıyla talep edilebilir. Amaç doğrudan pasaport ise, taşınmaz yatırımıyla doğrudan vatandaşlığı Türkiye ile Saint Kitts ve Nevis vermektedir."
+    }
+   ]
+  },
+  "ES": {
+   "nameHu": "İspanya",
+   "intro": "İspanya, Avrupa'nın işlem hacmi en büyük yazlık taşınmaz piyasasıdır: Costa del Sol (Marbella, Malaga), Costa Blanca (Alicante), Balear Adaları ve Barselona'nın arzı kıtadaki en derin ve yeniden satışı en kolay arzdır. Uluslararası alıcı varlığı nedeniyle çıkış (satış) küçük piyasalara kıyasla belirgin biçimde daha hızlıdır. Önemli bir mevzuat değişikliği: İspanyol Golden Visa'sının taşınmaz esaslı yolu Nisan 2025'te kaldırılmıştır; dolayısıyla bugün İspanya'da taşınmaz alımıyla yatırımcı yerleşim izni ALINAMAZ — alım salt bir yatırım ve yaşam tarzı kararıdır. Devir vergisi bölgeye göre %6–10'dur.",
+   "highlights": [
+    "Avrupa'nın en büyük ve en likit yazlık taşınmaz piyasası — hızlı yeniden satış",
+    "Taşınmaz devir vergisi (ITP) bölgeye göre yaklaşık %6–11: Madrid %6, Endülüs %7, Katalonya %10–11",
+    "DİKKAT: taşınmaz esaslı Golden Visa Nisan 2025'te sona ermiştir",
+    "Güney kıyısında geniş bir Macar ve uluslararası topluluk"
+   ],
+   "faq": [
+    {
+     "q": "Taşınmaz alımıyla İspanyol Golden Visa hâlâ mevcut mu?",
+     "a": "Hayır. İspanya, Golden Visa'nın taşınmaz yatırımına dayalı yolunu Nisan 2025'te kaldırmıştır; böylece 500.000 euroluk taşınmaz alımıyla bugün artık İspanyol yatırımcı oturma izni edinilemez. AB içinde taşınmaz esaslı yerleşim programını Yunanistan ve Macaristan sunmaktadır; taşınmazla vatandaşlığı ise Türkiye ile Saint Kitts ve Nevis vermektedir."
+    },
+    {
+     "q": "İspanya'da alıcı ne kadar vergi öder?",
+     "a": "İkinci el taşınmazda alıcı, bölgeye göre yaklaşık %6–11 devir vergisi (ITP) öder: Madrid'de %6, Endülüs'te yeknesak olarak %7, Katalonya'da bir milyon euroya kadar %10 ve üzerinde %11, Valensiya'da %10 (1 Haziran 2026'dan itibaren %9, bir milyon euro üzerinde %11). Verginin matrahı, satış bedeli ile resmî kadastro referans değerinden yüksek olanıdır — bu önemlidir, çünkü düşük sözleşme bedelinde dahi referans değeri üzerinden vergilendirilir. Geliştiriciden alınan yeni inşa edilmiş taşınmazda %10 KDV artı bölgeye göre değişen %0,5–1,5 belge harcı (AJD) ödenir."
+    },
+    {
+     "q": "Macar alıcı olarak İspanya'da taşınmaz almak için neye ihtiyaç vardır?",
+     "a": "İspanyol vergi kimlik numarasına (NIE), İspanyol banka hesabına ve genellikle bağımsız bir avukata. AB vatandaşı olarak size hiçbir satın alma kısıtlaması uygulanmaz ve süreç noter huzurunda tamamlanır (escritura pública)."
+    }
+   ]
+  },
+  "KN": {
+   "nameHu": "Saint Kitts ve Nevis",
+   "intro": "Saint Kitts ve Nevis, dünyanın en eski, 1984'ten bu yana kesintisiz işleyen yatırım yoluyla vatandaşlık (CBI) programını yürütmektedir — bu, sektörde \"platin standart\" sayılır. Hükümet tarafından ONAYLANMIŞ taşınmaz doğrudan VATANDAŞLIK sağlar: oturma izni değil, pasaport. İki düzey vardır: onaylı bir projede yer alan toplu yapı dairesi veya pay 325.000 USD'den başlar, onaylı müstakil aile evi 600.000 USD'den başlar. Yerleşim, dil veya ikamet koşulu yoktur, ancak ana başvurucunun mülakata katılması ZORUNLUDUR. Ada ülkesi gelir vergisi, servet vergisi ve veraset vergisi almamaktadır; pasaport ise yaklaşık 155 ülkeyi vizesiz ziyaret etmeyi mümkün kılar (Henley 2026: 23. sıra); bunlara Schengen bölgesi ve Birleşik Krallık da dâhildir. Taşınmazın resmen 7 yıl elde tutulması gerekir.",
+   "highlights": [
+    "325.000 USD (onaylı projede toplu yapı dairesi) veya 600.000 USD (onaylı müstakil ev) → tam VATANDAŞLIK ve pasaport",
+    "Dünyanın en eski (1984) ve en istikrarlı CBI programı",
+    "Yerleşim, ikamet veya dil koşulu yoktur — ancak ana başvurucu için ZORUNLU mülakat vardır",
+    "Gelir, servet ve veraset vergisi yoktur",
+    "Yaklaşık 155 ülkeye vizesiz giriş (Schengen, Birleşik Krallık); Türkiye'ye ve İrlanda'ya artık HAYIR",
+    "Resmî süreç: ilke onayına kadar 160–180 gün (buna kapanış ve pasaportun düzenlenmesi eklenir)",
+    "Zorunlu elde tutma süresi: 7 yıl — sonrasında taşınmaz yeniden satılabilir",
+    "Satış bedelinin ÜZERİNDE devlet ücretleri: tek başvurucu için yaklaşık 35.000 USD"
+   ],
+   "faq": [
+    {
+     "q": "Saint Kitts ve Nevis'te taşınmazla vatandaşlık nasıl kazanılır?",
+     "a": "Hükümet tarafından onaylanmış (approved) bir taşınmaz satın alınmalıdır: onaylı bir projede yer alan toplu yapı dairesi veya pay 325.000 USD'den, onaylı müstakil aile evi ise 600.000 USD'den başlamak üzere. Başvuru yalnızca resmî bir acente aracılığıyla yapılabilir. Süreç sıkı bir güvenlik incelemesi içerir; resmî süre ilke onayına (Approval in Principle) kadar 160–180 gündür, buna satışın kapanışı ve pasaportun düzenlenmesi de eklenir."
+    },
+    {
+     "q": "Vatandaşlığı korumak için Saint Kitts ve Nevis'te yaşamak gerekir mi?",
+     "a": "Hayır. Programın yerleşim, ikamet, dil veya sınav koşulu yoktur; vatandaşlık süresizdir ve mirasla geçer. Ancak bilinmesi gereken bir husus vardır: ana başvurucunun mülakata katılması ZORUNLUDUR ve 16 yaşından büyük aile üyelerinden de bu istenebilir."
+    },
+    {
+     "q": "Saint Kitts ve Nevis pasaportu ne kadar değerlidir?",
+     "a": "Pasaport, yaklaşık 155 ülkeyi vizesiz veya kapıda vizeyle ziyaret etmeyi mümkün kılar (Henley Passport Index 2026: 23. sıra); bunlara Schengen bölgesinin tamamı, Birleşik Krallık, Singapur ve Hong Kong dâhildir. Önemli güncel değişiklik: Türkiye ve İrlanda, Saint Kitts ve Nevis pasaportuna yönelik vize muafiyetini KALDIRMIŞTIR. Ülke gelir vergisi, servet vergisi veya veraset vergisi almamaktadır."
+    },
+    {
+     "q": "Satış bedelinin üzerine ne kadar masraf eklenir?",
+     "a": "Başvuruya, taşınmazın bedelinin ÜZERİNDE devlet ücretleri yüklenir. Güvenlik inceleme ücreti: ana başvurucu için 10.000 USD ve 16 yaşından büyük her aile üyesi için 7.500 USD. İlke onayından sonra ödenecek ücret: ana başvurucu için 25.000 USD, eş için 15.000 USD, 18 yaşından küçük bakmakla yükümlü olunan kişi için 10.000 USD, 18 yaşından büyük olan için 15.000 USD. Tek bir başvurucu için bu, avukatlık ve kapanış masrafları hariç yaklaşık 35.000 USD'dir."
+    },
+    {
+     "q": "Satın aldığım taşınmazı daha sonra satabilir miyim?",
+     "a": "Evet, ancak yalnızca zorunlu 7 yıllık elde tutma süresinin dolmasından sonra — bunu resmî program koşulları açıkça belirtmektedir. Sonrasında taşınmaz yeniden satılabilir ve yeni yabancı alıcı aynı taşınmazı kendi vatandaşlık başvurusu için kullanabilir; programın ikincil piyasasını bu oluşturur. Vatandaşlık satıştan sonra da devam eder."
+    },
+    {
+     "q": "Aileden kimler dâhil edilebilir?",
+     "a": "Eş, 30 yaşından küçük çocuklar ve bakmakla yükümlü olunan ebeveynler ile büyükanne ve büyükbabalar. Bu, yalnızca eşin ve 18 yaşından küçük çocukların dâhil edilebildiği Türk programına kıyasla belirgin biçimde daha geniş bir çevredir."
+    },
+    {
+     "q": "Saint Kitts ve Nevis, Türk programından nasıl farklıdır?",
+     "a": "Her ikisi de taşınmaz yatırımıyla VATANDAŞLIK vermektedir, ancak farklı profillerle. Türkiye'nin eşiği daha yüksektir (400.000 USD); buna karşılık büyük ve likit bir taşınmaz piyasası, daha hızlı (3–6 aylık) bir süreç, daha kısa (3 yıllık) bir elde tutma süresi ve ABD E-2 vizesine giden bir yol sunar. Saint Kitts ve Nevis daha düşük bir girişle, tam vergi muafiyetiyle, daha geniş bir aile çevresiyle ve daha güçlü bir pasaportla (yaklaşık 155 ülke) çalışır; buna karşılık piyasa küçüktür, elde tutma süresi 7 yıldır ve çıkış daha yavaştır."
+    }
+   ]
+  }
+ },
+ "articles": {
+  "allampolgarsag-ingatlanbefektetessel": {
+   "title": "Gayrimenkul yatırımıyla vatandaşlık: gerçekten nerede pasaport alınabilir?",
+   "description": "Hangi ülkede taşınmaz alımı doğrudan vatandaşlık sağlar? İşleyen iki program — Türkiye ile Saint Kitts ve Nevis — eşikleri, süreleri ve koşullarıyla karşılaştırıldı.",
+   "answer": "Gayrimenkul yatırımıyla bugün doğrudan iki ülkede vatandaşlık kazanılabilir: Türkiye'de 400.000 USD değerinde taşınmazla, genellikle 3–6 ay içinde; ayrıca Saint Kitts ve Nevis'te devletçe onaylanmış taşınmazla (325.000 USD'den başlayan kat mülkiyetli daire, 600.000 USD'den başlayan müstakil ev), ilkesel onaya kadar 160–180 gün içinde. Bilinen diğer tüm programlar — Yunanistan, Macaristan veya eski İspanyol Golden Visa — yalnızca oturma izni verir, vatandaşlık değil.",
+   "sections": [
+    {
+     "h": "En önemli fark: vatandaşlık mı, yalnızca oturma izni mi?",
+     "p": [
+      "Piyasa, \"Golden Visa\" ifadesini hukuken tamamen farklı iki şey için kullanmaktadır ve yanlış anlamaların çoğu da buradan kaynaklanır. Oturma programı (residence by investment) yerleşim izni verir: ilgili ülkede yaşayabilir, girip çıkabilirsiniz, ancak pasaportunuz değişmez. Vatandaşlık programı (citizenship by investment, CBI) ise gerçek vatandaşlık ve pasaport verir; bu genellikle birkaç ay içinde ve yerleşim zorunluluğu olmaksızın gerçekleşir.",
+      "Gayrimenkul yatırımıyla doğrudan vatandaşlık veren ülke bugün ikidir: Türkiye ile Saint Kitts ve Nevis. AB'de böyle bir program YOKTUR — Malta vatandaşlık programı, Avrupa Birliği Adalet Divanı'nın 2025 tarihli kararı üzerine durdurulmak zorunda kalmıştır; Yunanistan ve Macaristan programları ise yalnızca oturma iznine ilişkindir."
+     ],
+     "table": null
+    },
+    {
+     "h": "İşleyen iki program yan yana",
+     "p": [
+      "Seçim, fiyatla ilgili değildir; taşınmazla ve pasaportla ne yapmak istediğinizle ilgilidir. Türkiye büyük ve likit bir taşınmaz piyasası sunar — taşınmaz başlı başına da bir yatırımdır ve üç yıl sonra satılabilir. Saint Kitts ve Nevis daha küçük bir piyasa ve daha yavaş bir çıkış demektir; buna karşılık daha düşük giriş eşiği, tam vergi muafiyeti ve daha güçlü bir pasaport sunar."
+     ],
+     "table": {
+      "head": [
+       "",
+       "Türkiye 🇹🇷",
+       "Saint Kitts ve Nevis 🇰🇳"
+      ],
+      "rows": [
+       [
+        "Elde edilen",
+        "Tam vatandaşlık + pasaport",
+        "Tam vatandaşlık + pasaport"
+       ],
+       [
+        "Taşınmaz eşiği",
+        "400.000 USD (~370.000 €)",
+        "325.000 USD daire / 600.000 USD müstakil ev"
+       ],
+       [
+        "İşlem süresi",
+        "3–6 ay",
+        "İlkesel onaya kadar 160–180 gün"
+       ],
+       [
+        "Elde tutma süresi",
+        "3 yıl",
+        "7 yıl"
+       ],
+       [
+        "Ülkede bulunma",
+        "Zorunlu değil",
+        "Zorunlu değil — ancak mülakat ZORUNLU"
+       ],
+       [
+        "Dâhil edilebilen aile",
+        "Eş + 18 yaş altı çocuklar",
+        "Eş, 30 yaş altı çocuklar, bakmakla yükümlü olunan anne babalar ve büyükanne büyükbabalar"
+       ],
+       [
+        "Satış bedeline ek devlet ücretleri",
+        "Değerleme + işlem ücretleri",
+        "Tek başvuru sahibi için yaklaşık 35.000 USD"
+       ],
+       [
+        "Vizesiz ülkeler",
+        "yaklaşık 118",
+        "yaklaşık 155 (Schengen, Birleşik Krallık)"
+       ],
+       [
+        "Programın başlangıcı",
+        "2017",
+        "1984 — dünyanın en eski CBI programı"
+       ],
+       [
+        "Gelir vergisi",
+        "Vardır",
+        "Gelir, servet ve veraset vergisi yoktur"
+       ],
+       [
+        "Taşınmaz piyasası",
+        "Büyük, likit, başlı başına yatırım",
+        "Küçük, program güdümlü ikincil piyasa"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Türkiye: hacim bakımından en büyük program",
+     "p": [
+      "En az 400.000 USD değerinde bir Türk taşınmazı satın alınmalıdır. İlanların gizlediği kilit ayrıntı şudur: sözleşmedeki fiyat değil, SPK lisanslı değerleme uzmanının hazırladığı resmî değerleme raporu esas alınır — ve eşiğin, banka aracılığıyla belgelenmiş şekilde ödenen bedel, değerleme raporu ve tapuda yer alan değer bakımından aynı anda karşılanması gerekir. Yüksek bir sözleşme fiyatıyla düşük bir değerleme \"düzeltilemez\". Tapuya üç yıllık devir yasağı (satılamaz şerhi) işlenir; ardından başvuru sahibi önce oturma izni, sonra vatandaşlık alır. Süreç genellikle 3–6 ay sürer ve eş ile 18 yaşından küçük çocukları kapsar; yetişkin çocuk ve anne baba dâhil EDİLEMEZ.",
+      "Türk pasaportu yaklaşık 118 ülkeye vizesiz seyahat imkânı verir ve — birçok yatırımcı için asıl motivasyon budur — Türk vatandaşı, Macar vatandaşı olarak erişilemeyen ABD E-2 yatırımcı vizesine başvurma hakkı kazanır. Önemli bir nüans: E-2 bir yerleşim izni ya da yeşil kart değildir; yatırıma bağlı, yenilenmesi gereken bir göçmen olmayan vizedir ve sonradan vatandaşlık kazananlarda uygulamada birkaç yıllık vatandaşlık beklenmektedir.",
+      "Uygulamaya ilişkin not: eşik USD cinsinden ölçülür, dolayısıyla döviz kuru önemlidir. Türkiye'de alımın yan maliyeti %4 tapu harcı ile avukatlık ve değerleme ücretleridir."
+     ],
+     "table": null
+    },
+    {
+     "h": "Saint Kitts ve Nevis: en eski ve en istikrarlı program",
+     "p": [
+      "Karayipler'deki ada ülkesi programını 1984'ten bu yana kesintisiz yürütmektedir — sektör bunu CBI'nın \"platin standardı\" olarak görmektedir. İki taşınmaz düzeyi vardır: devletçe onaylanmış bir projedeki kat mülkiyetli daire veya pay 325.000 USD'den, onaylanmış müstakil aile evi ise 600.000 USD'den başlar. Serbest piyasadan alınan, listede yer almayan taşınmaz hak KAZANDIRMAZ. Başvuru yalnızca resmî bir acente aracılığıyla yapılabilir.",
+      "Koşullar gerçekten hafiftir: yerleşim, ülkede bulunma, dil veya sınav şartı yoktur; vatandaşlık süresizdir ve miras yoluyla geçer. Ancak bilinmesi gereken bir husus vardır, çünkü tekliflerin çoğunda eksiktir: ana başvuru sahibinin ZORUNLU bir mülakata katılması gerekir ve 16 yaşından büyük aile üyelerinden de bu istenebilir. Buna karşılık dâhil edilebilecek aile çevresi geniştir: eş, 30 yaş altı çocuklar ile bakmakla yükümlü olunan anne babalar ve büyükanne büyükbabalar.",
+      "Satış bedelinin ÜZERİNE devlet ücretlerini de hesaba katın: inceleme ücreti ana başvuru sahibi için 10.000 USD ve 16 yaş üstü her aile üyesi için 7.500 USD'dir; ilkesel onaydan sonra ise ana başvuru sahibi için ayrıca 25.000 USD ve eş için 15.000 USD ödenir. Tek başına başvuran biri için bu, yaklaşık 35.000 USD ek maliyet demektir.",
+      "Taşınmazın resmen 7 yıl elde tutulması gerekir; sonrasında devredilebilir ve yeni yabancı alıcı aynı taşınmazı kendi vatandaşlık başvurusu için yeniden kullanabilir — ikincil piyasayı ayakta tutan da budur. Ancak gerçekçi olmak gerekir: burası küçük, program güdümlü bir piyasadır, klasik bir konut piyasası değildir; dolayısıyla çıkış Türkiye'dekinden daha yavaştır. Pasaport yaklaşık 155 ülkeye vizesiz giriş sağlar (Henley 2026: 23. sıra), ancak yeni bir gelişme olarak Türkiye ve İrlanda vize muafiyetini kaldırmıştır."
+     ],
+     "table": null
+    },
+    {
+     "h": "Karar vermeden önce mutlaka açıklığa kavuşturulması gerekenler",
+     "p": [
+      "1. Taşınmazın resmî onaylı projeler listesinde yer alıp almadığı (Saint Kitts örneğinde bu, başvurunun geçerlilik koşuludur).",
+      "2. Değerlemenin eşiği karşılayıp karşılamadığı — Türkiye'de sözleşmedeki fiyat değil, resmî değerleme raporu esas alınır.",
+      "3. Kendi mukimliğinizdeki vergisel sonuçlar: vatandaşlığın kazanılması tek başına Macaristan'daki vergi mukimliğini sona erdirmez.",
+      "4. Çıkış: taşınmazın ne kadar süre sonra ve hangi gerçek fiyattan devredilebileceği. Bu, CBI yatırımlarının en sık hafife alınan riskidir."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Hangi ülkede taşınmaz alımıyla vatandaşlık kazanılabilir?",
+     "a": "İki ülkede: Türkiye'de 400.000 USD değerinde taşınmazla (3–6 ay) ve Saint Kitts ve Nevis'te devletçe onaylanmış taşınmazla — kat mülkiyetli dairede 325.000 USD'den, müstakil evde 600.000 USD'den başlayarak (ilkesel onaya kadar 160–180 gün). Her ikisi de yerleşim zorunluluğu olmaksızın gerçek vatandaşlık ve pasaport verir; ancak Saint Kitts'te zorunlu mülakat vardır ve taşınmazın 7 yıl elde tutulması gerekir."
+    },
+    {
+     "q": "Gayrimenkul yatırımıyla AB vatandaşlığı kazanılabilir mi?",
+     "a": "Hayır. Hâlihazırda hiçbir AB üyesi devlette taşınmaz alımıyla doğrudan vatandaşlık kazanılamaz. Yunanistan ve Macaristan programları oturma izni verir; İspanya'nın taşınmaz esaslı Golden Visa uygulaması Nisan 2025'te sona ermiştir; Malta vatandaşlık programı ise Avrupa Birliği Adalet Divanı'nın 2025 tarihli kararı üzerine durdurulmak zorunda kalmıştır."
+    },
+    {
+     "q": "Vatandaşlığı kazandıktan sonra taşınmazı elde tutmak gerekir mi?",
+     "a": "Evet, bir süre için. Türkiye'de üç yıl boyunca satılamaz (bu, tapuya da şerh olarak işlenir); Saint Kitts ve Nevis'te resmî program koşullarına göre elde tutma süresi 7 yıldır. Vatandaşlık, elde tutma süresinin dolmasından ve satıştan sonra da devam eder."
+    },
+    {
+     "q": "Macar vatandaşlığımı kaybeder miyim?",
+     "a": "Hayır. Macaristan çifte vatandaşlığı kabul etmektedir ve ne Türkiye ne de Saint Kitts ve Nevis önceki vatandaşlıktan vazgeçilmesini şart koşar. Vergi mukimliği meselesi ise bundan bağımsızdır — bunun bir vergi uzmanıyla açıklığa kavuşturulmasında yarar vardır."
+    }
+   ]
+  },
+  "golden-visa-ingatlannal": {
+   "title": "2026'da gayrimenkul yatırımıyla Golden Visa: hangi ülke ne veriyor?",
+   "description": "Yunanistan, Macaristan ve diğer programlar: eşikler, ülkede bulunma koşulları ve hangi yolun vatandaşlığa götürdüğü. Güncel, karşılaştırmalı bir genel bakış.",
+   "answer": "DOĞRUDAN taşınmaz alımıyla bugün AB'de fiilen yalnızca Yunanistan'da yerleşim izni alınabilir: ülkenin büyük bölümünde 400.000 €'dan, Attika, Selanik ve popüler adalarda 800.000 €'dan başlayarak. Macar misafir yatırımcı programında doğrudan konut alımı hak KAZANDIRMAZ — orada yalnızca gayrimenkul fonu katılma payı (250.000 €) veya yükseköğretim bağışı (1.000.000 €) geçerlidir. İspanya'nın taşınmaz esaslı Golden Visa uygulaması 3 Nisan 2025'te sona ermiştir; İtalya'da ise taşınmaz, yatırımcı vizesinin kapsamı dışında açıkça bırakılmıştır. Amaç doğrudan pasaportsa, oturma programı değil vatandaşlık programı gerekir: Türkiye ya da Saint Kitts ve Nevis.",
+   "sections": [
+    {
+     "h": "Bir Golden Visa gerçekte ne verir?",
+     "p": [
+      "Golden Visa, devletin bir yatırım — genellikle taşınmaz alımı — karşılığında verdiği oturma iznidir. AB programlarında bu aynı zamanda Schengen serbest dolaşımı, yani çoğu durumda bölgenin tamamında vizesiz seyahat anlamına gelir. VERMEDİĞİ şey ise pasaport ve vatandaşlıktır. Çoğu ülkede vatandaşlık ancak birkaç yıllık fiilî ikamet, dil sınavı ve vatandaşlığa kabul işleminden sonra talep edilebilir.",
+      "Macar vatandaşı olarak AB içinde serbest dolaşım için Golden Visa'ya ihtiyacınız yoktur — bu nedenle yerli alıcılar açısından bu programlar öncelikle vergi planlaması, iş veya \"B planı\" gerekçesiyle, ya da üçüncü ülke vatandaşı aile üyeleri söz konusu olduğunda ilgi çekicidir."
+     ],
+     "table": null
+    },
+    {
+     "h": "Programlar yan yana",
+     "p": [
+      "Eşikler, ilgili ülkenin resmî, taşınmaz esaslı giriş düzeyini göstermektedir."
+     ],
+     "table": {
+      "head": [
+       "Ülke",
+       "Eşik",
+       "Verdiği",
+       "Ülkede bulunma"
+      ],
+      "rows": [
+       [
+        "Yunanistan 🇬🇷",
+        "800.000 € (Attika, Selanik, büyük adalar) / 400.000 € (diğer yerler) / 250.000 € (yalnızca dönüşüm, tarihî eser)",
+        "5 yıllık, yenilenebilir oturma izni, ailenin tamamına",
+        "Zorunlu değil"
+       ],
+       [
+        "Macaristan 🇭🇺",
+        "250.000 € gayrimenkul FONU katılma payı veya 1.000.000 € bağış",
+        "10 yıllık izin — DOĞRUDAN konut alımı hak KAZANDIRMAZ",
+        "Zorunlu değil"
+       ],
+       [
+        "İspanya 🇪🇸",
+        "—",
+        "SONA ERDİ: taşınmaz esaslı yol 3 Nisan 2025'te kapanmıştır",
+        "—"
+       ],
+       [
+        "İtalya 🇮🇹",
+        "—",
+        "YOK: taşınmaz, yatırımcı vizesinin kapsamı dışındadır",
+        "—"
+       ],
+       [
+        "Türkiye 🇹🇷",
+        "400.000 USD",
+        "VATANDAŞLIK (yalnızca oturma izni değil)",
+        "Zorunlu değil"
+       ],
+       [
+        "Saint Kitts ve Nevis 🇰🇳",
+        "yaklaşık 325.000 USD",
+        "VATANDAŞLIK (yalnızca oturma izni değil)",
+        "Zorunlu değil"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Yunanistan: en bilinen AB programı",
+     "p": [
+      "Yunan Golden Visa beş yıl süreli olup yatırım devam ettiği sürece yenilenebilir ve eşi, 21 yaş altı çocukları ve her iki tarafın bakmakla yükümlü olduğu anne babaları kapsar. En güçlü özelliği, asgari bir ülkede bulunma şartının olmamasıdır.",
+      "Eşik, 5100/2024 sayılı yasadan bu yana üç dilimlidir. Attika bölgesinin tamamında, Selanik bölgesel biriminde, Mikonos'ta, Santorini'de ve nüfusu 3.100'den fazla olan tüm adalarda 800.000 €. Ülkenin diğer tüm bölgelerinde 400.000 €. 250.000 € ise yalnızca iki durumda geçerlidir: konut amaçlı olmayan bir binanın konuta dönüştürülmesinde (yatırımın, başvurunun yapılmasından ÖNCE tamamlanması gerekir) ve tarihî eser koruması altındaki bir binanın restorasyonunda. 2024 tarihli geçiş süreleri tümüyle dolmuştur; dolayısıyla 2026'da eşiğin tamamı geçerlidir.",
+      "Tekliflerin çoğunda eksik olan, ancak yatırımı belirleyebilecek iki koşul vardır: 400 ve 800 bin euroluk dilimlerde taşınmazın TEK bir bağımsız bölüm olması ve en az 120 m² ana yaşam alanına sahip olması gerekir (yatırım birden fazla konuta bölünemez); ayrıca Golden Visa'ya esas oluşturan taşınmazın Airbnb tarzı kısa dönemli kiralanması YASAKTIR. Yasağın ihlali, iznin geri alınmasına ve 50.000 euro para cezasına yol açar. Yunan programını turistik kiralama getirisi üzerine kuranlar için bu, hesabı temelinden değiştirir."
+     ],
+     "table": null
+    },
+    {
+     "h": "Macaristan: 2024'te yeniden başlatılan misafir yatırımcı programı",
+     "p": [
+      "Burada yaygın bir yanlış anlamayı açıklığa kavuşturmak en önemlisidir: Macar Misafir Yatırımcı Programı'nda DOĞRUDAN KONUT ALIMI oturma iznine HAK KAZANDIRMAZ. Mevzuatta başlangıçta planlanan 500.000 euroluk doğrudan taşınmaz seçeneği, henüz yürürlüğe girmeden Ocak 2025'te kaldırılmıştır. Dolayısıyla yalnızca Budapeşte'de bir daire satın alan kişi, misafir yatırımcı izni alamaz.",
+      "Geriye iki yol kalmıştır. Biri, net varlık değerinin en az %40'ı Macar konut taşınmazlarından oluşan, MNB nezdinde kayıtlı bir gayrimenkul fonunda 250.000 € değerinde katılma payı satın almaktır; beş yıllık elde tutma yükümlülüğüyle. Diğeri, bir Macar yükseköğretim kurumuna 1.000.000 € karşılıksız bağış yapmaktır. İzin on yıl süreli olup bir kez on yıl daha uzatılabilir — süre bakımından AB'deki en uzun izindir — yatırımın ise misafir yatırımcı vizesiyle yapılan ilk girişten itibaren 93 gün içinde gerçekleştirilmesi gerekir.",
+      "Macar ve AB vatandaşları için bu program doğal olarak ilgili değildir, çünkü serbest dolaşım hakkına sahiptirler; hedef kitlesi üçüncü ülke vatandaşı yatırımcılardır."
+     ],
+     "table": null
+    },
+    {
+     "h": "Amaç pasaportsa, Golden Visa aramayın",
+     "p": [
+      "En sık yapılan hata, vatandaşlık isteyen birinin bunun için Golden Visa satın almasıdır. İkisi aynı şey değildir ve biri kendiliğinden diğerine götürmez: örneğin Yunan vatandaşlığına kabul için yedi yıllık fiilî Yunanistan ikameti, dil sınavı ve uyum sınavı gerekir — Golden Visa tek başına bunun yerine geçmez.",
+      "Gerçek amaç ikinci bir pasaportsa, bir vatandaşlık programı seçilmelidir: Türkiye ya da Saint Kitts ve Nevis. Bunları ayrıntılı olarak \"Gayrimenkul yatırımıyla vatandaşlık\" başlıklı yazımızda ele aldık."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Bugün hangi ülkede taşınmaz alımıyla Golden Visa alınabilir?",
+     "a": "Doğrudan taşınmaz alımıyla fiilen yalnızca Yunanistan'da: ülkenin büyük bölümünde 400.000 eurodan, Attika, Selanik ve popüler adalarda 800.000 eurodan, 250.000 eurodan ise yalnızca bina dönüşümünde veya tarihî eser restorasyonunda. Macar programında doğrudan konut alımı geçerli değildir — orada gayrimenkul fonu katılma payı (250.000 €) veya yükseköğretim bağışı (1.000.000 €) gerekir. İspanya'nın taşınmaz esaslı Golden Visa uygulaması 3 Nisan 2025'te sona ermiştir; İtalya'da ise taşınmaz, yatırımcı vizesinin kapsamı dışındadır."
+    },
+    {
+     "q": "Golden Visa AB vatandaşlığı verir mi?",
+     "a": "Hayır. Golden Visa bir oturma iznidir. Vatandaşlık yalnızca olağan vatandaşlığa kabul işlemiyle kazanılabilir; bu da genellikle birkaç yıllık fiilî ikamet, dil sınavı ve uyum sınavı gerektirir — örneğin Yunanistan örneğinde yedi yıl."
+    },
+    {
+     "q": "Golden Visa'yı korumak için o ülkede yaşamak gerekir mi?",
+     "a": "Yunanistan ve Macaristan programlarında asgari bir ülkede bulunma şartı yoktur: yatırımı sürdürmeniz ve izni yenilemeniz yeterlidir. Ancak bu aynı zamanda, bu yılların vatandaşlığa kabul için gereken ikamet süresine sayılmadığı anlamına gelir — örneğin Yunan vatandaşlığına kabul için yedi yıl FİİLÎ Yunanistan ikameti gerekir."
+    }
+   ]
+  },
+  "kulfoldi-ingatlan-mellekkoltsegek": {
+   "title": "Gerçekte ne kadara mal oluyor? 12 ülkede yurt dışı taşınmaz alımının yan maliyetleri",
+   "description": "Devir vergisi, noter, avukat, emlakçı komisyonu — ülke ülke ayrıntılı olarak. Satış bedeline eklenen toplam maliyet genellikle %3–14 arasında değişir.",
+   "answer": "Yurt dışı taşınmaz alımında satış bedeline eklenen yan maliyet ülkeden ülkeye önemli ölçüde değişir: Arnavutluk'ta fiilen devir vergisi yoktur, Karadağ'da %3, Macaristan ve Türkiye'de %4, buna karşılık İtalya'da %9 (ikinci konut) ve İspanya'da %6–10'dur. Bunlara her ülkede noter ücreti, avukatlık ücreti ve genellikle %2–5 emlakçı komisyonu eklenir.",
+   "sections": [
+    {
+     "h": "Bu neden satış bedelinden daha önemlidir",
+     "p": [
+      "Yurt dışı taşınmaz alımında hoş olmayan sürprizlerin çoğu fiyatta değil, yan maliyettedir. Satış bedelinin üzerine ülkeye göre genellikle %5–14 daha eklenir — 300.000 euroluk bir taşınmazda bu, yalnızca hangi ülkeden aldığınıza bağlı olarak 15.000 ile 42.000 euro arasında bir fark demektir.",
+      "Aşağıdaki tablo en önemli kalemleri ülke ülke göstermektedir. Önemli: devir vergisi genellikle İKİNCİ EL taşınmaz için geçerlidir — yeni yapılarda birçok ülkede onun yerini KDV alır ve bu daha yüksek olabilir."
+     ],
+     "table": {
+      "head": [
+       "Ülke",
+       "Devir vergisi",
+       "Noter",
+       "Avukat",
+       "Emlakçı"
+      ],
+      "rows": [
+       [
+        "🇲🇪 Karadağ",
+        "%3–6 (dilimli)",
+        "%0,5 + 200 €",
+        "%1",
+        "%3"
+       ],
+       [
+        "🇭🇷 Hırvatistan",
+        "%3",
+        "%0,4 + 150 €",
+        "%1",
+        "%3"
+       ],
+       [
+        "🇦🇱 Arnavutluk",
+        "%0",
+        "%0,5 + 120 €",
+        "%1",
+        "%3"
+       ],
+       [
+        "🇷🇸 Sırbistan",
+        "%2,5",
+        "%0,5 + 150 €",
+        "%1",
+        "%3"
+       ],
+       [
+        "🇹🇷 Türkiye",
+        "%4",
+        "%0,5 + 250 €",
+        "%1,2",
+        "%2"
+       ],
+       [
+        "🇮🇩 Bali (Endonezya)",
+        "%5",
+        "%1 + 300 €",
+        "%1,5",
+        "%5"
+       ],
+       [
+        "🇭🇺 Macaristan",
+        "%4",
+        "%0,5 + 150 €",
+        "%1",
+        "%3"
+       ],
+       [
+        "🇹🇭 Tayland",
+        "%2",
+        "%0,5 + 200 €",
+        "%1,5",
+        "%3"
+       ],
+       [
+        "🇮🇹 İtalya",
+        "%9",
+        "%1 + 300 €",
+        "%1",
+        "%3"
+       ],
+       [
+        "🇬🇷 Yunanistan",
+        "%3",
+        "%1,2 + 300 €",
+        "%1,2",
+        "%2"
+       ],
+       [
+        "🇪🇸 İspanya",
+        "%8",
+        "%1 + 300 €",
+        "%1",
+        "%3"
+       ],
+       [
+        "🇰🇳 Saint Kitts ve Nevis",
+        "%10",
+        "%1 + 500 €",
+        "%1,5",
+        "%5"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "En ucuz ve en pahalı giriş",
+     "p": [
+      "En elverişli işlem maliyetini Arnavutluk (%0 devir vergisi) ve Tayland (%2) sunmaktadır; onları %3–6 (dilimli) ile Karadağ ve Hırvatistan izler. Ölçeğin diğer ucunda ikinci konut için %9 ile İtalya ve bölgesel ITP'nin %6–10 arasında değiştiği İspanya yer alır.",
+      "Yaygın bir yanılgı, emlakçı komisyonunu her zaman satıcının ödediğidir. Bu, piyasadan piyasaya değişir: Balkan ve Türk piyasalarında komisyonun paylaşılması veya alıcı tarafından üstlenilmesi de yerleşik bir uygulamadır; bu nedenle konu, kapora verilmeden önce yazılı olarak açıklığa kavuşturulmalıdır."
+     ],
+     "table": null
+    },
+    {
+     "h": "Tablonun ötesinde hesaba katılması gerekenler",
+     "p": [
+      "Tercüme ve tasdik: birçok ülkede sözleşmelerin yeminli tercümeyle sunulması gerekir.",
+      "Vergi kimlik numarası ve banka hesabı: İspanya'da NIE, İtalya'da codice fiscale, Yunanistan'da AFM gerekir — bunlar olmadan sözleşme yapılamaz.",
+      "Yıllık idame: emlak vergisi, aidat, sigorta ve yazlık taşınmazlarda kışa hazırlık veya yönetim ücreti.",
+      "Döviz bozdurma: euro bölgesi dışındaki ülkelerde (Türkiye, Tayland, Endonezya, Macaristan) bankanın kur marjı tek başına %1–3'e ulaşabilir — ayrı bir döviz hizmeti sağlayıcısı kullanmakta yarar vardır."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Yurt dışı taşınmaz alımının toplam yan maliyeti ne kadardır?",
+     "a": "Ülkeye göre genellikle satış bedelinin %5–14'ü kadardır. En düşük Arnavutluk ve Tayland'dadır (yaklaşık %3–6); Karadağ, Hırvatistan, Macaristan ve Türkiye'de orta düzeydedir (yaklaşık %5–9); en yüksek ise İtalya ve İspanya'dadır (yaklaşık %10–14)."
+    },
+    {
+     "q": "Yurt dışı taşınmaz alımında emlakçı komisyonunu kim öder?",
+     "a": "Piyasadan piyasaya değişir. Batı Avrupa piyasalarında genellikle satıcı öder; Balkan ve Türk piyasalarında ise paylaşım ya da alıcının üstlenmesi de yerleşik bir uygulamadır. Her zaman kapora ödenmeden ÖNCE yazılı olarak açıklığa kavuşturulmalıdır."
+    },
+    {
+     "q": "Yeni yapılarda da devir vergisi ödenir mi?",
+     "a": "Genellikle hayır — çoğu ülkede geliştiriciden alınan yeni taşınmazın fiyatında KDV yer alır ve bu durumda ayrıca devir vergisi alınmaz. Ancak bu, mutlaka daha ucuz olduğu anlamına gelmez: İspanya'daki %10 veya İtalya'daki %10–22 KDV, ikinci el taşınmazın devir vergisinden daha yüksek olabilir."
+    }
+   ]
+  },
+  "kulfoldi-ingatlanvasarlas-lepesei": {
+   "title": "Adım adım yurt dışı taşınmaz alımı: sürecin tamamı",
+   "description": "Aramadan tapu tesciline: durum tespiti, kapora, ön sözleşme, noter, vergi kimlik numarası ve paraya mal olan en sık yapılan hatalar.",
+   "answer": "Yurt dışı taşınmaz alımı altı adımdan oluşur: (1) arama ve daraltma, (2) yerel vergi kimlik numarası ve banka hesabı açılması, (3) bağımsız bir avukatla tapu kaydı üzerinden hukuki durum tespiti, (4) ön sözleşme ve kapora (genellikle %10), (5) noter huzurunda kesin sözleşme ve satış bedelinin ödenmesi, (6) kadastroda tapu tescili. Sürecin tamamı genellikle 4–12 hafta sürer.",
+   "sections": [
+    {
+     "h": "1. Arama ve daraltma",
+     "p": [
+      "En sık yapılan hata, alıcının piyasaya değil taşınmaza âşık olmasıdır. Önce amaç belirlenmelidir: kiralama getirisi, kendi kullanımı ya da oturma/vatandaşlık programı. Bu üç amaç çoğu zaman tamamen farklı bir ülkeyi ve farklı bir taşınmaz türünü gerektirir.",
+      "Getiri amacında kentsel, yıl boyu süren kiralama talebi (Belgrad, Budapeşte, Bangkok) mevsimlik sahil piyasasından daha öngörülebilirdir. Kendi kullanımında uçuş erişilebilirliği ve kış doluluğu belirleyicidir. Program amacında ise taşınmazın uygunluğu, konumundan daha önemlidir."
+     ],
+     "table": null
+    },
+    {
+     "h": "2. Yerel vergi kimlik numarası ve banka hesabı",
+     "p": [
+      "Neredeyse her ülkede sözleşme için yerel bir vergi kimlik numarası gerekir: İspanya'da NIE, İtalya'da codice fiscale, Yunanistan'da AFM, Türkiye'de vergi numarası. Bunların temini 1–3 hafta sürer ve çoğu durumda vekâletle, uzaktan da halledilebilir.",
+      "Yerel banka hesabı yalnızca satış bedeli için değil, sonraki fatura ve vergi ödemeleri için de gereklidir. Kara para aklamayla mücadele denetimine hazırlıklı olun: satış bedelinin kaynağı belgelerle kanıtlanmalıdır."
+     ],
+     "table": null
+    },
+    {
+     "h": "3. Hukuki durum tespiti — burada tasarruf etmek en pahalı hatadır",
+     "p": [
+      "Satıcının veya emlakçının önermediği bağımsız bir avukat tutun. Durum tespitinin asgarisi şudur: tapu kaydı (kayıtlı malik kimdir), takyidatlar ve ipotekler, yapı ruhsatı ve yapı kullanma izni, arsanın imar durumu, aidat ve vergi borcu ile konutun yüzölçümünün ilanda belirtilenle aynı olup olmadığı.",
+      "Geliştiriciden alınan, henüz inşa hâlindeki taşınmazlarda banka teminatı veya emanet yapısı ayrı bir sorudur: geliştirici inşaatı tamamlamazsa ödenen paraya ne olacaktır?"
+     ],
+     "table": null
+    },
+    {
+     "h": "4. Ön sözleşme ve kapora",
+     "p": [
+      "Yerleşik uygulama şudur: ön sözleşmeyle eş zamanlı olarak %10 kapora ödenir; bu, satıcının sözleşmeyi ihlali hâlinde genellikle iki katı olarak geri verilir, alıcının caymasında ise yanar. Kaporayı mümkünse doğrudan satıcıya değil, avukatın emanet hesabına ödeyin.",
+      "Ön sözleşmede kesin sözleşmenin süresi, taşınmazın tam durumu ve eklentileri ile yan maliyetlerin her birini kimin üstleneceği belirtilmelidir."
+     ],
+     "table": null
+    },
+    {
+     "h": "5. Kesin sözleşme ve ödeme",
+     "p": [
+      "Çoğu Avrupa piyasasında kesin satış, tarafların kimliğini ve mülkiyet hakkını denetleyen noter huzurunda gerçekleşir (escritura, atto notarile, ugovor). Türkiye'de mülkiyetin devri tapu müdürlüğünde (tapu) yapılır.",
+      "Satış bedelini mümkünse banka havalesiyle, belgelenebilir biçimde ödeyin — nakit ödeme birçok ülkede sınırlı ya da yasaktır ve ileride satış sırasında iktisap değerinin kanıtlanmasını zorlaştırır."
+     ],
+     "table": null
+    },
+    {
+     "h": "6. Tescil ve sonraki işler",
+     "p": [
+      "Mülkiyet hakkı, kadastro tescili yapıldığında tam olarak doğar. Bu, ülkeye göre birkaç günden birkaç aya kadar sürer. Ardından aboneliklerin devri, yerel emlak vergisi bildirimi ve — kiraya verecekseniz — kiralama izninin veya sınıflandırmanın alınması gelir.",
+      "Son olarak: Macaristan'daki vergi durumunuzu da düzenleyin. Yurt dışındaki taşınmazdan elde edilen kira geliri ve ileride satıştan doğan değer artış kazancı, çifte vergilendirmeyi önleme anlaşmalarına göre vergilendirilir — bu ülkeden ülkeye değişir ve konuyu her zaman yabancı ülkede ödenen vergi kapatmaz."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Yurt dışı taşınmaz alımı ne kadar sürer?",
+     "a": "Nakit alımda kabul edilen tekliften tapu tesciline kadar genellikle 4–12 hafta. Yerel vergi kimlik numarasının temini 1–3 hafta, hukuki durum tespiti 1–2 hafta sürer; noter huzurundaki kapanış ise tarafların zamanlamasına bağlıdır."
+    },
+    {
+     "q": "Yurt dışı taşınmaz alımında avukat tutmak gerekir mi?",
+     "a": "Evet ve mümkünse satıcının ya da emlakçının önermediği birini. Noter çoğu ülkede sözleşmenin hukuka uygunluğunu denetler, ancak sizin çıkarlarınızı temsil etmez — takyidatların, ruhsatların ve yüzölçümünün denetlenmesi avukatın görevidir."
+    },
+    {
+     "q": "Uzaktan, bizzat bulunmadan satın almak mümkün müdür?",
+     "a": "Çoğu ülkede evet; avukata verilen, tasdik edilmiş ve apostille şerhli bir vekâletname ile. Uygulamada yine de taşınmazı en az bir kez bizzat görmekte yarar vardır — fotoğraflar sistematik olarak gerçekten daha güzeldir."
+    }
+   ]
+  }
+ }
 }

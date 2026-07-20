@@ -1,5 +1,803 @@
 {
-  "fallback": true,
-  "countries": {},
-  "articles": {}
+ "countries": {
+  "ME": {
+   "nameHu": "Crna Gora",
+   "intro": "Crna Gora je jedno od cjenovno najpovoljnijih primorskih tržišta na Jadranu: plaća se eurom, a strani kupac praktično može kupiti stan ili kuću uz ista prava kao i domaći državljani. Porez na promet nekretnina je od 2024. godine stepenast: do 150.000 € iznosi 3%, iznad toga 5%, a iznad 500.000 € 6%. Okosnicu potražnje čine Budva, Kotor, Tivat (Porto Montenegro) i Herceg Novi; stanovi s pogledom na more u Boki kotorskoj su najtraženiji investicioni proizvod, dok Bar i Ulcinj i dalje nude znatno jeftiniji ulazak. Zemlja je kandidat za članstvo u EU, što je dugoročno faktor rasta cijena.",
+   "highlights": [
+    "Zvanično sredstvo plaćanja je euro — nema kursnog rizika u kupoprodajnoj cijeni",
+    "Stepenasti porez na promet nekretnina od 2024.: 3% / 5% / 6% (s granicama od 150.000 i 500.000 eura)",
+    "Kod novogradnje nema poreza na promet — umjesto njega je u cijeni 21% PDV-a",
+    "Strano fizičko lice može slobodno kupiti stan, kuću i građevinsko zemljište",
+    "Za državljane EU NEMA vrijednosnog praga za boravišnu dozvolu (za državljane trećih zemalja od 2026. iznosi 150.000 €)",
+    "Zemlja kandidat za EU — dugoročni potencijal rasta vrijednosti"
+   ],
+   "faq": [
+    {
+     "q": "Može li stranac kupiti nekretninu u Crnoj Gori?",
+     "a": "Da. Strano fizičko lice u Crnoj Gori može slobodno kupiti stan, kuću i građevinsko zemljište, na vlastito ime i bez posebne dozvole. Ograničenje se prvenstveno odnosi na poljoprivredno i šumsko zemljište — ono se po pravilu kupuje preko domaće firme."
+    },
+    {
+     "q": "Koliki su prateći troškovi kupovine nekretnine u Crnoj Gori?",
+     "a": "Porez na promet nekretnina je od 2024. godine stepenast: do 150.000 € iznosi 3%; između 150.000 i 500.000 € iznosi 4.500 € uvećano za 5% dijela iznad 150.000 €; iznad 500.000 € iznosi 22.000 € uvećano za 6% dijela iznad 500.000 €. Osnovica je tržišna vrijednost koju utvrđuje poreska uprava, a ne nužno ugovorena cijena. Na to dolazi notarska taksa, oko 1% advokatske naknade i posrednička provizija (uobičajeno 3%, koju po pravilu plaća prodavac). Kod prve prodaje novoizgrađene nekretnine sagrađene nakon 2003. nema poreza na promet — tu je u cijeni 21% PDV-a."
+    },
+    {
+     "q": "Daje li Crna Gora boravišnu dozvolu za kupovinu nekretnine?",
+     "a": "Da, na osnovu vlasništva nad nekretninom može se zatražiti boravišna dozvola na godinu dana, koja se obnavlja svake godine. Od 17. januara 2026. državljanin treće zemlje za to mora imati nekretninu čija poreska vrijednost iznosi najmanje 150.000 € — na državljane EU, EEP-a i Švicarske OVAJ VRIJEDNOSNI PRAG SE NE ODNOSI, dakle za mađarskog kupca nema minimuma. Raniji program sticanja državljanstva ulaganjem zatvoren je 31. decembra 2022., pa danas u Crnoj Gori nije moguće steći državljanstvo kupovinom nekretnine — takav put nude Turska te Sveti Kits i Nevis."
+    }
+   ]
+  },
+  "HR": {
+   "nameHu": "Hrvatska",
+   "intro": "Hrvatska je zrelo jadransko tržište i država članica EU: od 2023. je članica eurozone i šengenskog prostora, što za mađarske i druge kupce iz EU znači kupovinu na obali uz najmanje pravno trenje. Državljanin EU kao fizičko lice može kupovati pod istim uslovima kao i domaći državljani — nije potrebna ministarska saglasnost koja je stranim državljanima ranije bila obavezna. Istra (Rovinj, Poreč) je pokretač segmenta blizu gradova, Dalmacija (Split, Trogir, Šibenik) segmenta kuća za odmor, a Dubrovnik premium segmenta. Prinos od turističkog iznajmljivanja je visok zbog sezonalnosti, ali je snažno koncentrisan na ljeto.",
+   "highlights": [
+    "Država članica EU i eurozone — za državljane EU nema obaveze pribavljanja saglasnosti",
+    "Porez na promet nekretnina fiksnih 3%; kod novogradnje je umjesto njega u cijeni 25% PDV-a",
+    "Niski notarski troškovi: notar obavlja samo ovjeru potpisa (nekoliko eura), ne sastavlja ugovor",
+    "Od 2025. postoji i GODIŠNJI porez na nekretnine: 0,60–8,00 €/m² godišnje, zavisno od jedinice lokalne samouprave",
+    "Moratorij na poljoprivredno zemljište istekao je 30. juna 2023. — kupac iz EU ga danas može slobodno kupovati",
+    "Snažno, ali izrazito sezonsko tržište kratkoročnog iznajmljivanja"
+   ],
+   "faq": [
+    {
+     "q": "Može li mađarski državljanin kupiti nekretninu u Hrvatskoj?",
+     "a": "Da, bez ograničenja. Budući da su i Mađarska i Hrvatska države članice EU, mađarsko fizičko lice može na vlastito ime kupiti stan ili kuću pod istim uslovima kao i hrvatski državljani — saglasnost Ministarstva pravosuđa nije potrebna. Prelazni moratorij na poljoprivredno zemljište istekao je 30. juna 2023. i nije produžen, pa kao državljanin EU danas i poljoprivredno zemljište možete kupovati pod istim uslovima kao Hrvati. Kupcu iz treće zemlje i dalje su potrebni reciprocitet i saglasnost ministarstva."
+    },
+    {
+     "q": "Koliko se poreza plaća pri kupovini nekretnine u Hrvatskoj?",
+     "a": "Pri kupovini starije nekretnine kupac plaća 3% poreza na promet nekretnina — to je fiksna stopa, nije stepenasta. Kod novoizgrađene nekretnine kupljene od investitora koji je u sistemu PDV-a nema poreza na promet, jer je u cijeni sadržano 25% PDV-a; njih dvoje se međusobno isključuju. Važno: hrvatski notar NE sastavlja kupoprodajni ugovor, već samo ovjerava potpis prodavca, pa notarski trošak iznosi nekoliko eura uz upis u zemljišne knjige — drugdje uobičajena „notarska naknada od 1%” je ovdje pogrešna. Advokatska naknada po pravilu iznosi 1–1,5% + PDV, posrednička provizija 2–4%. Od 2025. je vlasništvo opterećeno i godišnjim porezom na nekretnine (0,60–8,00 €/m² godišnje), od kojeg su oslobođeni prijavljeno prebivalište i dugoročni najam u trajanju od najmanje 10 mjeseci."
+    },
+    {
+     "q": "Isplati li se u Hrvatskoj kupiti nekretninu za kratkoročno iznajmljivanje?",
+     "a": "Na dalmatinskoj i istarskoj obali je ljetni prinos izuzetno visok, ali je sezona po pravilu ograničena na 3–4 mjeseca, a za turističko iznajmljivanje potrebni su rješenje o kategorizaciji i paušalno oporezivanje. Na godišnjem nivou neto prinos po pravilu iznosi između 3 i 5%."
+    }
+   ]
+  },
+  "AL": {
+   "nameHu": "Albanija",
+   "intro": "Albanija je mediteransko primorsko tržište s najnižim pragom ulaska: na Albanskoj rivijeri (Sarandë, Ksamil, Himarë) cijena po kvadratnom metru novoizgrađenih stanova s pogledom na more je i dalje tek djelić hrvatskih ili grčkih cijena, dok su Krf i grčka granica nadohvat ruke. Poreza na promet nekretnina praktično nema, a strani kupac može kupovati na vlastito ime. Turizam je posljednjih godina rastao rekordnim tempom, što je prinos od kratkoročnog iznajmljivanja podiglo u sam vrh regije — zauzvrat je tržište mlađe, pa je pravna dubinska analiza (vlasnički list, građevinska dozvola) ovdje posebno važna.",
+   "highlights": [
+    "Najniže cijene primorskih nekretnina po kvadratnom metru u regiji",
+    "KUPAC ne plaća porez na promet srazmjeran vrijednosti — samo fiksnu notarsku taksu i naknadu za upis",
+    "Ni kod novogradnje nema PDV-a na strani kupca: promet nekretninama je oslobođen PDV-a",
+    "Strano fizičko lice može na vlastito ime kupiti stan i kuću, bez dozvole",
+    "Za kupovinu građevinskog ZEMLJIŠTA uslov je da vrijednost ulaganja premaši trostruku vrijednost zemljišta",
+    "Stranac ne može kupiti poljoprivredno zemljište, može ga samo zakupiti"
+   ],
+   "faq": [
+    {
+     "q": "Je li sigurno kao stranac kupiti nekretninu u Albaniji?",
+     "a": "Pravno gledano jeste — strano fizičko lice može na vlastito ime kupiti stan, a vlasništvo se može upisati u katastar (ASHK). Rizik nije u sticanju vlasništva, nego u vlasničkoj pozadini: na albanskom tržištu postoje nekretnine s neuređenim pravnim osnovom ili izgrađene bez dozvole, stoga ovdje nikako ne plaćajte kaparu bez dubinske analize koju je proveo nezavisni advokat."
+    },
+    {
+     "q": "Koliko košta stan uz more u Albaniji?",
+     "a": "U Ksamilu i Sarandëu se novoizgrađeni stanovi s pogledom na more po pravilu kreću u rasponu od 1.200–2.200 €/m², a u Vlori i Draču se može ući i jeftinije. To je otprilike polovina do trećina uporedive hrvatske ili grčke ponude. I prateći troškovi kupca su najniži u regiji: bez poreza na promet srazmjernog vrijednosti i bez PDV-a po pravilu iznose 1–4% kupoprodajne cijene."
+    },
+    {
+     "q": "Daje li Albanija boravišnu dozvolu za kupovinu nekretnine?",
+     "a": "Albanija nema ni program Golden Visa ni program sticanja državljanstva ulaganjem: mogućnost predviđena zakonom iz 2020. nikada nije pokrenuta, od marta 2023. je na njoj moratorij, a nakon presude Suda Evropske unije protiv Malte iz aprila 2025. Albanija, koja se priprema za pristupanje EU, teško da će je otvoriti. Na osnovu vlasništva nad nekretninom se ipak može zatražiti obnovljiva boravišna dozvola na godinu dana, a nakon pet godina i stalni boravak. „Prag od 100.000 eura” koji spominju posrednici ne može se potvrditi nijednim propisom — nemojte na njega računati."
+    }
+   ]
+  },
+  "RS": {
+   "nameHu": "Srbija",
+   "intro": "Srbija je prvenstveno gradsko tržište iznajmljivanja, a ne primorsko tržište kuća za odmor. Stambeno tržište Beograda (posebno Beograd na vodi, Vračar, Novi Beograd) i Novog Sada drže napetim snažne unutrašnje migracije, rastući IT sektor i velik broj stranih radnika koji dolaze — to znači stabilnu, cjelogodišnju potražnju za dugoročnim najmom, za razliku od sezonalnosti jadranskih tržišta. Planinski centri (Zlatibor, Kopaonik) su teren za dvosezonsko ulaganje u apartmane. Porez na promet iznosi 2,5%, a kod novogradnje ga zamjenjuje PDV.",
+   "highlights": [
+    "Cjelogodišnja, nesezonska potražnja za najmom u Beogradu i Novom Sadu",
+    "Porez na promet nekretnina 2,5% za starije nekretnine (prema zakonu ga plaća PRODAVAC, ali ga ugovori po pravilu prebacuju na kupca)",
+    "Kod novogradnje je umjesto njega u cijeni 10% PDV-a (stambene nekretnine)",
+    "Strani kupac može kupovati na osnovu RECIPROCITETA — za mađarske državljane je on ispunjen, ali se ispituje zasebno za svaku zemlju",
+    "Olakšice za prvu nekretninu pripadaju samo srbijanskim državljanima — strani kupac ih ne može koristiti",
+    "Dvosezonsko planinsko tržište apartmana (Zlatibor, Kopaonik)"
+   ],
+   "faq": [
+    {
+     "q": "Može li mađarski državljanin kupiti nekretninu u Srbiji?",
+     "a": "Da. Srbija dozvoljava sticanje nekretnina stranim fizičkim licima na osnovu reciprociteta, a s Mađarskom taj reciprocitet postoji (nalazi se na spisku ministarstva), pa mađarski državljanin može na vlastito ime kupiti stan ili kuću. Važno: reciprocitet se ispituje PO ZEMLJAMA, a ne na nivou EU — nije dakle tačno da „bilo koji državljanin EU može slobodno kupovati”. Na poljoprivredno zemljište fizičko lice iz EU načelno ima pravo, ali uz takve kumulativne uslove (10 godina prebivališta na tom području, 3 godine obrade, ograničenje od 2 hektara) koji su u praksi gotovo neispunjivi."
+    },
+    {
+     "q": "Koliki se prinos od najma može ostvariti u Beogradu?",
+     "a": "Bruto prinos od dugoročnog najma stanova u Beogradu po pravilu iznosi između 4 i 6%, što je više nego u većini glavnih gradova EU, a potražnja je cjelogodišnja — ne zavisi od turističke sezone."
+    },
+    {
+     "q": "Koliki su troškovi kupovine nekretnine u Srbiji?",
+     "a": "Kod starije nekretnine se plaća 2,5% poreza na promet (porez na prenos apsolutnih prava). Zakon ga nameće PRODAVCU, no ugovori ga gotovo uvijek prebacuju na kupca — prodavac i u tom slučaju ostaje odgovoran, stoga je uputno provjeriti je li uplaćen. Kod prve prodaje novoizgrađene nekretnine dovršene nakon 2005. je umjesto poreza na promet u cijeni PDV: kod stambenih nekretnina 10%, kod garaža i poslovnih prostora 20%. Notarska naknada se utvrđuje prema stepenastoj tarifi (kod prosječnog stana nekoliko stotina eura — „notarska naknada od 1–2%” je pogrešna), na što dolaze advokatska naknada i posrednička provizija od 2–4%. Pravo na poresko oslobođenje i povrat PDV-a za kupce prve nekretnine imaju samo srbijanski državljani."
+    }
+   ]
+  },
+  "TR": {
+   "nameHu": "Turska",
+   "intro": "Turska vodi program sticanja državljanstva zasnovan na nekretninama s najvećim obimom na svijetu: uz kupovinu nekretnine u vrijednosti od 400.000 USD i njeno zadržavanje tokom tri godine, investitor i njegova porodica mogu dobiti tursko DRŽAVLJANSTVO — a ne samo boravišnu dozvolu — po pravilu u roku od 3–6 mjeseci i bez obaveze boravka. Turski pasoš omogućava bezvizni ulazak u približno 118 zemalja i otvara put ka američkoj investitorskoj vizi E-2. Tržište počiva na dvije noge: Istanbul (gradski najam i rast vrijednosti) te mediteranska obala (Antalya, Alanya, Bodrum, Fethiye) za odmor i iznajmljivanje. Porez na prenos iznosi 4%, a u okviru programa je obavezno utvrđivanje kupoprodajne cijene u stranoj valuti.",
+   "highlights": [
+    "Kupovina nekretnine od 400.000 USD → tursko DRŽAVLJANSTVO u roku od 3–6 mjeseci",
+    "Nema obaveze boravka, poznavanja jezika ni naseljavanja",
+    "Može se uključiti cijela porodica (bračni partner + djeca mlađa od 18 godina)",
+    "Nekretninu je potrebno zadržati 3 godine, nakon čega se može slobodno prodati",
+    "Bezvizni ulazak u približno 118 zemalja; put ka američkoj investitorskoj vizi E-2"
+   ],
+   "faq": [
+    {
+     "q": "Kako se kupovinom nekretnine može steći tursko državljanstvo?",
+     "a": "Potrebno je kupiti tursku nekretninu vrijednu najmanje 400.000 USD i obavezati se da je nećete prodati tokom tri godine — to se upisuje i u vlasnički list (tapu) kao zabilježba „satılamaz” (nije za prodaju). Važno: ne računa se ugovorena cijena, nego zvanična procjena ovlaštenog procjenitelja s dozvolom SPK; prag moraju dostići podjednako plaćena (preko banke dokazana) cijena, procijenjena vrijednost i vrijednost navedena u tapuu. Nakon toga se mogu podnijeti zahtjev za boravišnu dozvolu i zahtjev za državljanstvo; cijeli postupak po pravilu traje 3–6 mjeseci i obuhvata bračnog partnera te djecu mlađu od 18 godina."
+    },
+    {
+     "q": "Je li za sticanje državljanstva potrebno živjeti u Turskoj?",
+     "a": "Ne. Turski investitorski program sticanja državljanstva nema obavezu boravka, poznavanja jezika ni polaganja ispita — nije se potrebno preseliti u zemlju, štaviše, najveći dio postupka može obaviti opunomoćeni advokat."
+    },
+    {
+     "q": "Mogu li prodati nekretninu nakon sticanja državljanstva?",
+     "a": "Da, ali tek nakon isteka obaveznog trogodišnjeg perioda zadržavanja. Državljanstvo i nakon toga ostaje — tursko državljanstvo se ne oduzima zbog prodaje nekretnine."
+    },
+    {
+     "q": "Koliki su prateći troškovi kupovine nekretnine u Turskoj?",
+     "a": "4% takse za tapu (prenos vlasništva), oko 0,5% za notarske i prevodilačke naknade, advokatska naknada oko 1,2% te po pravilu 2% posredničke provizije. Kod programa sticanja državljanstva se na to nadovezuju obavezna procjena vrijednosti i upravne takse."
+    }
+   ]
+  },
+  "ID": {
+   "nameHu": "Bali (Indonezija)",
+   "intro": "Bali ima snažno tržište kratkoročnog iznajmljivanja, no stvarne brojke su znatno skromnije od oglašavanih prinosa: prema nezavisnim podacima o rezervacijama, u Cangguu prosječna dnevna cijena iznosi oko 216 USD, dok je popunjenost tek oko 38%, a ponuda raste 40% godišnje. Realno je računati sa 6–9% bruto i 3–5% neto prinosa, a ne s 10–15% koji se navode na flajerima. Drugo ključno pitanje je oblik vlasništva: strano fizičko lice u Indoneziji NE MOŽE steći freehold (Hak Milik) vlasništvo. Postoje tri legalna puta: ugovorno pravo zakupa (Hak Sewa, po pravilu 25–30 godina), pravo korištenja Hak Pakai vezano za boravišnu dozvolu (30 + 20 + 30 = do 80 godina) ili pravo građenja Hak Guna Bangunan preko indonezijske kompanije PT PMA (također 80 godina). Na Baliju je izbor pravne strukture važniji od same nekretnine.",
+   "highlights": [
+    "Realan prinos prema nezavisnim podacima: 6–9% bruto, 3–5% neto (10–15% je marketinška brojka)",
+    "Stranac NE MOŽE steći freehold (Hak Milik) vlasništvo — riječ je o ustavnom ograničenju",
+    "Pravo zakupa Hak Sewa: moguće i bez boravišne dozvole, po pravilu 25–30 godina",
+    "Hak Pakai i Hak Guna Bangunan preko PT PMA: 30 + 20 + 30, ukupno do 80 godina",
+    "OPASNOST: struktura „nominee” (freehold upisan na indonezijskog nominalnog vlasnika) po ZAKONU JE NIŠTAVA",
+    "Ako vlasniku s pravom Hak Pakai istekne boravišna dozvola, nekretninu mora prodati u roku od godine dana",
+    "Prateći troškovi kupca: kod prava zakupa 2–4%, kod Hak Pakaija 7–9% (zbog 5% BPHTB-a)"
+   ],
+   "faq": [
+    {
+     "q": "Daje li Indonezija boravišnu dozvolu za kupovinu nekretnine?",
+     "a": "Ograničeno. Grana indonezijske Golden Visa zasnovana na nekretninama traži ulaganje od 1.000.000 USD i odnosi se ISKLJUČIVO na stan u zgradi s odgovarajućim pravnim osnovom — vile na zasebnoj parceli ne daju pravo. Uz to postoji i viza „second home”, no zvanična stranica ne objavljuje konkretan vrijednosni prag, pa iznose koje spominju posrednici treba uzimati s rezervom. Program sticanja državljanstva ulaganjem u Indoneziji ne postoji."
+    },
+    {
+     "q": "Može li stranac kupiti nekretninu na Baliju?",
+     "a": "Puno freehold (Hak Milik) vlasništvo strano fizičko lice u Indoneziji ne može steći — osnovni zakon iz 1960. ga zadržava za indonezijske državljane. Postoje tri legalna rješenja: ugovorno pravo zakupa (Hak Sewa, po pravilu 25–30 godina, za koje nije potrebna boravišna dozvola), pravo korištenja Hak Pakai (vezano za važeću boravišnu dozvolu KITAS/KITAP, 30 + 20 + 30 = do 80 godina) te pravo građenja Hak Guna Bangunan u vlasništvu indonezijske kompanije u stranom vlasništvu (PT PMA) (također 80 godina). VRLO VAŽNO: struktura „nominee” koja se često prodaje na Baliju, u kojoj je freehold upisan na indonezijskog državljanina „u vašu korist”, po zakonu je NIŠTAVA — nije ostvariva pred sudom, a nekretnina ostaje nominalnom vlasniku ili državi."
+    },
+    {
+     "q": "Koliki prinos donosi vila na Baliju?",
+     "a": "Manji nego što se oglašava. Prema nezavisnim podacima o rezervacijama, u Cangguu — gdje se takmiči blizu 4.000 aktivnih oglasa — prosječna dnevna cijena iznosi oko 216 USD, a godišnja popunjenost oko 38%, što u prosjeku znači oko 23.700 USD prihoda godišnje. Od toga treba odbiti upravljanje vilom (15–20%), održavanje i porez. Realno je planirati sa 6–9% bruto i 3–5% neto prinosa. Obećanja o 10–15% neto potiču iz prodajnih materijala i tržišni ih podaci ne potvrđuju — ponuda raste po stopi većoj od 40% godišnje, dok je potražnja ravna, pa vlasnici spuštaju cijene za 10–30%."
+    },
+    {
+     "q": "Šta se dešava po isteku leaseholda?",
+     "a": "Dobro sastavljen ugovor o zakupu sadrži opciju produženja po unaprijed utvrđenoj ili indeksiranoj cijeni. Upravo je to najvažnija provjera prije kupovine: koliko je godina preostalo, koliki je obim prava na produženje i kako je osigurana saglasnost vlasnika zemljišta. Bez toga vrijednost ulaganja iz godine u godinu pada. Kod Hak Pakaija postoji i dodatna zamka: ako vlasniku istekne boravišna dozvola i on je ne obnovi, dužan je nekretninu prodati u roku od godine dana, u suprotnom može doći do državne javne prodaje."
+    }
+   ]
+  },
+  "HU": {
+   "nameHu": "Mađarska",
+   "intro": "Mađarska je 2024. ponovo pokrenula svoj investitorski program naseljavanja, no ovdje treba razjasniti jedan važan nesporazum: u Programu za goste investitore DIREKTNA KUPOVINA STANA NE DAJE PRAVO na boravišnu dozvolu. Planirana opcija direktnog ulaganja u nekretninu od 500.000 eura ukinuta je u januaru 2025., prije nego što je stupila na snagu. Ostala su dva puta: udjeli u vrijednosti od 250.000 € u fondu za nekretnine registrovanom pri MNB-u (čija je neto vrijednost imovine najmanje 40% uložena u mađarske stambene nekretnine), uz obavezu držanja od pet godina, ili bespovratna donacija od 1.000.000 € mađarskoj visokoškolskoj ustanovi. Dva motora mađarskog tržišta nekretnina su Budimpešta i Balaton; taksa na teretni prenos imovine iznosi 4% do jedne milijarde forinti.",
+   "highlights": [
+    "PAŽNJA: direktna kupovina stana NE DAJE PRAVO na boravišnu dozvolu za goste investitore",
+    "U programu se priznaju samo udjeli u fondu za nekretnine (250.000 €, držanje 5 godina) ili donacija visokom obrazovanju (1.000.000 €)",
+    "Dozvola važi 10 godina i može se jednom produžiti za dodatnih 10 godina",
+    "Taksa na teretni prenos imovine 4% do jedne milijarde forinti, iznad toga 2% (najviše 200 miliona Ft po nekretnini)",
+    "Kod novogradnje 5% PDV-a (stan do 150 m², kuća do 300 m²) do kraja 2026.",
+    "Budimpešta: prinos koji počiva na cjelogodišnjoj, studentskoj i stanodavnoj potražnji",
+    "Balaton: domaće tržište kuća za odmor s trajnim rastom vrijednosti"
+   ],
+   "faq": [
+    {
+     "q": "Mogu li dobiti mađarsku boravišnu dozvolu ako kupim stan u Mađarskoj?",
+     "a": "Ne. To je najčešći nesporazum u vezi s mađarskim programom. U Programu za goste investitore se direktna kupovina stana ili kuće NE smatra ulaganjem: planirana opcija direktnog ulaganja u nekretninu od 500.000 eura ukinuta je u januaru 2025., prije nego što je stupila na snagu. Postoje dvije mogućnosti: kupovina udjela u vrijednosti od 250.000 € u fondu za nekretnine registrovanom pri MNB-u koji najmanje 40% ulaže u mađarske stambene nekretnine (uz obavezu držanja od 5 godina) ili donacija od 1.000.000 € mađarskoj visokoškolskoj ustanovi. Dozvola važi 10 godina i može se jednom produžiti za dodatnih 10 godina. Mađarskim državljanima i državljanima EU to naravno nije potrebno — njima pripada sloboda kretanja."
+    },
+    {
+     "q": "Koliku taksu treba platiti pri kupovini nekretnine u Mađarskoj?",
+     "a": "Taksa na teretni prenos imovine iznosi 4% na dio tržišne vrijednosti koji ne prelazi jednu milijardu forinti i 2% na dio iznad toga, a najviše 200 miliona forinti po nekretnini. Kod novog stana kupljenog od investitora taksa je oslobođena do vrijednosti od 15 miliona forinti, a iznad toga se na razliku plaća 4%. Olakšica ili oslobođenje se mogu ostvariti kod mladih koji stiču prvi stan, kod kupovine uz CSOK, kao i ako se prodaja i kupovina dogode u roku od pet godina — tada se plaća samo na razliku u cijeni. PDV na novi stan iznosi 5% umjesto 27%, za stan do 150 m² i kuću do 300 m², do kraja 2026."
+    },
+    {
+     "q": "Koliki se prinos od najma može ostvariti u Budimpešti?",
+     "a": "Bruto prinos dugoročnog najma stanova u Budimpešti po pravilu iznosi 4–6%, a kod malih stanova u centru grada, blizu univerziteta, može biti i viši. Prinos kratkoročnog iznajmljivanja je viši, ali se na njega primjenjuju propisi koji se razlikuju od gradske općine do gradske općine."
+    }
+   ]
+  },
+  "TH": {
+   "nameHu": "Tajland",
+   "intro": "Tajland strancima nudi najpredvidljiviju vlasničku strukturu među jugoistočnoazijskim tržištima: stan u zgradi (condominium) strano fizičko lice može steći NA VLASTITO IME, kao freehold vlasništvo — uz uslov da najviše 49% ukupne površine te zgrade može biti u stranim rukama. Zemljište i kuću zajedno sa zemljištem stranac pak ne može posjedovati; tu su uobičajeni dugoročno pravo zakupa ili korporativna struktura. Bangkok je tržište gradskog najma, Phuket i Koh Samui turističkog prinosa, a Chiang Mai digitalnih nomada s dugim boravkom.",
+   "highlights": [
+    "Stan u zgradi se može steći kao freehold, na vlastito ime, i kao stranac",
+    "Kvota od 49% za strance po zgradi, srazmjerno POVRŠINI — prije kupovine provjeriti u pisanom obliku",
+    "Kupoprodajnu cijenu treba doznačiti iz inostranstva, u stranoj valuti (bez potvrde FET nema prenosa)",
+    "Stranac ne može posjedovati zemljište; zakonski maksimum zakupa koji se može upisati je 30 godina",
+    "Produženje „30+30+30” je samo ugovorno obećanje — sud ga nije priznao prema novom vlasniku",
+    "Taksa na prenos 2%, koju strane uobičajeno dijele na pola — ukupni trošak kupca po pravilu je 1–2%",
+    "PAŽNJA: povlaštena taksa od 0,01% odnosi se SAMO na tajlandske državljane, a ne na strane kupce"
+   ],
+   "faq": [
+    {
+     "q": "Može li stranac kupiti nekretninu u Tajlandu?",
+     "a": "Stan u zgradi može, na vlastito ime, kao freehold vlasništvo — pod uslovom da je najviše 49% registrovane, prodajne površine te zgrade u stranom vlasništvu. Kupoprodajnu cijenu treba doznačiti iz inostranstva, u stranoj valuti, a zemljišnoknjižni ured bez pripadajuće potvrde FET neće upisati pravo vlasništva. Zemljište i kuću izgrađenu zajedno sa zemljištem strano fizičko lice ne može posjedovati; u tom slučaju u obzir dolaze pravo zakupa koje se može upisati na najviše 30 godina, plodouživanje ili kompanija s tajlandskom većinom. Oprez: kompanija s tajlandskom većinom je zakonita samo uz stvarne tajlandske vlasnike — struktura s nominalnim vlasnicima protivna je zakonu o stranom poslovanju, a organi je aktivno ispituju."
+    },
+    {
+     "q": "Je li istina da će se u Tajlandu kvota za strance podići na 75%, a zakup na 99 godina?",
+     "a": "Ne, to trenutno NIJE važeće pravo. Vlada je 2024. odobrila samo to da se dva prijedloga razmotre; zakon iz njih nikada nije nastao. Plan koji se odnosio na 99-godišnji zakup zvanično je skinut s dnevnog reda u septembru 2025. Sredinom 2026. važeće pravilo je i dalje kvota od 49% za strance i najviše 30 godina zakupa koji se može upisati. Ko kupuje nekretninu procijenjenu za period od 99 godina, plaća pravo koje ne postoji."
+    },
+    {
+     "q": "Šta znači kvota od 49% za strance?",
+     "a": "U svakoj tajlandskoj stambenoj zgradi najviše 49% registrovane, prodajne površine može biti u stranom vlasništvu — ograničenje je dakle srazmjerno površini, a ne prema broju stanova. Prije kupovine treba od upravitelja zgrade zatražiti pisanu potvrdu da u kvoti još ima slobodnog mjesta; bez toga se stan ne može prenijeti na stranog kupca, a kapara lahko ostane zarobljena."
+    },
+    {
+     "q": "Koliki su prateći troškovi kupovine u Tajlandu?",
+     "a": "2% takse na prenos (transfer fee) na zvanično procijenjenu vrijednost, koju strane uobičajeno dijele na pola. Prodavca terete poslovni porez (3,3% ako je nekretninu posjedovao kraće od pet godina) ili umjesto njega taksa na dokumente (stamp duty, 0,5% ako ju je posjedovao najmanje pet godina), kao i porez po odbitku. Zajednički trošak obiju strana po pravilu iznosi 6–8% kupoprodajne cijene, no uz uobičajenu podjelu na strani STRANOG KUPCA to je samo oko 1–2%, zajedno s advokatskom naknadom i naknadom za dubinsku analizu. Važno: često spominjana povlaštena taksa na prenos od 0,01% odnosi se isključivo na tajlandske državljane — strani kupac i tajlandska kompanija plaćaju punih 2%."
+    }
+   ]
+  },
+  "IT": {
+   "nameHu": "Italija",
+   "intro": "Italija je najdublje i najdiferenciranije tržište nekretnina za odmor i gradskih nekretnina u EU: od premium segmenta jezera Como i Toskane, preko tržišta najma u Milanu, sve do programa „kuća za 1 euro” na jugu Italije — dostupan je svaki cjenovni nivo. Državljanin EU može kupovati bez ograničenja. Ključno je oporezivanje: porez na prenos starije nekretnine kupljene od fizičkog lica iznosi 9% (u slučaju drugog doma), ali se kupcu koji postane rezident može smanjiti na 2%, a licima koja se doseljavaju iz inostranstva dostupan je godišnji paušalni porez (flat tax) od 200.000 eura na inostrani dohodak.",
+   "highlights": [
+    "Država članica EU — za državljane EU nema ograničenja pri kupovini",
+    "Porez na prenos 9% kod drugog doma, 2% ako nekretnina postane „prima casa” (glavno prebivalište); minimalno 1.000 €",
+    "Pri kupovini od fizičkog lica osnovica poreza je katastarska vrijednost (prezzo-valore), koja je po pravilu znatno ispod kupoprodajne cijene",
+    "Kod nove nekretnine kupljene od investitora PDV: 4% glavno prebivalište, 10% drugi dom, 22% luksuzna kategorija",
+    "NEMA Golden Visa zasnovane na nekretninama — nekretnine su iz italijanske investitorske vize izričito isključene",
+    "Paušalni porez na inostrani dohodak za nove rezidente: od 1. januara 2026. godišnje 300.000 €"
+   ],
+   "faq": [
+    {
+     "q": "Koliko poreza plaća kupac pri kupovini nekretnine u Italiji?",
+     "a": "Kod starije nekretnine kupljene od fizičkog lica porez na prenos (imposta di registro) iznosi 9% ako je riječ o drugom domu, a samo 2% ako kupac u roku od 18 mjeseci tamo prijavi glavno prebivalište; minimum u oba slučaja iznosi 1.000 €. Kod kupoprodaje između fizičkih lica se osnovica poreza može na zahtjev utvrditi prema katastarskoj vrijednosti (prezzo-valore), koja je po pravilu znatno niža od stvarne kupoprodajne cijene — to je bitna ušteda. Na to dolaze dvije fiksne takse od po 50 eura. Kod nove nekretnine kupljene od investitora u roku od 5 godina od završetka gradnje kupovina podliježe PDV-u: 4% za glavno prebivalište, 10% za drugi dom, 22% u luksuznim katastarskim kategorijama A/1, A/8 i A/9, uz tri fiksne takse od po 200 eura."
+    },
+    {
+     "q": "Može li mađarski državljanin kupiti nekretninu u Italiji?",
+     "a": "Da, bez ograničenja — obje zemlje su članice EU, pa mađarski kupac može kupovati pod istim uslovima kao i Italijani. Za kupovinu su potrebni italijanski poreski identifikacijski broj (codice fiscale) i italijanski bankovni račun."
+    },
+    {
+     "q": "Šta je italijanski paušalni porez (flat tax) za nove rezidente?",
+     "a": "Ko premjesti svoju poresku rezidentnost u Italiju, može odabrati sistem u kojem na dohodak ostvaren u inostranstvu plaća godišnji fiksni iznos poreza, najviše 15 godina. Iznos je budžetskim zakonom za 2026. povećan na 300.000 eura godišnje za one koji rezidentnost premještaju od 1. januara 2026. (dodatnih 50.000 eura po članu porodice). Za one koji su ušli ranije ostaju na snazi stare stope: 100.000 € za ulazak prije 2024., odnosno 200.000 € za ulazak u periodu 2024.–2025. Važno: riječ je o poreskopravnoj konstrukciji, a NE o programu boravka — kupovina italijanske nekretnine sama po sebi ne daje pravo na boravak."
+    }
+   ]
+  },
+  "GR": {
+   "nameHu": "Grčka",
+   "intro": "Grčka sprovodi najpoznatiji Golden Visa program u EU: ulaganjem u nekretninu se može steći obnovljiva dozvola boravka na pet godina koja obuhvata cijelu porodicu i omogućava slobodno kretanje unutar Šengena, BEZ OBAVEZE MINIMALNOG BORAVKA U ZEMLJI — to je najjači argument programa. Prag je od Zakona 5100/2024 stepenovan po područjima: 800.000 € u cijeloj regiji Atike, u Solunu, na Mikonosu, Santoriniju i na ostrvima s više od 3.100 stanovnika; 400.000 € u ostatku zemlje; a 250.000 € ISKLJUČIVO kod prenamjene nestambene zgrade u stambenu ili kod obnove spomenika kulture. Dva uslova se često prešućuju: nekretnina mora biti jedinstvena cjelina s najmanje 120 m² glavne stambene površine, a nekretninu iz Golden Vise je ZABRANJENO iznajmljivati kratkoročno (na način sličan Airbnb-u) — kršenje pravila povlači oduzimanje dozvole i kaznu od 50.000 eura.",
+   "highlights": [
+    "Golden Visa stepenovano: 800.000 € (Atika, Solun, Mikonos, Santorini, veća ostrva) / 400.000 € (drugdje) / 250.000 € (samo prenamjena ili obnova spomenika kulture)",
+    "Nekretnina mora biti jedinstvena cjelina, s najmanje 120 m² glavne stambene površine",
+    "Nekretninu iz Golden Vise je ZABRANJENO iznajmljivati kratkoročno — sankcija je oduzimanje dozvole i kazna od 50.000 €",
+    "NEMA obaveze minimalnog boravka u zemlji",
+    "Obuhvata cijelu porodicu (bračni partner, djeca mlađa od 21 godine, izdržavani roditelji oba supružnika)",
+    "Važi 5 godina, obnovljiva dok god ulaganje traje",
+    "Porez na prenos nekretnine 3% (uz neznatan doprinos jedinici lokalne samouprave)",
+    "Kod novogradnje je suspenzija PDV-a produžena do 31. decembra 2026. — i tada se plaća porez na prenos od 3%"
+   ],
+   "faq": [
+    {
+     "q": "Kako funkcioniše grčka Golden Visa?",
+     "a": "Kupovinom grčke nekretnine se može zatražiti obnovljiva dozvola boravka na pet godina koja obuhvata bračnog partnera, djecu mlađu od 21 godine i izdržavane roditelje oba supružnika. Dozvola omogućava slobodno kretanje unutar Šengena i ne propisuje minimalni boravak u zemlji — dovoljno je zadržati ulaganje."
+    },
+    {
+     "q": "Koliki je prag za grčku Golden Visu?",
+     "a": "Prema Zakonu 5100/2024 postoje tri nivoa. 800.000 € u cijeloj regiji Atici, u regionalnoj jedinici Soluna, na Mikonosu, Santoriniju i na svim ostrvima s više od 3.100 stanovnika. 400.000 € u svim ostalim dijelovima zemlje. 250.000 € isključivo u dva slučaja: ako se nestambena zgrada prenamjenjuje u stambenu nekretninu (zahvat mora biti završen prije podnošenja zahtjeva) ili ako se obnavlja zgrada pod spomeničkom zaštitom. Prelazni rokovi iz 2024. su svi već istekli, pa u 2026. važi puni prag od 400/800 hiljada. Prije kupovine uvijek treba provjeriti konkretnu zonsku klasifikaciju date nekretnine."
+    },
+    {
+     "q": "Mogu li svoju grčku Golden Visa nekretninu iznajmljivati kratkoročno?",
+     "a": "Ne. Reforma iz 2024. izričito zabranjuje kratkoročno iznajmljivanje (na način sličan Airbnb-u) nekretnine koja je osnov Golden Vise. Kršenje zabrane povlači oduzimanje dozvole boravka i kaznu od 50.000 eura. Dugoročni najam je dozvoljen. Taj uslov iz temelja mijenja obračun prinosa na ulaganje, a ipak nedostaje u većini ponuda."
+    },
+    {
+     "q": "Daje li grčka Golden Visa državljanstvo?",
+     "a": "Ne direktno. Golden Visa je dozvola boravka; grčko državljanstvo se može zatražiti nakon sedam godina stvarnog boravka u Grčkoj, uz jezičke i integracijske uslove. Ako je cilj sam pasoš, državljanstvo direktno na osnovu ulaganja u nekretninu daju Turska te Sveti Kits i Nevis."
+    }
+   ]
+  },
+  "ES": {
+   "nameHu": "Španija",
+   "intro": "Španija je evropsko tržište nekretnina za odmor s najvećim prometom: ponuda Costa del Sola (Marbella, Málaga), Costa Blance (Alicante), Balearskih ostrva i Barcelone je najdublja i najlakše preprodajna na kontinentu. Zbog prisustva međunarodnih kupaca je izlazak (prodaja) znatno brži nego na manjim tržištima. Važna promjena propisa: put do španske Golden Vise zasnovan na nekretninama ukinut je u aprilu 2025., dakle danas se kupovinom španske nekretnine NE može steći investitorska dozvola boravka — kupovina je isključivo investiciona i životna odluka. Porez na prenos iznosi 6–10% zavisno od regije.",
+   "highlights": [
+    "Najveće i najlikvidnije evropsko tržište nekretnina za odmor — brza preprodaja",
+    "Porez na prenos nekretnine (ITP) zavisno od regije oko 6–11%: Madrid 6%, Andaluzija 7%, Katalonija 10–11%",
+    "PAŽNJA: Golden Visa zasnovana na nekretninama ukinuta je u aprilu 2025.",
+    "Brojna mađarska i međunarodna zajednica na južnoj obali"
+   ],
+   "faq": [
+    {
+     "q": "Postoji li još španska Golden Visa putem kupovine nekretnine?",
+     "a": "Ne. Španija je u aprilu 2025. ukinula put do Golden Vise zasnovan na ulaganju u nekretnine, pa se kupovinom nekretnine u vrijednosti od 500.000 eura danas više ne može steći španska investitorska dozvola boravka. Unutar EU program boravka zasnovan na nekretninama nude Grčka i Mađarska; državljanstvo na osnovu nekretnine daju Turska te Sveti Kits i Nevis."
+    },
+    {
+     "q": "Koliko poreza plaća kupac u Španiji?",
+     "a": "Kod starije nekretnine kupca zavisno od regije tereti oko 6–11% poreza na prenos (ITP): u Madridu 6%, u Andaluziji jedinstvenih 7%, u Kataloniji 10% do milion eura i 11% iznad toga, u Valensiji 10% (od 1. juna 2026. 9%, a iznad miliona eura 11%). Osnovica poreza je viši od dva iznosa: kupoprodajna cijena ili zvanična katastarska referentna vrijednost — to je važno jer se i kod niske ugovorene cijene porez plaća prema referentnoj vrijednosti. Kod novogradnje kupljene od investitora plaća se 10% PDV-a plus taksa na ispravu (AJD) od 0,5–1,5% zavisno od regije."
+    },
+    {
+     "q": "Šta je potrebno mađarskom kupcu za kupovinu nekretnine u Španiji?",
+     "a": "Španski poreski identifikacijski broj (NIE), španski bankovni račun i po pravilu nezavisni advokat. Kao državljanina EU Vas ne obavezuje nikakvo ograničenje pri kupovini, a postupak se zaključuje pred notarom (escritura pública)."
+    }
+   ]
+  },
+  "KN": {
+   "nameHu": "Sveti Kits i Nevis",
+   "intro": "Sveti Kits i Nevis sprovodi najstariji program sticanja državljanstva ulaganjem (CBI) na svijetu, koji bez prekida djeluje od 1984. — u struci je to „platinasti standard”. Nekretnina ODOBRENA od strane vlade direktno daje DRŽAVLJANSTVO: ne dozvolu boravka, nego pasoš. Postoje dva nivoa: stan u etažnom vlasništvu ili udio u odobrenom projektu od 325.000 USD, odnosno odobrena samostalna porodična kuća od 600.000 USD. Nema uslova naseljavanja, jezičkog uslova ni uslova boravka, no glavni podnosilac zahtjeva OBAVEZNO mora pristupiti razgovoru. Ostrvska država ne naplaćuje porez na dohodak, porez na imovinu ni porez na nasljedstvo, a pasoš omogućava bezvizni posjet oko 155 zemalja (Henley 2026.: 23. mjesto), među njima šengenskog područja i Ujedinjenog Kraljevstva. Nekretninu je zvanično potrebno zadržati 7 godina.",
+   "highlights": [
+    "325.000 USD (stan u etažnom vlasništvu u odobrenom projektu) ili 600.000 USD (odobrena samostalna kuća) → puno DRŽAVLJANSTVO i pasoš",
+    "Najstariji (1984.) i najstabilniji CBI program na svijetu",
+    "Nema uslova naseljavanja, boravka ni jezičkog uslova — no glavni podnosilac zahtjeva ima OBAVEZAN razgovor",
+    "Nema poreza na dohodak, imovinu ni nasljedstvo",
+    "Bezvizni ulazak u oko 155 zemalja (Šengen, Ujedinjeno Kraljevstvo); u Tursku i Irsku više NE",
+    "Zvanično trajanje postupka: 160–180 dana do načelnog odobrenja (na to dolaze zaključenje kupoprodaje i izdavanje pasoša)",
+    "Obavezan period držanja: 7 godina — nakon toga se nekretnina može dalje prodati",
+    "IZNAD kupoprodajne cijene dolaze državne takse: za samca podnosioca zahtjeva oko 35.000 USD"
+   ],
+   "faq": [
+    {
+     "q": "Kako se u Svetom Kitsu i Nevisu može steći državljanstvo putem nekretnine?",
+     "a": "Potrebno je kupiti nekretninu odobrenu (approved) od strane vlade: stan u etažnom vlasništvu ili udio u odobrenom projektu od 325.000 USD, odnosno odobrenu samostalnu porodičnu kuću od 600.000 USD. Zahtjev se može podnijeti isključivo putem zvaničnog agenta. Postupak uključuje strogu provjeru; zvanično trajanje je 160–180 dana do načelnog odobrenja (Approval in Principle), na što se još nadovezuju zaključenje kupoprodaje i izdavanje pasoša."
+    },
+    {
+     "q": "Treba li živjeti u Svetom Kitsu i Nevisu radi zadržavanja državljanstva?",
+     "a": "Ne. Program nema uslova naseljavanja, boravka, jezika ni ispita, a državljanstvo važi neograničeno i nasljedno je. Jednu stvar je ipak važno znati: glavni podnosilac zahtjeva OBAVEZNO mora pristupiti razgovoru, a isto se može zatražiti i od članova porodice starijih od 16 godina."
+    },
+    {
+     "q": "Koliko vrijedi pasoš Svetog Kitsa i Nevisa?",
+     "a": "Pasoš omogućava bezvizni posjet ili vizu na granici u oko 155 zemalja (Henley Passport Index 2026.: 23. mjesto), među njima cijelo šengensko područje, Ujedinjeno Kraljevstvo, Singapur i Hong Kong. Važna nedavna promjena: Turska i Irska su UKINULE bezvizni režim za pasoš Svetog Kitsa i Nevisa. Zemlja ne naplaćuje porez na dohodak, porez na imovinu ni porez na nasljedstvo."
+    },
+    {
+     "q": "Koliki troškovi dolaze povrh kupoprodajne cijene?",
+     "a": "Zahtjev terete državne takse IZNAD cijene nekretnine. Naknada za provjeru (due diligence): 10.000 USD za glavnog podnosioca zahtjeva i 7.500 USD za svakog člana porodice starijeg od 16 godina. Naknada koja se plaća nakon načelnog odobrenja: 25.000 USD za glavnog podnosioca zahtjeva, 15.000 USD za bračnog partnera, 10.000 USD za izdržavanog člana mlađeg od 18 godina, 15.000 USD za izdržavanog člana starijeg od 18 godina. Za samca podnosioca zahtjeva to iznosi oko 35.000 USD, i to prije advokatskih troškova i troškova zaključenja."
+    },
+    {
+     "q": "Mogu li kasnije prodati kupljenu nekretninu?",
+     "a": "Da, ali tek nakon isteka obaveznog perioda držanja od 7 godina — to zvanični uslovi programa izričito propisuju. Nakon toga se nekretnina može dalje prodati, a novi strani kupac može istu nekretninu i sam iskoristiti za svoj zahtjev za državljanstvo; to čini sekundarno tržište programa. Državljanstvo ostaje i nakon prodaje."
+    },
+    {
+     "q": "Ko se od porodice može uključiti?",
+     "a": "Bračni partner, djeca mlađa od 30 godina te izdržavani roditelji i nane i djedovi. To je znatno širi krug nego kod turskog programa, gdje se mogu uključiti samo bračni partner i djeca mlađa od 18 godina."
+    },
+    {
+     "q": "Po čemu se Sveti Kits i Nevis razlikuje od turskog programa?",
+     "a": "Oba ulaganjem u nekretninu daju DRŽAVLJANSTVO, ali s različitim profilom. Turska ima viši prag (400.000 USD), no nudi veliko, likvidno tržište nekretnina, brži postupak (3–6 mjeseci), kraći period držanja (3 godine) i put do američke vize E-2. Sveti Kits i Nevis posluje s nižim ulaznim pragom, potpunim poreskim oslobođenjem, širim porodičnim krugom i jačim pasošem (oko 155 zemalja), a zauzvrat je tržište malo, period držanja iznosi 7 godina, a izlazak je sporiji."
+    }
+   ]
+  }
+ },
+ "articles": {
+  "allampolgarsag-ingatlanbefektetessel": {
+   "title": "Državljanstvo putem ulaganja u nekretnine: gdje se zaista može steći pasoš?",
+   "description": "U kojoj zemlji kupovina nekretnine direktno daje državljanstvo? Pragovi, rokovi i uslovi dva programa koji funkcionišu — Turske te Svetog Kitsa i Nevisa — u poređenju.",
+   "answer": "Ulaganjem u nekretnine se danas direktno može steći državljanstvo u dvije zemlje: u Turskoj s nekretninom u vrijednosti od 400.000 USD, tipično u roku od 3–6 mjeseci, te u Svetom Kitsu i Nevisu s nekretninom koju je odobrila vlada (od 325.000 USD za stan u stambenoj zgradi, od 600.000 USD za samostalnu kuću), u roku od 160–180 dana do načelnog odobrenja. Svi ostali poznati programi — grčki, mađarski ili nekadašnji španski Golden Visa — daju samo boravišnu dozvolu, a ne državljanstvo.",
+   "sections": [
+    {
+     "h": "Najvažnija razlika: državljanstvo ili samo boravak?",
+     "p": [
+      "Tržište izraz „Golden Visa” koristi za dvije pravno posve različite stvari i odatle proizlazi većina nesporazuma. Boravišni program (residence by investment) daje dozvolu boravka: možete živjeti u toj zemlji te dolaziti i odlaziti, ali se vaš pasoš ne mijenja. Program državljanstva (citizenship by investment, CBI) daje pak stvarno državljanstvo i pasoš, tipično u roku od nekoliko mjeseci, bez potrebe za naseljavanjem.",
+      "Ulaganjem u nekretnine direktno državljanstvo danas daju dvije zemlje: Turska te Sveti Kits i Nevis. U EU takav program NE POSTOJI — malteški program državljanstva morao je biti obustavljen nakon presude Suda Evropske unije iz 2025., a grčki i mađarski program se odnose isključivo na boravišnu dozvolu."
+     ],
+     "table": null
+    },
+    {
+     "h": "Dva programa koja funkcionišu, jedan uz drugi",
+     "p": [
+      "Izbor ne zavisi od cijene, nego od toga šta želite uraditi s nekretninom i s pasošem. Turska nudi veliko, likvidno tržište nekretnina — nekretnina je i sama po sebi ulaganje i može se prodati nakon tri godine. Sveti Kits i Nevis je manje tržište i sporiji izlazak, a zauzvrat nudi niži ulazni prag, potpuno oslobođenje od poreza i jači pasoš."
+     ],
+     "table": {
+      "head": [
+       "",
+       "Turska 🇹🇷",
+       "Sveti Kits i Nevis 🇰🇳"
+      ],
+      "rows": [
+       [
+        "Šta dobijate",
+        "Puno državljanstvo + pasoš",
+        "Puno državljanstvo + pasoš"
+       ],
+       [
+        "Prag za nekretninu",
+        "400.000 USD (~370.000 €)",
+        "325.000 USD stan / 600.000 USD samostalna kuća"
+       ],
+       [
+        "Trajanje postupka",
+        "3–6 mjeseci",
+        "160–180 dana do načelnog odobrenja"
+       ],
+       [
+        "Period držanja",
+        "3 godine",
+        "7 godina"
+       ],
+       [
+        "Boravak u zemlji",
+        "Nije obavezan",
+        "Nije obavezan — ali je OBAVEZAN intervju"
+       ],
+       [
+        "Porodica koja se može uključiti",
+        "Bračni partner + djeca mlađa od 18 godina",
+        "Bračni partner, djeca mlađa od 30 godina, izdržavani roditelji i nane i djedovi"
+       ],
+       [
+        "Državne takse povrh kupoprodajne cijene",
+        "Procjena vrijednosti + takse postupka",
+        "oko 35.000 USD za samca podnosioca zahtjeva"
+       ],
+       [
+        "Zemlje bez vize",
+        "oko 118",
+        "oko 155 (Šengen, Ujedinjeno Kraljevstvo)"
+       ],
+       [
+        "Početak programa",
+        "2017.",
+        "1984. — najstariji CBI na svijetu"
+       ],
+       [
+        "Porez na dohodak",
+        "Postoji",
+        "Nema poreza na dohodak, poreza na imovinu ni poreza na nasljedstvo"
+       ],
+       [
+        "Tržište nekretnina",
+        "Veliko, likvidno, samostalno ulaganje",
+        "Malo, sekundarno tržište vođeno programom"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Turska: program s najvećim obimom",
+     "p": [
+      "Potrebno je kupiti tursku nekretninu u vrijednosti od najmanje 400.000 USD. Ključan detalj koji oglasi prešućuju: ne računa se ugovorena cijena, nego zvanična procjena vrijednosti koju izrađuje procjenitelj s odobrenjem SPK — a prag moraju istovremeno dostići cijena plaćena i dokazana preko banke, procjena vrijednosti i vrijednost navedena u vlasničkom listu. Visokom ugovorenom cijenom nije moguće „ispraviti” nisku procjenu vrijednosti. U tapu se upisuje trogodišnja zabrana otuđenja (satılamaz), nakon čega podnosilac zahtjeva dobija boravišnu dozvolu, a potom državljanstvo. Postupak tipično traje 3–6 mjeseci i obuhvata bračnog partnera te djecu mlađu od 18 godina; punoljetno dijete i roditelj se NE mogu uključiti.",
+      "Turski pasoš omogućava posjet u oko 118 zemalja bez vize i — što je mnogim investitorima glavna motivacija — turski državljanin stiče pravo podnijeti zahtjev za američku investitorsku vizu E-2, koja mađarskom državljaninu nije dostupna. Važna nijansa: E-2 nije dozvola stalnog boravka ni zelena karta, nego neimigracijska viza vezana za ulaganje koja se mora obnavljati, a kod naturalizovanih državljana se u praksi za nju očekuje nekoliko godina državljanstva.",
+      "Praktična napomena: prag se mjeri u USD, dakle kurs je bitan. Prateći troškovi kupovine u Turskoj iznose 4% takse za tapu plus advokatske naknade i naknade za procjenu vrijednosti."
+     ],
+     "table": null
+    },
+    {
+     "h": "Sveti Kits i Nevis: najstariji i najstabilniji program",
+     "p": [
+      "Ta karipska ostrvska država svoj program vodi neprekidno od 1984. — struka ga smatra „platinastim standardom” CBI-ja. Postoje dva nivoa za nekretnine: stan ili udio u razvojnom projektu koji je odobrila vlada od 325.000 USD, odnosno odobrena samostalna porodična kuća od 600.000 USD. Nekretnina kupljena na otvorenom tržištu koja se ne nalazi na spisku NE daje pravo. Zahtjev se može podnijeti isključivo preko zvaničnog agenta.",
+      "Uslovi su zaista blagi: nema zahtjeva za naseljavanjem, boravkom u zemlji, poznavanjem jezika ni polaganjem ispita, državljanstvo važi na neodređeno vrijeme i nasljeđuje se. Jednu stvar je ipak važno znati jer nedostaje u većini ponuda: glavni podnosilac zahtjeva OBAVEZNO mora pristupiti intervjuu, a to se može zatražiti i od članova porodice starijih od 16 godina. Zauzvrat je krug porodice koja se može uključiti širok: bračni partner, djeca mlađa od 30 godina te izdržavani roditelji i nane i djedovi.",
+      "Računajte POVRH kupoprodajne cijene i s državnim taksama: naknada za dubinsku provjeru iznosi 10.000 USD za glavnog podnosioca zahtjeva i 7.500 USD za svakog člana porodice starijeg od 16 godina, a nakon načelnog odobrenja slijedi još 25.000 USD za glavnog podnosioca zahtjeva i 15.000 USD za bračnog partnera. Za samca podnosioca zahtjeva to je oko 35.000 USD dodatno.",
+      "Nekretninu je zvanično potrebno zadržati 7 godina; nakon toga se može dalje prodati, a novi strani kupac istu nekretninu može ponovo iskoristiti za vlastiti zahtjev za državljanstvo — to održava sekundarno tržište na životu. Realno, međutim, treba imati na umu: riječ je o malom tržištu vođenom programom, a ne o klasičnom stambenom tržištu, pa je izlazak sporiji nego u Turskoj. Pasoš omogućava ulazak bez vize u oko 155 zemalja (Henley 2026.: 23. mjesto), no nedavna je promjena da su Turska i Irska ukinule bezvizni režim."
+     ],
+     "table": null
+    },
+    {
+     "h": "Šta svakako razjasnite prije odluke",
+     "p": [
+      "1. Nalazi li se nekretnina na zvaničnom spisku odobrenih projekata (u slučaju Svetog Kitsa je to uslov valjanosti zahtjeva).",
+      "2. Odgovara li procjena vrijednosti pragu — u Turskoj se ne računa ugovorena cijena, nego zvanična procjena vrijednosti.",
+      "3. Poreske posljedice u vlastitoj rezidentnosti: sticanje državljanstva samo po sebi ne ukida mađarsku poresku rezidentnost.",
+      "4. Izlazak: nakon koliko vremena i po kojoj stvarnoj cijeni se nekretnina može dalje prodati. To je najčešće podcijenjen rizik CBI ulaganja."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "U kojoj se zemlji kupovinom nekretnine može steći državljanstvo?",
+     "a": "U dvije zemlje: u Turskoj s nekretninom u vrijednosti od 400.000 USD (3–6 mjeseci) te u Svetom Kitsu i Nevisu s nekretninom koju je odobrila vlada — od 325.000 USD za stan u stambenoj zgradi, od 600.000 USD za samostalnu kuću (160–180 dana do načelnog odobrenja). Oba daju stvarno državljanstvo i pasoš, bez obaveze naseljavanja; u Svetom Kitsu je, međutim, obavezan intervju i nekretninu je potrebno zadržati 7 godina."
+    },
+    {
+     "q": "Može li se ulaganjem u nekretnine steći državljanstvo EU?",
+     "a": "Ne. Trenutno se ni u jednoj državi članici EU ne može kupovinom nekretnine direktno steći državljanstvo. Grčki i mađarski program daju boravišnu dozvolu, španski Golden Visa zasnovan na nekretninama ukinut je u aprilu 2025., a malteški program državljanstva morao je biti obustavljen nakon presude Suda Evropske unije iz 2025."
+    },
+    {
+     "q": "Mora li se nekretnina zadržati nakon sticanja državljanstva?",
+     "a": "Da, neko vrijeme. U Turskoj se ne može prodati tri godine (to se upisuje i u vlasnički list), a u Svetom Kitsu i Nevisu prema zvaničnim uslovima programa period držanja iznosi 7 godina. Državljanstvo ostaje i nakon isteka perioda držanja te nakon prodaje."
+    },
+    {
+     "q": "Hoću li izgubiti svoje mađarsko državljanstvo?",
+     "a": "Ne. Mađarska prihvata dvojno državljanstvo, a ni Turska ni Sveti Kits i Nevis ne zahtijevaju odricanje od ranijeg državljanstva. Pitanje poreske rezidentnosti je od toga pak nezavisno — to je uputno razjasniti s poreskim stručnjakom."
+    }
+   ]
+  },
+  "golden-visa-ingatlannal": {
+   "title": "Golden Visa putem ulaganja u nekretnine 2026.: koja zemlja šta daje?",
+   "description": "Grčka, Mađarska i ostali programi: pragovi, uslovi boravka u zemlji i to koji put vodi do državljanstva. Aktuelan, uporedan pregled.",
+   "answer": "DIREKTNOM kupovinom nekretnine u EU se danas praktično samo u Grčkoj može steći dozvola boravka: od 400.000 € u većem dijelu zemlje, od 800.000 € u Atici, Solunu i na popularnim ostrvima. U mađarskom programu za goste investitore direktna kupovina stana NE daje pravo — tamo se računa samo udio u fondu za nekretnine (250.000 €) ili donacija visokoškolskoj ustanovi (1.000.000 €). Španski Golden Visa zasnovan na nekretninama ukinut je 3. aprila 2025., a u Italiji je nekretnina izričito isključena iz investitorske vize. Ako je cilj sam pasoš, ne treba boravišni program, nego program državljanstva: Turska ili Sveti Kits i Nevis.",
+   "sections": [
+    {
+     "h": "Šta Golden Visa zapravo daje?",
+     "p": [
+      "Golden Visa je boravišna dozvola koju država daje u zamjenu za ulaganje — tipično za kupovinu nekretnine. Kod programa u EU to znači i slobodno kretanje unutar Šengena, dakle u većini slučajeva putovanje bez vize po cijelom području. Ono što NE daje: pasoš i državljanstvo. Državljanstvo se u većini zemalja može zatražiti tek nakon više godina stvarnog boravka, jezičkog ispita i postupka naturalizacije.",
+      "Kao mađarskom državljaninu Vam za slobodno kretanje unutar EU ne treba Golden Visa — zato su ti programi za domaće kupce zanimljivi prvenstveno iz razloga poreskog planiranja, poslovnih razloga ili kao „plan B”, odnosno u slučaju članova porodice iz trećih zemalja."
+     ],
+     "table": null
+    },
+    {
+     "h": "Programi jedan uz drugi",
+     "p": [
+      "Pragovi prikazuju zvanični ulazni nivo pojedine zemlje zasnovan na nekretninama."
+     ],
+     "table": {
+      "head": [
+       "Zemlja",
+       "Prag",
+       "Šta daje",
+       "Boravak u zemlji"
+      ],
+      "rows": [
+       [
+        "Grčka 🇬🇷",
+        "800.000 € (Atika, Solun, velika ostrva) / 400.000 € (drugdje) / 250.000 € (samo prenamjena, spomenik kulture)",
+        "Boravišna dozvola na 5 godina, obnovljiva, za cijelu porodicu",
+        "Nije obavezan"
+       ],
+       [
+        "Mađarska 🇭🇺",
+        "250.000 € udio u FONDU za nekretnine ili 1.000.000 € donacija",
+        "Dozvola na 10 godina — DIREKTNA kupovina stana NE daje pravo",
+        "Nije obavezan"
+       ],
+       [
+        "Španija 🇪🇸",
+        "—",
+        "UKINUTO: put zasnovan na nekretninama zatvoren je 3. aprila 2025.",
+        "—"
+       ],
+       [
+        "Italija 🇮🇹",
+        "—",
+        "NE POSTOJI: nekretnina je isključena iz investitorske vize",
+        "—"
+       ],
+       [
+        "Turska 🇹🇷",
+        "400.000 USD",
+        "DRŽAVLJANSTVO (ne samo boravak)",
+        "Nije obavezan"
+       ],
+       [
+        "Sveti Kits i Nevis 🇰🇳",
+        "oko 325.000 USD",
+        "DRŽAVLJANSTVO (ne samo boravak)",
+        "Nije obavezan"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Grčka: najpoznatiji program u EU",
+     "p": [
+      "Grčki Golden Visa važi pet godina, obnovljiv je dok ulaganje traje i obuhvata bračnog partnera, djecu mlađu od 21 godine te izdržavane roditelje obiju strana. Njegova najjača karakteristika je to što nema minimalnog zahtjeva za boravkom u zemlji.",
+      "Prag je od zakona 5100/2024 podijeljen u tri nivoa. 800.000 € u cijeloj regiji Atike, u regionalnoj jedinici Soluna, na Mikonosu, Santoriniju i na svim ostrvima s više od 3.100 stanovnika. 400.000 € u svim ostalim dijelovima zemlje. 250.000 € isključivo u dva slučaja: kod pretvaranja nestambene zgrade u stambenu (ulaganje se mora završiti PRIJE podnošenja zahtjeva), odnosno kod obnove zgrade zaštićene kao spomenik kulture. Svi prelazni rokovi iz 2024. su istekli, dakle 2026. važi puni prag.",
+      "Dva uslova koja nedostaju u većini ponuda, a ipak mogu odlučiti o ulaganju: u nivoima od 400 i 800 hiljada eura nekretnina mora biti JEDNA JEDINA jedinica s najmanje 120 m² glavne stambene površine (ulaganje se ne može podijeliti na više stanova), a nekretninu koja je osnov za Golden Visu je ZABRANJENO iznajmljivati kratkoročno, na način sličan Airbnbu. Kršenje zabrane povlači ukidanje dozvole i kaznu od 50.000 eura. Onome ko je grčki program planirao radi prinosa od turističkog iznajmljivanja, to iz temelja mijenja računicu."
+     ],
+     "table": null
+    },
+    {
+     "h": "Mađarska: program za goste investitore ponovo pokrenut 2024.",
+     "p": [
+      "Ovdje je najvažnije razjasniti rašireni nesporazum: u mađarskom Programu za goste investitore DIREKTNA KUPOVINA STANA NE DAJE PRAVO na boravišnu dozvolu. Prvobitno predviđena opcija direktnog ulaganja u nekretninu od 500.000 eura izbrisana je iz propisa u januaru 2025., još prije nego što je stupila na snagu. Ko dakle jednostavno kupi stan u Budimpešti, na osnovu toga ne dobija dozvolu gosta investitora.",
+      "Ostala su dva puta. Jedan je kupovina udjela u vrijednosti od 250.000 € u fondu za nekretnine registrovanom pri MNB-u, čija je neto vrijednost imovine najmanje 40% uložena u mađarske stambene nekretnine, uz obavezu držanja od pet godina. Drugi je bespovratna donacija od 1.000.000 € mađarskoj visokoškolskoj ustanovi. Dozvola važi deset godina i može se jednom produžiti za dodatnih deset godina — po trajanju je to najduže u EU — a ulaganje je potrebno izvršiti u roku od 93 dana od prvog ulaska u zemlju s vizom gosta investitora.",
+      "Mađarskom i državljaninu EU taj program razumljivo nije relevantan jer im pripada sloboda kretanja; njegova ciljna grupa je investitor iz treće zemlje."
+     ],
+     "table": null
+    },
+    {
+     "h": "Ako je cilj pasoš, ne tražite Golden Visu",
+     "p": [
+      "Najčešća greška je da neko želi državljanstvo, a za to kupuje Golden Visu. To dvoje nije isto i ne vodi automatski jedno u drugo: za grčku naturalizaciju je, naprimjer, potrebno sedam godina stvarnog boravka u Grčkoj, jezički ispit i integracijski ispit — Golden Visa to sama po sebi ne zamjenjuje.",
+      "Ako je stvaran cilj drugi pasoš, tada treba odabrati program državljanstva: Tursku ili Sveti Kits i Nevis. O njima smo detaljno pisali u našem članku „Državljanstvo putem ulaganja u nekretnine”."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "U kojoj se zemlji danas može dobiti Golden Visa kupovinom nekretnine?",
+     "a": "Direktnom kupovinom nekretnine praktično samo u Grčkoj: od 400.000 eura u većem dijelu zemlje, od 800.000 eura u Atici, Solunu i na popularnim ostrvima, a od 250.000 eura isključivo kod prenamjene zgrade ili obnove spomenika kulture. U mađarskom programu se direktna kupovina stana ne računa — tamo je potreban udio u fondu za nekretnine (250.000 €) ili donacija visokoškolskoj ustanovi (1.000.000 €). Španski Golden Visa zasnovan na nekretninama ukinut je 3. aprila 2025., a u Italiji je nekretnina isključena iz investitorske vize."
+    },
+    {
+     "q": "Daje li Golden Visa državljanstvo EU?",
+     "a": "Ne. Golden Visa je boravišna dozvola. Državljanstvo se može steći samo u uobičajenom postupku naturalizacije, koji tipično zahtijeva više godina stvarnog boravka, jezički ispit i integracijski ispit — u grčkom slučaju, naprimjer, sedam godina."
+    },
+    {
+     "q": "Treba li živjeti u toj zemlji da bi se Golden Visa zadržala?",
+     "a": "Kod grčkog i mađarskog programa nema minimalnog zahtjeva za boravkom u zemlji: dovoljno je zadržati ulaganje i obnavljati dozvolu. To ujedno znači i da se te godine ne uračunavaju u period boravka potreban za naturalizaciju — za grčku naturalizaciju je, naprimjer, potrebno sedam godina STVARNOG boravka u Grčkoj."
+    }
+   ]
+  },
+  "kulfoldi-ingatlan-mellekkoltsegek": {
+   "title": "Koliko zapravo košta? Dodatni troškovi kupovine nekretnine u inostranstvu u 12 zemalja",
+   "description": "Porez na prenos vlasništva, notar, advokat, posrednička provizija — po zemljama. Ukupni trošak iznad kupoprodajne cijene obično se kreće između 3 i 14%.",
+   "answer": "Dodatni troškovi iznad kupoprodajne cijene pri kupovini nekretnine u inostranstvu se znatno razlikuju od zemlje do zemlje: u Albaniji praktično nema poreza na prenos vlasništva, u Crnoj Gori iznosi 3%, u Mađarskoj i Turskoj 4%, dok je u Italiji 9% (drugi dom), a u Španiji 6–10%. Tome se svugdje pridodaju notarska taksa, advokatska naknada i najčešće 2–5% posredničke provizije.",
+   "sections": [
+    {
+     "h": "Zašto je to važnije od kupoprodajne cijene",
+     "p": [
+      "Kod kupovine nekretnine u inostranstvu se većina neugodnih iznenađenja ne krije u cijeni, nego u dodatnim troškovima. Iznad kupoprodajne cijene obično dolazi još 5–14%, zavisno od zemlje — kod nekretnine od 300.000 eura to je razlika između 15.000 i 42.000 eura, isključivo zavisno od toga u kojoj zemlji kupujete.",
+      "Donja tabela prikazuje najvažnije stavke po zemljama. Važno: porez na prenos vlasništva se po pravilu odnosi na STARIJU nekretninu — kod novogradnje u mnogim zemljama na njegovo mjesto stupa PDV, koji može biti i viši."
+     ],
+     "table": {
+      "head": [
+       "Zemlja",
+       "Porez na prenos vlasništva",
+       "Notar",
+       "Advokat",
+       "Posrednik"
+      ],
+      "rows": [
+       [
+        "🇲🇪 Crna Gora",
+        "3–6% (progresivno)",
+        "0,5% + 200 €",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇭🇷 Hrvatska",
+        "3%",
+        "0,4% + 150 €",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇦🇱 Albanija",
+        "0%",
+        "0,5% + 120 €",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇷🇸 Srbija",
+        "2,5%",
+        "0,5% + 150 €",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇹🇷 Turska",
+        "4%",
+        "0,5% + 250 €",
+        "1,2%",
+        "2%"
+       ],
+       [
+        "🇮🇩 Bali (Indonezija)",
+        "5%",
+        "1% + 300 €",
+        "1,5%",
+        "5%"
+       ],
+       [
+        "🇭🇺 Mađarska",
+        "4%",
+        "0,5% + 150 €",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇹🇭 Tajland",
+        "2%",
+        "0,5% + 200 €",
+        "1,5%",
+        "3%"
+       ],
+       [
+        "🇮🇹 Italija",
+        "9%",
+        "1% + 300 €",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇬🇷 Grčka",
+        "3%",
+        "1,2% + 300 €",
+        "1,2%",
+        "2%"
+       ],
+       [
+        "🇪🇸 Španija",
+        "8%",
+        "1% + 300 €",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇰🇳 Sveti Kits i Nevis",
+        "10%",
+        "1% + 500 €",
+        "1,5%",
+        "5%"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Najjeftiniji i najskuplji ulaz",
+     "p": [
+      "Najpovoljnije transakcijske troškove nude Albanija (0% poreza na prenos vlasništva) i Tajland (2%), a slijede ih Crna Gora i Hrvatska s 3–6% (progresivno). Na drugom kraju skale nalazi se Italija s 9% u slučaju drugog doma, kao i Španija, gdje se regionalni ITP kreće između 6 i 10%.",
+      "Česta je zabluda da posredničku proviziju uvijek plaća prodavac. To se razlikuje od tržišta do tržišta: na balkanskom i turskom tržištu je uobičajena i podjela provizije ili to da je snosi kupac, pa to treba pisano razjasniti prije davanja kapare."
+     ],
+     "table": null
+    },
+    {
+     "h": "S čime treba računati uz tabelu",
+     "p": [
+      "Prijevod i ovjera: u mnogim zemljama se ugovori moraju podnijeti u ovjerenom prijevodu.",
+      "Poreski identifikacijski broj i bankovni račun: u Španiji je potreban NIE, u Italiji codice fiscale, a u Grčkoj AFM — bez njih se ne može sklopiti ugovor.",
+      "Godišnje održavanje: porez na nekretnine, zajednička rezerva, osiguranje, a kod kuća za odmor pripremanje za zimu ili naknada za upravljanje.",
+      "Konverzija valuta: u zemljama izvan eurozone (Turska, Tajland, Indonezija, Mađarska) sama bankovna marža na konverziju može iznositi i 1–3% — isplati se koristiti zasebnog pružaoca deviznih usluga."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Koliki su ukupni dodatni troškovi kupovine nekretnine u inostranstvu?",
+     "a": "Zavisno od zemlje, obično 5–14% kupoprodajne cijene. Najniži su u Albaniji i na Tajlandu (oko 3–6%), srednji u Crnoj Gori, Hrvatskoj, Mađarskoj i Turskoj (oko 5–9%), a najviši u Italiji i Španiji (oko 10–14%)."
+    },
+    {
+     "q": "Ko plaća posredničku proviziju pri kupovini nekretnine u inostranstvu?",
+     "a": "Razlikuje se od tržišta do tržišta. Na zapadnoevropskim tržištima obično prodavac, dok je na balkanskom i turskom tržištu uobičajena i podjela ili to da je snosi kupac. To uvijek treba pisano razjasniti PRIJE plaćanja kapare."
+    },
+    {
+     "q": "Plaća li se porez na prenos vlasništva i kod novogradnje?",
+     "a": "Po pravilu ne — u većini zemalja je u cijeni nove nekretnine kupljene od investitora sadržan PDV, pa se tada ne plaća zaseban porez na prenos vlasništva. To, međutim, nije nužno jeftinije: španskih 10% ili italijanskih 10–22% PDV-a može biti više od poreza na prenos vlasništva za stariju nekretninu."
+    }
+   ]
+  },
+  "kulfoldi-ingatlanvasarlas-lepesei": {
+   "title": "Kupovina nekretnine u inostranstvu korak po korak: cjelokupan postupak",
+   "description": "Od potrage do upisa vlasništva: dubinska analiza, kapara, predugovor, notar, poreski identifikacijski broj i najčešće greške koje koštaju novca.",
+   "answer": "Kupovina nekretnine u inostranstvu sastoji se od šest koraka: (1) potraga i sužavanje izbora, (2) pribavljanje lokalnog poreskog identifikacijskog broja i otvaranje bankovnog računa, (3) pravna dubinska analiza vlasničkog lista koju provodi nezavisni advokat, (4) predugovor i kapara (obično 10%), (5) konačni ugovor pred notarom i plaćanje kupoprodajne cijene, (6) upis vlasništva u katastar. Cijeli postupak obično traje 4–12 sedmica.",
+   "sections": [
+    {
+     "h": "1. Potraga i sužavanje izbora",
+     "p": [
+      "Najčešća greška je da se kupac zaljubi u nekretninu, a ne u tržište. Najprije treba odlučiti o cilju: prinos od najma, vlastito korištenje ili program boravka odnosno državljanstva. Ta tri cilja često opravdavaju posve različitu zemlju i posve različitu vrstu nekretnine.",
+      "Kod cilja prinosa je gradska potražnja za najmom tokom cijele godine (Beograd, Budimpešta, Bangkok) predvidljivija od sezonske obale. Kod vlastitog korištenja odlučuju dostupnost avio-linija i zimska popunjenost. Kod programskog cilja je pak podobnost nekretnine važnija od njenog položaja."
+     ],
+     "table": null
+    },
+    {
+     "h": "2. Lokalni poreski identifikacijski broj i bankovni račun",
+     "p": [
+      "Gotovo u svakoj zemlji je za ugovor potreban lokalni poreski identifikacijski broj: u Španiji NIE, u Italiji codice fiscale, u Grčkoj AFM, u Turskoj vergi numarası. Njihovo pribavljanje traje 1–3 sedmice i u mnogim se slučajevima može obaviti na daljinu, punomoći.",
+      "Lokalni bankovni račun je potreban ne samo zbog kupoprodajne cijene, nego i zbog kasnijeg plaćanja režija i poreza. Pripremite se na provjeru radi sprečavanja pranja novca: porijeklo sredstava za kupoprodajnu cijenu se mora dokazati dokumentima."
+     ],
+     "table": null
+    },
+    {
+     "h": "3. Pravna dubinska analiza — štednja na ovom koraku je najskuplja greška",
+     "p": [
+      "Angažirajte nezavisnog advokata kojeg NIJE preporučio prodavac ili posrednik. Minimum dubinske analize obuhvata: vlasnički list (ko je upisani vlasnik), terete i hipoteke, građevinsku i upotrebnu dozvolu, namjenu zemljišta, zajedničku rezervu i poreska dugovanja te podudara li se površina stana s onom iz oglasa.",
+      "Kod nekretnine kupljene od investitora koja je još u izgradnji je zasebno pitanje bankovna garancija ili struktura depozita: šta se dešava s uplaćenim novcem ako investitor ne završi gradnju."
+     ],
+     "table": null
+    },
+    {
+     "h": "4. Predugovor i kapara",
+     "p": [
+      "Uobičajena je praksa: istovremeno s predugovorom se plaća 10% kapare, koja se u slučaju povrede ugovora od strane prodavca po pravilu vraća u dvostrukom iznosu, dok se kod odustajanja kupca gubi. Kaparu po mogućnosti uplatite na advokatski depozit, a ne direktno prodavcu.",
+      "U predugovoru treba utvrditi rok za sklapanje konačnog ugovora, tačno stanje nekretnine i njene pripadajuće dijelove, kao i ko snosi pojedine dodatne troškove."
+     ],
+     "table": null
+    },
+    {
+     "h": "5. Konačni ugovor i plaćanje",
+     "p": [
+      "Na većini evropskih tržišta se konačna kupoprodaja odvija pred notarom (escritura, atto notarile, ugovor), koji provjerava identitet strana i pravni osnov. U Turskoj se prenos vlasništva obavlja u zemljišnom uredu (tapu).",
+      "Kupoprodajnu cijenu po mogućnosti platite bankovnom doznakom, na dokumentovan način — gotovinsko plaćanje je u više zemalja ograničeno ili zabranjeno i otežava dokazivanje nabavne vrijednosti pri kasnijoj prodaji."
+     ],
+     "table": null
+    },
+    {
+     "h": "6. Upis i naknadni poslovi",
+     "p": [
+      "Vlasništvo postaje potpuno tek kada ga katastar upiše. To zavisno od zemlje traje od nekoliko dana do nekoliko mjeseci. Nakon toga slijedi prenos komunalnih priključaka, prijava lokalnog poreza na nekretnine i — ako iznajmljujete — pribavljanje dozvole za iznajmljivanje ili kategorizacije.",
+      "Na kraju: uredite i mađarsko oporezivanje. Prihod od najma inostrane nekretnine i kapitalna dobit od kasnije prodaje oporezuju se prema ugovorima o izbjegavanju dvostrukog oporezivanja — to se razlikuje od zemlje do zemlje i inostrani porez ne zatvara uvijek to pitanje."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Koliko traje kupovina nekretnine u inostranstvu?",
+     "a": "Obično 4–12 sedmica od prihvaćene ponude do upisa vlasništva, ako je riječ o gotovinskoj kupovini. Pribavljanje lokalnog poreskog identifikacijskog broja traje 1–3 sedmice, pravna dubinska analiza 1–2 sedmice, a notarsko zaključenje zavisi od rasporeda strana."
+    },
+    {
+     "q": "Treba li angažirati advokata pri kupovini nekretnine u inostranstvu?",
+     "a": "Da, i to po mogućnosti onog kojeg nije preporučio prodavac ili posrednik. Notar u većini zemalja provjerava zakonitost ugovora, ali ne zastupa Vaše interese — provjera tereta, dozvola i površine je zadatak advokata."
+    },
+    {
+     "q": "Može li se kupiti na daljinu, bez ličnog dolaska?",
+     "a": "U većini zemalja da, uz ovjerenu punomoć s apostilleom datu advokatu. U praksi je ipak dobro barem jednom lično pogledati nekretninu — fotografije su sistematski ljepše od stvarnosti."
+    }
+   ]
+  }
+ }
 }
