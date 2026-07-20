@@ -1,5 +1,803 @@
 {
-  "fallback": true,
-  "countries": {},
-  "articles": {}
+ "countries": {
+  "ME": {
+   "nameHu": "Mali i Zi",
+   "intro": "Mali i Zi është një nga tregjet bregdetare më të përballueshme të Adriatikut: paguan me euro dhe blerësi i huaj mund të blejë banesë ose shtëpi praktikisht me të njëjtat të drejta si vendasit. Taksa e kalimit të pronësisë është progresive që nga viti 2024: 3% deri në 150 000 €, mbi këtë prag 5%, dhe mbi 500 000 € është 6%. Shtyllën kurrizore të kërkesës e përbëjnë Budva, Kotorri, Tivati (Porto Montenegro) dhe Herceg Novi; banesat me pamje nga deti në gjirin e Bokës së Kotorrit janë produktet investuese më të kërkuara, ndërsa Bari dhe Ulqini ofrojnë ende një hyrje dukshëm më të lirë. Vendi është kandidat për anëtarësim në BE, çka është një faktor që në afat të gjatë i shtyn çmimet lart.",
+   "highlights": [
+    "Monedha zyrtare është euroja — nuk ka rrezik kursi këmbimi në çmimin e blerjes",
+    "Taksë progresive e kalimit të pronësisë që nga viti 2024: 3% / 5% / 6% (me pragjet 150 000 dhe 500 000 euro)",
+    "Për ndërtimet e reja nuk ka taksë kalimi pronësie — në vend të saj çmimi përmban 21% TVSH",
+    "Personi fizik i huaj mund të blejë lirisht banesë, shtëpi dhe truall ndërtimi",
+    "Për shtetasit e BE-së NUK ka prag vlere për lejen e qëndrimit (për shtetasit e vendeve të treta 150 000 € që nga viti 2026)",
+    "Vend kandidat për BE — potencial rivlerësimi në afat të gjatë"
+   ],
+   "faq": [
+    {
+     "q": "A mund të blejë një i huaj pronë të paluajtshme në Malin e Zi?",
+     "a": "Po. Personi fizik i huaj mund të blejë lirisht banesë, shtëpi dhe truall ndërtimi në Malin e Zi, në emrin e vet, pa leje të veçantë. Kufizimi ka të bëjë kryesisht me tokat bujqësore dhe pyjore — këto zakonisht blihen përmes një shoqërie vendase."
+    },
+    {
+     "q": "Sa janë kostot shtesë të blerjes së një prone në Malin e Zi?",
+     "a": "Taksa e kalimit të pronësisë është progresive që nga viti 2024: deri në 150 000 € është 3%; midis 150 000 dhe 500 000 € është 4 500 € plus 5% e pjesës mbi 150 000 €; mbi 500 000 € është 22 000 € plus 6% e pjesës mbi 500 000 €. Baza e saj është vlera e tregut e përcaktuar nga administrata tatimore, jo domosdoshmërisht çmimi kontraktor. Këtyre u shtohen tarifa noteriale, rreth 1% tarifë avokati dhe komisioni i agjencisë (zakonisht 3%, i cili sipas praktikës paguhet nga shitësi). Për shitjen e parë të një prone të re, të ndërtuar pas vitit 2003, nuk ka taksë kalimi pronësie — atje çmimi përmban 21% TVSH."
+    },
+    {
+     "q": "A jep Mali i Zi leje qëndrimi për blerje prone?",
+     "a": "Po, mbi bazën e pronësisë së një pasurie të paluajtshme mund të kërkohet një leje qëndrimi njëvjeçare, e rinovueshme çdo vit. Që nga 17 janari 2026, shtetasi i një vendi të tretë duhet të ketë për këtë një pronë me vlerë tatimore prej të paktën 150 000 € — por për shtetasit e BE-së, të ZEE-së dhe të Zvicrës KY PRAG VLERE NUK ZBATOHET, pra blerësi hungarez nuk ka minimum. Programi i mëparshëm i shtetësisë me investim përfundoi më 31 dhjetor 2022, pra sot në Malin e Zi shtetësia nuk mund të fitohet me pronë të paluajtshme — për këtë ofrojnë rrugë Turqia dhe Shën Kits dhe Nevis."
+    }
+   ]
+  },
+  "HR": {
+   "nameHu": "Kroacia",
+   "intro": "Kroacia është tregu i pjekur i Adriatikut brenda BE-së: që nga viti 2023 është anëtare e eurozonës dhe e Shengenit, çka për blerësit hungarezë dhe të tjerë nga BE-ja nënkupton blerjen bregdetare me fërkimin juridik më të vogël. Si person fizik shtetas i BE-së mund të blejë me kushte të njëjta me vendasit — nuk nevojitet leja ministrore që më parë ishte e detyrueshme për të huajt. Istria (Rovinj, Poreç) është motori i segmentit pranë qytetit, Dalmacia (Split, Trogir, Shibenik) i segmentit të shtëpive të pushimit, ndërsa Dubrovniku i segmentit premium. Kthimi nga qiradhënia turistike është i lartë për shkak të sezonalitetit, por është fort i përqendruar në verë.",
+   "highlights": [
+    "Anëtare e BE-së dhe e eurozonës — për shtetasit e BE-së nuk ka detyrim leje",
+    "Taksa e kalimit të pronësisë është 3% fikse; për ndërtimet e reja në vend të saj çmimi përmban 25% TVSH",
+    "Kosto e ulët noteriale: noteri kryen vetëm vërtetimin e nënshkrimit (disa euro), nuk harton kontratë",
+    "Që nga viti 2025 ekziston edhe një taksë VJETORE mbi pronën: 0,60–8,00 €/m²/vit, sipas bashkive",
+    "Moratoriumi për tokën bujqësore skadoi më 30 qershor 2023 — blerësi nga BE-ja sot mund të blejë lirisht",
+    "Treg i fuqishëm, por fort sezonal i qiradhënies afatshkurtër"
+   ],
+   "faq": [
+    {
+     "q": "A mund të blejë një shtetas hungarez pronë në Kroaci?",
+     "a": "Po, pa kufizime. Meqenëse edhe Hungaria edhe Kroacia janë vende anëtare të BE-së, personi fizik hungarez mund të blejë banesë ose shtëpi në emrin e vet me kushte të njëjta me shtetasit kroatë — nuk nevojitet leje nga ministria e drejtësisë. Moratoriumi kalimtar për tokën bujqësore skadoi më 30 qershor 2023 dhe nuk u zgjat, prandaj si shtetas i BE-së sot mund të blini edhe tokë bujqësore me kushte të njëjta me kroatët. Blerësi nga një vend i tretë vazhdon të ketë nevojë për reciprocitet dhe leje ministrore."
+    },
+    {
+     "q": "Sa taksa duhen paguar gjatë blerjes së një prone në Kroaci?",
+     "a": "Gjatë blerjes së një prone të përdorur, blerësi paguan 3% taksë të kalimit të pronësisë (porez na promet nekretnina) — kjo është normë fikse, jo progresive. Për një pronë të re, të blerë nga një zhvillues subjekt i TVSH-së, nuk ka taksë kalimi pronësie, sepse çmimi përmban 25% TVSH; të dyja përjashtojnë njëra-tjetrën. E rëndësishme: noteri kroat NUK harton kontratë shitblerjeje, vetëm vërteton nënshkrimin e shitësit, prandaj kostoja noteriale është disa euro plus regjistrimi në zyrën e kadastrës; „tarifa noteriale prej 1%” e zakonshme gjetiu është e gabuar këtu. Tarifa e avokatit është zakonisht 1–1,5% + TVSH, komisioni i agjencisë 2–4%. Që nga viti 2025 pronën e rëndon edhe një taksë vjetore mbi pronën (0,60–8,00 €/m²/vit), nga e cila përjashtohen vendbanimi i deklaruar dhe qiradhënia afatgjatë prej të paktën 10 muajsh."
+    },
+    {
+     "q": "A ia vlen të blihet pronë në Kroaci për qiradhënie afatshkurtër?",
+     "a": "Në bregdetin dalmat dhe istrian kthimi veror është i shkëlqyer, por sezoni kufizohet zakonisht në 3–4 muaj, dhe për qiradhënien turistike nevojitet kategorizimi (rješenje o kategorizaciji) dhe tatimi me shumë fikse. Në nivel vjetor kthimi neto zakonisht luhatet midis 3–5%."
+    }
+   ]
+  },
+  "AL": {
+   "nameHu": "Shqipëria",
+   "intro": "Shqipëria është tregu bregdetar me pragun më të ulët të hyrjes në Mesdhe: në Rivierën Shqiptare (Sarandë, Ksamil, Himarë) çmimi për metër katror i banesave të reja me pamje nga deti është ende një fraksion i çmimeve kroate ose greke, ndërkohë që Korfuzi dhe kufiri grek janë vetëm një hap larg. Taksë e kalimit të pronësisë praktikisht nuk ka, ndërsa blerësi i huaj mund të blejë banesë në emrin e vet. Turizmi është rritur me ritme rekord vitet e fundit, çka e ka ngritur kthimin nga qiradhënia afatshkurtër në elitën e rajonit — në këmbim tregu është më i ri dhe verifikimi juridik (certifikata e pronësisë, leja e ndërtimit) është këtu veçanërisht i rëndësishëm.",
+   "highlights": [
+    "Çmimet bregdetare për metër katror më të ulëta të rajonit",
+    "BLERËSI nuk paguan taksë kalimi pronësie proporcionale me vlerën — vetëm tarifë fikse noteriale dhe tarifë regjistrimi",
+    "As për ndërtimet e reja nuk ka TVSH nga ana e blerësit: shitja e pasurive të paluajtshme është e përjashtuar nga TVSH-ja",
+    "Personi fizik i huaj mund të blejë banesë dhe shtëpi në emrin e vet, pa leje",
+    "Për blerjen e një TRUALLI ndërtimi është kusht që vlera e investimit të kalojë trefishin e vlerës së truallit",
+    "Tokë bujqësore i huaji nuk mund të blejë, vetëm ta marrë me qira"
+   ],
+   "faq": [
+    {
+     "q": "A është e sigurt të blesh pronë në Shqipëri si i huaj?",
+     "a": "Juridikisht po — personi fizik i huaj mund të blejë banesë në emrin e vet dhe pronësia mund të regjistrohet në kadastër (ASHK). Rreziku nuk qëndron te fitimi i pronësisë, por te historiku i pronës: në tregun shqiptar hasen prona me titull të parregulluar ose të ndërtuara pa leje ndërtimi, prandaj këtu në asnjë mënyrë mos paguani kapar pa një verifikim juridik të kryer nga një avokat i pavarur."
+    },
+    {
+     "q": "Sa kushton një banesë bregdetare në Shqipëri?",
+     "a": "Në Ksamil dhe Sarandë banesat e reja me pamje nga deti luhaten zakonisht në brezin 1 200–2 200 €/m², ndërsa në Vlorë dhe Durrës mund të hyhet edhe më lirë. Kjo është përafërsisht gjysma ose një e treta e ofertës së ngjashme kroate ose greke. Edhe kostot shtesë të blerësit janë më të ulëtat në rajon: pa taksë kalimi pronësie proporcionale me vlerën dhe pa TVSH, ato janë zakonisht 1–4% e çmimit të blerjes."
+    },
+    {
+     "q": "A jep Shqipëria leje qëndrimi për blerje prone?",
+     "a": "Shqipëria nuk ka program Golden Visa dhe as program shtetësie me investim: mundësia e parashikuar në ligjin e vitit 2020 nuk u vu kurrë në zbatim, që nga marsi i vitit 2023 mbi të rëndon një moratorium, dhe pas vendimit të prillit 2025 të Gjykatës së Drejtësisë së BE-së për Maltën, Shqipëria që përgatitet për anëtarësim në BE vështirë se do ta hapë. Megjithatë, mbi bazën e pronësisë së një pasurie të paluajtshme mund të kërkohet një leje qëndrimi njëvjeçare, e rinovueshme, dhe pas pesë vitesh qëndrim i përhershëm. „Pragu prej 100 000 eurosh” që përmendet nga ndërmjetësit nuk mund të vërtetohet nga asnjë akt ligjor — mos e planifikoni mbi të."
+    }
+   ]
+  },
+  "RS": {
+   "nameHu": "Serbia",
+   "intro": "Serbia është para së gjithash një treg urban qiraje, jo një treg bregdetar shtëpish pushimi. Tregun e banesave të Beogradit (sidomos Belgrade Waterfront, Vraçar, Novi Beograd) dhe të Novi Sadit e mbajnë të shtrënguar migrimi i brendshëm i fuqishëm, sektori në rritje i IT-së dhe punëmarrësit e huaj që mbërrijnë në numër të madh — kjo nënkupton një kërkesë të qëndrueshme, gjithëvjetore për qira afatgjatë, në kontrast me sezonalitetin e tregjeve adriatike. Vendpushimet malore (Zlatibor, Kopaonik) janë terreni i investimit në apartamente me dy sezone. Taksa e kalimit të pronësisë është 2,5%, ndërsa te ndërtimet e reja e zëvendëson TVSH-ja.",
+   "highlights": [
+    "Kërkesë qiraje gjithëvjetore, jo sezonale, në Beograd dhe Novi Sad",
+    "Taksa e kalimit të pronësisë 2,5% për pronat e përdorura (sipas ligjit e paguan SHITËSI, por kontratat zakonisht ia ngarkojnë blerësit)",
+    "Për ndërtimet e reja në vend të saj çmimi përmban 10% TVSH (pronë banimi)",
+    "Blerësi i huaj mund të blejë mbi bazën e RECIPROCITETIT — për shtetasit hungarezë kjo plotësohet, por duhet shqyrtuar veçmas për çdo vend",
+    "Lehtësirat për banesën e parë u takojnë vetëm shtetasve serbë — blerësi i huaj nuk mund t'i shfrytëzojë",
+    "Treg apartamentesh malore me dy sezone (Zlatibor, Kopaonik)"
+   ],
+   "faq": [
+    {
+     "q": "A mund të blejë një shtetas hungarez pronë në Serbi?",
+     "a": "Po. Serbia e lejon fitimin e pronësisë nga personat fizikë të huaj mbi bazën e reciprocitetit, dhe me Hungarinë ky reciprocitet ekziston (Hungaria figuron në listën e ministrisë), kështu që shtetasi hungarez mund të blejë banesë ose shtëpi në emrin e vet. E rëndësishme: reciprociteti shqyrtohet SIPAS VENDIT, jo në nivel BE-je — nuk është pra e vërtetë se „çdo shtetas i BE-së mund të blejë lirisht”. Për tokën bujqësore, personi fizik nga BE-ja në parim është i legjitimuar, por me kushte kumulative (10 vjet banim në vend, 3 vjet kultivim, kufi prej 2 hektarësh) që në praktikë janë thuajse të papërmbushshme."
+    },
+    {
+     "q": "Çfarë kthimi nga qiraja mund të arrihet në Beograd?",
+     "a": "Kthimi bruto i qiradhënies afatgjatë të banesave në Beograd luhatet zakonisht midis 4–6%, çka është më i lartë se në shumicën e kryeqyteteve të BE-së, dhe kërkesa është gjithëvjetore — nuk varet nga sezoni turistik."
+    },
+    {
+     "q": "Sa është kostoja e blerjes së një prone në Serbi?",
+     "a": "Për një pronë të përdorur, 2,5% taksë kalimi pronësie (porez na prenos apsolutnih prava). Ligji ia ngarkon këtë SHITËSIT, ndërsa kontratat pothuajse gjithmonë ia kalojnë blerësit — shitësi mbetet përgjegjës edhe në këtë rast, prandaj ia vlen të verifikohet pagesa. Për shitjen e parë të një prone të re, të përfunduar pas vitit 2005, në vend të taksës së kalimit të pronësisë çmimi përmban TVSH: 10% për pronat e banimit, 20% për garazhet dhe ambientet tregtare. Tarifa noteriale përcaktohet sipas një tarife progresive (për një banesë mesatare disa qindra euro — „tarifa noteriale prej 1–2%” është e gabuar), këtyre u shtohet tarifa e avokatit dhe 2–4% komision agjencie. Përjashtimin tatimor për blerësit e banesës së parë dhe rimbursimin e TVSH-së e përfitojnë vetëm shtetasit serbë."
+    }
+   ]
+  },
+  "TR": {
+   "nameHu": "Turqia",
+   "intro": "Turqia operon programin e shtetësisë me bazë pasurie të paluajtshme me volumin më të madh në botë: me blerjen e një prone me vlerë 400 000 USD dhe mbajtjen e saj për tre vjet, investitori dhe familja e tij mund të marrin SHTETËSI turke — jo vetëm leje qëndrimi — zakonisht brenda 3–6 muajve, pa detyrim qëndrimi. Pasaporta turke jep hyrje pa vizë në rreth 118 vende dhe hap rrugën drejt vizës investuese E-2 të SHBA-së. Tregu ka dy shtylla: Stambolli (qiradhënia urbane dhe rritja e vlerës) dhe bregdeti mesdhetar (Antalja, Alanja, Bodrumi, Fethije) për qëllime pushimi dhe qiradhënieje. Taksa e kalimit të pronësisë është 4%, ndërsa fiksimi i çmimit të blerjes në valutë të huaj është i detyrueshëm në program.",
+   "highlights": [
+    "Blerje prone prej 400 000 USD → SHTETËSI turke brenda 3–6 muajve",
+    "Nuk ka detyrim qëndrimi, gjuhe ose vendosjeje",
+    "Mund të përfshihet e gjithë familja (bashkëshorti/ja + fëmijët nën 18 vjeç)",
+    "Prona duhet mbajtur për 3 vjet, më pas mund të shitet lirisht",
+    "Hyrje pa vizë në rreth 118 vende; rrugë drejt vizës investuese E-2 të SHBA-së"
+   ],
+   "faq": [
+    {
+     "q": "Si mund të fitohet shtetësia turke me blerje prone?",
+     "a": "Duhet blerë një pronë turke me vlerë të paktën 400 000 USD dhe duhet marrë përsipër që të mos shitet për tre vjet — kjo shënohet edhe në certifikatën e pronësisë (tapu) si shënim „satılamaz” (e pashitshme). E rëndësishme: nuk llogaritet çmimi kontraktor, por vlerësimi zyrtar i një vlerësuesi të licencuar nga SPK; pragun duhet ta arrijnë njëkohësisht çmimi i paguar (i vërtetuar përmes bankës), vlerësimi dhe vlera e shënuar në tapu. Më pas mund të paraqitet kërkesa për leje qëndrimi dhe për shtetësi; i gjithë procesi zgjat zakonisht 3–6 muaj dhe shtrihet te bashkëshorti/ja dhe fëmijët nën 18 vjeç."
+    },
+    {
+     "q": "A duhet jetuar në Turqi për të fituar shtetësinë?",
+     "a": "Jo. Programi turk i shtetësisë me investim nuk ka detyrim qëndrimi, gjuhe apo provimi — nuk është nevoja të zhvendoseni në vend, madje pjesa më e madhe e kërkesës mund të kryhet nëpërmjet një avokati të autorizuar."
+    },
+    {
+     "q": "A mund ta shes pronën pas fitimit të shtetësisë?",
+     "a": "Po, por vetëm pasi të ketë kaluar afati i detyrueshëm trevjeçar i mbajtjes. Shtetësia mbetet edhe pas kësaj — shtetësia turke nuk revokohet për shkak të shitjes së pronës."
+    },
+    {
+     "q": "Sa janë kostot shtesë të blerjes së një prone në Turqi?",
+     "a": "4% taksë tapu (kalimi i pronësisë), rreth 0,5% tarifë noteriale dhe përkthimi, tarifë avokati rreth 1,2%, si dhe zakonisht 2% komision agjencie. Në programin e shtetësisë këtyre u shtohen vlerësimi i detyrueshëm dhe tarifat e procedurave shtetërore."
+    }
+   ]
+  },
+  "ID": {
+   "nameHu": "Bali (Indonezi)",
+   "intro": "Bali është një treg i fuqishëm i qiradhënies afatshkurtër, por shifrat reale janë shumë më modeste se kthimet e reklamuara: sipas të dhënave të pavarura të rezervimeve, në Canggu tarifa mesatare ditore është rreth 216 USD, ndërsa shfrytëzimi është vetëm rreth 38%, dhe oferta zgjerohet me 40% në vit. Realisht ia vlen të llogaritet me 6–9% kthim bruto dhe 3–5% neto, jo me 10–15% që shfaqen në fletëpalosje. Çështja tjetër kyçe është forma e pronësisë: personi fizik i huaj në Indonezi NUK mund të fitojë pronësi të plotë (Hak Milik). Ka tre rrugë të ligjshme: e drejta kontraktore e qirasë (Hak Sewa, zakonisht 25–30 vjet), e drejta e përdorimit Hak Pakai e lidhur me lejen e qëndrimit (30 + 20 + 30 = deri në 80 vjet), ose e drejta e ndërtimit Hak Guna Bangunan përmes një shoqërie indoneziane PT PMA (gjithashtu 80 vjet). Në Bali zgjedhja e strukturës juridike është më e rëndësishme se vetë prona.",
+   "highlights": [
+    "Kthimi real sipas të dhënave të pavarura: 6–9% bruto, 3–5% neto (10–15% është shifër marketingu)",
+    "I huaji NUK mund të fitojë pronësi të plotë (Hak Milik) — ky është kufizim kushtetues",
+    "E drejta e qirasë Hak Sewa: edhe pa leje qëndrimi, zakonisht 25–30 vjet",
+    "Hak Pakai dhe Hak Guna Bangunan me PT PMA: 30 + 20 + 30, gjithsej deri në 80 vjet",
+    "RREZIK: struktura „nominee” (pronësi e plotë e regjistruar në emër të një personi indonezian të vënë) është SIPAS LIGJIT E PAVLEFSHME",
+    "Nëse i skadon leja e qëndrimit pronarit me Hak Pakai, ai duhet ta shesë pronën brenda një viti",
+    "Kostot shtesë të blerësit: 2–4% për të drejtën e qirasë, 7–9% për Hak Pakai (për shkak të 5% BPHTB)"
+   ],
+   "faq": [
+    {
+     "q": "A jep Indonezia leje qëndrimi për blerje prone?",
+     "a": "Në mënyrë të kufizuar. Dega me bazë pasurie të paluajtshme e Golden Visa-s indoneziane kërkon një investim prej 1 000 000 USD dhe ka të bëjë EKSKLUZIVISHT me banesa në bashkëpronësi me titull të përshtatshëm — vilat mbi truall individual nuk japin të drejtë. Përveç kësaj ekziston edhe një vizë „second home”, por faqja zyrtare nuk publikon një prag konkret vlere, prandaj shumat e përmendura nga ndërmjetësit ia vlen të trajtohen me rezervë. Program shtetësie me investim në Indonezi nuk ka."
+    },
+    {
+     "q": "A mund të blejë një i huaj pronë në Bali?",
+     "a": "Pronësi të plotë (Hak Milik) me vlerë të plotë personi fizik i huaj nuk mund të fitojë në Indonezi — këtë ligji themelor i vitit 1960 ua rezervon shtetasve indonezianë. Ka tre zgjidhje të ligjshme: e drejta kontraktore e qirasë (Hak Sewa, zakonisht 25–30 vjet, nuk kërkon leje qëndrimi), e drejta e përdorimit Hak Pakai (e lidhur me një leje qëndrimi të vlefshme KITAS/KITAP, 30 + 20 + 30 = deri në 80 vjet), si dhe e drejta e ndërtimit Hak Guna Bangunan e zotëruar nga një shoqëri indoneziane me pronësi të huaj (PT PMA) (gjithashtu 80 vjet). SHUMË E RËNDËSISHME: struktura „nominee” që shitet shpesh në Bali, ku pronësia e plotë figuron në emër të një shtetasi indonezian „në favorin Tuaj”, sipas ligjit është E PAVLEFSHME — nuk mund të zbatohet para gjykatës, dhe prona mbetet te personi i vënë ose te shteti."
+    },
+    {
+     "q": "Çfarë kthimi jep një vilë në Bali?",
+     "a": "Më pak nga sa reklamohet. Sipas të dhënave të pavarura të rezervimeve, në Canggu — ku konkurrojnë afro 4 000 shpallje aktive — tarifa mesatare ditore është rreth 216 USD dhe shfrytëzimi vjetor rreth 38%, çka nënkupton mesatarisht rreth 23 700 USD të ardhura në vit. Nga kjo duhen zbritur menaxhimi i vilës (15–20%), mirëmbajtja dhe taksat. Realisht ia vlen të planifikohet me 6–9% kthim bruto dhe 3–5% neto. Premtimet për 10–15% neto vijnë nga materialet e shitjes dhe nuk mbështeten nga të dhënat e tregut — oferta rritet me ritëm mbi 40% në vit, ndërkohë që kërkesa është e sheshtë, prandaj pronarët po ulin çmimet me 10–30%."
+    },
+    {
+     "q": "Çfarë ndodh kur skadon leasehold-i?",
+     "a": "Një kontratë qiraje e hartuar mirë përmban opsion zgjatjeje me çmim të fiksuar paraprakisht ose të indeksuar. Pikërisht ky është verifikimi më i rëndësishëm para blerjes: sa vjet kanë mbetur, sa është e drejta e zgjatjes dhe si sigurohet pëlqimi i pronarit të tokës. Pa këtë, vlera e investimit bie nga viti në vit. Në rastin e Hak Pakai ekziston edhe një kurth tjetër: nëse pronarit i skadon leja e qëndrimit dhe nuk e rinovon, ai detyrohet ta shesë pronën brenda një viti, përndryshe ajo mund të përfundojë në ankand shtetëror."
+    }
+   ]
+  },
+  "HU": {
+   "nameHu": "Hungaria",
+   "intro": "Hungaria e rinisi në vitin 2024 programin e saj të vendosjes me investim, por këtu duhet sqaruar një keqkuptim i rëndësishëm: në Programin e Investitorit Mysafir, BLERJA E DREJTPËRDREJTË E NJË BANESE NUK JEP TË DREJTË për leje qëndrimi. Opsioni i planifikuar i pronës së drejtpërdrejtë prej 500 000 eurosh u hoq në janar 2025, para se të hynte në fuqi. Kanë mbetur dy rrugë: kuota investimi me vlerë 250 000 € në një fond pasurish të paluajtshme të regjistruar pranë MNB-së (vlera neto e aseteve të të cilit është të paktën 40% në prona banimi hungareze), me detyrim mbajtjeje pesëvjeçar, ose një donacion i pakthyeshëm prej 1 000 000 € për një institucion hungarez të arsimit të lartë. Dy motorët e tregut hungarez të pasurive të paluajtshme janë Budapesti dhe Balatoni; taksa e transferimit të pasurisë me kundërshpërblim është 4% deri në një miliard forinta.",
+   "highlights": [
+    "KUJDES: blerja e drejtpërdrejtë e një banese NUK jep të drejtë për leje qëndrimi si investitor mysafir",
+    "Në program llogariten vetëm kuotat e një fondi pasurish të paluajtshme (250 000 €, mbajtje 5-vjeçare) ose donacioni për arsimin e lartë (1 000 000 €)",
+    "Leja jepet për 10 vjet dhe mund të zgjatet një herë me 10 vjet të tjera",
+    "Taksa e transferimit të pasurisë me kundërshpërblim është 4% deri në një miliard forinta, mbi këtë 2% (maksimumi 200 milionë forinta për pronë)",
+    "Për banesat e reja 5% TVSH (banesa deri në 150 m², shtëpi deri në 300 m²) deri në fund të vitit 2026",
+    "Budapesti: kthim gjithëvjetor i bazuar në kërkesën universitare dhe atë të qiramarrësve",
+    "Balatoni: treg vendas shtëpish pushimi me rivlerësim të qëndrueshëm"
+   ],
+   "faq": [
+    {
+     "q": "A mund të marr leje qëndrimi hungareze nëse blej një banesë në Hungari?",
+     "a": "Jo. Ky është keqkuptimi më i shpeshtë lidhur me programin hungarez. Në Programin e Investitorit Mysafir, blerja e drejtpërdrejtë e një banese ose shtëpie NUK konsiderohet investim: opsioni i planifikuar i pronës së drejtpërdrejtë prej 500 000 eurosh u hoq në janar 2025, para se të hynte në fuqi. Ka dy mundësi: blerja e kuotave investimi me vlerë 250 000 € në një fond pasurish të paluajtshme të regjistruar pranë MNB-së, që investon të paktën 40% në prona banimi hungareze (me detyrim mbajtjeje 5-vjeçare), ose një donacion prej 1 000 000 € për një institucion hungarez të arsimit të lartë. Leja jepet për 10 vjet dhe mund të zgjatet një herë me 10 vjet të tjera. Shtetasit hungarezë dhe të BE-së natyrisht nuk kanë nevojë për këtë — atyre u takon lëvizja e lirë."
+    },
+    {
+     "q": "Sa taksë duhet paguar gjatë blerjes së një prone në Hungari?",
+     "a": "Taksa e transferimit të pasurisë me kundërshpërblim është 4% për pjesën e vlerës së tregut që nuk e kalon një miliard forintat dhe 2% për pjesën mbi të, me maksimum 200 milionë forinta për pronë. Për një banesë të re të blerë nga zhvilluesi, taksa përjashtohet deri në vlerën 15 milionë forinta, ndërsa mbi këtë vlerë zbatohet 4% për diferencën. Lehtësira ose përjashtim mund të zbatohet për të rinjtë që blejnë banesën e parë, për blerjet me CSOK, si dhe kur shitja dhe blerja ndodhin brenda pesë vjetësh — në këtë rast paguhet vetëm mbi diferencën e çmimit. TVSH-ja e një banese të re është 5% në vend të 27%, për banesa deri në 150 m² dhe shtëpi deri në 300 m², deri në fund të vitit 2026."
+    },
+    {
+     "q": "Çfarë kthimi nga qiraja mund të arrihet në Budapest?",
+     "a": "Kthimi bruto i qiradhënies afatgjatë të banesave në Budapest është zakonisht 4–6%, ndërsa te banesat e vogla në qendër, pranë universiteteve, mund të jetë edhe më i lartë. Kthimi i qiradhënies afatshkurtër është më i lartë, por për të vlejnë rregullore të ndryshme sipas rretheve."
+    }
+   ]
+  },
+  "TH": {
+   "nameHu": "Tajlanda",
+   "intro": "Nga tregjet e Azisë Juglindore, Tajlanda ofron strukturën e pronësisë më të parashikueshme për të huajt: një banesë në bashkëpronësi (condominium) personi fizik i huaj mund ta fitojë NË EMRIN E VET, si pronësi të plotë — me kushtin që jo më shumë se 49% e sipërfaqes totale të asaj ndërtese të jetë në duar të huaja. Tokë dhe shtëpi bashkë me tokën, përkundrazi, i huaji nuk mund të zotërojë; atje është e zakonshme e drejta e qirasë afatgjatë ose struktura shoqërore. Bangkoku është tregu i qiradhënies urbane, Puketi dhe Koh Samui i kthimit turistik, ndërsa Çiang Mai i nomadëve dixhitalë me qëndrim të gjatë.",
+   "highlights": [
+    "Banesa në bashkëpronësi mund të fitohet si pronësi e plotë, në emrin e vet, edhe si i huaj",
+    "Kuotë e huaj 49% për çdo bashkëpronësi, në raport me SIPËRFAQEN — duhet verifikuar me shkrim para blerjes",
+    "Çmimi i blerjes duhet transferuar nga jashtë, në valutë të huaj (pa vërtetim FET nuk ka kalim pronësie)",
+    "Tokë i huaji nuk mund të zotërojë; maksimumi ligjor i qirasë së regjistrueshme është 30 vjet",
+    "Zgjatja „30+30+30” është vetëm një premtim kontraktor — gjykata nuk e ka zbatuar ndaj pronarit të ri",
+    "Taksa e kalimit të pronësisë 2%, sipas praktikës ndahet përgjysmë mes palëve — kostoja e plotë e blerësit është zakonisht 1–2%",
+    "KUJDES: lehtësia tatimore prej 0,01% zbatohet VETËM për shtetasit tajlandezë, jo për blerësin e huaj"
+   ],
+   "faq": [
+    {
+     "q": "A mund të blejë një i huaj pronë në Tajlandë?",
+     "a": "Banesë në bashkëpronësi po, në emrin e vet, si pronësi të plotë — me kusht që jo më shumë se 49% e sipërfaqes së regjistruar dhe të shitshme të asaj ndërtese të jetë në pronësi të huaj. Çmimi i blerjes duhet transferuar nga jashtë, në valutë të huaj, dhe zyra e kadastrës nuk e regjistron të drejtën e pronësisë pa vërtetimin FET për këtë. Tokë dhe shtëpi të ndërtuar bashkë me tokën personi fizik i huaj nuk mund të zotërojë; në këtë rast mund të merren parasysh e drejta e qirasë e regjistrueshme për maksimum 30 vjet, uzufrukti ose një shoqëri me shumicë tajlandeze. Kujdes: shoqëria me shumicë tajlandeze është e ligjshme vetëm me pronarë tajlandezë të vërtetë — struktura me persona të vënë bie ndesh me ligjin për biznesin e huaj dhe autoritetet e hetojnë aktivisht."
+    },
+    {
+     "q": "A është e vërtetë që në Tajlandë kuota e huaj do të ngrihet në 75% dhe qiraja në 99 vjet?",
+     "a": "Jo, kjo aktualisht NUK është e drejtë në fuqi. Qeveria në vitin 2024 miratoi vetëm që të dy propozimet të shqyrtohen; ligj prej tyre nuk lindi kurrë. Plani për qiranë 99-vjeçare u hoq zyrtarisht nga rendi i ditës në shtator 2025. Në mesin e vitit 2026 rregulli në fuqi mbetet i pandryshuar: kuotë e huaj 49% dhe qira maksimale e regjistrueshme 30 vjet. Kush blen një pronë të çmuar mbi një horizont 99-vjeçar, paguan për një të drejtë që nuk ekziston."
+    },
+    {
+     "q": "Çfarë do të thotë kuota e huaj prej 49%?",
+     "a": "Në çdo bashkëpronësi tajlandeze, jo më shumë se 49% e sipërfaqes së regjistruar dhe të shitshme mund të jetë në pronësi të huaj — kufiri pra është në raport me sipërfaqen, jo sipas numrit të banesave. Para blerjes duhet kërkuar nga administruesi i bashkëpronësisë një vërtetim me shkrim se në kuotë ka ende vend të lirë; pa këtë banesa nuk mund të kalojë në emër të blerësit të huaj dhe kapari lehtë mbetet i bllokuar."
+    },
+    {
+     "q": "Sa janë kostot shtesë të blerjes në Tajlandë?",
+     "a": "2% taksë kalimi pronësie (transfer fee) mbi vlerën zyrtare të vlerësuar, të cilën palët sipas praktikës e ndajnë përgjysmë. Shitësin e rëndon tatimi mbi biznesin (3,3%, nëse e ka zotëruar për më pak se pesë vjet) ose në vend të tij taksa e pullës (0,5%, nëse për të paktën pesë vjet), si dhe tatimi i mbajtur në burim. Kostoja e përbashkët e të dy palëve është zakonisht 6–8% e çmimit të blerjes, por me ndarjen e zakonshme, nga ana e BLERËSIT TË HUAJ kjo është vetëm rreth 1–2%, përfshirë tarifën e avokatit dhe të verifikimit juridik. E rëndësishme: taksa e favorshme e kalimit të pronësisë prej 0,01%, që përmendet shpesh, zbatohet ekskluzivisht për shtetasit tajlandezë — blerësi i huaj dhe shoqëria tajlandeze paguajnë të plotë 2%."
+    }
+   ]
+  },
+  "IT": {
+   "nameHu": "Italia",
+   "intro": "Italia është tregu më i thellë dhe më i diferencuar i shtëpive të pushimit dhe i pasurive urbane në BE: nga segmenti premium i liqenit të Komos dhe i Toskanës, te tregu i qiradhënies i Milanos, e deri te programet e „shtëpive me 1 euro” në jug të Italisë, çdo nivel çmimi është i arritshëm. Shtetasi i BE-së mund të blejë pa kufizime. Çelësi është tatimi: taksa e kalimit të pronësisë për një pronë të përdorur, të blerë nga një person fizik, është 9% (në rastin e shtëpisë së dytë), por për blerësin që bëhet rezident mund të ulet në 2%, ndërsa për ata që zhvendosen nga jashtë është i disponueshëm tatimi vjetor me shumë fikse (flat tax) prej 200 000 eurosh mbi të ardhurat e huaja.",
+   "highlights": [
+    "Vend anëtar i BE-së — për shtetasit e BE-së nuk ka kufizim blerjeje",
+    "Taksa e kalimit të pronësisë 9% për shtëpinë e dytë, 2% nëse bëhet „prima casa” (banesa kryesore); minimumi 1 000 €",
+    "Kur blihet nga një person fizik, baza e taksës është vlera kadastrale (prezzo-valore), e cila zakonisht është shumë nën çmimin e blerjes",
+    "Për një pronë të re të blerë nga zhvilluesi zbatohet TVSH: 4% banesa kryesore, 10% shtëpia e dytë, 22% kategoria luks",
+    "NUK ka Golden Visa me bazë pasurie të paluajtshme — nga viza investuese italiane prona është shprehimisht e përjashtuar",
+    "Për rezidentët e rinj, tatim me shumë fikse mbi të ardhurat e huaja: nga 1 janari 2026, 300 000 € në vit"
+   ],
+   "faq": [
+    {
+     "q": "Sa taksa paguan blerësi gjatë blerjes së një prone në Itali?",
+     "a": "Për një pronë të përdorur të blerë nga një person fizik, taksa e kalimit të pronësisë (imposta di registro) është 9% nëse bëhet fjalë për shtëpi të dytë, dhe vetëm 2% nëse blerësi regjistrohet atje si banesë kryesore brenda 18 muajve; minimumi në të dyja rastet është 1 000 €. Në shitblerjet midis personave fizikë, baza e taksës mund të kërkohet të jetë vlera kadastrale (prezzo-valore), e cila zakonisht është shumë nën çmimin real të blerjes — kjo është një kursim i konsiderueshëm. Këtyre u shtohen dy taksa fikse prej 50 eurosh secila. Për një pronë të re të blerë nga zhvilluesi brenda 5 vjetëve nga përfundimi, blerjen e rëndon TVSH: 4% për banesën kryesore, 10% për shtëpinë e dytë, 22% për kategoritë kadastrale luks A/1, A/8 dhe A/9, plus tri taksa fikse prej 200 eurosh."
+    },
+    {
+     "q": "A mund të blejë një shtetas hungarez pronë në Itali?",
+     "a": "Po, pa kufizime — të dyja vendet janë anëtare të BE-së, kështu që blerësi hungarez mund të blejë me kushte të njëjta me italianët. Për blerjen nevojitet një numër identifikimi tatimor italian (codice fiscale) dhe një llogari bankare italiane."
+    },
+    {
+     "q": "Çfarë është tatimi italian me shumë fikse (flat tax) për rezidentët e rinj?",
+     "a": "Kush e transferon rezidencën e tij tatimore në Itali, mund të zgjedhë sistemin në të cilin mbi të ardhurat me burim të huaj paguan një taksë vjetore me shumë fikse, për maksimum 15 vjet. Shuma u ngrit me ligjin buxhetor të vitit 2026 në 300 000 euro në vit për ata që e transferojnë rezidencën nga 1 janari 2026 (plus 50 000 euro për çdo anëtar familjeje). Për ata që kanë hyrë më parë mbetet në fuqi shuma e vjetër: 100 000 € për ata para vitit 2024, 200 000 € për ata të viteve 2024–2025. E rëndësishme: kjo është një konstruksion tatimor, JO një program qëndrimi — blerja e një prone italiane në vetvete nuk jep të drejtë vendosjeje."
+    }
+   ]
+  },
+  "GR": {
+   "nameHu": "Greqia",
+   "intro": "Greqia operon programin Golden Visa më të njohur të BE-së: me investim në pasuri të paluajtshme fitohet një leje qëndrimi pesëvjeçare, e rinovueshme, që shtrihet mbi të gjithë familjen dhe jep lëvizje të lirë në Shengen, PA DETYRIM MINIMAL QËNDRIMI — ky është argumenti më i fortë i programit. Pragu, që nga ligji 5100/2024, është progresiv sipas zonave: 800 000 € në të gjithë rajonin e Atikës, në Selanik, Mikonos, Santorini dhe në ishujt me mbi 3 100 banorë; 400 000 € në pjesën tjetër të vendit; ndërsa 250 000 € EKSKLUZIVISHT për shndërrimin e një ndërtese jorezidenciale në banesë ose për restaurimin e një monumenti. Dy kushte që shpesh heshten: prona duhet të jetë një njësi e vetme, me të paktën 120 m² sipërfaqe kryesore banimi, dhe prona e Golden Visa-s NDALOHET të jepet me qira afatshkurtër (të tipit Airbnb) — shkelja e rregullit sjell revokimin e lejes dhe një gjobë prej 50 000 eurosh.",
+   "highlights": [
+    "Golden Visa në breza: 800 000 € (Atika, Selanik, Mikonos, Santorini, ishujt më të mëdhenj) / 400 000 € (gjetiu) / 250 000 € (vetëm ndryshim destinacioni ose restaurim monumenti)",
+    "Prona duhet të jetë një njësi e vetme, me min. 120 m² sipërfaqe kryesore banimi",
+    "Prona e Golden Visa-s NDALOHET të jepet me qira afatshkurtër — sanksioni është revokimi dhe gjobë prej 50 000 €",
+    "NUK ka detyrim minimal qëndrimi",
+    "Shtrihet mbi të gjithë familjen (bashkëshorti/ja, fëmijët nën 21 vjeç, prindërit në varësi të të dyja palëve)",
+    "Jepet për 5 vjet, e rinovueshme përderisa investimi ruhet",
+    "Taksa e kalimit të pronësisë 3% (+ një kontribut i vogël bashkiak)",
+    "Për ndërtimet e reja, pezullimi i TVSH-së është zgjatur deri më 31 dhjetor 2026 — edhe në këtë rast zbatohet taksa e kalimit prej 3%"
+   ],
+   "faq": [
+    {
+     "q": "Si funksionon Golden Visa greke?",
+     "a": "Me blerjen e një prone greke mund të kërkohet një leje qëndrimi pesëvjeçare, e rinovueshme, që shtrihet mbi bashkëshortin/en, fëmijët nën 21 vjeç dhe prindërit në varësi të të dyja palëve. Leja jep lëvizje të lirë në Shengen dhe nuk parashikon qëndrim minimal — mjafton që investimi të ruhet."
+    },
+    {
+     "q": "Sa është pragu i Golden Visa-s greke?",
+     "a": "Sipas ligjit 5100/2024 ka tri breza. 800 000 € në të gjithë rajonin e Atikës, në njësinë rajonale të Selanikut, në Mikonos, Santorini dhe në çdo ishull me mbi 3 100 banorë. 400 000 € në të gjitha pjesët e tjera të vendit. 250 000 € ekskluzivisht në dy raste: kur një ndërtesë jorezidenciale shndërrohet në pronë banimi (investimi duhet përfunduar para kërkesës), ose kur restaurohet një ndërtesë nën mbrojtje si monument. Afatet kalimtare të vitit 2024 kanë skaduar të gjitha, pra në vitin 2026 vlen plotësisht pragu 400/800 mijë. Para blerjes duhet verifikuar gjithmonë klasifikimi konkret i zonës për pronën në fjalë."
+    },
+    {
+     "q": "A mund ta jap me qira afatshkurtër pronën time greke të Golden Visa-s?",
+     "a": "Jo. Reforma e vitit 2024 e ndalon shprehimisht qiradhënien afatshkurtër (të tipit Airbnb) të pronës që shërben si bazë e Golden Visa-s. Shkelja e ndalimit sjell revokimin e lejes së qëndrimit dhe një gjobë prej 50 000 eurosh. Qiradhënia afatgjatë lejohet. Ky kusht e ndryshon rrënjësisht llogaritjen e kthimit të investimit, megjithatë mungon nga shumica e ofertave."
+    },
+    {
+     "q": "A jep shtetësi Golden Visa greke?",
+     "a": "Jo drejtpërdrejt. Golden Visa është leje qëndrimi; shtetësia greke mund të kërkohet pas shtatë vjetësh qëndrimi faktik në Greqi, me kushte gjuhësore dhe integrimi. Nëse qëllimi është vetë pasaporta, shtetësi drejtpërdrejt me investim në pasuri të paluajtshme japin Turqia dhe Shën Kits dhe Nevis."
+    }
+   ]
+  },
+  "ES": {
+   "nameHu": "Spanja",
+   "intro": "Spanja është tregu me qarkullimin më të madh të shtëpive të pushimit në Evropë: oferta e Costa del Sol (Marbelja, Malaga), e Costa Blanca (Alikante), e Ishujve Balearikë dhe e Barcelonës është më e thella dhe më e lehta për t'u rishitur në kontinent. Për shkak të pranisë së blerësve ndërkombëtarë, dalja (shitja) është dukshëm më e shpejtë se në tregjet më të vogla. Ndryshim i rëndësishëm ligjor: rruga e Golden Visa-s spanjolle me bazë pasurie të paluajtshme u shfuqizua në prill 2025, pra sot me blerjen e një prone spanjolle NUK mund të fitohet leje qëndrimi si investitor — blerja është thjesht një vendim investimi dhe stili jetese. Taksa e kalimit të pronësisë sipas rajoneve është 6–10%.",
+   "highlights": [
+    "Tregu më i madh dhe më likuid i shtëpive të pushimit në Evropë — rishitje e shpejtë",
+    "Taksa e kalimit të pronësisë (ITP) sipas rajoneve rreth 6–11%: Madridi 6%, Andaluzia 7%, Katalonja 10–11%",
+    "KUJDES: Golden Visa me bazë pasurie të paluajtshme u shfuqizua në prill 2025",
+    "Komunitet i gjerë hungarez dhe ndërkombëtar në bregdetin jugor"
+   ],
+   "faq": [
+    {
+     "q": "A ekziston ende Golden Visa spanjolle me blerje prone?",
+     "a": "Jo. Spanja e shfuqizoi në prill 2025 rrugën e Golden Visa-s të bazuar në investim në pasuri të paluajtshme, kështu që me një blerje prone prej 500 000 eurosh sot nuk mund të fitohet më leje qëndrimi si investitor në Spanjë. Brenda BE-së, program vendosjeje me bazë pasurie të paluajtshme ofrojnë Greqia dhe Hungaria; shtetësi me pronë japin Turqia dhe Shën Kits dhe Nevis."
+    },
+    {
+     "q": "Sa taksa paguan blerësi në Spanjë?",
+     "a": "Për një pronë të përdorur, blerësin e rëndon një taksë kalimi pronësie (ITP) prej rreth 6–11% në varësi të rajonit: në Madrid 6%, në Andaluzi 7% në mënyrë të njësuar, në Katalonjë 10% deri në një milion euro dhe 11% mbi këtë, në Valencia 10% (nga 1 qershori 2026, 9%, dhe mbi një milion euro 11%). Baza e taksës është më e larta midis çmimit të blerjes dhe vlerës zyrtare kadastrale të referencës — kjo është e rëndësishme, sepse edhe me një çmim të ulët kontraktor tatimi paguhet mbi vlerën e referencës. Për një pronë të re të blerë nga zhvilluesi paguhet 10% TVSH plus 0,5–1,5% taksë dokumentare (AJD) në varësi të rajonit."
+    },
+    {
+     "q": "Çfarë nevojitet për të blerë një pronë në Spanjë si blerës hungarez?",
+     "a": "Një numër identifikimi tatimor spanjoll (NIE), një llogari bankare spanjolle dhe zakonisht një avokat i pavarur. Si shtetas i BE-së, për Ju nuk zbatohet asnjë kufizim blerjeje, dhe procesi mbyllet para noterit (escritura pública)."
+    }
+   ]
+  },
+  "KN": {
+   "nameHu": "Shën Kits dhe Nevis",
+   "intro": "Shën Kits dhe Nevis operon programin më të vjetër në botë të shtetësisë me investim (CBI), i cili funksionon pa ndërprerje që nga viti 1984 — ky është „standardi platin” i fushës. Një pronë e MIRATUAR nga qeveria jep drejtpërdrejt SHTETËSI: jo leje qëndrimi, por pasaportë. Ka dy nivele: banesë në bashkëpronësi ose pjesëmarrje në një projekt të miratuar nga 325 000 USD, dhe shtëpi familjare e pavarur e miratuar nga 600 000 USD. Nuk ka kërkesë vendosjeje, gjuhe apo qëndrimi, por aplikanti kryesor DETYROHET të paraqitet në një intervistë. Vendi ishullor nuk vendos tatim mbi të ardhurat personale, tatim mbi pasurinë dhe tatim mbi trashëgiminë, ndërsa pasaporta mundëson vizitimin pa vizë të rreth 155 vendeve (Henley 2026: vendi i 23-të), përfshirë zonën Shengen dhe Mbretërinë e Bashkuar. Prona duhet mbajtur zyrtarisht për 7 vjet.",
+   "highlights": [
+    "325 000 USD (banesë në bashkëpronësi në një projekt të miratuar) ose 600 000 USD (shtëpi e pavarur e miratuar) → SHTETËSI e plotë dhe pasaportë",
+    "Programi CBI më i vjetër (1984) dhe më i qëndrueshëm në botë",
+    "Nuk ka kërkesë vendosjeje, qëndrimi apo gjuhe — por aplikanti kryesor ka intervistë të DETYRUESHME",
+    "Nuk ka tatim mbi të ardhurat personale, mbi pasurinë dhe mbi trashëgiminë",
+    "Hyrje pa vizë në rreth 155 vende (Shengen, Mbretëria e Bashkuar); në Turqi dhe Irlandë JO më",
+    "Kohëzgjatja zyrtare: 160–180 ditë deri te miratimi parimor (këtyre u shtohet mbyllja e transaksionit dhe lëshimi i pasaportës)",
+    "Afati i detyrueshëm i mbajtjes: 7 vjet — më pas prona mund të rishitet",
+    "PËRVEÇ çmimit të blerjes, tarifat shtetërore: për një aplikant beqar rreth 35 000 USD"
+   ],
+   "faq": [
+    {
+     "q": "Si mund të fitohet shtetësia në Shën Kits dhe Nevis me pronë?",
+     "a": "Duhet blerë një pronë e miratuar (approved) nga qeveria: një banesë në bashkëpronësi ose pjesëmarrje në një projekt të miratuar nga 325 000 USD, ose një shtëpi familjare e pavarur e miratuar nga 600 000 USD. Kërkesa mund të paraqitet ekskluzivisht përmes një agjenti zyrtar. Procedura shoqërohet me një verifikim të rreptë; kohëzgjatja zyrtare është 160–180 ditë deri te miratimi parimor (Approval in Principle), të cilave u shtohen ende mbyllja e shitblerjes dhe lëshimi i pasaportës."
+    },
+    {
+     "q": "A duhet jetuar në Shën Kits dhe Nevis për të ruajtur shtetësinë?",
+     "a": "Jo. Programi nuk ka kërkesë vendosjeje, qëndrimi, gjuhe apo provimi, dhe shtetësia jepet për një kohë të pacaktuar, si dhe trashëgohet. Një gjë megjithatë është e rëndësishme të dihet: aplikanti kryesor DETYROHET të paraqitet në një intervistë, dhe kjo mund të kërkohet edhe nga anëtarët e familjes mbi 16 vjeç."
+    },
+    {
+     "q": "Sa vlen pasaporta e Shën Kits dhe Nevisit?",
+     "a": "Pasaporta mundëson vizitimin pa vizë ose me vizë në kufi të rreth 155 vendeve (Henley Passport Index 2026: vendi i 23-të), përfshirë të gjithë zonën Shengen, Mbretërinë e Bashkuar, Singaporin dhe Hong Kongun. Ndryshim i rëndësishëm i fundit: Turqia dhe Irlanda E KANË HEQUR heqjen e vizave për pasaportën e Shën Kits dhe Nevisit. Vendi nuk vendos tatim mbi të ardhurat personale, tatim mbi pasurinë apo tatim mbi trashëgiminë."
+    },
+    {
+     "q": "Sa kosto vijnë përveç çmimit të blerjes?",
+     "a": "Kërkesën e rëndojnë tarifat shtetërore PËRVEÇ çmimit të pronës. Tarifa e verifikimit: 10 000 USD për aplikantin kryesor dhe 7 500 USD për çdo anëtar familjeje mbi 16 vjeç. Tarifa që paguhet pas miratimit parimor: 25 000 USD për aplikantin kryesor, 15 000 USD për bashkëshortin/en, 10 000 USD për personin në varësi nën 18 vjeç, 15 000 USD për atë mbi 18 vjeç. Për një aplikant beqar kjo është rreth 35 000 USD, ende para kostove të avokatit dhe të mbylljes."
+    },
+    {
+     "q": "A mund ta shes më vonë pronën e blerë?",
+     "a": "Po, por vetëm pasi të ketë kaluar afati i detyrueshëm 7-vjeçar i mbajtjes — këtë e thonë shprehimisht kushtet zyrtare të programit. Më pas prona mund të rishitet, dhe blerësi i ri i huaj mund ta përdorë vetë të njëjtën pronë për kërkesën e tij të shtetësisë; kjo krijon tregun sekondar të programit. Shtetësia mbetet edhe pas shitjes."
+    },
+    {
+     "q": "Cilët anëtarë të familjes mund të përfshihen?",
+     "a": "Bashkëshorti/ja, fëmijët nën 30 vjeç, si dhe prindërit dhe gjyshërit në varësi. Ky është një rreth dukshëm më i gjerë se te programi turk, ku mund të përfshihen vetëm bashkëshorti/ja dhe fëmijët nën 18 vjeç."
+    },
+    {
+     "q": "Në çfarë ndryshon Shën Kits dhe Nevis nga programi turk?",
+     "a": "Të dy japin SHTETËSI me investim në pasuri të paluajtshme, por me profil të ndryshëm. Pragu i Turqisë është më i lartë (400 000 USD), por ajo ofron një treg të madh e likuid të pasurive të paluajtshme, procedurë më të shpejtë (3–6 muaj), afat më të shkurtër mbajtjeje (3 vjet) dhe rrugë drejt vizës E-2 të SHBA-së. Shën Kits dhe Nevis punon me një hyrje më të ulët, përjashtim të plotë tatimor, rreth familjar më të gjerë dhe pasaportë më të fortë (rreth 155 vende), në këmbim tregu është i vogël, afati i mbajtjes është 7 vjet dhe dalja është më e ngadaltë."
+    }
+   ]
+  }
+ },
+ "articles": {
+  "allampolgarsag-ingatlanbefektetessel": {
+   "title": "Shtetësi me investim në pasuri të paluajtshme: ku mund të merret vërtet një pasaportë?",
+   "description": "Në cilin vend blerja e një prone jep drejtpërdrejt shtetësi? Pragjet, afatet dhe kushtet e dy programeve funksionale — Turqia dhe Shën Kits dhe Nevis — të krahasuara.",
+   "answer": "Me investim në pasuri të paluajtshme, sot shtetësia mund të fitohet drejtpërdrejt në dy vende: në Turqi me një pronë me vlerë 400 000 USD, zakonisht brenda 3–6 muajve, si dhe në Shën Kits dhe Nevis me një pronë të miratuar nga qeveria (nga 325 000 USD për banesë në bashkëpronësi, nga 600 000 USD për shtëpi të pavarur), brenda 160–180 ditëve deri te miratimi parimor. Çdo program tjetër i njohur — Golden Visa greke, hungareze ose ajo e mëparshmja spanjolle — jep vetëm leje qëndrimi, jo shtetësi.",
+   "sections": [
+    {
+     "h": "Dallimi më i rëndësishëm: shtetësi apo vetëm qëndrim?",
+     "p": [
+      "Shprehjen „Golden Visa” tregu e përdor për dy gjëra krejtësisht të ndryshme juridikisht, dhe pikërisht nga kjo lindin edhe shumica e keqkuptimeve. Programi i qëndrimit (residence by investment) jep leje vendosjeje: mund të jetoni, të shkoni e të vini në atë vend, por pasaporta juaj nuk ndryshon. Programi i shtetësisë (citizenship by investment, CBI), përkundrazi, jep shtetësi dhe pasaportë të vërtetë, zakonisht brenda pak muajve, pa vendosje.",
+      "Shtetësi drejtpërdrejt me investim në pasuri të paluajtshme japin sot dy vende: Turqia dhe Shën Kits dhe Nevis. Në BE NUK ka një program të tillë — programi maltez i shtetësisë u desh të ndalohej pas vendimit të vitit 2025 të Gjykatës së Drejtësisë së BE-së, ndërsa programi grek dhe ai hungarez kanë të bëjnë ekskluzivisht me leje qëndrimi."
+     ],
+     "table": null
+    },
+    {
+     "h": "Dy programet funksionale krah për krah",
+     "p": [
+      "Zgjedhja nuk ka të bëjë me çmimin, por me atë se çfarë doni të bëni me pronën dhe me pasaportën. Turqia jep një treg të madh e likuid të pasurive të paluajtshme — prona në vetvete është investim dhe pas tre vjetësh mund të shitet. Shën Kits dhe Nevis është treg më i vogël dhe me dalje më të ngadaltë, në këmbim ka hyrje më të ulët, përjashtim të plotë tatimor dhe pasaportë më të fortë."
+     ],
+     "table": {
+      "head": [
+       "",
+       "Turqia 🇹🇷",
+       "Shën Kits dhe Nevis 🇰🇳"
+      ],
+      "rows": [
+       [
+        "Çfarë merrni",
+        "Shtetësi të plotë + pasaportë",
+        "Shtetësi të plotë + pasaportë"
+       ],
+       [
+        "Pragu i pronës",
+        "400 000 USD (~370 000 €)",
+        "325 000 USD banesë / 600 000 USD shtëpi e pavarur"
+       ],
+       [
+        "Kohëzgjatja e procedurës",
+        "3–6 muaj",
+        "160–180 ditë deri te miratimi parimor"
+       ],
+       [
+        "Afati i mbajtjes",
+        "3 vjet",
+        "7 vjet"
+       ],
+       [
+        "Qëndrimi në vend",
+        "Jo i detyrueshëm",
+        "Jo i detyrueshëm — por intervistë E DETYRUESHME"
+       ],
+       [
+        "Familja që mund të përfshihet",
+        "Bashkëshorti/ja + fëmijët nën 18 vjeç",
+        "Bashkëshorti/ja, fëmijët nën 30 vjeç, prindërit dhe gjyshërit në varësi"
+       ],
+       [
+        "Tarifat shtetërore përveç çmimit të blerjes",
+        "Vlerësimi + tarifat procedurale",
+        "rreth 35 000 USD për një aplikant beqar"
+       ],
+       [
+        "Vende pa vizë",
+        "rreth 118",
+        "rreth 155 (Shengen, Mbretëria e Bashkuar)"
+       ],
+       [
+        "Nisja e programit",
+        "2017",
+        "1984 — CBI-ja më e vjetër në botë"
+       ],
+       [
+        "Tatimi mbi të ardhurat",
+        "Ka",
+        "Nuk ka tatim mbi të ardhurat personale, mbi pasurinë dhe mbi trashëgiminë"
+       ],
+       [
+        "Tregu i pasurive të paluajtshme",
+        "I madh, likuid, investim më vete",
+        "I vogël, treg sekondar i drejtuar nga programi"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Turqia: programi me volumin më të madh",
+     "p": [
+      "Duhet blerë një pronë turke me vlerë të paktën 400 000 USD. Detaj kyç që reklamat e heshtin: nuk llogaritet çmimi kontraktor, por vlerësimi zyrtar i një vlerësuesi të licencuar nga SPK — dhe pragun duhet ta arrijnë njëkohësisht çmimi i paguar e i vërtetuar përmes bankës, vlerësimi dhe vlera e shënuar në certifikatën e pronësisë. Me një çmim të lartë kontraktor nuk mund të „korrigjohet” një vlerësim i ulët. Në tapu regjistrohet ndalimi trevjeçar i tjetërsimit (satılamaz), pas së cilës aplikanti merr leje qëndrimi dhe më pas shtetësi. Procedura zgjat zakonisht 3–6 muaj, shtrihet te bashkëshorti/ja dhe fëmijët nën 18 vjeç; fëmija madhor dhe prindi NUK mund të përfshihen.",
+      "Pasaporta turke mundëson vizitimin pa vizë të rreth 118 vendeve dhe — kjo është motivimi kryesor për shumë investitorë — shtetasi turk fiton të drejtën të aplikojë për vizën investuese amerikane E-2, e cila si shtetas hungarez nuk është e arritshme. Nuancë e rëndësishme: E-2 nuk është leje vendosjeje dhe as green card, por një vizë joimigruese e lidhur me investimin dhe e rinovueshme, ndërsa te shtetasit e natyralizuar në praktikë kërkohet një shtetësi disavjeçare për të.",
+      "Vërejtje praktike: pragu matet në USD, pra kursi i këmbimit ka rëndësi. Kostot shtesë të blerjes në Turqi janë 4% taksë tapu plus tarifat e avokatit dhe të vlerësimit."
+     ],
+     "table": null
+    },
+    {
+     "h": "Shën Kits dhe Nevis: programi më i vjetër dhe më i qëndrueshëm",
+     "p": [
+      "Vendi ishullor karaibik e operon programin e vet pa ndërprerje që nga viti 1984 — fusha e konsideron këtë „standardin platin” të CBI-së. Ka dy nivele pronash: banesë në bashkëpronësi ose pjesëmarrje në një zhvillim të miratuar nga qeveria, nga 325 000 USD, ose shtëpi familjare e pavarur e miratuar, nga 600 000 USD. Një pronë e blerë në tregun e lirë dhe që nuk figuron në listë NUK jep të drejtë. Kërkesa mund të paraqitet ekskluzivisht përmes një agjenti zyrtar.",
+      "Kushtet janë vërtet të buta: nuk ka kërkesë vendosjeje, qëndrimi, gjuhe apo provimi, shtetësia jepet për një kohë të pacaktuar dhe trashëgohet. Një gjë megjithatë është e rëndësishme të dihet, sepse mungon nga shumica e ofertave: aplikanti kryesor DETYROHET të paraqitet në një intervistë, dhe kjo mund të kërkohet edhe nga anëtarët e familjes mbi 16 vjeç. Në këmbim, rrethi familjar që mund të përfshihet është i gjerë: bashkëshorti/ja, fëmijët nën 30 vjeç, si dhe prindërit dhe gjyshërit në varësi.",
+      "Llogaritni tarifat shtetërore PËRVEÇ çmimit të blerjes: tarifa e verifikimit është 10 000 USD për aplikantin kryesor dhe 7 500 USD për çdo anëtar familjeje mbi 16 vjeç, ndërsa pas miratimit parimor edhe 25 000 USD të tjera për aplikantin kryesor dhe 15 000 USD për bashkëshortin/en. Për një aplikant beqar kjo është rreth 35 000 USD ekstra.",
+      "Prona duhet mbajtur zyrtarisht për 7 vjet; më pas mund të kalohet te dikush tjetër, dhe blerësi i ri i huaj mund ta përdorë sërish të njëjtën pronë për kërkesën e vet të shtetësisë — kjo e mban gjallë tregun sekondar. Realisht duhet parë megjithatë: ky është një treg i vogël, i drejtuar nga programi, jo një treg klasik banesash, pra dalja është më e ngadaltë se në Turqi. Pasaporta jep hyrje pa vizë në rreth 155 vende (Henley 2026: vendi i 23-të), por një ndryshim i fundit është që Turqia dhe Irlanda e kanë hequr heqjen e vizave."
+     ],
+     "table": null
+    },
+    {
+     "h": "Çfarë duhet sqaruar patjetër para vendimit",
+     "p": [
+      "1. A figuron prona në listën zyrtare të projekteve të miratuara (në rastin e Shën Kitsit ky është kusht i vlefshmërisë së kërkesës).",
+      "2. A i përgjigjet vlerësimi pragut — në Turqi nuk llogaritet çmimi kontraktor, por vlerësimi zyrtar.",
+      "3. Pasojat tatimore në rezidencën tuaj: fitimi i shtetësisë në vetvete nuk e shuan rezidencën tatimore hungareze.",
+      "4. Dalja: pas sa kohe dhe me çfarë çmimi real mund të kalohet prona te dikush tjetër. Ky është rreziku më shpesh i nënvlerësuar i investimeve CBI."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Në cilin vend mund të fitohet shtetësi me blerje prone?",
+     "a": "Në dy vende: në Turqi me një pronë me vlerë 400 000 USD (3–6 muaj), dhe në Shën Kits dhe Nevis me një pronë të miratuar nga qeveria — nga 325 000 USD për banesë në bashkëpronësi, nga 600 000 USD për shtëpi të pavarur (160–180 ditë deri te miratimi parimor). Të dyja japin shtetësi dhe pasaportë të vërtetë, pa detyrim vendosjeje; në Shën Kits megjithatë ka intervistë të detyrueshme dhe prona duhet mbajtur për 7 vjet."
+    },
+    {
+     "q": "A mund të fitohet shtetësi e BE-së me investim në pasuri të paluajtshme?",
+     "a": "Jo. Aktualisht në asnjë vend anëtar të BE-së nuk mund të fitohet shtetësi drejtpërdrejt me blerje prone. Programi grek dhe ai hungarez japin leje qëndrimi, Golden Visa spanjolle me bazë pasurie të paluajtshme u shfuqizua në prill 2025, ndërsa programi maltez i shtetësisë u desh të ndalohej pas vendimit të vitit 2025 të Gjykatës së Drejtësisë së BE-së."
+    },
+    {
+     "q": "A duhet mbajtur prona pas fitimit të shtetësisë?",
+     "a": "Po, për një farë kohe. Në Turqi nuk mund të shitet për tre vjet (kjo shënohet edhe në certifikatën e pronësisë), ndërsa në Shën Kits dhe Nevis, sipas kushteve zyrtare të programit, afati i mbajtjes është 7 vjet. Shtetësia mbetet edhe pas kalimit të afatit të mbajtjes dhe pas shitjes."
+    },
+    {
+     "q": "A e humbas shtetësinë time hungareze?",
+     "a": "Jo. Hungaria e pranon shtetësinë e dyfishtë, dhe as Turqia, as Shën Kits dhe Nevis nuk kërkojnë heqjen dorë nga shtetësia e mëparshme. Çështja e rezidencës tatimore është megjithatë e pavarur nga kjo — ia vlen të sqarohet me një ekspert tatimor."
+    }
+   ]
+  },
+  "golden-visa-ingatlannal": {
+   "title": "Golden Visa me investim në pasuri të paluajtshme në vitin 2026: cili vend çfarë jep?",
+   "description": "Greqia, Hungaria dhe programet e tjera: pragjet, kushtet e qëndrimit dhe se cila rrugë të çon drejt shtetësisë. Pasqyrë e freskët dhe krahasuese.",
+   "answer": "Me blerje TË DREJTPËRDREJTË prone, sot në BE praktikisht vetëm në Greqi mund të fitohet leje vendosjeje: nga 400 000 € në pjesën më të madhe të vendit, nga 800 000 € në Atikë, Selanik dhe në ishujt e njohur. Në programin hungarez të investitorit mysafir, blerja e drejtpërdrejtë e një banese NUK jep të drejtë — atje llogariten vetëm kuotat e investimit të një fondi pasurish të paluajtshme (250 000 €) ose donacioni për arsimin e lartë (1 000 000 €). Golden Visa spanjolle me bazë pasurie të paluajtshme u shfuqizua më 3 prill 2025, ndërsa në Itali prona është shprehimisht e përjashtuar nga viza investuese. Nëse qëllimi është vetë pasaporta, nuk nevojitet program qëndrimi, por program shtetësie: Turqia ose Shën Kits dhe Nevis.",
+   "sections": [
+    {
+     "h": "Çfarë jep në të vërtetë një Golden Visa?",
+     "p": [
+      "Golden Visa është leje qëndrimi që shteti e jep në këmbim të një investimi — zakonisht të blerjes së një prone. Në rastin e një programi të BE-së kjo nënkupton edhe lëvizje të lirë në Shengen, pra në shumicën e rasteve udhëtim pa vizë në të gjithë zonën. Çfarë NUK jep: pasaportë dhe shtetësi. Shtetësia në shumicën e vendeve mund të kërkohet vetëm pas disa vjetësh banimi faktik, provimi gjuhësor dhe procedure natyralizimi.",
+      "Si shtetas hungarez, për lëvizjen e lirë brenda BE-së nuk keni nevojë për Golden Visa — prandaj për blerësit vendas këto programe janë interesante para së gjithash nga këndvështrimi i planifikimit tatimor, i biznesit ose i një „plani B”, si dhe në rastin e anëtarëve të familjes nga vende të treta."
+     ],
+     "table": null
+    },
+    {
+     "h": "Programet krah për krah",
+     "p": [
+      "Pragjet tregojnë nivelin zyrtar të hyrjes me bazë pasurie të paluajtshme të vendit përkatës."
+     ],
+     "table": {
+      "head": [
+       "Vendi",
+       "Pragu",
+       "Çfarë jep",
+       "Qëndrimi në vend"
+      ],
+      "rows": [
+       [
+        "Greqia 🇬🇷",
+        "800 000 € (Atika, Selanik, ishujt e mëdhenj) / 400 000 € (gjetiu) / 250 000 € (vetëm ndryshim destinacioni, monument)",
+        "Leje qëndrimi 5-vjeçare, e rinovueshme, për të gjithë familjen",
+        "Jo i detyrueshëm"
+       ],
+       [
+        "Hungaria 🇭🇺",
+        "250 000 € kuota FONDI pasurish të paluajtshme ose 1 000 000 € donacion",
+        "Leje 10-vjeçare — blerja E DREJTPËRDREJTË e një banese NUK jep të drejtë",
+        "Jo i detyrueshëm"
+       ],
+       [
+        "Spanja 🇪🇸",
+        "—",
+        "E SHFUQIZUAR: rruga me bazë pasurie të paluajtshme u mbyll më 3 prill 2025",
+        "—"
+       ],
+       [
+        "Italia 🇮🇹",
+        "—",
+        "NUK ka: prona është e përjashtuar nga viza investuese",
+        "—"
+       ],
+       [
+        "Turqia 🇹🇷",
+        "400 000 USD",
+        "SHTETËSI (jo vetëm qëndrim)",
+        "Jo i detyrueshëm"
+       ],
+       [
+        "Shën Kits dhe Nevis 🇰🇳",
+        "rreth 325 000 USD",
+        "SHTETËSI (jo vetëm qëndrim)",
+        "Jo i detyrueshëm"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Greqia: programi më i njohur i BE-së",
+     "p": [
+      "Golden Visa greke jepet për pesë vjet, është e rinovueshme përderisa investimi ruhet, dhe shtrihet te bashkëshorti/ja, fëmijët nën 21 vjeç dhe prindërit në varësi të të dyja palëve. Vetia e saj më e fortë është se nuk ka kërkesë minimale qëndrimi.",
+      "Pragu, që nga ligji 5100/2024, ka tri breza. 800 000 € në të gjithë rajonin e Atikës, në njësinë rajonale të Selanikut, në Mikonos, Santorini dhe në çdo ishull me mbi 3 100 banorë. 400 000 € në të gjitha pjesët e tjera të vendit. 250 000 € ekskluzivisht në dy raste: në shndërrimin e një ndërtese jorezidenciale në banesë (investimi duhet përfunduar PARA paraqitjes së kërkesës), ose në restaurimin e një ndërtese nën mbrojtje si monument. Afatet kalimtare të vitit 2024 kanë skaduar të gjitha, pra në vitin 2026 vlen pragu i plotë.",
+      "Dy kushte që mungojnë nga shumica e ofertave, por që mund ta përcaktojnë investimin: në brezin 400 dhe 800 mijë euro prona duhet të jetë një njësi E VETME, me të paktën 120 m² sipërfaqe kryesore banimi (investimi nuk mund të ndahet në disa banesa), dhe prona që shërben si bazë e Golden Visa-s NDALOHET të jepet me qira afatshkurtër, të tipit Airbnb. Shkelja e ndalimit sjell revokimin e lejes dhe një gjobë prej 50 000 eurosh. Kush e kishte planifikuar programin grek mbi kthimin nga qiradhënia turistike, atij kjo ia rishkruan llogaritjen nga themelet."
+     ],
+     "table": null
+    },
+    {
+     "h": "Hungaria: programi i investitorit mysafir, i rinisur në vitin 2024",
+     "p": [
+      "Këtu gjëja më e rëndësishme është të sqarohet një keqkuptim i përhapur: në Programin hungarez të Investitorit Mysafir, BLERJA E DREJTPËRDREJTË E NJË BANESE NUK JEP TË DREJTË për leje qëndrimi. Opsioni i pronës së drejtpërdrejtë prej 500 000 eurosh, i parashikuar fillimisht në aktin ligjor, u hoq në janar 2025, ende para se të hynte në fuqi. Kush pra thjesht blen një banesë në Budapest, nuk merr për këtë leje qëndrimi si investitor mysafir.",
+      "Kanë mbetur dy rrugë. E para është blerja e kuotave investimi me vlerë 250 000 € në një fond pasurish të paluajtshme të regjistruar pranë MNB-së, vlera neto e aseteve të të cilit është të paktën 40% në prona banimi hungareze, me detyrim mbajtjeje pesëvjeçar. Tjetra është një donacion i pakthyeshëm prej 1 000 000 € për një institucion hungarez të arsimit të lartë. Leja jepet për dhjetë vjet dhe mund të zgjatet një herë me dhjetë vjet të tjera — për nga kohëzgjatja kjo është më e gjata në BE — ndërsa investimi duhet realizuar brenda 93 ditëve nga hyrja e parë me vizën e investitorit mysafir.",
+      "Për shtetasit hungarezë dhe të BE-së ky program natyrisht nuk është relevant, meqenëse atyre u takon lëvizja e lirë; publiku i tij i synuar është investitori nga vendet e treta."
+     ],
+     "table": null
+    },
+    {
+     "h": "Nëse qëllimi është pasaporta, mos kërkoni Golden Visa",
+     "p": [
+      "Gabimi më i shpeshtë është që dikush dëshiron shtetësi dhe blen për këtë një Golden Visa. Të dyja nuk janë e njëjta gjë dhe nuk të çojnë automatikisht nga njëra te tjetra: për natyralizimin grek, për shembull, nevojiten shtatë vjet qëndrim faktik në Greqi, provim gjuhësor dhe provim integrimi — Golden Visa në vetvete nuk e zëvendëson këtë.",
+      "Nëse qëllimi i vërtetë është pasaporta e dytë, atëherë duhet zgjedhur një program shtetësie: Turqia ose Shën Kits dhe Nevis. Për këto kemi shkruar hollësisht në artikullin tonë „Shtetësi me investim në pasuri të paluajtshme”."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Në cilin vend mund të merret sot Golden Visa me blerje prone?",
+     "a": "Me blerje të drejtpërdrejtë prone praktikisht vetëm në Greqi: nga 400 000 euro në pjesën më të madhe të vendit, nga 800 000 euro në Atikë, Selanik dhe në ishujt e njohur, ndërsa nga 250 000 euro ekskluzivisht në rastin e ndryshimit të destinacionit të një ndërtese ose të restaurimit të një monumenti. Në programin hungarez blerja e drejtpërdrejtë e një banese nuk llogaritet — atje nevojiten kuotat e investimit të një fondi pasurish të paluajtshme (250 000 €) ose donacioni për arsimin e lartë (1 000 000 €). Golden Visa spanjolle me bazë pasurie të paluajtshme u shfuqizua më 3 prill 2025, ndërsa në Itali prona është e përjashtuar nga viza investuese."
+    },
+    {
+     "q": "A jep Golden Visa shtetësi të BE-së?",
+     "a": "Jo. Golden Visa është leje qëndrimi. Shtetësia mund të fitohet vetëm në procedurën e zakonshme të natyralizimit, e cila kërkon zakonisht disa vjet banim faktik, provim gjuhësor dhe provim integrimi — në rastin grek, për shembull, shtatë vjet."
+    },
+    {
+     "q": "A duhet jetuar në vend për ta ruajtur Golden Visa-n?",
+     "a": "Te programi grek dhe ai hungarez nuk ka kërkesë minimale qëndrimi: mjafton që investimi të ruhet dhe leja të rinovohet. Kjo njëkohësisht do të thotë se këto vite nuk llogariten në kohën e qëndrimit të nevojshme për natyralizim — për natyralizimin grek, për shembull, nevojiten shtatë vjet qëndrim FAKTIK në Greqi."
+    }
+   ]
+  },
+  "kulfoldi-ingatlan-mellekkoltsegek": {
+   "title": "Sa kushton në të vërtetë? Kostot shtesë të blerjes së pronës jashtë vendit në 12 vende",
+   "description": "Taksa e kalimit të pronësisë, noteri, avokati, komisioni i agjencisë — të ndara sipas vendeve. Kostoja e plotë përtej çmimit të blerjes luhatet zakonisht midis 3–14%.",
+   "answer": "Kostot shtesë përtej çmimit të blerjes së një prone jashtë vendit ndryshojnë ndjeshëm sipas vendeve: në Shqipëri praktikisht nuk ka taksë kalimi pronësie, në Malin e Zi është 3%, në Hungari dhe Turqi 4%, ndërsa në Itali 9% (shtëpi e dytë) dhe në Spanjë 6–10%. Këtyre u shtohen kudo tarifa noteriale, tarifa e avokatit dhe zakonisht 2–5% komision agjencie.",
+   "sections": [
+    {
+     "h": "Pse kjo është më e rëndësishme se çmimi i blerjes",
+     "p": [
+      "Në blerjen e një prone jashtë vendit, shumica e surprizave të pakëndshme nuk qëndrojnë te çmimi, por te kostot shtesë. Përtej çmimit të blerjes shtohen zakonisht edhe 5–14%, në varësi të vendit — te një pronë prej 300 000 eurosh kjo është një diferencë midis 15 000 dhe 42 000 eurosh, thjesht në varësi të vendit ku blini.",
+      "Tabela e mëposhtme tregon zërat më të rëndësishëm sipas vendeve. E rëndësishme: taksa e kalimit të pronësisë zakonisht ka të bëjë me pronat E PËRDORURA — te ndërtimet e reja, në shumë vende vendin e saj e zë TVSH-ja, e cila mund të jetë më e lartë."
+     ],
+     "table": {
+      "head": [
+       "Vendi",
+       "Taksa e kalimit të pronësisë",
+       "Noteri",
+       "Avokati",
+       "Agjencia"
+      ],
+      "rows": [
+       [
+        "🇲🇪 Mali i Zi",
+        "3–6% (progresive)",
+        "0.5% + 200 €",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇭🇷 Kroacia",
+        "3%",
+        "0.4% + 150 €",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇦🇱 Shqipëria",
+        "0%",
+        "0.5% + 120 €",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇷🇸 Serbia",
+        "2.5%",
+        "0.5% + 150 €",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇹🇷 Turqia",
+        "4%",
+        "0.5% + 250 €",
+        "1.2%",
+        "2%"
+       ],
+       [
+        "🇮🇩 Bali (Indonezi)",
+        "5%",
+        "1% + 300 €",
+        "1.5%",
+        "5%"
+       ],
+       [
+        "🇭🇺 Hungaria",
+        "4%",
+        "0.5% + 150 €",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇹🇭 Tajlanda",
+        "2%",
+        "0.5% + 200 €",
+        "1.5%",
+        "3%"
+       ],
+       [
+        "🇮🇹 Italia",
+        "9%",
+        "1% + 300 €",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇬🇷 Greqia",
+        "3%",
+        "1.2% + 300 €",
+        "1.2%",
+        "2%"
+       ],
+       [
+        "🇪🇸 Spanja",
+        "8%",
+        "1% + 300 €",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇰🇳 Shën Kits dhe Nevis",
+        "10%",
+        "1% + 500 €",
+        "1.5%",
+        "5%"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Hyrja më e lirë dhe ajo më e shtrenjtë",
+     "p": [
+      "Koston më të favorshme të transaksionit e ofrojnë Shqipëria (0% taksë kalimi pronësie) dhe Tajlanda (2%), të ndjekura nga Mali i Zi dhe Kroacia me 3–6% (progresive). Në skajin tjetër të shkallës qëndron Italia me 9% në rastin e shtëpisë së dytë, si dhe Spanja, ku ITP rajonale luhatet midis 6–10%.",
+      "Një gabim i shpeshtë është të mendohet se komisionin e agjencisë e paguan gjithmonë shitësi. Kjo ndryshon sipas tregjeve: në tregun ballkanik dhe atë turk është e zakonshme edhe ndarja e komisionit ose përballimi i tij nga blerësi, prandaj kjo duhet sqaruar me shkrim para kaparit."
+     ],
+     "table": null
+    },
+    {
+     "h": "Çfarë duhet llogaritur përtej tabelës",
+     "p": [
+      "Përkthimi dhe legalizimi: në shumë vende kontratat duhen paraqitur me përkthim të noterizuar.",
+      "Numri i identifikimit tatimor dhe llogaria bankare: në Spanjë nevojitet NIE, në Itali codice fiscale, në Greqi AFM — pa këto nuk mund të lidhet kontratë.",
+      "Mirëmbajtja vjetore: taksa mbi pronën, shpenzimet e përbashkëta, sigurimi, dhe te një shtëpi pushimi përgatitja për dimër ose tarifa e administrimit.",
+      "Këmbimi valutor: në vendet jashtë eurozonës (Turqi, Tajlandë, Indonezi, Hungari) marzhi bankar i këmbimit mund të jetë edhe 1–3% në vetvete — ia vlen të përdoret një ofrues i veçantë shërbimesh valutore."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Sa janë kostot e plota shtesë të blerjes së një prone jashtë vendit?",
+     "a": "Në varësi të vendit, zakonisht 5–14% e çmimit të blerjes. Më e ulëta është në Shqipëri dhe Tajlandë (rreth 3–6%), mesatare në Malin e Zi, Kroaci, Hungari dhe Turqi (rreth 5–9%), dhe më e larta në Itali dhe Spanjë (rreth 10–14%)."
+    },
+    {
+     "q": "Kush e paguan komisionin e agjencisë gjatë blerjes së një prone jashtë vendit?",
+     "a": "Ndryshon sipas tregjeve. Në tregjet e Evropës Perëndimore zakonisht shitësi, ndërsa në tregun ballkanik dhe atë turk është e zakonshme edhe ndarja ose përballimi nga blerësi. Duhet sqaruar gjithmonë me shkrim PARA pagesës së kaparit."
+    },
+    {
+     "q": "A duhet paguar taksë kalimi pronësie edhe për ndërtimet e reja?",
+     "a": "Zakonisht jo — në shumicën e vendeve, çmimi i një prone të re të blerë nga zhvilluesi përmban TVSH, dhe në këtë rast nuk ka taksë të veçantë kalimi pronësie. Megjithatë kjo nuk është domosdoshmërisht më lirë: 10% e Spanjës ose 10–22% e Italisë mund të jenë më të larta se taksa e kalimit të pronësisë për një pronë të përdorur."
+    }
+   ]
+  },
+  "kulfoldi-ingatlanvasarlas-lepesei": {
+   "title": "Blerja e një prone jashtë vendit hap pas hapi: i gjithë procesi",
+   "description": "Nga kërkimi deri te regjistrimi i pronësisë: verifikimi juridik, kapari, parakontrata, noteri, numri i identifikimit tatimor dhe gabimet më të shpeshta që kushtojnë para.",
+   "answer": "Blerja e një prone jashtë vendit përbëhet nga gjashtë hapa: (1) kërkimi dhe ngushtimi i zgjedhjes, (2) hapja e numrit vendas të identifikimit tatimor dhe e llogarisë bankare, (3) verifikimi juridik i certifikatës së pronësisë nga një avokat i pavarur, (4) parakontrata dhe kapari (zakonisht 10%), (5) kontrata përfundimtare para noterit dhe pagesa e çmimit të blerjes, (6) regjistrimi i pronësisë në kadastër. I gjithë procesi zgjat zakonisht 4–12 javë.",
+   "sections": [
+    {
+     "h": "1. Kërkimi dhe ngushtimi i zgjedhjes",
+     "p": [
+      "Gabimi më i shpeshtë është që blerësi dashurohet me pronën, jo me tregun. Së pari duhet vendosur qëllimi: kthimi nga qiradhënia, përdorimi vetjak, ose një program qëndrimi/shtetësie. Këto tri qëllime shpesh justifikojnë një vend krejtësisht tjetër dhe një tip krejtësisht tjetër prone.",
+      "Për qëllime kthimi, kërkesa urbane, gjithëvjetore për qira (Beograd, Budapest, Bangkok) është më e parashikueshme se bregdeti sezonal. Për përdorim vetjak, vendimtare janë aksesi me fluturime dhe shfrytëzimi gjatë dimrit. Ndërsa për qëllime programi, përshtatshmëria juridike e pronës është më e rëndësishme se pozicioni i saj."
+     ],
+     "table": null
+    },
+    {
+     "h": "2. Numri vendas i identifikimit tatimor dhe llogaria bankare",
+     "p": [
+      "Pothuajse në çdo vend nevojitet një numër vendas identifikimi tatimor për kontratën: në Spanjë NIE, në Itali codice fiscale, në Greqi AFM, në Turqi vergi numarası. Sigurimi i tyre zgjat 1–3 javë dhe në shumë raste mund të kryhet edhe nga larg, me prokurë.",
+      "Llogaria bankare vendase nevojitet jo vetëm për çmimin e blerjes, por edhe për pagesën e mëvonshme të faturave dhe të taksave. Përgatituni për kontrollin kundër pastrimit të parave: origjina e çmimit të blerjes duhet vërtetuar me dokumente."
+     ],
+     "table": null
+    },
+    {
+     "h": "3. Verifikimi juridik — kursimi këtu është gabimi më i shtrenjtë",
+     "p": [
+      "Angazhoni një avokat të pavarur, që NUK jua ka rekomanduar shitësi ose agjenti. Minimumi i verifikimit: certifikata e pronësisë (kush është pronari i regjistruar), barrët dhe hipotekat, leja e ndërtimit dhe ajo e shfrytëzimit, klasifikimi i truallit, shpenzimet e përbashkëta dhe detyrimet tatimore, si dhe nëse sipërfaqja e banesës përputhet me atë të shpallur.",
+      "Për një pronë të blerë nga zhvilluesi dhe ende në ndërtim, çështje më vete është garancia bankare ose struktura e depozitimit: çfarë ndodh me paratë e paguara nëse zhvilluesi nuk e përfundon ndërtimin."
+     ],
+     "table": null
+    },
+    {
+     "h": "4. Parakontrata dhe kapari",
+     "p": [
+      "Praktika e zakonshme: njëkohësisht me parakontratën, një kapar prej 10%, i cili në rast shkeljeje të kontratës nga shitësi zakonisht kthehet dyfish, ndërsa në rast tërheqjeje të blerësit humbet. Kaparin paguajeni nëse është e mundur në depozitën e avokatit, jo drejtpërdrejt te shitësi.",
+      "Në parakontratë duhen përcaktuar afati i kontratës përfundimtare, gjendja e saktë e pronës dhe pajisjet e saj, si dhe se kush i përballon kostot e veçanta shtesë."
+     ],
+     "table": null
+    },
+    {
+     "h": "5. Kontrata përfundimtare dhe pagesa",
+     "p": [
+      "Në shumicën e tregjeve evropiane shitblerja përfundimtare zhvillohet para noterit (escritura, atto notarile, ugovor), i cili verifikon identitetin e palëve dhe titullin e pronësisë. Në Turqi kalimi i pronësisë kryhet në zyrën e kadastrës (tapu).",
+      "Çmimin e blerjes paguajeni nëse është e mundur me transfertë bankare, në mënyrë të dokumentuar — pagesa me para në dorë në disa vende është e kufizuar ose e ndaluar dhe e vështirëson vërtetimin e vlerës së blerjes në shitjen e mëvonshme."
+     ],
+     "table": null
+    },
+    {
+     "h": "6. Regjistrimi dhe punët pasuese",
+     "p": [
+      "E drejta e pronësisë bëhet e plotë atëherë kur e regjistron kadastra. Kjo zgjat nga pak ditë deri në disa muaj, sipas vendit. Më pas vjen transferimi i shërbimeve komunale, deklarimi i taksës vendore mbi pronën dhe — nëse e jepni me qira — sigurimi i lejes së qiradhënies ose i kategorizimit.",
+      "Së fundi: rregulloni edhe tatimin hungarez. Të ardhurat nga qiraja e një prone jashtë vendit dhe fitimi kapital nga shitja e mëvonshme tatohen sipas marrëveshjeve për shmangien e tatimit të dyfishtë — kjo ndryshon sipas vendeve, dhe tatimi i huaj nuk e mbyll gjithmonë çështjen."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Sa zgjat blerja e një prone jashtë vendit?",
+     "a": "Zakonisht 4–12 javë nga oferta e pranuar deri te regjistrimi i pronësisë, nëse blerja bëhet me para në dorë. Sigurimi i numrit vendas të identifikimit tatimor zgjat 1–3 javë, verifikimi juridik 1–2 javë, ndërsa mbyllja te noteri varet nga koordinimi i palëve."
+    },
+    {
+     "q": "A duhet angazhuar avokat gjatë blerjes së një prone jashtë vendit?",
+     "a": "Po, dhe mundësisht një të cilin nuk jua ka rekomanduar shitësi ose agjenti. Noteri në shumicën e vendeve verifikon ligjshmërinë e kontratës, por nuk përfaqëson interesat Tuaja — verifikimi i barrëve, i lejeve dhe i sipërfaqes është detyrë e avokatit."
+    },
+    {
+     "q": "A mund të blihet nga larg, pa paraqitje personale?",
+     "a": "Në shumicën e vendeve po, me një prokurë të noterizuar dhe të pajisur me apostilë, dhënë avokatit. Në praktikë megjithatë ia vlen ta shihni pronën të paktën një herë personalisht — fotografitë janë sistematikisht më të bukura se realiteti."
+    }
+   ]
+  }
+ }
 }
