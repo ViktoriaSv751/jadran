@@ -12,7 +12,26 @@
  * számjegyek közül.
  *
  * Futtatás:  node scripts/check-translations.mjs
+ *
+ * FELÜLVIZSGÁLT KIVÉTELEK: néhány nyelv számnév helyett SZÓT ír (olasz
+ * „quinquennale" az „5 éves" helyett, thai „บ้านหนึ่งยูโร" az „1 eurós ház"
+ * helyett), vagy épp kibont egy összevont alakot (a magyar „400 és 800 ezer
+ * eurós" angolul „€400,000 / €800,000"). Ezeket egyenként átnéztük, tartalmi
+ * eltérést nem okoznak, ezért az alábbi listán szerepelnek. MINDEN MÁS
+ * eltérés hibának számít — ha új tétel jelenik meg itt, azt meg kell nézni,
+ * mert adószám vagy jogi küszöb csúszhatott el.
  */
+
+/** Felülvizsgált, tartalmilag ártalmatlan eltérések nyelvenként. */
+const REVIEWED = {
+  // „400 és 800 ezer eurós" → kibontva két teljes összegre. Ugyanaz az érték.
+  en: ["400000", "800000", "400", "800"],
+  th: ["400000", "800000", "400", "800", "1"],
+  // „a felek felezik" → „reparten al 50 %". Ugyanaz a jelentés.
+  es: ["50"],
+  // „5 éves" → „quinquennale", „10 éves" → „decennale", „99 éves" → szóalak.
+  it: ["5", "10", "99"]
+};
 import { readFileSync, readdirSync } from "node:fs";
 
 const DIR = "lib/tudastar/content";
@@ -71,10 +90,14 @@ for (const file of files.sort()) {
   // 2. számhalmaz
   const srcNums = tally(walk(src).flatMap(numbers));
   const tgtNums = tally(walk(t).flatMap(numbers));
+  const reviewed = new Set(REVIEWED[lang] ?? []);
   const drift = [];
+  const known = [];
   for (const [n, c] of srcNums) {
     const got = tgtNums.get(n) ?? 0;
-    if (got !== c) drift.push(`${n}: forrás ${c}× / fordítás ${got}×`);
+    if (got === c) continue;
+    const line = `${n}: forrás ${c}× / fordítás ${got}×`;
+    (reviewed.has(n) ? known : drift).push(line);
   }
 
   if (problems.length || drift.length) {
@@ -83,6 +106,8 @@ for (const file of files.sort()) {
     problems.slice(0, 6).forEach((p) => console.log(`    ! ${p}`));
     drift.slice(0, 8).forEach((d) => console.log(`    ~ ${d}`));
     if (drift.length > 8) console.log(`    ~ …és további ${drift.length - 8}`);
+  } else if (known.length) {
+    console.log(`  ${lang}: OK — ${known.length} felülvizsgált, ártalmatlan szóalak-eltérés`);
   } else {
     console.log(`  ${lang}: OK — szerkezet és minden szám egyezik`);
   }
