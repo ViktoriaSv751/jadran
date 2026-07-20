@@ -1,3 +1,5 @@
+import { transferTaxFor } from "./geo";
+
 /**
  * Montenegró-specifikus ingatlan-számítások és konstansok.
  * Egy helyen, hogy a vételi mellékköltség és a hiteltörlesztés minden
@@ -6,7 +8,8 @@
 
 /** Vételi mellékköltség kulcsok (Montenegró). */
 export const MNE_COSTS = {
-  /** Ingatlanátírási adó (porez na promet nepokretnosti). Használt ingatlan. */
+  /** Ingatlanátírási adó — a LEGALSÓ sáv kulcsa. 2024 óta progresszív, ezért a
+   *  tényleges összeget a geo.ts `transferTaxFor()` függvénye adja. */
   transferTaxRate: 0.03,
   /** Közjegyző (közelítő), + fix illeték. */
   notaryRate: 0.005,
@@ -31,7 +34,9 @@ export interface PurchaseCosts {
  * az összesből (opcionális), hogy egyezzen a korábbi számítással.
  */
 export function purchaseCosts(price: number, includeAgency = false): PurchaseCosts {
-  const transferTax = Math.round(price * MNE_COSTS.transferTaxRate);
+  // A montenegrói átírási adó 2024 óta PROGRESSZÍV (3/5/6%), ezért nem szorzunk
+  // fix kulccsal — a sávos számítás a lib/geo.ts egyetlen igazságforrásából jön.
+  const transferTax = transferTaxFor("ME", price);
   const notary = Math.round(price * MNE_COSTS.notaryRate) + MNE_COSTS.notaryFixed;
   const lawyer = Math.round(price * MNE_COSTS.lawyerRate);
   const agency = Math.round(price * MNE_COSTS.agencyRate);

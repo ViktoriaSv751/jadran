@@ -114,17 +114,17 @@ export const RESIDENCY: Record<CountryCode, ResidencyInfo> = {
   },
   GR: {
     residenceNote: {
-      hu: "Görögország Golden Visa: 250 000–800 000 € értékű ingatlan (régiótól függően) 5 éves, megújítható tartózkodást ad.",
-      me: "Grčka Golden Visa: nekretnina od 250.000–800.000 € daje 5-godišnji boravak.",
-      en: "Greece Golden Visa: property of €250,000–800,000 (by area) grants renewable 5-year residence.",
-      ru: "Golden Visa Греции: недвижимость на €250 000–800 000 даёт ВНЖ на 5 лет."
+      hu: "Görög Golden Visa (5100/2024): 800 000 € Attikában, Thesszalonikiben és a nagy szigeteken, 400 000 € máshol, 250 000 € csak átminősítésnél vagy műemlék-felújításnál. Az ingatlant TILOS rövid távra kiadni.",
+      me: "Grčka Golden Visa: 800.000 € u Atici i na velikim ostrvima, 400.000 € drugdje. Kratkoročni najam je zabranjen.",
+      en: "Greek Golden Visa (Law 5100/2024): €800,000 in Attica, Thessaloniki and larger islands, €400,000 elsewhere, €250,000 only for conversions or listed-building restoration. Short-term letting is banned.",
+      ru: "Golden Visa Греции: €800 000 в Аттике и на крупных островах, €400 000 в остальных регионах. Краткосрочная аренда запрещена."
     },
-    citizenshipEur: 250000,
+    citizenshipEur: 400000,
     citizenshipNote: {
-      hu: "250 000 € fölötti ingatlan a görög Golden Visa (tartózkodás) programra jogosíthat.",
-      me: "Nekretnina iznad 250.000 € može dati pravo na grčku Golden Visa.",
-      en: "Property above €250,000 can qualify for the Greek Golden Visa (residence).",
-      ru: "Недвижимость от €250 000 может дать право на греческую Golden Visa."
+      hu: "400 000 € fölötti ingatlan a görög Golden Visára jogosíthat — Attikában, Thesszalonikiben és a nagyobb szigeteken viszont 800 000 € a küszöb, és az ingatlant nem lehet rövid távra kiadni.",
+      me: "Nekretnina iznad 400.000 € može dati pravo na grčku Golden Visa; u Atici 800.000 €.",
+      en: "Property above €400,000 can qualify for the Greek Golden Visa — but in Attica, Thessaloniki and larger islands the threshold is €800,000, and short-term letting is not allowed.",
+      ru: "Недвижимость от €400 000 может дать греческую Golden Visa; в Аттике — от €800 000."
     }
   },
   ES: {

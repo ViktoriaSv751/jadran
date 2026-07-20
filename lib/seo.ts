@@ -46,9 +46,20 @@ export interface CountrySeo {
   faqHu: FaqItem[];
 }
 
-/** Az adókulcs százalékos szövege az egyetlen igazságforrásból (geo.ts). */
+/** Az adókulcs százalékos szövege az egyetlen igazságforrásból (geo.ts).
+ *  Sávos adónál (Montenegró) a teljes sávot mutatjuk, mert egyetlen kulcs
+ *  megtévesztő lenne — egy 600 000 €-s ingatlannál nem 3%-ot fizet a vevő. */
 export const transferTaxPct = (c: CountryCode): string => {
-  const r = COUNTRY_BY_CODE[c].costs.transferTaxRate;
+  const costs = COUNTRY_BY_CODE[c].costs;
+  const bands = costs.transferTaxBands;
+  if (bands && bands.length > 1) {
+    const lo = Math.round(bands[0].rate * 1000) / 10;
+    const hi = Math.round(bands[bands.length - 1].rate * 1000) / 10;
+    // Csak a sávot adjuk vissza, nyelvfüggetlenül — a „sávos" szó a felületen
+    // fordított feliratként jelenik meg, nem itt beégetve.
+    return `${lo}–${hi}%`;
+  }
+  const r = costs.transferTaxRate;
   return r === 0 ? "0%" : `${Math.round(r * 1000) / 10}%`;
 };
 
@@ -70,13 +81,15 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
     title: "Property for sale in Montenegro",
     desc: "Verified apartments, villas and houses for sale in Montenegro — Budva, Kotor, Tivat and the Adriatic coast. Transparent prices, map search, 3% transfer tax.",
     introHu:
-      "Montenegró az Adria egyik legkedvezőbb árfekvésű tengerparti piaca: euróval fizet, az ingatlanátírási adó mindössze 3%, és a külföldi vevő gyakorlatilag ugyanolyan jogokkal vásárolhat lakást vagy házat, mint a helyiek. A kereslet gerincét Budva, Kotor, Tivat (Porto Montenegro) és Herceg Novi adja; a Boka Kotorska öböl tengerre néző lakásai a legkeresettebb befektetési termékek, míg Bar és Ulcinj még mindig lényegesen olcsóbb belépőt kínál. Az ország EU-tagjelölt, ami hosszú távon árfelhajtó tényező.",
+      "Montenegró az Adria egyik legkedvezőbb árfekvésű tengerparti piaca: euróval fizet, és a külföldi vevő gyakorlatilag ugyanolyan jogokkal vásárolhat lakást vagy házat, mint a helyiek. Az ingatlanátírási adó 2024 óta sávos: 150 000 €-ig 3%, efölött 5%, 500 000 € felett 6%. A kereslet gerincét Budva, Kotor, Tivat (Porto Montenegro) és Herceg Novi adja; a Boka Kotorska öböl tengerre néző lakásai a legkeresettebb befektetési termékek, míg Bar és Ulcinj még mindig lényegesen olcsóbb belépőt kínál. Az ország EU-tagjelölt, ami hosszú távon árfelhajtó tényező.",
     introEn:
       "Montenegro is one of the most affordable coastal markets on the Adriatic: it uses the euro, property transfer tax is just 3%, and foreign buyers can purchase apartments and houses on essentially the same terms as locals. Demand centres on Budva, Kotor, Tivat (Porto Montenegro) and Herceg Novi.",
     highlightsHu: [
       "Hivatalos fizetőeszköz az euró — nincs árfolyamkockázat a vételárban",
-      "Ingatlanátírási adó 3%, az egyik legalacsonyabb a régióban",
-      "Külföldi magánszemély szabadon vehet lakást és házat (mezőgazdasági földre korlátozás)",
+      "Sávos átírási adó 2024 óta: 3% / 5% / 6% (150 000 és 500 000 eurós határokkal)",
+      "Új építésűnél nincs átírási adó — helyette 21% ÁFA van az árban",
+      "Külföldi magánszemély szabadon vehet lakást, házat és építési telket",
+      "EU-állampolgárnak NINCS értékhatár a tartózkodási engedélyhez (harmadik országbelinek 2026 óta 150 000 €)",
       "EU-tagjelölt ország — hosszú távú felértékelődési potenciál"
     ],
     keywords: [
@@ -95,11 +108,11 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
       },
       {
         q: "Mennyi az ingatlanvásárlás mellékköltsége Montenegróban?",
-        a: "Használt ingatlannál 3% átírási adó, ehhez jön kb. 0,5% közjegyzői díj, kb. 1% ügyvédi díj és jellemzően 3% ingatlanközvetítői jutalék. Összességében a vételár 5–8%-ával érdemes számolni."
+        a: "Az átírási adó 2024 óta sávos: 150 000 €-ig 3%; 150 000 és 500 000 € között 4 500 € plusz a 150 000 € feletti rész 5%-a; 500 000 € felett 22 000 € plusz az 500 000 € feletti rész 6%-a. Az alapja az adóhatóság által megállapított forgalmi érték, nem feltétlenül a szerződéses ár. Ehhez jön a közjegyzői díj, kb. 1% ügyvédi díj, és a közvetítői jutalék (jellemzően 3%, szokás szerint az eladó fizeti). Új építésű, 2003 után épült ingatlan első értékesítésénél nincs átírási adó — ott 21% ÁFA van az árban."
       },
       {
         q: "Ad Montenegró tartózkodási engedélyt ingatlanvásárlásért?",
-        a: "Montenegró ingatlantulajdon alapján ideiglenes tartózkodási engedélyt biztosít, amelyet évente meg kell újítani. A korábbi állampolgárság-befektetési program 2022 végén lezárult, tehát ma Montenegróban ingatlannal állampolgárságot nem lehet szerezni — erre az EU-n kívül Saint Kitts és Nevis, az EU-hoz közel pedig Törökország kínál utat."
+        a: "Igen, ingatlantulajdon alapján egy évre szóló, évente megújítandó tartózkodási engedély kérhető. 2026. január 17-től harmadik országbeli állampolgárnak ehhez legalább 150 000 € adóhatósági értékű ingatlan kell — EU-, EGT- és svájci állampolgárokra viszont EZ AZ ÉRTÉKHATÁR NEM VONATKOZIK, tehát magyar vevőnek nincs minimum. A korábbi állampolgárság-befektetési program 2022. december 31-én lezárult, tehát ma Montenegróban ingatlannal állampolgárságot nem lehet szerezni — erre Törökország és Saint Kitts és Nevis kínál utat."
       }
     ]
   },
@@ -115,9 +128,11 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
       "Croatia is the mature, EU-member market on the Adriatic — in the eurozone and Schengen since 2023. EU citizens buy on the same terms as locals, with no ministry permit required. Istria, Dalmatia and Dubrovnik lead demand.",
     highlightsHu: [
       "EU- és euróövezeti tagállam — EU-állampolgárnak nincs engedélykötelezettség",
-      "Ingatlanátírási adó 3% (új építésű, ÁFÁ-s ingatlannál nincs átírási adó)",
-      "Erős, de erősen szezonális rövid távú bérbeadási piac",
-      "Schengen — szabad beutazás és tartózkodás EU-s vevőknek"
+      "Ingatlanátírási adó 3% fix; új építésűnél helyette 25% ÁFA van az árban",
+      "Alacsony közjegyzői költség: a közjegyző csak aláírás-hitelesítést végez (néhány euró), nem szerkeszt szerződést",
+      "2025 óta ÉVES ingatlanadó is van: 0,60–8,00 €/m²/év, önkormányzatonként",
+      "A mezőgazdasági földre vonatkozó moratórium 2023. június 30-án lejárt — EU-s vevő ma már szabadon vásárolhat",
+      "Erős, de erősen szezonális rövid távú bérbeadási piac"
     ],
     keywords: [
       "ingatlan Horvátország",
@@ -131,11 +146,11 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
     faqHu: [
       {
         q: "Vehet magyar állampolgár ingatlant Horvátországban?",
-        a: "Igen, korlátozás nélkül. Mivel Magyarország és Horvátország is EU-tagállam, a magyar magánszemély a horvát állampolgárokkal azonos feltételekkel, saját néven vásárolhat lakást vagy házat — a korábban kötelező külügyminisztériumi engedélyre nincs szükség. Kivétel a mezőgazdasági föld, amelyre továbbra is korlátozás él."
+        a: "Igen, korlátozás nélkül. Mivel Magyarország és Horvátország is EU-tagállam, a magyar magánszemély a horvát állampolgárokkal azonos feltételekkel, saját néven vásárolhat lakást vagy házat — igazságügy-minisztériumi engedélyre nincs szükség. A mezőgazdasági földre vonatkozó átmeneti moratórium 2023. június 30-án lejárt, és nem hosszabbították meg, tehát EU-állampolgárként ma már termőföldet is a horvátokkal azonos feltételekkel vásárolhat. Harmadik országbeli vevőnek továbbra is viszonosság és minisztériumi engedély kell."
       },
       {
         q: "Mennyi adót kell fizetni horvát ingatlanvásárláskor?",
-        a: "Használt ingatlan vételekor 3% ingatlanátírási adót (porez na promet nekretnina) fizet a vevő. Új építésű, fejlesztőtől vásárolt ingatlannál nincs átírási adó, mert az árban ÁFA szerepel. Ehhez jön kb. 0,4% közjegyzői díj, ügyvédi díj és jellemzően 3% közvetítői jutalék."
+        a: "Használt ingatlan vételekor 3% ingatlanátírási adót (porez na promet nekretnina) fizet a vevő — ez fix kulcs, nem sávos. Új építésű, ÁFA-alany fejlesztőtől vásárolt ingatlannál nincs átírási adó, mert az árban 25% ÁFA szerepel; a kettő kizárja egymást. Fontos: a horvát közjegyző NEM szerkeszt adásvételi szerződést, csak az eladó aláírását hitelesíti, ezért a közjegyzői költség néhány euró plusz a földhivatali bejegyzés — a máshol szokásos „1% közjegyzői díj” itt téves. Ügyvédi díj jellemzően 1–1,5% + ÁFA, közvetítői jutalék 2–4%. 2025 óta éves ingatlanadó is terheli a tulajdont (0,60–8,00 €/m²/év), amely alól a bejelentett lakóhely és a legalább 10 hónapos hosszú távú bérbeadás mentesül."
       },
       {
         q: "Megéri Horvátországban rövid távú bérbeadásra ingatlant venni?",
@@ -155,9 +170,11 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
       "Albania offers the lowest seafront entry price in the Mediterranean. The Albanian Riviera — Sarandë, Ksamil, Himarë — combines new-build sea-view apartments at a fraction of Croatian or Greek prices with record tourism growth and effectively no transfer tax.",
     highlightsHu: [
       "A régió legalacsonyabb tengerparti négyzetméterárai",
-      "Ingatlanátírási adó gyakorlatilag 0% a vevő oldalán",
-      "Külföldi magánszemély saját néven vehet lakást",
-      "Kiemelkedő rövid távú bérbeadási hozam a gyorsan növekvő turizmus miatt"
+      "A VEVŐ nem fizet értékarányos átírási adót — csak fix közjegyzői illetéket és bejegyzési díjat",
+      "Új építésűnél sincs ÁFA a vevő oldalán: az ingatlan-értékesítés ÁFA-mentes",
+      "Külföldi magánszemély saját néven vehet lakást és házat, engedély nélkül",
+      "Építési TELEK vásárlásához feltétel, hogy a beruházás értéke a telekérték háromszorosát meghaladja",
+      "Mezőgazdasági földet külföldi nem vásárolhat, csak bérelhet"
     ],
     keywords: [
       "ingatlan Albánia",
@@ -175,11 +192,11 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
       },
       {
         q: "Mennyibe kerül egy tengerparti lakás Albániában?",
-        a: "Ksamilban és Sarandëban az új építésű, tengerre néző lakások jellemzően 1 200–2 200 €/m² sávban mozognak, Vlorában és Durrësban ennél is olcsóbban lehet belépni. Ez nagyságrendileg fele-harmada a hasonló horvát vagy görög kínálatnak."
+        a: "Ksamilban és Sarandëban az új építésű, tengerre néző lakások jellemzően 1 200–2 200 €/m² sávban mozognak, Vlorában és Durrësban ennél is olcsóbban lehet belépni. Ez nagyságrendileg fele-harmada a hasonló horvát vagy görög kínálatnak. A vevő mellékköltsége is a legalacsonyabb a régióban: értékarányos átírási adó és ÁFA nélkül jellemzően a vételár 1–4%-a."
       },
       {
         q: "Ad Albánia tartózkodási engedélyt ingatlanvásárlásért?",
-        a: "Albániának nincs klasszikus Golden Visa programja, de az ingatlantulajdon megkönnyíti a tartózkodási engedély megszerzését, és az ország vízummentes tartózkodást biztosít számos állampolgárnak évi akár 90 napon túl is. Letelepedésre épülő befektetési programot Görögország, Spanyolország vagy Magyarország kínál, állampolgárságot ingatlannal Törökország és Saint Kitts és Nevis."
+        a: "Albániának nincs Golden Visa programja és állampolgárság-befektetési programja sem: a 2020-as törvényben szereplő lehetőséget soha nem indították el, 2023 márciusa óta moratórium van rajta, az Európai Bíróság 2025. áprilisi máltai ítélete után pedig az EU-csatlakozásra készülő Albánia aligha nyitja meg. Ingatlantulajdon alapján viszont kérhető egy évre szóló, megújítható tartózkodási engedély, öt év után állandó tartózkodással. A közvetítők által emlegetett „100 000 eurós küszöb” nem igazolható jogszabályból — ne tervezzen rá."
       }
     ]
   },
@@ -195,8 +212,10 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
       "Serbia is an urban rental market rather than a holiday-home market. Belgrade and Novi Sad combine strong internal migration and a growing IT sector with year-round long-let demand, while Zlatibor and Kopaonik serve the two-season mountain apartment segment.",
     highlightsHu: [
       "Egész éves, nem szezonális bérleti kereslet Belgrádban és Újvidéken",
-      "Ingatlanátírási adó 2,5% használt ingatlanra",
-      "Külföldi vevő viszonosság alapján vásárolhat — magyar állampolgárra ez teljesül",
+      "Ingatlanátírási adó 2,5% használt ingatlanra (törvény szerint az ELADÓ fizeti, de a szerződések jellemzően a vevőre terhelik)",
+      "Új építésűnél helyette 10% ÁFA (lakóingatlan) van az árban",
+      "Külföldi vevő VISZONOSSÁG alapján vásárolhat — magyar állampolgárra ez teljesül, de országonként külön vizsgálandó",
+      "Az elsőlakás-kedvezmények csak szerb állampolgárnak járnak — külföldi vevő nem veheti igénybe",
       "Kétszezonos hegyi apartmanpiac (Zlatibor, Kopaonik)"
     ],
     keywords: [
@@ -211,7 +230,7 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
     faqHu: [
       {
         q: "Vehet magyar állampolgár ingatlant Szerbiában?",
-        a: "Igen. Szerbia viszonosság alapján engedi a külföldi magánszemélyek ingatlanszerzését, és Magyarországgal ez a viszonosság fennáll, így magyar állampolgár saját néven vásárolhat lakást vagy házat. Mezőgazdasági földre a korlátozás továbbra is él."
+        a: "Igen. Szerbia viszonosság alapján engedi a külföldi magánszemélyek ingatlanszerzését, és Magyarországgal ez a viszonosság fennáll (a minisztérium listáján szerepel), így magyar állampolgár saját néven vásárolhat lakást vagy házat. Fontos: a viszonosságot ORSZÁGONKÉNT vizsgálják, nem EU-szinten — nem igaz tehát, hogy „bármely EU-állampolgár szabadon vásárolhat”. Mezőgazdasági földre EU-s magánszemély elvileg jogosult, de olyan együttes feltételekkel (10 év helyben lakás, 3 év művelés, 2 hektáros korlát), amelyek a gyakorlatban szinte teljesíthetetlenek."
       },
       {
         q: "Mekkora bérleti hozamot lehet elérni Belgrádban?",
@@ -219,7 +238,7 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
       },
       {
         q: "Mennyi az ingatlanvásárlás költsége Szerbiában?",
-        a: "Használt ingatlannál 2,5% átírási adó (porez na prenos apsolutnih prava), új építésűnél helyette 10% ÁFA szerepel az árban. Ehhez jön kb. 0,5% közjegyzői díj, ügyvédi díj és jellemzően 3% közvetítői jutalék."
+        a: "Használt ingatlannál 2,5% átírási adó (porez na prenos apsolutnih prava). Ezt a törvény az ELADÓRA rója, a szerződések viszont szinte mindig a vevőre hárítják — az eladó ilyenkor is felelős marad, ezért érdemes a befizetést ellenőrizni. Új építésű, 2005 után elkészült ingatlan első értékesítésénél átírási adó helyett ÁFA van az árban: lakóingatlannál 10%, garázsnál és üzlethelyiségnél 20%. A közjegyzői díj sávos tarifa szerint alakul (egy átlagos lakásnál néhány száz euró — az „1–2% közjegyzői díj” téves), ehhez jön az ügyvédi díj és 2–4% közvetítői jutalék. Az elsőlakás-vásárlói adómentességre és ÁFA-visszatérítésre csak szerb állampolgár jogosult."
       }
     ]
   },
@@ -230,7 +249,7 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
     title: "Property for sale in Turkey — citizenship eligible",
     desc: "Verified property for sale in Turkey — Istanbul, Antalya, Bodrum, Alanya. Real estate from USD 400,000 qualifies for Turkish CITIZENSHIP in 3–6 months.",
     introHu:
-      "Törökország a világ legnagyobb volumenű, ingatlanalapú állampolgársági programját működteti: 400 000 USD értékű ingatlan megvásárlása és három évig tartó megtartása mellett a befektető és a családja török ÁLLAMPOLGÁRSÁGOT — nem csak tartózkodási engedélyt — kaphat, jellemzően 3–6 hónap alatt, tartózkodási kötelezettség nélkül. A török útlevél vízummentes belépést ad több mint 110 országba, és utat nyit az USA E-2 befektetői vízumához. A piac két lába: Isztambul (városi bérbeadás és értéknövekedés) és a mediterrán part (Antalya, Alanya, Bodrum, Fethiye) nyaraló- és bérbeadási céllal. Az átírási adó 4%, a vételár devizás rögzítése kötelező a programban.",
+      "Törökország a világ legnagyobb volumenű, ingatlanalapú állampolgársági programját működteti: 400 000 USD értékű ingatlan megvásárlása és három évig tartó megtartása mellett a befektető és a családja török ÁLLAMPOLGÁRSÁGOT — nem csak tartózkodási engedélyt — kaphat, jellemzően 3–6 hónap alatt, tartózkodási kötelezettség nélkül. A török útlevél vízummentes belépést ad kb. 118 országba, és utat nyit az USA E-2 befektetői vízumához. A piac két lába: Isztambul (városi bérbeadás és értéknövekedés) és a mediterrán part (Antalya, Alanya, Bodrum, Fethiye) nyaraló- és bérbeadási céllal. Az átírási adó 4%, a vételár devizás rögzítése kötelező a programban.",
     introEn:
       "Turkey runs the world's highest-volume real-estate citizenship programme: buying USD 400,000 of property and holding it for three years grants the investor and family full Turkish CITIZENSHIP — not just residence — typically in 3–6 months, with no residence requirement.",
     highlightsHu: [
@@ -238,7 +257,7 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
       "Nincs tartózkodási, nyelvi vagy letelepedési kötelezettség",
       "A teljes család (házastárs + 18 alatti gyermekek) bevonható",
       "Az ingatlant 3 évig meg kell tartani, utána szabadon értékesíthető",
-      "Vízummentes belépés 110+ országba; út az USA E-2 vízumhoz"
+      "Vízummentes belépés kb. 118 országba; út az USA E-2 befektetői vízumához"
     ],
     keywords: [
       "török állampolgárság ingatlanbefektetéssel",
@@ -252,7 +271,7 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
     faqHu: [
       {
         q: "Hogyan lehet ingatlanvásárlással török állampolgárságot szerezni?",
-        a: "Legalább 400 000 USD értékű török ingatlant kell megvásárolni, hivatalos értékbecsléssel alátámasztva, és vállalni kell, hogy három évig nem adja el (ezt a tulajdoni lapra is rávezetik). Ezután benyújtható a tartózkodási engedély és az állampolgársági kérelem; a teljes eljárás jellemzően 3–6 hónap, és kiterjed a házastársra és a 18 év alatti gyermekekre is."
+        a: "Legalább 400 000 USD értékű török ingatlant kell megvásárolni, és vállalni kell, hogy három évig nem adja el — ezt „satılamaz” (nem eladható) bejegyzésként a tulajdoni lapra (tapu) is rávezetik. Fontos: nem a szerződéses ár számít, hanem az SPK-engedéllyel rendelkező értékbecslő hivatalos értékbecslése; a küszöböt a kifizetett (bankon át igazolt) árnak, az értékbecslésnek és a tapun szereplő értéknek egyaránt el kell érnie. Ezután benyújtható a tartózkodási engedély és az állampolgársági kérelem; a teljes eljárás jellemzően 3–6 hónap, és kiterjed a házastársra és a 18 év alatti gyermekekre."
       },
       {
         q: "Kell Törökországban élni az állampolgárság megszerzéséhez?",
@@ -275,14 +294,17 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
     title: "Property for sale in Bali, Indonesia",
     desc: "Leasehold and freehold villas in Bali — Canggu, Seminyak, Ubud, Uluwatu. Among the world's highest short-let rental yields, 25-year leasehold structures.",
     introHu:
-      "Bali a világ egyik legmagasabb rövid távú bérbeadási hozamú piaca: Canggu, Seminyak és Uluwatu villáinál a bruttó hozam nem ritkán eléri a 10–15%-ot, mert a sziget egész évben telt házas és a napi díjak dollár-alapúak. A kulcskérdés a tulajdonforma: külföldi magánszemély Indonéziában nem szerezhet teljes értékű freehold (Hak Milik) tulajdont — a bevett szerkezet a 25+25 évre szóló leasehold (Hak Sewa), illetve tartózkodási engedéllyel a Hak Pakai használati jog vagy egy indonéz PT PMA társaságon keresztüli Hak Guna Bangunan. Ezért Balin a jogi struktúra kiválasztása fontosabb, mint maga az ingatlan.",
+      "Bali erős rövid távú bérbeadási piac, de a valós számok jóval szerényebbek a hirdetett hozamoknál: független foglalási adatok szerint Cangguban az átlagos napi díj kb. 216 USD, a kihasználtság viszont mindössze 38% körüli, és a kínálat évi 40%-kal bővül. Reálisan 6–9% bruttó és 3–5% nettó hozammal érdemes számolni, nem a szórólapokon szereplő 10–15%-kal. A másik kulcskérdés a tulajdonforma: külföldi magánszemély Indonéziában NEM szerezhet freehold (Hak Milik) tulajdont. Három legális út van: szerződéses bérleti jog (Hak Sewa, jellemzően 25–30 év), tartózkodási engedélyhez kötött Hak Pakai használati jog (30 + 20 + 30 = akár 80 év), vagy egy indonéz PT PMA társaságon keresztüli Hak Guna Bangunan építési jog (ugyancsak 80 év). Balin a jogi struktúra kiválasztása fontosabb, mint maga az ingatlan.",
     introEn:
       "Bali offers some of the world's highest short-let yields — 10–15% gross is common in Canggu, Seminyak and Uluwatu. The key issue is tenure: foreigners cannot hold freehold, so 25+25-year leasehold, Hak Pakai, or a PT PMA company structure is used.",
     highlightsHu: [
-      "10–15% bruttó rövid távú bérbeadási hozam a top lokációkban",
-      "Külföldi nem szerezhet freehold tulajdont — leasehold (25+25 év) a bevett út",
-      "PT PMA társasággal hosszabb távú, építési jogot is adó szerkezet érhető el",
-      "Egész éves szezon, dollár-alapú napi díjak"
+      "Reális hozam független adatok alapján: 6–9% bruttó, 3–5% nettó (a 10–15% marketingszám)",
+      "Külföldi NEM szerezhet freehold (Hak Milik) tulajdont — ez alkotmányos korlát",
+      "Hak Sewa bérleti jog: tartózkodási engedély nélkül is, jellemzően 25–30 év",
+      "Hak Pakai és PT PMA-s Hak Guna Bangunan: 30 + 20 + 30, összesen akár 80 év",
+      "VESZÉLY: a „nominee” (indonéz strómanra íratott freehold) szerkezet TÖRVÉNY SZERINT SEMMIS",
+      "Ha a Hak Pakai tulajdonos tartózkodási engedélye lejár, egy éven belül el kell adnia az ingatlant",
+      "Vevői mellékköltség: bérleti jognál 2–4%, Hak Pakainál 7–9% (5% BPHTB miatt)"
     ],
     keywords: [
       "Bali villa eladó",
@@ -294,16 +316,20 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
     ],
     faqHu: [
       {
+        q: "Ad Indonézia tartózkodási engedélyt ingatlanvásárlásért?",
+        a: "Korlátozottan. Az indonéz Golden Visa ingatlanalapú ága 1 000 000 USD befektetést kíván, és KIZÁRÓLAG megfelelő jogcímű társasházi lakásra vonatkozik — az egyedi telken álló villák nem jogosítanak. Létezik emellett egy „second home” vízum is, de a hivatalos oldal nem közöl konkrét értékhatárt, ezért a közvetítők által emlegetett összegeket érdemes fenntartással kezelni. Állampolgárság-befektetési program Indonéziában nincs."
+      },
+      {
         q: "Vehet külföldi ingatlant Balin?",
-        a: "Teljes értékű freehold (Hak Milik) tulajdont külföldi magánszemély nem szerezhet Indonéziában. Három bevett megoldás van: hosszú távú bérleti jog (leasehold, jellemzően 25 év + hosszabbítás), tartózkodási engedéllyel megszerezhető Hak Pakai használati jog, illetve egy indonéz külföldi tulajdonú társaság (PT PMA) által birtokolt Hak Guna Bangunan építési jog."
+        a: "Teljes értékű freehold (Hak Milik) tulajdont külföldi magánszemély nem szerezhet Indonéziában — ezt az 1960-as alaptörvény indonéz állampolgároknak tartja fenn. Három legális megoldás van: szerződéses bérleti jog (Hak Sewa, jellemzően 25–30 év, tartózkodási engedély nem kell hozzá), Hak Pakai használati jog (érvényes KITAS/KITAP tartózkodási engedélyhez kötve, 30 + 20 + 30 = akár 80 év), illetve egy külföldi tulajdonú indonéz társaság (PT PMA) által birtokolt Hak Guna Bangunan építési jog (szintén 80 év). NAGYON FONTOS: a Balin gyakran árult „nominee” szerkezet, amelyben egy indonéz állampolgár nevén van a freehold „az Ön javára”, a törvény szerint SEMMIS — a bíróság előtt nem érvényesíthető, és az ingatlan a strómannál vagy az államnál marad."
       },
       {
         q: "Mekkora hozamot hoz egy bali villa?",
-        a: "A jó lokációjú, professzionálisan kezelt villák bruttó hozama jellemzően 10–15% Canggu, Seminyak és Uluwatu környékén. Ebből azonban le kell vonni a villamenedzsment (jellemzően 15–20%), a karbantartás és az adó költségét, így a nettó hozam reálisan 7–10%."
+        a: "Kevesebbet, mint amit hirdetnek. Független foglalási adatok szerint Cangguban — ahol közel 4 000 aktív hirdetés verseng — az átlagos napi díj kb. 216 USD és az éves kihasználtság 38% körüli, ami átlagosan évi kb. 23 700 USD bevételt jelent. Ebből le kell vonni a villamenedzsmentet (15–20%), a karbantartást és az adót. Reálisan 6–9% bruttó és 3–5% nettó hozammal érdemes tervezni. A 10–15%-os nettó ígéretek az értékesítői anyagokból származnak, és a piaci adatok nem támasztják alá — a kínálat évi 40% feletti ütemben nő, miközben a kereslet lapos, ezért a tulajdonosok 10–30%-ot engednek az árakból."
       },
       {
         q: "Mi történik a leasehold lejáratakor?",
-        a: "A jól megírt bérleti szerződés tartalmaz hosszabbítási opciót előre rögzített vagy indexált áron. A vásárlás előtti legfontosabb ellenőrzés éppen ez: hány év van hátra, mennyi a hosszabbítási jog, és a földtulajdonos beleegyezése hogyan van biztosítva. Enélkül a befektetés értéke évről évre csökken."
+        a: "A jól megírt bérleti szerződés tartalmaz hosszabbítási opciót előre rögzített vagy indexált áron. A vásárlás előtti legfontosabb ellenőrzés éppen ez: hány év van hátra, mennyi a hosszabbítási jog, és a földtulajdonos beleegyezése hogyan van biztosítva. Enélkül a befektetés értéke évről évre csökken. Hak Pakai esetén van egy további csapda: ha a tulajdonos tartózkodási engedélye lejár és nem újítja meg, egy éven belül köteles értékesíteni az ingatlant, különben állami árverésre kerülhet."
       }
     ]
   },
@@ -314,12 +340,15 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
     title: "Property for sale in Hungary — Golden Visa",
     desc: "Verified property in Hungary — Budapest, Lake Balaton, Debrecen. EU member with a €250,000 real-estate route to a 10-year Guest Investor residence permit.",
     introHu:
-      "Magyarország 2024-ben indította újra befektetői letelepedési programját: a Vendégbefektetői Program (Guest Investor Program) keretében ingatlanalapon 250 000 eurótól szerezhető tíz évre szóló, megújítható tartózkodási engedély az EU-ban és a schengeni övezetben. Ez az egyik legalacsonyabb küszöbű EU-s befektetői letelepedési út. A hazai piac két motorja Budapest (a belvárosi kerületek bérbeadási hozama és az egyetemi kereslet) és a Balaton, ahol a nyaralópiac az elmúlt években tartósan felértékelődött. Az átírási illeték 4%.",
+      "Magyarország 2024-ben indította újra befektetői letelepedési programját, de itt egy fontos félreértést kell tisztázni: a Vendégbefektetői Programban KÖZVETLEN LAKÁSVÁSÁRLÁS NEM JOGOSÍT tartózkodási engedélyre. A tervezett 500 000 eurós közvetlen ingatlan-opciót 2025 januárjában törölték, mielőtt hatályba lépett volna. Két út maradt: 250 000 € értékű befektetési jegy egy MNB-nél nyilvántartott ingatlanalapban (amelynek nettó eszközértéke legalább 40%-ban magyar lakóingatlanban van), öt éves tartási kötelezettséggel, vagy 1 000 000 € vissza nem térítendő adomány magyar felsőoktatási intézménynek. A magyar ingatlanpiac két motorja Budapest és a Balaton; a visszterhes vagyonátruházási illeték 4% egymilliárd forintig.",
     introEn:
       "Hungary relaunched its investor residence route in 2024: the Guest Investor Programme grants a renewable 10-year EU/Schengen residence permit from a €250,000 real-estate-based investment — one of the lowest thresholds in the EU.",
     highlightsHu: [
-      "250 000 € befektetéstől 10 éves, megújítható EU/schengeni tartózkodási engedély",
-      "Vagyonszerzési illeték 4%",
+      "FIGYELEM: közvetlen lakásvásárlás NEM jogosít vendégbefektetői tartózkodási engedélyre",
+      "A programban csak ingatlanalap-befektetési jegy (250 000 €, 5 év tartás) vagy felsőoktatási adomány (1 000 000 €) számít",
+      "Az engedély 10 évre szól, egyszer további 10 évvel meghosszabbítható",
+      "Visszterhes vagyonátruházási illeték 4% egymilliárd forintig, felette 2% (ingatlanonként legfeljebb 200 millió Ft)",
+      "Új lakásnál 5% ÁFA (150 m²-ig lakás, 300 m²-ig ház) 2026 végéig",
       "Budapest: egész éves, egyetemi és bérlői keresletre épülő hozam",
       "Balaton: tartósan felértékelődő hazai nyaralópiac"
     ],
@@ -334,12 +363,12 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
     ],
     faqHu: [
       {
-        q: "Mi a magyar Vendégbefektetői Program?",
-        a: "A 2024-ben indult Vendégbefektetői Program (Guest Investor Programme) tíz évre szóló, megújítható magyar tartózkodási engedélyt ad befektetés fejében. Az ingatlanalapú út küszöbe 250 000 euró; az engedély a családtagokra is kiterjeszthető, és schengeni szabad mozgást biztosít. Fontos: ez tartózkodási engedély, nem állampolgárság — ingatlannal közvetlenül állampolgárságot Törökország és Saint Kitts és Nevis ad."
+        q: "Kaphatok magyar tartózkodási engedélyt, ha lakást veszek Magyarországon?",
+        a: "Nem. Ez a leggyakoribb félreértés a magyar programmal kapcsolatban. A Vendégbefektetői Programban a közvetlen lakás- vagy házvásárlás NEM minősül befektetésnek: a tervezett 500 000 eurós közvetlen ingatlan-opciót 2025 januárjában törölték, mielőtt hatályba lépett volna. Két lehetőség van: 250 000 € értékű befektetési jegy vásárlása MNB-nél nyilvántartott, legalább 40%-ban magyar lakóingatlanba fektető ingatlanalapban (5 év tartási kötelezettséggel), vagy 1 000 000 € adomány magyar felsőoktatási intézménynek. Az engedély 10 évre szól és egyszer további 10 évvel hosszabbítható. Magyar és EU-állampolgárnak természetesen nincs szüksége erre — szabad mozgás illeti meg."
       },
       {
         q: "Mennyi illetéket kell fizetni magyar ingatlanvásárláskor?",
-        a: "A visszterhes vagyonátruházási illeték általános mértéke 4% a forgalmi érték után. Első lakást szerző 35 év alatti fiatalok és bizonyos cserével történő vásárlások esetén kedvezmény vagy mentesség érvényesíthető."
+        a: "A visszterhes vagyonátruházási illeték 4% a forgalmi érték egymilliárd forintot meg nem haladó részére, és 2% az efölötti részre, ingatlanonként legfeljebb 200 millió forint. Fejlesztőtől vett új lakásnál az illeték 15 millió forint értékig mentes, efölött a különbözetre 4%. Kedvezmény vagy mentesség érvényesíthető első lakást szerző fiataloknál, CSOK-os vásárlásnál, valamint ha az eladás és a vétel öt éven belül történik — ilyenkor csak az árkülönbözet után kell fizetni. Új lakás ÁFÁ-ja 27% helyett 5%, 150 m²-ig lakásnál és 300 m²-ig háznál, 2026 végéig."
       },
       {
         q: "Mekkora bérleti hozam érhető el Budapesten?",
@@ -359,9 +388,12 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
       "Thailand offers the clearest ownership route in Southeast Asia: foreigners can own condominiums freehold in their own name, subject to the 49% foreign quota per building. Land cannot be foreign-owned — long leases or company structures are used instead.",
     highlightsHu: [
       "Társasházi lakás freehold, saját néven megszerezhető külföldiként",
-      "49%-os külföldi kvóta társasházanként — vásárlás előtt ellenőrizendő",
-      "Földet külföldi nem birtokolhat: hosszú távú bérlet a bevett út",
-      "Átírási illeték 2%, alacsony tranzakciós költségek"
+      "49%-os külföldi kvóta társasházanként, az ALAPTERÜLET arányában — vásárlás előtt írásban ellenőrizendő",
+      "A vételárat külföldről, devizában kell utalni (FET-igazolás nélkül nincs átírás)",
+      "Földet külföldi nem birtokolhat; a bejegyezhető bérlet törvényi maximuma 30 év",
+      "A „30+30+30” hosszabbítás csak szerződéses ígéret — a bíróság az új tulajdonossal szemben nem érvényesítette",
+      "Átírási illeték 2%, szokás szerint a felek felezik — a vevő teljes költsége jellemzően 1–2%",
+      "FIGYELEM: a 0,01%-os illetékkedvezmény CSAK thai állampolgárokra vonatkozik, külföldi vevőre nem"
     ],
     keywords: [
       "ingatlan Thaiföld",
@@ -374,15 +406,19 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
     faqHu: [
       {
         q: "Vehet külföldi ingatlant Thaiföldön?",
-        a: "Társasházi lakást igen, saját néven, freehold tulajdonként — feltéve, hogy az adott épület lakóterületének legfeljebb 49%-a van külföldi tulajdonban. Földet és földdel egybeépült házat külföldi magánszemély nem birtokolhat; ilyen esetben 30 évre szóló, megújítható bérleti jog vagy thai társasági szerkezet jöhet szóba."
+        a: "Társasházi lakást igen, saját néven, freehold tulajdonként — feltéve, hogy az adott épület nyilvántartott, értékesíthető alapterületének legfeljebb 49%-a van külföldi tulajdonban. A vételárat külföldről, devizában kell utalni, és a földhivatal az erről szóló FET-igazolás nélkül nem jegyzi be a tulajdonjogot. Földet és földdel egybeépült házat külföldi magánszemély nem birtokolhat; ilyenkor legfeljebb 30 évre bejegyezhető bérleti jog, haszonélvezet vagy thai többségű társaság jöhet szóba. Vigyázat: a thai többségű társaság csak valódi thai tulajdonosokkal jogszerű — a stróman-szerkezet a külföldi üzleti törvénybe ütközik, és a hatóságok aktívan vizsgálják."
+      },
+      {
+        q: "Igaz, hogy Thaiföldön 75%-ra emelik a külföldi kvótát és 99 évre a bérletet?",
+        a: "Nem, ez jelenleg NEM hatályos jog. A kormány 2024-ben csak azt hagyta jóvá, hogy a két javaslatot megvizsgálják; törvény soha nem született belőlük. A 99 éves bérletre vonatkozó tervet 2025 szeptemberében hivatalosan levették a napirendről. 2026 közepén a hatályos szabály változatlanul 49%-os külföldi kvóta és 30 éves maximális bejegyezhető bérlet. Aki 99 éves időtávra árazott ingatlant vásárol, olyan jogot fizet meg, ami nem létezik."
       },
       {
         q: "Mit jelent a 49%-os külföldi kvóta?",
-        a: "Minden thaiföldi társasházban a lakóterület legfeljebb 49%-a lehet külföldi tulajdonban. Vásárlás előtt a társasház kezelőjétől írásos igazolást kell kérni arról, hogy a kvótában van még szabad hely — enélkül a lakás nem írható át külföldi vevő nevére."
+        a: "Minden thaiföldi társasházban a nyilvántartott, értékesíthető alapterület legfeljebb 49%-a lehet külföldi tulajdonban — a korlát tehát alapterület-arányos, nem a lakások darabszáma szerinti. Vásárlás előtt a társasház kezelőjétől írásos igazolást kell kérni arról, hogy a kvótában van még szabad hely; enélkül a lakás nem írható át külföldi vevő nevére, és a foglaló könnyen bennragad."
       },
       {
         q: "Mennyi a vásárlás mellékköltsége Thaiföldön?",
-        a: "2% átírási illeték (transfer fee), amelyet a felek gyakran megosztanak, továbbá üzleti adó vagy bélyegilleték az eladó oldalán. Az összes tranzakciós költség jellemzően a vételár 3–6%-a, ami nemzetközi összevetésben alacsony."
+        a: "2% átírási illeték (transfer fee) a hivatalos becsült érték után, amelyet a felek szokás szerint feleznek. Az eladót terheli az üzleti adó (3,3%, ha öt évnél rövidebb ideig birtokolta) vagy helyette a bélyegilleték (0,5%, ha legalább öt évig), továbbá a forrásadó. A két fél együttes költsége jellemzően a vételár 6–8%-a, de a szokásos megosztás mellett a KÜLFÖLDI VEVŐ oldalán ez csak kb. 1–2% az ügyvédi és átvilágítási díjjal együtt. Fontos: a sokat emlegetett 0,01%-os kedvezményes átírási illeték kizárólag thai állampolgárokra vonatkozik — külföldi vevő és thai cég a teljes 2%-ot fizeti."
       }
     ]
   },
@@ -398,9 +434,11 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
       "Italy is the EU's deepest holiday-home market, from Lake Como and Tuscany to Milan's rental market. EU citizens buy without restriction; transfer tax is 9% for a second home and 2% for a primary residence, with a flat-tax regime available to new residents.",
     highlightsHu: [
       "EU-tagállam — EU-állampolgárnak nincs vásárlási korlátozás",
-      "Átírási adó 9% második otthonnál, 2% ha főlakás lesz",
-      "Új rezidenseknek elérhető átalányadó a külföldi jövedelemre",
-      "Rendkívül széles árpaletta a prémiumtól a felújítandó vidéki ingatlanig"
+      "Átírási adó 9% második otthonnál, 2% ha „prima casa” (főlakás) lesz; minimum 1 000 €",
+      "Magánszemélytől vásárolva az adó alapja a kataszteri érték (prezzo-valore), ami jellemzően jóval a vételár alatt van",
+      "Fejlesztőtől vett új ingatlannál ÁFA: 4% főlakás, 10% második otthon, 22% luxuskategória",
+      "NINCS ingatlanalapú Golden Visa — az olasz befektetői vízumból az ingatlan kifejezetten ki van zárva",
+      "Új rezidenseknek átalányadó a külföldi jövedelemre: 2026. január 1-től évi 300 000 €"
     ],
     keywords: [
       "ingatlan Olaszország",
@@ -414,7 +452,7 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
     faqHu: [
       {
         q: "Mennyi adót fizet a vevő olasz ingatlanvásárláskor?",
-        a: "Magánszemélytől vett használt ingatlannál az átírási adó (imposta di registro) 9% a kataszteri érték után, ha második otthonról van szó, és csak 2%, ha a vevő 18 hónapon belül oda jelentkezik be főlakásként. Fejlesztőtől vett új ingatlannál ÁFA (10%, luxusnál 22%) terheli a vételt."
+        a: "Magánszemélytől vett használt ingatlannál az átírási adó (imposta di registro) 9%, ha második otthonról van szó, és csak 2%, ha a vevő 18 hónapon belül oda jelentkezik be főlakásként; a minimum mindkét esetben 1 000 €. Magánszemélyek közötti adásvételnél az adó alapja kérhetően a kataszteri érték (prezzo-valore), ami jellemzően jóval a tényleges vételár alatt van — ez érdemi megtakarítás. Ehhez jön két fix, egyenként 50 eurós illeték. Fejlesztőtől, az elkészülés utáni 5 éven belül vett új ingatlannál ÁFA terheli a vételt: 4% főlakásnál, 10% második otthonnál, 22% az A/1, A/8 és A/9 luxus-kataszteri kategóriákban, plusz három darab 200 eurós fix illeték."
       },
       {
         q: "Vehet magyar állampolgár ingatlant Olaszországban?",
@@ -422,7 +460,7 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
       },
       {
         q: "Mi az olasz átalányadó (flat tax) új rezidenseknek?",
-        a: "Aki Olaszországba helyezi az adóügyi illetőségét, választhatja azt a rendszert, amelyben a külföldről származó jövedelmére évi fix összegű adót fizet (jelenleg 200 000 euró, családtagonként további 25 000 euró), legfeljebb 15 éven át. Ez nagy vagyonú, külföldi jövedelemmel rendelkező befektetőknél lehet meghatározó."
+        a: "Aki Olaszországba helyezi az adóügyi illetőségét, választhatja azt a rendszert, amelyben a külföldről származó jövedelmére évi fix összegű adót fizet, legfeljebb 15 éven át. Az összeg a 2026-os költségvetési törvénnyel évi 300 000 euróra emelkedett azoknál, akik 2026. január 1-től telepítik át az illetőségüket (családtagonként további 50 000 euró). A korábban belépőkre a régi tétel marad érvényben: 100 000 € a 2024 előtti, 200 000 € a 2024–2025-ös belépőknél. Fontos: ez adójogi konstrukció, NEM tartózkodási program — olasz ingatlanvásárlás önmagában nem ad letelepedési jogot."
       }
     ]
   },
@@ -433,15 +471,18 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
     title: "Property for sale in Greece — Golden Visa",
     desc: "Verified property in Greece — Athens, Crete, the islands. EU Golden Visa residence from €250,000 in eligible areas, with no minimum stay requirement.",
     introHu:
-      "Görögország az EU legismertebb Golden Visa programját működteti: ingatlanbefektetéssel öt évre szóló, megújítható tartózkodási engedély szerezhető, amely a teljes családra kiterjed és schengeni szabad mozgást ad, MINIMÁLIS OTTTARTÓZKODÁSI KÖTELEZETTSÉG NÉLKÜL — ez a görög program legerősebb érve. A küszöb 2024 óta területenként sávos: a legkeresettebb övezetekben (Attika, Thesszaloniki, Mükonosz, Szantorini) magasabb, a kevésbé frekventált régiókban maradt a 250 000 eurós belépő, illetve műemléki felújításnál is kedvezőbb. A hozamot Athén városi bérbeadása és a szigetek turisztikai szezonja adja.",
+      "Görögország az EU legismertebb Golden Visa programját működteti: ingatlanbefektetéssel öt évre szóló, megújítható tartózkodási engedély szerezhető, amely a teljes családra kiterjed és schengeni szabad mozgást ad, MINIMÁLIS OTTTARTÓZKODÁSI KÖTELEZETTSÉG NÉLKÜL — ez a program legerősebb érve. A küszöb az 5100/2024 törvény óta területenként sávos: 800 000 € Attika egész régiójában, Thesszalonikiben, Mükonoszon, Szantorinin és a 3 100 főnél népesebb szigeteken; 400 000 € az ország többi részén; 250 000 € pedig KIZÁRÓLAG nem lakáscélú épület lakássá alakításánál vagy műemlék felújításánál. Két gyakran elhallgatott feltétel: az ingatlannak egyben kell lennie, legalább 120 m² fő lakóterülettel, és a Golden Visa-ingatlant TILOS rövid távra (Airbnb-jelleggel) kiadni — a szabály megsértése az engedély visszavonásával és 50 000 eurós bírsággal jár.",
     introEn:
       "Greece runs the EU's best-known Golden Visa: real-estate investment grants a renewable five-year residence permit for the whole family with Schengen mobility and no minimum-stay requirement. Thresholds are now tiered by area.",
     highlightsHu: [
-      "Golden Visa 250 000 €-tól a kedvezményes övezetekben (a top zónákban magasabb sáv)",
+      "Golden Visa sávosan: 800 000 € (Attika, Thesszaloniki, Mükonosz, Szantorini, nagyobb szigetek) / 400 000 € (máshol) / 250 000 € (csak átminősítés vagy műemlék-felújítás)",
+      "Az ingatlannak egyetlen egységnek kell lennie, min. 120 m² fő lakóterülettel",
+      "A Golden Visa-ingatlant TILOS rövid távra kiadni — visszavonás és 50 000 € bírság a szankció",
       "NINCS minimális ottartózkodási kötelezettség",
-      "A teljes családra kiterjed (házastárs, gyermekek, eltartott szülők)",
-      "5 évre szól, korlátlanul megújítható amíg a befektetés megmarad",
-      "Ingatlanátírási adó 3,1%"
+      "A teljes családra kiterjed (házastárs, 21 év alatti gyermekek, mindkét fél eltartott szülei)",
+      "5 évre szól, megújítható amíg a befektetés megmarad",
+      "Ingatlanátírási adó 3% (+ csekély önkormányzati hozzájárulás)",
+      "Új építésűnél az ÁFA felfüggesztése 2026. december 31-ig meghosszabbítva — ilyenkor is a 3% átírási adó jár"
     ],
     keywords: [
       "görög golden visa",
@@ -459,7 +500,11 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
       },
       {
         q: "Mennyi a görög Golden Visa küszöbe?",
-        a: "A küszöb 2024 óta területfüggő: a legkeresettebb övezetekben (Attika, Thesszaloniki és a népszerű szigetek, például Mükonosz és Szantorini) magasabb sáv érvényes, míg az ország többi részén, valamint műemléki vagy ipari épület lakóingatlanná alakítása esetén továbbra is a 250 000 eurós belépő él. Vásárlás előtt mindig az adott ingatlan konkrét zónabesorolását kell ellenőrizni."
+        a: "Három sáv van az 5100/2024 törvény szerint. 800 000 € Attika egész régiójában, Thesszaloniki regionális egységében, Mükonoszon, Szantorinin és minden 3 100 főnél népesebb szigeten. 400 000 € az ország összes többi részén. 250 000 € kizárólag két esetben: ha nem lakáscélú épületet alakítanak lakóingatlanná (a beruházást a kérelem előtt be kell fejezni), vagy műemléki védettségű épületet újítanak fel. A 2024-es átmeneti határidők már mind lejártak, tehát 2026-ban a teljes 400/800 ezres küszöb érvényes. Vásárlás előtt mindig az adott ingatlan konkrét zónabesorolását kell ellenőrizni."
+      },
+      {
+        q: "Kiadhatom rövid távra a görög Golden Visa-ingatlanomat?",
+        a: "Nem. A 2024-es reform kifejezetten megtiltja a Golden Visa alapjául szolgáló ingatlan rövid távú (Airbnb-jellegű) bérbeadását. A tilalom megsértése a tartózkodási engedély visszavonását és 50 000 eurós bírságot von maga után. Hosszú távú bérbeadás megengedett. Ez a feltétel gyökeresen megváltoztatja a befektetés hozamszámítását, mégis a legtöbb ajánlatból hiányzik."
       },
       {
         q: "A görög Golden Visa állampolgárságot ad?",
@@ -479,7 +524,7 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
       "Spain is Europe's most liquid holiday-home market — Costa del Sol, Costa Blanca, the Balearics and Barcelona offer the deepest resale demand on the continent. Note: the real-estate route to the Spanish Golden Visa was abolished in April 2025.",
     highlightsHu: [
       "Európa legnagyobb és leglikvidebb nyaralóingatlan-piaca — gyors újraértékesítés",
-      "Ingatlanátírási adó (ITP) régiónként 6–10%, új építésűnél 10% ÁFA",
+      "Ingatlanátírási adó (ITP) régiónként kb. 6–11%: Madrid 6%, Andalúzia 7%, Katalónia 10–11%",
       "FIGYELEM: az ingatlanalapú Golden Visa 2025 áprilisában megszűnt",
       "Kiterjedt magyar és nemzetközi közösség a déli parton"
     ],
@@ -499,7 +544,7 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
       },
       {
         q: "Mennyi adót fizet a vevő Spanyolországban?",
-        a: "Használt ingatlannál a régiótól függően 6–10% átírási adó (ITP) terheli a vevőt — Andalúziában jelenleg 7%, Katalóniában sávosan 10%-ig. Új építésű, fejlesztőtől vett ingatlannál 10% ÁFA plusz kb. 1,5% okirati illeték (AJD) fizetendő."
+        a: "Használt ingatlannál a régiótól függően kb. 6–11% átírási adó (ITP) terheli a vevőt: Madridban 6%, Andalúziában 7% egységesen, Katalóniában 10% egymillió euróig és 11% felette, Valenciában 10% (2026. június 1-től 9%, egymillió euró felett 11%). Az adó alapja a vételár és a hivatalos kataszteri referenciaérték közül a magasabb — ez fontos, mert alacsony szerződéses árnál is a referenciaérték után adóznak. Új építésű, fejlesztőtől vett ingatlannál 10% ÁFA plusz régiótól függő 0,5–1,5% okirati illeték (AJD) fizetendő."
       },
       {
         q: "Mire van szükség magyar vevőként spanyol ingatlanvásárláshoz?",
@@ -514,17 +559,18 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
     title: "Property for sale in Saint Kitts and Nevis — citizenship by investment",
     desc: "Approved real estate in Saint Kitts and Nevis from USD 325,000 grants full CITIZENSHIP and a passport with visa-free access to 150+ countries, in 4–8 months.",
     introHu:
-      "Saint Kitts és Nevis a világ legrégebbi, 1984 óta megszakítás nélkül működő állampolgárság-befektetési programját (CBI) üzemelteti — ez a „platina szabvány” a szakmában. A kormány által JÓVÁHAGYOTT ingatlanprojektben vásárolt, kb. 325 000 USD értékű ingatlan közvetlenül ÁLLAMPOLGÁRSÁGOT ad: nem tartózkodási engedélyt, hanem útlevelet, a teljes családra kiterjeszthetően, letelepedési, nyelvi és látogatási kötelezettség NÉLKÜL. A karibi szigetország nem vet ki személyi jövedelemadót, vagyonadót és örökösödési adót, az útlevél pedig 150 feletti ország vízummentes látogatását teszi lehetővé, köztük a schengeni övezet és az Egyesült Királyság. Az ingatlan jellemzően 5–7 év után továbbadható, és az új vevő is felhasználhatja állampolgárság igényléséhez.",
+      "Saint Kitts és Nevis a világ legrégebbi, 1984 óta megszakítás nélkül működő állampolgárság-befektetési programját (CBI) üzemelteti — ez a „platina szabvány” a szakmában. A kormány által JÓVÁHAGYOTT ingatlan közvetlenül ÁLLAMPOLGÁRSÁGOT ad: nem tartózkodási engedélyt, hanem útlevelet. Két szint van: jóváhagyott projektben lévő társasházi lakás vagy részesedés 325 000 USD-tól, jóváhagyott önálló családi ház 600 000 USD-tól. Nincs letelepedési, nyelvi vagy ottartózkodási követelmény, a fő kérelmezőnek azonban KÖTELEZŐ interjún kell megjelennie. A szigetország nem vet ki személyi jövedelemadót, vagyonadót és örökösödési adót, az útlevél pedig mintegy 155 ország vízummentes látogatását teszi lehetővé (Henley 2026: 23. hely), köztük a schengeni övezet és az Egyesült Királyság. Az ingatlant hivatalosan 7 évig meg kell tartani.",
     introEn:
       "Saint Kitts and Nevis runs the world's oldest citizenship-by-investment programme, unbroken since 1984. Approved real estate from about USD 325,000 grants full CITIZENSHIP — a passport, not a residence permit — for the whole family, with no residence, language or visit requirement, in typically 4–8 months.",
     highlightsHu: [
-      "~325 000 USD jóváhagyott ingatlan → teljes ÁLLAMPOLGÁRSÁG és útlevél",
+      "325 000 USD (társasházi lakás jóváhagyott projektben) vagy 600 000 USD (jóváhagyott önálló ház) → teljes ÁLLAMPOLGÁRSÁG és útlevél",
       "A világ legrégebbi (1984) és legstabilabb CBI programja",
-      "Nincs letelepedési, nyelvi vagy akár beutazási kötelezettség",
-      "Nincs jövedelem-, vagyon- és örökösödési adó",
-      "Vízummentes belépés 150+ országba (Schengen, Egyesült Királyság)",
-      "Az eljárás átvilágítással jellemzően 4–8 hónap",
-      "Az ingatlan jellemzően 5–7 év után továbbértékesíthető"
+      "Nincs letelepedési, ottartózkodási vagy nyelvi követelmény — a fő kérelmezőnek viszont KÖTELEZŐ interjúja van",
+      "Nincs személyi jövedelem-, vagyon- és örökösödési adó",
+      "Vízummentes belépés kb. 155 országba (Schengen, Egyesült Királyság); Törökországba és Írországba már NEM",
+      "Hivatalos átfutás: 160–180 nap az elvi jóváhagyásig (ehhez jön a zárás és az útlevél kiállítása)",
+      "Kötelező tartási idő: 7 év — utána az ingatlan továbbértékesíthető",
+      "A vételáron FELÜL állami díjak: egyedülálló kérelmezőnek kb. 35 000 USD"
     ],
     keywords: [
       "állampolgárság ingatlanbefektetéssel",
@@ -538,23 +584,31 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
     faqHu: [
       {
         q: "Hogyan lehet Saint Kitts és Nevisen ingatlannal állampolgárságot szerezni?",
-        a: "A kormány által jóváhagyott (approved) ingatlanprojektben kell legalább kb. 325 000 USD értékű részesedést vagy ingatlant vásárolni, majd a hivatalos ügynökön keresztül benyújtani az állampolgársági kérelmet. Az eljárás szigorú átvilágítással (due diligence) jár, jellemzően 4–8 hónapig tart, és a sikeres kérelmező, valamint a családja állampolgárságot és útlevelet kap."
+        a: "Kormány által jóváhagyott (approved) ingatlant kell vásárolni: jóváhagyott projektben lévő társasházi lakást vagy részesedést 325 000 USD-tól, illetve jóváhagyott önálló családi házat 600 000 USD-tól. A kérelmet kizárólag hivatalos ügynökön keresztül lehet benyújtani. Az eljárás szigorú átvilágítással jár; a hivatalos átfutás 160–180 nap az elvi jóváhagyásig (Approval in Principle), amihez még hozzájön az adásvétel zárása és az útlevél kiállítása."
       },
       {
         q: "Kell Saint Kitts és Nevisen élni az állampolgárság megtartásához?",
-        a: "Nem. A programnak nincs letelepedési, ottartózkodási, nyelvi vagy vizsgakövetelménye — a kérelmezőnek még beutaznia sem kell az országba. Az állampolgárság határozatlan időre szól, és öröklődik a következő generációra."
+        a: "Nem. A programnak nincs letelepedési, ottartózkodási, nyelvi vagy vizsgakövetelménye, és az állampolgárság határozatlan időre szól, illetve öröklődik. Egy dolgot viszont fontos tudni: a fő kérelmezőnek KÖTELEZŐ interjún megjelennie, és a 16 évnél idősebb családtagoktól is kérhetik ezt."
       },
       {
         q: "Mennyit ér a Saint Kitts és Nevis-i útlevél?",
-        a: "Az útlevél több mint 150 ország vízummentes vagy vízum-a-határon látogatását teszi lehetővé, köztük a teljes schengeni övezetet, az Egyesült Királyságot, Szingapúrt és Hongkongot. Az ország nem vet ki személyi jövedelemadót, vagyonadót vagy örökösödési adót."
+        a: "Az útlevél mintegy 155 ország vízummentes vagy vízum-a-határon látogatását teszi lehetővé (Henley Passport Index 2026: 23. hely), köztük a teljes schengeni övezetet, az Egyesült Királyságot, Szingapúrt és Hongkongot. Fontos friss változás: Törökország és Írország MEGSZÜNTETTE a vízummentességet a Saint Kitts és Nevis-i útlevél előtt. Az ország nem vet ki személyi jövedelemadót, vagyonadót vagy örökösödési adót."
+      },
+      {
+        q: "Mennyi költség jön a vételáron felül?",
+        a: "Állami díjak terhelik a kérelmet az ingatlan árán FELÜL. Átvilágítási díj: 10 000 USD a fő kérelmezőre és 7 500 USD minden 16 év feletti családtagra. Az elvi jóváhagyás után fizetendő díj: 25 000 USD a fő kérelmezőre, 15 000 USD a házastársra, 10 000 USD a 18 év alatti, 15 000 USD a 18 év feletti eltartottra. Egy egyedülálló kérelmezőnek ez kb. 35 000 USD, még az ügyvédi és zárási költségek előtt."
       },
       {
         q: "Eladhatom később a megvásárolt ingatlant?",
-        a: "Igen. A jóváhagyott ingatlan jellemzően 5–7 év tartás után továbbértékesíthető, és az új külföldi vevő maga is felhasználhatja ugyanazt az ingatlant állampolgársági kérelméhez — ez adja a program másodlagos piacát. Az állampolgárság az eladás után is megmarad."
+        a: "Igen, de csak a kötelező 7 éves tartási idő letelte után — ezt a hivatalos programfeltételek kifejezetten kimondják. Utána az ingatlan továbbértékesíthető, és az új külföldi vevő maga is felhasználhatja ugyanazt az ingatlant állampolgársági kérelméhez; ez adja a program másodlagos piacát. Az állampolgárság az eladás után is megmarad."
+      },
+      {
+        q: "Kik vonhatók be a családból?",
+        a: "A házastárs, a 30 év alatti gyermekek, valamint az eltartott szülők és nagyszülők. Ez lényegesen tágabb kör, mint a török programnál, ahol csak a házastárs és a 18 év alatti gyermekek vonhatók be."
       },
       {
         q: "Miben más Saint Kitts és Nevis, mint a török program?",
-        a: "Mindkettő ingatlanbefektetéssel ad ÁLLAMPOLGÁRSÁGOT, de más profillal. Törökország magasabb küszöbű (400 000 USD), viszont nagy, likvid ingatlanpiacot és gyorsabb, 3–6 hónapos eljárást kínál, valamint utat az USA E-2 vízumához. Saint Kitts és Nevis alacsonyabb belépővel, adómentes környezettel és erősebb útlevéllel (150+ ország) dolgozik, cserébe a piac kicsi és a kilépés lassabb."
+        a: "Mindkettő ingatlanbefektetéssel ad ÁLLAMPOLGÁRSÁGOT, de más profillal. Törökország küszöbe magasabb (400 000 USD), viszont nagy, likvid ingatlanpiacot, gyorsabb (3–6 hónapos) eljárást, rövidebb (3 éves) tartási időt és utat az USA E-2 vízumához kínál. Saint Kitts és Nevis alacsonyabb belépővel, teljes adómentességgel, tágabb családi körrel és erősebb útlevéllel (kb. 155 ország) dolgozik, cserébe a piac kicsi, a tartási idő 7 év, és a kilépés lassabb."
       }
     ]
   }

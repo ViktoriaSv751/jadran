@@ -28,9 +28,25 @@ export interface CountryInfo {
   goldenVisa?: { minEur: number; kind: "residence" | "citizenship" };
 }
 
+/** Egy sáv a progresszív átírási adóban. */
+export interface TransferTaxBand {
+  /** A sáv felső határa EUR-ban; `null` = a legfelső, nyitott sáv. */
+  upTo: number | null;
+  /** A sáv határa fölötti részre eső kulcs. */
+  rate: number;
+  /** A sáv aljáig felhalmozott fix adóösszeg EUR-ban. */
+  base: number;
+  /** A sáv alsó határa EUR-ban. */
+  from: number;
+}
+
 export interface PurchaseCostRates {
-  /** Ingatlanátírási / vagyonszerzési adó aránya (használt ingatlan). */
+  /** Ingatlanátírási / vagyonszerzési adó aránya (használt ingatlan).
+   *  Progresszív adónál (lásd `transferTaxBands`) ez a LEGALSÓ sáv kulcsa —
+   *  a tényleges összeget mindig a `transferTaxFor()` számolja. */
   transferTaxRate: number;
+  /** Progresszív (sávos) átírási adó. Ha hiányzik, a `transferTaxRate` lineáris. */
+  transferTaxBands?: TransferTaxBand[];
   notaryRate: number;
   notaryFixed: number;
   lawyerRate: number;
@@ -46,7 +62,21 @@ export const COUNTRIES: CountryInfo[] = [
     cities: ["Budva", "Kotor", "Herceg Novi", "Tivat", "Bar", "Ulcinj", "Podgorica", "Cetinje", "Nikšić", "Sutomore"],
     center: [42.44, 18.77],
     zoom: 9,
-    costs: { transferTaxRate: 0.03, notaryRate: 0.005, notaryFixed: 200, lawyerRate: 0.01, agencyRate: 0.03 }
+    costs: {
+      // 2024. január 1. óta PROGRESSZÍV, nem fix 3%: 150 000 €-ig 3%;
+      // 150 000–500 000 € között 4 500 € + az 150 000 € feletti rész 5%-a;
+      // 500 000 € felett 22 000 € + az 500 000 € feletti rész 6%-a.
+      transferTaxRate: 0.03,
+      transferTaxBands: [
+        { from: 0, upTo: 150000, rate: 0.03, base: 0 },
+        { from: 150000, upTo: 500000, rate: 0.05, base: 4500 },
+        { from: 500000, upTo: null, rate: 0.06, base: 22000 }
+      ],
+      notaryRate: 0.005,
+      notaryFixed: 200,
+      lawyerRate: 0.01,
+      agencyRate: 0.03
+    }
   },
   {
     code: "HR",
@@ -107,8 +137,11 @@ export const COUNTRIES: CountryInfo[] = [
     cities: ["Budapest", "Debrecen", "Szeged", "Siófok", "Balatonfüred", "Hévíz", "Pécs", "Győr", "Sopron", "Eger"],
     center: [47.1, 19.5],
     zoom: 7,
-    costs: { transferTaxRate: 0.04, notaryRate: 0.005, notaryFixed: 150, lawyerRate: 0.01, agencyRate: 0.03 },
-    goldenVisa: { minEur: 250000, kind: "residence" }
+    costs: { transferTaxRate: 0.04, notaryRate: 0.005, notaryFixed: 150, lawyerRate: 0.01, agencyRate: 0.03 }
+    // A vendégbefektetői programban KÖZVETLEN lakásvásárlás NEM jogosít: csak
+    // ingatlanalap befektetési jegye (250 000 €) vagy felsőoktatási adomány
+    // (1 000 000 €). A tervezett közvetlen ingatlan-opciót 2025 januárjában
+    // törölték — ezért itt nincs `goldenVisa` mező.
   },
   {
     code: "TH",
@@ -138,8 +171,12 @@ export const COUNTRIES: CountryInfo[] = [
     cities: ["Athína", "Thessaloniki", "Mykonos", "Santorini", "Chania", "Rhodes", "Corfu", "Glyfada", "Kavala", "Paros"],
     center: [38.5, 23.8],
     zoom: 6,
-    costs: { transferTaxRate: 0.031, notaryRate: 0.012, notaryFixed: 300, lawyerRate: 0.012, agencyRate: 0.02 },
-    goldenVisa: { minEur: 250000, kind: "residence" }
+    costs: { transferTaxRate: 0.03, notaryRate: 0.012, notaryFixed: 300, lawyerRate: 0.012, agencyRate: 0.02 },
+    // Sávos küszöb (5100/2024): 800 000 € Attika, Thesszaloniki, Mükonosz,
+    // Szantorini és a 3 100 főnél népesebb szigetek; 400 000 € máshol; 250 000 €
+    // KIZÁRÓLAG nem lakáscélú épület lakássá alakításánál vagy műemlék-felújításnál.
+    // Az általános padlót tároljuk, hogy ne jelezzünk jogosultságot ott, ahol nincs.
+    goldenVisa: { minEur: 400000, kind: "residence" }
   },
   {
     code: "ES",
@@ -205,3 +242,26 @@ export function countryOfCity(city: string | undefined | null): CountryCode | un
 
 /** Minden népszerű város egy listában (kereső autocomplete-hez). */
 export const ALL_CITIES: string[] = COUNTRIES.flatMap((c) => c.cities);
+
+/**
+ * Az átírási adó ÖSSZEGE egy adott vételárra (EUR).
+ *
+ * Montenegró 2024 óta progresszív sávos adót alkalmaz, ezért a „vételár ×
+ * kulcs" képlet ott érdemi hibát ad: egy 600 000 €-s ingatlannál a régi, fix 3%
+ * 18 000 €-t mutatna a valós 28 000 € helyett. Minden kalkulátor ezt hívja.
+ */
+export function transferTaxFor(country: CountryCode, priceEur: number): number {
+  const costs = COUNTRY_BY_CODE[country]?.costs;
+  if (!costs) return 0;
+  const bands = costs.transferTaxBands;
+  if (!bands || bands.length === 0) return Math.round(priceEur * costs.transferTaxRate);
+
+  // A megfelelő sáv: az utolsó olyan, amelynek az alsó határát elérte az ár.
+  let band = bands[0];
+  for (const b of bands) if (priceEur > b.from) band = b;
+  return Math.round(band.base + (priceEur - band.from) * band.rate);
+}
+
+/** Igaz, ha az adott ország átírási adója sávos (a felületnek jelezni kell). */
+export const hasProgressiveTransferTax = (country: CountryCode): boolean =>
+  (COUNTRY_BY_CODE[country]?.costs.transferTaxBands?.length ?? 0) > 0;

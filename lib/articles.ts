@@ -34,7 +34,10 @@ export interface Article {
   /** Egymondatos, önmagában is idézhető válasz — LLM-eknek és a kiemelt találatnak. */
   answer: string;
   category: "citizenship" | "golden-visa" | "guide" | "country";
+  /** Országkalauznál a zászló; pillér-cikknél üres (ott `icon` van). */
   emoji: string;
+  /** Pillér-cikk ikonja a rendszer saját készletéből (components/ui/Icon). */
+  icon?: string;
   /** ISO dátum — az Article JSON-LD dateModified mezője. */
   updated: string;
   readMinutes: number;
@@ -44,7 +47,7 @@ export interface Article {
   keywords: string[];
 }
 
-const UPDATED = "2026-07-01";
+const UPDATED = "2026-07-19";
 
 const fmtEur = (n: number) => `${new Intl.NumberFormat("hu-HU").format(n)} €`;
 
@@ -64,9 +67,10 @@ const PILLARS: Article[] = [
     description:
       "Melyik országban ad ingatlanvásárlás közvetlenül állampolgárságot? A két működő program — Törökország és Saint Kitts és Nevis — küszöbei, határidői és feltételei összehasonlítva.",
     answer:
-      "Ingatlanbefektetéssel ma két országban szerezhető közvetlenül állampolgárság: Törökországban 400 000 USD értékű ingatlannal, jellemzően 3–6 hónap alatt, valamint Saint Kitts és Nevisen kb. 325 000 USD értékű, kormányzatilag jóváhagyott ingatlannal, jellemzően 4–8 hónap alatt. Minden más ismert program — a görög, a magyar vagy a korábbi spanyol Golden Visa — csak tartózkodási engedélyt ad, nem állampolgárságot.",
+      "Ingatlanbefektetéssel ma két országban szerezhető közvetlenül állampolgárság: Törökországban 400 000 USD értékű ingatlannal, jellemzően 3–6 hónap alatt, valamint Saint Kitts és Nevisen kormányzatilag jóváhagyott ingatlannal (325 000 USD-tól társasházi lakás, 600 000 USD-tól önálló ház), 160–180 nap alatt az elvi jóváhagyásig. Minden más ismert program — a görög, a magyar vagy a korábbi spanyol Golden Visa — csak tartózkodási engedélyt ad, nem állampolgárságot.",
     category: "citizenship",
     emoji: "🛂",
+    icon: "shield",
     updated: UPDATED,
     readMinutes: 8,
     keywords: [
@@ -94,11 +98,13 @@ const PILLARS: Article[] = [
           head: ["", "Törökország 🇹🇷", "Saint Kitts és Nevis 🇰🇳"],
           rows: [
             ["Amit kap", "Teljes állampolgárság + útlevél", "Teljes állampolgárság + útlevél"],
-            ["Ingatlan-küszöb", "400 000 USD (~370 000 €)", "kb. 325 000 USD (~300 000 €)"],
-            ["Eljárás ideje", "3–6 hónap", "4–8 hónap"],
-            ["Tartási idő", "3 év", "jellemzően 5–7 év"],
-            ["Ottartózkodás", "Nem kötelező", "Nem kötelező, beutazni sem kell"],
-            ["Vízummentes országok", "110+", "150+ (Schengen, Egyesült Királyság)"],
+            ["Ingatlan-küszöb", "400 000 USD (~370 000 €)", "325 000 USD lakás / 600 000 USD önálló ház"],
+            ["Eljárás ideje", "3–6 hónap", "160–180 nap az elvi jóváhagyásig"],
+            ["Tartási idő", "3 év", "7 év"],
+            ["Ottartózkodás", "Nem kötelező", "Nem kötelező — de KÖTELEZŐ interjú"],
+            ["Bevonható család", "Házastárs + 18 alatti gyermekek", "Házastárs, 30 alatti gyermekek, eltartott szülők és nagyszülők"],
+            ["Állami díjak a vételáron felül", "Értékbecslés + eljárási díjak", "kb. 35 000 USD egyedülálló kérelmezőnek"],
+            ["Vízummentes országok", "kb. 118", "kb. 155 (Schengen, Egyesült Királyság)"],
             ["Program indulása", "2017", "1984 — a világ legrégebbi CBI-ja"],
             ["Jövedelemadó", "Van", "Nincs SZJA, vagyon- és örökösödési adó"],
             ["Ingatlanpiac", "Nagy, likvid, önálló befektetés", "Kicsi, program-vezérelt másodpiac"]
@@ -108,17 +114,18 @@ const PILLARS: Article[] = [
       {
         h: "Törökország: a legnagyobb volumenű program",
         p: [
-          "Legalább 400 000 USD értékű török ingatlant kell megvásárolni, hivatalos értékbecsléssel (SPK-licences értékbecslő) alátámasztva. A tulajdoni lapra bejegyzik a hároméves elidegenítési tilalmat, ezután a kérelmező tartózkodási engedélyt, majd állampolgárságot kap. Az eljárás jellemzően 3–6 hónap, kiterjed a házastársra és a 18 év alatti gyermekekre, és nincs sem ottartózkodási, sem nyelvi feltétel.",
-          "A török útlevél önmagában is értékes: 110 feletti ország vízummentes látogatását teszi lehetővé, és — ez sok befektetőnek a fő motiváció — a török állampolgár jogosulttá válik az amerikai E-2 befektetői vízum kérelmezésére, amely magyar állampolgárként nem elérhető.",
+          "Legalább 400 000 USD értékű török ingatlant kell megvásárolni. Kulcsfontosságú részlet, amit a hirdetések elhallgatnak: nem a szerződéses ár számít, hanem az SPK-engedélyes értékbecslő hivatalos értékbecslése — és a küszöböt egyszerre kell elérnie a bankon át igazoltan kifizetett árnak, az értékbecslésnek és a tulajdoni lapon szereplő értéknek. Magas szerződéses árral nem lehet alacsony értékbecslést „kijavítani”. A tapura bejegyzik a hároméves elidegenítési tilalmat (satılamaz), ezután a kérelmező tartózkodási engedélyt, majd állampolgárságot kap. Az eljárás jellemzően 3–6 hónap, kiterjed a házastársra és a 18 év alatti gyermekekre; felnőtt gyermek és szülő NEM vonható be.",
+          "A török útlevél kb. 118 ország vízummentes látogatását teszi lehetővé, és — ez sok befektetőnek a fő motiváció — a török állampolgár jogosulttá válik az amerikai E-2 befektetői vízum kérelmezésére, amely magyar állampolgárként nem elérhető. Fontos árnyalat: az E-2 nem letelepedési engedély és nem zöldkártya, hanem befektetéshez kötött, megújítandó nem-bevándorló vízum, és honosított állampolgároknál a gyakorlatban több éves állampolgárságot várnak el hozzá.",
           `Gyakorlati megjegyzés: a küszöböt USD-ben mérik, tehát az árfolyam számít. A vásárlás mellékköltsége Törökországban ${transferTaxPct("TR")} tapu-illeték plusz ügyvédi és értékbecslési díjak.`
         ]
       },
       {
         h: "Saint Kitts és Nevis: a legrégebbi és legstabilabb program",
         p: [
-          "A karibi szigetország 1984 óta, megszakítás nélkül működteti programját — a szakma ezt tekinti a CBI „platina szabványának”. A kormány által JÓVÁHAGYOTT (approved) ingatlanprojektben kell kb. 325 000 USD értékű ingatlant vagy részesedést vásárolni; a kérelmet kizárólag hivatalos ügynökön keresztül lehet benyújtani, és szigorú átvilágítás előzi meg.",
-          "A program legerősebb tulajdonsága nem az ár, hanem a feltételek hiánya: nincs letelepedési, nyelvi, vizsga- vagy akár beutazási kötelezettség, az állampolgárság határozatlan időre szól és öröklődik. Az ország nem vet ki személyi jövedelemadót, vagyonadót és örökösödési adót.",
-          "Az ingatlan jellemzően 5–7 év tartás után továbbadható, és az új külföldi vevő ugyanazt az ingatlant ismét felhasználhatja saját állampolgársági kérelméhez — ez tartja életben a másodpiacot. Fontos viszont reálisan látni: ez egy kis, program-vezérelt piac, nem klasszikus lakáspiac, tehát az eladás lassabb lehet, mint Törökországban."
+          "A karibi szigetország 1984 óta, megszakítás nélkül működteti programját — a szakma ezt tekinti a CBI „platina szabványának”. Két ingatlan-szint van: kormány által jóváhagyott fejlesztésben lévő társasházi lakás vagy részesedés 325 000 USD-tól, illetve jóváhagyott önálló családi ház 600 000 USD-tól. Nyílt piacon vásárolt, listán nem szereplő ingatlan NEM jogosít. A kérelmet kizárólag hivatalos ügynökön keresztül lehet benyújtani.",
+          "A feltételek valóban enyhék: nincs letelepedési, ottartózkodási, nyelvi vagy vizsgakövetelmény, az állampolgárság határozatlan időre szól és öröklődik. Egy dolgot viszont fontos tudni, mert a legtöbb ajánlatból hiányzik: a fő kérelmezőnek KÖTELEZŐ interjún kell megjelennie, és a 16 évnél idősebb családtagoktól is kérhetik. Cserébe a bevonható családi kör tág: házastárs, 30 év alatti gyermekek, valamint eltartott szülők és nagyszülők.",
+          "Számoljon a vételáron FELÜL az állami díjakkal: az átvilágítási díj 10 000 USD a fő kérelmezőre és 7 500 USD minden 16 év feletti családtagra, az elvi jóváhagyás után pedig további 25 000 USD a fő kérelmezőre és 15 000 USD a házastársra. Egy egyedülálló kérelmezőnek ez kb. 35 000 USD extra.",
+          "Az ingatlant hivatalosan 7 évig meg kell tartani; utána továbbadható, és az új külföldi vevő ugyanazt az ingatlant ismét felhasználhatja saját állampolgársági kérelméhez — ez tartja életben a másodpiacot. Reálisan látni kell viszont: ez kis, program-vezérelt piac, nem klasszikus lakáspiac, tehát a kilépés lassabb, mint Törökországban. Az útlevél kb. 155 országba ad vízummentes belépést (Henley 2026: 23. hely), de friss változás, hogy Törökország és Írország megszüntette a vízummentességet."
         ]
       },
       {
@@ -134,7 +141,7 @@ const PILLARS: Article[] = [
     faq: [
       {
         q: "Melyik országban lehet ingatlanvásárlással állampolgárságot szerezni?",
-        a: "Két országban: Törökországban 400 000 USD értékű ingatlannal (3–6 hónap), és Saint Kitts és Nevisen kb. 325 000 USD értékű, kormányzatilag jóváhagyott ingatlannal (4–8 hónap). Mindkettő valódi állampolgárságot és útlevelet ad, letelepedési kötelezettség nélkül."
+        a: "Két országban: Törökországban 400 000 USD értékű ingatlannal (3–6 hónap), és Saint Kitts és Nevisen kormányzatilag jóváhagyott ingatlannal — 325 000 USD-tól társasházi lakás, 600 000 USD-tól önálló ház esetén (160–180 nap az elvi jóváhagyásig). Mindkettő valódi állampolgárságot és útlevelet ad, letelepedési kötelezettség nélkül; Saint Kittsen viszont kötelező interjú van, és 7 évig meg kell tartani az ingatlant."
       },
       {
         q: "Lehet EU-s állampolgárságot szerezni ingatlanbefektetéssel?",
@@ -142,7 +149,7 @@ const PILLARS: Article[] = [
       },
       {
         q: "Meg kell tartani az ingatlant az állampolgárság megszerzése után?",
-        a: "Igen, egy ideig. Törökországban három évig nem adható el (ezt a tulajdoni lapra is bejegyzik), Saint Kitts és Nevisen jellemzően 5–7 év a tartási idő. Az állampolgárság a tartási idő letelte és az eladás után is megmarad."
+        a: "Igen, egy ideig. Törökországban három évig nem adható el (ezt a tulajdoni lapra is bejegyzik), Saint Kitts és Nevisen a hivatalos programfeltételek szerint 7 év a tartási idő. Az állampolgárság a tartási idő letelte és az eladás után is megmarad."
       },
       {
         q: "Elveszítem a magyar állampolgárságomat?",
@@ -156,9 +163,10 @@ const PILLARS: Article[] = [
     description:
       "Görögország, Magyarország és a többi program: küszöbök, ottartózkodási feltételek és az, hogy melyik út vezet állampolgársághoz. Friss, összehasonlító áttekintés.",
     answer:
-      "Ingatlanalapú letelepedési (Golden Visa) programot ma az EU-ban Görögország (250 000 €-tól, területenként sávos küszöbbel, ottartózkodási kötelezettség nélkül) és Magyarország (250 000 €-tól, 10 éves engedéllyel) kínál. A spanyol ingatlanalapú Golden Visa 2025 áprilisában megszűnt. Ha a cél maga az útlevél, nem tartózkodási program kell, hanem állampolgársági: Törökország vagy Saint Kitts és Nevis.",
+      "KÖZVETLEN ingatlanvásárlással ma az EU-ban gyakorlatilag csak Görögországban lehet letelepedési engedélyt szerezni: 400 000 €-tól az ország nagy részén, 800 000 €-tól Attikában, Thesszalonikiben és a népszerű szigeteken. A magyar vendégbefektetői programban a közvetlen lakásvásárlás NEM jogosít — ott csak ingatlanalap befektetési jegye (250 000 €) vagy felsőoktatási adomány (1 000 000 €) számít. A spanyol ingatlanalapú Golden Visa 2025. április 3-án megszűnt, Olaszországban pedig az ingatlan kifejezetten ki van zárva a befektetői vízumból. Ha a cél maga az útlevél, nem tartózkodási program kell, hanem állampolgársági: Törökország vagy Saint Kitts és Nevis.",
     category: "golden-visa",
     emoji: "🪪",
+    icon: "globe",
     updated: UPDATED,
     readMinutes: 7,
     keywords: [
@@ -185,20 +193,26 @@ const PILLARS: Article[] = [
           rows: [
             [
               "Görögország 🇬🇷",
-              `${fmtEur(COUNTRY_BY_CODE.GR.goldenVisa!.minEur)}-tól (zónánként sávos)`,
+              "800 000 € (Attika, Thesszaloniki, nagy szigetek) / 400 000 € (máshol) / 250 000 € (csak átminősítés, műemlék)",
               "5 éves, megújítható tartózkodási engedély, teljes családra",
               "Nem kötelező"
             ],
             [
               "Magyarország 🇭🇺",
-              `${fmtEur(COUNTRY_BY_CODE.HU.goldenVisa!.minEur)}-tól`,
-              "10 éves, megújítható vendégbefektetői engedély",
+              "250 000 € ingatlanALAP-jegy vagy 1 000 000 € adomány",
+              "10 éves engedély — KÖZVETLEN lakásvásárlás NEM jogosít",
               "Nem kötelező"
             ],
             [
               "Spanyolország 🇪🇸",
               "—",
-              "MEGSZŰNT: az ingatlanalapú út 2025. áprilisban lezárult",
+              "MEGSZŰNT: az ingatlanalapú út 2025. április 3-án lezárult",
+              "—"
+            ],
+            [
+              "Olaszország 🇮🇹",
+              "—",
+              "NINCS: az ingatlan ki van zárva a befektetői vízumból",
               "—"
             ],
             [
@@ -219,15 +233,17 @@ const PILLARS: Article[] = [
       {
         h: "Görögország: a legismertebb EU-s program",
         p: [
-          "A görög Golden Visa öt évre szól, korlátlanul megújítható amíg a befektetés megmarad, és kiterjed a házastársra, a 21 év alatti gyermekekre és mindkét fél eltartott szüleire. A legerősebb tulajdonsága, hogy nincs minimális ottartózkodási követelmény.",
-          "A küszöb 2024 óta területfüggő: a legkeresettebb övezetekben (Attika, Thesszaloniki, valamint a népszerű szigetek, például Mükonosz és Szantorini) magasabb sáv él, míg az ország többi részén — illetve műemléki vagy ipari épület lakóingatlanná alakítása esetén — továbbra is a 250 000 eurós belépő érvényes. Vásárlás előtt mindig az adott ingatlan konkrét zónabesorolását kell ellenőrizni, nem az általános szabályt."
+          "A görög Golden Visa öt évre szól, megújítható amíg a befektetés megmarad, és kiterjed a házastársra, a 21 év alatti gyermekekre és mindkét fél eltartott szüleire. A legerősebb tulajdonsága, hogy nincs minimális ottartózkodási követelmény.",
+          "A küszöb az 5100/2024 törvény óta három sávos. 800 000 € Attika egész régiójában, Thesszaloniki regionális egységében, Mükonoszon, Szantorinin és minden 3 100 főnél népesebb szigeten. 400 000 € az ország összes többi részén. 250 000 € kizárólag két esetben: nem lakáscélú épület lakássá alakításánál (a beruházást a kérelem benyújtása ELŐTT be kell fejezni), illetve műemléki védettségű épület felújításánál. A 2024-es átmeneti határidők mind lejártak, tehát 2026-ban a teljes küszöb érvényes.",
+          "Két feltétel, ami a legtöbb ajánlatból hiányzik, mégis eldöntheti a befektetést: a 400 és 800 ezer eurós sávban az ingatlannak EGYETLEN egységnek kell lennie, legalább 120 m² fő lakóterülettel (a befektetés nem osztható szét több lakásra), és a Golden Visa alapjául szolgáló ingatlant TILOS rövid távra, Airbnb-jelleggel kiadni. A tilalom megsértése az engedély visszavonását és 50 000 eurós bírságot von maga után. Aki a görög programot turisztikai bérbeadási hozamra tervezte, annak ez alapjaiban írja át a számítást."
         ]
       },
       {
         h: "Magyarország: a 2024-ben újraindított vendégbefektetői program",
         p: [
-          `A magyar Vendégbefektetői Program ingatlanalapon ${fmtEur(COUNTRY_BY_CODE.HU.goldenVisa!.minEur)} befektetéstől ad tíz évre szóló, megújítható tartózkodási engedélyt — ez futamidőben a leghosszabb az EU-ban. Az engedély a családtagokra is kiterjeszthető.`,
-          "Magyar állampolgárnak ez a program értelemszerűen nem releváns; célközönsége a harmadik országbeli befektető. Magyar szemszögből viszont fontos jelzés: a hazai ingatlanpiac ezzel bekerült a nemzetközi befektetői térképre, ami Budapesten és a Balatonnál keresletet támogató tényező."
+          "Itt a legfontosabb tisztázni egy elterjedt félreértést: a magyar Vendégbefektetői Programban KÖZVETLEN LAKÁSVÁSÁRLÁS NEM JOGOSÍT tartózkodási engedélyre. A jogszabály eredetileg tervezett 500 000 eurós közvetlen ingatlan-opcióját 2025 januárjában törölték, még mielőtt hatályba lépett volna. Aki tehát egyszerűen vesz egy budapesti lakást, attól nem kap vendégbefektetői engedélyt.",
+          "Két út maradt. Az egyik 250 000 € értékű befektetési jegy vásárlása egy MNB-nél nyilvántartott ingatlanalapban, amelynek nettó eszközértéke legalább 40%-ban magyar lakóingatlanban van, öt éves tartási kötelezettséggel. A másik 1 000 000 € vissza nem térítendő adomány magyar felsőoktatási intézménynek. Az engedély tíz évre szól és egyszer további tíz évvel hosszabbítható — futamidőben ez a leghosszabb az EU-ban —, a befektetést pedig a vendégbefektetői vízummal való első beutazástól számított 93 napon belül teljesíteni kell.",
+          "Magyar és EU-állampolgárnak ez a program értelemszerűen nem releváns, hiszen szabad mozgás illeti meg; célközönsége a harmadik országbeli befektető."
         ]
       },
       {
@@ -241,7 +257,7 @@ const PILLARS: Article[] = [
     faq: [
       {
         q: "Melyik országban lehet ma Golden Visát kapni ingatlanvásárlással?",
-        a: "Az EU-ban Görögországban (250 000 eurótól, területenként sávos küszöbbel) és Magyarországon (250 000 eurótól, 10 éves engedéllyel). A spanyol ingatlanalapú Golden Visa 2025 áprilisában megszűnt. Az EU-n kívül Törökország és Saint Kitts és Nevis ingatlanprogramja nem tartózkodást, hanem közvetlenül állampolgárságot ad."
+        a: "Közvetlen ingatlanvásárlással gyakorlatilag csak Görögországban: 400 000 eurótól az ország nagy részén, 800 000 eurótól Attikában, Thesszalonikiben és a népszerű szigeteken, 250 000 eurótól pedig kizárólag épület-átminősítésnél vagy műemlék-felújításnál. A magyar programban a közvetlen lakásvásárlás nem számít — ott ingatlanalap-befektetési jegy (250 000 €) vagy felsőoktatási adomány (1 000 000 €) kell. A spanyol ingatlanalapú Golden Visa 2025. április 3-án megszűnt, Olaszországban pedig az ingatlan ki van zárva a befektetői vízumból."
       },
       {
         q: "A Golden Visa ad EU-s állampolgárságot?",
@@ -249,7 +265,7 @@ const PILLARS: Article[] = [
       },
       {
         q: "Kell az országban élni a Golden Visa megtartásához?",
-        a: "A görög és a magyar programnál nincs minimális ottartózkodási követelmény: elég, ha a befektetést megtartja és az engedélyt megújítja. Ez ugyanakkor azt is jelenti, hogy ezek az évek nem számítanak bele a honosításhoz szükséges tartózkodási időbe."
+        a: "A görög és a magyar programnál nincs minimális ottartózkodási követelmény: elég, ha a befektetést megtartja és az engedélyt megújítja. Ez ugyanakkor azt is jelenti, hogy ezek az évek nem számítanak bele a honosításhoz szükséges tartózkodási időbe — a görög honosításhoz például hét év TÉNYLEGES görögországi tartózkodás kell."
       }
     ]
   },
@@ -262,6 +278,7 @@ const PILLARS: Article[] = [
       "A külföldi ingatlanvásárlás vételáron felüli mellékköltsége országonként jelentősen eltér: Albániában gyakorlatilag nincs átírási adó, Montenegróban 3%, Magyarországon és Törökországban 4%, míg Olaszországban 9% (második otthon) és Spanyolországban 6–10%. Ehhez mindenütt hozzájön a közjegyzői díj, az ügyvédi díj és jellemzően 2–5% közvetítői jutalék.",
     category: "guide",
     emoji: "🧾",
+    icon: "wallet",
     updated: UPDATED,
     readMinutes: 6,
     keywords: [
@@ -292,7 +309,7 @@ const PILLARS: Article[] = [
       {
         h: "A legolcsóbb és a legdrágább belépő",
         p: [
-          `A legkedvezőbb tranzakciós költséget Albánia (${transferTaxPct("AL")} átírási adó) és Thaiföld (${transferTaxPct("TH")}) kínálja, őket követi Montenegró és Horvátország ${transferTaxPct("ME")}-kal. A skála másik végén Olaszország áll ${transferTaxPct("IT")}-kal második otthon esetén, valamint Spanyolország, ahol a regionális ITP 6–10% között mozog.`,
+          `A legkedvezőbb tranzakciós költséget Albánia kínálja, ahol a vevő egyáltalán nem fizet értékarányos átírási adót, majd Thaiföld (${transferTaxPct("TH")}) és Szerbia (${transferTaxPct("RS")}) következik. Horvátországban fix ${transferTaxPct("HR")} az illeték. Montenegró 2024 óta SÁVOS rendszert alkalmaz: 150 000 €-ig 3%, efölött 5%, 500 000 € felett 6% — egy 600 000 eurós ingatlannál tehát nem 18 000, hanem 28 000 € az adó. A skála másik végén Olaszország áll ${transferTaxPct("IT")}-kal második otthon esetén, valamint Spanyolország, ahol a regionális ITP kb. 6–11% között mozog.`,
           "Egy gyakori tévedés, hogy a közvetítői jutalékot mindig az eladó fizeti. Ez piaconként eltér: a balkáni és a török piacon a jutalék megosztása vagy vevői viselése is bevett, ezért ezt a foglaló előtt írásban kell tisztázni."
         ]
       },
@@ -330,6 +347,7 @@ const PILLARS: Article[] = [
       "A külföldi ingatlanvásárlás hat lépésből áll: (1) keresés és szűkítés, (2) helyi adóazonosító és bankszámla nyitása, (3) független ügyvéddel végzett jogi átvilágítás a tulajdoni lapon, (4) előszerződés és foglaló (jellemzően 10%), (5) végleges szerződés közjegyző előtt és a vételár kifizetése, (6) tulajdoni bejegyzés a kataszterben. A teljes folyamat jellemzően 4–12 hét.",
     category: "guide",
     emoji: "🧭",
+    icon: "compass",
     updated: UPDATED,
     readMinutes: 7,
     keywords: [

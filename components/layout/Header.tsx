@@ -143,6 +143,11 @@ function AccountMenu({
               <MenuLink href="/compare" label={tr("compare", lang)} badge={compareCount} />
               <MenuLink href="/pricing" label={tr("pricing_nav", lang)} />
               <div className="my-1 h-px bg-ink-100" />
+              {/* Tartalom-oldalak. Korábban CSAK kijelentkezve látszottak, így a
+                  belépett felhasználó egyáltalán nem érte el őket mobilon. */}
+              <MenuLink href="/guide" label={tr("guide", lang)} />
+              <MenuLink href="/tudastar" label={tr("knowledge_base", lang)} />
+              <div className="my-1 h-px bg-ink-100" />
               <MenuLink href="/profile" label={tr("profile", lang)} />
               <MenuLink href="/settings" label={tr("settings", lang)} />
               {user.isAdmin && <MenuLink href="/admin" label={tr("admin_reports_title", lang)} />}
