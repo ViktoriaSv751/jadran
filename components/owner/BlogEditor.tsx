@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useAuth } from "@/lib/store";
 import { supabase } from "@/lib/supabase";
 import { blogSlug, rowToPost, type BlogPost, type BlogSection } from "@/lib/blog";
@@ -63,6 +64,7 @@ const draftToBody = (d: Draft): BlogSection[] =>
 export default function BlogEditor() {
   const { user, ready } = useAuth();
   const isOwner = !!user?.isOwner;
+  const editId = useSearchParams().get("edit");
 
   const [posts, setPosts] = useState<BlogPost[] | null>(null);
   const [draft, setDraft] = useState<Draft | null>(null);
@@ -82,14 +84,38 @@ export default function BlogEditor() {
     if (isOwner) void load();
   }, [isOwner, load]);
 
+  // Mély-link a tartalomból: /owner/blog?edit=<id> → egyből az adott cikket nyitja.
+  useEffect(() => {
+    if (!editId || !posts || draft) return;
+    const p = posts.find((x) => x.id === editId);
+    if (p) setDraft(toDraft(p));
+  }, [editId, posts, draft]);
+
+  /** Élő munkamenetet biztosít az íráshoz. A hosszú böngésző-nyitva-hagyás
+   *  miatt a hozzáférési token lejárhat; itt aktívan frissítjük, és ha nincs
+   *  érvényes session, egyértelmű üzenetet adunk (nem néma bukás). */
+  const ensureSession = async (): Promise<boolean> => {
+    if (!supabase) return false;
+    const { data } = await supabase.auth.getSession();
+    if (data.session) return true;
+    const { data: refreshed } = await supabase.auth.refreshSession();
+    if (refreshed.session) return true;
+    setMsg("A munkamenet lejárt. Jelentkezz ki, majd újra be — utána menthetsz.");
+    return false;
+  };
+
   const save = async () => {
     if (!supabase || !draft) return;
     if (!draft.title.trim()) {
-      setMsg("A cím kötelező.");
+      setMsg("A cím kötelező — adj címet a cikknek.");
       return;
     }
     setSaving(true);
     setMsg("");
+    if (!(await ensureSession())) {
+      setSaving(false);
+      return;
+    }
     const slug = draft.slug || blogSlug(draft.title);
     const row = {
       slug,
@@ -102,23 +128,40 @@ export default function BlogEditor() {
       updated_at: new Date().toISOString()
     };
     const q = draft.id
-      ? supabase.from("blog_posts").update(row).eq("id", draft.id)
-      : supabase.from("blog_posts").insert(row);
-    const { error } = await q;
+      ? supabase.from("blog_posts").update(row).eq("id", draft.id).select()
+      : supabase.from("blog_posts").insert(row).select();
+    const { data, error } = await q;
     setSaving(false);
     if (error) {
-      setMsg(`Mentés sikertelen: ${error.message}`);
+      // Beszédes hibaüzenet a leggyakoribb esetekre.
+      const m = error.message || "";
+      if (/row-level security|permission|policy/i.test(m)) {
+        setMsg("Nincs jogosultság a mentéshez. Ez a tulajdonosi fiók — jelentkezz ki és újra be, hogy frissüljön a jogosultság.");
+      } else if (/duplicate key|unique/i.test(m)) {
+        setMsg("Már van cikk ezzel a webcímmel (slug). Változtasd meg a címet egy kicsit.");
+      } else {
+        setMsg(`Mentés sikertelen: ${m}`);
+      }
+      return;
+    }
+    if (!data || data.length === 0) {
+      setMsg("A mentés nem hozott létre sort (jogosultsági szűrő). Jelentkezz ki és újra be.");
       return;
     }
     setDraft(null);
-    setMsg("Mentve.");
+    setMsg(draft.published ? "Mentve és publikálva — látható a /blog oldalon." : "Piszkozat mentve.");
     await load();
   };
 
   const remove = async (id: string) => {
     if (!supabase) return;
     if (!confirm("Biztosan törlöd ezt a cikket?")) return;
-    await supabase.from("blog_posts").delete().eq("id", id);
+    if (!(await ensureSession())) return;
+    const { error } = await supabase.from("blog_posts").delete().eq("id", id);
+    if (error) {
+      setMsg(`Törlés sikertelen: ${error.message}`);
+      return;
+    }
     await load();
   };
 

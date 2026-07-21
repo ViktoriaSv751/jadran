@@ -91,11 +91,11 @@ export default function ArticleBody({ slug }: { slug: string }) {
   // Az országkalauz szekciói: a lefordított bevezető és kiemelések, majd a
   // nyelvfüggetlen (számokból generált) táblázatok az eredeti cikkből.
   const sections = t?.sections
-    ? t.sections.map((s) => ({ h: s.h, p: s.p, table: s.table ?? undefined }))
+    ? t.sections.map((s) => ({ h: s.h, p: s.p, table: s.table ?? undefined, img: s.img ?? undefined }))
     : countryT
       ? [
-          { h: `${countryT.nameHu}`, p: [countryT.intro], table: undefined },
-          { h: tr("kb_pillars", lang), p: countryT.highlights.map((h) => `• ${h}`), table: undefined },
+          { h: `${countryT.nameHu}`, p: [countryT.intro], table: undefined, img: undefined },
+          { h: tr("kb_pillars", lang), p: countryT.highlights.map((h) => `• ${h}`), table: undefined, img: undefined },
           ...a.sections.filter((s) => !!s.table)
         ]
       : a.sections;
@@ -142,6 +142,18 @@ export default function ArticleBody({ slug }: { slug: string }) {
       {sections.map((s, i) => (
         <section key={i} className="mt-9">
           <h2 className="text-xl font-bold leading-snug text-ink-900">{s.h}</h2>
+          {s.img && (
+            <figure className="mt-4">
+              <img
+                src={s.img.src}
+                alt={s.img.alt}
+                loading="lazy"
+                decoding="async"
+                className="aspect-[16/9] w-full rounded-2xl border border-ink-100 object-cover"
+              />
+              <figcaption className="mt-2 text-xs text-ink-400">{s.img.alt}</figcaption>
+            </figure>
+          )}
           {s.p.map((para, j) => (
             <p key={j} className="mt-3 text-[15px] leading-relaxed text-ink-700">
               {linkify(para, linkUsed, `/tudastar/${a.slug}`)}

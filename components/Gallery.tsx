@@ -56,7 +56,7 @@ export default function Gallery({ images, alt }: { images: string[]; alt: string
               className="w-full shrink-0 snap-center"
               style={{ flex: "0 0 100%" }}
             >
-              <Photo src={img} alt={`${alt} ${i + 1}`} eager={i === 0} className="aspect-[4/3] w-full" />
+              <Photo src={img} alt={`${alt} ${i + 1}`} eager={i === 0} sizes="100vw" className="aspect-[4/3] w-full" />
             </button>
           ))}
         </div>
@@ -91,7 +91,7 @@ export default function Gallery({ images, alt }: { images: string[]; alt: string
               }}
               className="col-span-2 row-span-2 overflow-hidden"
             >
-              <Photo src={images[0]} alt={alt} eager className="h-full w-full transition hover:brightness-95" />
+              <Photo src={images[0]} alt={alt} eager sizes="(max-width: 640px) 100vw, 50vw" className="h-full w-full transition hover:brightness-95" />
             </button>
             {images.slice(1, 5).map((img, i) => (
               <button
@@ -119,7 +119,7 @@ export default function Gallery({ images, alt }: { images: string[]; alt: string
             }}
             className="block w-full overflow-hidden rounded-2xl"
           >
-            <Photo src={images[active]} alt={alt} eager className="h-[440px] w-full" />
+            <Photo src={images[active]} alt={alt} eager sizes="(max-width: 640px) 100vw, 900px" className="h-[440px] w-full" />
           </button>
         )}
       </div>

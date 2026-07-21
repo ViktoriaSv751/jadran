@@ -766,7 +766,11 @@ export const t: Dict = {
 export function tr(key: string, lang: Lang): string {
   const entry = t[key];
   if (!entry) return key;
-  return entry[lang] ?? entry[FALLBACK_SRC[lang]] ?? entry.en ?? key;
+  // A fallback-lánc itt, MENET KÖZBEN dől el — így a nagy `t` szótárt NEM kell
+  // induláskor a főszálon minden nyelvre előre kitölteni (lásd lentebb: a `t` már
+  // nincs az expandDict-listában). A `?? entry.hu` a korábbi expandDict-viselkedést
+  // őrzi meg arra a ritka esetre, ha egy kulcsnak nincs `en`-je.
+  return entry[lang] ?? entry[FALLBACK_SRC[lang]] ?? entry.en ?? entry.hu ?? key;
 }
 
 export const typeLabels: Record<string, L4> = {
@@ -841,6 +845,10 @@ function expandDict(dict: Record<string, Record<string, string | undefined>>): v
   }
 }
 
-[t, typeLabels, conditionLabels, viewLabels, modeLabels, heatingLabels, amenityLabels].forEach((d) =>
+// A nagy `t` szótár SZÁNDÉKOSAN kimarad: a `tr()` menet közben old fel fallbackkel,
+// így megspóroljuk a ~713 kulcs × 14 nyelv előfeltöltést a kliens főszálán (TBT).
+// A kis címke-szótárakat viszont kitöltjük, mert a Filters/SearchModal közvetlenül,
+// fallback NÉLKÜL indexeli őket (`typeLabels[k][lang]`), ezért ott minden nyelv kell.
+[typeLabels, conditionLabels, viewLabels, modeLabels, heatingLabels, amenityLabels].forEach((d) =>
   expandDict(d as unknown as Record<string, Record<string, string | undefined>>)
 );

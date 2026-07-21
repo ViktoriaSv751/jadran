@@ -3,6 +3,7 @@ import { Inter, Fraunces } from "next/font/google";
 import "./globals.css";
 import { LangProvider, CurrencyProvider, AuthProvider } from "@/lib/store";
 import Header from "@/components/layout/Header";
+import OwnerBar from "@/components/owner/OwnerBar";
 import Footer from "@/components/layout/Footer";
 import MobileNav from "@/components/layout/MobileNav";
 import AuthModalHost from "@/components/auth/AuthModalHost";
@@ -90,6 +91,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <CurrencyProvider>
             <AuthProvider>
             <div className="flex min-h-screen flex-col">
+              <OwnerBar />
               <Header />
               <main className="flex-1">{children}</main>
               <Footer />

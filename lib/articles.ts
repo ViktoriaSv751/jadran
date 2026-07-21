@@ -24,6 +24,8 @@ export interface ArticleSection {
   p: string[];
   /** Opcionális összehasonlító táblázat (fejléc + sorok). */
   table?: { head: string[]; rows: string[][] };
+  /** Opcionális illusztráló kép: nyelvfüggetlen `src`, kulcsszavas `alt`. */
+  img?: { src: string; alt: string };
 }
 
 export interface Article {

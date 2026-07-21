@@ -5,6 +5,7 @@ import { getPostBySlug, getPublishedPosts } from "@/lib/blog";
 import { breadcrumbJsonLd, ORG_ID, SITE_ID } from "@/lib/seo";
 import { SITE_URL } from "@/lib/supabase-server";
 import JsonLd from "@/components/JsonLd";
+import OwnerEditLink from "@/components/owner/OwnerEditLink";
 
 // Új (tulajdonos által írt) cikkek dinamikusan jelennek meg — nem kell újradeploy.
 export const dynamic = "force-dynamic";
@@ -79,6 +80,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       <p className="mt-3 text-sm text-ink-500">
         {new Date(post.createdAt).toLocaleDateString("hu-HU")}
       </p>
+
+      <OwnerEditLink postId={post.id} />
+
 
       {post.cover && (
         // eslint-disable-next-line @next/next/no-img-element

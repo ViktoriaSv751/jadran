@@ -33,6 +33,9 @@ export interface ArticleContentSection {
   h: string;
   p: string[];
   table: { head: string[]; rows: string[][] } | null;
+  /** Opcionális illusztráló kép. A `src` nyelvfüggetlen (public/ útvonal), az
+   *  `alt` nyelvenként lefordított, kulcsszavas — ez utóbbi számít az SEO-ban. */
+  img?: { src: string; alt: string } | null;
 }
 
 export interface ArticleContent {

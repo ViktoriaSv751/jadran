@@ -1,0 +1,11 @@
+# Modern böngésző-célpontok. Enélkül a Next az alapértelmezett, konzervatív
+# célra transpilál (ES5-közeli): felesleges polyfillek és helper-kód kerül
+# MINDEN chunkba. Egy modern alsó küszöb natív async/await, class, spread stb.
+# kibocsátását engedi → kisebb és gyorsabban futó JS az egész appban.
+# A küszöb ~99%-os valós lefedettséget tart (Safari 15 = 2021 ősz).
+Chrome >= 90
+Edge >= 90
+Firefox >= 88
+Safari >= 15
+iOS >= 15
+not dead
