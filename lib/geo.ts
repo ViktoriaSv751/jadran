@@ -191,17 +191,24 @@ export const COUNTRIES: CountryInfo[] = [
     // ezért NINCS `goldenVisa` mezője. Ne kerüljön vissza aktív programként.
   },
   {
-    code: "KN",
-    flag: "🇰🇳",
-    nameKey: "country_kn",
-    currency: "USD",
-    cities: ["Basseterre", "Frigate Bay", "Christophe Harbour", "Charlestown", "Oualie Beach", "Dieppe Bay", "Sandy Point", "Cades Bay"],
-    center: [17.3, -62.73],
-    zoom: 11,
-    costs: { transferTaxRate: 0.1, notaryRate: 0.01, notaryFixed: 500, lawyerRate: 0.015, agencyRate: 0.05 },
-    // A világ legrégebbi (1984) állampolgárság-befektetési programja: jóváhagyott
-    // ingatlan ~325 000 USD-tól → ÁLLAMPOLGÁRSÁG (nem csak tartózkodás).
-    goldenVisa: { minEur: 300000, kind: "citizenship" }
+    code: "AE",
+    flag: "🇦🇪",
+    nameKey: "country_ae",
+    currency: "AED",
+    cities: ["Dubai Marina", "Downtown Dubai", "Business Bay", "Jumeirah Village Circle", "Palm Jumeirah", "Dubai Hills Estate", "Jumeirah Lake Towers", "Dubai Creek Harbour", "Al Furjan", "Dubai South"],
+    center: [25.08, 55.19],
+    zoom: 10,
+    // A dubaji ingatlanátírási illeték (DLD transfer fee) 4%: törvény szerint
+    // 2% a vevő + 2% az eladó, a GYAKORLATBAN azonban a vevő fizeti a teljes
+    // 4%-ot. A vevői teljes költség modellezéséhez ezért 4%-ot tárolunk.
+    // Nincs közjegyzői rendszer; a `notaryFixed` a fix DLD-díjakat közelíti EUR-ban
+    // (tulajdoni lap + trustee-díj, ~1200 €). Nincs éves ingatlanadó, SZJA,
+    // tőkenyereség- és bérletiadó magánszemélynek.
+    costs: { transferTaxRate: 0.04, notaryRate: 0.0, notaryFixed: 1200, lawyerRate: 0.0, agencyRate: 0.02 },
+    // 10 éves Golden Visa (megújítható) 2 000 000 AED (~505 000 €) értékű
+    // ingatlantól. TARTÓZKODÁS, NEM állampolgárság — az EAE nem ad állampolgárságot
+    // ingatlanbefektetésért (honosítás kizárólag hatósági jelölés alapján).
+    goldenVisa: { minEur: 505000, kind: "residence" }
   }
 ];
 

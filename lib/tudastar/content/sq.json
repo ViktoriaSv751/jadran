@@ -304,47 +304,38 @@
     }
    ]
   },
-  "KN": {
-   "nameHu": "Shën Kits dhe Nevis",
-   "intro": "Shën Kits dhe Nevis operon programin më të vjetër në botë të shtetësisë me investim (CBI), i cili funksionon pa ndërprerje që nga viti 1984 — ky është „standardi platin” i fushës. Një pronë e MIRATUAR nga qeveria jep drejtpërdrejt SHTETËSI: jo leje qëndrimi, por pasaportë. Ka dy nivele: banesë në bashkëpronësi ose pjesëmarrje në një projekt të miratuar nga 325 000 USD, dhe shtëpi familjare e pavarur e miratuar nga 600 000 USD. Nuk ka kërkesë vendosjeje, gjuhe apo qëndrimi, por aplikanti kryesor DETYROHET të paraqitet në një intervistë. Vendi ishullor nuk vendos tatim mbi të ardhurat personale, tatim mbi pasurinë dhe tatim mbi trashëgiminë, ndërsa pasaporta mundëson vizitimin pa vizë të rreth 155 vendeve (Henley 2026: vendi i 23-të), përfshirë zonën Shengen dhe Mbretërinë e Bashkuar. Prona duhet mbajtur zyrtarisht për 7 vjet.",
+  "AE": {
+   "nameHu": "Dubai (EBA)",
+   "intro": "Dubai është tregu i patundshmërive me qarkullimin më të lartë dhe krejtësisht pa taksa i Gjirit Persik: blerësi i huaj mund të blejë pronë me vlerë të plotë në emrin e vet, me çdo kombësi dhe pa leje qëndrimi, në zonat e caktuara „freehold” (Dubai Marina, Downtown, Palm Jumeirah, Business Bay). Nuk ka taksë vjetore mbi pronën, taksë mbi të ardhurat personale, taksë mbi fitimin kapital, dhe as të ardhurat nga qiraja të personit fizik nuk taksohen. Rendimenti bruto i qirasë sillet mesatarisht rreth 7% në shkallë qyteti — i shquar në krahasim ndërkombëtar —, ndërsa një pronë me vlerë 2 000 000 AED (~505 000 €) jep të drejtën për një Golden Visa 10-vjeçare të rinovueshme. Dy gjëra janë të rëndësishme: jashtë zonave të caktuara i huaji nuk mund të blejë, prandaj para blerjes klasifikimi konkret i pronës duhet verifikuar te Dubai Land Department; ndërsa EBA për pronë NUK jep shtetësi, vetëm qëndrim.",
    "highlights": [
-    "325 000 USD (banesë në bashkëpronësi në një projekt të miratuar) ose 600 000 USD (shtëpi e pavarur e miratuar) → SHTETËSI e plotë dhe pasaportë",
-    "Programi CBI më i vjetër (1984) dhe më i qëndrueshëm në botë",
-    "Nuk ka kërkesë vendosjeje, qëndrimi apo gjuhe — por aplikanti kryesor ka intervistë të DETYRUESHME",
-    "Nuk ka tatim mbi të ardhurat personale, mbi pasurinë dhe mbi trashëgiminë",
-    "Hyrje pa vizë në rreth 155 vende (Shengen, Mbretëria e Bashkuar); në Turqi dhe Irlandë JO më",
-    "Kohëzgjatja zyrtare: 160–180 ditë deri te miratimi parimor (këtyre u shtohet mbyllja e transaksionit dhe lëshimi i pasaportës)",
-    "Afati i detyrueshëm i mbajtjes: 7 vjet — më pas prona mund të rishitet",
-    "PËRVEÇ çmimit të blerjes, tarifat shtetërore: për një aplikant beqar rreth 35 000 USD"
+    "I huaji mund të blejë pronë FREEHOLD në emrin e vet, me çdo kombësi dhe pa leje qëndrimi, në zonat e caktuara",
+    "Nuk ka taksë vjetore mbi pronën, taksë mbi të ardhurat personale, taksë mbi fitimin kapital dhe as taksë mbi qiranë për pronarin person fizik",
+    "Tarifë transferimi prone 4% (zyrtarisht 2% blerësi + 2% shitësi; në praktikë blerësi paguan të gjithën)",
+    "Nga pronat me vlerë 2 000 000 AED (~505 000 €) — Golden Visa 10-vjeçare e rinovueshme, që shtrihet edhe te anëtarët e familjes",
+    "Golden Visa është QËNDRIM, jo shtetësi — EBA nuk jep pasaportë për pronë",
+    "Rendiment bruto qiraje ~7% mesatarisht në shkallë qyteti; dirhami është i lidhur me dollarin",
+    "Jashtë zonave të caktuara i huaji nuk mund të blejë — zona duhet verifikuar te DLD"
    ],
    "faq": [
     {
-     "q": "Si mund të fitohet shtetësia në Shën Kits dhe Nevis me pronë?",
-     "a": "Duhet blerë një pronë e miratuar (approved) nga qeveria: një banesë në bashkëpronësi ose pjesëmarrje në një projekt të miratuar nga 325 000 USD, ose një shtëpi familjare e pavarur e miratuar nga 600 000 USD. Kërkesa mund të paraqitet ekskluzivisht përmes një agjenti zyrtar. Procedura shoqërohet me një verifikim të rreptë; kohëzgjatja zyrtare është 160–180 ditë deri te miratimi parimor (Approval in Principle), të cilave u shtohen ende mbyllja e shitblerjes dhe lëshimi i pasaportës."
+     "q": "A mund të blejë i huaji pronë në Dubai?",
+     "a": "Po. Personi fizik i huaj mund të blejë pronë me vlerë të plotë (freehold) në emrin e vet, me çdo kombësi dhe pa leje qëndrimi, në zonat e caktuara të Dubait — siç janë për shembull Dubai Marina, Downtown, Palm Jumeirah dhe Business Bay. Jashtë këtyre zonave, megjithatë, prona u rezervohet shtetasve të EBA-së dhe të GCC-së, prandaj para blerjes ia vlen të verifikohet klasifikimi konkret i pronës te Dubai Land Department (DLD)."
     },
     {
-     "q": "A duhet jetuar në Shën Kits dhe Nevis për të ruajtur shtetësinë?",
-     "a": "Jo. Programi nuk ka kërkesë vendosjeje, qëndrimi, gjuhe apo provimi, dhe shtetësia jepet për një kohë të pacaktuar, si dhe trashëgohet. Një gjë megjithatë është e rëndësishme të dihet: aplikanti kryesor DETYROHET të paraqitet në një intervistë, dhe kjo mund të kërkohet edhe nga anëtarët e familjes mbi 16 vjeç."
+     "q": "Sa taksa duhen paguar për një pronë në Dubai?",
+     "a": "Gjatë blerjes lind një tarifë transferimi prone prej 4% (DLD transfer fee) — zyrtarisht 2% blerësi dhe 2% shitësi, por në praktikë blerësi paguan të gjithën prej 4%. Përveç kësaj ka një tarifë trustee prej rreth 4 200 AED dhe një tarifë të fletës së pronësisë prej 250 AED. Pronësia, nga ana tjetër, është praktikisht pa taksa: nuk ka taksë vjetore mbi pronën, taksë mbi të ardhurat personale, taksë mbi fitimin kapital, dhe as të ardhurat nga qiraja e banesës të personit fizik nuk taksohen."
     },
     {
-     "q": "Sa vlen pasaporta e Shën Kits dhe Nevisit?",
-     "a": "Pasaporta mundëson vizitimin pa vizë ose me vizë në kufi të rreth 155 vendeve (Henley Passport Index 2026: vendi i 23-të), përfshirë të gjithë zonën Shengen, Mbretërinë e Bashkuar, Singaporin dhe Hong Kongun. Ndryshim i rëndësishëm i fundit: Turqia dhe Irlanda E KANË HEQUR heqjen e vizave për pasaportën e Shën Kits dhe Nevisit. Vendi nuk vendos tatim mbi të ardhurat personale, tatim mbi pasurinë apo tatim mbi trashëgiminë."
+     "q": "A jep Dubai leje qëndrimi për blerjen e një prone?",
+     "a": "Po. Një pronë me vlerë të paktën 2 000 000 AED (~505 000 €) jep të drejtën për një Golden Visa 10-vjeçare të rinovueshme, e cila shtrihet te bashkëshorti/ja, fëmijët (pa kufi moshe) dhe prindërit, dhe nuk ka kërkesë minimale qëndrimi. Pranohet edhe pronë e ngarkuar me hipotekë dhe, me kushte të caktuara, edhe pronë në ndërtim (off-plan). E rëndësishme: kjo është leje qëndrimi, JO shtetësi — EBA nuk jep pasaportë për investim në pronë."
     },
     {
-     "q": "Sa kosto vijnë përveç çmimit të blerjes?",
-     "a": "Kërkesën e rëndojnë tarifat shtetërore PËRVEÇ çmimit të pronës. Tarifa e verifikimit: 10 000 USD për aplikantin kryesor dhe 7 500 USD për çdo anëtar familjeje mbi 16 vjeç. Tarifa që paguhet pas miratimit parimor: 25 000 USD për aplikantin kryesor, 15 000 USD për bashkëshortin/en, 10 000 USD për personin në varësi nën 18 vjeç, 15 000 USD për atë mbi 18 vjeç. Për një aplikant beqar kjo është rreth 35 000 USD, ende para kostove të avokatit dhe të mbylljes."
+     "q": "A mund të fitohet shtetësi me pronë në Dubai?",
+     "a": "Jo. Emiratet e Bashkuara Arabe nuk kanë program shtetësie të bazuar në pronë. Marrja e pasaportës është e mundur vetëm përmes nominimit zyrtar (për investitorë të shquar, mjekë, shkencëtarë, talente), i cili nuk mund të blihet dhe as nuk mund të aplikohet për të. Me investim në pronë në Dubai, Golden Visa 10-vjeçare (qëndrimi) është maksimumi që mund të arrihet; shtetësi me pronë në portofolin tonë ofron Turqia."
     },
     {
-     "q": "A mund ta shes më vonë pronën e blerë?",
-     "a": "Po, por vetëm pasi të ketë kaluar afati i detyrueshëm 7-vjeçar i mbajtjes — këtë e thonë shprehimisht kushtet zyrtare të programit. Më pas prona mund të rishitet, dhe blerësi i ri i huaj mund ta përdorë vetë të njëjtën pronë për kërkesën e tij të shtetësisë; kjo krijon tregun sekondar të programit. Shtetësia mbetet edhe pas shitjes."
-    },
-    {
-     "q": "Cilët anëtarë të familjes mund të përfshihen?",
-     "a": "Bashkëshorti/ja, fëmijët nën 30 vjeç, si dhe prindërit dhe gjyshërit në varësi. Ky është një rreth dukshëm më i gjerë se te programi turk, ku mund të përfshihen vetëm bashkëshorti/ja dhe fëmijët nën 18 vjeç."
-    },
-    {
-     "q": "Në çfarë ndryshon Shën Kits dhe Nevis nga programi turk?",
-     "a": "Të dy japin SHTETËSI me investim në pasuri të paluajtshme, por me profil të ndryshëm. Pragu i Turqisë është më i lartë (400 000 USD), por ajo ofron një treg të madh e likuid të pasurive të paluajtshme, procedurë më të shpejtë (3–6 muaj), afat më të shkurtër mbajtjeje (3 vjet) dhe rrugë drejt vizës E-2 të SHBA-së. Shën Kits dhe Nevis punon me një hyrje më të ulët, përjashtim të plotë tatimor, rreth familjar më të gjerë dhe pasaportë më të fortë (rreth 155 vende), në këmbim tregu është i vogël, afati i mbajtjes është 7 vjet dhe dalja është më e ngadaltë."
+     "q": "Sa rendiment qiraje mund të arrihet në Dubai?",
+     "a": "Rendimenti bruto i qirasë së banesave në Dubai sillet mesatarisht rreth 7% në shkallë qyteti (sipas të dhënave të pavarura në mesin e 2026-ës, rreth 6,9–7,2%), i cili është i shquar në krahasim ndërkombëtar. Në zonat më të përballueshme dhe në zhvillim (për shembull Jumeirah Village Circle, Dubai Sports City) mund të arrihet edhe 7,5–8,5%, ndërsa në lokacionet premium (Downtown, Palm Jumeirah) 5–6%. Nga rendimenti neto duhet zbritur shpenzimi i përbashkët (service charge), i cili sipas lokacionit mund të jetë i konsiderueshëm."
     }
    ]
   }
@@ -687,11 +678,11 @@
         "3%"
        ],
        [
-        "🇰🇳 Shën Kits dhe Nevis",
-        "10%",
-        "1% + 500 €",
-        "1.5%",
-        "5%"
+        "🇦🇪 Dubai (EBA)",
+        "4%",
+        "0% + 1200 €",
+        "0%",
+        "2%"
        ]
       ]
      }

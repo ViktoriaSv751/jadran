@@ -434,7 +434,7 @@ const COUNTRY_SLUG: Record<CountryCode, string> = {
   IT: "ingatlanvasarlas-olaszorszagban",
   GR: "ingatlanbefektetes-gorogorszagban",
   ES: "ingatlanvasarlas-spanyolorszagban",
-  KN: "allampolgarsag-saint-kitts-es-nevis"
+  AE: "ingatlanbefektetes-dubajban"
 };
 
 function countryArticle(code: CountryCode): Article {

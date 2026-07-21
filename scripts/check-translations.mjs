@@ -30,7 +30,9 @@ const REVIEWED = {
   // „a felek felezik" → „reparten al 50 %". Ugyanaz a jelentés.
   es: ["50"],
   // „5 éves" → „quinquennale", „10 éves" → „decennale", „99 éves" → szóalak.
-  it: ["5", "10", "99"]
+  it: ["5", "10", "99"],
+  // Dubaj „10 éves Golden Visa" → görögül „δεκαετής" (szóalak), 4 helyen.
+  el: ["10"]
 };
 import { readFileSync, readdirSync } from "node:fs";
 

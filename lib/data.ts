@@ -176,18 +176,18 @@ export const seedProfiles: Profile[] = [
     joinedAt: "2024-03-21"
   },
   {
-    id: "u-kittitian-kn",
-    email: "info@kittitianestates.kn",
-    name: "Kittitian Estates",
+    id: "u-marina-ae",
+    email: "info@marinaestates.ae",
+    name: "Marina Estates Dubai",
     role: "agency",
-    avatar: "https://picsum.photos/seed/jadran-ag-kittitiankn/200/200",
-    agencyName: "Kittitian Estates",
-    bio: "Jóváhagyott, állampolgárságra jogosító ingatlanok Saint Kitts és Nevisen — Christophe Harbour, Frigate Bay.",
-    phone: "+1 869 100 1000",
-    location: "Basseterre, Saint Kitts és Nevis",
+    avatar: "https://picsum.photos/seed/jadran-ag-marinaae/200/200",
+    agencyName: "Marina Estates Dubai",
+    bio: "Freehold lakások és villák Dubaj kijelölt övezeteiben — Dubai Marina, Downtown, Palm Jumeirah.",
+    phone: "+971 4 100 1000",
+    location: "Dubai, Egyesült Arab Emírségek",
     verified: true,
     responseTime: "egy órán belül",
-    joinedAt: "2023-03-15"
+    joinedAt: "2023-06-12"
   },
   {
     id: "u-hellenic-gr",
@@ -305,7 +305,7 @@ const AGENCY_TO_ID: Record<string, string> = {
   "Bella Casa Italia": "u-bellacasa-it",
   "Hellenic Estates": "u-hellenic-gr",
   "Costa Properties": "u-costa-es",
-  "Kittitian Estates": "u-kittitian-kn"
+  "Marina Estates Dubai": "u-marina-ae"
 };
 
 /* ------------------------------------------------------------------ *

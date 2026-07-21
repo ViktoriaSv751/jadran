@@ -304,47 +304,38 @@
     }
    ]
   },
-  "KN": {
-   "nameHu": "Saint Kitts e Nevis",
-   "intro": "Saint Kitts e Nevis gestisce il più antico programma di cittadinanza per investimento (CBI) al mondo, attivo senza interruzioni dal 1984 — nel settore è considerato lo «standard platino». Un immobile APPROVATO dal governo conferisce direttamente la CITTADINANZA: non un permesso di soggiorno, bensì un passaporto. Esistono due livelli: un'unità condominiale o una quota in un progetto approvato a partire da 325.000 USD, oppure una casa unifamiliare indipendente approvata a partire da 600.000 USD. Non vi sono requisiti di stabilimento, linguistici o di permanenza, tuttavia il richiedente principale è OBBLIGATO a presentarsi a un colloquio. Lo Stato insulare non applica imposte sul reddito delle persone fisiche, imposte patrimoniali né imposte di successione, e il passaporto consente di visitare senza visto circa 155 Paesi (Henley 2026: 23° posto), tra cui lo spazio Schengen e il Regno Unito. L'immobile deve essere ufficialmente mantenuto per 7 anni.",
+  "AE": {
+   "nameHu": "Dubai (EAU)",
+   "intro": "Dubai è il mercato immobiliare a più alto volume di scambi e completamente esentasse del Golfo Persico: l'acquirente straniero può acquisire la piena proprietà a proprio nome, con qualsiasi nazionalità e senza permesso di soggiorno, nelle zone designate „freehold” (Dubai Marina, Downtown, Palm Jumeirah, Business Bay). Non esiste imposta annuale sugli immobili, imposta sul reddito delle persone fisiche né imposta sulle plusvalenze, e nemmeno il reddito da locazione della persona fisica è tassato. Il rendimento lordo da locazione si aggira in media intorno al 7% a livello di città — eccezionale nel confronto internazionale —, mentre un immobile del valore di 2 000 000 AED (~505 000 €) dà diritto a una Golden Visa decennale e rinnovabile. Due cose sono importanti: al di fuori delle zone designate lo straniero non può acquistare, perciò prima dell'acquisto la classificazione del singolo immobile va verificata presso il Dubai Land Department; e gli EAU per un immobile NON concedono la cittadinanza, ma solo il soggiorno.",
    "highlights": [
-    "325.000 USD (unità condominiale in un progetto approvato) o 600.000 USD (casa indipendente approvata) → CITTADINANZA piena e passaporto",
-    "Il programma CBI più antico (1984) e più stabile al mondo",
-    "Nessun requisito di stabilimento, permanenza o linguistico — il richiedente principale ha però un colloquio OBBLIGATORIO",
-    "Nessuna imposta sul reddito delle persone fisiche, patrimoniale o di successione",
-    "Ingresso senza visto in circa 155 Paesi (Schengen, Regno Unito); in Turchia e in Irlanda NON più",
-    "Tempistica ufficiale: 160–180 giorni fino all'approvazione di principio (a cui si aggiungono il rogito e il rilascio del passaporto)",
-    "Periodo obbligatorio di mantenimento: 7 anni — successivamente l'immobile è rivendibile",
-    "OLTRE al prezzo di acquisto, diritti statali: circa 35.000 USD per un richiedente singolo"
+    "Lo straniero può acquistare un immobile FREEHOLD a proprio nome, con qualsiasi nazionalità e senza permesso di soggiorno, nelle zone designate",
+    "Non esiste imposta annuale sugli immobili, IRPEF, imposta sulle plusvalenze né imposta sulla locazione per il proprietario persona fisica",
+    "Imposta di trasferimento immobiliare del 4% (ufficialmente 2% acquirente + 2% venditore; nella pratica l'acquirente paga l'intero importo)",
+    "A partire da immobili da 2 000 000 AED (~505 000 €) — Golden Visa decennale e rinnovabile, estesa anche ai familiari",
+    "La Golden Visa è SOGGIORNO, non cittadinanza — gli EAU non concedono il passaporto per un immobile",
+    "Rendimento lordo da locazione ~7% in media a livello di città; il dirham è ancorato al dollaro",
+    "Al di fuori delle zone designate lo straniero non può acquistare — la zona va verificata presso il DLD"
    ],
    "faq": [
     {
-     "q": "Come si ottiene la cittadinanza di Saint Kitts e Nevis con un immobile?",
-     "a": "Occorre acquistare un immobile approvato (approved) dal governo: un'unità condominiale o una quota in un progetto approvato a partire da 325.000 USD, oppure una casa unifamiliare indipendente approvata a partire da 600.000 USD. La domanda può essere presentata esclusivamente tramite un agente ufficiale. La procedura comporta una due diligence rigorosa; la tempistica ufficiale è di 160–180 giorni fino all'approvazione di principio (Approval in Principle), a cui si aggiungono la chiusura della compravendita e il rilascio del passaporto."
+     "q": "Uno straniero può acquistare un immobile a Dubai?",
+     "a": "Sì. La persona fisica straniera può acquistare un immobile in piena proprietà (freehold) a proprio nome, con qualsiasi nazionalità e senza permesso di soggiorno, nelle zone designate di Dubai — come ad esempio Dubai Marina, Downtown, Palm Jumeirah e Business Bay. Al di fuori di queste zone, invece, la proprietà è riservata ai cittadini degli EAU e del GCC, perciò prima dell'acquisto è opportuno verificare la classificazione del singolo immobile presso il Dubai Land Department (DLD)."
     },
     {
-     "q": "Bisogna vivere a Saint Kitts e Nevis per mantenere la cittadinanza?",
-     "a": "No. Il programma non prevede requisiti di stabilimento, permanenza, linguistici o di esame, e la cittadinanza è a tempo indeterminato ed ereditaria. Una cosa è però importante sapere: il richiedente principale è OBBLIGATO a presentarsi a un colloquio, che può essere richiesto anche ai familiari di età superiore ai 16 anni."
+     "q": "Quante imposte si pagano per un immobile a Dubai?",
+     "a": "All'acquisto sorge un'imposta di trasferimento immobiliare del 4% (DLD transfer fee) — ufficialmente 2% l'acquirente e 2% il venditore, ma nella pratica l'acquirente paga l'intero 4%. A ciò si aggiunge una commissione trustee di circa 4 200 AED e una commissione per il titolo di proprietà di 250 AED. La proprietà, invece, è di fatto esentasse: non esiste imposta annuale sugli immobili, imposta sul reddito delle persone fisiche né imposta sulle plusvalenze, e nemmeno il reddito da locazione abitativa della persona fisica è tassato."
     },
     {
-     "q": "Quanto vale il passaporto di Saint Kitts e Nevis?",
-     "a": "Il passaporto consente di visitare senza visto o con visto all'arrivo circa 155 Paesi (Henley Passport Index 2026: 23° posto), tra cui l'intero spazio Schengen, il Regno Unito, Singapore e Hong Kong. Un'importante novità recente: la Turchia e l'Irlanda hanno SOPPRESSO l'esenzione dal visto per il passaporto di Saint Kitts e Nevis. Il Paese non applica imposte sul reddito delle persone fisiche, imposte patrimoniali né imposte di successione."
+     "q": "Dubai concede un permesso di soggiorno per l'acquisto di un immobile?",
+     "a": "Sì. Un immobile del valore di almeno 2 000 000 AED (~505 000 €) dà diritto a una Golden Visa decennale e rinnovabile, che si estende al coniuge, ai figli (senza limiti di età) e ai genitori, e non prevede un requisito minimo di permanenza. È ammesso anche un immobile gravato da ipoteca e, a determinate condizioni, un immobile in costruzione (off-plan). Importante: si tratta di un permesso di soggiorno, NON della cittadinanza — gli EAU non concedono il passaporto per un investimento immobiliare."
     },
     {
-     "q": "Quali costi si aggiungono al prezzo di acquisto?",
-     "a": "La domanda è gravata da diritti statali OLTRE al prezzo dell'immobile. Diritto di due diligence: 10.000 USD per il richiedente principale e 7.500 USD per ciascun familiare di età superiore ai 16 anni. Diritto dovuto dopo l'approvazione di principio: 25.000 USD per il richiedente principale, 15.000 USD per il coniuge, 10.000 USD per le persone a carico minori di 18 anni e 15.000 USD per quelle maggiori di 18 anni. Per un richiedente singolo si tratta di circa 35.000 USD, ancor prima delle spese legali e di chiusura."
+     "q": "Si può ottenere la cittadinanza con un immobile a Dubai?",
+     "a": "No. Gli Emirati Arabi Uniti non hanno un programma di cittadinanza basato sugli immobili. L'ottenimento del passaporto è possibile esclusivamente tramite designazione ufficiale (per investitori di rilievo, medici, scienziati, talenti), che non può essere acquistata né richiesta. Con un investimento immobiliare a Dubai, la Golden Visa decennale (soggiorno) è il massimo raggiungibile; la cittadinanza tramite un immobile, nel nostro portafoglio, è offerta dalla Turchia."
     },
     {
-     "q": "Posso vendere successivamente l'immobile acquistato?",
-     "a": "Sì, ma solo dopo il decorso del periodo obbligatorio di mantenimento di 7 anni — ciò è espressamente stabilito dalle condizioni ufficiali del programma. Successivamente l'immobile è rivendibile e il nuovo acquirente straniero può a sua volta utilizzare lo stesso immobile per la propria domanda di cittadinanza; è questo che alimenta il mercato secondario del programma. La cittadinanza permane anche dopo la vendita."
-    },
-    {
-     "q": "Chi può essere incluso tra i familiari?",
-     "a": "Il coniuge, i figli minori di 30 anni, nonché i genitori e i nonni a carico. Si tratta di una cerchia sensibilmente più ampia rispetto al programma turco, dove possono essere inclusi solo il coniuge e i figli minori di 18 anni."
-    },
-    {
-     "q": "In cosa differisce Saint Kitts e Nevis dal programma turco?",
-     "a": "Entrambi conferiscono la CITTADINANZA tramite investimento immobiliare, ma con profili diversi. La soglia della Turchia è più elevata (400.000 USD), in cambio offre però un mercato immobiliare ampio e liquido, una procedura più rapida (3–6 mesi), un periodo di mantenimento più breve (3 anni) e una via d'accesso al visto E-2 statunitense. Saint Kitts e Nevis opera con un ingresso più basso, esenzione fiscale totale, una cerchia familiare più ampia e un passaporto più forte (circa 155 Paesi), in cambio il mercato è piccolo, il periodo di mantenimento è di 7 anni e l'uscita è più lenta."
+     "q": "Quale rendimento da locazione si può raggiungere a Dubai?",
+     "a": "Il rendimento lordo da locazione degli appartamenti di Dubai si attesta in media intorno al 7% a livello di città (secondo dati indipendenti di metà 2026, circa 6,9–7,2%), un valore eccezionale nel confronto internazionale. Nelle zone più accessibili ed emergenti (ad esempio Jumeirah Village Circle, Dubai Sports City) si può raggiungere anche il 7,5–8,5%, mentre nelle località premium (Downtown, Palm Jumeirah) il 5–6%. Dal rendimento netto vanno detratte le spese condominiali (service charge), che a seconda della località possono essere consistenti."
     }
    ]
   }
@@ -687,11 +678,11 @@
         "3%"
        ],
        [
-        "🇰🇳 Saint Kitts e Nevis",
-        "10%",
-        "1% + 500 €",
-        "1.5%",
-        "5%"
+        "🇦🇪 Dubai (EAU)",
+        "4%",
+        "0% + 1200 €",
+        "0%",
+        "2%"
        ]
       ]
      }

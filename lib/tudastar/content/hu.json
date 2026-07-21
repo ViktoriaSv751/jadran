@@ -304,47 +304,38 @@
     }
    ]
   },
-  "KN": {
-   "nameHu": "Saint Kitts és Nevis",
-   "intro": "Saint Kitts és Nevis a világ legrégebbi, 1984 óta megszakítás nélkül működő állampolgárság-befektetési programját (CBI) üzemelteti — ez a „platina szabvány” a szakmában. A kormány által JÓVÁHAGYOTT ingatlan közvetlenül ÁLLAMPOLGÁRSÁGOT ad: nem tartózkodási engedélyt, hanem útlevelet. Két szint van: jóváhagyott projektben lévő társasházi lakás vagy részesedés 325 000 USD-tól, jóváhagyott önálló családi ház 600 000 USD-tól. Nincs letelepedési, nyelvi vagy ottartózkodási követelmény, a fő kérelmezőnek azonban KÖTELEZŐ interjún kell megjelennie. A szigetország nem vet ki személyi jövedelemadót, vagyonadót és örökösödési adót, az útlevél pedig mintegy 155 ország vízummentes látogatását teszi lehetővé (Henley 2026: 23. hely), köztük a schengeni övezet és az Egyesült Királyság. Az ingatlant hivatalosan 7 évig meg kell tartani.",
+  "AE": {
+   "nameHu": "Dubai (EAE)",
+   "intro": "Dubaj a Perzsa-öböl legnagyobb forgalmú, teljesen adómentes ingatlanpiaca: a külföldi vevő a kijelölt „freehold” övezetekben (Dubai Marina, Downtown, Palm Jumeirah, Business Bay) bármely nemzetiséggel, saját néven, tartózkodási engedély nélkül vásárolhat teljes értékű tulajdont. Nincs éves ingatlanadó, személyi jövedelemadó, tőkenyereség-adó és a magánszemély bérleti jövedelme sem adózik. A bruttó bérleti hozam városi átlagban 7% körüli — nemzetközi összevetésben kiemelkedő —, a 2 000 000 AED (~505 000 €) értékű ingatlan pedig 10 éves, megújítható Golden Visára jogosít. Fontos két dolog: a kijelölt övezeteken kívül külföldi nem vehet, ezért vásárlás előtt a konkrét ingatlan besorolását a Dubai Land Departmentnél kell ellenőrizni; az EAE pedig ingatlanért NEM ad állampolgárságot, csak tartózkodást.",
    "highlights": [
-    "325 000 USD (társasházi lakás jóváhagyott projektben) vagy 600 000 USD (jóváhagyott önálló ház) → teljes ÁLLAMPOLGÁRSÁG és útlevél",
-    "A világ legrégebbi (1984) és legstabilabb CBI programja",
-    "Nincs letelepedési, ottartózkodási vagy nyelvi követelmény — a fő kérelmezőnek viszont KÖTELEZŐ interjúja van",
-    "Nincs személyi jövedelem-, vagyon- és örökösödési adó",
-    "Vízummentes belépés kb. 155 országba (Schengen, Egyesült Királyság); Törökországba és Írországba már NEM",
-    "Hivatalos átfutás: 160–180 nap az elvi jóváhagyásig (ehhez jön a zárás és az útlevél kiállítása)",
-    "Kötelező tartási idő: 7 év — utána az ingatlan továbbértékesíthető",
-    "A vételáron FELÜL állami díjak: egyedülálló kérelmezőnek kb. 35 000 USD"
+    "Külföldi bármely nemzetiséggel, saját néven vehet FREEHOLD ingatlant a kijelölt övezetekben, tartózkodási engedély nélkül",
+    "Nincs éves ingatlanadó, SZJA, tőkenyereség-adó és bérletiadó a magánszemély tulajdonosnak",
+    "Ingatlanátírási illeték 4% (hivatalosan 2% vevő + 2% eladó; a gyakorlatban a vevő fizeti a teljeset)",
+    "2 000 000 AED (~505 000 €) ingatlantól 10 éves, megújítható Golden Visa — a családtagokra is kiterjed",
+    "A Golden Visa TARTÓZKODÁS, nem állampolgárság — az EAE ingatlanért nem ad útlevelet",
+    "Városi átlagban ~7% bruttó bérleti hozam; a dirham a dollárhoz van rögzítve",
+    "A kijelölt övezeteken kívül külföldi nem vásárolhat — az övezetet a DLD-nél kell ellenőrizni"
    ],
    "faq": [
     {
-     "q": "Hogyan lehet Saint Kitts és Nevisen ingatlannal állampolgárságot szerezni?",
-     "a": "Kormány által jóváhagyott (approved) ingatlant kell vásárolni: jóváhagyott projektben lévő társasházi lakást vagy részesedést 325 000 USD-tól, illetve jóváhagyott önálló családi házat 600 000 USD-tól. A kérelmet kizárólag hivatalos ügynökön keresztül lehet benyújtani. Az eljárás szigorú átvilágítással jár; a hivatalos átfutás 160–180 nap az elvi jóváhagyásig (Approval in Principle), amihez még hozzájön az adásvétel zárása és az útlevél kiállítása."
+     "q": "Vehet külföldi ingatlant Dubajban?",
+     "a": "Igen. Külföldi magánszemély bármely nemzetiséggel, saját néven, tartózkodási engedély nélkül vásárolhat teljes értékű (freehold) ingatlant Dubaj kijelölt övezeteiben — ilyen például a Dubai Marina, a Downtown, a Palm Jumeirah és a Business Bay. Ezeken az övezeteken kívül viszont a tulajdon az EAE és a GCC állampolgárainak van fenntartva, ezért vásárlás előtt a konkrét ingatlan besorolását a Dubai Land Departmentnél (DLD) érdemes ellenőrizni."
     },
     {
-     "q": "Kell Saint Kitts és Nevisen élni az állampolgárság megtartásához?",
-     "a": "Nem. A programnak nincs letelepedési, ottartózkodási, nyelvi vagy vizsgakövetelménye, és az állampolgárság határozatlan időre szól, illetve öröklődik. Egy dolgot viszont fontos tudni: a fő kérelmezőnek KÖTELEZŐ interjún megjelennie, és a 16 évnél idősebb családtagoktól is kérhetik ezt."
+     "q": "Mennyi adót kell fizetni dubaji ingatlan után?",
+     "a": "A vásárláskor 4% ingatlanátírási illeték (DLD transfer fee) merül fel — hivatalosan 2% a vevő és 2% az eladó, a gyakorlatban azonban a vevő fizeti a teljes 4%-ot. Ezen felül van egy kb. 4 200 AED trustee-díj és 250 AED tulajdonilap-díj. A tulajdonlás viszont gyakorlatilag adómentes: nincs éves ingatlanadó, személyi jövedelemadó, tőkenyereség-adó, és a magánszemély lakóingatlan-bérleti jövedelme sem adózik."
     },
     {
-     "q": "Mennyit ér a Saint Kitts és Nevis-i útlevél?",
-     "a": "Az útlevél mintegy 155 ország vízummentes vagy vízum-a-határon látogatását teszi lehetővé (Henley Passport Index 2026: 23. hely), köztük a teljes schengeni övezetet, az Egyesült Királyságot, Szingapúrt és Hongkongot. Fontos friss változás: Törökország és Írország MEGSZÜNTETTE a vízummentességet a Saint Kitts és Nevis-i útlevél előtt. Az ország nem vet ki személyi jövedelemadót, vagyonadót vagy örökösödési adót."
+     "q": "Ad Dubaj tartózkodási engedélyt ingatlanvásárlásért?",
+     "a": "Igen. Legalább 2 000 000 AED (~505 000 €) értékű ingatlan 10 éves, megújítható Golden Visára jogosít, amely kiterjed a házastársra, a gyermekekre (kor nélkül) és a szülőkre is, és nincs minimális ottartózkodási követelmény. Jelzáloggal terhelt és bizonyos feltételekkel épülő (off-plan) ingatlan is elfogadható. Fontos: ez tartózkodási engedély, NEM állampolgárság — az EAE ingatlanbefektetésért nem ad útlevelet."
     },
     {
-     "q": "Mennyi költség jön a vételáron felül?",
-     "a": "Állami díjak terhelik a kérelmet az ingatlan árán FELÜL. Átvilágítási díj: 10 000 USD a fő kérelmezőre és 7 500 USD minden 16 év feletti családtagra. Az elvi jóváhagyás után fizetendő díj: 25 000 USD a fő kérelmezőre, 15 000 USD a házastársra, 10 000 USD a 18 év alatti, 15 000 USD a 18 év feletti eltartottra. Egy egyedülálló kérelmezőnek ez kb. 35 000 USD, még az ügyvédi és zárási költségek előtt."
+     "q": "Lehet Dubajban ingatlannal állampolgárságot szerezni?",
+     "a": "Nem. Az Egyesült Arab Emírségeknek nincs ingatlanalapú állampolgársági programja. Az útlevél megszerzése kizárólag hatósági jelölés útján lehetséges (kiemelt befektetők, orvosok, tudósok, tehetségek számára), amit nem lehet megvásárolni és nem is lehet rá pályázni. Ingatlanbefektetéssel Dubajban a 10 éves Golden Visa (tartózkodás) a legtöbb, ami elérhető; állampolgárságot ingatlannal a portfóliónkban Törökország kínál."
     },
     {
-     "q": "Eladhatom később a megvásárolt ingatlant?",
-     "a": "Igen, de csak a kötelező 7 éves tartási idő letelte után — ezt a hivatalos programfeltételek kifejezetten kimondják. Utána az ingatlan továbbértékesíthető, és az új külföldi vevő maga is felhasználhatja ugyanazt az ingatlant állampolgársági kérelméhez; ez adja a program másodlagos piacát. Az állampolgárság az eladás után is megmarad."
-    },
-    {
-     "q": "Kik vonhatók be a családból?",
-     "a": "A házastárs, a 30 év alatti gyermekek, valamint az eltartott szülők és nagyszülők. Ez lényegesen tágabb kör, mint a török programnál, ahol csak a házastárs és a 18 év alatti gyermekek vonhatók be."
-    },
-    {
-     "q": "Miben más Saint Kitts és Nevis, mint a török program?",
-     "a": "Mindkettő ingatlanbefektetéssel ad ÁLLAMPOLGÁRSÁGOT, de más profillal. Törökország küszöbe magasabb (400 000 USD), viszont nagy, likvid ingatlanpiacot, gyorsabb (3–6 hónapos) eljárást, rövidebb (3 éves) tartási időt és utat az USA E-2 vízumához kínál. Saint Kitts és Nevis alacsonyabb belépővel, teljes adómentességgel, tágabb családi körrel és erősebb útlevéllel (kb. 155 ország) dolgozik, cserébe a piac kicsi, a tartási idő 7 év, és a kilépés lassabb."
+     "q": "Mekkora bérleti hozamot lehet elérni Dubajban?",
+     "a": "A dubaji lakások bruttó bérleti hozama városi átlagban 7% körül alakul (2026 közepén független adatok szerint kb. 6,9–7,2%), ami nemzetközi összevetésben kiemelkedő. A megfizethetőbb, feltörekvő övezetekben (például Jumeirah Village Circle, Dubai Sports City) 7,5–8,5% is elérhető, míg a prémium lokációkban (Downtown, Palm Jumeirah) 5–6%. A nettó hozamból le kell vonni a közös költséget (service charge), amely lokációtól függően jelentős lehet."
     }
    ]
   }
@@ -687,11 +678,11 @@
         "3%"
        ],
        [
-        "🇰🇳 Saint Kitts és Nevis",
-        "10%",
-        "1% + 500 €",
-        "1.5%",
-        "5%"
+        "🇦🇪 Dubai (EAE)",
+        "4%",
+        "0% + 1200 €",
+        "0%",
+        "2%"
        ]
       ]
      }

@@ -24,7 +24,7 @@ const CFG: Record<CountryCode, { ags: [string, string][]; min: number; max: numb
   IT: { ags: [["u-bellacasa-it", "Bella Casa Italia"]], min: 180000, max: 1400000 },
   GR: { ags: [["u-hellenic-gr", "Hellenic Estates"]], min: 120000, max: 820000 },
   ES: { ags: [["u-costa-es", "Costa Properties"]], min: 190000, max: 1250000 },
-  KN: { ags: [["u-kittitian-kn", "Kittitian Estates"]], min: 240000, max: 1140000 }
+  AE: { ags: [["u-marina-ae", "Marina Estates Dubai"]], min: 260000, max: 1900000 }
 };
 
 type L4 = { hu: string; me: string; en: string; ru: string };

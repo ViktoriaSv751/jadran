@@ -304,47 +304,38 @@
     }
    ]
   },
-  "KN": {
-   "nameHu": "Sveti Kits i Nevis",
-   "intro": "Sveti Kits i Nevis sprovodi najstariji program državljanstva putem investicije (CBI) na svijetu, koji neprekidno funkcioniše od 1984. godine — to je „platinasti standard” u struci. Nekretnina ODOBRENA od strane vlade neposredno daje DRŽAVLJANSTVO: ne boravišnu dozvolu, već pasoš. Postoje dva nivoa: stan u etažnoj svojini ili udio u odobrenom projektu od 325 000 USD, te odobrena samostalna porodična kuća od 600 000 USD. Nema uslova naseljavanja, jezika ni boravka, ali je glavni podnosilac zahtjeva OBAVEZAN da se pojavi na intervjuu. Ostrvska država ne naplaćuje porez na dohodak fizičkih lica, porez na imovinu ni porez na nasljeđe, a pasoš omogućava bezvizno putovanje u oko 155 zemalja (Henley 2026: 23. mjesto), među njima u šengensku zonu i Ujedinjeno Kraljevstvo. Nekretnina se zvanično mora zadržati 7 godina.",
+  "AE": {
+   "nameHu": "Dubai (UAE)",
+   "intro": "Dubai je tržište nekretnina s najvećim prometom i potpuno bez poreza na Perzijskom zaljevu: u određenim freehold zonama (Dubai Marina, Downtown, Palm Jumeirah, Business Bay) strani kupac bilo koje nacionalnosti može steći potpuno vlasništvo na svoje ime, bez boravišne dozvole. Nema godišnjeg poreza na nekretnine, poreza na dohodak fizičkih lica, poreza na kapitalnu dobit, a ni prihod od najma fizičkog lica ne oporezuje se. Bruto prinos od najma u gradskom prosjeku iznosi oko 7% — izuzetno u međunarodnom poređenju — a nekretnina vrijedna 2.000.000 AED (~505.000 €) daje pravo na obnovljivu 10-godišnju Golden Visa. Dvije stvari su važne: izvan određenih zona stranac ne može kupovati, pa prije kupovine klasifikaciju konkretne nekretnine treba provjeriti u Dubai Land Departmentu; a UAE za nekretninu NE daje državljanstvo, samo boravak.",
    "highlights": [
-    "325 000 USD (stan u etažnoj svojini u odobrenom projektu) ili 600 000 USD (odobrena samostalna kuća) → puno DRŽAVLJANSTVO i pasoš",
-    "Najstariji (1984) i najstabilniji CBI program na svijetu",
-    "Nema uslova naseljavanja, boravka ni jezika — ali glavni podnosilac zahtjeva ima OBAVEZAN intervju",
-    "Nema poreza na dohodak fizičkih lica, na imovinu ni na nasljeđe",
-    "Bezvizni ulazak u oko 155 zemalja (Šengen, Ujedinjeno Kraljevstvo); u Tursku i Irsku VIŠE NE",
-    "Zvanično trajanje postupka: 160–180 dana do načelnog odobrenja (na to se dodaju zaključenje posla i izdavanje pasoša)",
-    "Obavezni rok držanja: 7 godina — nakon toga se nekretnina može dalje prodati",
-    "PREKO kupoprodajne cijene idu državne naknade: za samca podnosioca zahtjeva oko 35 000 USD"
+    "Stranac bilo koje nacionalnosti može kupiti FREEHOLD nekretninu na svoje ime u određenim zonama, bez boravišne dozvole",
+    "Nema godišnjeg poreza na nekretnine, poreza na dohodak, poreza na kapitalnu dobit ni poreza na najam za vlasnika fizičko lice",
+    "Naknada za prenos nekretnine 4% (zvanično 2% kupac + 2% prodavac; u praksi kupac plaća cijeli iznos)",
+    "Od 2.000.000 AED (~505.000 €) obnovljiva 10-godišnja Golden Visa — obuhvata i članove porodice",
+    "Golden Visa je BORAVAK, a ne državljanstvo — UAE ne daje pasoš za nekretninu",
+    "Bruto prinos od najma ~7% u gradskom prosjeku; dirham je vezan za američki dolar",
+    "Izvan određenih zona stranac ne može kupovati — zonu treba provjeriti u DLD-u"
    ],
    "faq": [
     {
-     "q": "Kako se na Svetom Kitsu i Nevisu može steći državljanstvo putem nekretnine?",
-     "a": "Treba kupiti nekretninu odobrenu (approved) od strane vlade: stan u etažnoj svojini ili udio u odobrenom projektu od 325 000 USD, odnosno odobrenu samostalnu porodičnu kuću od 600 000 USD. Zahtjev se može podnijeti isključivo preko zvaničnog agenta. Postupak podrazumijeva strogu provjeru; zvanično trajanje je 160–180 dana do načelnog odobrenja (Approval in Principle), na šta se još dodaju zaključenje kupoprodaje i izdavanje pasoša."
+     "q": "Može li stranac kupiti nekretninu u Dubaiju?",
+     "a": "Da. Strano fizičko lice bilo koje nacionalnosti može kupiti nekretninu u punom vlasništvu (freehold) na svoje ime, bez boravišne dozvole, u određenim zonama Dubaija — kao što su Dubai Marina, Downtown, Palm Jumeirah i Business Bay. Izvan ovih zona, međutim, vlasništvo je rezervisano za državljane UAE i GCC-a, pa prije kupovine klasifikaciju konkretne nekretnine treba provjeriti u Dubai Land Departmentu (DLD)."
     },
     {
-     "q": "Mora li se živjeti na Svetom Kitsu i Nevisu radi zadržavanja državljanstva?",
-     "a": "Ne. Program nema uslov naseljavanja, boravka, jezika ni ispita, a državljanstvo važi neograničeno i nasljeđuje se. Jedno je ipak važno znati: glavni podnosilac zahtjeva je OBAVEZAN da se pojavi na intervjuu, a to se može tražiti i od članova porodice starijih od 16 godina."
+     "q": "Koliko poreza treba platiti za nekretninu u Dubaiju?",
+     "a": "Prilikom kupovine nastaje naknada za prenos nekretnine od 4% (DLD transfer fee) — zvanično 2% kupac i 2% prodavac, ali u praksi kupac plaća cijelih 4%. Povrh toga postoji trustee naknada od oko 4.200 AED i naknada za vlasnički list od 250 AED. Vlasništvo je, međutim, praktično bez poreza: nema godišnjeg poreza na nekretnine, poreza na dohodak fizičkih lica, poreza na kapitalnu dobit, a ni prihod fizičkog lica od najma stambene nekretnine ne oporezuje se."
     },
     {
-     "q": "Koliko vrijedi pasoš Svetog Kitsa i Nevisa?",
-     "a": "Pasoš omogućava bezvizno putovanje ili vizu na granici u oko 155 zemalja (Henley Passport Index 2026: 23. mjesto), među njima u cijelu šengensku zonu, Ujedinjeno Kraljevstvo, Singapur i Hongkong. Važna svježa promjena: Turska i Irska su UKINULE bezvizni režim za pasoš Svetog Kitsa i Nevisa. Država ne naplaćuje porez na dohodak fizičkih lica, porez na imovinu ni porez na nasljeđe."
+     "q": "Daje li Dubai boravišnu dozvolu za kupovinu nekretnine?",
+     "a": "Da. Nekretnina vrijedna najmanje 2.000.000 AED (~505.000 €) daje pravo na obnovljivu 10-godišnju Golden Visa, koja obuhvata supružnika, djecu (bez obzira na godine) i roditelje, i nema minimalni zahtjev za boravkom. Nekretnina pod hipotekom i, pod određenim uslovima, nekretnina u izgradnji (off-plan) takođe se prihvataju. Važno: ovo je boravišna dozvola, a NE državljanstvo — UAE ne daje pasoš za ulaganje u nekretnine."
     },
     {
-     "q": "Koliki troškovi dolaze preko kupoprodajne cijene?",
-     "a": "Zahtjev se tereti državnim naknadama PREKO cijene nekretnine. Naknada za provjeru: 10 000 USD za glavnog podnosioca zahtjeva i 7 500 USD za svakog člana porodice starijeg od 16 godina. Naknada koja se plaća nakon načelnog odobrenja: 25 000 USD za glavnog podnosioca zahtjeva, 15 000 USD za bračnog druga, 10 000 USD za izdržavano lice mlađe od 18 godina, 15 000 USD za izdržavano lice starije od 18 godina. Za samca podnosioca zahtjeva to je oko 35 000 USD, još prije advokatskih troškova i troškova zaključenja."
+     "q": "Može li se u Dubaiju steći državljanstvo putem nekretnine?",
+     "a": "Ne. Ujedinjeni Arapski Emirati nemaju program državljanstva zasnovan na nekretninama. Pasoš se može steći isključivo putem zvanične nominacije (za istaknute investitore, ljekare, naučnike, talente), koja se ne može kupiti niti se za nju može aplicirati. Ulaganjem u nekretnine u Dubaiju 10-godišnja Golden Visa (boravak) je najviše što je dostupno; državljanstvo putem nekretnine u našem portfoliju nudi Turska."
     },
     {
-     "q": "Mogu li kasnije prodati kupljenu nekretninu?",
-     "a": "Da, ali tek nakon isteka obaveznog roka držanja od 7 godina — to zvanični uslovi programa izričito propisuju. Nakon toga se nekretnina može dalje prodati, a novi strani kupac i sam može iskoristiti istu nekretninu za svoj zahtjev za državljanstvo; to čini sekundarno tržište programa. Državljanstvo ostaje i nakon prodaje."
-    },
-    {
-     "q": "Ko se od porodice može uključiti?",
-     "a": "Bračni drug, djeca mlađa od 30 godina, kao i izdržavani roditelji i djedovi i babe. To je znatno širi krug nego kod turskog programa, gdje se mogu uključiti samo bračni drug i djeca mlađa od 18 godina."
-    },
-    {
-     "q": "Po čemu se Sveti Kits i Nevis razlikuje od turskog programa?",
-     "a": "Oba daju DRŽAVLJANSTVO putem investicije u nekretnine, ali sa različitim profilom. Prag Turske je viši (400 000 USD), ali ona nudi veliko, likvidno tržište nekretnina, brži postupak (3–6 mjeseci), kraći rok držanja (3 godine) i put do američke E-2 vize. Sveti Kits i Nevis radi sa nižim ulaznim pragom, potpunim poreskim oslobođenjem, širim porodičnim krugom i jačim pasošem (oko 155 zemalja), a zauzvrat je tržište malo, rok držanja 7 godina, a izlazak sporiji."
+     "q": "Koliki prinos od najma se može ostvariti u Dubaiju?",
+     "a": "Bruto prinos od najma dubaijskih stanova u gradskom prosjeku iznosi oko 7% (prema nezavisnim podacima sredinom 2026. otprilike 6,9–7,2%), što je izuzetno u međunarodnom poređenju. U pristupačnijim zonama u usponu (na primjer Jumeirah Village Circle, Dubai Sports City) moguće je i 7,5–8,5%, dok je u premium lokacijama (Downtown, Palm Jumeirah) 5–6%. Od neto prinosa treba oduzeti zajedničku naknadu (service charge), koja u zavisnosti od lokacije može biti značajna."
     }
    ]
   }
@@ -687,11 +678,11 @@
         "3%"
        ],
        [
-        "🇰🇳 Sveti Kits i Nevis",
-        "10%",
-        "1% + 500 €",
-        "1.5%",
-        "5%"
+        "🇦🇪 Dubai (UAE)",
+        "4%",
+        "0% + 1200 €",
+        "0%",
+        "2%"
        ]
       ]
      }

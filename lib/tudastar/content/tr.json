@@ -304,47 +304,38 @@
     }
    ]
   },
-  "KN": {
-   "nameHu": "Saint Kitts ve Nevis",
-   "intro": "Saint Kitts ve Nevis, dünyanın en eski, 1984'ten bu yana kesintisiz işleyen yatırım yoluyla vatandaşlık (CBI) programını yürütmektedir — bu, sektörde \"platin standart\" sayılır. Hükümet tarafından ONAYLANMIŞ taşınmaz doğrudan VATANDAŞLIK sağlar: oturma izni değil, pasaport. İki düzey vardır: onaylı bir projede yer alan toplu yapı dairesi veya pay 325.000 USD'den başlar, onaylı müstakil aile evi 600.000 USD'den başlar. Yerleşim, dil veya ikamet koşulu yoktur, ancak ana başvurucunun mülakata katılması ZORUNLUDUR. Ada ülkesi gelir vergisi, servet vergisi ve veraset vergisi almamaktadır; pasaport ise yaklaşık 155 ülkeyi vizesiz ziyaret etmeyi mümkün kılar (Henley 2026: 23. sıra); bunlara Schengen bölgesi ve Birleşik Krallık da dâhildir. Taşınmazın resmen 7 yıl elde tutulması gerekir.",
+  "AE": {
+   "nameHu": "Dubai (BAE)",
+   "intro": "Dubai, Basra Körfezi'nin en yüksek işlem hacimli ve tamamen vergisiz gayrimenkul piyasasıdır: yabancı alıcı, belirlenmiş „freehold” bölgelerinde (Dubai Marina, Downtown, Palm Jumeirah, Business Bay) herhangi bir uyrukla, kendi adına ve oturma izni olmadan tam mülkiyet satın alabilir. Yıllık emlak vergisi, gelir vergisi, sermaye kazancı vergisi yoktur ve gerçek kişinin kira geliri de vergilendirilmez. Brüt kira getirisi şehir genelinde ortalama %7 civarındadır — uluslararası kıyaslamada üstün düzeyde —, 2 000 000 AED (~505 000 €) değerindeki bir gayrimenkul ise 10 yıllık, yenilenebilir bir Golden Visa hakkı verir. İki husus önemlidir: belirlenmiş bölgelerin dışında yabancı satın alamaz, bu nedenle satın almadan önce ilgili gayrimenkulün sınıflandırması Dubai Land Department'ta kontrol edilmelidir; BAE ise gayrimenkul karşılığında vatandaşlık VERMEZ, yalnızca oturma hakkı verir.",
    "highlights": [
-    "325.000 USD (onaylı projede toplu yapı dairesi) veya 600.000 USD (onaylı müstakil ev) → tam VATANDAŞLIK ve pasaport",
-    "Dünyanın en eski (1984) ve en istikrarlı CBI programı",
-    "Yerleşim, ikamet veya dil koşulu yoktur — ancak ana başvurucu için ZORUNLU mülakat vardır",
-    "Gelir, servet ve veraset vergisi yoktur",
-    "Yaklaşık 155 ülkeye vizesiz giriş (Schengen, Birleşik Krallık); Türkiye'ye ve İrlanda'ya artık HAYIR",
-    "Resmî süreç: ilke onayına kadar 160–180 gün (buna kapanış ve pasaportun düzenlenmesi eklenir)",
-    "Zorunlu elde tutma süresi: 7 yıl — sonrasında taşınmaz yeniden satılabilir",
-    "Satış bedelinin ÜZERİNDE devlet ücretleri: tek başvurucu için yaklaşık 35.000 USD"
+    "Yabancı, belirlenmiş bölgelerde herhangi bir uyrukla, kendi adına ve oturma izni olmadan FREEHOLD gayrimenkul satın alabilir",
+    "Gerçek kişi malik için yıllık emlak vergisi, gelir vergisi, sermaye kazancı vergisi ve kira vergisi yoktur",
+    "Gayrimenkul devir harcı %4 (resmen %2 alıcı + %2 satıcı; uygulamada alıcı tamamını öder)",
+    "2 000 000 AED (~505 000 €) değerindeki gayrimenkulden itibaren 10 yıllık, yenilenebilir Golden Visa — aile üyelerini de kapsar",
+    "Golden Visa OTURMA HAKKIDIR, vatandaşlık değil — BAE gayrimenkul karşılığında pasaport vermez",
+    "Şehir genelinde ortalama ~%7 brüt kira getirisi; dirhem dolara sabitlenmiştir",
+    "Belirlenmiş bölgelerin dışında yabancı satın alamaz — bölge DLD'de kontrol edilmelidir"
    ],
    "faq": [
     {
-     "q": "Saint Kitts ve Nevis'te taşınmazla vatandaşlık nasıl kazanılır?",
-     "a": "Hükümet tarafından onaylanmış (approved) bir taşınmaz satın alınmalıdır: onaylı bir projede yer alan toplu yapı dairesi veya pay 325.000 USD'den, onaylı müstakil aile evi ise 600.000 USD'den başlamak üzere. Başvuru yalnızca resmî bir acente aracılığıyla yapılabilir. Süreç sıkı bir güvenlik incelemesi içerir; resmî süre ilke onayına (Approval in Principle) kadar 160–180 gündür, buna satışın kapanışı ve pasaportun düzenlenmesi de eklenir."
+     "q": "Yabancı Dubai'de gayrimenkul satın alabilir mi?",
+     "a": "Evet. Yabancı gerçek kişi, Dubai'nin belirlenmiş bölgelerinde herhangi bir uyrukla, kendi adına ve oturma izni olmadan tam mülkiyetli (freehold) gayrimenkul satın alabilir — örneğin Dubai Marina, Downtown, Palm Jumeirah ve Business Bay gibi. Bu bölgelerin dışında ise mülkiyet BAE ve GCC vatandaşlarına ayrılmıştır, bu nedenle satın almadan önce ilgili gayrimenkulün sınıflandırmasını Dubai Land Department'ta (DLD) kontrol etmek yerinde olur."
     },
     {
-     "q": "Vatandaşlığı korumak için Saint Kitts ve Nevis'te yaşamak gerekir mi?",
-     "a": "Hayır. Programın yerleşim, ikamet, dil veya sınav koşulu yoktur; vatandaşlık süresizdir ve mirasla geçer. Ancak bilinmesi gereken bir husus vardır: ana başvurucunun mülakata katılması ZORUNLUDUR ve 16 yaşından büyük aile üyelerinden de bu istenebilir."
+     "q": "Dubai'deki bir gayrimenkul için ne kadar vergi ödenir?",
+     "a": "Satın alma sırasında %4 gayrimenkul devir harcı (DLD transfer fee) doğar — resmen %2 alıcı ve %2 satıcı, ancak uygulamada alıcı tamamı olan %4'ü öder. Bunun üzerine yaklaşık 4 200 AED trustee ücreti ve 250 AED tapu (mülkiyet belgesi) ücreti vardır. Mülkiyet ise fiilen vergisizdir: yıllık emlak vergisi, gelir vergisi, sermaye kazancı vergisi yoktur ve gerçek kişinin konut kira geliri de vergilendirilmez."
     },
     {
-     "q": "Saint Kitts ve Nevis pasaportu ne kadar değerlidir?",
-     "a": "Pasaport, yaklaşık 155 ülkeyi vizesiz veya kapıda vizeyle ziyaret etmeyi mümkün kılar (Henley Passport Index 2026: 23. sıra); bunlara Schengen bölgesinin tamamı, Birleşik Krallık, Singapur ve Hong Kong dâhildir. Önemli güncel değişiklik: Türkiye ve İrlanda, Saint Kitts ve Nevis pasaportuna yönelik vize muafiyetini KALDIRMIŞTIR. Ülke gelir vergisi, servet vergisi veya veraset vergisi almamaktadır."
+     "q": "Dubai gayrimenkul alımı karşılığında oturma izni veriyor mu?",
+     "a": "Evet. En az 2 000 000 AED (~505 000 €) değerindeki bir gayrimenkul, 10 yıllık, yenilenebilir bir Golden Visa hakkı verir; bu vize eşi, çocukları (yaş sınırı olmaksızın) ve anne-babayı da kapsar ve asgari kalma süresi şartı yoktur. İpotekli gayrimenkul ve belirli koşullarla inşaat halindeki (off-plan) gayrimenkul de kabul edilir. Önemli: bu bir oturma iznidir, vatandaşlık DEĞİLDİR — BAE gayrimenkul yatırımı karşılığında pasaport vermez."
     },
     {
-     "q": "Satış bedelinin üzerine ne kadar masraf eklenir?",
-     "a": "Başvuruya, taşınmazın bedelinin ÜZERİNDE devlet ücretleri yüklenir. Güvenlik inceleme ücreti: ana başvurucu için 10.000 USD ve 16 yaşından büyük her aile üyesi için 7.500 USD. İlke onayından sonra ödenecek ücret: ana başvurucu için 25.000 USD, eş için 15.000 USD, 18 yaşından küçük bakmakla yükümlü olunan kişi için 10.000 USD, 18 yaşından büyük olan için 15.000 USD. Tek bir başvurucu için bu, avukatlık ve kapanış masrafları hariç yaklaşık 35.000 USD'dir."
+     "q": "Dubai'de gayrimenkulle vatandaşlık elde edilebilir mi?",
+     "a": "Hayır. Birleşik Arap Emirlikleri'nin gayrimenkule dayalı bir vatandaşlık programı yoktur. Pasaport edinmek yalnızca resmi bir aday gösterme (öne çıkan yatırımcılar, doktorlar, bilim insanları, yetenekler için) yoluyla mümkündür; bu satın alınamaz ve başvurulamaz. Dubai'de gayrimenkul yatırımıyla ulaşılabilecek en üst nokta 10 yıllık Golden Visa'dır (oturma hakkı); portföyümüzde gayrimenkulle vatandaşlığı Türkiye sunmaktadır."
     },
     {
-     "q": "Satın aldığım taşınmazı daha sonra satabilir miyim?",
-     "a": "Evet, ancak yalnızca zorunlu 7 yıllık elde tutma süresinin dolmasından sonra — bunu resmî program koşulları açıkça belirtmektedir. Sonrasında taşınmaz yeniden satılabilir ve yeni yabancı alıcı aynı taşınmazı kendi vatandaşlık başvurusu için kullanabilir; programın ikincil piyasasını bu oluşturur. Vatandaşlık satıştan sonra da devam eder."
-    },
-    {
-     "q": "Aileden kimler dâhil edilebilir?",
-     "a": "Eş, 30 yaşından küçük çocuklar ve bakmakla yükümlü olunan ebeveynler ile büyükanne ve büyükbabalar. Bu, yalnızca eşin ve 18 yaşından küçük çocukların dâhil edilebildiği Türk programına kıyasla belirgin biçimde daha geniş bir çevredir."
-    },
-    {
-     "q": "Saint Kitts ve Nevis, Türk programından nasıl farklıdır?",
-     "a": "Her ikisi de taşınmaz yatırımıyla VATANDAŞLIK vermektedir, ancak farklı profillerle. Türkiye'nin eşiği daha yüksektir (400.000 USD); buna karşılık büyük ve likit bir taşınmaz piyasası, daha hızlı (3–6 aylık) bir süreç, daha kısa (3 yıllık) bir elde tutma süresi ve ABD E-2 vizesine giden bir yol sunar. Saint Kitts ve Nevis daha düşük bir girişle, tam vergi muafiyetiyle, daha geniş bir aile çevresiyle ve daha güçlü bir pasaportla (yaklaşık 155 ülke) çalışır; buna karşılık piyasa küçüktür, elde tutma süresi 7 yıldır ve çıkış daha yavaştır."
+     "q": "Dubai'de ne kadar kira getirisi elde edilebilir?",
+     "a": "Dubai'deki konutların brüt kira getirisi şehir genelinde ortalama %7 civarında oluşur (2026 ortasında bağımsız verilere göre yaklaşık %6,9–7,2), ki bu uluslararası kıyaslamada üstündür. Daha uygun fiyatlı, yükselen bölgelerde (örneğin Jumeirah Village Circle, Dubai Sports City) %7,5–8,5 dahi elde edilebilirken, prim lokasyonlarda (Downtown, Palm Jumeirah) %5–6'dır. Net getiriden ortak gideri (service charge) düşmek gerekir; bu, lokasyona göre kayda değer olabilir."
     }
    ]
   }
@@ -687,11 +678,11 @@
         "%3"
        ],
        [
-        "🇰🇳 Saint Kitts ve Nevis",
-        "%10",
-        "%1 + 500 €",
-        "%1,5",
-        "%5"
+        "🇦🇪 Dubai (BAE)",
+        "4%",
+        "0% + 1200 €",
+        "0%",
+        "2%"
        ]
       ]
      }

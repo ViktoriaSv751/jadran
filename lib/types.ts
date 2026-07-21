@@ -66,7 +66,7 @@ export type Amenity =
   | "heating";
 
 /** Támogatott országok (globális piac). Részletes taxonómia: lib/geo.ts. */
-export type CountryCode = "ME" | "HR" | "AL" | "RS" | "TR" | "ID" | "HU" | "TH" | "IT" | "GR" | "ES" | "KN";
+export type CountryCode = "ME" | "HR" | "AL" | "RS" | "TR" | "ID" | "HU" | "TH" | "IT" | "GR" | "ES" | "AE";
 
 export interface LocalizedText {
   hu: string;

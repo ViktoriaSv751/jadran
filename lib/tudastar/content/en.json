@@ -1,803 +1,794 @@
 {
-  "countries": {
-    "ME": {
-      "nameHu": "Montenegro",
-      "intro": "Montenegro is one of the most keenly priced coastal markets on the Adriatic: it uses the euro, and foreign buyers may purchase an apartment or a house on effectively the same terms as locals. Property transfer tax has been banded since 2024: 3% up to €150,000, 5% above that, and 6% above €500,000. Demand is concentrated in Budva, Kotor, Tivat (Porto Montenegro) and Herceg Novi; sea-view apartments in the Bay of Kotor are the most sought-after investment product, while Bar and Ulcinj still offer a materially cheaper entry point. The country is an EU candidate, which is a long-term upward driver of prices.",
-      "highlights": [
-        "The euro is the official currency — no exchange-rate risk on the purchase price",
-        "Banded transfer tax since 2024: 3% / 5% / 6% (thresholds at €150,000 and €500,000)",
-        "No transfer tax on new-build — 21% VAT is included in the price instead",
-        "Foreign individuals may freely buy apartments, houses and building plots",
-        "There is NO value threshold for EU citizens seeking residence (€150,000 for third-country nationals since 2026)",
-        "EU candidate country — long-term appreciation potential"
-      ],
-      "faq": [
-        {
-          "q": "Can a foreigner buy property in Montenegro?",
-          "a": "Yes. A foreign individual may freely buy an apartment, a house or a building plot in Montenegro, in their own name and without special permission. Restrictions apply principally to agricultural and forest land — these are typically acquired through a local company."
-        },
-        {
-          "q": "What are the transaction costs of buying property in Montenegro?",
-          "a": "Transfer tax has been banded since 2024: 3% up to €150,000; between €150,000 and €500,000, €4,500 plus 5% of the portion above €150,000; above €500,000, €22,000 plus 6% of the portion above €500,000. The basis is the market value assessed by the tax authority, which is not necessarily the contract price. To this you add the notary fee, roughly 1% in legal fees, and the agency commission (typically 3%, customarily paid by the seller). On the first sale of a new-build property completed after 2003 there is no transfer tax — 21% VAT is included in the price instead."
-        },
-        {
-          "q": "Does Montenegro grant residence in exchange for buying property?",
-          "a": "Yes, a one-year residence permit, renewable annually, may be applied for on the basis of property ownership. From 17 January 2026, a third-country national needs a property with a tax-authority value of at least €150,000 — but THIS VALUE THRESHOLD DOES NOT APPLY to EU, EEA and Swiss citizens, so a Hungarian buyer faces no minimum. The former citizenship-by-investment programme closed on 31 December 2022, so property cannot be used to obtain citizenship in Montenegro today — for that, Turkey and Saint Kitts and Nevis offer a route."
-        }
-      ]
+ "countries": {
+  "ME": {
+   "nameHu": "Montenegro",
+   "intro": "Montenegro is one of the most keenly priced coastal markets on the Adriatic: it uses the euro, and foreign buyers may purchase an apartment or a house on effectively the same terms as locals. Property transfer tax has been banded since 2024: 3% up to €150,000, 5% above that, and 6% above €500,000. Demand is concentrated in Budva, Kotor, Tivat (Porto Montenegro) and Herceg Novi; sea-view apartments in the Bay of Kotor are the most sought-after investment product, while Bar and Ulcinj still offer a materially cheaper entry point. The country is an EU candidate, which is a long-term upward driver of prices.",
+   "highlights": [
+    "The euro is the official currency — no exchange-rate risk on the purchase price",
+    "Banded transfer tax since 2024: 3% / 5% / 6% (thresholds at €150,000 and €500,000)",
+    "No transfer tax on new-build — 21% VAT is included in the price instead",
+    "Foreign individuals may freely buy apartments, houses and building plots",
+    "There is NO value threshold for EU citizens seeking residence (€150,000 for third-country nationals since 2026)",
+    "EU candidate country — long-term appreciation potential"
+   ],
+   "faq": [
+    {
+     "q": "Can a foreigner buy property in Montenegro?",
+     "a": "Yes. A foreign individual may freely buy an apartment, a house or a building plot in Montenegro, in their own name and without special permission. Restrictions apply principally to agricultural and forest land — these are typically acquired through a local company."
     },
-    "HR": {
-      "nameHu": "Croatia",
-      "intro": "Croatia is the mature, EU-member market of the Adriatic: since 2023 it has been part of both the eurozone and the Schengen area, which makes it the lowest-friction coastal purchase available to Hungarian and other EU buyers. As an individual, an EU citizen buys on the same terms as locals — the ministerial consent formerly required of foreigners is no longer needed. Istria (Rovinj, Poreč) drives the near-town segment, Dalmatia (Split, Trogir, Šibenik) the holiday-home segment, and Dubrovnik the premium end. Yields from tourist letting are high because of seasonality, but heavily concentrated in the summer.",
-      "highlights": [
-        "EU and eurozone member state — no consent requirement for EU citizens",
-        "Property transfer tax is a flat 3%; on new-build, 25% VAT is included in the price instead",
-        "Low notary costs: the notary only certifies signatures (a few euros) and does not draft the contract",
-        "Since 2025 there is also an ANNUAL property tax: €0.60–8.00 per m² per year, set by each municipality",
-        "The moratorium on agricultural land expired on 30 June 2023 — EU buyers may now purchase freely",
-        "A strong but highly seasonal short-term letting market"
-      ],
-      "faq": [
-        {
-          "q": "Can a Hungarian citizen buy property in Croatia?",
-          "a": "Yes, without restriction. As both Hungary and Croatia are EU member states, a Hungarian individual may buy an apartment or house in their own name on the same terms as Croatian citizens — no consent from the Ministry of Justice is required. The transitional moratorium on agricultural land expired on 30 June 2023 and was not extended, so as an EU citizen you may now also buy farmland on the same terms as Croatians. Third-country buyers still require reciprocity and ministerial consent."
-        },
-        {
-          "q": "How much tax is payable on a Croatian property purchase?",
-          "a": "On a second-hand property the buyer pays 3% property transfer tax (porez na promet nekretnina) — a flat rate, not banded. On a new-build bought from a VAT-registered developer there is no transfer tax, because the price includes 25% VAT; the two are mutually exclusive. Importantly, the Croatian notary does NOT draft the sale contract, but merely certifies the seller's signature, so notary costs amount to a few euros plus the land registry fee — the '1% notary fee' customary elsewhere is simply wrong here. Legal fees are typically 1–1.5% plus VAT, and agency commission 2–4%. Since 2025 ownership also attracts an annual property tax (€0.60–8.00 per m² per year), from which registered permanent residence and long-term letting of at least 10 months are exempt."
-        },
-        {
-          "q": "Is it worth buying property in Croatia for short-term letting?",
-          "a": "On the Dalmatian and Istrian coast the summer yield is outstanding, but the season is typically limited to 3–4 months, and tourist letting requires a categorisation decision (rješenje o kategorizaciji) and flat-rate taxation. On an annual basis, net yields typically fall between 3% and 5%."
-        }
-      ]
+    {
+     "q": "What are the transaction costs of buying property in Montenegro?",
+     "a": "Transfer tax has been banded since 2024: 3% up to €150,000; between €150,000 and €500,000, €4,500 plus 5% of the portion above €150,000; above €500,000, €22,000 plus 6% of the portion above €500,000. The basis is the market value assessed by the tax authority, which is not necessarily the contract price. To this you add the notary fee, roughly 1% in legal fees, and the agency commission (typically 3%, customarily paid by the seller). On the first sale of a new-build property completed after 2003 there is no transfer tax — 21% VAT is included in the price instead."
     },
-    "AL": {
-      "nameHu": "Albania",
-      "intro": "Albania has the lowest entry threshold of any Mediterranean coastal market: on the Albanian Riviera (Sarandë, Ksamil, Himarë) the per-square-metre price of new-build sea-view apartments is still a fraction of Croatian or Greek levels, while Corfu and the Greek border are a stone's throw away. There is effectively no property transfer tax, and foreign buyers may purchase apartments in their own name. Tourism has grown at record rates in recent years, lifting short-term letting yields into the top tier of the region — in exchange, the market is younger, and legal due diligence (title, building permit) matters here more than anywhere.",
-      "highlights": [
-        "The lowest coastal per-square-metre prices in the region",
-        "The BUYER pays no ad valorem transfer tax — only a fixed notary charge and registration fee",
-        "No VAT on the buyer's side for new-build either: property sales are VAT-exempt",
-        "Foreign individuals may buy apartments and houses in their own name, without consent",
-        "To buy a building PLOT, the value of the development must exceed three times the value of the land",
-        "Foreigners may not buy agricultural land, only lease it"
-      ],
-      "faq": [
-        {
-          "q": "Is it safe to buy property in Albania as a foreigner?",
-          "a": "Legally, yes — a foreign individual may buy an apartment in their own name, and ownership can be registered with the cadastre (ASHK). The risk lies not in acquiring title but in the history behind it: the Albanian market does contain properties with unresolved title or built without permits, so never pay a deposit here without due diligence carried out by an independent lawyer."
-        },
-        {
-          "q": "How much does a coastal apartment in Albania cost?",
-          "a": "In Ksamil and Sarandë, new-build sea-view apartments typically range from €1,200 to €2,200 per m², and entry prices in Vlorë and Durrës are lower still. That is roughly a half to a third of comparable Croatian or Greek stock. Buyer's transaction costs are also the lowest in the region: with no ad valorem transfer tax and no VAT, they typically come to 1–4% of the purchase price."
-        },
-        {
-          "q": "Does Albania grant residence in exchange for buying property?",
-          "a": "Albania has neither a Golden Visa programme nor a citizenship-by-investment programme: the option set out in the 2020 legislation was never launched, has been under a moratorium since March 2023, and following the Court of Justice of the EU's April 2025 ruling on Malta, Albania — a country preparing for EU accession — is unlikely to open it. Property ownership does, however, support an application for a renewable one-year residence permit, leading to permanent residence after five years. The '€100,000 threshold' cited by agents cannot be traced to any legislation — do not plan around it."
-        }
-      ]
-    },
-    "RS": {
-      "nameHu": "Serbia",
-      "intro": "Serbia is primarily an urban rental market rather than a coastal holiday market. The residential markets of Belgrade (particularly Belgrade Waterfront, Vračar and Novi Beograd) and Novi Sad are kept tight by strong internal migration, a growing IT sector and large numbers of arriving foreign workers — which means stable, year-round long-term rental demand, in contrast to the seasonality of Adriatic markets. The mountain resorts (Zlatibor, Kopaonik) are the terrain for two-season apartment investment. Transfer tax is 2.5%, replaced by VAT on new-build.",
-      "highlights": [
-        "Year-round, non-seasonal rental demand in Belgrade and Novi Sad",
-        "Property transfer tax of 2.5% on second-hand property (by law payable by the SELLER, though contracts typically pass it to the buyer)",
-        "On new-build, 10% VAT (residential property) is included in the price instead",
-        "Foreign buyers may purchase on the basis of RECIPROCITY — this is satisfied for Hungarian citizens, but must be checked country by country",
-        "First-home reliefs are available only to Serbian citizens — foreign buyers cannot claim them",
-        "A two-season mountain apartment market (Zlatibor, Kopaonik)"
-      ],
-      "faq": [
-        {
-          "q": "Can a Hungarian citizen buy property in Serbia?",
-          "a": "Yes. Serbia permits property acquisition by foreign individuals on the basis of reciprocity, and reciprocity with Hungary is in place (Hungary appears on the ministry's list), so a Hungarian citizen may buy an apartment or house in their own name. Importantly, reciprocity is assessed COUNTRY BY COUNTRY, not at EU level — so it is not true that 'any EU citizen may buy freely'. EU individuals are in principle entitled to buy agricultural land, but subject to cumulative conditions (10 years of local residence, 3 years of cultivation, a 2-hectare cap) that are all but impossible to meet in practice."
-        },
-        {
-          "q": "What rental yield can be achieved in Belgrade?",
-          "a": "Gross yields on long-term residential letting in Belgrade typically run between 4% and 6%, higher than in most EU capitals, and demand is year-round — it does not depend on the tourist season."
-        },
-        {
-          "q": "What does buying property in Serbia cost?",
-          "a": "On second-hand property, transfer tax is 2.5% (porez na prenos apsolutnih prava). The law imposes it on the SELLER, but contracts almost always shift it to the buyer — the seller nonetheless remains liable, so it is worth verifying that the payment has been made. On the first sale of a new-build completed after 2005, VAT applies in place of transfer tax: 10% on residential property, 20% on garages and commercial premises. Notary fees follow a banded tariff (a few hundred euros on an average apartment — the '1–2% notary fee' figure is wrong), plus legal fees and 2–4% agency commission. Only Serbian citizens qualify for the first-home tax exemption and VAT refund."
-        }
-      ]
-    },
-    "TR": {
-      "nameHu": "Turkey",
-      "intro": "Turkey operates the world's highest-volume property-based citizenship programme: by buying property worth USD 400,000 and holding it for three years, the investor and their family can obtain Turkish CITIZENSHIP — not merely a residence permit — typically within 3 to 6 months and with no residence requirement. The Turkish passport gives visa-free entry to roughly 118 countries and opens the route to the US E-2 investor visa. The market rests on two legs: Istanbul (urban letting and capital growth) and the Mediterranean coast (Antalya, Alanya, Bodrum, Fethiye) for holiday and rental use. Transfer tax is 4%, and fixing the purchase price in foreign currency is mandatory under the programme.",
-      "highlights": [
-        "USD 400,000 property purchase → Turkish CITIZENSHIP within 3–6 months",
-        "No residence, language or settlement requirement",
-        "The whole family (spouse + children under 18) can be included",
-        "The property must be held for 3 years, after which it can be sold freely",
-        "Visa-free entry to roughly 118 countries; a route to the US E-2 investor visa"
-      ],
-      "faq": [
-        {
-          "q": "How can Turkish citizenship be obtained by buying property?",
-          "a": "You must buy Turkish property worth at least USD 400,000 and undertake not to sell it for three years — this is recorded on the title deed (tapu) as a 'satılamaz' (not for sale) annotation. Importantly, what counts is not the contract price but the official valuation by an appraiser licensed by the SPK; the threshold must be met by the price actually paid (evidenced through a bank), by the valuation, and by the value stated on the tapu alike. The residence permit and citizenship applications can then be submitted; the full process typically takes 3–6 months and extends to the spouse and children under 18."
-        },
-        {
-          "q": "Do you have to live in Turkey to obtain citizenship?",
-          "a": "No. The Turkish citizenship-by-investment programme has no residence, language or examination requirement — you do not need to move to the country, and most of the application can in fact be handled by an authorised lawyer."
-        },
-        {
-          "q": "Can I sell the property after obtaining citizenship?",
-          "a": "Yes, but only once the mandatory three-year holding period has elapsed. Citizenship is retained thereafter — Turkish citizenship is not revoked because the property has been sold."
-        },
-        {
-          "q": "What are the transaction costs of buying property in Turkey?",
-          "a": "4% tapu (transfer) duty, roughly 0.5% in notary and translation fees, legal fees of around 1.2%, and typically 2% agency commission. Under the citizenship programme you must add the mandatory valuation and the official processing fees."
-        }
-      ]
-    },
-    "ID": {
-      "nameHu": "Bali (Indonesia)",
-      "intro": "Bali is a strong short-term letting market, but the real numbers are far more modest than advertised yields suggest: independent booking data put the average daily rate in Canggu at around USD 216, while occupancy is only about 38% and supply is expanding by 40% a year. Realistically, you should budget for 6–9% gross and 3–5% net, not the 10–15% quoted in brochures. The other key question is the form of ownership: a foreign individual CANNOT acquire freehold (Hak Milik) title in Indonesia. There are three legal routes: a contractual leasehold right (Hak Sewa, typically 25–30 years), a Hak Pakai right of use tied to a residence permit (30 + 20 + 30 = up to 80 years), or a Hak Guna Bangunan right to build held through an Indonesian PT PMA company (likewise 80 years). In Bali, choosing the legal structure matters more than choosing the property.",
-      "highlights": [
-        "Realistic yields based on independent data: 6–9% gross, 3–5% net (10–15% is a marketing figure)",
-        "Foreigners CANNOT acquire freehold (Hak Milik) title — this is a constitutional restriction",
-        "Hak Sewa leasehold right: available without a residence permit, typically 25–30 years",
-        "Hak Pakai and PT PMA-held Hak Guna Bangunan: 30 + 20 + 30, up to 80 years in total",
-        "DANGER: the 'nominee' structure (freehold registered in an Indonesian proxy's name) is NULL AND VOID UNDER THE LAW",
-        "If a Hak Pakai owner's residence permit expires, they must sell the property within one year",
-        "Buyer's transaction costs: 2–4% on a leasehold right, 7–9% on Hak Pakai (because of 5% BPHTB)"
-      ],
-      "faq": [
-        {
-          "q": "Does Indonesia grant residence in exchange for buying property?",
-          "a": "Only in a limited way. The property-based branch of the Indonesian Golden Visa requires an investment of USD 1,000,000 and applies EXCLUSIVELY to strata-title apartments with appropriate title — villas on individual plots do not qualify. There is also a 'second home' visa, but the official site publishes no specific value threshold, so the figures quoted by agents should be treated with caution. Indonesia has no citizenship-by-investment programme."
-        },
-        {
-          "q": "Can a foreigner buy property in Bali?",
-          "a": "A foreign individual cannot acquire full freehold (Hak Milik) title in Indonesia — the 1960 basic law reserves it for Indonesian citizens. There are three legal solutions: a contractual leasehold right (Hak Sewa, typically 25–30 years, with no residence permit required), a Hak Pakai right of use (tied to a valid KITAS/KITAP residence permit, 30 + 20 + 30 = up to 80 years), and a Hak Guna Bangunan right to build held by a foreign-owned Indonesian company (PT PMA, likewise 80 years). VERY IMPORTANT: the 'nominee' structure frequently sold in Bali, under which an Indonesian citizen holds the freehold 'for your benefit', is NULL AND VOID under the law — it is unenforceable in court, and the property remains with the proxy or with the state."
-        },
-        {
-          "q": "What yield does a Bali villa produce?",
-          "a": "Less than advertised. According to independent booking data, in Canggu — where close to 4,000 active listings compete — the average daily rate is around USD 216 and annual occupancy is about 38%, which works out at average revenue of roughly USD 23,700 a year. From that you must deduct villa management (15–20%), maintenance and tax. Realistically, plan for 6–9% gross and 3–5% net. Promises of 10–15% net come from sales materials and are not borne out by market data — supply is growing at over 40% a year while demand is flat, so owners are conceding 10–30% off asking prices."
-        },
-        {
-          "q": "What happens when the leasehold expires?",
-          "a": "A well-drafted lease contains an extension option at a pre-agreed or index-linked price. That is precisely the most important check before buying: how many years remain, what the extension right is worth, and how the landowner's consent is secured. Without this, the value of the investment declines year after year. Hak Pakai carries a further trap: if the owner's residence permit expires and is not renewed, they are obliged to sell the property within one year, failing which it may be put up for state auction."
-        }
-      ]
-    },
-    "HU": {
-      "nameHu": "Hungary",
-      "intro": "Hungary relaunched its investor residence programme in 2024, but one important misconception needs clearing up: under the Guest Investor Programme, BUYING A HOME DIRECTLY DOES NOT QUALIFY for a residence permit. The planned €500,000 direct property option was deleted in January 2025 before it ever took effect. Two routes remain: €250,000 of units in a real estate fund registered with the Hungarian National Bank (MNB) whose net asset value is at least 40% invested in Hungarian residential property, with a five-year holding requirement; or a €1,000,000 non-refundable donation to a Hungarian higher education institution. The Hungarian property market has two engines, Budapest and Lake Balaton; the transfer duty on property acquired for consideration is 4% up to one billion forints.",
-      "highlights": [
-        "ATTENTION: buying a home directly DOES NOT QUALIFY for a guest investor residence permit",
-        "Only real estate fund units (€250,000, 5-year holding) or a higher education donation (€1,000,000) count under the programme",
-        "The permit runs for 10 years and can be extended once by a further 10 years",
-        "Transfer duty on property acquired for consideration is 4% up to one billion forints and 2% above that (capped at HUF 200 million per property)",
-        "5% VAT on new homes (apartments up to 150 m², houses up to 300 m²) until the end of 2026",
-        "Budapest: year-round yields underpinned by student and tenant demand",
-        "Lake Balaton: a domestic holiday market in sustained appreciation"
-      ],
-      "faq": [
-        {
-          "q": "Can I obtain Hungarian residence if I buy an apartment in Hungary?",
-          "a": "No. This is the most common misconception about the Hungarian programme. Under the Guest Investor Programme, buying an apartment or house directly does NOT count as an investment: the planned €500,000 direct property option was deleted in January 2025 before it took effect. There are two options: buying €250,000 of units in a real estate fund registered with the MNB that invests at least 40% in Hungarian residential property (with a 5-year holding requirement), or a €1,000,000 donation to a Hungarian higher education institution. The permit runs for 10 years and can be extended once by a further 10 years. Hungarian and EU citizens of course have no need for it — they enjoy freedom of movement."
-        },
-        {
-          "q": "How much duty is payable on a Hungarian property purchase?",
-          "a": "The transfer duty on property acquired for consideration is 4% on the portion of market value up to one billion forints and 2% on the portion above, capped at HUF 200 million per property. On a new home bought from a developer, the duty is waived up to a value of HUF 15 million, with 4% payable on the excess above that. Reliefs or exemptions may be claimed by young first-time buyers, on purchases using CSOK, and where the sale and purchase take place within five years of each other — in which case duty is payable only on the price difference. VAT on new homes is 5% rather than 27%, for apartments up to 150 m² and houses up to 300 m², until the end of 2026."
-        },
-        {
-          "q": "What rental yield is achievable in Budapest?",
-          "a": "Gross yields on long-term residential letting in Budapest are typically 4–6%, and can be higher on small flats in the centre near the universities. Short-term letting yields more, but is subject to rules that differ from district to district."
-        }
-      ]
-    },
-    "TH": {
-      "nameHu": "Thailand",
-      "intro": "Of the South-East Asian markets, Thailand offers foreigners the most predictable ownership structure: a foreign individual may acquire a condominium unit IN THEIR OWN NAME, as freehold — provided that no more than 49% of the total area of the condominium in question is in foreign hands. Foreigners may not, however, own land or a house together with its land; there, a long-term lease or a corporate structure is customary. Bangkok is the urban letting market, Phuket and Koh Samui the tourist-yield markets, and Chiang Mai the market for long-staying digital nomads.",
-      "highlights": [
-        "Condominium units can be acquired freehold, in your own name, as a foreigner",
-        "A 49% foreign quota per condominium, measured by FLOOR AREA — to be verified in writing before buying",
-        "The purchase price must be remitted from abroad in foreign currency (no transfer without an FET certificate)",
-        "Foreigners may not own land; the statutory maximum for a registrable lease is 30 years",
-        "The '30+30+30' extension is only a contractual promise — the courts have not enforced it against a new owner",
-        "Transfer fee of 2%, customarily split between the parties — the buyer's total cost is typically 1–2%",
-        "ATTENTION: the 0.01% reduced fee applies ONLY to Thai citizens, not to foreign buyers"
-      ],
-      "faq": [
-        {
-          "q": "Can a foreigner buy property in Thailand?",
-          "a": "A condominium unit, yes — in your own name, as freehold — provided that no more than 49% of the building's registered saleable floor area is in foreign ownership. The purchase price must be remitted from abroad in foreign currency, and the Land Department will not register title without the FET certificate evidencing this. A foreign individual may not own land, or a house built on land; in such cases a lease registrable for a maximum of 30 years, a usufruct, or a Thai-majority company are the available options. Caution: a Thai-majority company is lawful only with genuine Thai owners — a nominee structure breaches the Foreign Business Act, and the authorities actively investigate it."
-        },
-        {
-          "q": "Is it true that Thailand is raising the foreign quota to 75% and leases to 99 years?",
-          "a": "No, this is NOT the law at present. In 2024 the government approved only that the two proposals be examined; no legislation ever came of them. The 99-year lease plan was formally removed from the agenda in September 2025. As of mid-2026, the rule in force remains a 49% foreign quota and a 30-year maximum registrable lease. Anyone buying a property priced on a 99-year horizon is paying for a right that does not exist."
-        },
-        {
-          "q": "What does the 49% foreign quota mean?",
-          "a": "In every Thai condominium, no more than 49% of the registered saleable floor area may be in foreign ownership — the limit is therefore proportional to floor area, not to the number of units. Before buying, you must obtain written confirmation from the condominium's management that there is still room within the quota; without it the unit cannot be transferred into a foreign buyer's name, and the deposit can easily become stuck."
-        },
-        {
-          "q": "What are the transaction costs of buying in Thailand?",
-          "a": "A 2% transfer fee on the official assessed value, customarily split between the parties. The seller bears the specific business tax (3.3% where the property has been held for less than five years) or stamp duty instead (0.5% where held for at least five years), plus withholding tax. The parties' combined costs typically come to 6–8% of the purchase price, but under the customary split the FOREIGN BUYER's share is only about 1–2%, including legal and due diligence fees. Importantly, the much-cited 0.01% reduced transfer fee applies exclusively to Thai citizens — foreign buyers and Thai companies pay the full 2%."
-        }
-      ]
-    },
-    "IT": {
-      "nameHu": "Italy",
-      "intro": "Italy is the EU's deepest and most differentiated holiday and urban property market: from the premium segment of Lake Como and Tuscany, through Milan's rental market, to the '€1 house' schemes of the south, every price level is available. EU citizens may buy without restriction. Taxation is the key: transfer tax on a second-hand property bought from a private individual is 9% (for a second home), but can fall to 2% for a buyer who becomes resident, and those relocating from abroad can access the €200,000 annual flat tax on foreign income.",
-      "highlights": [
-        "EU member state — no purchase restrictions for EU citizens",
-        "Transfer tax of 9% on a second home, 2% if it becomes your 'prima casa' (main home); minimum €1,000",
-        "When buying from a private individual, the tax base is the cadastral value (prezzo-valore), typically well below the purchase price",
-        "VAT on a new property bought from a developer: 4% main home, 10% second home, 22% luxury category",
-        "There is NO property-based Golden Visa — property is expressly excluded from the Italian investor visa",
-        "Flat tax on foreign income for new residents: €300,000 a year from 1 January 2026"
-      ],
-      "faq": [
-        {
-          "q": "How much tax does a buyer pay on an Italian property purchase?",
-          "a": "On a second-hand property bought from a private individual, transfer tax (imposta di registro) is 9% where it is a second home, and only 2% where the buyer registers it as their main home within 18 months; the minimum in both cases is €1,000. In sales between private individuals, the tax base may on request be the cadastral value (prezzo-valore), which is typically well below the actual purchase price — a meaningful saving. To this are added two fixed charges of €50 each. On a new property bought from a developer within 5 years of completion, VAT applies to the purchase: 4% for a main home, 10% for a second home, and 22% in the A/1, A/8 and A/9 luxury cadastral categories, plus three fixed charges of €200 each."
-        },
-        {
-          "q": "Can a Hungarian citizen buy property in Italy?",
-          "a": "Yes, without restriction — both countries are EU member states, so a Hungarian buyer purchases on the same terms as Italians. An Italian tax number (codice fiscale) and an Italian bank account are required for the purchase."
-        },
-        {
-          "q": "What is the Italian flat tax for new residents?",
-          "a": "Anyone transferring their tax residence to Italy may elect a regime under which a fixed annual amount of tax is paid on their foreign-source income, for up to 15 years. The 2026 budget law raised the amount to €300,000 a year for those transferring their residence from 1 January 2026 (with a further €50,000 per family member). Those who entered earlier keep the old figure: €100,000 for entrants before 2024 and €200,000 for entrants in 2024–2025. Importantly, this is a tax construct, NOT a residence programme — buying Italian property does not in itself confer a right of residence."
-        }
-      ]
-    },
-    "GR": {
-      "nameHu": "Greece",
-      "intro": "Greece operates the EU's best-known Golden Visa programme: a property investment secures a five-year, renewable residence permit that covers the whole family and grants free movement within Schengen, WITH NO MINIMUM STAY REQUIREMENT — the programme's strongest argument. Since Law 5100/2024 the threshold has been banded by area: €800,000 across the whole Attica region, in Thessaloniki, on Mykonos and Santorini and on islands with populations above 3,100; €400,000 in the rest of the country; and €250,000 EXCLUSIVELY for converting a non-residential building into a dwelling or restoring a listed building. Two conditions are frequently left unmentioned: the property must be a single unit with at least 120 m² of main living area, and short-term (Airbnb-style) letting of a Golden Visa property is PROHIBITED — breaching the rule means revocation of the permit and a €50,000 fine.",
-      "highlights": [
-        "Golden Visa bands: €800,000 (Attica, Thessaloniki, Mykonos, Santorini, larger islands) / €400,000 (elsewhere) / €250,000 (conversion or listed-building restoration only)",
-        "The property must be a single unit, with a minimum of 120 m² of main living area",
-        "Short-term letting of the Golden Visa property is PROHIBITED — the penalty is revocation and a €50,000 fine",
-        "There is NO minimum stay requirement",
-        "It covers the whole family (spouse, children under 21, dependent parents of both spouses)",
-        "Valid for 5 years, renewable for as long as the investment is maintained",
-        "Property transfer tax of 3% (plus a small municipal surcharge)",
-        "The VAT suspension on new-build has been extended to 31 December 2026 — the 3% transfer tax applies in such cases too"
-      ],
-      "faq": [
-        {
-          "q": "How does the Greek Golden Visa work?",
-          "a": "Buying Greek property allows you to apply for a five-year, renewable residence permit covering your spouse, children under 21 and the dependent parents of both spouses. The permit grants free movement within Schengen and imposes no minimum stay — it is enough to maintain the investment."
-        },
-        {
-          "q": "What is the threshold for the Greek Golden Visa?",
-          "a": "There are three bands under Law 5100/2024. €800,000 across the whole Attica region, in the Thessaloniki regional unit, on Mykonos and Santorini and on every island with a population above 3,100. €400,000 across all other parts of the country. €250,000 in two cases only: where a non-residential building is converted into a dwelling (the works must be completed before the application), or where a listed building is restored. The 2024 transitional deadlines have all expired, so in 2026 the full €400,000/€800,000 thresholds apply. Always check the specific zoning classification of the individual property before buying."
-        },
-        {
-          "q": "Can I let my Greek Golden Visa property short-term?",
-          "a": "No. The 2024 reform expressly prohibits short-term (Airbnb-style) letting of the property underpinning a Golden Visa. Breaching the prohibition results in revocation of the residence permit and a €50,000 fine. Long-term letting is permitted. This condition fundamentally changes the return calculation on the investment, yet it is missing from most offers."
-        },
-        {
-          "q": "Does the Greek Golden Visa grant citizenship?",
-          "a": "Not directly. The Golden Visa is a residence permit; Greek citizenship may be applied for after seven years of actual residence in Greece, subject to language and integration requirements. If the passport itself is the objective, Turkey and Saint Kitts and Nevis grant citizenship directly for a property investment."
-        }
-      ]
-    },
-    "ES": {
-      "nameHu": "Spain",
-      "intro": "Spain is Europe's highest-turnover holiday property market: the stock on the Costa del Sol (Marbella, Málaga), the Costa Blanca (Alicante), the Balearics and Barcelona is the deepest and most easily resold on the continent. Because of the international buyer base, the exit (sale) is substantially quicker than in smaller markets. One important legislative change: the property-based route into the Spanish Golden Visa was abolished in April 2025, so buying Spanish property today does NOT confer an investor residence permit — the purchase is purely an investment and lifestyle decision. Transfer tax ranges from 6% to 10% depending on the region.",
-      "highlights": [
-        "Europe's largest and most liquid holiday property market — quick resale",
-        "Property transfer tax (ITP) of roughly 6–11% depending on the region: Madrid 6%, Andalusia 7%, Catalonia 10–11%",
-        "ATTENTION: the property-based Golden Visa was abolished in April 2025",
-        "An extensive Hungarian and international community along the southern coast"
-      ],
-      "faq": [
-        {
-          "q": "Does the Spanish Golden Visa still exist for property purchases?",
-          "a": "No. Spain abolished the property-investment route into the Golden Visa in April 2025, so a €500,000 property purchase no longer secures a Spanish investor residence permit. Within the EU, Greece and Hungary offer property-based residence programmes; for citizenship through property, Turkey and Saint Kitts and Nevis are the options."
-        },
-        {
-          "q": "How much tax does a buyer pay in Spain?",
-          "a": "On second-hand property the buyer pays transfer tax (ITP) of roughly 6–11% depending on the region: 6% in Madrid, a uniform 7% in Andalusia, 10% in Catalonia up to one million euros and 11% above, and 10% in Valencia (9% from 1 June 2026, and 11% above one million euros). The tax base is the higher of the purchase price and the official cadastral reference value — which matters, because even with a low contract price you are taxed on the reference value. On a new-build bought from a developer, 10% VAT applies plus stamp duty (AJD) of 0.5–1.5% depending on the region."
-        },
-        {
-          "q": "What do I need as a Hungarian buyer to purchase Spanish property?",
-          "a": "A Spanish tax number (NIE), a Spanish bank account and, typically, an independent lawyer. As an EU citizen you are subject to no purchase restrictions whatsoever, and the process concludes before a notary (escritura pública)."
-        }
-      ]
-    },
-    "KN": {
-      "nameHu": "Saint Kitts and Nevis",
-      "intro": "Saint Kitts and Nevis runs the world's oldest citizenship-by-investment (CBI) programme, operating without interruption since 1984 — the profession regards it as the 'platinum standard'. Government-APPROVED property confers CITIZENSHIP directly: not a residence permit, but a passport. There are two tiers: a condominium unit or share in an approved project from USD 325,000, and an approved detached family house from USD 600,000. There is no settlement, language or residence requirement, but the main applicant MUST attend an interview. The island nation levies no personal income tax, wealth tax or inheritance tax, and the passport allows visa-free travel to some 155 countries (Henley 2026: 23rd place), including the Schengen area and the United Kingdom. The property must officially be held for 7 years.",
-      "highlights": [
-        "USD 325,000 (condominium unit in an approved project) or USD 600,000 (approved detached house) → full CITIZENSHIP and a passport",
-        "The world's oldest (1984) and most stable CBI programme",
-        "No settlement, residence or language requirement — but the main applicant MUST attend an interview",
-        "No personal income tax, wealth tax or inheritance tax",
-        "Visa-free entry to roughly 155 countries (Schengen, United Kingdom); NO LONGER to Turkey and Ireland",
-        "Official processing time: 160–180 days to Approval in Principle (plus completion and issue of the passport)",
-        "Mandatory holding period: 7 years — after which the property may be resold",
-        "Government fees ON TOP of the purchase price: roughly USD 35,000 for a single applicant"
-      ],
-      "faq": [
-        {
-          "q": "How can citizenship of Saint Kitts and Nevis be obtained through property?",
-          "a": "You must buy government-approved property: a condominium unit or share in an approved project from USD 325,000, or an approved detached family house from USD 600,000. Applications can be submitted only through an authorised agent. The process involves rigorous due diligence; the official processing time is 160–180 days to Approval in Principle, on top of which come completion of the purchase and issue of the passport."
-        },
-        {
-          "q": "Do you have to live in Saint Kitts and Nevis to keep the citizenship?",
-          "a": "No. The programme has no settlement, residence, language or examination requirement, and the citizenship is granted indefinitely and is heritable. One point does matter, however: the main applicant MUST attend an interview, and family members over 16 may also be required to do so."
-        },
-        {
-          "q": "How valuable is the Saint Kitts and Nevis passport?",
-          "a": "The passport allows visa-free or visa-on-arrival travel to some 155 countries (Henley Passport Index 2026: 23rd place), including the entire Schengen area, the United Kingdom, Singapore and Hong Kong. One important recent change: Turkey and Ireland have WITHDRAWN visa-free access for the Saint Kitts and Nevis passport. The country levies no personal income tax, wealth tax or inheritance tax."
-        },
-        {
-          "q": "What costs come on top of the purchase price?",
-          "a": "Government fees are charged ON TOP of the property price. Due diligence fee: USD 10,000 for the main applicant and USD 7,500 for each family member over 16. Fee payable after Approval in Principle: USD 25,000 for the main applicant, USD 15,000 for the spouse, USD 10,000 for a dependant under 18 and USD 15,000 for a dependant over 18. For a single applicant this comes to roughly USD 35,000, before legal and closing costs."
-        },
-        {
-          "q": "Can I sell the property later?",
-          "a": "Yes, but only once the mandatory 7-year holding period has elapsed — the official programme conditions state this expressly. The property may then be resold, and the new foreign buyer may themselves use the same property for their own citizenship application; this is what creates the programme's secondary market. Citizenship is retained after the sale."
-        },
-        {
-          "q": "Which family members can be included?",
-          "a": "The spouse, children under 30, and dependent parents and grandparents. This is a substantially wider circle than under the Turkish programme, where only the spouse and children under 18 may be included."
-        },
-        {
-          "q": "How does Saint Kitts and Nevis differ from the Turkish programme?",
-          "a": "Both confer CITIZENSHIP through a property investment, but with different profiles. Turkey's threshold is higher (USD 400,000), but it offers a large, liquid property market, a faster process (3–6 months), a shorter holding period (3 years) and a route to the US E-2 visa. Saint Kitts and Nevis works with a lower entry point, complete tax exemption, a wider family circle and a stronger passport (roughly 155 countries) — in exchange the market is small, the holding period is 7 years, and the exit is slower."
-        }
-      ]
+    {
+     "q": "Does Montenegro grant residence in exchange for buying property?",
+     "a": "Yes, a one-year residence permit, renewable annually, may be applied for on the basis of property ownership. From 17 January 2026, a third-country national needs a property with a tax-authority value of at least €150,000 — but THIS VALUE THRESHOLD DOES NOT APPLY to EU, EEA and Swiss citizens, so a Hungarian buyer faces no minimum. The former citizenship-by-investment programme closed on 31 December 2022, so property cannot be used to obtain citizenship in Montenegro today — for that, Turkey and Saint Kitts and Nevis offer a route."
     }
+   ]
   },
-  "articles": {
-    "allampolgarsag-ingatlanbefektetessel": {
-      "title": "Citizenship by property investment: where can you actually obtain a passport?",
-      "description": "In which countries does buying property lead directly to citizenship? The two working programmes — Turkey and Saint Kitts and Nevis — with their thresholds, timescales and conditions compared.",
-      "answer": "Two countries currently grant citizenship directly for a property investment: Turkey, for property worth USD 400,000, typically within 3–6 months; and Saint Kitts and Nevis, for government-approved property (from USD 325,000 for a condominium unit, from USD 600,000 for a detached house), within 160–180 days to Approval in Principle. Every other well-known programme — the Greek, the Hungarian or the former Spanish Golden Visa — grants only a residence permit, not citizenship.",
-      "sections": [
-        {
-          "h": "The crucial distinction: citizenship or merely residence?",
-          "p": [
-            "The market uses the term 'Golden Visa' for two legally quite different things, and most of the confusion stems from this. A residence programme (residence by investment) grants a residence permit: you may live in the country and come and go, but your passport does not change. A citizenship programme (citizenship by investment, CBI), by contrast, grants genuine citizenship and a passport, typically within a few months and without relocating.",
-            "Two countries currently grant citizenship directly for a property investment: Turkey and Saint Kitts and Nevis. There is NO such programme in the EU — the Maltese citizenship programme had to be discontinued following the Court of Justice of the EU's 2025 ruling, while the Greek and Hungarian programmes concern residence permits only."
-          ],
-          "table": null
-        },
-        {
-          "h": "The two working programmes side by side",
-          "p": [
-            "The choice is not about price, but about what you intend to do with the property and the passport. Turkey offers a large, liquid property market — the property is an investment in its own right, and can be sold after three years. Saint Kitts and Nevis is a smaller market with a slower exit, but in exchange offers a lower entry point, complete tax exemption and a stronger passport."
-          ],
-          "table": {
-            "head": [
-              "",
-              "Turkey 🇹🇷",
-              "Saint Kitts and Nevis 🇰🇳"
-            ],
-            "rows": [
-              [
-                "What you receive",
-                "Full citizenship + passport",
-                "Full citizenship + passport"
-              ],
-              [
-                "Property threshold",
-                "USD 400,000 (~€370,000)",
-                "USD 325,000 apartment / USD 600,000 detached house"
-              ],
-              [
-                "Processing time",
-                "3–6 months",
-                "160–180 days to Approval in Principle"
-              ],
-              [
-                "Holding period",
-                "3 years",
-                "7 years"
-              ],
-              [
-                "Residence requirement",
-                "None",
-                "None — but a MANDATORY interview"
-              ],
-              [
-                "Family members eligible",
-                "Spouse + children under 18",
-                "Spouse, children under 30, dependent parents and grandparents"
-              ],
-              [
-                "Government fees on top of the purchase price",
-                "Valuation + processing fees",
-                "roughly USD 35,000 for a single applicant"
-              ],
-              [
-                "Visa-free countries",
-                "roughly 118",
-                "roughly 155 (Schengen, United Kingdom)"
-              ],
-              [
-                "Programme launched",
-                "2017",
-                "1984 — the world's oldest CBI"
-              ],
-              [
-                "Income tax",
-                "Yes",
-                "No income, wealth or inheritance tax"
-              ],
-              [
-                "Property market",
-                "Large, liquid, an investment in its own right",
-                "Small, programme-driven secondary market"
-              ]
-            ]
-          }
-        },
-        {
-          "h": "Turkey: the highest-volume programme",
-          "p": [
-            "You must buy Turkish property worth at least USD 400,000. A crucial detail the advertisements leave out: what counts is not the contract price but the official valuation by an SPK-licensed appraiser — and the threshold must be met simultaneously by the price paid and evidenced through a bank, by the valuation, and by the value recorded on the title deed. A high contract price cannot 'correct' a low valuation. The three-year restriction on disposal (satılamaz) is recorded on the tapu, after which the applicant receives a residence permit and then citizenship. The process typically takes 3–6 months and extends to the spouse and children under 18; adult children and parents CANNOT be included.",
-            "The Turkish passport allows visa-free travel to roughly 118 countries and — the main motivation for many investors — a Turkish citizen becomes eligible to apply for the US E-2 investor visa, which is not available to Hungarian citizens. An important nuance: the E-2 is not a residence permit and not a green card, but a renewable non-immigrant visa tied to an investment, and in practice naturalised citizens are expected to have held their citizenship for several years to qualify.",
-            "A practical note: the threshold is measured in USD, so the exchange rate matters. Transaction costs in Turkey are 4% tapu duty plus legal and valuation fees."
-          ],
-          "table": null
-        },
-        {
-          "h": "Saint Kitts and Nevis: the oldest and most stable programme",
-          "p": [
-            "The Caribbean island nation has run its programme without interruption since 1984 — the profession regards it as the 'platinum standard' of CBI. There are two property tiers: a condominium unit or share in a government-approved development from USD 325,000, and an approved detached family house from USD 600,000. Property bought on the open market and not on the approved list does NOT qualify. Applications can be submitted only through an authorised agent.",
-            "The conditions really are light: there is no settlement, residence, language or examination requirement, and citizenship is granted indefinitely and is heritable. One point does matter, because it is missing from most offers: the main applicant MUST attend an interview, and family members over 16 may also be required to do so. In exchange, the family circle that can be included is wide: spouse, children under 30, and dependent parents and grandparents.",
-            "Budget for government fees ON TOP of the purchase price: the due diligence fee is USD 10,000 for the main applicant and USD 7,500 for each family member over 16, and after Approval in Principle a further USD 25,000 for the main applicant and USD 15,000 for the spouse. For a single applicant that is roughly USD 35,000 extra.",
-            "The property must officially be held for 7 years; after that it can be passed on, and the new foreign buyer may use the same property again for their own citizenship application — which is what keeps the secondary market alive. Be realistic, though: this is a small, programme-driven market, not a conventional housing market, so the exit is slower than in Turkey. The passport gives visa-free entry to roughly 155 countries (Henley 2026: 23rd place), but a recent change is that Turkey and Ireland have withdrawn visa-free access."
-          ],
-          "table": null
-        },
-        {
-          "h": "What to establish before you decide",
-          "p": [
-            "1. Whether the property appears on the official list of approved projects (in the case of Saint Kitts, this is a condition of the application's validity).",
-            "2. Whether the valuation meets the threshold — in Turkey what counts is the official valuation, not the contract price.",
-            "3. The tax consequences in your own jurisdiction of residence: acquiring citizenship does not in itself end your Hungarian tax residence.",
-            "4. The exit: after how long, and at what realistic price, the property can be passed on. This is the most frequently underestimated risk of CBI investments."
-          ],
-          "table": null
-        }
-      ],
-      "faq": [
-        {
-          "q": "In which countries can citizenship be obtained by buying property?",
-          "a": "In two: Turkey, for property worth USD 400,000 (3–6 months), and Saint Kitts and Nevis, for government-approved property — from USD 325,000 for a condominium unit and from USD 600,000 for a detached house (160–180 days to Approval in Principle). Both grant genuine citizenship and a passport, with no settlement requirement; in Saint Kitts, however, there is a mandatory interview, and the property must be held for 7 years."
-        },
-        {
-          "q": "Can EU citizenship be obtained through a property investment?",
-          "a": "No. At present, no EU member state allows citizenship to be obtained directly by buying property. The Greek and Hungarian programmes grant a residence permit, the Spanish property-based Golden Visa was abolished in April 2025, and the Maltese citizenship programme had to be discontinued following the Court of Justice of the EU's 2025 ruling."
-        },
-        {
-          "q": "Does the property have to be kept after citizenship is granted?",
-          "a": "Yes, for a period. In Turkey it cannot be sold for three years (this is also recorded on the title deed), and in Saint Kitts and Nevis the official programme conditions set a holding period of 7 years. Citizenship is retained after the holding period ends and the property is sold."
-        },
-        {
-          "q": "Will I lose my Hungarian citizenship?",
-          "a": "No. Hungary accepts dual citizenship, and neither Turkey nor Saint Kitts and Nevis requires you to renounce your previous citizenship. The question of tax residence is separate, however — it is worth clarifying that with a tax adviser."
-        }
-      ]
+  "HR": {
+   "nameHu": "Croatia",
+   "intro": "Croatia is the mature, EU-member market of the Adriatic: since 2023 it has been part of both the eurozone and the Schengen area, which makes it the lowest-friction coastal purchase available to Hungarian and other EU buyers. As an individual, an EU citizen buys on the same terms as locals — the ministerial consent formerly required of foreigners is no longer needed. Istria (Rovinj, Poreč) drives the near-town segment, Dalmatia (Split, Trogir, Šibenik) the holiday-home segment, and Dubrovnik the premium end. Yields from tourist letting are high because of seasonality, but heavily concentrated in the summer.",
+   "highlights": [
+    "EU and eurozone member state — no consent requirement for EU citizens",
+    "Property transfer tax is a flat 3%; on new-build, 25% VAT is included in the price instead",
+    "Low notary costs: the notary only certifies signatures (a few euros) and does not draft the contract",
+    "Since 2025 there is also an ANNUAL property tax: €0.60–8.00 per m² per year, set by each municipality",
+    "The moratorium on agricultural land expired on 30 June 2023 — EU buyers may now purchase freely",
+    "A strong but highly seasonal short-term letting market"
+   ],
+   "faq": [
+    {
+     "q": "Can a Hungarian citizen buy property in Croatia?",
+     "a": "Yes, without restriction. As both Hungary and Croatia are EU member states, a Hungarian individual may buy an apartment or house in their own name on the same terms as Croatian citizens — no consent from the Ministry of Justice is required. The transitional moratorium on agricultural land expired on 30 June 2023 and was not extended, so as an EU citizen you may now also buy farmland on the same terms as Croatians. Third-country buyers still require reciprocity and ministerial consent."
     },
-    "golden-visa-ingatlannal": {
-      "title": "Golden Visa through property investment in 2026: what does each country offer?",
-      "description": "Greece, Hungary and the other programmes: thresholds, residence requirements, and which route leads to citizenship. An up-to-date comparative overview.",
-      "answer": "Through a DIRECT property purchase, Greece is in practice the only country in the EU where a residence permit can still be obtained today: from €400,000 across most of the country and from €800,000 in Attica, Thessaloniki and the popular islands. Under the Hungarian guest investor programme, buying a home directly DOES NOT QUALIFY — only units in a real estate fund (€250,000) or a higher education donation (€1,000,000) count. The Spanish property-based Golden Visa was abolished on 3 April 2025, and in Italy property is expressly excluded from the investor visa. If the passport itself is the objective, you need a citizenship programme rather than a residence programme: Turkey or Saint Kitts and Nevis.",
-      "sections": [
-        {
-          "h": "What does a Golden Visa actually give you?",
-          "p": [
-            "A Golden Visa is a residence permit granted by the state in exchange for an investment — typically a property purchase. Under an EU programme it also means free movement within Schengen, and therefore in most cases visa-free travel throughout the area. What it does NOT give you is a passport or citizenship. In most countries, citizenship can be applied for only after several years of actual residence, a language examination and a naturalisation procedure.",
-            "As a Hungarian citizen you do not need a Golden Visa for free movement within the EU — which is why, for domestic buyers, these programmes are of interest primarily for tax planning, business or 'plan B' reasons, or where third-country family members are involved."
-          ],
-          "table": null
-        },
-        {
-          "h": "The programmes side by side",
-          "p": [
-            "The thresholds shown are each country's official property-based entry level."
-          ],
-          "table": {
-            "head": [
-              "Country",
-              "Threshold",
-              "What it gives",
-              "Residence requirement"
-            ],
-            "rows": [
-              [
-                "Greece 🇬🇷",
-                "€800,000 (Attica, Thessaloniki, large islands) / €400,000 (elsewhere) / €250,000 (conversion or listed buildings only)",
-                "5-year renewable residence permit, covering the whole family",
-                "None"
-              ],
-              [
-                "Hungary 🇭🇺",
-                "€250,000 in real estate FUND units or a €1,000,000 donation",
-                "10-year permit — buying a home DIRECTLY DOES NOT QUALIFY",
-                "None"
-              ],
-              [
-                "Spain 🇪🇸",
-                "—",
-                "ABOLISHED: the property-based route closed on 3 April 2025",
-                "—"
-              ],
-              [
-                "Italy 🇮🇹",
-                "—",
-                "NONE: property is excluded from the investor visa",
-                "—"
-              ],
-              [
-                "Turkey 🇹🇷",
-                "USD 400,000",
-                "CITIZENSHIP (not merely residence)",
-                "None"
-              ],
-              [
-                "Saint Kitts and Nevis 🇰🇳",
-                "roughly USD 325,000",
-                "CITIZENSHIP (not merely residence)",
-                "None"
-              ]
-            ]
-          }
-        },
-        {
-          "h": "Greece: the best-known EU programme",
-          "p": [
-            "The Greek Golden Visa runs for five years, is renewable for as long as the investment is maintained, and extends to the spouse, children under 21 and the dependent parents of both spouses. Its strongest feature is that there is no minimum stay requirement.",
-            "Since Law 5100/2024 the threshold has had three bands. €800,000 across the whole Attica region, in the Thessaloniki regional unit, on Mykonos and Santorini and on every island with a population above 3,100. €400,000 across all other parts of the country. €250,000 in two cases only: converting a non-residential building into a dwelling (the works must be completed BEFORE the application is submitted), and restoring a listed building. The 2024 transitional deadlines have all expired, so the full thresholds apply in 2026.",
-            "Two conditions are missing from most offers yet may decide the investment: in the €400,000 and €800,000 bands the property must be a SINGLE unit with at least 120 m² of main living area (the investment cannot be split across several apartments), and short-term, Airbnb-style letting of the property underpinning the Golden Visa is PROHIBITED. Breaching the prohibition results in revocation of the permit and a €50,000 fine. For anyone who planned the Greek programme around tourist rental yields, this rewrites the calculation from the ground up."
-          ],
-          "table": null
-        },
-        {
-          "h": "Hungary: the guest investor programme relaunched in 2024",
-          "p": [
-            "Here the most important thing is to clear up a widespread misconception: under the Hungarian Guest Investor Programme, BUYING A HOME DIRECTLY DOES NOT QUALIFY for a residence permit. The €500,000 direct property option originally envisaged in the legislation was deleted in January 2025, before it ever took effect. So simply buying an apartment in Budapest will not get you a guest investor permit.",
-            "Two routes remain. One is buying €250,000 of units in a real estate fund registered with the MNB whose net asset value is at least 40% invested in Hungarian residential property, with a five-year holding requirement. The other is a €1,000,000 non-refundable donation to a Hungarian higher education institution. The permit runs for ten years and can be extended once by a further ten — the longest term in the EU — and the investment must be made within 93 days of first entering the country on the guest investor visa.",
-            "For Hungarian and EU citizens the programme is naturally irrelevant, since they enjoy freedom of movement; its target audience is the third-country investor."
-          ],
-          "table": null
-        },
-        {
-          "h": "If the passport is the goal, do not look for a Golden Visa",
-          "p": [
-            "The most common mistake is wanting citizenship and buying a Golden Visa to get it. The two are not the same and one does not automatically lead to the other: Greek naturalisation, for example, requires seven years of actual residence in Greece, a language examination and an integration examination — a Golden Visa on its own is no substitute.",
-            "If the real objective is a second passport, you need a citizenship programme: Turkey or Saint Kitts and Nevis. We cover these in detail in our article 'Citizenship by property investment'."
-          ],
-          "table": null
-        }
-      ],
-      "faq": [
-        {
-          "q": "In which countries can a Golden Visa still be obtained by buying property?",
-          "a": "Through a direct property purchase, in practice only in Greece: from €400,000 across most of the country, from €800,000 in Attica, Thessaloniki and the popular islands, and from €250,000 only for building conversions or listed-building restorations. Under the Hungarian programme, buying a home directly does not count — there you need real estate fund units (€250,000) or a higher education donation (€1,000,000). The Spanish property-based Golden Visa was abolished on 3 April 2025, and in Italy property is excluded from the investor visa."
-        },
-        {
-          "q": "Does a Golden Visa give EU citizenship?",
-          "a": "No. A Golden Visa is a residence permit. Citizenship can be obtained only through the ordinary naturalisation procedure, which typically requires several years of actual residence, a language examination and an integration examination — seven years in the Greek case, for example."
-        },
-        {
-          "q": "Do you have to live in the country to keep a Golden Visa?",
-          "a": "The Greek and Hungarian programmes have no minimum stay requirement: it is enough to maintain the investment and renew the permit. That also means, however, that those years do not count towards the residence period required for naturalisation — Greek naturalisation, for example, requires seven years of ACTUAL residence in Greece."
-        }
-      ]
+    {
+     "q": "How much tax is payable on a Croatian property purchase?",
+     "a": "On a second-hand property the buyer pays 3% property transfer tax (porez na promet nekretnina) — a flat rate, not banded. On a new-build bought from a VAT-registered developer there is no transfer tax, because the price includes 25% VAT; the two are mutually exclusive. Importantly, the Croatian notary does NOT draft the sale contract, but merely certifies the seller's signature, so notary costs amount to a few euros plus the land registry fee — the '1% notary fee' customary elsewhere is simply wrong here. Legal fees are typically 1–1.5% plus VAT, and agency commission 2–4%. Since 2025 ownership also attracts an annual property tax (€0.60–8.00 per m² per year), from which registered permanent residence and long-term letting of at least 10 months are exempt."
     },
-    "kulfoldi-ingatlan-mellekkoltsegek": {
-      "title": "What does it really cost? The transaction costs of buying property abroad in 12 countries",
-      "description": "Transfer tax, notary, lawyer, agency commission — broken down country by country. Total costs on top of the purchase price typically range from 3% to 14%.",
-      "answer": "The costs payable on top of the purchase price when buying property abroad vary significantly by country: in Albania there is effectively no transfer tax, in Montenegro it is 3%, in Hungary and Turkey 4%, while in Italy it is 9% (second home) and in Spain 6–10%. Everywhere, you must add the notary fee, legal fees and typically 2–5% agency commission.",
-      "sections": [
-        {
-          "h": "Why this matters more than the purchase price",
-          "p": [
-            "When buying property abroad, most unpleasant surprises lie not in the price but in the transaction costs. On top of the purchase price you should typically expect a further 5–14% depending on the country — on a €300,000 property that is a difference of between €15,000 and €42,000, purely on the basis of which country you buy in.",
-            "The table below shows the most important items country by country. Note: transfer tax generally applies to SECOND-HAND property — on new-build, many countries substitute VAT, which may be higher."
-          ],
-          "table": {
-            "head": [
-              "Country",
-              "Transfer tax",
-              "Notary",
-              "Lawyer",
-              "Agent"
-            ],
-            "rows": [
-              [
-                "🇲🇪 Montenegro",
-                "3–6% (banded)",
-                "0.5% + €200",
-                "1%",
-                "3%"
-              ],
-              [
-                "🇭🇷 Croatia",
-                "3%",
-                "0.4% + €150",
-                "1%",
-                "3%"
-              ],
-              [
-                "🇦🇱 Albania",
-                "0%",
-                "0.5% + €120",
-                "1%",
-                "3%"
-              ],
-              [
-                "🇷🇸 Serbia",
-                "2.5%",
-                "0.5% + €150",
-                "1%",
-                "3%"
-              ],
-              [
-                "🇹🇷 Turkey",
-                "4%",
-                "0.5% + €250",
-                "1.2%",
-                "2%"
-              ],
-              [
-                "🇮🇩 Bali (Indonesia)",
-                "5%",
-                "1% + €300",
-                "1.5%",
-                "5%"
-              ],
-              [
-                "🇭🇺 Hungary",
-                "4%",
-                "0.5% + €150",
-                "1%",
-                "3%"
-              ],
-              [
-                "🇹🇭 Thailand",
-                "2%",
-                "0.5% + €200",
-                "1.5%",
-                "3%"
-              ],
-              [
-                "🇮🇹 Italy",
-                "9%",
-                "1% + €300",
-                "1%",
-                "3%"
-              ],
-              [
-                "🇬🇷 Greece",
-                "3%",
-                "1.2% + €300",
-                "1.2%",
-                "2%"
-              ],
-              [
-                "🇪🇸 Spain",
-                "8%",
-                "1% + €300",
-                "1%",
-                "3%"
-              ],
-              [
-                "🇰🇳 Saint Kitts and Nevis",
-                "10%",
-                "1% + €500",
-                "1.5%",
-                "5%"
-              ]
-            ]
-          }
-        },
-        {
-          "h": "The cheapest and the most expensive entry",
-          "p": [
-            "The most favourable transaction costs are offered by Albania (0% transfer tax) and Thailand (2%), followed by Montenegro and Croatia at 3–6% (banded). At the other end of the scale sits Italy at 9% for a second home, along with Spain, where the regional ITP ranges from 6% to 10%.",
-            "A common error is to assume that the agency commission is always paid by the seller. This varies from market to market: in the Balkan and Turkish markets, splitting the commission or having the buyer bear it are both established practice, so this must be settled in writing before the deposit is paid."
-          ],
-          "table": null
-        },
-        {
-          "h": "What to budget for beyond the table",
-          "p": [
-            "Translation and certification: in many countries contracts must be submitted with a certified translation.",
-            "Tax number and bank account: NIE in Spain, codice fiscale in Italy, AFM in Greece — without these you cannot contract.",
-            "Annual running costs: property tax, service charges, insurance, and, for a holiday property, winterisation or management fees.",
-            "Currency conversion: in non-eurozone countries (Turkey, Thailand, Indonesia, Hungary) the bank's exchange margin alone can be 1–3% — it is worth using a specialist currency provider."
-          ],
-          "table": null
-        }
-      ],
-      "faq": [
-        {
-          "q": "What are the total transaction costs of buying property abroad?",
-          "a": "Typically 5–14% of the purchase price depending on the country. They are lowest in Albania and Thailand (roughly 3–6%), moderate in Montenegro, Croatia, Hungary and Turkey (roughly 5–9%), and highest in Italy and Spain (roughly 10–14%)."
-        },
-        {
-          "q": "Who pays the agency commission when buying property abroad?",
-          "a": "It varies by market. In Western European markets it is typically the seller, but in the Balkan and Turkish markets splitting it or having the buyer bear it are both established practice. It must always be settled in writing BEFORE the deposit is paid."
-        },
-        {
-          "q": "Is transfer tax payable on new-build as well?",
-          "a": "Generally no — in most countries the price of a new property bought from a developer includes VAT, and in that case no separate transfer tax applies. That is not necessarily cheaper, however: Spain's 10% or Italy's 10–22% VAT may exceed the transfer tax on a second-hand property."
-        }
-      ]
-    },
-    "kulfoldi-ingatlanvasarlas-lepesei": {
-      "title": "Buying property abroad step by step: the complete process",
-      "description": "From the search to registration of title: due diligence, deposit, preliminary contract, notary, tax number and the most common mistakes that cost money.",
-      "answer": "Buying property abroad consists of six steps: (1) searching and shortlisting, (2) obtaining a local tax number and opening a bank account, (3) legal due diligence on the title carried out by an independent lawyer, (4) the preliminary contract and deposit (typically 10%), (5) the final contract before a notary and payment of the purchase price, (6) registration of title at the cadastre. The whole process typically takes 4–12 weeks.",
-      "sections": [
-        {
-          "h": "1. Searching and shortlisting",
-          "p": [
-            "The most common mistake is for the buyer to fall in love with the property rather than the market. First you must decide on the objective: rental yield, personal use, or a residence/citizenship programme. These three objectives often point to entirely different countries and different property types.",
-            "For yield, urban year-round rental demand (Belgrade, Budapest, Bangkok) is more predictable than the seasonal coast. For personal use, flight connections and winter occupancy are decisive. For programme purposes, the property's eligibility matters more than its location."
-          ],
-          "table": null
-        },
-        {
-          "h": "2. Local tax number and bank account",
-          "p": [
-            "In almost every country a local tax number is required for the contract: NIE in Spain, codice fiscale in Italy, AFM in Greece, vergi numarası in Turkey. Obtaining these takes 1–3 weeks and can in many cases be handled remotely under a power of attorney.",
-            "A local bank account is needed not only for the purchase price but also for paying utilities and taxes afterwards. Be prepared for anti-money-laundering checks: the source of the purchase price must be evidenced with documents."
-          ],
-          "table": null
-        },
-        {
-          "h": "3. Legal due diligence — the most expensive place to economise",
-          "p": [
-            "Engage an independent lawyer, one NOT recommended by the seller or the agent. The minimum scope of due diligence: the title register (who the registered owner is), encumbrances and mortgages, building and occupancy permits, the zoning classification of the land, service charge and tax arrears, and whether the floor area of the property matches what was advertised.",
-            "For an off-plan property bought from a developer, the bank guarantee or escrow structure is a separate question: what happens to the money you have paid if the developer fails to complete the building."
-          ],
-          "table": null
-        },
-        {
-          "h": "4. Preliminary contract and deposit",
-          "p": [
-            "Established practice is a 10% deposit paid at the same time as the preliminary contract, which is typically returned twofold if the seller breaches the contract but forfeited if the buyer withdraws. Pay the deposit into a lawyer's escrow account where possible, rather than directly to the seller.",
-            "The preliminary contract must set out the deadline for the final contract, the precise condition of the property and its fixtures, and who bears each of the transaction costs."
-          ],
-          "table": null
-        },
-        {
-          "h": "5. Final contract and payment",
-          "p": [
-            "In most European markets the final sale takes place before a notary (escritura, atto notarile, ugovor), who verifies the identity of the parties and the title. In Turkey, transfer of ownership takes place at the land registry (tapu).",
-            "Pay the purchase price by bank transfer and in a documented manner where possible — cash payment is restricted or prohibited in several countries, and makes it harder to evidence your acquisition cost on a later sale."
-          ],
-          "table": null
-        },
-        {
-          "h": "6. Registration and follow-up",
-          "p": [
-            "Ownership becomes complete only when the cadastre registers it. This takes anywhere from a few days to a few months depending on the country. Next come transferring the utilities, registering for local property tax, and — if you intend to let the property — arranging the letting licence or categorisation.",
-            "Finally: settle your Hungarian tax position as well. Rental income from a foreign property and the capital gain on a later sale are taxed in accordance with the double taxation treaties — this varies by country, and paying the foreign tax does not always close the matter."
-          ],
-          "table": null
-        }
-      ],
-      "faq": [
-        {
-          "q": "How long does buying property abroad take?",
-          "a": "Typically 4–12 weeks from accepted offer to registration of title, on a cash purchase. Obtaining the local tax number takes 1–3 weeks, legal due diligence 1–2 weeks, and the notarial completion depends on the parties' timing."
-        },
-        {
-          "q": "Do I need to engage a lawyer when buying property abroad?",
-          "a": "Yes, and preferably one who was not recommended by the seller or the agent. In most countries the notary checks the legality of the contract but does not represent your interests — checking encumbrances, permits and floor area is the lawyer's job."
-        },
-        {
-          "q": "Can you buy remotely, without attending in person?",
-          "a": "In most countries yes, using a certified and apostilled power of attorney granted to a lawyer. In practice it is nonetheless worth viewing the property in person at least once — photographs are systematically more flattering than reality."
-        }
-      ]
+    {
+     "q": "Is it worth buying property in Croatia for short-term letting?",
+     "a": "On the Dalmatian and Istrian coast the summer yield is outstanding, but the season is typically limited to 3–4 months, and tourist letting requires a categorisation decision (rješenje o kategorizaciji) and flat-rate taxation. On an annual basis, net yields typically fall between 3% and 5%."
     }
+   ]
+  },
+  "AL": {
+   "nameHu": "Albania",
+   "intro": "Albania has the lowest entry threshold of any Mediterranean coastal market: on the Albanian Riviera (Sarandë, Ksamil, Himarë) the per-square-metre price of new-build sea-view apartments is still a fraction of Croatian or Greek levels, while Corfu and the Greek border are a stone's throw away. There is effectively no property transfer tax, and foreign buyers may purchase apartments in their own name. Tourism has grown at record rates in recent years, lifting short-term letting yields into the top tier of the region — in exchange, the market is younger, and legal due diligence (title, building permit) matters here more than anywhere.",
+   "highlights": [
+    "The lowest coastal per-square-metre prices in the region",
+    "The BUYER pays no ad valorem transfer tax — only a fixed notary charge and registration fee",
+    "No VAT on the buyer's side for new-build either: property sales are VAT-exempt",
+    "Foreign individuals may buy apartments and houses in their own name, without consent",
+    "To buy a building PLOT, the value of the development must exceed three times the value of the land",
+    "Foreigners may not buy agricultural land, only lease it"
+   ],
+   "faq": [
+    {
+     "q": "Is it safe to buy property in Albania as a foreigner?",
+     "a": "Legally, yes — a foreign individual may buy an apartment in their own name, and ownership can be registered with the cadastre (ASHK). The risk lies not in acquiring title but in the history behind it: the Albanian market does contain properties with unresolved title or built without permits, so never pay a deposit here without due diligence carried out by an independent lawyer."
+    },
+    {
+     "q": "How much does a coastal apartment in Albania cost?",
+     "a": "In Ksamil and Sarandë, new-build sea-view apartments typically range from €1,200 to €2,200 per m², and entry prices in Vlorë and Durrës are lower still. That is roughly a half to a third of comparable Croatian or Greek stock. Buyer's transaction costs are also the lowest in the region: with no ad valorem transfer tax and no VAT, they typically come to 1–4% of the purchase price."
+    },
+    {
+     "q": "Does Albania grant residence in exchange for buying property?",
+     "a": "Albania has neither a Golden Visa programme nor a citizenship-by-investment programme: the option set out in the 2020 legislation was never launched, has been under a moratorium since March 2023, and following the Court of Justice of the EU's April 2025 ruling on Malta, Albania — a country preparing for EU accession — is unlikely to open it. Property ownership does, however, support an application for a renewable one-year residence permit, leading to permanent residence after five years. The '€100,000 threshold' cited by agents cannot be traced to any legislation — do not plan around it."
+    }
+   ]
+  },
+  "RS": {
+   "nameHu": "Serbia",
+   "intro": "Serbia is primarily an urban rental market rather than a coastal holiday market. The residential markets of Belgrade (particularly Belgrade Waterfront, Vračar and Novi Beograd) and Novi Sad are kept tight by strong internal migration, a growing IT sector and large numbers of arriving foreign workers — which means stable, year-round long-term rental demand, in contrast to the seasonality of Adriatic markets. The mountain resorts (Zlatibor, Kopaonik) are the terrain for two-season apartment investment. Transfer tax is 2.5%, replaced by VAT on new-build.",
+   "highlights": [
+    "Year-round, non-seasonal rental demand in Belgrade and Novi Sad",
+    "Property transfer tax of 2.5% on second-hand property (by law payable by the SELLER, though contracts typically pass it to the buyer)",
+    "On new-build, 10% VAT (residential property) is included in the price instead",
+    "Foreign buyers may purchase on the basis of RECIPROCITY — this is satisfied for Hungarian citizens, but must be checked country by country",
+    "First-home reliefs are available only to Serbian citizens — foreign buyers cannot claim them",
+    "A two-season mountain apartment market (Zlatibor, Kopaonik)"
+   ],
+   "faq": [
+    {
+     "q": "Can a Hungarian citizen buy property in Serbia?",
+     "a": "Yes. Serbia permits property acquisition by foreign individuals on the basis of reciprocity, and reciprocity with Hungary is in place (Hungary appears on the ministry's list), so a Hungarian citizen may buy an apartment or house in their own name. Importantly, reciprocity is assessed COUNTRY BY COUNTRY, not at EU level — so it is not true that 'any EU citizen may buy freely'. EU individuals are in principle entitled to buy agricultural land, but subject to cumulative conditions (10 years of local residence, 3 years of cultivation, a 2-hectare cap) that are all but impossible to meet in practice."
+    },
+    {
+     "q": "What rental yield can be achieved in Belgrade?",
+     "a": "Gross yields on long-term residential letting in Belgrade typically run between 4% and 6%, higher than in most EU capitals, and demand is year-round — it does not depend on the tourist season."
+    },
+    {
+     "q": "What does buying property in Serbia cost?",
+     "a": "On second-hand property, transfer tax is 2.5% (porez na prenos apsolutnih prava). The law imposes it on the SELLER, but contracts almost always shift it to the buyer — the seller nonetheless remains liable, so it is worth verifying that the payment has been made. On the first sale of a new-build completed after 2005, VAT applies in place of transfer tax: 10% on residential property, 20% on garages and commercial premises. Notary fees follow a banded tariff (a few hundred euros on an average apartment — the '1–2% notary fee' figure is wrong), plus legal fees and 2–4% agency commission. Only Serbian citizens qualify for the first-home tax exemption and VAT refund."
+    }
+   ]
+  },
+  "TR": {
+   "nameHu": "Turkey",
+   "intro": "Turkey operates the world's highest-volume property-based citizenship programme: by buying property worth USD 400,000 and holding it for three years, the investor and their family can obtain Turkish CITIZENSHIP — not merely a residence permit — typically within 3 to 6 months and with no residence requirement. The Turkish passport gives visa-free entry to roughly 118 countries and opens the route to the US E-2 investor visa. The market rests on two legs: Istanbul (urban letting and capital growth) and the Mediterranean coast (Antalya, Alanya, Bodrum, Fethiye) for holiday and rental use. Transfer tax is 4%, and fixing the purchase price in foreign currency is mandatory under the programme.",
+   "highlights": [
+    "USD 400,000 property purchase → Turkish CITIZENSHIP within 3–6 months",
+    "No residence, language or settlement requirement",
+    "The whole family (spouse + children under 18) can be included",
+    "The property must be held for 3 years, after which it can be sold freely",
+    "Visa-free entry to roughly 118 countries; a route to the US E-2 investor visa"
+   ],
+   "faq": [
+    {
+     "q": "How can Turkish citizenship be obtained by buying property?",
+     "a": "You must buy Turkish property worth at least USD 400,000 and undertake not to sell it for three years — this is recorded on the title deed (tapu) as a 'satılamaz' (not for sale) annotation. Importantly, what counts is not the contract price but the official valuation by an appraiser licensed by the SPK; the threshold must be met by the price actually paid (evidenced through a bank), by the valuation, and by the value stated on the tapu alike. The residence permit and citizenship applications can then be submitted; the full process typically takes 3–6 months and extends to the spouse and children under 18."
+    },
+    {
+     "q": "Do you have to live in Turkey to obtain citizenship?",
+     "a": "No. The Turkish citizenship-by-investment programme has no residence, language or examination requirement — you do not need to move to the country, and most of the application can in fact be handled by an authorised lawyer."
+    },
+    {
+     "q": "Can I sell the property after obtaining citizenship?",
+     "a": "Yes, but only once the mandatory three-year holding period has elapsed. Citizenship is retained thereafter — Turkish citizenship is not revoked because the property has been sold."
+    },
+    {
+     "q": "What are the transaction costs of buying property in Turkey?",
+     "a": "4% tapu (transfer) duty, roughly 0.5% in notary and translation fees, legal fees of around 1.2%, and typically 2% agency commission. Under the citizenship programme you must add the mandatory valuation and the official processing fees."
+    }
+   ]
+  },
+  "ID": {
+   "nameHu": "Bali (Indonesia)",
+   "intro": "Bali is a strong short-term letting market, but the real numbers are far more modest than advertised yields suggest: independent booking data put the average daily rate in Canggu at around USD 216, while occupancy is only about 38% and supply is expanding by 40% a year. Realistically, you should budget for 6–9% gross and 3–5% net, not the 10–15% quoted in brochures. The other key question is the form of ownership: a foreign individual CANNOT acquire freehold (Hak Milik) title in Indonesia. There are three legal routes: a contractual leasehold right (Hak Sewa, typically 25–30 years), a Hak Pakai right of use tied to a residence permit (30 + 20 + 30 = up to 80 years), or a Hak Guna Bangunan right to build held through an Indonesian PT PMA company (likewise 80 years). In Bali, choosing the legal structure matters more than choosing the property.",
+   "highlights": [
+    "Realistic yields based on independent data: 6–9% gross, 3–5% net (10–15% is a marketing figure)",
+    "Foreigners CANNOT acquire freehold (Hak Milik) title — this is a constitutional restriction",
+    "Hak Sewa leasehold right: available without a residence permit, typically 25–30 years",
+    "Hak Pakai and PT PMA-held Hak Guna Bangunan: 30 + 20 + 30, up to 80 years in total",
+    "DANGER: the 'nominee' structure (freehold registered in an Indonesian proxy's name) is NULL AND VOID UNDER THE LAW",
+    "If a Hak Pakai owner's residence permit expires, they must sell the property within one year",
+    "Buyer's transaction costs: 2–4% on a leasehold right, 7–9% on Hak Pakai (because of 5% BPHTB)"
+   ],
+   "faq": [
+    {
+     "q": "Does Indonesia grant residence in exchange for buying property?",
+     "a": "Only in a limited way. The property-based branch of the Indonesian Golden Visa requires an investment of USD 1,000,000 and applies EXCLUSIVELY to strata-title apartments with appropriate title — villas on individual plots do not qualify. There is also a 'second home' visa, but the official site publishes no specific value threshold, so the figures quoted by agents should be treated with caution. Indonesia has no citizenship-by-investment programme."
+    },
+    {
+     "q": "Can a foreigner buy property in Bali?",
+     "a": "A foreign individual cannot acquire full freehold (Hak Milik) title in Indonesia — the 1960 basic law reserves it for Indonesian citizens. There are three legal solutions: a contractual leasehold right (Hak Sewa, typically 25–30 years, with no residence permit required), a Hak Pakai right of use (tied to a valid KITAS/KITAP residence permit, 30 + 20 + 30 = up to 80 years), and a Hak Guna Bangunan right to build held by a foreign-owned Indonesian company (PT PMA, likewise 80 years). VERY IMPORTANT: the 'nominee' structure frequently sold in Bali, under which an Indonesian citizen holds the freehold 'for your benefit', is NULL AND VOID under the law — it is unenforceable in court, and the property remains with the proxy or with the state."
+    },
+    {
+     "q": "What yield does a Bali villa produce?",
+     "a": "Less than advertised. According to independent booking data, in Canggu — where close to 4,000 active listings compete — the average daily rate is around USD 216 and annual occupancy is about 38%, which works out at average revenue of roughly USD 23,700 a year. From that you must deduct villa management (15–20%), maintenance and tax. Realistically, plan for 6–9% gross and 3–5% net. Promises of 10–15% net come from sales materials and are not borne out by market data — supply is growing at over 40% a year while demand is flat, so owners are conceding 10–30% off asking prices."
+    },
+    {
+     "q": "What happens when the leasehold expires?",
+     "a": "A well-drafted lease contains an extension option at a pre-agreed or index-linked price. That is precisely the most important check before buying: how many years remain, what the extension right is worth, and how the landowner's consent is secured. Without this, the value of the investment declines year after year. Hak Pakai carries a further trap: if the owner's residence permit expires and is not renewed, they are obliged to sell the property within one year, failing which it may be put up for state auction."
+    }
+   ]
+  },
+  "HU": {
+   "nameHu": "Hungary",
+   "intro": "Hungary relaunched its investor residence programme in 2024, but one important misconception needs clearing up: under the Guest Investor Programme, BUYING A HOME DIRECTLY DOES NOT QUALIFY for a residence permit. The planned €500,000 direct property option was deleted in January 2025 before it ever took effect. Two routes remain: €250,000 of units in a real estate fund registered with the Hungarian National Bank (MNB) whose net asset value is at least 40% invested in Hungarian residential property, with a five-year holding requirement; or a €1,000,000 non-refundable donation to a Hungarian higher education institution. The Hungarian property market has two engines, Budapest and Lake Balaton; the transfer duty on property acquired for consideration is 4% up to one billion forints.",
+   "highlights": [
+    "ATTENTION: buying a home directly DOES NOT QUALIFY for a guest investor residence permit",
+    "Only real estate fund units (€250,000, 5-year holding) or a higher education donation (€1,000,000) count under the programme",
+    "The permit runs for 10 years and can be extended once by a further 10 years",
+    "Transfer duty on property acquired for consideration is 4% up to one billion forints and 2% above that (capped at HUF 200 million per property)",
+    "5% VAT on new homes (apartments up to 150 m², houses up to 300 m²) until the end of 2026",
+    "Budapest: year-round yields underpinned by student and tenant demand",
+    "Lake Balaton: a domestic holiday market in sustained appreciation"
+   ],
+   "faq": [
+    {
+     "q": "Can I obtain Hungarian residence if I buy an apartment in Hungary?",
+     "a": "No. This is the most common misconception about the Hungarian programme. Under the Guest Investor Programme, buying an apartment or house directly does NOT count as an investment: the planned €500,000 direct property option was deleted in January 2025 before it took effect. There are two options: buying €250,000 of units in a real estate fund registered with the MNB that invests at least 40% in Hungarian residential property (with a 5-year holding requirement), or a €1,000,000 donation to a Hungarian higher education institution. The permit runs for 10 years and can be extended once by a further 10 years. Hungarian and EU citizens of course have no need for it — they enjoy freedom of movement."
+    },
+    {
+     "q": "How much duty is payable on a Hungarian property purchase?",
+     "a": "The transfer duty on property acquired for consideration is 4% on the portion of market value up to one billion forints and 2% on the portion above, capped at HUF 200 million per property. On a new home bought from a developer, the duty is waived up to a value of HUF 15 million, with 4% payable on the excess above that. Reliefs or exemptions may be claimed by young first-time buyers, on purchases using CSOK, and where the sale and purchase take place within five years of each other — in which case duty is payable only on the price difference. VAT on new homes is 5% rather than 27%, for apartments up to 150 m² and houses up to 300 m², until the end of 2026."
+    },
+    {
+     "q": "What rental yield is achievable in Budapest?",
+     "a": "Gross yields on long-term residential letting in Budapest are typically 4–6%, and can be higher on small flats in the centre near the universities. Short-term letting yields more, but is subject to rules that differ from district to district."
+    }
+   ]
+  },
+  "TH": {
+   "nameHu": "Thailand",
+   "intro": "Of the South-East Asian markets, Thailand offers foreigners the most predictable ownership structure: a foreign individual may acquire a condominium unit IN THEIR OWN NAME, as freehold — provided that no more than 49% of the total area of the condominium in question is in foreign hands. Foreigners may not, however, own land or a house together with its land; there, a long-term lease or a corporate structure is customary. Bangkok is the urban letting market, Phuket and Koh Samui the tourist-yield markets, and Chiang Mai the market for long-staying digital nomads.",
+   "highlights": [
+    "Condominium units can be acquired freehold, in your own name, as a foreigner",
+    "A 49% foreign quota per condominium, measured by FLOOR AREA — to be verified in writing before buying",
+    "The purchase price must be remitted from abroad in foreign currency (no transfer without an FET certificate)",
+    "Foreigners may not own land; the statutory maximum for a registrable lease is 30 years",
+    "The '30+30+30' extension is only a contractual promise — the courts have not enforced it against a new owner",
+    "Transfer fee of 2%, customarily split between the parties — the buyer's total cost is typically 1–2%",
+    "ATTENTION: the 0.01% reduced fee applies ONLY to Thai citizens, not to foreign buyers"
+   ],
+   "faq": [
+    {
+     "q": "Can a foreigner buy property in Thailand?",
+     "a": "A condominium unit, yes — in your own name, as freehold — provided that no more than 49% of the building's registered saleable floor area is in foreign ownership. The purchase price must be remitted from abroad in foreign currency, and the Land Department will not register title without the FET certificate evidencing this. A foreign individual may not own land, or a house built on land; in such cases a lease registrable for a maximum of 30 years, a usufruct, or a Thai-majority company are the available options. Caution: a Thai-majority company is lawful only with genuine Thai owners — a nominee structure breaches the Foreign Business Act, and the authorities actively investigate it."
+    },
+    {
+     "q": "Is it true that Thailand is raising the foreign quota to 75% and leases to 99 years?",
+     "a": "No, this is NOT the law at present. In 2024 the government approved only that the two proposals be examined; no legislation ever came of them. The 99-year lease plan was formally removed from the agenda in September 2025. As of mid-2026, the rule in force remains a 49% foreign quota and a 30-year maximum registrable lease. Anyone buying a property priced on a 99-year horizon is paying for a right that does not exist."
+    },
+    {
+     "q": "What does the 49% foreign quota mean?",
+     "a": "In every Thai condominium, no more than 49% of the registered saleable floor area may be in foreign ownership — the limit is therefore proportional to floor area, not to the number of units. Before buying, you must obtain written confirmation from the condominium's management that there is still room within the quota; without it the unit cannot be transferred into a foreign buyer's name, and the deposit can easily become stuck."
+    },
+    {
+     "q": "What are the transaction costs of buying in Thailand?",
+     "a": "A 2% transfer fee on the official assessed value, customarily split between the parties. The seller bears the specific business tax (3.3% where the property has been held for less than five years) or stamp duty instead (0.5% where held for at least five years), plus withholding tax. The parties' combined costs typically come to 6–8% of the purchase price, but under the customary split the FOREIGN BUYER's share is only about 1–2%, including legal and due diligence fees. Importantly, the much-cited 0.01% reduced transfer fee applies exclusively to Thai citizens — foreign buyers and Thai companies pay the full 2%."
+    }
+   ]
+  },
+  "IT": {
+   "nameHu": "Italy",
+   "intro": "Italy is the EU's deepest and most differentiated holiday and urban property market: from the premium segment of Lake Como and Tuscany, through Milan's rental market, to the '€1 house' schemes of the south, every price level is available. EU citizens may buy without restriction. Taxation is the key: transfer tax on a second-hand property bought from a private individual is 9% (for a second home), but can fall to 2% for a buyer who becomes resident, and those relocating from abroad can access the €200,000 annual flat tax on foreign income.",
+   "highlights": [
+    "EU member state — no purchase restrictions for EU citizens",
+    "Transfer tax of 9% on a second home, 2% if it becomes your 'prima casa' (main home); minimum €1,000",
+    "When buying from a private individual, the tax base is the cadastral value (prezzo-valore), typically well below the purchase price",
+    "VAT on a new property bought from a developer: 4% main home, 10% second home, 22% luxury category",
+    "There is NO property-based Golden Visa — property is expressly excluded from the Italian investor visa",
+    "Flat tax on foreign income for new residents: €300,000 a year from 1 January 2026"
+   ],
+   "faq": [
+    {
+     "q": "How much tax does a buyer pay on an Italian property purchase?",
+     "a": "On a second-hand property bought from a private individual, transfer tax (imposta di registro) is 9% where it is a second home, and only 2% where the buyer registers it as their main home within 18 months; the minimum in both cases is €1,000. In sales between private individuals, the tax base may on request be the cadastral value (prezzo-valore), which is typically well below the actual purchase price — a meaningful saving. To this are added two fixed charges of €50 each. On a new property bought from a developer within 5 years of completion, VAT applies to the purchase: 4% for a main home, 10% for a second home, and 22% in the A/1, A/8 and A/9 luxury cadastral categories, plus three fixed charges of €200 each."
+    },
+    {
+     "q": "Can a Hungarian citizen buy property in Italy?",
+     "a": "Yes, without restriction — both countries are EU member states, so a Hungarian buyer purchases on the same terms as Italians. An Italian tax number (codice fiscale) and an Italian bank account are required for the purchase."
+    },
+    {
+     "q": "What is the Italian flat tax for new residents?",
+     "a": "Anyone transferring their tax residence to Italy may elect a regime under which a fixed annual amount of tax is paid on their foreign-source income, for up to 15 years. The 2026 budget law raised the amount to €300,000 a year for those transferring their residence from 1 January 2026 (with a further €50,000 per family member). Those who entered earlier keep the old figure: €100,000 for entrants before 2024 and €200,000 for entrants in 2024–2025. Importantly, this is a tax construct, NOT a residence programme — buying Italian property does not in itself confer a right of residence."
+    }
+   ]
+  },
+  "GR": {
+   "nameHu": "Greece",
+   "intro": "Greece operates the EU's best-known Golden Visa programme: a property investment secures a five-year, renewable residence permit that covers the whole family and grants free movement within Schengen, WITH NO MINIMUM STAY REQUIREMENT — the programme's strongest argument. Since Law 5100/2024 the threshold has been banded by area: €800,000 across the whole Attica region, in Thessaloniki, on Mykonos and Santorini and on islands with populations above 3,100; €400,000 in the rest of the country; and €250,000 EXCLUSIVELY for converting a non-residential building into a dwelling or restoring a listed building. Two conditions are frequently left unmentioned: the property must be a single unit with at least 120 m² of main living area, and short-term (Airbnb-style) letting of a Golden Visa property is PROHIBITED — breaching the rule means revocation of the permit and a €50,000 fine.",
+   "highlights": [
+    "Golden Visa bands: €800,000 (Attica, Thessaloniki, Mykonos, Santorini, larger islands) / €400,000 (elsewhere) / €250,000 (conversion or listed-building restoration only)",
+    "The property must be a single unit, with a minimum of 120 m² of main living area",
+    "Short-term letting of the Golden Visa property is PROHIBITED — the penalty is revocation and a €50,000 fine",
+    "There is NO minimum stay requirement",
+    "It covers the whole family (spouse, children under 21, dependent parents of both spouses)",
+    "Valid for 5 years, renewable for as long as the investment is maintained",
+    "Property transfer tax of 3% (plus a small municipal surcharge)",
+    "The VAT suspension on new-build has been extended to 31 December 2026 — the 3% transfer tax applies in such cases too"
+   ],
+   "faq": [
+    {
+     "q": "How does the Greek Golden Visa work?",
+     "a": "Buying Greek property allows you to apply for a five-year, renewable residence permit covering your spouse, children under 21 and the dependent parents of both spouses. The permit grants free movement within Schengen and imposes no minimum stay — it is enough to maintain the investment."
+    },
+    {
+     "q": "What is the threshold for the Greek Golden Visa?",
+     "a": "There are three bands under Law 5100/2024. €800,000 across the whole Attica region, in the Thessaloniki regional unit, on Mykonos and Santorini and on every island with a population above 3,100. €400,000 across all other parts of the country. €250,000 in two cases only: where a non-residential building is converted into a dwelling (the works must be completed before the application), or where a listed building is restored. The 2024 transitional deadlines have all expired, so in 2026 the full €400,000/€800,000 thresholds apply. Always check the specific zoning classification of the individual property before buying."
+    },
+    {
+     "q": "Can I let my Greek Golden Visa property short-term?",
+     "a": "No. The 2024 reform expressly prohibits short-term (Airbnb-style) letting of the property underpinning a Golden Visa. Breaching the prohibition results in revocation of the residence permit and a €50,000 fine. Long-term letting is permitted. This condition fundamentally changes the return calculation on the investment, yet it is missing from most offers."
+    },
+    {
+     "q": "Does the Greek Golden Visa grant citizenship?",
+     "a": "Not directly. The Golden Visa is a residence permit; Greek citizenship may be applied for after seven years of actual residence in Greece, subject to language and integration requirements. If the passport itself is the objective, Turkey and Saint Kitts and Nevis grant citizenship directly for a property investment."
+    }
+   ]
+  },
+  "ES": {
+   "nameHu": "Spain",
+   "intro": "Spain is Europe's highest-turnover holiday property market: the stock on the Costa del Sol (Marbella, Málaga), the Costa Blanca (Alicante), the Balearics and Barcelona is the deepest and most easily resold on the continent. Because of the international buyer base, the exit (sale) is substantially quicker than in smaller markets. One important legislative change: the property-based route into the Spanish Golden Visa was abolished in April 2025, so buying Spanish property today does NOT confer an investor residence permit — the purchase is purely an investment and lifestyle decision. Transfer tax ranges from 6% to 10% depending on the region.",
+   "highlights": [
+    "Europe's largest and most liquid holiday property market — quick resale",
+    "Property transfer tax (ITP) of roughly 6–11% depending on the region: Madrid 6%, Andalusia 7%, Catalonia 10–11%",
+    "ATTENTION: the property-based Golden Visa was abolished in April 2025",
+    "An extensive Hungarian and international community along the southern coast"
+   ],
+   "faq": [
+    {
+     "q": "Does the Spanish Golden Visa still exist for property purchases?",
+     "a": "No. Spain abolished the property-investment route into the Golden Visa in April 2025, so a €500,000 property purchase no longer secures a Spanish investor residence permit. Within the EU, Greece and Hungary offer property-based residence programmes; for citizenship through property, Turkey and Saint Kitts and Nevis are the options."
+    },
+    {
+     "q": "How much tax does a buyer pay in Spain?",
+     "a": "On second-hand property the buyer pays transfer tax (ITP) of roughly 6–11% depending on the region: 6% in Madrid, a uniform 7% in Andalusia, 10% in Catalonia up to one million euros and 11% above, and 10% in Valencia (9% from 1 June 2026, and 11% above one million euros). The tax base is the higher of the purchase price and the official cadastral reference value — which matters, because even with a low contract price you are taxed on the reference value. On a new-build bought from a developer, 10% VAT applies plus stamp duty (AJD) of 0.5–1.5% depending on the region."
+    },
+    {
+     "q": "What do I need as a Hungarian buyer to purchase Spanish property?",
+     "a": "A Spanish tax number (NIE), a Spanish bank account and, typically, an independent lawyer. As an EU citizen you are subject to no purchase restrictions whatsoever, and the process concludes before a notary (escritura pública)."
+    }
+   ]
+  },
+  "AE": {
+   "nameHu": "Dubai (UAE)",
+   "intro": "Dubai is the highest-turnover, entirely tax-free property market on the Persian Gulf: in the designated freehold zones (Dubai Marina, Downtown, Palm Jumeirah, Business Bay) a foreign buyer of any nationality can acquire full ownership in their own name, without a residence permit. There is no annual property tax, no personal income tax, no capital gains tax, and rental income earned by a private individual is not taxed either. Gross rental yields average around 7% across the city — outstanding by international standards — and a property worth 2,000,000 AED (~505,000 €) qualifies the owner for a renewable 10-year Golden Visa. Two things matter: outside the designated zones a foreigner cannot buy, so before purchase the classification of the specific property must be checked with the Dubai Land Department; and the UAE does NOT grant citizenship for property — only residence.",
+   "highlights": [
+    "A foreigner of any nationality can buy FREEHOLD property in their own name in the designated zones, without a residence permit",
+    "No annual property tax, income tax, capital gains tax or rental tax for the private individual owner",
+    "Property transfer fee of 4% (officially 2% buyer + 2% seller; in practice the buyer pays the full amount)",
+    "From 2,000,000 AED (~505,000 €) a renewable 10-year Golden Visa — extends to family members too",
+    "The Golden Visa is RESIDENCE, not citizenship — the UAE does not grant a passport for property",
+    "Gross rental yield of ~7% on the city average; the dirham is pegged to the US dollar",
+    "Outside the designated zones a foreigner cannot buy — the zone must be verified with the DLD"
+   ],
+   "faq": [
+    {
+     "q": "Can a foreigner buy property in Dubai?",
+     "a": "Yes. A foreign private individual of any nationality can buy full-ownership (freehold) property in their own name, without a residence permit, in Dubai's designated zones — such as Dubai Marina, Downtown, Palm Jumeirah and Business Bay. Outside these zones, however, ownership is reserved for UAE and GCC nationals, so before purchase it is advisable to check the classification of the specific property with the Dubai Land Department (DLD)."
+    },
+    {
+     "q": "How much tax is payable on a Dubai property?",
+     "a": "On purchase there is a 4% property transfer fee (DLD transfer fee) — officially 2% for the buyer and 2% for the seller, but in practice the buyer pays the full 4%. On top of this there is an approximately 4,200 AED trustee fee and a 250 AED title deed fee. Ownership, however, is effectively tax-free: there is no annual property tax, no personal income tax, no capital gains tax, and residential rental income earned by a private individual is not taxed either."
+    },
+    {
+     "q": "Does Dubai grant a residence permit for buying property?",
+     "a": "Yes. A property worth at least 2,000,000 AED (~505,000 €) qualifies the owner for a renewable 10-year Golden Visa, which extends to the spouse, children (regardless of age) and parents, and carries no minimum stay requirement. Mortgaged property and, under certain conditions, off-plan property are also accepted. Important: this is a residence permit, NOT citizenship — the UAE does not grant a passport for property investment."
+    },
+    {
+     "q": "Can you obtain citizenship in Dubai through property?",
+     "a": "No. The United Arab Emirates has no property-based citizenship programme. A passport can only be obtained through official nomination (for prominent investors, doctors, scientists and talents), which cannot be purchased and cannot be applied for. Through property investment in Dubai the 10-year Golden Visa (residence) is the most that is available; in our portfolio, citizenship through property is offered by Turkey."
+    },
+    {
+     "q": "What rental yield can be achieved in Dubai?",
+     "a": "The gross rental yield on Dubai apartments averages around 7% across the city (according to independent data in mid-2026, roughly 6.9–7.2%), which is outstanding by international standards. In the more affordable, up-and-coming zones (for example Jumeirah Village Circle, Dubai Sports City) 7.5–8.5% is achievable, while in premium locations (Downtown, Palm Jumeirah) it is 5–6%. From the net yield the service charge must be deducted, which can be significant depending on the location."
+    }
+   ]
   }
+ },
+ "articles": {
+  "allampolgarsag-ingatlanbefektetessel": {
+   "title": "Citizenship by property investment: where can you actually obtain a passport?",
+   "description": "In which countries does buying property lead directly to citizenship? The two working programmes — Turkey and Saint Kitts and Nevis — with their thresholds, timescales and conditions compared.",
+   "answer": "Two countries currently grant citizenship directly for a property investment: Turkey, for property worth USD 400,000, typically within 3–6 months; and Saint Kitts and Nevis, for government-approved property (from USD 325,000 for a condominium unit, from USD 600,000 for a detached house), within 160–180 days to Approval in Principle. Every other well-known programme — the Greek, the Hungarian or the former Spanish Golden Visa — grants only a residence permit, not citizenship.",
+   "sections": [
+    {
+     "h": "The crucial distinction: citizenship or merely residence?",
+     "p": [
+      "The market uses the term 'Golden Visa' for two legally quite different things, and most of the confusion stems from this. A residence programme (residence by investment) grants a residence permit: you may live in the country and come and go, but your passport does not change. A citizenship programme (citizenship by investment, CBI), by contrast, grants genuine citizenship and a passport, typically within a few months and without relocating.",
+      "Two countries currently grant citizenship directly for a property investment: Turkey and Saint Kitts and Nevis. There is NO such programme in the EU — the Maltese citizenship programme had to be discontinued following the Court of Justice of the EU's 2025 ruling, while the Greek and Hungarian programmes concern residence permits only."
+     ],
+     "table": null
+    },
+    {
+     "h": "The two working programmes side by side",
+     "p": [
+      "The choice is not about price, but about what you intend to do with the property and the passport. Turkey offers a large, liquid property market — the property is an investment in its own right, and can be sold after three years. Saint Kitts and Nevis is a smaller market with a slower exit, but in exchange offers a lower entry point, complete tax exemption and a stronger passport."
+     ],
+     "table": {
+      "head": [
+       "",
+       "Turkey 🇹🇷",
+       "Saint Kitts and Nevis 🇰🇳"
+      ],
+      "rows": [
+       [
+        "What you receive",
+        "Full citizenship + passport",
+        "Full citizenship + passport"
+       ],
+       [
+        "Property threshold",
+        "USD 400,000 (~€370,000)",
+        "USD 325,000 apartment / USD 600,000 detached house"
+       ],
+       [
+        "Processing time",
+        "3–6 months",
+        "160–180 days to Approval in Principle"
+       ],
+       [
+        "Holding period",
+        "3 years",
+        "7 years"
+       ],
+       [
+        "Residence requirement",
+        "None",
+        "None — but a MANDATORY interview"
+       ],
+       [
+        "Family members eligible",
+        "Spouse + children under 18",
+        "Spouse, children under 30, dependent parents and grandparents"
+       ],
+       [
+        "Government fees on top of the purchase price",
+        "Valuation + processing fees",
+        "roughly USD 35,000 for a single applicant"
+       ],
+       [
+        "Visa-free countries",
+        "roughly 118",
+        "roughly 155 (Schengen, United Kingdom)"
+       ],
+       [
+        "Programme launched",
+        "2017",
+        "1984 — the world's oldest CBI"
+       ],
+       [
+        "Income tax",
+        "Yes",
+        "No income, wealth or inheritance tax"
+       ],
+       [
+        "Property market",
+        "Large, liquid, an investment in its own right",
+        "Small, programme-driven secondary market"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Turkey: the highest-volume programme",
+     "p": [
+      "You must buy Turkish property worth at least USD 400,000. A crucial detail the advertisements leave out: what counts is not the contract price but the official valuation by an SPK-licensed appraiser — and the threshold must be met simultaneously by the price paid and evidenced through a bank, by the valuation, and by the value recorded on the title deed. A high contract price cannot 'correct' a low valuation. The three-year restriction on disposal (satılamaz) is recorded on the tapu, after which the applicant receives a residence permit and then citizenship. The process typically takes 3–6 months and extends to the spouse and children under 18; adult children and parents CANNOT be included.",
+      "The Turkish passport allows visa-free travel to roughly 118 countries and — the main motivation for many investors — a Turkish citizen becomes eligible to apply for the US E-2 investor visa, which is not available to Hungarian citizens. An important nuance: the E-2 is not a residence permit and not a green card, but a renewable non-immigrant visa tied to an investment, and in practice naturalised citizens are expected to have held their citizenship for several years to qualify.",
+      "A practical note: the threshold is measured in USD, so the exchange rate matters. Transaction costs in Turkey are 4% tapu duty plus legal and valuation fees."
+     ],
+     "table": null
+    },
+    {
+     "h": "Saint Kitts and Nevis: the oldest and most stable programme",
+     "p": [
+      "The Caribbean island nation has run its programme without interruption since 1984 — the profession regards it as the 'platinum standard' of CBI. There are two property tiers: a condominium unit or share in a government-approved development from USD 325,000, and an approved detached family house from USD 600,000. Property bought on the open market and not on the approved list does NOT qualify. Applications can be submitted only through an authorised agent.",
+      "The conditions really are light: there is no settlement, residence, language or examination requirement, and citizenship is granted indefinitely and is heritable. One point does matter, because it is missing from most offers: the main applicant MUST attend an interview, and family members over 16 may also be required to do so. In exchange, the family circle that can be included is wide: spouse, children under 30, and dependent parents and grandparents.",
+      "Budget for government fees ON TOP of the purchase price: the due diligence fee is USD 10,000 for the main applicant and USD 7,500 for each family member over 16, and after Approval in Principle a further USD 25,000 for the main applicant and USD 15,000 for the spouse. For a single applicant that is roughly USD 35,000 extra.",
+      "The property must officially be held for 7 years; after that it can be passed on, and the new foreign buyer may use the same property again for their own citizenship application — which is what keeps the secondary market alive. Be realistic, though: this is a small, programme-driven market, not a conventional housing market, so the exit is slower than in Turkey. The passport gives visa-free entry to roughly 155 countries (Henley 2026: 23rd place), but a recent change is that Turkey and Ireland have withdrawn visa-free access."
+     ],
+     "table": null
+    },
+    {
+     "h": "What to establish before you decide",
+     "p": [
+      "1. Whether the property appears on the official list of approved projects (in the case of Saint Kitts, this is a condition of the application's validity).",
+      "2. Whether the valuation meets the threshold — in Turkey what counts is the official valuation, not the contract price.",
+      "3. The tax consequences in your own jurisdiction of residence: acquiring citizenship does not in itself end your Hungarian tax residence.",
+      "4. The exit: after how long, and at what realistic price, the property can be passed on. This is the most frequently underestimated risk of CBI investments."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "In which countries can citizenship be obtained by buying property?",
+     "a": "In two: Turkey, for property worth USD 400,000 (3–6 months), and Saint Kitts and Nevis, for government-approved property — from USD 325,000 for a condominium unit and from USD 600,000 for a detached house (160–180 days to Approval in Principle). Both grant genuine citizenship and a passport, with no settlement requirement; in Saint Kitts, however, there is a mandatory interview, and the property must be held for 7 years."
+    },
+    {
+     "q": "Can EU citizenship be obtained through a property investment?",
+     "a": "No. At present, no EU member state allows citizenship to be obtained directly by buying property. The Greek and Hungarian programmes grant a residence permit, the Spanish property-based Golden Visa was abolished in April 2025, and the Maltese citizenship programme had to be discontinued following the Court of Justice of the EU's 2025 ruling."
+    },
+    {
+     "q": "Does the property have to be kept after citizenship is granted?",
+     "a": "Yes, for a period. In Turkey it cannot be sold for three years (this is also recorded on the title deed), and in Saint Kitts and Nevis the official programme conditions set a holding period of 7 years. Citizenship is retained after the holding period ends and the property is sold."
+    },
+    {
+     "q": "Will I lose my Hungarian citizenship?",
+     "a": "No. Hungary accepts dual citizenship, and neither Turkey nor Saint Kitts and Nevis requires you to renounce your previous citizenship. The question of tax residence is separate, however — it is worth clarifying that with a tax adviser."
+    }
+   ]
+  },
+  "golden-visa-ingatlannal": {
+   "title": "Golden Visa through property investment in 2026: what does each country offer?",
+   "description": "Greece, Hungary and the other programmes: thresholds, residence requirements, and which route leads to citizenship. An up-to-date comparative overview.",
+   "answer": "Through a DIRECT property purchase, Greece is in practice the only country in the EU where a residence permit can still be obtained today: from €400,000 across most of the country and from €800,000 in Attica, Thessaloniki and the popular islands. Under the Hungarian guest investor programme, buying a home directly DOES NOT QUALIFY — only units in a real estate fund (€250,000) or a higher education donation (€1,000,000) count. The Spanish property-based Golden Visa was abolished on 3 April 2025, and in Italy property is expressly excluded from the investor visa. If the passport itself is the objective, you need a citizenship programme rather than a residence programme: Turkey or Saint Kitts and Nevis.",
+   "sections": [
+    {
+     "h": "What does a Golden Visa actually give you?",
+     "p": [
+      "A Golden Visa is a residence permit granted by the state in exchange for an investment — typically a property purchase. Under an EU programme it also means free movement within Schengen, and therefore in most cases visa-free travel throughout the area. What it does NOT give you is a passport or citizenship. In most countries, citizenship can be applied for only after several years of actual residence, a language examination and a naturalisation procedure.",
+      "As a Hungarian citizen you do not need a Golden Visa for free movement within the EU — which is why, for domestic buyers, these programmes are of interest primarily for tax planning, business or 'plan B' reasons, or where third-country family members are involved."
+     ],
+     "table": null
+    },
+    {
+     "h": "The programmes side by side",
+     "p": [
+      "The thresholds shown are each country's official property-based entry level."
+     ],
+     "table": {
+      "head": [
+       "Country",
+       "Threshold",
+       "What it gives",
+       "Residence requirement"
+      ],
+      "rows": [
+       [
+        "Greece 🇬🇷",
+        "€800,000 (Attica, Thessaloniki, large islands) / €400,000 (elsewhere) / €250,000 (conversion or listed buildings only)",
+        "5-year renewable residence permit, covering the whole family",
+        "None"
+       ],
+       [
+        "Hungary 🇭🇺",
+        "€250,000 in real estate FUND units or a €1,000,000 donation",
+        "10-year permit — buying a home DIRECTLY DOES NOT QUALIFY",
+        "None"
+       ],
+       [
+        "Spain 🇪🇸",
+        "—",
+        "ABOLISHED: the property-based route closed on 3 April 2025",
+        "—"
+       ],
+       [
+        "Italy 🇮🇹",
+        "—",
+        "NONE: property is excluded from the investor visa",
+        "—"
+       ],
+       [
+        "Turkey 🇹🇷",
+        "USD 400,000",
+        "CITIZENSHIP (not merely residence)",
+        "None"
+       ],
+       [
+        "Saint Kitts and Nevis 🇰🇳",
+        "roughly USD 325,000",
+        "CITIZENSHIP (not merely residence)",
+        "None"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Greece: the best-known EU programme",
+     "p": [
+      "The Greek Golden Visa runs for five years, is renewable for as long as the investment is maintained, and extends to the spouse, children under 21 and the dependent parents of both spouses. Its strongest feature is that there is no minimum stay requirement.",
+      "Since Law 5100/2024 the threshold has had three bands. €800,000 across the whole Attica region, in the Thessaloniki regional unit, on Mykonos and Santorini and on every island with a population above 3,100. €400,000 across all other parts of the country. €250,000 in two cases only: converting a non-residential building into a dwelling (the works must be completed BEFORE the application is submitted), and restoring a listed building. The 2024 transitional deadlines have all expired, so the full thresholds apply in 2026.",
+      "Two conditions are missing from most offers yet may decide the investment: in the €400,000 and €800,000 bands the property must be a SINGLE unit with at least 120 m² of main living area (the investment cannot be split across several apartments), and short-term, Airbnb-style letting of the property underpinning the Golden Visa is PROHIBITED. Breaching the prohibition results in revocation of the permit and a €50,000 fine. For anyone who planned the Greek programme around tourist rental yields, this rewrites the calculation from the ground up."
+     ],
+     "table": null
+    },
+    {
+     "h": "Hungary: the guest investor programme relaunched in 2024",
+     "p": [
+      "Here the most important thing is to clear up a widespread misconception: under the Hungarian Guest Investor Programme, BUYING A HOME DIRECTLY DOES NOT QUALIFY for a residence permit. The €500,000 direct property option originally envisaged in the legislation was deleted in January 2025, before it ever took effect. So simply buying an apartment in Budapest will not get you a guest investor permit.",
+      "Two routes remain. One is buying €250,000 of units in a real estate fund registered with the MNB whose net asset value is at least 40% invested in Hungarian residential property, with a five-year holding requirement. The other is a €1,000,000 non-refundable donation to a Hungarian higher education institution. The permit runs for ten years and can be extended once by a further ten — the longest term in the EU — and the investment must be made within 93 days of first entering the country on the guest investor visa.",
+      "For Hungarian and EU citizens the programme is naturally irrelevant, since they enjoy freedom of movement; its target audience is the third-country investor."
+     ],
+     "table": null
+    },
+    {
+     "h": "If the passport is the goal, do not look for a Golden Visa",
+     "p": [
+      "The most common mistake is wanting citizenship and buying a Golden Visa to get it. The two are not the same and one does not automatically lead to the other: Greek naturalisation, for example, requires seven years of actual residence in Greece, a language examination and an integration examination — a Golden Visa on its own is no substitute.",
+      "If the real objective is a second passport, you need a citizenship programme: Turkey or Saint Kitts and Nevis. We cover these in detail in our article 'Citizenship by property investment'."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "In which countries can a Golden Visa still be obtained by buying property?",
+     "a": "Through a direct property purchase, in practice only in Greece: from €400,000 across most of the country, from €800,000 in Attica, Thessaloniki and the popular islands, and from €250,000 only for building conversions or listed-building restorations. Under the Hungarian programme, buying a home directly does not count — there you need real estate fund units (€250,000) or a higher education donation (€1,000,000). The Spanish property-based Golden Visa was abolished on 3 April 2025, and in Italy property is excluded from the investor visa."
+    },
+    {
+     "q": "Does a Golden Visa give EU citizenship?",
+     "a": "No. A Golden Visa is a residence permit. Citizenship can be obtained only through the ordinary naturalisation procedure, which typically requires several years of actual residence, a language examination and an integration examination — seven years in the Greek case, for example."
+    },
+    {
+     "q": "Do you have to live in the country to keep a Golden Visa?",
+     "a": "The Greek and Hungarian programmes have no minimum stay requirement: it is enough to maintain the investment and renew the permit. That also means, however, that those years do not count towards the residence period required for naturalisation — Greek naturalisation, for example, requires seven years of ACTUAL residence in Greece."
+    }
+   ]
+  },
+  "kulfoldi-ingatlan-mellekkoltsegek": {
+   "title": "What does it really cost? The transaction costs of buying property abroad in 12 countries",
+   "description": "Transfer tax, notary, lawyer, agency commission — broken down country by country. Total costs on top of the purchase price typically range from 3% to 14%.",
+   "answer": "The costs payable on top of the purchase price when buying property abroad vary significantly by country: in Albania there is effectively no transfer tax, in Montenegro it is 3%, in Hungary and Turkey 4%, while in Italy it is 9% (second home) and in Spain 6–10%. Everywhere, you must add the notary fee, legal fees and typically 2–5% agency commission.",
+   "sections": [
+    {
+     "h": "Why this matters more than the purchase price",
+     "p": [
+      "When buying property abroad, most unpleasant surprises lie not in the price but in the transaction costs. On top of the purchase price you should typically expect a further 5–14% depending on the country — on a €300,000 property that is a difference of between €15,000 and €42,000, purely on the basis of which country you buy in.",
+      "The table below shows the most important items country by country. Note: transfer tax generally applies to SECOND-HAND property — on new-build, many countries substitute VAT, which may be higher."
+     ],
+     "table": {
+      "head": [
+       "Country",
+       "Transfer tax",
+       "Notary",
+       "Lawyer",
+       "Agent"
+      ],
+      "rows": [
+       [
+        "🇲🇪 Montenegro",
+        "3–6% (banded)",
+        "0.5% + €200",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇭🇷 Croatia",
+        "3%",
+        "0.4% + €150",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇦🇱 Albania",
+        "0%",
+        "0.5% + €120",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇷🇸 Serbia",
+        "2.5%",
+        "0.5% + €150",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇹🇷 Turkey",
+        "4%",
+        "0.5% + €250",
+        "1.2%",
+        "2%"
+       ],
+       [
+        "🇮🇩 Bali (Indonesia)",
+        "5%",
+        "1% + €300",
+        "1.5%",
+        "5%"
+       ],
+       [
+        "🇭🇺 Hungary",
+        "4%",
+        "0.5% + €150",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇹🇭 Thailand",
+        "2%",
+        "0.5% + €200",
+        "1.5%",
+        "3%"
+       ],
+       [
+        "🇮🇹 Italy",
+        "9%",
+        "1% + €300",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇬🇷 Greece",
+        "3%",
+        "1.2% + €300",
+        "1.2%",
+        "2%"
+       ],
+       [
+        "🇪🇸 Spain",
+        "8%",
+        "1% + €300",
+        "1%",
+        "3%"
+       ],
+       [
+        "🇦🇪 Dubai (UAE)",
+        "4%",
+        "0% + 1200 €",
+        "0%",
+        "2%"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "The cheapest and the most expensive entry",
+     "p": [
+      "The most favourable transaction costs are offered by Albania (0% transfer tax) and Thailand (2%), followed by Montenegro and Croatia at 3–6% (banded). At the other end of the scale sits Italy at 9% for a second home, along with Spain, where the regional ITP ranges from 6% to 10%.",
+      "A common error is to assume that the agency commission is always paid by the seller. This varies from market to market: in the Balkan and Turkish markets, splitting the commission or having the buyer bear it are both established practice, so this must be settled in writing before the deposit is paid."
+     ],
+     "table": null
+    },
+    {
+     "h": "What to budget for beyond the table",
+     "p": [
+      "Translation and certification: in many countries contracts must be submitted with a certified translation.",
+      "Tax number and bank account: NIE in Spain, codice fiscale in Italy, AFM in Greece — without these you cannot contract.",
+      "Annual running costs: property tax, service charges, insurance, and, for a holiday property, winterisation or management fees.",
+      "Currency conversion: in non-eurozone countries (Turkey, Thailand, Indonesia, Hungary) the bank's exchange margin alone can be 1–3% — it is worth using a specialist currency provider."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "What are the total transaction costs of buying property abroad?",
+     "a": "Typically 5–14% of the purchase price depending on the country. They are lowest in Albania and Thailand (roughly 3–6%), moderate in Montenegro, Croatia, Hungary and Turkey (roughly 5–9%), and highest in Italy and Spain (roughly 10–14%)."
+    },
+    {
+     "q": "Who pays the agency commission when buying property abroad?",
+     "a": "It varies by market. In Western European markets it is typically the seller, but in the Balkan and Turkish markets splitting it or having the buyer bear it are both established practice. It must always be settled in writing BEFORE the deposit is paid."
+    },
+    {
+     "q": "Is transfer tax payable on new-build as well?",
+     "a": "Generally no — in most countries the price of a new property bought from a developer includes VAT, and in that case no separate transfer tax applies. That is not necessarily cheaper, however: Spain's 10% or Italy's 10–22% VAT may exceed the transfer tax on a second-hand property."
+    }
+   ]
+  },
+  "kulfoldi-ingatlanvasarlas-lepesei": {
+   "title": "Buying property abroad step by step: the complete process",
+   "description": "From the search to registration of title: due diligence, deposit, preliminary contract, notary, tax number and the most common mistakes that cost money.",
+   "answer": "Buying property abroad consists of six steps: (1) searching and shortlisting, (2) obtaining a local tax number and opening a bank account, (3) legal due diligence on the title carried out by an independent lawyer, (4) the preliminary contract and deposit (typically 10%), (5) the final contract before a notary and payment of the purchase price, (6) registration of title at the cadastre. The whole process typically takes 4–12 weeks.",
+   "sections": [
+    {
+     "h": "1. Searching and shortlisting",
+     "p": [
+      "The most common mistake is for the buyer to fall in love with the property rather than the market. First you must decide on the objective: rental yield, personal use, or a residence/citizenship programme. These three objectives often point to entirely different countries and different property types.",
+      "For yield, urban year-round rental demand (Belgrade, Budapest, Bangkok) is more predictable than the seasonal coast. For personal use, flight connections and winter occupancy are decisive. For programme purposes, the property's eligibility matters more than its location."
+     ],
+     "table": null
+    },
+    {
+     "h": "2. Local tax number and bank account",
+     "p": [
+      "In almost every country a local tax number is required for the contract: NIE in Spain, codice fiscale in Italy, AFM in Greece, vergi numarası in Turkey. Obtaining these takes 1–3 weeks and can in many cases be handled remotely under a power of attorney.",
+      "A local bank account is needed not only for the purchase price but also for paying utilities and taxes afterwards. Be prepared for anti-money-laundering checks: the source of the purchase price must be evidenced with documents."
+     ],
+     "table": null
+    },
+    {
+     "h": "3. Legal due diligence — the most expensive place to economise",
+     "p": [
+      "Engage an independent lawyer, one NOT recommended by the seller or the agent. The minimum scope of due diligence: the title register (who the registered owner is), encumbrances and mortgages, building and occupancy permits, the zoning classification of the land, service charge and tax arrears, and whether the floor area of the property matches what was advertised.",
+      "For an off-plan property bought from a developer, the bank guarantee or escrow structure is a separate question: what happens to the money you have paid if the developer fails to complete the building."
+     ],
+     "table": null
+    },
+    {
+     "h": "4. Preliminary contract and deposit",
+     "p": [
+      "Established practice is a 10% deposit paid at the same time as the preliminary contract, which is typically returned twofold if the seller breaches the contract but forfeited if the buyer withdraws. Pay the deposit into a lawyer's escrow account where possible, rather than directly to the seller.",
+      "The preliminary contract must set out the deadline for the final contract, the precise condition of the property and its fixtures, and who bears each of the transaction costs."
+     ],
+     "table": null
+    },
+    {
+     "h": "5. Final contract and payment",
+     "p": [
+      "In most European markets the final sale takes place before a notary (escritura, atto notarile, ugovor), who verifies the identity of the parties and the title. In Turkey, transfer of ownership takes place at the land registry (tapu).",
+      "Pay the purchase price by bank transfer and in a documented manner where possible — cash payment is restricted or prohibited in several countries, and makes it harder to evidence your acquisition cost on a later sale."
+     ],
+     "table": null
+    },
+    {
+     "h": "6. Registration and follow-up",
+     "p": [
+      "Ownership becomes complete only when the cadastre registers it. This takes anywhere from a few days to a few months depending on the country. Next come transferring the utilities, registering for local property tax, and — if you intend to let the property — arranging the letting licence or categorisation.",
+      "Finally: settle your Hungarian tax position as well. Rental income from a foreign property and the capital gain on a later sale are taxed in accordance with the double taxation treaties — this varies by country, and paying the foreign tax does not always close the matter."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "How long does buying property abroad take?",
+     "a": "Typically 4–12 weeks from accepted offer to registration of title, on a cash purchase. Obtaining the local tax number takes 1–3 weeks, legal due diligence 1–2 weeks, and the notarial completion depends on the parties' timing."
+    },
+    {
+     "q": "Do I need to engage a lawyer when buying property abroad?",
+     "a": "Yes, and preferably one who was not recommended by the seller or the agent. In most countries the notary checks the legality of the contract but does not represent your interests — checking encumbrances, permits and floor area is the lawyer's job."
+    },
+    {
+     "q": "Can you buy remotely, without attending in person?",
+     "a": "In most countries yes, using a certified and apostilled power of attorney granted to a lawyer. In practice it is nonetheless worth viewing the property in person at least once — photographs are systematically more flattering than reality."
+    }
+   ]
+  }
+ }
 }

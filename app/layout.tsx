@@ -50,7 +50,6 @@ export const metadata: Metadata = {
     "Bali villa leasehold",
     "horvát tengerparti ingatlan",
     "spanyol Golden Visa",
-    "Saint Kitts állampolgárság",
     "overseas property investment"
   ],
   authors: [{ name: "Proopify" }],

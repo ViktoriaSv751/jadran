@@ -137,19 +137,19 @@ export const RESIDENCY: Record<CountryCode, ResidencyInfo> = {
       ru: "Испания: инвесторская Golden Visa за недвижимость отменена в апреле 2025 года."
     }
   },
-  KN: {
+  AE: {
     residenceNote: {
-      hu: "Saint Kitts és Nevis: a világ legrégebbi (1984) állampolgárság-befektetési programja — jóváhagyott ingatlannal közvetlenül ÁLLAMPOLGÁRSÁG szerezhető, letelepedési kötelezettség nélkül.",
-      me: "Sveti Kits i Nevis: najstariji program državljanstva ulaganjem (1984) — odobrena nekretnina daje državljanstvo.",
-      en: "Saint Kitts and Nevis: the world's oldest citizenship-by-investment programme (1984) — approved real estate leads directly to CITIZENSHIP, with no residence requirement.",
-      ru: "Сент-Китс и Невис: старейшая программа гражданства за инвестиции (1984) — одобренная недвижимость даёт гражданство."
+      hu: "Egyesült Arab Emírségek: 2 000 000 AED (~505 000 €) értékű ingatlan 10 éves, megújítható Golden Visára (tartózkodás) jogosít. Állampolgárságot ingatlannal NEM lehet szerezni.",
+      me: "UAE: nekretnina od 2.000.000 AED (~505.000 €) daje 10-godišnju Golden Visa (boravak); državljanstvo se ne može steći.",
+      en: "UAE: property worth AED 2,000,000 (~€505,000) qualifies for a renewable 10-year Golden Visa (residence). Citizenship cannot be obtained through property.",
+      ru: "ОАЭ: недвижимость на 2 000 000 AED (~505 000 €) даёт возобновляемую 10-летнюю Golden Visa (ВНЖ); гражданство через недвижимость получить нельзя."
     },
-    citizenshipEur: 300000,
+    citizenshipEur: 505000,
     citizenshipNote: {
-      hu: "Kb. 325 000 USD (~300 000 €) értékű, jóváhagyott ingatlan állampolgárságra jogosíthat — az egész családra kiterjeszthetően.",
-      me: "Odobrena nekretnina od oko 325.000 USD može dati državljanstvo za cijelu porodicu.",
-      en: "Approved real estate of about USD 325,000 (~€300,000) can qualify for citizenship — extendable to the whole family.",
-      ru: "Одобренная недвижимость примерно от 325 000 USD может дать гражданство для всей семьи."
+      hu: "2 000 000 AED (~505 000 €) fölötti ingatlan 10 éves Golden Visára jogosít — ez tartózkodási engedély, NEM állampolgárság.",
+      me: "Nekretnina iznad 2.000.000 AED (~505.000 €) daje 10-godišnju Golden Visa — to je boravak, ne državljanstvo.",
+      en: "Property above AED 2,000,000 (~€505,000) qualifies for a 10-year Golden Visa — this is residence, NOT citizenship.",
+      ru: "Недвижимость от 2 000 000 AED (~505 000 €) даёт 10-летнюю Golden Visa — это ВНЖ, а НЕ гражданство."
     }
   }
 };
@@ -510,10 +510,10 @@ export const FOREIGN_BUYER: Record<CountryCode, ForeignBuyerLegal> = {
         ru: "Иностранцы могут свободно покупать; нужен номер NIE."
       },
       {
-        hu: "500 000 € fölötti ingatlan a befektetői tartózkodásra (Golden Visa) jogosíthat.",
-        me: "Nekretnina iznad 500.000 € može dati investitorski boravak.",
-        en: "Property above €500,000 can qualify for investor residence (Golden Visa).",
-        ru: "Недвижимость от €500 000 может дать инвесторский ВНЖ."
+        hu: "Az ingatlanalapú Golden Visát 2025 áprilisában megszüntették — ingatlanvásárlás ma nem ad befektetői tartózkodást.",
+        me: "Golden Visa na osnovu nekretnine ukinuta je u aprilu 2025.",
+        en: "The real-estate Golden Visa was abolished in April 2025 — buying property no longer grants investor residence.",
+        ru: "Инвесторская Golden Visa за недвижимость отменена в апреле 2025 года."
       },
       {
         hu: "A vételt közjegyző (notario) hitelesíti, és a tulajdon-nyilvántartásba kerül.",
@@ -522,44 +522,50 @@ export const FOREIGN_BUYER: Record<CountryCode, ForeignBuyerLegal> = {
         ru: "Сделку заверяет нотариус (notario); запись в реестр собственности."
       },
       {
-        hu: "Az átruházási adó (ITP) régiónként ~6–10%, új építésűnél 10% ÁFA.",
-        me: "Porez na prenos (ITP) je ~6–10% po regiji; kod novogradnje 10% PDV.",
-        en: "Transfer tax (ITP) is ~6–10% by region; new builds carry 10% VAT.",
-        ru: "Налог на передачу (ITP) ~6–10% по региону; для новостроек 10% НДС."
+        hu: "Az átruházási adó (ITP) régiónként ~6–11%, új építésűnél 10% ÁFA.",
+        me: "Porez na prenos (ITP) je ~6–11% po regiji; kod novogradnje 10% PDV.",
+        en: "Transfer tax (ITP) is ~6–11% by region; new builds carry 10% VAT.",
+        ru: "Налог на передачу (ITP) ~6–11% по региону; для новостроек 10% НДС."
       }
     ]
   },
-  KN: {
+  AE: {
     intro: {
-      hu: "Saint Kitts és Nevis nyitott a külföldi vevők előtt, és ingatlanbefektetéssel ÁLLAMPOLGÁRSÁG szerezhető.",
-      me: "Sveti Kits i Nevis je otvoren za strane kupce; ulaganjem u nekretninu dobija se državljanstvo.",
-      en: "Saint Kitts and Nevis is open to foreign buyers, and real-estate investment can lead to CITIZENSHIP.",
-      ru: "Сент-Китс и Невис открыт для иностранцев; инвестиции в недвижимость дают гражданство."
+      hu: "Dubaj a kijelölt „freehold” övezetekben teljesen nyitott a külföldi vevők előtt, és a vétel után egyenesadó gyakorlatilag nincs.",
+      me: "Dubai je u „freehold” zonama potpuno otvoren za strane kupce; nakon kupovine praktično nema poreza.",
+      en: "In its designated freehold areas Dubai is fully open to foreign buyers, with virtually no ownership taxes afterwards.",
+      ru: "В обозначенных «freehold» зонах Дубай полностью открыт для иностранцев; после покупки прямых налогов практически нет."
     },
     points: [
       {
-        hu: "Külföldiek szabadon vásárolhatnak; nem programon belüli vételnél „alien landholding licence” szükséges.",
-        me: "Stranci mogu slobodno kupiti; van programa je potrebna posebna dozvola.",
-        en: "Foreigners can buy freely; outside the programme an alien landholding licence is required.",
-        ru: "Иностранцы могут покупать свободно; вне программы нужна лицензия на владение."
+        hu: "Külföldi bármely nemzetiséggel, saját néven, tartózkodási engedély nélkül vehet FREEHOLD ingatlant a kijelölt övezetekben (Dubai Marina, Downtown, Palm Jumeirah stb.).",
+        me: "Stranac bilo koje nacionalnosti može kupiti freehold u određenim zonama, bez boravka.",
+        en: "A foreigner of any nationality can buy FREEHOLD in designated areas (Dubai Marina, Downtown, Palm Jumeirah, etc.) in their own name, without residency.",
+        ru: "Иностранец любой национальности может купить freehold в обозначенных зонах на своё имя, без ВНЖ."
       },
       {
-        hu: "A JÓVÁHAGYOTT (kormány által engedélyezett) projektekben vett ingatlan ~325 000 USD-tól állampolgárságra jogosít.",
-        me: "Nekretnina u odobrenom projektu od ~325.000 USD daje pravo na državljanstvo.",
-        en: "Property in an APPROVED (government-designated) project from ~USD 325,000 qualifies for citizenship.",
-        ru: "Недвижимость в одобренном проекте от ~325 000 USD даёт право на гражданство."
+        hu: "A kijelölt övezeteken KÍVÜL a tulajdon UAE/GCC állampolgároknak van fenntartva — vásárlás előtt a konkrét ingatlan övezetét a DLD-nél kell ellenőrizni.",
+        me: "Van određenih zona vlasništvo je rezervisano za državljane UAE/GCC — provjeriti kod DLD.",
+        en: "OUTSIDE the designated areas ownership is reserved to UAE/GCC nationals — verify the specific property's zone with the DLD before buying.",
+        ru: "ВНЕ обозначенных зон собственность зарезервирована за гражданами ОАЭ/GCC — проверяйте зону объекта в DLD."
       },
       {
-        hu: "Az eljárás átvilágítással jár, jellemzően 4–8 hónap; nincs letelepedési vagy nyelvi követelmény.",
-        me: "Postupak uključuje provjeru, obično 4–8 mjeseci; nema uslova boravka.",
-        en: "The process includes due diligence, typically 4–8 months; no residence or language requirement.",
-        ru: "Процедура включает проверку, обычно 4–8 месяцев; без требований к проживанию."
+        hu: "Az ingatlanátírási illeték (DLD) 4%: hivatalosan 2% vevő + 2% eladó, a gyakorlatban a vevő fizeti a teljes 4%-ot. Ehhez jön kb. 4 200 AED trustee-díj és a 250 AED tulajdonilap-díj.",
+        me: "DLD taksa je 4% (formalno 2%+2%, u praksi plaća kupac); + ~4.200 AED trustee i 250 AED za list.",
+        en: "The DLD transfer fee is 4% (officially 2% buyer + 2% seller, in practice the buyer pays the full 4%), plus a ~AED 4,200 trustee fee and AED 250 title-deed fee.",
+        ru: "Сбор DLD — 4% (формально 2%+2%, на практике платит покупатель) плюс ~4200 AED trustee и 250 AED за свидетельство."
       },
       {
-        hu: "Nincs jövedelem-, vagyon- vagy örökösödési adó; az ingatlan jellemzően 5–7 év után továbbadható.",
-        me: "Nema poreza na dohodak ni na nasljedstvo; nekretnina se obično može preprodati nakon 5–7 godina.",
-        en: "No income, wealth or inheritance tax; the property can typically be resold after 5–7 years.",
-        ru: "Нет налога на доход, богатство и наследство; недвижимость обычно можно перепродать через 5–7 лет."
+        hu: "Nincs éves ingatlanadó, személyi jövedelemadó, tőkenyereség-adó és bérletiadó a magánszemély tulajdonosnak; a lakóingatlan bérbeadása ÁFA-mentes.",
+        me: "Nema godišnjeg poreza na imovinu, poreza na dohodak ni na kapitalnu dobit za fizičko lice.",
+        en: "There is no annual property tax, personal income tax, capital-gains tax or rental-income tax for an individual owner; residential leasing is VAT-exempt.",
+        ru: "Нет ежегодного налога на недвижимость, НДФЛ, налога на прирост капитала и на арендный доход для физлица; аренда жилья освобождена от НДС."
+      },
+      {
+        hu: "2 000 000 AED (~505 000 €) értékű ingatlan 10 éves, megújítható Golden Visára jogosít, a családtagokkal együtt — ez TARTÓZKODÁS, nem állampolgárság.",
+        me: "Nekretnina od 2.000.000 AED (~505.000 €) daje 10-godišnju Golden Visa sa porodicom — boravak, ne državljanstvo.",
+        en: "Property worth AED 2,000,000 (~€505,000) qualifies for a renewable 10-year Golden Visa including family members — this is RESIDENCE, not citizenship.",
+        ru: "Недвижимость на 2 000 000 AED (~505 000 €) даёт возобновляемую 10-летнюю Golden Visa с семьёй — это ВНЖ, не гражданство."
       }
     ]
   }
