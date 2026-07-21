@@ -544,20 +544,20 @@
    ]
   },
   "kulfoldi-ingatlan-mellekkoltsegek": {
-   "title": "Koliko zapravo košta? Dodatni troškovi kupovine nekretnine u inostranstvu u 12 zemalja",
-   "description": "Porez na prenos vlasništva, notar, advokat, posrednička provizija — po zemljama. Ukupni trošak iznad kupoprodajne cijene obično se kreće između 3 i 14%.",
-   "answer": "Dodatni troškovi iznad kupoprodajne cijene pri kupovini nekretnine u inostranstvu se znatno razlikuju od zemlje do zemlje: u Albaniji praktično nema poreza na prenos vlasništva, u Crnoj Gori iznosi 3%, u Mađarskoj i Turskoj 4%, dok je u Italiji 9% (drugi dom), a u Španiji 6–10%. Tome se svugdje pridodaju notarska taksa, advokatska naknada i najčešće 2–5% posredničke provizije.",
+   "title": "Koliko zaista košta? Dodatni troškovi kupovine strane nekretnine u 12 zemalja",
+   "description": "Porez na prijenos, notar, advokat, posrednička provizija — u rasčlambi po zemljama. Ukupan trošak preko kupovne cijene obično se kreće između 3–14%.",
+   "answer": "Dodatni trošak kupovine strane nekretnine preko kupovne cijene značajno se razlikuje od zemlje do zemlje: u Albaniji praktično nema poreza na prijenos, u Crnoj Gori 3%, u Mađarskoj i Turskoj 4%, dok je u Italiji 9% (drugi dom) i Španiji 6–10%. Na to se svugdje dodaje notarska naknada, advokatska naknada i obično 2–5% posredničke provizije.",
    "sections": [
     {
-     "h": "Zašto je to važnije od kupoprodajne cijene",
+     "h": "Zašto je ovo važnije od kupovne cijene",
      "p": [
-      "Kod kupovine nekretnine u inostranstvu se većina neugodnih iznenađenja ne krije u cijeni, nego u dodatnim troškovima. Iznad kupoprodajne cijene obično dolazi još 5–14%, zavisno od zemlje — kod nekretnine od 300.000 eura to je razlika između 15.000 i 42.000 eura, isključivo zavisno od toga u kojoj zemlji kupujete.",
-      "Donja tabela prikazuje najvažnije stavke po zemljama. Važno: porez na prenos vlasništva se po pravilu odnosi na STARIJU nekretninu — kod novogradnje u mnogim zemljama na njegovo mjesto stupa PDV, koji može biti i viši."
+      "Kod kupovine strane nekretnine većina neugodnih iznenađenja nije u cijeni, nego u dodatnim troškovima. Preko kupovne cijene obično dolazi još 5–14%, ovisno o zemlji — kod nekretnine od 300 000 eura to je razlika između 15 000 i 42 000 eura, čisto ovisno o tome u kojoj zemlji kupujete.",
+      "Sljedeća tabela prikazuje najvažnije stavke po zemljama. Važno: porez na prijenos obično se odnosi na KORIŠTENU nekretninu — kod novogradnje u mnogim zemljama umjesto njega stupa PDV, koji može biti viši."
      ],
      "table": {
       "head": [
        "Zemlja",
-       "Porez na prenos vlasništva",
+       "Porez na prijenos",
        "Notar",
        "Advokat",
        "Posrednik"
@@ -565,58 +565,58 @@
       "rows": [
        [
         "🇲🇪 Crna Gora",
-        "3–6% (progresivno)",
-        "0,5% + 200 €",
+        "3–6%",
+        "0.5% + 200 €",
         "1%",
         "3%"
        ],
        [
         "🇭🇷 Hrvatska",
         "3%",
-        "0,4% + 150 €",
+        "0.4% + 150 €",
         "1%",
         "3%"
        ],
        [
         "🇦🇱 Albanija",
         "0%",
-        "0,5% + 120 €",
+        "0.5% + 120 €",
         "1%",
         "3%"
        ],
        [
         "🇷🇸 Srbija",
-        "2,5%",
-        "0,5% + 150 €",
+        "2.5%",
+        "0.5% + 150 €",
         "1%",
         "3%"
        ],
        [
         "🇹🇷 Turska",
         "4%",
-        "0,5% + 250 €",
-        "1,2%",
+        "0.5% + 250 €",
+        "1.2%",
         "2%"
        ],
        [
         "🇮🇩 Bali (Indonezija)",
         "5%",
         "1% + 300 €",
-        "1,5%",
+        "1.5%",
         "5%"
        ],
        [
         "🇭🇺 Mađarska",
         "4%",
-        "0,5% + 150 €",
+        "0.5% + 150 €",
         "1%",
         "3%"
        ],
        [
         "🇹🇭 Tajland",
         "2%",
-        "0,5% + 200 €",
-        "1,5%",
+        "0.5% + 200 €",
+        "1.5%",
         "3%"
        ],
        [
@@ -629,8 +629,8 @@
        [
         "🇬🇷 Grčka",
         "3%",
-        "1,2% + 300 €",
-        "1,2%",
+        "1.2% + 300 €",
+        "1.2%",
         "2%"
        ],
        [
@@ -653,34 +653,34 @@
     {
      "h": "Najjeftiniji i najskuplji ulaz",
      "p": [
-      "Najpovoljnije transakcijske troškove nude Albanija (0% poreza na prenos vlasništva) i Tajland (2%), a slijede ih Crna Gora i Hrvatska s 3–6% (progresivno). Na drugom kraju skale nalazi se Italija s 9% u slučaju drugog doma, kao i Španija, gdje se regionalni ITP kreće između 6 i 10%.",
-      "Česta je zabluda da posredničku proviziju uvijek plaća prodavac. To se razlikuje od tržišta do tržišta: na balkanskom i turskom tržištu je uobičajena i podjela provizije ili to da je snosi kupac, pa to treba pisano razjasniti prije davanja kapare."
+      "Najpovoljniji transakcijski trošak nudi Albanija, gdje kupac uopće ne plaća porez na prijenos srazmjeran vrijednosti, zatim slijede Tajland (2%) i Srbija (2.5%). U Hrvatskoj je taksa fiksnih 3%. Crna Gora od 2024. primjenjuje PROGRESIVNI sistem: do 150 000 € 3%, iznad toga 5%, iznad 500 000 € 6% — kod nekretnine od 600 000 eura porez je dakle ne 18 000, nego 28 000 €. Na drugom kraju skale je Italija s 9% za drugi dom, kao i Španija, gdje se regionalni ITP kreće otprilike između 6–11%.",
+      "Česta zabluda je da posredničku proviziju uvijek plaća prodavac. To se razlikuje od tržišta do tržišta: na balkanskom i turskom tržištu uobičajena je i podjela provizije ili snošenje na strani kupca, pa to prije kapare treba razjasniti pismeno."
      ],
      "table": null
     },
     {
-     "h": "S čime treba računati uz tabelu",
+     "h": "Šta treba računati preko tabele",
      "p": [
-      "Prijevod i ovjera: u mnogim zemljama se ugovori moraju podnijeti u ovjerenom prijevodu.",
-      "Poreski identifikacijski broj i bankovni račun: u Španiji je potreban NIE, u Italiji codice fiscale, a u Grčkoj AFM — bez njih se ne može sklopiti ugovor.",
-      "Godišnje održavanje: porez na nekretnine, zajednička rezerva, osiguranje, a kod kuća za odmor pripremanje za zimu ili naknada za upravljanje.",
-      "Konverzija valuta: u zemljama izvan eurozone (Turska, Tajland, Indonezija, Mađarska) sama bankovna marža na konverziju može iznositi i 1–3% — isplati se koristiti zasebnog pružaoca deviznih usluga."
+      "Prijevod i ovjera: ugovore u mnogim zemljama treba podnijeti s ovjerenim prijevodom.",
+      "Porezni identifikator i bankovni račun: u Španiji NIE, u Italiji codice fiscale, u Grčkoj AFM — bez njih se ne može sklopiti ugovor.",
+      "Godišnje održavanje: porez na nekretninu, zajednički trošak, osiguranje, a kod nekretnine za odmor pripreme za zimu ili naknada za upravljanje.",
+      "Konverzija valute: kod zemalja izvan eurozone (Turska, Tajland, Indonezija, Mađarska) marža bankovne konverzije sama po sebi može biti i 1–3% — vrijedi koristiti posebnog deviznog pružaoca."
      ],
      "table": null
     }
    ],
    "faq": [
     {
-     "q": "Koliki su ukupni dodatni troškovi kupovine nekretnine u inostranstvu?",
-     "a": "Zavisno od zemlje, obično 5–14% kupoprodajne cijene. Najniži su u Albaniji i na Tajlandu (oko 3–6%), srednji u Crnoj Gori, Hrvatskoj, Mađarskoj i Turskoj (oko 5–9%), a najviši u Italiji i Španiji (oko 10–14%)."
+     "q": "Koliki je ukupan dodatni trošak kupovine strane nekretnine?",
+     "a": "Ovisno o zemlji obično 5–14% kupovne cijene. Najniži je u Albaniji i na Tajlandu (oko 3–6%), srednji u Crnoj Gori, Hrvatskoj, Mađarskoj i Turskoj (oko 5–9%), najviši u Italiji i Španiji (oko 10–14%)."
     },
     {
-     "q": "Ko plaća posredničku proviziju pri kupovini nekretnine u inostranstvu?",
-     "a": "Razlikuje se od tržišta do tržišta. Na zapadnoevropskim tržištima obično prodavac, dok je na balkanskom i turskom tržištu uobičajena i podjela ili to da je snosi kupac. To uvijek treba pisano razjasniti PRIJE plaćanja kapare."
+     "q": "Ko plaća posredničku proviziju pri kupovini strane nekretnine?",
+     "a": "Razlikuje se od tržišta do tržišta. Na zapadnoevropskim tržištima obično prodavac, a na balkanskom i turskom tržištu uobičajena je i podjela ili snošenje na strani kupca. Uvijek treba razjasniti pismeno PRIJE plaćanja kapare."
     },
     {
-     "q": "Plaća li se porez na prenos vlasništva i kod novogradnje?",
-     "a": "Po pravilu ne — u većini zemalja je u cijeni nove nekretnine kupljene od investitora sadržan PDV, pa se tada ne plaća zaseban porez na prenos vlasništva. To, međutim, nije nužno jeftinije: španskih 10% ili italijanskih 10–22% PDV-a može biti više od poreza na prenos vlasništva za stariju nekretninu."
+     "q": "Plaća li se porez na prijenos i kod novogradnje?",
+     "a": "Obično ne — u većini zemalja u cijeni nove nekretnine kupljene od developera sadržan je PDV, i tada nema posebnog poreza na prijenos. To, međutim, nije nužno jeftinije: španski PDV od 10% ili italijanski od 10–22% može biti viši od poreza na prijenos korištene nekretnine."
     }
    ]
   },
@@ -750,6 +750,364 @@
     {
      "q": "Može li se kupiti na daljinu, bez ličnog dolaska?",
      "a": "U većini zemalja da, uz ovjerenu punomoć s apostilleom datu advokatu. U praksi je ipak dobro barem jednom lično pogledati nekretninu — fotografije su sistematski ljepše od stvarnosti."
+    }
+   ]
+  },
+  "berleti-hozam-rangsor": {
+   "title": "Rang-lista prinosa od najma: gdje je najviši u 12 zemalja?",
+   "description": "U kojoj se zemlji najviše isplati kupiti nekretninu za iznajmljivanje? Bruto prinos od najma na 12 tržišta u jednoj tabeli, uz naznaku sezonalnosti i rizika.",
+   "answer": "Najviši bruto prinos od najma nude Bali (6–9%), Dubai (~7%) i gradska tržišta u usponu na Balkanu i u Turskoj (5–8%). Zrela zapadnoevropska tržišta (Italija, Španija) imaju niži prinos od 3–5%, ali su zauzvrat stabilnija i likvidnija. Bruto broj je, međutim, obmanjujući: stvarni NETO prinos, umanjen za troškove upravljanja i poreze, obično je 2–4 procentna poena niži.",
+   "sections": [
+    {
+     "h": "Bruto prinos od najma po zemljama",
+     "p": [
+      "Bruto prinos od najma je godišnji prihod od najma podijeljen s kupovnom cijenom. To je najčešće oglašavani broj, ali stvarni povrat pokazuje neto prinos (nakon odbitka upravljanja, održavanja, poreza i praznog hoda). Tabela prikazuje prosječne gradske, indikativne bruto prinose — uvijek ih treba ponovo izračunati za konkretnu nekretninu."
+     ],
+     "table": {
+      "head": [
+       "Zemlja",
+       "Bruto prinos",
+       "Karakter"
+      ],
+      "rows": [
+       [
+        "🇮🇩 Bali (Indonezija)",
+        "6–9%",
+        "Turistički, visok ali izrazito sezonski"
+       ],
+       [
+        "🇦🇪 Dubai (UAE)",
+        "~7%",
+        "Gradski, bez poreza; velika ponuda"
+       ],
+       [
+        "🇦🇱 Albanija",
+        "6–8%",
+        "Priobalni turizam u usponu"
+       ],
+       [
+        "🇹🇷 Turska",
+        "5–8%",
+        "Gradski + turistički"
+       ],
+       [
+        "🇹🇭 Tajland",
+        "5–7%",
+        "Turistički stanovi"
+       ],
+       [
+        "🇷🇸 Srbija",
+        "4–6%",
+        "Cjelogodišnji gradski najam"
+       ],
+       [
+        "🇭🇺 Mađarska",
+        "4–6%",
+        "Univerzitetska i gradska potražnja"
+       ],
+       [
+        "🇬🇷 Grčka",
+        "4–6%",
+        "Atina + ostrva"
+       ],
+       [
+        "🇲🇪 Crna Gora",
+        "4–6%",
+        "Sezonski priobalni"
+       ],
+       [
+        "🇪🇸 Španija",
+        "4–6%",
+        "Likvidno tržište za odmor"
+       ],
+       [
+        "🇭🇷 Hrvatska",
+        "3–5%",
+        "Izrazito sezonski (ljeto)"
+       ],
+       [
+        "🇮🇹 Italija",
+        "3–4%",
+        "Zrelo, stabilno tržište"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Zašto je neto prinos važniji od bruto?",
+     "p": [
+      "Kod turističkog (kratkoročnog) iznajmljivanja razlika između bruto i neto prinosa je ogromna. Profesionalno upravljanje vilom odnosi 15–20%, na to se dodaje održavanje, čišćenje, provizija posredničke platforme (Airbnb/Booking 3–15%) i prazan hod. Na Baliju se bruto od 6–9% realno smanjuje na 3–5% neto.",
+      "Dugoročni, gradski najam (Beograd, Budimpešta) je predvidljiviji: niži bruto, ali manje osipanje i bez rizika sezonalnosti. Za penzijski cilj ili pasivni prihod ovo je često bolji izbor.",
+      "Važan je i valutni rizik: prinos izvan eurozone (turska lira, tajlandski baht, indonezijska rupija) može biti visok u lokalnoj valuti, ali kod konverzije u forintu/euro slabljenje kursa može odnijeti dobit."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "U kojoj je zemlji najviši prinos od najma?",
+     "a": "Na bruto osnovi prednjače Bali (6–9%), Dubai (~7%) i albanska obala (6–8%). Na neto osnovi, međutim, gradska cjelogodišnja tržišta (Beograd, Budimpešta, 4–6% bruto) često se ponašaju jednako dobro, jer nemaju rizik sezonalnosti i imaju niže troškove upravljanja."
+    },
+    {
+     "q": "Kolika je razlika između bruto i neto prinosa?",
+     "a": "Kod turističkog iznajmljivanja obično 2–4 procentna poena. Vila na Baliju s bruto prinosom od 8% u neto iznosu često daje 4–5%. Razliku čine upravljanje vilom (15–20%), naknade platformi, održavanje, porez i prazan hod."
+    },
+    {
+     "q": "Da li kod iznajmljivanja utječe valutni rizik?",
+     "a": "Da, značajno. U zemljama izvan eurozone (Turska, Tajland, Indonezija, Mađarska) prinos nastaje u lokalnoj valuti, a kod konverzije u forintu ili euro kretanje kursa može godišnje odnijeti ili dodati više procenata. U Dubaiju je dirham vezan za dolar, što je stabilnije, ali znači izloženost USD."
+    }
+   ]
+  },
+  "legolcsobb-tengerparti-ingatlan-europa": {
+   "title": "Najjeftinija nekretnina uz more u Evropi 2026. godine",
+   "description": "Gdje se najjeftinije može kupiti stan s pogledom na more u Evropi? Cijene Albanije, Crne Gore i Balkana upoređene s hrvatskim i grčkim tržištem.",
+   "answer": "Najjeftiniji evropski ulaz uz more nudi Albanija: na Albanskoj rivijeri (Ksamil, Sarandë) novoizgrađeni stan s pogledom na more košta 1 200–2 200 €/m². Slijedi južna obala Crne Gore (Bar, Ulcinj) i ostatak Balkana. Hrvatska i Grčka su znatno skuplje (obično 2 500–5 000+ €/m² na dobrim priobalnim lokacijama), ali zauzvrat dolazi članstvo u EU i likvidnije tržište.",
+   "sections": [
+    {
+     "h": "Ulazne cijene uz more upoređene",
+     "p": [
+      "Cijena po kvadratnom metru jako varira ovisno o udaljenosti od mora, pogledu i godini gradnje. Navedeni rasponi odnose se na novoizgrađene ili dobro održavane stanove blizu mora (ne nužno u prvom redu), informativnog karaktera."
+     ],
+     "table": {
+      "head": [
+       "Zemlja / regija",
+       "Ulaz €/m²",
+       "Šta dobijate"
+      ],
+      "rows": [
+       [
+        "🇦🇱 Albanska rivijera (Ksamil, Sarandë)",
+        "1 200–2 200 €",
+        "Novogradnja, pogled na more, visok prinos"
+       ],
+       [
+        "🇲🇪 Crna Gora jug (Bar, Ulcinj)",
+        "1 500–2 500 €",
+        "Euro, niska ulazna taksa od 3%"
+       ],
+       [
+        "🇲🇪 Crna Gora premium (Budva, Kotor)",
+        "2 500–4 500 €",
+        "Bokokotorski zaljev, jaka potražnja"
+       ],
+       [
+        "🇭🇷 Hrvatska (Dalmacija)",
+        "2 500–5 000 €",
+        "EU, Schengen, likvidno tržište"
+       ],
+       [
+        "🇬🇷 Grčka (ostrva)",
+        "2 500–6 000 €",
+        "EU, mogućnost Golden Visa"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Cijena niske cijene: na šta obratiti pažnju",
+     "p": [
+      "U Albaniji je najniži ulaz, ali je tržište najmlađe: javljaju se nekretnine s neuređenom vlasničkom podlogom ili izgrađene bez dozvole. Bez due diligence provjere koju obavlja nezavisni advokat (vlasnički list u ASHK katastru, građevinska dozvola) ovdje nikako ne plaćajte kaparu.",
+      "Crna Gora je dobar srednji put: plaćate eurom, taksa na prijenos je među najnižima, a strani kupac praktično kupuje s istim pravima kao domaći. Zauzvrat nije članica EU (iako je kandidat).",
+      "Hrvatska i Grčka su skuplje, ali dolaze s članstvom u EU, slobodnim kretanjem u Schengenu i znatno likvidnijom preprodajom — ako je važan lak izlazak, to može nadjačati prednost u cijeni."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Gdje je najjeftinija nekretnina uz more u Evropi?",
+     "a": "U Albaniji, na Albanskoj rivijeri (Ksamil, Sarandë): novoizgrađeni stanovi s pogledom na more kreću se u rasponu 1 200–2 200 €/m², što je polovina ili trećina slične hrvatske ili grčke ponude. I dodatni trošak za kupca je najniži, jer u Albaniji nema poreza na prijenos srazmjernog vrijednosti na strani kupca."
+    },
+    {
+     "q": "Je li sigurno u Albaniji jeftino kupiti nekretninu uz more?",
+     "a": "Pravno da — stranac može kupiti stan na svoje ime —, ali glavni rizik je vlasnička podloga: postoje nekretnine izgrađene bez dozvole ili s neuređenim pravnim osnovom. Obavezna je due diligence provjera koju obavlja nezavisni advokat prije kapare."
+    },
+    {
+     "q": "Isplati li se kupiti skuplje u državi članici EU?",
+     "a": "Ako su važni slobodno kretanje u Schengenu, pravna predvidljivost i brza preprodaja, onda da — Hrvatska i Grčka su likvidnije i predvidljivije. Ako je cilj maksimalan prinos ili najniži ulaz, Albanija i Crna Gora su bolje."
+    }
+   ]
+  },
+  "kulfoldi-ingatlan-adozasa-magyar-tulajdonosnak": {
+   "title": "Oporezivanje strane nekretnine za vlasnika s mađarskim rezidentstvom",
+   "description": "Kako se oporezuje prihod od najma i dobit od prodaje strane nekretnine kod vlasnika s mađarskim poreznim rezidentstvom? Logika ugovora o izbjegavanju dvostrukog oporezivanja objašnjena razumljivo.",
+   "answer": "Kod fizičkog lica s mađarskim poreznim rezidentstvom prihod od strane nekretnine može nastati dvostruko: u zemlji u kojoj se nekretnina nalazi I u Mađarskoj. Dvostruko oporezivanje rješavaju ugovori koje je Mađarska sklopila — kod nekretnina gotovo uvijek zemlja PREMA MJESTU NEKRETNINE oporezuje prvenstveno, a Mađarska ili izuzima, ili uračunava porez plaćen u inostranstvu. Konkretno pravilo razlikuje se od zemlje do zemlje, pa je prije ulaganja vrijedno to razjasniti s poreznim stručnjakom.",
+   "sections": [
+    {
+     "h": "Ključni pojam: porezno rezidentstvo",
+     "p": [
+      "Mađarski državljanin obično ostaje mađarski porezni rezident čak i ako ima nekretninu u inostranstvu — osim ako se ne iseli i ne premjesti centar svog života. Fizičko lice s mađarskim rezidentstvom oporezuje se u Mađarskoj na SVOJ SVJETSKI DOHODAK, dakle i prihod od strane nekretnine spada u opseg mađarskog oporezivanja. Dvostruki porez isključuju ugovori.",
+      "Važno: to što u inostranstvu steknete državljanstvo ili Golden Visa, samo po sebi NE ukida mađarsko porezno rezidentstvo. Rezidentstvo je vezano za stvarni boravak i centar interesa, a ne za pasoš."
+     ],
+     "table": null
+    },
+    {
+     "h": "Prihod od najma",
+     "p": [
+      "Prihod od najma strane nekretnine prema gotovo svim ugovorima prvenstveno oporezuje zemlja u kojoj se nekretnina nalazi. Mađarska nakon toga može postupiti na dva načina, ovisno o ugovoru: kod metode IZUZIMANJA prihod od najma oporezovan u inostranstvu ne oporezuje ponovo kod kuće (ali ga može uzeti u obzir uz zadržavanje progresije), a kod metode URAČUNAVANJA i kod kuće izračunava porez, ali odbija onaj plaćen u inostranstvu.",
+      "Ima slučajeva gdje zemlja u kojoj se nekretnina nalazi uopće ne oporezuje ili jedva oporezuje prihod od najma fizičkog lica (na primjer, u Ujedinjenim Arapskim Emiratima nema poreza na dohodak fizičkih lica) — u tom slučaju posebno je važno pogledati da li mađarska strana izuzima ili uračunava, jer to dvoje daje veoma različit rezultat."
+     ],
+     "table": null
+    },
+    {
+     "h": "Dobit od prodaje (kapitalna dobit)",
+     "p": [
+      "Dobit od prodaje nekretnine ugovori također obično prepuštaju na oporezivanje zemlji u kojoj se nekretnina nalazi. U Mađarskoj prihod od prodaje nekretnine može biti oslobođen poreza nakon 5 godina (od pete godine nakon godine sticanja), ali kod strane nekretnine uvijek treba zajedno gledati konkretan ugovor i pravilo zemlje u kojoj se nekretnina nalazi.",
+      "Kod kupovine i prodaje u devizama i kurs je bitan: mađarsku poreznu osnovicu treba utvrditi u forintama, dakle razlika između kursa u trenutku kupovine i kursa u trenutku prodaje sama po sebi utječe na izračunatu dobit."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Moram li u Mađarskoj plaćati porez na svoju stranu nekretninu?",
+     "a": "Kao mađarski porezni rezident oporezivi ste kod kuće na svjetski dohodak, ali ugovor o izbjegavanju dvostrukog oporezivanja isključuje da se isto oporezuje dvaput. Kod nekretnina obično zemlja u kojoj se nekretnina nalazi oporezuje prvenstveno, a Mađarska ili izuzima dohodak, ili uračunava porez plaćen u inostranstvu. Konkretna metoda razlikuje se od ugovora do ugovora."
+    },
+    {
+     "q": "Ukida li državljanstvo ili Golden Visa mađarsku poreznu obavezu?",
+     "a": "Ne. Porezno rezidentstvo je vezano za stvarni boravak i centar interesa, a ne za pasoš. Ako se ne iselite i ne premjestite centar svog života, ostajete mađarski rezident i vaš svjetski dohodak je oporeziv i kod kuće."
+    },
+    {
+     "q": "Gdje da se informišem o konkretnom pravilu?",
+     "a": "Iz ugovora o izbjegavanju dvostrukog oporezivanja između Mađarske i date zemlje, odnosno od poreznog savjetnika specijalizovanog za međunarodna porezna pitanja. Ovaj članak je opća informacija, a ne porezni savjet prilagođen vama — prije šestocifrenog ulaganja svakako zatražite stručno mišljenje."
+    }
+   ]
+  },
+  "deviza-arfolyamkockazat-kulfoldi-ingatlan": {
+   "title": "Valuta i valutni rizik pri kupovini strane nekretnine",
+   "description": "Euro, dolar, lira ili dirham? U kojoj valuti se oporezuje rizik na 12 tržišta i kako uštedjeti na konverziji valute pri kupovini strane nekretnine.",
+   "answer": "Polovina od 12 tržišta je u eurozoni ili cijenjena u eurima (Crna Gora, Hrvatska, Grčka, Italija, Španija, Albanija), pa mađarski kupac ima samo EUR/HUF rizik. Kod ostalih ulazi zasebna valuta: dubaijski dirham je vezan za dolar (stabilan, ali izloženost USD), dok su turska lira, tajlandski baht i indonezijska rupija promjenjivi. Marža bankovne konverzije valute sama po sebi može biti i 1–3% — na tome se s posebnim deviznim pružaocem može puno uštedjeti.",
+   "sections": [
+    {
+     "h": "Kakva je izloženost valuti na kojem tržištu?",
+     "p": [
+      "Valutni rizik udara u dvije tačke: pri plaćanju kupovne cijene (jednokratna konverzija) i pri repatrijaciji prihoda od najma (ponavljajuća konverzija). Na tržištima eurozone mađarski kupac ima samo jedan valutni sloj (EUR/HUF), a kod onih izvan eurozone dva."
+     ],
+     "table": {
+      "head": [
+       "Tržište",
+       "Valuta",
+       "Izloženost"
+      ],
+      "rows": [
+       [
+        "🇲🇪🇭🇷🇬🇷🇮🇹🇪🇸🇦🇱",
+        "EUR",
+        "Samo EUR/HUF"
+       ],
+       [
+        "🇦🇪 Dubai",
+        "AED (vezan za USD)",
+        "Stabilan, ali USD/HUF"
+       ],
+       [
+        "🇹🇷 Turska",
+        "TRY (prag u USD)",
+        "Jako kolebanje lire"
+       ],
+       [
+        "🇹🇭 Tajland",
+        "THB",
+        "Srednje kolebanje"
+       ],
+       [
+        "🇮🇩 Bali",
+        "IDR",
+        "Promjenjiva, dolarizovane naknade"
+       ],
+       [
+        "🇷🇸 Srbija",
+        "RSD (cijene često u EUR)",
+        "Niska (dinar vezan za EUR)"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Kako smanjiti gubitak od konverzije?",
+     "p": [
+      "Marža konverzije valute komercijalnih banaka (razlika između kupovnog i prodajnog kursa) kod veće kupovine nekretnine je ozbiljna suma: kod 300 000 eura marža od 2% iznosi 6 000 eura. S posebnim deviznim pružaocem (npr. međunarodne platforme za transfer) to se može smanjiti na djelić.",
+      "Turski program je poseban slučaj: prag za državljanstvo od 400 000 USD mjeri se u dolarima, ali kupovna cijena teče u liri — kretanje kursa tako može utjecati i na pravo na državljanstvo, ne samo na trošak.",
+      "Dubaijski dirham je vezan za dolar (1 USD = 3,6725 AED) od 1997. godine, što je stabilno — ali mađarski/euro kupac zapravo preuzima USD rizik, jer kretanje kursa EUR/USD kroz dirham djeluje na povrat."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Koja je valuta najsigurnija za kupovinu strane nekretnine?",
+     "a": "Za mađarskog/euro kupca najpredvidljivija su tržišta eurozone ili cijenjena u eurima (Crna Gora, Hrvatska, Grčka, Italija, Španija, Albanija), jer postoji samo jedan sloj konverzije. Dubaijski dirham je stabilan (vezan za dolar), ali nosi izloženost USD."
+    },
+    {
+     "q": "Koliko se može uštedjeti na konverziji valute?",
+     "a": "Marža bankovne konverzije je 1–3%. Kod kupovine od 300 000 eura to je 3 000–9 000 eura. S posebnim međunarodnim deviznim pružaocem marža se može smanjiti na djelić, pa se kod većeg iznosa uvijek isplati uporediti."
+    },
+    {
+     "q": "Zašto je turska lira rizična kod Golden Visa?",
+     "a": "Prag za državljanstvo (400 000 USD) mjeri se u dolarima, ali kupovna cijena teče u liri. Ako lira oslabi između kupovine i procjene vrijednosti, vrijednost nekretnine mjerena u dolarima može se smanjiti i pasti ispod praga — zato su valutno fiksiranje i tajming ovdje kritični."
+    }
+   ]
+  },
+  "ingatlanszotar-fogalmak": {
+   "title": "Rječnik nekretnina: 18 pojmova koje treba znati prije kupovine u inostranstvu",
+   "description": "Freehold, Golden Visa, tapu, escrow, off-plan, NIE — najvažniji stručni izrazi kupovine strane nekretnine, ukratko i razumljivo objašnjeni.",
+   "answer": "Kupovina strane nekretnine puna je stručnih izraza čije nerazumijevanje košta. Najvažniji: freehold je potpuno (trajno) vlasništvo, leasehold je dugoročno pravo najma; Golden Visa je BORAVAK za ulaganje, dok je CBI (citizenship by investment) DRŽAVLJANSTVO; escrow je depozitni račun koji štiti kaparu; off-plan je nekretnina još u izgradnji; due diligence je pravna provjera. Ovaj rječnik objašnjava 18 pojmova.",
+   "sections": [
+    {
+     "h": "Vlasništvo i pravo",
+     "p": [
+      "Freehold — potpuno, vremenski neograničeno pravo vlasništva (odgovara mađarskom „vlasništvu“).",
+      "Leasehold — dugoročno pravo najma/korištenja (npr. 25–99 godina); nije vlasništvo, nego pravo na određeno vrijeme. Na Baliju i Tajlandu stranci obično stječu ovo.",
+      "Usufruct (plodouživanje) — pravo korištenja nekretnine i ubiranja njenih plodova, bez prijenosa vlasništva.",
+      "Hak Pakai / Hak Sewa / Hak Guna Bangunan — indonezijska prava korištenja, najma i gradnje, koja stranac može steći umjesto freehold.",
+      "Katastar / vlasnički list — službeni registar nekretnina; pravo vlasništva postaje potpuno tek upisom ovdje. U Turskoj je to „tapu“."
+     ],
+     "table": null
+    },
+    {
+     "h": "Imigracija i ulaganje",
+     "p": [
+      "Golden Visa — dozvola BORAVKA za ulaganje (obično za kupovinu nekretnine); nije državljanstvo i nije pasoš.",
+      "CBI (citizenship by investment) — DRŽAVLJANSTVO i pasoš za ulaganje; putem nekretnine ga danas prvenstveno nudi Turska.",
+      "Due diligence — pravna provjera: kontrola vlasničkog lista, tereta, dozvola i površine prije kupovine."
+     ],
+     "table": null
+    },
+    {
+     "h": "Proces kupovine",
+     "p": [
+      "Escrow / depozitni račun — neutralan (advokatski ili bankovni) račun koji čuva kaparu dok se uslovi ne ispune; štiti od prevare, posebno kod off-plan kupovine.",
+      "Off-plan — nekretnina još u izgradnji, kupljena na papiru; može biti jeftinija, ali nosi rizik razvoja i dovršenosti.",
+      "Predugovor — ugovor koji priprema konačnu kupoprodaju, obično s 10% kapare.",
+      "Snagging — lista nedostataka prije primopredaje (kod novogradnje nedostaci koje developer treba ispraviti).",
+      "Service charge — zajednički trošak stambene zgrade (u Dubaiju, na Tajlandu može biti značajna stavka)."
+     ],
+     "table": null
+    },
+    {
+     "h": "Porez i finansije",
+     "p": [
+      "Porez na prijenos / sticanje imovine — porez koji se plaća pri prijenosu vlasništva (npr. turska „tapu“ taksa, španski ITP).",
+      "ITP / AJD — španski porez na prijenos (ITP), odnosno taksa na ispravu (AJD).",
+      "Prezzo-valore — italijanski mehanizam kod kojeg je između fizičkih lica osnovica poreza (obično niža) katastarska vrijednost, a ne kupovna cijena.",
+      "NIE / codice fiscale / AFM — španski, italijanski i grčki porezni identifikator za strance, bez kojeg se ne može sklopiti ugovor.",
+      "LTV (loan-to-value) — odnos kredita i vrijednosti nekretnine; stranim kupcima banke obično daju niži LTV."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Koja je razlika između freehold i leasehold?",
+     "a": "Freehold je potpuno, vremenski neograničeno pravo vlasništva. Leasehold je pravo najma ili korištenja na određeno vrijeme (obično 25–99 godina), koje na kraju roka ističe ili se mora produžiti. Na Baliju i Tajlandu stranci često mogu steći samo leasehold — u tom slučaju uslov produženja je najvažnija tačka za provjeru."
+    },
+    {
+     "q": "Je li Golden Visa isto što i državljanstvo?",
+     "a": "Ne. Golden Visa je dozvola boravka za ulaganje — možete živjeti i dolaziti-odlaziti u datoj zemlji, ali se vaš pasoš ne mijenja. Državljanstvo (CBI) daje pravi pasoš. To dvoje se često miješa; državljanstvo putem nekretnine danas prvenstveno nudi Turska."
+    },
+    {
+     "q": "Šta je escrow i zašto je važan?",
+     "a": "Escrow je neutralan depozitni račun (advokatski ili bankovni) koji čuva kaparu ili kupovnu cijenu dok se ugovorni uslovi ne ispune. To štiti od prevare i neispunjenja obaveza developera, pa je posebno kod off-plan (još u izgradnji) kupovine ključno da novac ide u escrow, a ne direktno prodavcu."
     }
    ]
   }

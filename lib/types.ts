@@ -145,6 +145,7 @@ export interface Profile {
   responseTime: string; // e.g. "egy órán belül"
   joinedAt: string; // ISO
   isAdmin?: boolean; // platform-moderátor (jelentések kezelése)
+  isOwner?: boolean; // a szoftver TULAJDONOSA (owner-konzol, teljes átlátás)
 }
 
 /** Hirdetés-bejelentés (moderáláshoz). */

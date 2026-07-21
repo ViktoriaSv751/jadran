@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/supabase-server";
 
 /** Privát / felhasználó-specifikus felületek — ezeket nem indexeljük. */
-const PRIVATE = ["/messages", "/settings", "/profile", "/favorites", "/compare", "/admin"];
+const PRIVATE = ["/messages", "/settings", "/profile", "/favorites", "/compare", "/admin", "/owner"];
 
 /**
  * robots.txt

@@ -136,7 +136,8 @@ export function rowToProfile(r: any): Profile {
     verified: !!r.verified,
     responseTime: r.response_time ?? "",
     joinedAt: r.joined_at,
-    isAdmin: !!r.is_admin
+    isAdmin: !!r.is_admin,
+    isOwner: !!r.is_owner
   };
 }
 

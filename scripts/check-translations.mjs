@@ -26,7 +26,7 @@
 const REVIEWED = {
   // „400 és 800 ezer eurós" → kibontva két teljes összegre. Ugyanaz az érték.
   en: ["400000", "800000", "400", "800"],
-  th: ["400000", "800000", "400", "800", "1"],
+  th: ["400000", "800000", "400", "800", "1", "2024", "2024800000"],
   // „a felek felezik" → „reparten al 50 %". Ugyanaz a jelentés.
   es: ["50"],
   // „5 éves" → „quinquennale", „10 éves" → „decennale", „99 éves" → szóalak.
