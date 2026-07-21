@@ -752,6 +752,364 @@
      "a": "A legtöbb országban igen, ügyvédnek adott, hitelesített és apostille-lal ellátott meghatalmazással. A gyakorlatban azért érdemes legalább egyszer személyesen megnézni az ingatlant — a fényképek szisztematikusan szebbek a valóságnál."
     }
    ]
+  },
+  "berleti-hozam-rangsor": {
+   "title": "Bérleti hozam rangsor: hol a legmagasabb 12 országban?",
+   "description": "Melyik országban éri meg legjobban bérbeadásra ingatlant venni? A 12 piac bruttó bérleti hozama egy táblázatban, a szezonalitás és a kockázatok jelzésével.",
+   "answer": "A legmagasabb bruttó bérleti hozamot Bali (6–9%), Dubaj (~7%) és a feltörekvő balkáni-török városi piacok (5–8%) kínálják. Az érett nyugat-európai piacok (Olaszország, Spanyolország) alacsonyabb, 3–5%-os hozamúak, cserébe stabilabbak és likvidebbek. A bruttó szám azonban félrevezető: a valós, kezelési és adóköltségekkel csökkentett NETTÓ hozam jellemzően 2–4 százalékponttal alacsonyabb.",
+   "sections": [
+    {
+     "h": "Bruttó bérleti hozam országonként",
+     "p": [
+      "A bruttó bérleti hozam az éves bérleti bevétel osztva a vételárral. Ez a leggyakrabban hirdetett szám, de a valós megtérülést a nettó hozam mutatja (a kezelés, karbantartás, adó és üresedés levonása után). A táblázat a városi átlagos, indikatív bruttó hozamokat mutatja — mindig a konkrét ingatlanra kell újraszámolni."
+     ],
+     "table": {
+      "head": [
+       "Ország",
+       "Bruttó hozam",
+       "Jelleg"
+      ],
+      "rows": [
+       [
+        "🇮🇩 Bali (Indonézia)",
+        "6–9%",
+        "Turisztikai, magas de erősen szezonális"
+       ],
+       [
+        "🇦🇪 Dubai (EAE)",
+        "~7%",
+        "Városi, adómentes; nagy kínálat"
+       ],
+       [
+        "🇦🇱 Albánia",
+        "6–8%",
+        "Feltörekvő tengerparti turizmus"
+       ],
+       [
+        "🇹🇷 Törökország",
+        "5–8%",
+        "Városi + turisztikai"
+       ],
+       [
+        "🇹🇭 Thaiföld",
+        "5–7%",
+        "Turisztikai társasházi"
+       ],
+       [
+        "🇷🇸 Szerbia",
+        "4–6%",
+        "Egész éves városi bérlet"
+       ],
+       [
+        "🇭🇺 Magyarország",
+        "4–6%",
+        "Egyetemi és városi kereslet"
+       ],
+       [
+        "🇬🇷 Görögország",
+        "4–6%",
+        "Athén + szigetek"
+       ],
+       [
+        "🇲🇪 Montenegró",
+        "4–6%",
+        "Szezonális parti"
+       ],
+       [
+        "🇪🇸 Spanyolország",
+        "4–6%",
+        "Likvid nyaralópiac"
+       ],
+       [
+        "🇭🇷 Horvátország",
+        "3–5%",
+        "Erősen szezonális (nyár)"
+       ],
+       [
+        "🇮🇹 Olaszország",
+        "3–4%",
+        "Érett, stabil piac"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Miért fontosabb a nettó hozam a bruttónál?",
+     "p": [
+      "A turisztikai (rövid távú) bérbeadásnál a bruttó és a nettó hozam között óriási a különbség. A professzionális villamenedzsment 15–20%-ot visz el, ehhez jön a karbantartás, a takarítás, a közvetítői platform díja (Airbnb/Booking 3–15%) és az üresedés. Balin a 6–9% bruttó reálisan 3–5% nettóra csökken.",
+      "A hosszú távú, városi bérbeadás (Belgrád, Budapest) kiszámíthatóbb: alacsonyabb bruttó, de kisebb a lemorzsolódás és nincs szezonalitási kockázat. Nyugdíj- vagy passzív jövedelem célnál gyakran ez a jobb választás.",
+      "Fontos a devizakockázat is: az euróövezeten kívüli hozam (török líra, thai baht, indonéz rúpia) helyi pénznemben magas lehet, de a forintra/euróra váltásnál az árfolyamgyengülés elviheti a nyereséget."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Melyik országban a legmagasabb a bérleti hozam?",
+     "a": "Bruttó alapon Bali (6–9%), Dubaj (~7%) és az albán tengerpart (6–8%) vezet. Nettó alapon viszont a városi, egész éves piacok (Belgrád, Budapest, 4–6% bruttó) gyakran hasonlóan jól teljesítenek, mert nincs szezonalitási kockázatuk és alacsonyabb a kezelési költségük."
+    },
+    {
+     "q": "Mennyi a különbség a bruttó és a nettó hozam között?",
+     "a": "Turisztikai bérbeadásnál jellemzően 2–4 százalékpont. Egy 8%-os bruttó hozamú bali villa nettóban gyakran 4–5%. A különbséget a villamenedzsment (15–20%), a platformdíjak, a karbantartás, az adó és az üresedés adja."
+    },
+    {
+     "q": "Számít a bérbeadásnál a devizakockázat?",
+     "a": "Igen, jelentősen. Az euróövezeten kívüli országokban (Törökország, Thaiföld, Indonézia, Magyarország) a hozam a helyi pénznemben keletkezik, és a forintra vagy euróra váltásnál az árfolyam mozgása évi több százalékot is elvihet vagy hozzáadhat. Dubajban a dirham a dollárhoz van rögzítve, ami stabilabb, de USD-kitettséget jelent."
+    }
+   ]
+  },
+  "legolcsobb-tengerparti-ingatlan-europa": {
+   "title": "A legolcsóbb tengerparti ingatlan Európában 2026-ban",
+   "description": "Hol vehető a legolcsóbban tengerre néző lakás Európában? Albánia, Montenegró és a Balkán árai összehasonlítva a horvát és görög piaccal.",
+   "answer": "A legolcsóbb európai tengerparti belépőt Albánia kínálja: az Albán Riviérán (Ksamil, Sarandë) az új építésű, tengerre néző lakás 1 200–2 200 €/m². Ezt követi Montenegró déli partja (Bar, Ulcinj) és a szerbiai nélküli Balkán. Horvátország és Görögország lényegesen drágább (jellemzően 2 500–5 000+ €/m² a jó parti lokációkban), cserébe EU-tagság és likvidebb piac jár.",
+   "sections": [
+    {
+     "h": "Tengerparti belépőárak összehasonlítva",
+     "p": [
+      "A négyzetméterár a tengerparttól való távolság, a kilátás és az építés éve szerint erősen szór. Az alábbi sávok az új építésű vagy jó állapotú, tengerhez közeli (nem feltétlenül első sori) lakásokra vonatkoznak, tájékoztató jelleggel."
+     ],
+     "table": {
+      "head": [
+       "Ország / régió",
+       "Belépő €/m²",
+       "Amit kap"
+      ],
+      "rows": [
+       [
+        "🇦🇱 Albán Riviéra (Ksamil, Sarandë)",
+        "1 200–2 200 €",
+        "Új építésű, tengerre néző, magas hozam"
+       ],
+       [
+        "🇲🇪 Montenegró dél (Bar, Ulcinj)",
+        "1 500–2 500 €",
+        "Euró, alacsony 3% belépő illeték"
+       ],
+       [
+        "🇲🇪 Montenegró prémium (Budva, Kotor)",
+        "2 500–4 500 €",
+        "Boka-öböl, erős kereslet"
+       ],
+       [
+        "🇭🇷 Horvátország (Dalmácia)",
+        "2 500–5 000 €",
+        "EU, schengeni, likvid piac"
+       ],
+       [
+        "🇬🇷 Görögország (szigetek)",
+        "2 500–6 000 €",
+        "EU, Golden Visa-lehetőség"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Az olcsó ár ára: mire figyeljen",
+     "p": [
+      "Albániában a legalacsonyabb a belépő, de a piac a legfiatalabb: fordulnak elő rendezetlen tulajdoni hátterű vagy engedély nélkül épült ingatlanok. Független ügyvéddel végzett átvilágítás (tulajdoni lap az ASHK kataszterben, építési engedély) nélkül itt semmiképp ne fizessen foglalót.",
+      "Montenegró jó középút: euróval fizet, az átírási illeték a legalacsonyabbak közt van, és a külföldi vevő gyakorlatilag a helyiekkel azonos jogokkal vásárol. Cserébe nem EU-tag (bár tagjelölt).",
+      "Horvátország és Görögország drágább, de EU-tagság, schengeni szabad mozgás és lényegesen likvidebb újraértékesítés jár vele — ha fontos a könnyű kilépés, ez felülírhatja az árelőnyt."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Hol a legolcsóbb tengerparti ingatlan Európában?",
+     "a": "Albániában, az Albán Riviérán (Ksamil, Sarandë): az új építésű, tengerre néző lakások 1 200–2 200 €/m² sávban mozognak, ami a hasonló horvát vagy görög kínálat fele-harmada. A vevői mellékköltség is a legalacsonyabb, mert Albániában nincs értékarányos átírási adó a vevő oldalán."
+    },
+    {
+     "q": "Biztonságos-e Albániában olcsón tengerparti ingatlant venni?",
+     "a": "Jogilag igen — külföldi saját néven vehet lakást —, de a fő kockázat a tulajdoni háttér: engedély nélkül épült vagy rendezetlen jogcímű ingatlanok előfordulnak. Kötelező a független ügyvéddel végzett átvilágítás a foglaló előtt."
+    },
+    {
+     "q": "Megéri EU-tagállamban drágábban venni?",
+     "a": "Ha fontos a schengeni szabad mozgás, a jogi kiszámíthatóság és a gyors újraértékesítés, akkor igen — Horvátország és Görögország likvidebb és kiszámíthatóbb. Ha a cél a maximális hozam vagy a legalacsonyabb belépő, Albánia és Montenegró jobb."
+    }
+   ]
+  },
+  "kulfoldi-ingatlan-adozasa-magyar-tulajdonosnak": {
+   "title": "Külföldi ingatlan adózása magyar tulajdonosként",
+   "description": "Hogyan adózik a külföldi ingatlan bérleti jövedelme és eladási nyeresége egy magyar adóügyi illetőségű tulajdonosnál? A kettős adóztatási egyezmények logikája érthetően.",
+   "answer": "Magyar adóügyi illetőségű magánszemélynél a külföldi ingatlan jövedelme kétszeresen is felmerülhet: az ingatlan fekvése szerinti országban ÉS Magyarországon. A kettős adóztatást a Magyarország által kötött egyezmények oldják fel — ingatlannál szinte mindig a FEKVÉS SZERINTI ország adóztat elsődlegesen, Magyarország pedig vagy mentesíti, vagy beszámítja a külföldön megfizetett adót. A konkrét szabály országonként eltér, ezért befektetés előtt adószakértővel érdemes tisztázni.",
+   "sections": [
+    {
+     "h": "A kulcsfogalom: adóügyi illetőség",
+     "p": [
+      "A magyar állampolgár jellemzően magyar adóügyi illetőségű marad akkor is, ha külföldön van ingatlana — hacsak nem költözik ki és nem helyezi át az életvitele központját. A magyar illetőségű magánszemély a VILÁGJÖVEDELME után adózik Magyarországon, tehát a külföldi ingatlan jövedelme is a magyar adóztatás körébe esik. A dupla adót az egyezmények zárják ki.",
+      "Fontos: az, hogy Ön külföldön állampolgárságot vagy Golden Visát szerez, önmagában NEM szünteti meg a magyar adóügyi illetőséget. Az illetőség a tényleges tartózkodáshoz és az érdekközponthoz kötődik, nem az útlevélhez."
+     ],
+     "table": null
+    },
+    {
+     "h": "Bérleti jövedelem",
+     "p": [
+      "A külföldi ingatlan bérleti jövedelmét szinte minden egyezmény szerint az ingatlan fekvése szerinti ország adóztatja elsődlegesen. Magyarország ezután kétféleképpen járhat el az egyezménytől függően: a MENTESÍTÉSES módszernél a külföldön adózott bérleti jövedelmet itthon nem adóztatja újra (de progresszió-fenntartással figyelembe veheti), a BESZÁMÍTÁSOS módszernél itthon is kiszámítja az adót, de levonja a külföldön megfizetettet.",
+      "Van, ahol a fekvési ország nem vagy alig adóztatja a magánszemély bérleti jövedelmét (például az Egyesült Arab Emírségekben nincs személyi jövedelemadó) — ilyenkor különösen fontos megnézni, hogy a magyar oldal mentesít vagy beszámít, mert a kettő nagyon eltérő eredményt ad."
+     ],
+     "table": null
+    },
+    {
+     "h": "Eladási (árfolyam)nyereség",
+     "p": [
+      "Az ingatlan eladásából származó nyereséget az egyezmények szintén jellemzően a fekvési országnak engedik adóztatni. Magyarországon az ingatlan értékesítéséből származó jövedelem 5 év után adómentes lehet (a szerzés évét követő ötödik évtől), de külföldi ingatlannál mindig az adott egyezményt és a fekvési ország szabályát kell együtt nézni.",
+      "Devizás vétel és eladás esetén az árfolyam is számít: a magyar adóalapot forintban kell megállapítani, tehát a vételkori és az eladáskori árfolyam különbsége önmagában is befolyásolja a számított nyereséget."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Kell Magyarországon adót fizetni a külföldi ingatlanom után?",
+     "a": "Magyar adóügyi illetőségűként a világjövedelme után itthon is adóköteles, de a kettős adóztatási egyezmény kizárja, hogy ugyanazt kétszer megadóztassák. Ingatlannál jellemzően a fekvési ország adóztat elsődlegesen, Magyarország pedig vagy mentesíti a jövedelmet, vagy beszámítja a külföldön megfizetett adót. A konkrét módszer egyezményenként eltér."
+    },
+    {
+     "q": "Az állampolgárság vagy a Golden Visa megszünteti a magyar adókötelezettséget?",
+     "a": "Nem. Az adóügyi illetőség a tényleges tartózkodáshoz és az érdekközponthoz kötődik, nem az útlevélhez. Ha nem költözik ki és nem helyezi át az életvitele központját, magyar illetőségű marad, és a világjövedelme itthon is adóköteles."
+    },
+    {
+     "q": "Hol tájékozódjak a konkrét szabályról?",
+     "a": "A Magyarország és az adott ország közötti kettős adóztatási egyezményből, illetve nemzetközi adóügyekre szakosodott adótanácsadótól. Ez a cikk általános tájékoztatás, nem személyre szabott adótanács — hat számjegyű befektetés előtt mindenképp kérjen szakértői véleményt."
+    }
+   ]
+  },
+  "deviza-arfolyamkockazat-kulfoldi-ingatlan": {
+   "title": "Deviza és árfolyamkockázat külföldi ingatlanvásárláskor",
+   "description": "Euró, dollár, líra vagy dirham? Milyen pénznemben adózik a kockázat a 12 piacon, és hogyan spórolhat a devizaváltáson a külföldi ingatlanvásárlásnál.",
+   "answer": "A 12 piac fele euróövezeti vagy euróban árazott (Montenegró, Horvátország, Görögország, Olaszország, Spanyolország, Albánia), így magyar vevőnek csak EUR/HUF kockázata van. A többinél külön deviza jön be: a dubaji dirham a dollárhoz van rögzítve (stabil, de USD-kitettség), a török líra, a thai baht és az indonéz rúpia viszont ingadozó. A banki devizaváltás marzsa önmagában 1–3% is lehet — ezen külön devizaszolgáltatóval sokat lehet spórolni.",
+   "sections": [
+    {
+     "h": "Melyik piacon milyen a pénznem-kitettség?",
+     "p": [
+      "A devizakockázat két ponton csap le: a vételár kifizetésekor (egyszeri váltás) és a bérleti jövedelem hazautalásakor (visszatérő váltás). Az euróövezeti piacokon magyar vevőnek csak egy pénznemréteg van (EUR/HUF), a nem euróövezetieknél kettő."
+     ],
+     "table": {
+      "head": [
+       "Piac",
+       "Pénznem",
+       "Kitettség"
+      ],
+      "rows": [
+       [
+        "🇲🇪🇭🇷🇬🇷🇮🇹🇪🇸🇦🇱",
+        "EUR",
+        "Csak EUR/HUF"
+       ],
+       [
+        "🇦🇪 Dubai",
+        "AED (USD-hez rögzítve)",
+        "Stabil, de USD/HUF"
+       ],
+       [
+        "🇹🇷 Törökország",
+        "TRY (a küszöb USD-ben)",
+        "Erős líra-ingadozás"
+       ],
+       [
+        "🇹🇭 Thaiföld",
+        "THB",
+        "Közepes ingadozás"
+       ],
+       [
+        "🇮🇩 Bali",
+        "IDR",
+        "Ingadozó, dollárosított díjak"
+       ],
+       [
+        "🇷🇸 Szerbia",
+        "RSD (árazás gyakran EUR)",
+        "Alacsony (dinár EUR-hoz kötött)"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Hogyan csökkentse a váltási veszteséget?",
+     "p": [
+      "A kereskedelmi bankok devizaváltási marzsa (a vételi és eladási árfolyam különbsége) egy nagyobb ingatlanvételnél komoly összeg: 300 000 eurónál egy 2%-os marzs 6 000 euró. Dedikált devizaszolgáltatóval (pl. nemzetközi átutalási platformok) ez töredékére csökkenthető.",
+      "A török program külön eset: a 400 000 USD-s állampolgársági küszöböt dollárban mérik, de a vételár lírában folyik — az árfolyam mozgása így a jogosultságot is befolyásolhatja, nem csak a költséget.",
+      "A dubaji dirham a dollárhoz van rögzítve (1 USD = 3,6725 AED) 1997 óta, ami stabil — de egy magyar/euró-alapú vevő valójában USD-kockázatot vállal, mert az EUR/USD árfolyam mozgása a dirhamon keresztül hat a megtérülésre."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Melyik pénznem a legbiztonságosabb külföldi ingatlanvásárláshoz?",
+     "a": "Magyar/euró-alapú vevőnek az euróövezeti vagy euróban árazott piacok (Montenegró, Horvátország, Görögország, Olaszország, Spanyolország, Albánia) a legkiszámíthatóbbak, mert csak egy váltási réteg van. A dubaji dirham stabil (dollárhoz rögzített), de USD-kitettséget hordoz."
+    },
+    {
+     "q": "Mennyit lehet spórolni a devizaváltáson?",
+     "a": "A banki váltás marzsa 1–3%. Egy 300 000 eurós vételnél ez 3 000–9 000 euró. Dedikált nemzetközi devizaszolgáltatóval a marzs töredékére csökkenthető, tehát nagyobb összegnél mindig érdemes összehasonlítani."
+    },
+    {
+     "q": "Miért kockázatos a török líra a Golden Visánál?",
+     "a": "Az állampolgársági küszöböt (400 000 USD) dollárban mérik, de a vételár lírában folyik. Ha a líra gyengül a vétel és az értékbecslés között, az ingatlan dollárban mért értéke csökkenhet, és a küszöb alá eshet — ezért a devizás rögzítés és az időzítés itt kritikus."
+    }
+   ]
+  },
+  "ingatlanszotar-fogalmak": {
+   "title": "Ingatlanszótár: 18 fogalom, amit külföldi vásárlás előtt ismerni kell",
+   "description": "Freehold, Golden Visa, tapu, escrow, off-plan, NIE — a külföldi ingatlanvásárlás legfontosabb szakkifejezései röviden, érthetően megmagyarázva.",
+   "answer": "A külföldi ingatlanvásárlás tele van szakkifejezéssel, amelyek félreértése pénzbe kerül. A legfontosabbak: a freehold a teljes (örök) tulajdon, a leasehold a hosszú bérleti jog; a Golden Visa befektetésért járó TARTÓZKODÁS, a CBI (citizenship by investment) viszont ÁLLAMPOLGÁRSÁG; az escrow a letéti számla, ami a foglalót védi; az off-plan a még épülő ingatlan; a due diligence a jogi átvilágítás. Ez a szótár 18 fogalmat magyaráz.",
+   "sections": [
+    {
+     "h": "Tulajdon és jog",
+     "p": [
+      "Freehold — teljes, időben korlátlan tulajdonjog (a magyar „tulajdon” megfelelője).",
+      "Leasehold — hosszú távú bérleti/használati jog (pl. 25–99 év); nem tulajdon, hanem határozott idejű jog. Balin és Thaiföldön a külföldiek jellemzően ezt szerzik.",
+      "Usufruct (haszonélvezet) — az ingatlan használatának és hasznai szedésének joga, a tulajdon átruházása nélkül.",
+      "Hak Pakai / Hak Sewa / Hak Guna Bangunan — az indonéz használati, bérleti és építési jogok, amelyeket külföldi a freehold helyett szerezhet.",
+      "Kataszter / tulajdoni lap — a hivatalos ingatlan-nyilvántartás; a tulajdonjog itt bejegyezve válik teljessé. Törökországban ez a „tapu”."
+     ],
+     "table": null
+    },
+    {
+     "h": "Bevándorlás és befektetés",
+     "p": [
+      "Golden Visa — befektetésért (jellemzően ingatlanvásárlásért) járó TARTÓZKODÁSI engedély; nem állampolgárság és nem útlevél.",
+      "CBI (citizenship by investment) — befektetésért járó ÁLLAMPOLGÁRSÁG és útlevél; ingatlannal ma elsősorban Törökország kínálja.",
+      "Due diligence — jogi átvilágítás: a tulajdoni lap, terhek, engedélyek és az alapterület ellenőrzése a vétel előtt."
+     ],
+     "table": null
+    },
+    {
+     "h": "Vásárlási folyamat",
+     "p": [
+      "Escrow / letéti számla — semleges (ügyvédi vagy banki) számla, amely a foglalót őrzi, amíg a feltételek teljesülnek; véd a csalástól, főleg off-plan vételnél.",
+      "Off-plan — még épülő, papíron megvásárolt ingatlan; olcsóbb lehet, de fejlesztői és készültségi kockázatot hordoz.",
+      "Előszerződés — a végleges adásvételt előkészítő szerződés, jellemzően 10% foglalóval.",
+      "Snagging — az átadás előtti hibalista (új építésűnél a fejlesztő által javítandó hiányosságok).",
+      "Service charge — a társasházi közös költség (Dubajban, Thaiföldön jelentős tétel lehet)."
+     ],
+     "table": null
+    },
+    {
+     "h": "Adó és pénzügy",
+     "p": [
+      "Átírási / vagyonszerzési adó — a tulajdon átruházásakor fizetendő adó (pl. török „tapu” illeték, spanyol ITP).",
+      "ITP / AJD — a spanyol átruházási adó (ITP), illetve az okirati illeték (AJD).",
+      "Prezzo-valore — az olasz mechanizmus, amelynél magánszemélyek között az adó alapja a (jellemzően alacsonyabb) kataszteri érték, nem a vételár.",
+      "NIE / codice fiscale / AFM — a spanyol, olasz és görög külföldi adóazonosító, amely nélkül nem lehet szerződni.",
+      "LTV (loan-to-value) — a hitel és az ingatlanérték aránya; külföldi vevőnél a bankok jellemzően alacsonyabb LTV-t adnak."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Mi a különbség a freehold és a leasehold között?",
+     "a": "A freehold teljes, időben korlátlan tulajdonjog. A leasehold határozott idejű (jellemzően 25–99 éves) bérleti vagy használati jog, ami a futamidő végén lejár vagy meghosszabbítandó. Balin és Thaiföldön a külföldiek gyakran csak leaseholdot szerezhetnek — ilyenkor a hosszabbítási feltétel a legfontosabb ellenőrzendő pont."
+    },
+    {
+     "q": "A Golden Visa ugyanaz, mint az állampolgárság?",
+     "a": "Nem. A Golden Visa befektetésért járó tartózkodási engedély — élhet és jöhet-mehet az adott országban, de az útlevele nem változik. Az állampolgárság (CBI) valódi útlevelet ad. A kettőt gyakran összekeverik; ingatlannal állampolgárságot ma elsősorban Törökország kínál."
+    },
+    {
+     "q": "Mi az az escrow, és miért fontos?",
+     "a": "Az escrow egy semleges letéti számla (ügyvédi vagy banki), amely a foglalót vagy a vételárat őrzi, amíg a szerződéses feltételek teljesülnek. Ez véd a csalástól és a fejlesztő nemteljesítésétől, ezért különösen off-plan (még épülő) vételnél kulcsfontosságú, hogy a pénz escrow-ba menjen, ne közvetlenül az eladóhoz."
+    }
+   ]
   }
  }
 }

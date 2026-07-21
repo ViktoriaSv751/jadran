@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ARTICLE_BY_SLUG, ARTICLE_SLUGS, CATEGORY_LABEL } from "@/lib/articles";
-import { breadcrumbJsonLd, faqJsonLd, ORG_ID, SITE_ID } from "@/lib/seo";
+import { breadcrumbJsonLd, definedTermSetJsonLd, faqJsonLd, howToJsonLd, ORG_ID, SITE_ID } from "@/lib/seo";
 import { SITE_URL } from "@/lib/supabase-server";
 import JsonLd from "@/components/JsonLd";
 import ArticleBody from "@/components/tudastar/ArticleBody";
@@ -56,12 +56,38 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
     articleSection: CATEGORY_LABEL[a.category]
   };
 
+  // Extra strukturált adat két speciális cikknél (magyar forrásból, a JSON-LD
+  // is magyar — mint a FAQPage). A folyamat-cikk HowTo-t, a fogalomtár
+  // DefinedTermSetet kap; mindkettő erős AEO-építőelem.
+  const extraSchema: object[] = [];
+  if (a.slug === "kulfoldi-ingatlanvasarlas-lepesei") {
+    extraSchema.push(
+      howToJsonLd(
+        url,
+        a.title,
+        a.sections.map((s) => ({ name: s.h, text: s.p.join(" ") }))
+      )
+    );
+  }
+  if (a.slug === "ingatlanszotar-fogalmak") {
+    // A definíciók „Fogalom — magyarázat" formában vannak a bekezdésekben.
+    const terms = a.sections
+      .flatMap((s) => s.p)
+      .map((p) => {
+        const i = p.indexOf(" — ");
+        return i > 0 ? { term: p.slice(0, i).trim(), def: p.slice(i + 3).trim() } : null;
+      })
+      .filter((t): t is { term: string; def: string } => !!t);
+    if (terms.length) extraSchema.push(definedTermSetJsonLd(url, a.title, terms));
+  }
+
   return (
     <article className="mx-auto max-w-3xl px-4 py-10">
       <JsonLd
         data={[
           articleJsonLd,
           faqJsonLd(a.faq),
+          ...extraSchema,
           breadcrumbJsonLd([
             { name: "Főoldal", url: SITE_URL },
             { name: "Tudástár", url: `${SITE_URL}/tudastar` },

@@ -744,3 +744,44 @@ export function cityCollectionJsonLd(code: CountryCode, city: string, listingCou
     mainEntity: { "@type": "ItemList", numberOfItems: listingCount }
   };
 }
+
+/**
+ * HowTo strukturált adat — lépésről lépésre útmutatóhoz (pl. vásárlási folyamat).
+ * A Google „hogyan…" kérdésre gazdag találatként mutathatja, az LLM-ek pedig
+ * tiszta lépéssorként idézik.
+ */
+export function howToJsonLd(url: string, name: string, steps: { name: string; text: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "@id": `${url}#howto`,
+    name,
+    inLanguage: "hu",
+    step: steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.name,
+      text: s.text
+    }))
+  };
+}
+
+/**
+ * DefinedTermSet — fogalomtárhoz. Minden fogalom önálló DefinedTerm; ez az
+ * egyik legerősebb AEO-építőelem, mert az LLM-ek a „mi az a X" kérdésre pontosan
+ * ezt tudják kiemelni és idézni.
+ */
+export function definedTermSetJsonLd(url: string, name: string, terms: { term: string; def: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    "@id": `${url}#glossary`,
+    name,
+    inLanguage: "hu",
+    hasDefinedTerm: terms.map((t) => ({
+      "@type": "DefinedTerm",
+      name: t.term,
+      description: t.def
+    }))
+  };
+}
