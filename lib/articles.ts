@@ -80,7 +80,12 @@ const PILLARS: Article[] = [
       "citizenship by investment ingatlan",
       "második útlevél befektetéssel",
       "török állampolgárság ingatlan",
-      "hogyan szerezhető állampolgárság ingatlanvásárlással"
+      "hogyan szerezhető állampolgárság ingatlanvásárlással",
+      "ingatlanért állampolgárság 2026",
+      "török útlevél 400000 USD ingatlan",
+      "karibi állampolgársági program ingatlan",
+      "EU állampolgárság ingatlanvásárlással",
+      "citizenship by investment vs golden visa"
     ],
     sections: [
       {
@@ -162,9 +167,14 @@ const PILLARS: Article[] = [
       "golden visa ingatlannal",
       "golden visa ingatlanbefektetéssel",
       "görög golden visa",
+      "görög golden visa küszöb 2026",
       "magyar vendégbefektetői program",
       "EU letelepedés ingatlanvásárlással",
-      "golden visa 2026"
+      "golden visa 2026",
+      "melyik országban van golden visa ingatlannal",
+      "spanyol golden visa megszűnt",
+      "golden visa vagy állampolgárság",
+      "letelepedési engedély ingatlanvásárlással"
     ],
     sections: [
       {
@@ -269,7 +279,12 @@ const PILLARS: Article[] = [
       "átírási adó külföldi ingatlan",
       "külföldi ingatlanvásárlás költségei",
       "property purchase costs Europe",
-      "ingatlan illeték Horvátország Montenegró"
+      "ingatlan illeték Horvátország Montenegró",
+      "mennyibe kerül külföldi ingatlanvásárlás",
+      "közjegyzői és ügyvédi díj ingatlan külföld",
+      "ingatlanközvetítői jutalék külföldön ki fizeti",
+      "új építésű ingatlan áfa Spanyolország Olaszország",
+      "montenegrói ingatlan illeték 2026"
     ],
     sections: [
       {
@@ -337,7 +352,13 @@ const PILLARS: Article[] = [
       "külföldi ingatlanvásárlás menete",
       "hogyan vegyek ingatlant külföldön",
       "ingatlan átvilágítás külföldön",
-      "külföldi ingatlan vásárlás lépései"
+      "külföldi ingatlan vásárlás lépései",
+      "külföldi ingatlanvásárlás lépésről lépésre",
+      "előszerződés foglaló külföldi ingatlan",
+      "adóazonosító NIE codice fiscale AFM",
+      "meddig tart külföldi ingatlanvásárlás",
+      "távolról ingatlanvásárlás meghatalmazással",
+      "due diligence ingatlan külföld"
     ],
     sections: [
       {
@@ -415,7 +436,12 @@ const PILLARS: Article[] = [
       "hol a legmagasabb bérleti hozam",
       "ingatlan hozam rangsor 2026",
       "rental yield comparison",
-      "melyik országban éri meg ingatlant venni"
+      "melyik országban éri meg ingatlant venni",
+      "bruttó és nettó bérleti hozam különbség",
+      "airbnb hozam külföldi ingatlan",
+      "legjobb bérleti hozam ország 2026",
+      "tengerparti ingatlan bérbeadás hozam",
+      "passzív jövedelem külföldi ingatlanból"
     ],
     sections: [
       {
@@ -482,7 +508,12 @@ const PILLARS: Article[] = [
       "olcsó tengerparti lakás eladó",
       "cheap seafront property Europe",
       "albán riviéra ingatlan ár",
-      "hol olcsó a tengerparti ingatlan"
+      "hol olcsó a tengerparti ingatlan",
+      "tengerre néző lakás ár négyzetméter",
+      "montenegró tengerparti ingatlan ár",
+      "olcsó tengerparti ingatlan Balkán",
+      "ksamil sarandë ingatlan eladó",
+      "tengerparti ingatlan 2026 belépő ár"
     ],
     sections: [
       {
@@ -542,7 +573,12 @@ const PILLARS: Article[] = [
       "külföldi bérleti jövedelem adó Magyarország",
       "kettős adóztatás ingatlan",
       "külföldi ingatlan eladás adó",
-      "magyar illetőség külföldi ingatlan"
+      "magyar illetőség külföldi ingatlan",
+      "mentesítés beszámítás módszer adó",
+      "világjövedelem elve külföldi ingatlan",
+      "külföldi ingatlan öröklés adó",
+      "kell-e adózni külföldi ingatlan után Magyarországon",
+      "adóügyi illetőség golden visa"
     ],
     sections: [
       {
