@@ -2,13 +2,14 @@ import type { MetadataRoute } from "next";
 import { supabaseServer, SITE_URL } from "@/lib/supabase-server";
 import { COUNTRY_CODES, COUNTRY_BY_CODE, citySlug, isCountryCode } from "@/lib/geo";
 import { ARTICLES } from "@/lib/articles";
+import { getPublishedPosts } from "@/lib/blog";
 import { TYPE_FACETS, typeFacetSlug, INTENT_SLUG } from "@/lib/facets";
 
 /** Dinamikus sitemap: statikus oldalak + ország-landingek + minden aktív hirdetés. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Csak PUBLIKUS oldalak (a /favorites felhasználó-specifikus és a robots is
   // tiltja — ezért kimarad a sitemapből).
-  const staticRoutes = ["", "/search", "/market", "/guide", "/pricing", "/tudastar", "/celpontok", "/kalkulatorok"].map((p) => ({
+  const staticRoutes = ["", "/search", "/market", "/guide", "/pricing", "/tudastar", "/blog", "/celpontok", "/kalkulatorok"].map((p) => ({
     url: `${SITE_URL}${p}`,
     changeFrequency: "daily" as const,
     priority: p === "" ? 1 : 0.7
@@ -29,6 +30,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: new Date(a.updated),
     changeFrequency: "monthly" as const,
     priority: a.category === "country" ? 0.8 : 0.9
+  }));
+
+  // CMS-ből publikált blogcikkek (a tulajdonos által írt tartalom).
+  const posts = await getPublishedPosts();
+  const blogRoutes: MetadataRoute.Sitemap = posts.map((p) => ({
+    url: `${SITE_URL}/blog/${p.slug}`,
+    lastModified: p.updatedAt ? new Date(p.updatedAt) : undefined,
+    changeFrequency: "monthly" as const,
+    priority: 0.7
   }));
 
   let listingRoutes: MetadataRoute.Sitemap = [];
@@ -75,5 +85,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  return [...staticRoutes, ...countryRoutes, ...cityRoutes, ...articleRoutes, ...listingRoutes];
+  return [...staticRoutes, ...countryRoutes, ...cityRoutes, ...articleRoutes, ...blogRoutes, ...listingRoutes];
 }

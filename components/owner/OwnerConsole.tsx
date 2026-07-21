@@ -151,10 +151,11 @@ export default function OwnerConsole() {
       </div>
 
       {/* ---------- Gyors műveletek ---------- */}
-      <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
-        <QuickLink href="/admin" icon="shield" title="Moderáció" desc="Jelentések, verifikáció" />
-        <QuickLink href="/tudastar" icon="compass" title="Tudástár" desc="Cikkek megtekintése" />
-        <QuickLink href="/kalkulatorok" icon="euro" title="Kalkulátorok" desc="Költség, hozam, Golden Visa" />
+      <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <QuickLink href="/owner/blog" icon="plus" title="Cikkírás" desc="Új blogcikk" />
+        <QuickLink href="/admin" icon="shield" title="Moderáció" desc="Jelentések" />
+        <QuickLink href="/tudastar" icon="compass" title="Tudástár" desc="Cikkek" />
+        <QuickLink href="/kalkulatorok" icon="euro" title="Kalkulátorok" desc="Költség, hozam" />
       </div>
 
       {/* ---------- Legutóbbi felhasználók ---------- */}
