@@ -635,7 +635,12 @@ const PILLARS: Article[] = [
       "árfolyamkockázat ingatlanvásárlás",
       "devizaváltás ingatlan külföld",
       "milyen pénznemben vegyek ingatlant",
-      "EUR HUF ingatlanvásárlás"
+      "EUR HUF ingatlanvásárlás",
+      "spórolás devizaváltáson ingatlanvétel",
+      "török líra kockázat golden visa",
+      "dubaji dirham dollár árfolyam ingatlan",
+      "banki devizaváltás marzs ingatlan",
+      "devizaszolgáltató ingatlanvásárlás"
     ],
     sections: [
       {
@@ -696,7 +701,12 @@ const PILLARS: Article[] = [
       "freehold leasehold jelentése",
       "mi az a golden visa",
       "mi az az escrow off-plan",
-      "külföldi ingatlanvásárlás fogalmak"
+      "külföldi ingatlanvásárlás fogalmak",
+      "ingatlanszótár külföldi vásárlás",
+      "tapu jelentése ingatlan",
+      "due diligence jelentése ingatlan",
+      "NIE codice fiscale AFM mi az",
+      "off-plan vásárlás jelentése kockázat"
     ],
     sections: [
       {
