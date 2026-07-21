@@ -544,55 +544,55 @@
    ]
   },
   "kulfoldi-ingatlan-mellekkoltsegek": {
-   "title": "Sa kushton në të vërtetë? Kostot shtesë të blerjes së pronës jashtë vendit në 12 vende",
-   "description": "Taksa e kalimit të pronësisë, noteri, avokati, komisioni i agjencisë — të ndara sipas vendeve. Kostoja e plotë përtej çmimit të blerjes luhatet zakonisht midis 3–14%.",
-   "answer": "Kostot shtesë përtej çmimit të blerjes së një prone jashtë vendit ndryshojnë ndjeshëm sipas vendeve: në Shqipëri praktikisht nuk ka taksë kalimi pronësie, në Malin e Zi është 3%, në Hungari dhe Turqi 4%, ndërsa në Itali 9% (shtëpi e dytë) dhe në Spanjë 6–10%. Këtyre u shtohen kudo tarifa noteriale, tarifa e avokatit dhe zakonisht 2–5% komision agjencie.",
+   "title": "Sa kushton në të vërtetë? Kostot anësore të blerjes së pasurisë së huaj në 12 vende",
+   "description": "Taksa e transferimit, noteri, avokati, komisioni i ndërmjetësit — të ndara sipas vendeve. Kostoja totale mbi çmimin e blerjes lëviz zakonisht mes 3–14%.",
+   "answer": "Kostoja anësore mbi çmimin e blerjes së pasurisë së huaj ndryshon ndjeshëm sipas vendeve: në Shqipëri praktikisht nuk ka taksë transferimi, në Malin e Zi 3%, në Hungari dhe Turqi 4%, ndërsa në Itali 9% (shtëpi e dytë) dhe në Spanjë 6–10%. Kësaj kudo i shtohet tarifa e noterit, tarifa e avokatit dhe zakonisht 2–5% komision ndërmjetësi.",
    "sections": [
     {
      "h": "Pse kjo është më e rëndësishme se çmimi i blerjes",
      "p": [
-      "Në blerjen e një prone jashtë vendit, shumica e surprizave të pakëndshme nuk qëndrojnë te çmimi, por te kostot shtesë. Përtej çmimit të blerjes shtohen zakonisht edhe 5–14%, në varësi të vendit — te një pronë prej 300 000 eurosh kjo është një diferencë midis 15 000 dhe 42 000 eurosh, thjesht në varësi të vendit ku blini.",
-      "Tabela e mëposhtme tregon zërat më të rëndësishëm sipas vendeve. E rëndësishme: taksa e kalimit të pronësisë zakonisht ka të bëjë me pronat E PËRDORURA — te ndërtimet e reja, në shumë vende vendin e saj e zë TVSH-ja, e cila mund të jetë më e lartë."
+      "Në blerjen e pasurisë së huaj shumica e surprizave të pakëndshme nuk janë te çmimi, por te kostoja anësore. Mbi çmimin e blerjes zakonisht vijnë edhe 5–14%, në varësi të vendit — te një pasuri prej 300 000 euro kjo është një diferencë mes 15 000 dhe 42 000 euro thjesht sipas vendit ku blini.",
+      "Tabela e mëposhtme tregon zërat më të rëndësishëm sipas vendeve. E rëndësishme: taksa e transferimit zakonisht vlen për pasurinë e PËRDORUR — te ndërtimi i ri në shumë vende në vend të saj hyn TVSH-ja, që mund të jetë më e lartë."
      ],
      "table": {
       "head": [
        "Vendi",
-       "Taksa e kalimit të pronësisë",
+       "Taksa e transferimit",
        "Noteri",
        "Avokati",
-       "Agjencia"
+       "Ndërmjetësi"
       ],
       "rows": [
        [
         "🇲🇪 Mali i Zi",
-        "3–6% (progresive)",
+        "3–6%",
         "0.5% + 200 €",
         "1%",
         "3%"
        ],
        [
-        "🇭🇷 Kroacia",
+        "🇭🇷 Kroaci",
         "3%",
         "0.4% + 150 €",
         "1%",
         "3%"
        ],
        [
-        "🇦🇱 Shqipëria",
+        "🇦🇱 Shqipëri",
         "0%",
         "0.5% + 120 €",
         "1%",
         "3%"
        ],
        [
-        "🇷🇸 Serbia",
+        "🇷🇸 Serbi",
         "2.5%",
         "0.5% + 150 €",
         "1%",
         "3%"
        ],
        [
-        "🇹🇷 Turqia",
+        "🇹🇷 Turqi",
         "4%",
         "0.5% + 250 €",
         "1.2%",
@@ -606,35 +606,35 @@
         "5%"
        ],
        [
-        "🇭🇺 Hungaria",
+        "🇭🇺 Hungari",
         "4%",
         "0.5% + 150 €",
         "1%",
         "3%"
        ],
        [
-        "🇹🇭 Tajlanda",
+        "🇹🇭 Tajlandë",
         "2%",
         "0.5% + 200 €",
         "1.5%",
         "3%"
        ],
        [
-        "🇮🇹 Italia",
+        "🇮🇹 Itali",
         "9%",
         "1% + 300 €",
         "1%",
         "3%"
        ],
        [
-        "🇬🇷 Greqia",
+        "🇬🇷 Greqi",
         "3%",
         "1.2% + 300 €",
         "1.2%",
         "2%"
        ],
        [
-        "🇪🇸 Spanja",
+        "🇪🇸 Spanjë",
         "8%",
         "1% + 300 €",
         "1%",
@@ -651,36 +651,36 @@
      }
     },
     {
-     "h": "Hyrja më e lirë dhe ajo më e shtrenjtë",
+     "h": "Hyrja më e lirë dhe më e shtrenjtë",
      "p": [
-      "Koston më të favorshme të transaksionit e ofrojnë Shqipëria (0% taksë kalimi pronësie) dhe Tajlanda (2%), të ndjekura nga Mali i Zi dhe Kroacia me 3–6% (progresive). Në skajin tjetër të shkallës qëndron Italia me 9% në rastin e shtëpisë së dytë, si dhe Spanja, ku ITP rajonale luhatet midis 6–10%.",
-      "Një gabim i shpeshtë është të mendohet se komisionin e agjencisë e paguan gjithmonë shitësi. Kjo ndryshon sipas tregjeve: në tregun ballkanik dhe atë turk është e zakonshme edhe ndarja e komisionit ose përballimi i tij nga blerësi, prandaj kjo duhet sqaruar me shkrim para kaparit."
+      "Kostot më të favorshme të transaksionit i ofron Shqipëria, ku blerësi nuk paguan fare taksë transferimi proporcionale me vlerën, pastaj vijnë Tajlanda (2%) dhe Serbia (2.5%). Në Kroaci taksa është fikse 3%. Mali i Zi që nga viti 2024 zbaton një sistem me FASHA: deri në 150 000 € 3%, mbi këtë 5%, mbi 500 000 € 6% — te një pasuri prej 600 000 euro pra taksa nuk është 18 000, por 28 000 €. Në skajin tjetër të shkallës qëndron Italia me 9% në rast shtëpie të dytë, si dhe Spanja, ku ITP-ja rajonale lëviz rreth 6–11%.",
+      "Një gabim i shpeshtë është të mendosh se komisionin e ndërmjetësit gjithmonë e paguan shitësi. Kjo ndryshon sipas tregut: në tregun ballkanik dhe atë turk ndarja e komisionit ose përballimi nga blerësi është gjithashtu e zakonshme, prandaj kjo duhet sqaruar me shkrim para kaparit."
      ],
      "table": null
     },
     {
-     "h": "Çfarë duhet llogaritur përtej tabelës",
+     "h": "Ç'duhet llogaritur përtej tabelës",
      "p": [
       "Përkthimi dhe legalizimi: në shumë vende kontratat duhen paraqitur me përkthim të noterizuar.",
-      "Numri i identifikimit tatimor dhe llogaria bankare: në Spanjë nevojitet NIE, në Itali codice fiscale, në Greqi AFM — pa këto nuk mund të lidhet kontratë.",
-      "Mirëmbajtja vjetore: taksa mbi pronën, shpenzimet e përbashkëta, sigurimi, dhe te një shtëpi pushimi përgatitja për dimër ose tarifa e administrimit.",
-      "Këmbimi valutor: në vendet jashtë eurozonës (Turqi, Tajlandë, Indonezi, Hungari) marzhi bankar i këmbimit mund të jetë edhe 1–3% në vetvete — ia vlen të përdoret një ofrues i veçantë shërbimesh valutore."
+      "Identifikuesi tatimor dhe llogaria bankare: në Spanjë duhet NIE, në Itali codice fiscale, në Greqi AFM — pa këto nuk mund të lidhet kontratë.",
+      "Mirëmbajtja vjetore: taksa e pasurisë, shpenzimi i përbashkët, sigurimi, dhe te pasuria për pushime dimërimi ose tarifa e menaxhimit.",
+      "Këmbimi valutor: te vendet jashtë eurozonës (Turqi, Tajlandë, Indonezi, Hungari) marzhi bankar i këmbimit mund të jetë vetëm 1–3% — ia vlen të përdoret një ofrues i veçantë valutor."
      ],
      "table": null
     }
    ],
    "faq": [
     {
-     "q": "Sa janë kostot e plota shtesë të blerjes së një prone jashtë vendit?",
-     "a": "Në varësi të vendit, zakonisht 5–14% e çmimit të blerjes. Më e ulëta është në Shqipëri dhe Tajlandë (rreth 3–6%), mesatare në Malin e Zi, Kroaci, Hungari dhe Turqi (rreth 5–9%), dhe më e larta në Itali dhe Spanjë (rreth 10–14%)."
+     "q": "Sa është kostoja totale anësore e blerjes së pasurisë së huaj?",
+     "a": "Në varësi të vendit zakonisht 5–14% e çmimit të blerjes. Më e ulëta është në Shqipëri dhe Tajlandë (rreth 3–6%), e mesme në Malin e Zi, Kroaci, Hungari dhe Turqi (rreth 5–9%), më e larta në Itali dhe Spanjë (rreth 10–14%)."
     },
     {
-     "q": "Kush e paguan komisionin e agjencisë gjatë blerjes së një prone jashtë vendit?",
-     "a": "Ndryshon sipas tregjeve. Në tregjet e Evropës Perëndimore zakonisht shitësi, ndërsa në tregun ballkanik dhe atë turk është e zakonshme edhe ndarja ose përballimi nga blerësi. Duhet sqaruar gjithmonë me shkrim PARA pagesës së kaparit."
+     "q": "Kush e paguan komisionin e ndërmjetësit në blerjen e pasurisë së huaj?",
+     "a": "Ndryshon sipas tregut. Në tregjet e Evropës Perëndimore zakonisht shitësi, ndërsa në tregun ballkanik dhe atë turk është e zakonshme edhe ndarja ose përballimi nga blerësi. Duhet sqaruar gjithmonë me shkrim PARA pagesës së kaparit."
     },
     {
-     "q": "A duhet paguar taksë kalimi pronësie edhe për ndërtimet e reja?",
-     "a": "Zakonisht jo — në shumicën e vendeve, çmimi i një prone të re të blerë nga zhvilluesi përmban TVSH, dhe në këtë rast nuk ka taksë të veçantë kalimi pronësie. Megjithatë kjo nuk është domosdoshmërisht më lirë: 10% e Spanjës ose 10–22% e Italisë mund të jenë më të larta se taksa e kalimit të pronësisë për një pronë të përdorur."
+     "q": "A duhet paguar taksë transferimi edhe te ndërtimi i ri?",
+     "a": "Zakonisht jo — në shumicën e vendeve në çmimin e pasurisë së re të blerë nga zhvilluesi përfshihet TVSH-ja, dhe në këtë rast nuk ka taksë transferimi të veçantë. Megjithatë kjo nuk është domosdoshmërisht më e lirë: TVSH-ja spanjolle 10% ose italiane 10–22% mund të jetë më e lartë se taksa e transferimit e pasurisë së përdorur."
     }
    ]
   },
@@ -750,6 +750,364 @@
     {
      "q": "A mund të blihet nga larg, pa paraqitje personale?",
      "a": "Në shumicën e vendeve po, me një prokurë të noterizuar dhe të pajisur me apostilë, dhënë avokatit. Në praktikë megjithatë ia vlen ta shihni pronën të paktën një herë personalisht — fotografitë janë sistematikisht më të bukura se realiteti."
+    }
+   ]
+  },
+  "berleti-hozam-rangsor": {
+   "title": "Renditja e yield-it të qirasë: ku është më i lartë në 12 vende?",
+   "description": "Në cilin vend ia vlen më shumë të blesh pasuri të paluajtshme për ta dhënë me qira? Yield-i bruto i qirasë i 12 tregjeve në një tabelë, me shënime për sezonalitetin dhe rreziqet.",
+   "answer": "Yield-in bruto më të lartë të qirasë e ofrojnë Bali (6–9%), Dubai (~7%) dhe tregjet urbane në zhvillim ballkanike-turke (5–8%). Tregjet e pjekura të Evropës Perëndimore (Italia, Spanja) kanë yield më të ulët, 3–5%, por në këmbim janë më të qëndrueshme dhe më likuide. Megjithatë, shifra bruto është mashtruese: yield-i NETO real, i zbritur me kostot e menaxhimit dhe të taksave, është zakonisht 2–4 pikë përqindjeje më i ulët.",
+   "sections": [
+    {
+     "h": "Yield-i bruto i qirasë sipas vendeve",
+     "p": [
+      "Yield-i bruto i qirasë është të ardhurat vjetore nga qiraja pjesëtuar me çmimin e blerjes. Kjo është shifra që reklamohet më shpesh, por kthimin real e tregon yield-i neto (pas zbritjes së menaxhimit, mirëmbajtjes, taksës dhe boshllëkut). Tabela tregon yield-et bruto mesatare urbane, indikative — gjithmonë duhen rillogaritur për pasurinë konkrete."
+     ],
+     "table": {
+      "head": [
+       "Vendi",
+       "Yield-i bruto",
+       "Karakteri"
+      ],
+      "rows": [
+       [
+        "🇮🇩 Bali (Indonezi)",
+        "6–9%",
+        "Turistik, i lartë por fort sezonal"
+       ],
+       [
+        "🇦🇪 Dubai (EBA)",
+        "~7%",
+        "Urban, pa taksa; ofertë e madhe"
+       ],
+       [
+        "🇦🇱 Shqipëri",
+        "6–8%",
+        "Turizëm bregdetar në zhvillim"
+       ],
+       [
+        "🇹🇷 Turqi",
+        "5–8%",
+        "Urban + turistik"
+       ],
+       [
+        "🇹🇭 Tajlandë",
+        "5–7%",
+        "Apartamente turistike"
+       ],
+       [
+        "🇷🇸 Serbi",
+        "4–6%",
+        "Qira urbane gjatë gjithë vitit"
+       ],
+       [
+        "🇭🇺 Hungari",
+        "4–6%",
+        "Kërkesë universitare dhe urbane"
+       ],
+       [
+        "🇬🇷 Greqi",
+        "4–6%",
+        "Athina + ishujt"
+       ],
+       [
+        "🇲🇪 Mali i Zi",
+        "4–6%",
+        "Bregdetare sezonale"
+       ],
+       [
+        "🇪🇸 Spanjë",
+        "4–6%",
+        "Treg pushimesh likuid"
+       ],
+       [
+        "🇭🇷 Kroaci",
+        "3–5%",
+        "Fort sezonale (verë)"
+       ],
+       [
+        "🇮🇹 Itali",
+        "3–4%",
+        "Treg i pjekur, i qëndrueshëm"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Pse yield-i neto është më i rëndësishëm se bruto?",
+     "p": [
+      "Në qiradhënien turistike (afatshkurtër) diferenca mes yield-it bruto dhe neto është e madhe. Menaxhimi profesional i vilave merr 15–20%, të cilave u shtohen mirëmbajtja, pastrimi, tarifa e platformës ndërmjetësuese (Airbnb/Booking 3–15%) dhe boshllëku. Në Bali, 6–9% bruto zbret realisht në 3–5% neto.",
+      "Qiradhënia afatgjatë urbane (Beograd, Budapest) është më e parashikueshme: bruto më i ulët, por më pak largim qiramarrësish dhe pa rrezik sezonaliteti. Për qëllim pensioni ose të ardhurash pasive kjo është shpesh zgjidhja më e mirë.",
+      "I rëndësishëm është edhe rreziku i kursit të këmbimit: yield-i jashtë eurozonës (lira turke, bahti tajlandez, rupia indoneziane) mund të jetë i lartë në monedhën vendore, por gjatë konvertimit në forint/euro dobësimi i kursit mund ta gllabërojë fitimin."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Në cilin vend është më i lartë yield-i i qirasë?",
+     "a": "Në bazë bruto kryesojnë Bali (6–9%), Dubai (~7%) dhe bregdeti shqiptar (6–8%). Por në bazë neto, tregjet urbane gjatë gjithë vitit (Beograd, Budapest, 4–6% bruto) shpesh performojnë po aq mirë, sepse nuk kanë rrezik sezonaliteti dhe kanë kosto më të ulët menaxhimi."
+    },
+    {
+     "q": "Sa është diferenca mes yield-it bruto dhe neto?",
+     "a": "Në qiradhënien turistike zakonisht 2–4 pikë përqindjeje. Një vilë në Bali me yield bruto 8% shpesh jep 4–5% neto. Diferencën e krijojnë menaxhimi i vilës (15–20%), tarifat e platformave, mirëmbajtja, taksa dhe boshllëku."
+    },
+    {
+     "q": "A ka rëndësi rreziku i kursit të këmbimit në qiradhënie?",
+     "a": "Po, ndjeshëm. Në vendet jashtë eurozonës (Turqi, Tajlandë, Indonezi, Hungari) yield-i lind në monedhën vendore, dhe gjatë konvertimit në forint ose euro lëvizja e kursit mund të marrë ose të shtojë disa përqind në vit. Në Dubai dirhami është i lidhur me dollarin, çka është më e qëndrueshme, por sjell ekspozim ndaj USD."
+    }
+   ]
+  },
+  "legolcsobb-tengerparti-ingatlan-europa": {
+   "title": "Pasuria bregdetare më e lirë në Evropë në vitin 2026",
+   "description": "Ku mund të blesh më lirë një apartament me pamje nga deti në Evropë? Çmimet e Shqipërisë, Malit të Zi dhe Ballkanit krahasuar me tregun kroat dhe grek.",
+   "answer": "Hyrjen bregdetare më të lirë në Evropë e ofron Shqipëria: në Riviera Shqiptare (Ksamil, Sarandë) apartamenti i ri me pamje nga deti kushton 1 200–2 200 €/m². Pas saj vjen bregu jugor i Malit të Zi (Bar, Ulqin) dhe Ballkani. Kroacia dhe Greqia janë ndjeshëm më të shtrenjta (zakonisht 2 500–5 000+ €/m² në lokacionet e mira bregdetare), por në këmbim vjen anëtarësimi në BE dhe një treg më likuid.",
+   "sections": [
+    {
+     "h": "Çmimet hyrëse bregdetare të krahasuara",
+     "p": [
+      "Çmimi për metër katror ndryshon fort sipas distancës nga bregu, pamjes dhe vitit të ndërtimit. Sferat e mëposhtme u referohen apartamenteve të reja ose në gjendje të mirë, afër detit (jo domosdoshmërisht në vijë të parë), me karakter informues."
+     ],
+     "table": {
+      "head": [
+       "Vendi / rajoni",
+       "Hyrja €/m²",
+       "Çfarë merr"
+      ],
+      "rows": [
+       [
+        "🇦🇱 Riviera Shqiptare (Ksamil, Sarandë)",
+        "1 200–2 200 €",
+        "E re, me pamje nga deti, yield i lartë"
+       ],
+       [
+        "🇲🇪 Mali i Zi jug (Bar, Ulqin)",
+        "1 500–2 500 €",
+        "Euro, taksë hyrëse e ulët 3%"
+       ],
+       [
+        "🇲🇪 Mali i Zi premium (Budva, Kotor)",
+        "2 500–4 500 €",
+        "Gjiri i Bokës, kërkesë e fortë"
+       ],
+       [
+        "🇭🇷 Kroaci (Dalmaci)",
+        "2 500–5 000 €",
+        "BE, Shengen, treg likuid"
+       ],
+       [
+        "🇬🇷 Greqi (ishujt)",
+        "2 500–6 000 €",
+        "BE, mundësi Golden Visa"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Çmimi i çmimit të lirë: çfarë duhet pasur parasysh",
+     "p": [
+      "Në Shqipëri hyrja është më e ulëta, por tregu është më i riu: hasen pasuri me prapavijë të parregulluar pronësie ose të ndërtuara pa leje. Pa një due diligence të kryer nga një avokat i pavarur (fleta e pronësisë në kadastrën e ASHK-së, leja e ndërtimit) mos paguani në asnjë rast kaparin këtu.",
+      "Mali i Zi është një rrugë e mesme e mirë: paguan me euro, taksa e transferimit është ndër më të ultat, dhe blerësi i huaj praktikisht blen me të njëjtat të drejta si vendasit. Në këmbim nuk është anëtar i BE-së (edhe pse vend kandidat).",
+      "Kroacia dhe Greqia janë më të shtrenjta, por vijnë me anëtarësim në BE, lëvizje të lirë Shengen dhe rishitje ndjeshëm më likuide — nëse dalja e lehtë është e rëndësishme, kjo mund ta anashkalojë avantazhin e çmimit."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Ku është pasuria bregdetare më e lirë në Evropë?",
+     "a": "Në Shqipëri, në Riviera Shqiptare (Ksamil, Sarandë): apartamentet e reja me pamje nga deti lëvizin në sferën 1 200–2 200 €/m², që është gjysma ose një e treta e ofertës së ngjashme kroate ose greke. Edhe kosto anësore e blerësit është më e ulëta, sepse në Shqipëri nuk ka taksë transferimi proporcionale me vlerën në anën e blerësit."
+    },
+    {
+     "q": "A është e sigurt të blesh lirë pasuri bregdetare në Shqipëri?",
+     "a": "Ligjërisht po — i huaji mund të blejë apartament në emrin e vet —, por rreziku kryesor është prapavija e pronësisë: hasen pasuri të ndërtuara pa leje ose me titull të parregulluar. Është i detyrueshëm due diligence i kryer nga një avokat i pavarur para kaparit."
+    },
+    {
+     "q": "A ia vlen të blesh më shtrenjtë në një shtet anëtar të BE-së?",
+     "a": "Nëse janë të rëndësishme lëvizja e lirë Shengen, parashikueshmëria juridike dhe rishitja e shpejtë, atëherë po — Kroacia dhe Greqia janë më likuide dhe më të parashikueshme. Nëse qëllimi është yield-i maksimal ose hyrja më e ulët, Shqipëria dhe Mali i Zi janë më të mira."
+    }
+   ]
+  },
+  "kulfoldi-ingatlan-adozasa-magyar-tulajdonosnak": {
+   "title": "Tatimi i pasurisë së huaj si pronar hungarez",
+   "description": "Si tatohen të ardhurat nga qiraja dhe fitimi nga shitja e një pasurie të huaj te një pronar me rezidencë fiskale hungareze? Logjika e marrëveshjeve për shmangien e tatimit të dyfishtë, e shpjeguar qartë.",
+   "answer": "Te një person fizik me rezidencë fiskale hungareze, të ardhurat nga pasuria e huaj mund të lindin dyfish: në vendin ku ndodhet pasuria DHE në Hungari. Tatimin e dyfishtë e zgjidhin marrëveshjet e lidhura nga Hungaria — te pasuria e paluajtshme pothuajse gjithmonë vendi KU NDODHET pasuria tatohet i pari, ndërsa Hungaria ose e përjashton, ose e llogarit tatimin e paguar jashtë. Rregulli konkret ndryshon nga vendi në vend, prandaj para investimit ia vlen të sqarohet me një ekspert tatimor.",
+   "sections": [
+    {
+     "h": "Koncepti kyç: rezidenca fiskale",
+     "p": [
+      "Shtetasi hungarez zakonisht mbetet me rezidencë fiskale hungareze edhe kur ka pasuri jashtë vendit — përveçse nëse largohet dhe zhvendos qendrën e jetës së tij. Personi fizik me rezidencë hungareze tatohet në Hungari mbi TË ARDHURAT BOTËRORE, pra edhe të ardhurat nga pasuria e huaj bien nën tatimin hungarez. Tatimin e dyfishtë e përjashtojnë marrëveshjet.",
+      "E rëndësishme: fakti që ju fitoni shtetësi ose Golden Visa jashtë vendit, në vetvete NUK e shuan rezidencën fiskale hungareze. Rezidenca lidhet me qëndrimin faktik dhe me qendrën e interesave, jo me pasaportën."
+     ],
+     "table": null
+    },
+    {
+     "h": "Të ardhurat nga qiraja",
+     "p": [
+      "Të ardhurat nga qiraja e pasurisë së huaj, sipas pothuajse çdo marrëveshjeje, tatohen së pari nga vendi ku ndodhet pasuria. Hungaria më pas mund të veprojë në dy mënyra sipas marrëveshjes: me metodën e PËRJASHTIMIT nuk i ritaton këtu të ardhurat nga qiraja të tatuara jashtë (por mund t'i marrë parasysh me ruajtjen e progresivitetit), ndërsa me metodën e KREDITIMIT e llogarit tatimin edhe këtu, por zbret atë të paguar jashtë.",
+      "Ka raste kur vendi i vendndodhjes nuk e taton ose e taton fare pak të ardhurën nga qiraja të personit fizik (për shembull, në Emiratet e Bashkuara Arabe nuk ka tatim mbi të ardhurat personale) — në raste të tilla është veçanërisht e rëndësishme të shihet nëse ana hungareze përjashton apo krediton, sepse të dyja japin rezultate shumë të ndryshme."
+     ],
+     "table": null
+    },
+    {
+     "h": "Fitimi nga shitja (nga kursi)",
+     "p": [
+      "Fitimin nga shitja e pasurisë marrëveshjet gjithashtu zakonisht ia lejojnë ta tatojë vendit të vendndodhjes. Në Hungari të ardhurat nga shitja e pasurisë mund të jenë të patatueshme pas 5 vjetësh (nga viti i pestë pas vitit të blerjes), por te pasuria e huaj gjithmonë duhen parë së bashku marrëveshja konkrete dhe rregulli i vendit ku ndodhet.",
+      "Në rast blerjeje dhe shitjeje në valutë ka rëndësi edhe kursi: baza tatimore hungareze duhet përcaktuar në forint, pra diferenca mes kursit në kohën e blerjes dhe atij në kohën e shitjes në vetvete ndikon në fitimin e llogaritur."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "A duhet të paguaj tatim në Hungari për pasurinë time të huaj?",
+     "a": "Si rezident fiskal hungarez, ju jeni i tatueshëm edhe këtu mbi të ardhurat botërore, por marrëveshja për shmangien e tatimit të dyfishtë përjashton që e njëjta gjë të tatohet dy herë. Te pasuria e paluajtshme zakonisht vendi i vendndodhjes tatohet i pari, ndërsa Hungaria ose e përjashton të ardhurën, ose krediton tatimin e paguar jashtë. Metoda konkrete ndryshon sipas marrëveshjes."
+    },
+    {
+     "q": "A e shuan shtetësia ose Golden Visa detyrimin tatimor hungarez?",
+     "a": "Jo. Rezidenca fiskale lidhet me qëndrimin faktik dhe me qendrën e interesave, jo me pasaportën. Nëse nuk largoheni dhe nuk zhvendosni qendrën e jetës suaj, mbeteni me rezidencë hungareze, dhe të ardhurat botërore janë të tatueshme edhe këtu."
+    },
+    {
+     "q": "Ku të informohem për rregullin konkret?",
+     "a": "Nga marrëveshja për shmangien e tatimit të dyfishtë mes Hungarisë dhe vendit përkatës, ose nga një këshilltar tatimor i specializuar në çështje tatimore ndërkombëtare. Ky artikull është informacion i përgjithshëm, jo këshillë tatimore e personalizuar — para një investimi gjashtëshifror kërkoni patjetër një mendim eksperti."
+    }
+   ]
+  },
+  "deviza-arfolyamkockazat-kulfoldi-ingatlan": {
+   "title": "Valuta dhe rreziku i kursit gjatë blerjes së pasurisë së huaj",
+   "description": "Euro, dollar, lira apo dirham? Në cilën monedhë tatohet rreziku në 12 tregjet, dhe si mund të kurseni në këmbimin valutor gjatë blerjes së pasurisë së huaj.",
+   "answer": "Gjysma e 12 tregjeve janë të eurozonës ose të çmuara në euro (Mali i Zi, Kroacia, Greqia, Italia, Spanja, Shqipëria), kështu që për blerësin hungarez ekziston vetëm rreziku EUR/HUF. Te të tjerat hyn një valutë e veçantë: dirhami i Dubait është i lidhur me dollarin (i qëndrueshëm, por ekspozim ndaj USD), ndërsa lira turke, bahti tajlandez dhe rupia indoneziane luhaten. Marzhi i këmbimit valutor bankar mund të jetë vetëm 1–3% — këtu mund të kursehet shumë me një ofrues të veçantë valutor.",
+   "sections": [
+    {
+     "h": "Në cilin treg si është ekspozimi ndaj monedhës?",
+     "p": [
+      "Rreziku valutor godet në dy pika: gjatë pagesës së çmimit të blerjes (këmbim një herësh) dhe gjatë transferimit të të ardhurave nga qiraja në atdhe (këmbim i përsëritur). Në tregjet e eurozonës për blerësin hungarez ka vetëm një shtresë monedhe (EUR/HUF), te ato jashtë eurozonës dy."
+     ],
+     "table": {
+      "head": [
+       "Tregu",
+       "Monedha",
+       "Ekspozimi"
+      ],
+      "rows": [
+       [
+        "🇲🇪🇭🇷🇬🇷🇮🇹🇪🇸🇦🇱",
+        "EUR",
+        "Vetëm EUR/HUF"
+       ],
+       [
+        "🇦🇪 Dubai",
+        "AED (i lidhur me USD)",
+        "I qëndrueshëm, por USD/HUF"
+       ],
+       [
+        "🇹🇷 Turqi",
+        "TRY (pragu në USD)",
+        "Luhatje e fortë e lirës"
+       ],
+       [
+        "🇹🇭 Tajlandë",
+        "THB",
+        "Luhatje e mesme"
+       ],
+       [
+        "🇮🇩 Bali",
+        "IDR",
+        "Luhatje, tarifa të dollarizuara"
+       ],
+       [
+        "🇷🇸 Serbi",
+        "RSD (çmimi shpesh në EUR)",
+        "E ulët (dinari i lidhur me EUR)"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Si ta ulni humbjen nga këmbimi?",
+     "p": [
+      "Marzhi i këmbimit valutor i bankave tregtare (diferenca mes kursit të blerjes dhe shitjes) te një blerje më e madhe pasurie është shumë serioze: te 300 000 euro një marzh 2% jep 6 000 euro. Me një ofrues të dedikuar valutor (p.sh. platforma ndërkombëtare transfertash) kjo mund të ulet në një fraksion.",
+      "Programi turk është rast i veçantë: pragu i shtetësisë prej 400 000 USD matet në dollarë, por çmimi i blerjes rrjedh në lira — lëvizja e kursit kështu mund të ndikojë edhe në të drejtën për aplikim, jo vetëm në kosto.",
+      "Dirhami i Dubait është i lidhur me dollarin (1 USD = 3,6725 AED) që nga viti 1997, çka është e qëndrueshme — por një blerës hungarez/i bazuar në euro në të vërtetë merr përsipër rrezik ndaj USD, sepse lëvizja e kursit EUR/USD ndikon në kthim përmes dirhamit."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Cila monedhë është më e sigurta për blerjen e pasurisë së huaj?",
+     "a": "Për një blerës hungarez/të bazuar në euro, tregjet e eurozonës ose të çmuara në euro (Mali i Zi, Kroacia, Greqia, Italia, Spanja, Shqipëria) janë më të parashikueshmet, sepse ka vetëm një shtresë këmbimi. Dirhami i Dubait është i qëndrueshëm (i lidhur me dollarin), por bart ekspozim ndaj USD."
+    },
+    {
+     "q": "Sa mund të kursehet në këmbimin valutor?",
+     "a": "Marzhi i këmbimit bankar është 1–3%. Te një blerje prej 300 000 euro kjo bën 3 000–9 000 euro. Me një ofrues të dedikuar ndërkombëtar valutor marzhi mund të ulet në një fraksion, pra te shuma më të mëdha gjithmonë ia vlen të krahasohet."
+    },
+    {
+     "q": "Pse lira turke është e rrezikshme te Golden Visa?",
+     "a": "Pragu i shtetësisë (400 000 USD) matet në dollarë, por çmimi i blerjes rrjedh në lira. Nëse lira dobësohet mes blerjes dhe vlerësimit, vlera e pasurisë e matur në dollarë mund të ulet dhe të bjerë nën prag — prandaj fiksimi valutor dhe koha janë kritike këtu."
+    }
+   ]
+  },
+  "ingatlanszotar-fogalmak": {
+   "title": "Fjalor i pasurive: 18 koncepte që duhen ditur para blerjes së huaj",
+   "description": "Freehold, Golden Visa, tapu, escrow, off-plan, NIE — termat më të rëndësishëm të blerjes së pasurisë së huaj, të shpjeguar shkurt e qartë.",
+   "answer": "Blerja e pasurisë së huaj është plot me terma, keqkuptimi i të cilëve kushton para. Më të rëndësishmit: freehold është pronësia e plotë (e përjetshme), leasehold është e drejta afatgjatë e qirasë; Golden Visa është QËNDRIM për shkak të investimit, ndërsa CBI (citizenship by investment) është SHTETËSI; escrow është llogaria depozituese që mbron kaparin; off-plan është pasuria ende në ndërtim; due diligence është kontrolli juridik. Ky fjalor shpjegon 18 koncepte.",
+   "sections": [
+    {
+     "h": "Pronësia dhe e drejta",
+     "p": [
+      "Freehold — e drejtë pronësie e plotë, e pakufizuar në kohë (ekuivalenti i „pronësisë” hungareze).",
+      "Leasehold — e drejtë afatgjatë qiraje/përdorimi (p.sh. 25–99 vjet); nuk është pronësi, por e drejtë me afat të caktuar. Në Bali dhe Tajlandë të huajt zakonisht fitojnë këtë.",
+      "Usufruct (uzufrukt) — e drejta e përdorimit të pasurisë dhe e vjeljes së fruteve të saj, pa transferimin e pronësisë.",
+      "Hak Pakai / Hak Sewa / Hak Guna Bangunan — të drejtat indoneziane të përdorimit, qirasë dhe ndërtimit, që i huaji mund t'i fitojë në vend të freehold.",
+      "Kadastra / fleta e pronësisë — regjistri zyrtar i pasurive të paluajtshme; e drejta e pronësisë bëhet e plotë kur regjistrohet këtu. Në Turqi kjo është „tapu”."
+     ],
+     "table": null
+    },
+    {
+     "h": "Emigrimi dhe investimi",
+     "p": [
+      "Golden Visa — leje QËNDRIMI për shkak të investimit (zakonisht për blerje pasurie); nuk është shtetësi dhe nuk është pasaportë.",
+      "CBI (citizenship by investment) — SHTETËSI dhe pasaportë për shkak të investimit; me pasuri të paluajtshme sot e ofron kryesisht Turqia.",
+      "Due diligence — kontroll juridik: verifikimi i fletës së pronësisë, barrëve, lejeve dhe sipërfaqes para blerjes."
+     ],
+     "table": null
+    },
+    {
+     "h": "Procesi i blerjes",
+     "p": [
+      "Escrow / llogari depozituese — llogari neutrale (avokati ose bankare), që mban kaparin derisa të plotësohen kushtet; mbron nga mashtrimi, sidomos në blerjen off-plan.",
+      "Off-plan — pasuri ende në ndërtim, e blerë në letër; mund të jetë më e lirë, por bart rrezik zhvilluesi dhe të përfundimit.",
+      "Parakontrata — kontrata që përgatit shitblerjen përfundimtare, zakonisht me kapar 10%.",
+      "Snagging — lista e defekteve para dorëzimit (te ndërtimet e reja, mangësitë që duhen riparuar nga zhvilluesi).",
+      "Service charge — shpenzimi i përbashkët i pallatit (në Dubai, Tajlandë mund të jetë zë i konsiderueshëm)."
+     ],
+     "table": null
+    },
+    {
+     "h": "Tatimi dhe financat",
+     "p": [
+      "Taksë transferimi / fitimi pasuror — taksa e pagueshme gjatë transferimit të pronësisë (p.sh. taksa turke „tapu”, ITP spanjolle).",
+      "ITP / AJD — taksa spanjolle e transferimit (ITP), përkatësisht taksa dokumentare (AJD).",
+      "Prezzo-valore — mekanizmi italian, ku mes personave fizikë baza e taksës është vlera kadastrale (zakonisht më e ulët), jo çmimi i blerjes.",
+      "NIE / codice fiscale / AFM — identifikuesi tatimor i huaj spanjoll, italian dhe grek, pa të cilin nuk mund të lidhet kontratë.",
+      "LTV (loan-to-value) — raporti i kredisë ndaj vlerës së pasurisë; te blerësi i huaj bankat zakonisht japin LTV më të ulët."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Cili është ndryshimi mes freehold dhe leasehold?",
+     "a": "Freehold është e drejtë pronësie e plotë, e pakufizuar në kohë. Leasehold është e drejtë qiraje ose përdorimi me afat të caktuar (zakonisht 25–99 vjet), që në fund të afatit skadon ose duhet zgjatur. Në Bali dhe Tajlandë të huajt shpesh mund të fitojnë vetëm leasehold — në këtë rast kushti i zgjatjes është pika më e rëndësishme për t'u kontrolluar."
+    },
+    {
+     "q": "A është Golden Visa e njëjtë me shtetësinë?",
+     "a": "Jo. Golden Visa është leje qëndrimi për shkak të investimit — mund të jetoni dhe të lëvizni në vendin përkatës, por pasaporta juaj nuk ndryshon. Shtetësia (CBI) jep një pasaportë të vërtetë. Të dyja shpesh ngatërrohen; shtetësi me pasuri sot ofron kryesisht Turqia."
+    },
+    {
+     "q": "Çfarë është escrow-i dhe pse është i rëndësishëm?",
+     "a": "Escrow-i është një llogari depozituese neutrale (avokati ose bankare), që mban kaparin ose çmimin e blerjes derisa të plotësohen kushtet kontraktuale. Kjo mbron nga mashtrimi dhe nga mospërmbushja e zhvilluesit, prandaj sidomos në blerjen off-plan (ende në ndërtim) është thelbësore që paraja të shkojë në escrow, jo drejtpërdrejt te shitësi."
     }
    ]
   }

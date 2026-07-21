@@ -544,15 +544,15 @@
    ]
   },
   "kulfoldi-ingatlan-mellekkoltsegek": {
-   "title": "What does it really cost? The transaction costs of buying property abroad in 12 countries",
-   "description": "Transfer tax, notary, lawyer, agency commission — broken down country by country. Total costs on top of the purchase price typically range from 3% to 14%.",
-   "answer": "The costs payable on top of the purchase price when buying property abroad vary significantly by country: in Albania there is effectively no transfer tax, in Montenegro it is 3%, in Hungary and Turkey 4%, while in Italy it is 9% (second home) and in Spain 6–10%. Everywhere, you must add the notary fee, legal fees and typically 2–5% agency commission.",
+   "title": "What does it really cost? Ancillary costs of buying property abroad in 12 countries",
+   "description": "Transfer tax, notary, lawyer, agent commission — broken down by country. The total cost on top of the purchase price typically moves between 3–14%.",
+   "answer": "The ancillary cost on top of the purchase price when buying property abroad differs significantly by country: in Albania there is practically no transfer tax, in Montenegro 3%, in Hungary and Turkey 4%, while in Italy 9% (second home) and in Spain 6–10%. On top of this everywhere come the notary fee, the lawyer fee and typically a 2–5% agent commission.",
    "sections": [
     {
      "h": "Why this matters more than the purchase price",
      "p": [
-      "When buying property abroad, most unpleasant surprises lie not in the price but in the transaction costs. On top of the purchase price you should typically expect a further 5–14% depending on the country — on a €300,000 property that is a difference of between €15,000 and €42,000, purely on the basis of which country you buy in.",
-      "The table below shows the most important items country by country. Note: transfer tax generally applies to SECOND-HAND property — on new-build, many countries substitute VAT, which may be higher."
+      "When buying property abroad, most of the unpleasant surprises are not in the price but in the ancillary cost. On top of the purchase price, typically another 5–14% comes, depending on the country — for a 300,000-euro property that is a difference of between 15,000 and 42,000 euros purely depending on which country you buy in.",
+      "The table below shows the most important items by country. Important: the transfer tax typically applies to USED property — for a new build, in many countries VAT takes its place, which can be higher."
      ],
      "table": {
       "head": [
@@ -565,78 +565,78 @@
       "rows": [
        [
         "🇲🇪 Montenegro",
-        "3–6% (banded)",
-        "0.5% + €200",
+        "3–6%",
+        "0.5% + 200 €",
         "1%",
         "3%"
        ],
        [
         "🇭🇷 Croatia",
         "3%",
-        "0.4% + €150",
+        "0.4% + 150 €",
         "1%",
         "3%"
        ],
        [
         "🇦🇱 Albania",
         "0%",
-        "0.5% + €120",
+        "0.5% + 120 €",
         "1%",
         "3%"
        ],
        [
         "🇷🇸 Serbia",
         "2.5%",
-        "0.5% + €150",
+        "0.5% + 150 €",
         "1%",
         "3%"
        ],
        [
         "🇹🇷 Turkey",
         "4%",
-        "0.5% + €250",
+        "0.5% + 250 €",
         "1.2%",
         "2%"
        ],
        [
         "🇮🇩 Bali (Indonesia)",
         "5%",
-        "1% + €300",
+        "1% + 300 €",
         "1.5%",
         "5%"
        ],
        [
         "🇭🇺 Hungary",
         "4%",
-        "0.5% + €150",
+        "0.5% + 150 €",
         "1%",
         "3%"
        ],
        [
         "🇹🇭 Thailand",
         "2%",
-        "0.5% + €200",
+        "0.5% + 200 €",
         "1.5%",
         "3%"
        ],
        [
         "🇮🇹 Italy",
         "9%",
-        "1% + €300",
+        "1% + 300 €",
         "1%",
         "3%"
        ],
        [
         "🇬🇷 Greece",
         "3%",
-        "1.2% + €300",
+        "1.2% + 300 €",
         "1.2%",
         "2%"
        ],
        [
         "🇪🇸 Spain",
         "8%",
-        "1% + €300",
+        "1% + 300 €",
         "1%",
         "3%"
        ],
@@ -653,8 +653,8 @@
     {
      "h": "The cheapest and the most expensive entry",
      "p": [
-      "The most favourable transaction costs are offered by Albania (0% transfer tax) and Thailand (2%), followed by Montenegro and Croatia at 3–6% (banded). At the other end of the scale sits Italy at 9% for a second home, along with Spain, where the regional ITP ranges from 6% to 10%.",
-      "A common error is to assume that the agency commission is always paid by the seller. This varies from market to market: in the Balkan and Turkish markets, splitting the commission or having the buyer bear it are both established practice, so this must be settled in writing before the deposit is paid."
+      "The most favourable transaction cost is offered by Albania, where the buyer pays no value-based transfer tax at all, followed by Thailand (2%) and Serbia (2.5%). In Croatia the duty is a fixed 3%. Montenegro has applied a TIERED system since 2024: up to 150,000 € it is 3%, above that 5%, and above 500,000 € it is 6% — so on a 600,000-euro property the tax is not 18,000 but 28,000 €. At the other end of the scale stands Italy at 9% for a second home, as well as Spain, where the regional ITP moves between roughly 6–11%.",
+      "A common misconception is that the agent commission is always paid by the seller. This differs by market: in the Balkan and Turkish markets, splitting the commission or the buyer bearing it is also common, so this must be clarified in writing before the deposit."
      ],
      "table": null
     },
@@ -662,25 +662,25 @@
      "h": "What to budget for beyond the table",
      "p": [
       "Translation and certification: in many countries contracts must be submitted with a certified translation.",
-      "Tax number and bank account: NIE in Spain, codice fiscale in Italy, AFM in Greece — without these you cannot contract.",
-      "Annual running costs: property tax, service charges, insurance, and, for a holiday property, winterisation or management fees.",
-      "Currency conversion: in non-eurozone countries (Turkey, Thailand, Indonesia, Hungary) the bank's exchange margin alone can be 1–3% — it is worth using a specialist currency provider."
+      "Tax identifier and bank account: in Spain a NIE, in Italy a codice fiscale, in Greece an AFM is required — without these you cannot contract.",
+      "Annual upkeep: property tax, common cost, insurance, and for a holiday property the winterisation or the management fee.",
+      "Currency conversion: for non-eurozone countries (Turkey, Thailand, Indonesia, Hungary) the bank conversion margin alone can be 1–3% — it is worth using a separate currency provider."
      ],
      "table": null
     }
    ],
    "faq": [
     {
-     "q": "What are the total transaction costs of buying property abroad?",
-     "a": "Typically 5–14% of the purchase price depending on the country. They are lowest in Albania and Thailand (roughly 3–6%), moderate in Montenegro, Croatia, Hungary and Turkey (roughly 5–9%), and highest in Italy and Spain (roughly 10–14%)."
+     "q": "What is the total ancillary cost of buying property abroad?",
+     "a": "Depending on the country, typically 5–14% of the purchase price. The lowest is in Albania and Thailand (about 3–6%), medium in Montenegro, Croatia, Hungary and Turkey (about 5–9%), and the highest in Italy and Spain (about 10–14%)."
     },
     {
-     "q": "Who pays the agency commission when buying property abroad?",
-     "a": "It varies by market. In Western European markets it is typically the seller, but in the Balkan and Turkish markets splitting it or having the buyer bear it are both established practice. It must always be settled in writing BEFORE the deposit is paid."
+     "q": "Who pays the agent commission when buying property abroad?",
+     "a": "It differs by market. In Western European markets typically the seller, but in the Balkan and Turkish markets splitting or the buyer bearing it is also common. It must always be clarified in writing BEFORE paying the deposit."
     },
     {
-     "q": "Is transfer tax payable on new-build as well?",
-     "a": "Generally no — in most countries the price of a new property bought from a developer includes VAT, and in that case no separate transfer tax applies. That is not necessarily cheaper, however: Spain's 10% or Italy's 10–22% VAT may exceed the transfer tax on a second-hand property."
+     "q": "Do you also have to pay transfer tax on a new build?",
+     "a": "Usually not — in most countries the price of a new property bought from the developer includes VAT, and in that case there is no separate transfer tax. This is not necessarily cheaper, however: the Spanish 10% or the Italian 10–22% VAT can be higher than the transfer tax on a used property."
     }
    ]
   },
@@ -750,6 +750,364 @@
     {
      "q": "Can you buy remotely, without attending in person?",
      "a": "In most countries yes, using a certified and apostilled power of attorney granted to a lawyer. In practice it is nonetheless worth viewing the property in person at least once — photographs are systematically more flattering than reality."
+    }
+   ]
+  },
+  "berleti-hozam-rangsor": {
+   "title": "Rental yield ranking: where is it highest across 12 countries?",
+   "description": "In which country is buying property to rent out the most worthwhile? The gross rental yields of 12 markets in one table, flagging seasonality and risks.",
+   "answer": "The highest gross rental yields are offered by Bali (6–9%), Dubai (~7%) and the emerging Balkan-Turkish urban markets (5–8%). The mature Western European markets (Italy, Spain) yield lower, 3–5%, but are more stable and liquid in return. The gross figure is misleading, however: the real NET yield, reduced by management and tax costs, is typically 2–4 percentage points lower.",
+   "sections": [
+    {
+     "h": "Gross rental yield by country",
+     "p": [
+      "Gross rental yield is the annual rental income divided by the purchase price. This is the most commonly advertised figure, but the real return is shown by the net yield (after deducting management, maintenance, tax and vacancy). The table shows indicative average urban gross yields — it must always be recalculated for the specific property."
+     ],
+     "table": {
+      "head": [
+       "Country",
+       "Gross yield",
+       "Character"
+      ],
+      "rows": [
+       [
+        "🇮🇩 Bali (Indonesia)",
+        "6–9%",
+        "Tourism-driven, high but strongly seasonal"
+       ],
+       [
+        "🇦🇪 Dubai (UAE)",
+        "~7%",
+        "Urban, tax-free; large supply"
+       ],
+       [
+        "🇦🇱 Albania",
+        "6–8%",
+        "Emerging coastal tourism"
+       ],
+       [
+        "🇹🇷 Turkey",
+        "5–8%",
+        "Urban + tourism"
+       ],
+       [
+        "🇹🇭 Thailand",
+        "5–7%",
+        "Tourism-driven condominium"
+       ],
+       [
+        "🇷🇸 Serbia",
+        "4–6%",
+        "Year-round urban rental"
+       ],
+       [
+        "🇭🇺 Hungary",
+        "4–6%",
+        "University and urban demand"
+       ],
+       [
+        "🇬🇷 Greece",
+        "4–6%",
+        "Athens + islands"
+       ],
+       [
+        "🇲🇪 Montenegro",
+        "4–6%",
+        "Seasonal coastal"
+       ],
+       [
+        "🇪🇸 Spain",
+        "4–6%",
+        "Liquid holiday market"
+       ],
+       [
+        "🇭🇷 Croatia",
+        "3–5%",
+        "Strongly seasonal (summer)"
+       ],
+       [
+        "🇮🇹 Italy",
+        "3–4%",
+        "Mature, stable market"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Why is net yield more important than gross?",
+     "p": [
+      "For tourism (short-term) rentals, the difference between gross and net yield is enormous. Professional villa management takes 15–20%, on top of which come maintenance, cleaning, the booking platform fee (Airbnb/Booking 3–15%) and vacancy. In Bali, a gross 6–9% realistically drops to a net 3–5%.",
+      "Long-term urban rental (Belgrade, Budapest) is more predictable: lower gross, but less turnover and no seasonality risk. For retirement or passive-income goals this is often the better choice.",
+      "Currency risk also matters: yields outside the eurozone (Turkish lira, Thai baht, Indonesian rupiah) may be high in local currency, but on conversion to forint/euro a currency depreciation can wipe out the profit."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Which country has the highest rental yield?",
+     "a": "On a gross basis Bali (6–9%), Dubai (~7%) and the Albanian coast (6–8%) lead. On a net basis, however, urban year-round markets (Belgrade, Budapest, 4–6% gross) often perform similarly well, because they have no seasonality risk and lower management costs."
+    },
+    {
+     "q": "What is the difference between gross and net yield?",
+     "a": "For tourism rentals, typically 2–4 percentage points. A Bali villa with an 8% gross yield often nets 4–5%. The difference comes from villa management (15–20%), platform fees, maintenance, tax and vacancy."
+    },
+    {
+     "q": "Does currency risk matter for renting out?",
+     "a": "Yes, significantly. In countries outside the eurozone (Turkey, Thailand, Indonesia, Hungary) the yield arises in the local currency, and on conversion to forint or euro the exchange-rate movement can take away or add several percent per year. In Dubai the dirham is pegged to the dollar, which is more stable but means USD exposure."
+    }
+   ]
+  },
+  "legolcsobb-tengerparti-ingatlan-europa": {
+   "title": "The cheapest seaside property in Europe in 2026",
+   "description": "Where can you buy a sea-view apartment most cheaply in Europe? The prices of Albania, Montenegro and the Balkans compared with the Croatian and Greek markets.",
+   "answer": "The cheapest European seaside entry point is offered by Albania: on the Albanian Riviera (Ksamil, Sarandë) a newly built, sea-view apartment costs 1,200–2,200 €/m². This is followed by Montenegro's southern coast (Bar, Ulcinj) and the rest of the Balkans. Croatia and Greece are significantly more expensive (typically 2,500–5,000+ €/m² in good coastal locations), but in return you get EU membership and a more liquid market.",
+   "sections": [
+    {
+     "h": "Seaside entry prices compared",
+     "p": [
+      "The per-square-metre price varies strongly by distance from the sea, the view and the year of construction. The ranges below apply to newly built or well-kept apartments close to the sea (not necessarily front-row), and are indicative only."
+     ],
+     "table": {
+      "head": [
+       "Country / region",
+       "Entry €/m²",
+       "What you get"
+      ],
+      "rows": [
+       [
+        "🇦🇱 Albanian Riviera (Ksamil, Sarandë)",
+        "1 200–2 200 €",
+        "Newly built, sea-view, high yield"
+       ],
+       [
+        "🇲🇪 Montenegro south (Bar, Ulcinj)",
+        "1 500–2 500 €",
+        "Euro, low 3% entry duty"
+       ],
+       [
+        "🇲🇪 Montenegro premium (Budva, Kotor)",
+        "2 500–4 500 €",
+        "Bay of Kotor, strong demand"
+       ],
+       [
+        "🇭🇷 Croatia (Dalmatia)",
+        "2 500–5 000 €",
+        "EU, Schengen, liquid market"
+       ],
+       [
+        "🇬🇷 Greece (islands)",
+        "2 500–6 000 €",
+        "EU, Golden Visa option"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "The price of a cheap price: what to watch for",
+     "p": [
+      "Albania has the lowest entry point, but the market is the youngest: properties with unclear title backgrounds or built without permits do occur. Without due diligence carried out by an independent lawyer (title deed in the ASHK cadastre, building permit), never pay a deposit here under any circumstances.",
+      "Montenegro is a good middle ground: you pay in euros, the transfer duty is among the lowest, and the foreign buyer purchases with practically the same rights as locals. In return, it is not an EU member (though a candidate).",
+      "Croatia and Greece are more expensive, but you get EU membership, Schengen free movement and significantly more liquid resale — if easy exit matters, this can outweigh the price advantage."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Where is the cheapest seaside property in Europe?",
+     "a": "In Albania, on the Albanian Riviera (Ksamil, Sarandë): newly built, sea-view apartments move in the 1,200–2,200 €/m² range, which is a half to a third of comparable Croatian or Greek offerings. The buyer's ancillary cost is also the lowest, because in Albania there is no value-based transfer tax on the buyer's side."
+    },
+    {
+     "q": "Is it safe to buy cheap seaside property in Albania?",
+     "a": "Legally yes — a foreigner can buy an apartment in their own name — but the main risk is the title background: properties built without a permit or with unclear title do occur. Due diligence carried out by an independent lawyer before the deposit is mandatory."
+    },
+    {
+     "q": "Is it worth buying more expensively in an EU member state?",
+     "a": "If Schengen free movement, legal predictability and fast resale matter, then yes — Croatia and Greece are more liquid and more predictable. If the goal is maximum yield or the lowest entry point, Albania and Montenegro are better."
+    }
+   ]
+  },
+  "kulfoldi-ingatlan-adozasa-magyar-tulajdonosnak": {
+   "title": "Taxation of foreign property as a Hungarian owner",
+   "description": "How is the rental income and sale profit of a foreign property taxed for an owner with Hungarian tax residency? The logic of double-taxation treaties explained clearly.",
+   "answer": "For a private individual with Hungarian tax residency, income from a foreign property can arise twice: in the country where the property is located AND in Hungary. Double taxation is resolved by the treaties concluded by Hungary — for real estate, the country where the property is LOCATED almost always taxes first, and Hungary either exempts the income or credits the tax paid abroad. The specific rule differs by country, so it is worth clarifying with a tax expert before investing.",
+   "sections": [
+    {
+     "h": "The key concept: tax residency",
+     "p": [
+      "A Hungarian citizen typically remains a Hungarian tax resident even if they own property abroad — unless they move out and relocate the centre of their life. A Hungarian-resident private individual is taxed in Hungary on their WORLDWIDE income, so the income from the foreign property also falls within the scope of Hungarian taxation. Double tax is excluded by the treaties.",
+      "Important: the fact that you acquire citizenship or a Golden Visa abroad does NOT in itself terminate Hungarian tax residency. Residency is tied to actual presence and the centre of interests, not to the passport."
+     ],
+     "table": null
+    },
+    {
+     "h": "Rental income",
+     "p": [
+      "Under almost every treaty, the rental income of a foreign property is taxed first by the country where the property is located. Hungary can then proceed in two ways depending on the treaty: under the EXEMPTION method, rental income taxed abroad is not taxed again at home (though it may be taken into account with progression reservation), while under the CREDIT method it also calculates the tax at home but deducts the amount paid abroad.",
+      "There are places where the country of location does not, or barely, taxes a private individual's rental income (for example, in the United Arab Emirates there is no personal income tax) — in such cases it is especially important to check whether the Hungarian side exempts or credits, because the two give very different results."
+     ],
+     "table": null
+    },
+    {
+     "h": "Sale (capital) gain",
+     "p": [
+      "The gain from the sale of property is also, under the treaties, typically allowed to be taxed by the country of location. In Hungary, income from the sale of property can be tax-exempt after 5 years (from the fifth year following the year of acquisition), but for a foreign property one must always look at the given treaty and the country-of-location rule together.",
+      "For foreign-currency purchase and sale, the exchange rate also matters: the Hungarian tax base must be determined in forint, so the difference between the exchange rate at purchase and at sale in itself affects the calculated gain."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Do I have to pay tax in Hungary on my foreign property?",
+     "a": "As a Hungarian tax resident you are also taxable at home on your worldwide income, but the double-taxation treaty excludes the same income being taxed twice. For real estate the country of location typically taxes first, and Hungary either exempts the income or credits the tax paid abroad. The specific method differs from treaty to treaty."
+    },
+    {
+     "q": "Does citizenship or a Golden Visa terminate the Hungarian tax obligation?",
+     "a": "No. Tax residency is tied to actual presence and the centre of interests, not to the passport. If you do not move out and do not relocate the centre of your life, you remain a Hungarian resident, and your worldwide income is taxable at home as well."
+    },
+    {
+     "q": "Where should I find out about the specific rule?",
+     "a": "From the double-taxation treaty between Hungary and the given country, and from a tax adviser specialising in international tax matters. This article is general information, not personalised tax advice — before a six-figure investment, always seek an expert opinion."
+    }
+   ]
+  },
+  "deviza-arfolyamkockazat-kulfoldi-ingatlan": {
+   "title": "Currency and exchange-rate risk when buying property abroad",
+   "description": "Euro, dollar, lira or dirham? In which currency does the risk arise across the 12 markets, and how to save on currency conversion when buying property abroad.",
+   "answer": "Half of the 12 markets are eurozone or euro-priced (Montenegro, Croatia, Greece, Italy, Spain, Albania), so a Hungarian buyer only has EUR/HUF risk. In the rest, a separate currency comes into play: the Dubai dirham is pegged to the dollar (stable, but USD exposure), while the Turkish lira, the Thai baht and the Indonesian rupiah are volatile. The bank's currency-conversion margin alone can be 1–3% — much can be saved here with a dedicated currency provider.",
+   "sections": [
+    {
+     "h": "What is the currency exposure in each market?",
+     "p": [
+      "Currency risk strikes at two points: when paying the purchase price (a one-off conversion) and when repatriating the rental income (a recurring conversion). In eurozone markets a Hungarian buyer has only one currency layer (EUR/HUF); in non-eurozone ones, two."
+     ],
+     "table": {
+      "head": [
+       "Market",
+       "Currency",
+       "Exposure"
+      ],
+      "rows": [
+       [
+        "🇲🇪🇭🇷🇬🇷🇮🇹🇪🇸🇦🇱",
+        "EUR",
+        "Only EUR/HUF"
+       ],
+       [
+        "🇦🇪 Dubai",
+        "AED (pegged to USD)",
+        "Stable, but USD/HUF"
+       ],
+       [
+        "🇹🇷 Turkey",
+        "TRY (threshold in USD)",
+        "Strong lira volatility"
+       ],
+       [
+        "🇹🇭 Thailand",
+        "THB",
+        "Moderate volatility"
+       ],
+       [
+        "🇮🇩 Bali",
+        "IDR",
+        "Volatile, dollarised fees"
+       ],
+       [
+        "🇷🇸 Serbia",
+        "RSD (pricing often in EUR)",
+        "Low (dinar pegged to EUR)"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "How to reduce the conversion loss?",
+     "p": [
+      "The currency-conversion margin of commercial banks (the difference between the buy and sell rate) is a serious sum on a larger property purchase: on 300,000 euros a 2% margin is 6,000 euros. With a dedicated currency provider (e.g. international transfer platforms) this can be reduced to a fraction.",
+      "The Turkish programme is a special case: the 400,000 USD citizenship threshold is measured in dollars, but the purchase price flows in lira — the exchange-rate movement can thus affect eligibility too, not just the cost.",
+      "The Dubai dirham has been pegged to the dollar (1 USD = 3.6725 AED) since 1997, which is stable — but a Hungarian/euro-based buyer actually takes on USD risk, because the movement of the EUR/USD rate acts on the return through the dirham."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Which currency is the safest for buying property abroad?",
+     "a": "For a Hungarian/euro-based buyer, the eurozone or euro-priced markets (Montenegro, Croatia, Greece, Italy, Spain, Albania) are the most predictable, because there is only one conversion layer. The Dubai dirham is stable (pegged to the dollar) but carries USD exposure."
+    },
+    {
+     "q": "How much can be saved on currency conversion?",
+     "a": "The bank conversion margin is 1–3%. On a 300,000-euro purchase that is 3,000–9,000 euros. With a dedicated international currency provider the margin can be reduced to a fraction, so for larger sums it is always worth comparing."
+    },
+    {
+     "q": "Why is the Turkish lira risky for the Golden Visa?",
+     "a": "The citizenship threshold (400,000 USD) is measured in dollars, but the purchase price flows in lira. If the lira weakens between the purchase and the valuation, the property's dollar-measured value can drop and fall below the threshold — which is why currency hedging and timing are critical here."
+    }
+   ]
+  },
+  "ingatlanszotar-fogalmak": {
+   "title": "Property glossary: 18 terms to know before buying abroad",
+   "description": "Freehold, Golden Visa, tapu, escrow, off-plan, NIE — the most important technical terms of buying property abroad explained briefly and clearly.",
+   "answer": "Buying property abroad is full of technical terms whose misunderstanding costs money. The most important: freehold is full (perpetual) ownership, leasehold is a long lease right; the Golden Visa is RESIDENCE granted for investment, whereas CBI (citizenship by investment) is CITIZENSHIP; escrow is the deposit account that protects the deposit; off-plan is a property still under construction; due diligence is the legal vetting. This glossary explains 18 terms.",
+   "sections": [
+    {
+     "h": "Ownership and law",
+     "p": [
+      "Freehold — full, time-unlimited ownership right (the equivalent of Hungarian \"tulajdon\").",
+      "Leasehold — a long-term lease/use right (e.g. 25–99 years); not ownership but a fixed-term right. In Bali and Thailand foreigners typically acquire this.",
+      "Usufruct — the right to use the property and take its fruits, without transfer of ownership.",
+      "Hak Pakai / Hak Sewa / Hak Guna Bangunan — the Indonesian use, lease and building rights that a foreigner can acquire instead of freehold.",
+      "Cadastre / title deed — the official property register; ownership becomes complete once registered here. In Turkey this is the \"tapu\"."
+     ],
+     "table": null
+    },
+    {
+     "h": "Immigration and investment",
+     "p": [
+      "Golden Visa — a RESIDENCE permit granted for investment (typically for property purchase); not citizenship and not a passport.",
+      "CBI (citizenship by investment) — CITIZENSHIP and a passport granted for investment; with real estate this is offered today primarily by Turkey.",
+      "Due diligence — legal vetting: checking the title deed, encumbrances, permits and floor area before the purchase."
+     ],
+     "table": null
+    },
+    {
+     "h": "Purchase process",
+     "p": [
+      "Escrow / deposit account — a neutral (lawyer's or bank) account that holds the deposit until the conditions are met; protects against fraud, especially in off-plan purchases.",
+      "Off-plan — a property still under construction, bought on paper; it may be cheaper, but carries developer and completion risk.",
+      "Preliminary contract — the contract preparing the final sale, typically with a 10% deposit.",
+      "Snagging — the pre-handover defect list (deficiencies to be fixed by the developer in a new build).",
+      "Service charge — the condominium common cost (can be a significant item in Dubai and Thailand)."
+     ],
+     "table": null
+    },
+    {
+     "h": "Tax and finance",
+     "p": [
+      "Transfer / acquisition tax — the tax payable on the transfer of ownership (e.g. the Turkish \"tapu\" duty, the Spanish ITP).",
+      "ITP / AJD — the Spanish transfer tax (ITP) and the stamp duty (AJD).",
+      "Prezzo-valore — the Italian mechanism whereby, between private individuals, the tax base is the (typically lower) cadastral value, not the purchase price.",
+      "NIE / codice fiscale / AFM — the Spanish, Italian and Greek foreign tax identifier, without which you cannot contract.",
+      "LTV (loan-to-value) — the ratio of the loan to the property value; for a foreign buyer, banks typically grant a lower LTV."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "What is the difference between freehold and leasehold?",
+     "a": "Freehold is full, time-unlimited ownership. Leasehold is a fixed-term (typically 25–99 year) lease or use right, which at the end of the term expires or must be renewed. In Bali and Thailand foreigners can often only acquire leasehold — in which case the renewal condition is the most important point to check."
+    },
+    {
+     "q": "Is the Golden Visa the same as citizenship?",
+     "a": "No. The Golden Visa is a residence permit granted for investment — you can live and come and go in the given country, but your passport does not change. Citizenship (CBI) gives a real passport. The two are often confused; with real estate, citizenship is offered today primarily by Turkey."
+    },
+    {
+     "q": "What is escrow, and why is it important?",
+     "a": "Escrow is a neutral deposit account (lawyer's or bank) that holds the deposit or the purchase price until the contractual conditions are met. It protects against fraud and developer non-performance, which is why it is especially crucial in off-plan (still-under-construction) purchases that the money goes into escrow, not directly to the seller."
     }
    ]
   }

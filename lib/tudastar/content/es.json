@@ -544,15 +544,15 @@
    ]
   },
   "kulfoldi-ingatlan-mellekkoltsegek": {
-   "title": "¿Cuánto cuesta realmente? Gastos accesorios de la compra de un inmueble en el extranjero en 12 países",
-   "description": "Impuesto de transmisión, notario, abogado, comisión de intermediación: desglosado por países. El coste total por encima del precio de compra suele moverse entre el 3 y el 14 %.",
-   "answer": "Los gastos accesorios por encima del precio de compra en la adquisición de un inmueble en el extranjero difieren notablemente de un país a otro: en Albania prácticamente no hay impuesto de transmisión, en Montenegro es del 3 %, en Hungría y Turquía del 4 %, mientras que en Italia es del 9 % (segunda residencia) y en España del 6–10 %. A ello se suman en todas partes los honorarios notariales, los honorarios de abogado y, habitualmente, una comisión de intermediación del 2–5 %.",
+   "title": "¿Cuánto cuesta en realidad? Los costes accesorios de comprar un inmueble en el extranjero en 12 países",
+   "description": "Impuesto de transmisión, notario, abogado, comisión de intermediación — desglosado por países. El coste total por encima del precio de compra suele moverse entre el 3–14%.",
+   "answer": "El coste accesorio por encima del precio de compra de un inmueble en el extranjero varía significativamente según el país: en Albania prácticamente no hay impuesto de transmisión, en Montenegro es del 3%, en Hungría y Turquía del 4%, mientras que en Italia es del 9% (segunda vivienda) y en España del 6–10%. A esto se suman en todas partes la tasa de notario, la tasa de abogado y normalmente una comisión de intermediación del 2–5%.",
    "sections": [
     {
      "h": "Por qué esto es más importante que el precio de compra",
      "p": [
-      "En la compra de un inmueble en el extranjero, la mayoría de las sorpresas desagradables no está en el precio, sino en los gastos accesorios. Por encima del precio de compra suele añadirse un 5–14 %, según el país; en un inmueble de 300 000 euros, esto supone una diferencia de entre 15 000 y 42 000 euros simplemente en función del país en el que compre.",
-      "La tabla siguiente muestra por países las partidas más importantes. Importante: el impuesto de transmisión suele aplicarse al inmueble de SEGUNDA MANO; en obra nueva, en muchos países lo sustituye el IVA, que puede ser más alto."
+      "En la compra de un inmueble en el extranjero, la mayoría de las sorpresas desagradables no están en el precio, sino en el coste accesorio. Por encima del precio de compra se suele añadir un 5–14% más, según el país — en un inmueble de 300 000 euros esto supone una diferencia de entre 15 000 y 42 000 euros solo según en qué país compre.",
+      "La siguiente tabla muestra las partidas más importantes por países. Importante: el impuesto de transmisión suele aplicarse al inmueble USADO — en obra nueva, en muchos países ocupa su lugar el IVA, que puede ser más alto."
      ],
      "table": {
       "head": [
@@ -565,80 +565,80 @@
       "rows": [
        [
         "🇲🇪 Montenegro",
-        "3–6 % (por tramos)",
-        "0,5 % + 200 €",
-        "1 %",
-        "3 %"
+        "3–6%",
+        "0.5% + 200 €",
+        "1%",
+        "3%"
        ],
        [
         "🇭🇷 Croacia",
-        "3 %",
-        "0,4 % + 150 €",
-        "1 %",
-        "3 %"
+        "3%",
+        "0.4% + 150 €",
+        "1%",
+        "3%"
        ],
        [
         "🇦🇱 Albania",
-        "0 %",
-        "0,5 % + 120 €",
-        "1 %",
-        "3 %"
+        "0%",
+        "0.5% + 120 €",
+        "1%",
+        "3%"
        ],
        [
         "🇷🇸 Serbia",
-        "2,5 %",
-        "0,5 % + 150 €",
-        "1 %",
-        "3 %"
+        "2.5%",
+        "0.5% + 150 €",
+        "1%",
+        "3%"
        ],
        [
         "🇹🇷 Turquía",
-        "4 %",
-        "0,5 % + 250 €",
-        "1,2 %",
-        "2 %"
+        "4%",
+        "0.5% + 250 €",
+        "1.2%",
+        "2%"
        ],
        [
         "🇮🇩 Bali (Indonesia)",
-        "5 %",
-        "1 % + 300 €",
-        "1,5 %",
-        "5 %"
+        "5%",
+        "1% + 300 €",
+        "1.5%",
+        "5%"
        ],
        [
         "🇭🇺 Hungría",
-        "4 %",
-        "0,5 % + 150 €",
-        "1 %",
-        "3 %"
+        "4%",
+        "0.5% + 150 €",
+        "1%",
+        "3%"
        ],
        [
         "🇹🇭 Tailandia",
-        "2 %",
-        "0,5 % + 200 €",
-        "1,5 %",
-        "3 %"
+        "2%",
+        "0.5% + 200 €",
+        "1.5%",
+        "3%"
        ],
        [
         "🇮🇹 Italia",
-        "9 %",
-        "1 % + 300 €",
-        "1 %",
-        "3 %"
+        "9%",
+        "1% + 300 €",
+        "1%",
+        "3%"
        ],
        [
         "🇬🇷 Grecia",
-        "3 %",
-        "1,2 % + 300 €",
-        "1,2 %",
-        "2 %"
+        "3%",
+        "1.2% + 300 €",
+        "1.2%",
+        "2%"
        ],
        [
         "🇪🇸 España",
-        "8 %",
-        "1 % + 300 €",
-        "1 %",
-        "3 %"
+        "8%",
+        "1% + 300 €",
+        "1%",
+        "3%"
        ],
        [
         "🇦🇪 Dubái (EAU)",
@@ -653,34 +653,34 @@
     {
      "h": "La entrada más barata y la más cara",
      "p": [
-      "Los costes de transacción más favorables los ofrecen Albania (0 % de impuesto de transmisión) y Tailandia (2 %), seguidas de Montenegro y Croacia con un 3–6 % (por tramos). En el otro extremo de la escala se sitúa Italia con un 9 % en caso de segunda residencia, así como España, donde el ITP autonómico se mueve entre el 6 y el 10 %.",
-      "Un error frecuente es creer que la comisión de intermediación siempre la paga el vendedor. Esto varía según el mercado: en los mercados balcánico y turco también está extendido el reparto de la comisión o su asunción por el comprador, por lo que debe aclararse por escrito antes de la señal."
+      "El coste de transacción más favorable lo ofrece Albania, donde el comprador no paga en absoluto un impuesto de transmisión proporcional al valor, seguida de Tailandia (2%) y Serbia (2.5%). En Croacia la tasa es un 3% fijo. Montenegro aplica desde 2024 un sistema por TRAMOS: hasta 150 000 € el 3%, por encima el 5%, por encima de 500 000 € el 6% — en un inmueble de 600 000 euros el impuesto no es, pues, de 18 000, sino de 28 000 €. En el otro extremo de la escala se sitúa Italia con un 9% en caso de segunda vivienda, así como España, donde el ITP regional se mueve entre aproximadamente el 6–11%.",
+      "Un error frecuente es creer que la comisión de intermediación siempre la paga el vendedor. Esto varía según el mercado: en el mercado balcánico y el turco también es habitual el reparto de la comisión o que la asuma el comprador, por lo que esto debe aclararse por escrito antes de la señal."
      ],
      "table": null
     },
     {
-     "h": "Con qué hay que contar además de la tabla",
+     "h": "Lo que hay que contar más allá de la tabla",
      "p": [
-      "Traducción y legitimación: en muchos países los contratos deben presentarse con traducción jurada.",
-      "Número de identificación fiscal y cuenta bancaria: en España se necesita el NIE, en Italia el codice fiscale y en Grecia el AFM; sin ellos no se puede contratar.",
-      "Mantenimiento anual: impuesto sobre bienes inmuebles, gastos de comunidad, seguro y, en una vivienda vacacional, la preparación para el invierno o la cuota de gestión.",
-      "Cambio de divisa: en los países fuera de la zona euro (Turquía, Tailandia, Indonesia, Hungría), el margen de cambio bancario puede suponer por sí solo un 1–3 %; conviene recurrir a un proveedor de divisas independiente."
+      "Traducción y legalización: en muchos países los contratos deben presentarse con traducción jurada.",
+      "Identificador fiscal y cuenta bancaria: en España se necesita el NIE, en Italia el codice fiscale, en Grecia el AFM — sin ellos no se puede contratar.",
+      "Mantenimiento anual: impuesto sobre bienes inmuebles, gasto común, seguro, y en un inmueble vacacional la preparación para el invierno o la tasa de gestión.",
+      "Cambio de divisa: en los países fuera de la zona euro (Turquía, Tailandia, Indonesia, Hungría) el margen de cambio bancario puede ser por sí solo del 1–3% — conviene usar un proveedor de divisas aparte."
      ],
      "table": null
     }
    ],
    "faq": [
     {
-     "q": "¿Cuál es el gasto accesorio total de la compra de un inmueble en el extranjero?",
-     "a": "Según el país, habitualmente entre el 5 y el 14 % del precio de compra. El más bajo se da en Albania y Tailandia (aproximadamente 3–6 %), es intermedio en Montenegro, Croacia, Hungría y Turquía (aproximadamente 5–9 %) y el más alto en Italia y España (aproximadamente 10–14 %)."
+     "q": "¿Cuánto es el coste accesorio total de la compra de un inmueble en el extranjero?",
+     "a": "Según el país, normalmente el 5–14% del precio de compra. El más bajo es en Albania y Tailandia (aprox. 3–6%), medio en Montenegro, Croacia, Hungría y Turquía (aprox. 5–9%), y el más alto en Italia y España (aprox. 10–14%)."
     },
     {
      "q": "¿Quién paga la comisión de intermediación en la compra de un inmueble en el extranjero?",
-     "a": "Varía según el mercado. En los mercados de Europa occidental, habitualmente el vendedor; en los mercados balcánico y turco, en cambio, también está extendido el reparto o su asunción por el comprador. Siempre debe aclararse por escrito ANTES del pago de la señal."
+     "a": "Varía según el mercado. En los mercados de Europa Occidental normalmente el vendedor, mientras que en el mercado balcánico y el turco también es habitual el reparto o que la asuma el comprador. Siempre hay que aclararlo por escrito ANTES de pagar la señal."
     },
     {
      "q": "¿También hay que pagar impuesto de transmisión en obra nueva?",
-     "a": "Por lo general no: en la mayoría de los países, el precio del inmueble nuevo comprado a un promotor incluye IVA y en tal caso no hay un impuesto de transmisión aparte. Sin embargo, esto no resulta necesariamente más barato: el 10 % español o el 10–22 % italiano de IVA pueden ser más altos que el impuesto de transmisión de un inmueble de segunda mano."
+     "a": "Por lo general no — en la mayoría de los países el precio del inmueble nuevo comprado al promotor incluye el IVA, y en ese caso no hay un impuesto de transmisión aparte. Sin embargo, esto no es necesariamente más barato: el IVA español del 10% o el italiano del 10–22% puede ser más alto que el impuesto de transmisión del inmueble usado."
     }
    ]
   },
@@ -750,6 +750,364 @@
     {
      "q": "¿Se puede comprar a distancia, sin comparecencia personal?",
      "a": "En la mayoría de los países sí, mediante un poder otorgado a un abogado, legitimado y provisto de apostilla. En la práctica, sin embargo, conviene ver el inmueble en persona al menos una vez: las fotografías son sistemáticamente más bonitas que la realidad."
+    }
+   ]
+  },
+  "berleti-hozam-rangsor": {
+   "title": "Ranking de rentabilidad por alquiler: ¿dónde es más alta en 12 países?",
+   "description": "¿En qué país sale más a cuenta comprar un inmueble para alquilar? La rentabilidad bruta por alquiler de 12 mercados en una tabla, con indicación de estacionalidad y riesgos.",
+   "answer": "La rentabilidad bruta por alquiler más alta la ofrecen Bali (6–9%), Dubái (~7%) y los mercados urbanos emergentes de los Balcanes y Turquía (5–8%). Los mercados maduros de Europa Occidental (Italia, España) tienen una rentabilidad más baja, del 3–5%, pero a cambio son más estables y más líquidos. Sin embargo, la cifra bruta es engañosa: la rentabilidad NETA real, reducida por los costes de gestión e impuestos, suele ser 2–4 puntos porcentuales inferior.",
+   "sections": [
+    {
+     "h": "Rentabilidad bruta por alquiler por países",
+     "p": [
+      "La rentabilidad bruta por alquiler es el ingreso anual por alquiler dividido entre el precio de compra. Es la cifra que más se anuncia, pero el retorno real lo muestra la rentabilidad neta (tras deducir gestión, mantenimiento, impuestos y desocupación). La tabla muestra las rentabilidades brutas urbanas medias, indicativas — siempre hay que recalcularlas para el inmueble concreto."
+     ],
+     "table": {
+      "head": [
+       "País",
+       "Rentabilidad bruta",
+       "Carácter"
+      ],
+      "rows": [
+       [
+        "🇮🇩 Bali (Indonesia)",
+        "6–9%",
+        "Turístico, alto pero muy estacional"
+       ],
+       [
+        "🇦🇪 Dubái (EAU)",
+        "~7%",
+        "Urbano, sin impuestos; gran oferta"
+       ],
+       [
+        "🇦🇱 Albania",
+        "6–8%",
+        "Turismo costero emergente"
+       ],
+       [
+        "🇹🇷 Turquía",
+        "5–8%",
+        "Urbano + turístico"
+       ],
+       [
+        "🇹🇭 Tailandia",
+        "5–7%",
+        "Apartamentos turísticos"
+       ],
+       [
+        "🇷🇸 Serbia",
+        "4–6%",
+        "Alquiler urbano todo el año"
+       ],
+       [
+        "🇭🇺 Hungría",
+        "4–6%",
+        "Demanda universitaria y urbana"
+       ],
+       [
+        "🇬🇷 Grecia",
+        "4–6%",
+        "Atenas + islas"
+       ],
+       [
+        "🇲🇪 Montenegro",
+        "4–6%",
+        "Costera estacional"
+       ],
+       [
+        "🇪🇸 España",
+        "4–6%",
+        "Mercado vacacional líquido"
+       ],
+       [
+        "🇭🇷 Croacia",
+        "3–5%",
+        "Muy estacional (verano)"
+       ],
+       [
+        "🇮🇹 Italia",
+        "3–4%",
+        "Mercado maduro y estable"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "¿Por qué la rentabilidad neta es más importante que la bruta?",
+     "p": [
+      "En el alquiler turístico (de corta duración) la diferencia entre la rentabilidad bruta y la neta es enorme. La gestión profesional de villas se lleva un 15–20%, a lo que se suman el mantenimiento, la limpieza, la comisión de la plataforma intermediaria (Airbnb/Booking 3–15%) y la desocupación. En Bali, un 6–9% bruto baja de forma realista a un 3–5% neto.",
+      "El alquiler urbano de larga duración (Belgrado, Budapest) es más previsible: rentabilidad bruta más baja, pero menor rotación de inquilinos y sin riesgo de estacionalidad. Con fines de jubilación o de ingresos pasivos suele ser la mejor opción.",
+      "También es importante el riesgo cambiario: la rentabilidad fuera de la zona euro (lira turca, baht tailandés, rupia indonesia) puede ser alta en moneda local, pero al convertir a forinto/euro la depreciación del tipo de cambio puede llevarse la ganancia."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿En qué país es más alta la rentabilidad por alquiler?",
+     "a": "En términos brutos lideran Bali (6–9%), Dubái (~7%) y la costa albanesa (6–8%). En términos netos, en cambio, los mercados urbanos de todo el año (Belgrado, Budapest, 4–6% bruto) a menudo rinden igual de bien, porque no tienen riesgo de estacionalidad y sus costes de gestión son más bajos."
+    },
+    {
+     "q": "¿Cuánta es la diferencia entre la rentabilidad bruta y la neta?",
+     "a": "En el alquiler turístico suele ser de 2–4 puntos porcentuales. Una villa en Bali con un 8% de rentabilidad bruta a menudo rinde un 4–5% neto. La diferencia la generan la gestión de la villa (15–20%), las comisiones de las plataformas, el mantenimiento, los impuestos y la desocupación."
+    },
+    {
+     "q": "¿Importa el riesgo cambiario en el alquiler?",
+     "a": "Sí, considerablemente. En los países fuera de la zona euro (Turquía, Tailandia, Indonesia, Hungría) la rentabilidad se genera en la moneda local, y al convertir a forinto o euro el movimiento del tipo de cambio puede quitar o añadir varios puntos porcentuales al año. En Dubái el dírham está anclado al dólar, lo que es más estable, pero implica exposición al USD."
+    }
+   ]
+  },
+  "legolcsobb-tengerparti-ingatlan-europa": {
+   "title": "El inmueble costero más barato de Europa en 2026",
+   "description": "¿Dónde se puede comprar más barato un apartamento con vistas al mar en Europa? Los precios de Albania, Montenegro y los Balcanes comparados con el mercado croata y griego.",
+   "answer": "La entrada costera más barata de Europa la ofrece Albania: en la Riviera Albanesa (Ksamil, Sarandë) un apartamento de nueva construcción con vistas al mar cuesta 1 200–2 200 €/m². Le sigue la costa sur de Montenegro (Bar, Ulcinj) y los Balcanes. Croacia y Grecia son considerablemente más caras (por lo general 2 500–5 000+ €/m² en las buenas ubicaciones costeras), pero a cambio ofrecen la pertenencia a la UE y un mercado más líquido.",
+   "sections": [
+    {
+     "h": "Precios de entrada costeros comparados",
+     "p": [
+      "El precio por metro cuadrado varía mucho según la distancia a la costa, las vistas y el año de construcción. Las siguientes horquillas se refieren a apartamentos de nueva construcción o en buen estado, cercanos al mar (no necesariamente en primera línea), con carácter orientativo."
+     ],
+     "table": {
+      "head": [
+       "País / región",
+       "Entrada €/m²",
+       "Lo que obtiene"
+      ],
+      "rows": [
+       [
+        "🇦🇱 Riviera Albanesa (Ksamil, Sarandë)",
+        "1 200–2 200 €",
+        "Nueva construcción, vistas al mar, alta rentabilidad"
+       ],
+       [
+        "🇲🇪 Montenegro sur (Bar, Ulcinj)",
+        "1 500–2 500 €",
+        "Euro, bajo impuesto de entrada del 3%"
+       ],
+       [
+        "🇲🇪 Montenegro premium (Budva, Kotor)",
+        "2 500–4 500 €",
+        "Bahía de Kotor, fuerte demanda"
+       ],
+       [
+        "🇭🇷 Croacia (Dalmacia)",
+        "2 500–5 000 €",
+        "UE, Schengen, mercado líquido"
+       ],
+       [
+        "🇬🇷 Grecia (islas)",
+        "2 500–6 000 €",
+        "UE, posibilidad de Golden Visa"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "El precio del precio barato: a qué prestar atención",
+     "p": [
+      "En Albania la entrada es la más baja, pero el mercado es el más joven: aparecen inmuebles con un historial de propiedad no regularizado o construidos sin licencia. Sin una due diligence realizada por un abogado independiente (nota simple en el catastro ASHK, licencia de obra) no pague en ningún caso una señal aquí.",
+      "Montenegro es un buen punto intermedio: paga en euros, el impuesto de transmisión está entre los más bajos y el comprador extranjero adquiere prácticamente con los mismos derechos que los locales. A cambio, no es miembro de la UE (aunque sí país candidato).",
+      "Croacia y Grecia son más caras, pero ofrecen pertenencia a la UE, libre circulación Schengen y una reventa considerablemente más líquida — si es importante una salida fácil, esto puede pesar más que la ventaja de precio."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Dónde está el inmueble costero más barato de Europa?",
+     "a": "En Albania, en la Riviera Albanesa (Ksamil, Sarandë): los apartamentos de nueva construcción con vistas al mar se mueven en la horquilla de 1 200–2 200 €/m², que es la mitad o un tercio de la oferta croata o griega comparable. El coste accesorio del comprador también es el más bajo, porque en Albania no hay un impuesto de transmisión proporcional al valor en el lado del comprador."
+    },
+    {
+     "q": "¿Es seguro comprar barato un inmueble costero en Albania?",
+     "a": "Legalmente sí — el extranjero puede comprar un apartamento a su propio nombre —, pero el principal riesgo es el historial de propiedad: aparecen inmuebles construidos sin licencia o con un título no regularizado. Es obligatoria una due diligence realizada por un abogado independiente antes de la señal."
+    },
+    {
+     "q": "¿Merece la pena comprar más caro en un Estado miembro de la UE?",
+     "a": "Si son importantes la libre circulación Schengen, la previsibilidad jurídica y la reventa rápida, entonces sí — Croacia y Grecia son más líquidas y previsibles. Si el objetivo es la máxima rentabilidad o la entrada más baja, Albania y Montenegro son mejores."
+    }
+   ]
+  },
+  "kulfoldi-ingatlan-adozasa-magyar-tulajdonosnak": {
+   "title": "Tributación de un inmueble extranjero como propietario húngaro",
+   "description": "¿Cómo tributan los ingresos por alquiler y la ganancia por la venta de un inmueble extranjero en un propietario con residencia fiscal húngara? La lógica de los convenios de doble imposición explicada de forma comprensible.",
+   "answer": "En una persona física con residencia fiscal húngara, los ingresos del inmueble extranjero pueden surgir por partida doble: en el país donde se ubica el inmueble Y en Hungría. La doble imposición la resuelven los convenios firmados por Hungría — en el caso de un inmueble, casi siempre el país de UBICACIÓN grava en primer lugar, y Hungría o bien lo exime o bien imputa el impuesto pagado en el extranjero. La regla concreta varía según el país, por lo que antes de invertir conviene aclararla con un experto fiscal.",
+   "sections": [
+    {
+     "h": "El concepto clave: la residencia fiscal",
+     "p": [
+      "El ciudadano húngaro suele seguir siendo residente fiscal húngaro incluso cuando tiene un inmueble en el extranjero — a menos que se mude y traslade el centro de su vida. La persona física con residencia húngara tributa en Hungría por su RENTA MUNDIAL, es decir, los ingresos del inmueble extranjero también entran en el ámbito de la tributación húngara. La doble imposición la excluyen los convenios.",
+      "Importante: el hecho de que usted obtenga la nacionalidad o una Golden Visa en el extranjero, por sí solo NO extingue la residencia fiscal húngara. La residencia se vincula a la estancia efectiva y al centro de intereses, no al pasaporte."
+     ],
+     "table": null
+    },
+    {
+     "h": "Ingresos por alquiler",
+     "p": [
+      "Los ingresos por alquiler del inmueble extranjero, según casi todos los convenios, los grava en primer lugar el país donde se ubica el inmueble. Hungría puede actuar después de dos maneras según el convenio: con el método de EXENCIÓN no vuelve a gravar aquí los ingresos por alquiler ya tributados en el extranjero (aunque puede tenerlos en cuenta con reserva de progresividad), y con el método de IMPUTACIÓN calcula el impuesto también aquí, pero deduce el pagado en el extranjero.",
+      "Hay casos en que el país de ubicación no grava, o grava muy poco, los ingresos por alquiler de la persona física (por ejemplo, en los Emiratos Árabes Unidos no hay impuesto sobre la renta de las personas físicas) — en tales casos es especialmente importante ver si la parte húngara exime o imputa, porque ambos dan resultados muy distintos."
+     ],
+     "table": null
+    },
+    {
+     "h": "Ganancia por venta (y cambiaria)",
+     "p": [
+      "La ganancia derivada de la venta del inmueble los convenios también suelen permitir que la grave el país de ubicación. En Hungría los ingresos por la venta de un inmueble pueden quedar exentos tras 5 años (a partir del quinto año siguiente al de la adquisición), pero en el caso de un inmueble extranjero siempre hay que examinar juntos el convenio concreto y la regla del país de ubicación.",
+      "En caso de compra y venta en divisa, también cuenta el tipo de cambio: la base imponible húngara debe fijarse en forintos, es decir, la diferencia entre el tipo de cambio en el momento de la compra y en el de la venta influye por sí sola en la ganancia calculada."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Tengo que pagar impuestos en Hungría por mi inmueble extranjero?",
+     "a": "Como residente fiscal húngaro, tributa aquí también por su renta mundial, pero el convenio de doble imposición excluye que lo mismo se grave dos veces. En el caso de un inmueble, normalmente el país de ubicación grava en primer lugar, y Hungría o bien exime la renta o bien imputa el impuesto pagado en el extranjero. El método concreto varía según el convenio."
+    },
+    {
+     "q": "¿La nacionalidad o la Golden Visa extingue la obligación fiscal húngara?",
+     "a": "No. La residencia fiscal se vincula a la estancia efectiva y al centro de intereses, no al pasaporte. Si no se muda ni traslada el centro de su vida, sigue siendo residente húngaro, y su renta mundial es imponible también aquí."
+    },
+    {
+     "q": "¿Dónde me informo de la regla concreta?",
+     "a": "En el convenio de doble imposición entre Hungría y el país en cuestión, o en un asesor fiscal especializado en asuntos fiscales internacionales. Este artículo es información general, no asesoramiento fiscal personalizado — antes de una inversión de seis cifras, solicite en todo caso una opinión experta."
+    }
+   ]
+  },
+  "deviza-arfolyamkockazat-kulfoldi-ingatlan": {
+   "title": "Divisa y riesgo cambiario en la compra de un inmueble extranjero",
+   "description": "¿Euro, dólar, lira o dírham? En qué moneda tributa el riesgo en los 12 mercados y cómo ahorrar en el cambio de divisa en la compra de un inmueble extranjero.",
+   "answer": "La mitad de los 12 mercados pertenece a la zona euro o cotiza en euros (Montenegro, Croacia, Grecia, Italia, España, Albania), por lo que para el comprador húngaro solo existe el riesgo EUR/HUF. En los demás entra una divisa aparte: el dírham de Dubái está anclado al dólar (estable, pero exposición al USD), mientras que la lira turca, el baht tailandés y la rupia indonesia fluctúan. El margen del cambio de divisa bancario puede ser por sí solo del 1–3% — aquí se puede ahorrar mucho con un proveedor de divisas aparte.",
+   "sections": [
+    {
+     "h": "¿Qué exposición a la moneda hay en cada mercado?",
+     "p": [
+      "El riesgo cambiario golpea en dos puntos: al pagar el precio de compra (cambio único) y al repatriar los ingresos por alquiler (cambio recurrente). En los mercados de la zona euro, para el comprador húngaro solo hay una capa de moneda (EUR/HUF); en los de fuera de la zona euro, dos."
+     ],
+     "table": {
+      "head": [
+       "Mercado",
+       "Moneda",
+       "Exposición"
+      ],
+      "rows": [
+       [
+        "🇲🇪🇭🇷🇬🇷🇮🇹🇪🇸🇦🇱",
+        "EUR",
+        "Solo EUR/HUF"
+       ],
+       [
+        "🇦🇪 Dubái",
+        "AED (anclado al USD)",
+        "Estable, pero USD/HUF"
+       ],
+       [
+        "🇹🇷 Turquía",
+        "TRY (el umbral en USD)",
+        "Fuerte fluctuación de la lira"
+       ],
+       [
+        "🇹🇭 Tailandia",
+        "THB",
+        "Fluctuación media"
+       ],
+       [
+        "🇮🇩 Bali",
+        "IDR",
+        "Fluctuante, tarifas dolarizadas"
+       ],
+       [
+        "🇷🇸 Serbia",
+        "RSD (fijación de precios a menudo en EUR)",
+        "Baja (dinar vinculado al EUR)"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "¿Cómo reducir la pérdida por el cambio?",
+     "p": [
+      "El margen de cambio de divisa de los bancos comerciales (la diferencia entre el tipo de compra y el de venta) en una compra de inmueble mayor es una cantidad considerable: en 300 000 euros, un margen del 2% supone 6 000 euros. Con un proveedor de divisas dedicado (p. ej. plataformas internacionales de transferencia) puede reducirse a una fracción.",
+      "El programa turco es un caso aparte: el umbral de nacionalidad de 400 000 USD se mide en dólares, pero el precio de compra fluye en liras — el movimiento del tipo de cambio puede así influir también en el derecho, no solo en el coste.",
+      "El dírham de Dubái está anclado al dólar (1 USD = 3,6725 AED) desde 1997, lo que es estable — pero un comprador húngaro/basado en el euro asume en realidad un riesgo en USD, porque el movimiento del tipo EUR/USD incide en el retorno a través del dírham."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Cuál es la moneda más segura para comprar un inmueble extranjero?",
+     "a": "Para un comprador húngaro/basado en el euro, los mercados de la zona euro o que cotizan en euros (Montenegro, Croacia, Grecia, Italia, España, Albania) son los más previsibles, porque solo hay una capa de cambio. El dírham de Dubái es estable (anclado al dólar), pero conlleva exposición al USD."
+    },
+    {
+     "q": "¿Cuánto se puede ahorrar en el cambio de divisa?",
+     "a": "El margen del cambio bancario es del 1–3%. En una compra de 300 000 euros esto supone 3 000–9 000 euros. Con un proveedor internacional de divisas dedicado el margen puede reducirse a una fracción, por lo que en cantidades mayores siempre conviene comparar."
+    },
+    {
+     "q": "¿Por qué la lira turca es arriesgada en la Golden Visa?",
+     "a": "El umbral de nacionalidad (400 000 USD) se mide en dólares, pero el precio de compra fluye en liras. Si la lira se deprecia entre la compra y la tasación, el valor del inmueble medido en dólares puede caer y quedar por debajo del umbral — por eso la fijación cambiaria y el momento son aquí críticos."
+    }
+   ]
+  },
+  "ingatlanszotar-fogalmak": {
+   "title": "Diccionario inmobiliario: 18 conceptos que hay que conocer antes de comprar en el extranjero",
+   "description": "Freehold, Golden Visa, tapu, escrow, off-plan, NIE — los términos más importantes de la compra de un inmueble en el extranjero, explicados de forma breve y comprensible.",
+   "answer": "La compra de un inmueble en el extranjero está llena de términos cuyo malentendido cuesta dinero. Los más importantes: el freehold es la propiedad plena (perpetua), el leasehold es el derecho de arrendamiento de larga duración; la Golden Visa es una RESIDENCIA por inversión, mientras que el CBI (citizenship by investment) es la NACIONALIDAD; el escrow es la cuenta de depósito que protege la señal; el off-plan es el inmueble aún en construcción; la due diligence es la comprobación jurídica. Este diccionario explica 18 conceptos.",
+   "sections": [
+    {
+     "h": "Propiedad y derecho",
+     "p": [
+      "Freehold — derecho de propiedad pleno e ilimitado en el tiempo (el equivalente de la «propiedad» húngara).",
+      "Leasehold — derecho de arrendamiento/uso de larga duración (p. ej. 25–99 años); no es propiedad, sino un derecho de duración determinada. En Bali y Tailandia los extranjeros suelen adquirir este.",
+      "Usufruct (usufructo) — el derecho de usar el inmueble y percibir sus frutos, sin la transmisión de la propiedad.",
+      "Hak Pakai / Hak Sewa / Hak Guna Bangunan — los derechos indonesios de uso, arrendamiento y edificación, que el extranjero puede adquirir en lugar del freehold.",
+      "Catastro / nota registral — el registro oficial de la propiedad inmobiliaria; el derecho de propiedad se hace pleno al inscribirse aquí. En Turquía esto es el «tapu»."
+     ],
+     "table": null
+    },
+    {
+     "h": "Inmigración e inversión",
+     "p": [
+      "Golden Visa — permiso de RESIDENCIA por inversión (normalmente por la compra de un inmueble); no es nacionalidad ni pasaporte.",
+      "CBI (citizenship by investment) — NACIONALIDAD y pasaporte por inversión; con un inmueble hoy lo ofrece principalmente Turquía.",
+      "Due diligence — comprobación jurídica: la verificación de la nota registral, las cargas, las licencias y la superficie antes de la compra."
+     ],
+     "table": null
+    },
+    {
+     "h": "Proceso de compra",
+     "p": [
+      "Escrow / cuenta de depósito — cuenta neutral (de abogado o bancaria) que custodia la señal hasta que se cumplen las condiciones; protege del fraude, sobre todo en la compra off-plan.",
+      "Off-plan — inmueble aún en construcción, comprado sobre plano; puede ser más barato, pero conlleva riesgo de promotor y de finalización.",
+      "Contrato preliminar — el contrato que prepara la compraventa definitiva, normalmente con una señal del 10%.",
+      "Snagging — la lista de defectos previa a la entrega (en obra nueva, las deficiencias que debe subsanar el promotor).",
+      "Service charge — el gasto común de la comunidad (en Dubái, Tailandia puede ser una partida importante)."
+     ],
+     "table": null
+    },
+    {
+     "h": "Impuestos y finanzas",
+     "p": [
+      "Impuesto de transmisión / de adquisición patrimonial — el impuesto a pagar al transmitir la propiedad (p. ej. la tasa turca «tapu», el ITP español).",
+      "ITP / AJD — el impuesto de transmisiones español (ITP), y respectivamente el impuesto de actos documentados (AJD).",
+      "Prezzo-valore — el mecanismo italiano en el que, entre personas físicas, la base del impuesto es el valor catastral (normalmente más bajo), no el precio de compra.",
+      "NIE / codice fiscale / AFM — el identificador fiscal de extranjero español, italiano y griego, sin el cual no se puede contratar.",
+      "LTV (loan-to-value) — la relación entre el préstamo y el valor del inmueble; a un comprador extranjero los bancos suelen conceder un LTV más bajo."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "¿Cuál es la diferencia entre freehold y leasehold?",
+     "a": "El freehold es un derecho de propiedad pleno e ilimitado en el tiempo. El leasehold es un derecho de arrendamiento o uso de duración determinada (normalmente de 25–99 años) que al final del plazo vence o debe prorrogarse. En Bali y Tailandia los extranjeros a menudo solo pueden adquirir leasehold — en ese caso la condición de prórroga es el punto más importante a comprobar."
+    },
+    {
+     "q": "¿La Golden Visa es lo mismo que la nacionalidad?",
+     "a": "No. La Golden Visa es un permiso de residencia por inversión — puede vivir e ir y venir en el país en cuestión, pero su pasaporte no cambia. La nacionalidad (CBI) otorga un pasaporte real. Ambas se confunden a menudo; nacionalidad con un inmueble hoy la ofrece principalmente Turquía."
+    },
+    {
+     "q": "¿Qué es el escrow y por qué es importante?",
+     "a": "El escrow es una cuenta de depósito neutral (de abogado o bancaria) que custodia la señal o el precio de compra hasta que se cumplen las condiciones contractuales. Esto protege del fraude y del incumplimiento del promotor, por lo que sobre todo en la compra off-plan (aún en construcción) es fundamental que el dinero vaya a escrow y no directamente al vendedor."
     }
    ]
   }

@@ -1,11 +1,56 @@
 "use client";
 
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { useLang } from "@/lib/store";
 import { tr } from "@/lib/i18n";
 import { ARTICLE_BY_SLUG, relatedArticles, type Article } from "@/lib/articles";
 import { useTudastarContent } from "@/lib/tudastar/useContent";
 import Icon, { type IconName } from "@/components/ui/Icon";
+
+/**
+ * Kontextuális belső linkelés: a STABIL, nem fordított szakkifejezések (Golden
+ * Visa, freehold, escrow…) ELSŐ előfordulását a törzsszövegben a releváns
+ * cikkre linkeljük. Mivel ezek a kifejezések minden nyelven ugyanúgy szerepelnek
+ * (nem fordítjuk őket), a linkelés nyelvfüggetlenül működik. Ez erősíti a belső
+ * linkhálót — a videó szerint az egyik legfontosabb rangsorolási tényező.
+ */
+const TERM_LINKS: { term: string; href: string }[] = [
+  { term: "Golden Visa", href: "/tudastar/golden-visa-ingatlannal" },
+  { term: "CBI", href: "/tudastar/allampolgarsag-ingatlanbefektetessel" },
+  { term: "due diligence", href: "/tudastar/ingatlanszotar-fogalmak" },
+  { term: "freehold", href: "/tudastar/ingatlanszotar-fogalmak" },
+  { term: "leasehold", href: "/tudastar/ingatlanszotar-fogalmak" },
+  { term: "off-plan", href: "/tudastar/ingatlanszotar-fogalmak" },
+  { term: "escrow", href: "/tudastar/ingatlanszotar-fogalmak" },
+  { term: "tapu", href: "/tudastar/ingatlanszotar-fogalmak" }
+];
+const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/** Egy bekezdés szövege → React-csomópontok, az első még nem linkelt kifejezéssel
+ *  linkelve. A `used` a cikkszinten megosztott halmaz (kifejezésenként egy link),
+ *  a `selfHref` a saját cikk (önmagára nem linkelünk). */
+function linkify(text: string, used: Set<string>, selfHref: string): ReactNode {
+  const targets = TERM_LINKS.filter((t) => !used.has(t.term) && !selfHref.startsWith(t.href));
+  if (!targets.length) return text;
+  const re = new RegExp(`\\b(${targets.map((t) => esc(t.term)).join("|")})\\b`);
+  const m = re.exec(text);
+  if (!m) return text;
+  const term = m[1];
+  const link = TERM_LINKS.find((t) => t.term === term)!;
+  used.add(term);
+  const before = text.slice(0, m.index);
+  const after = text.slice(m.index + term.length);
+  return (
+    <>
+      {before}
+      <Link href={link.href} className="font-medium text-ink-900 underline underline-offset-2">
+        {term}
+      </Link>
+      {linkify(after, used, selfHref)}
+    </>
+  );
+}
 
 /** Kategória → i18n kulcs. */
 const CATEGORY_KEY: Record<Article["category"], string> = {
@@ -31,6 +76,8 @@ export default function ArticleBody({ slug }: { slug: string }) {
   if (!a) return null;
 
   const related = relatedArticles(a);
+  // Cikkszintű halmaz: minden kifejezés legfeljebb egyszer linkelődik a törzsben.
+  const linkUsed = new Set<string>();
 
   // Pillér-cikknél a fordított szöveg; országkalauznál a generált (magyar
   // vázú) cikk, amelynek a lefordítható részeit az ország-blokkból vesszük.
@@ -97,7 +144,7 @@ export default function ArticleBody({ slug }: { slug: string }) {
           <h2 className="text-xl font-bold leading-snug text-ink-900">{s.h}</h2>
           {s.p.map((para, j) => (
             <p key={j} className="mt-3 text-[15px] leading-relaxed text-ink-700">
-              {para}
+              {linkify(para, linkUsed, `/tudastar/${a.slug}`)}
             </p>
           ))}
           {s.table && (

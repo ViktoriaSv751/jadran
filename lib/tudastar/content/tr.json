@@ -544,15 +544,15 @@
    ]
   },
   "kulfoldi-ingatlan-mellekkoltsegek": {
-   "title": "Gerçekte ne kadara mal oluyor? 12 ülkede yurt dışı taşınmaz alımının yan maliyetleri",
-   "description": "Devir vergisi, noter, avukat, emlakçı komisyonu — ülke ülke ayrıntılı olarak. Satış bedeline eklenen toplam maliyet genellikle %3–14 arasında değişir.",
-   "answer": "Yurt dışı taşınmaz alımında satış bedeline eklenen yan maliyet ülkeden ülkeye önemli ölçüde değişir: Arnavutluk'ta fiilen devir vergisi yoktur, Karadağ'da %3, Macaristan ve Türkiye'de %4, buna karşılık İtalya'da %9 (ikinci konut) ve İspanya'da %6–10'dur. Bunlara her ülkede noter ücreti, avukatlık ücreti ve genellikle %2–5 emlakçı komisyonu eklenir.",
+   "title": "Gerçekte ne kadar tutuyor? Yabancı gayrimenkul alımının yan maliyetleri 12 ülkede",
+   "description": "Devir vergisi, noter, avukat, aracı komisyonu — ülkelere göre ayrıştırılmış. Satın alma fiyatı üzerindeki toplam maliyet genellikle %3–14 arasında hareket eder.",
+   "answer": "Yabancı gayrimenkul alımının satın alma fiyatı üzerindeki yan maliyeti ülkeden ülkeye önemli ölçüde farklıdır: Arnavutluk'ta pratikte devir vergisi yoktur, Karadağ'da %3, Macaristan ve Türkiye'de %4, İtalya'da %9 (ikinci konut) ve İspanya'da %6–10. Buna her yerde noter ücreti, avukat ücreti ve genellikle %2–5 aracı komisyonu eklenir.",
    "sections": [
     {
-     "h": "Bu neden satış bedelinden daha önemlidir",
+     "h": "Bu neden satın alma fiyatından daha önemli",
      "p": [
-      "Yurt dışı taşınmaz alımında hoş olmayan sürprizlerin çoğu fiyatta değil, yan maliyettedir. Satış bedelinin üzerine ülkeye göre genellikle %5–14 daha eklenir — 300.000 euroluk bir taşınmazda bu, yalnızca hangi ülkeden aldığınıza bağlı olarak 15.000 ile 42.000 euro arasında bir fark demektir.",
-      "Aşağıdaki tablo en önemli kalemleri ülke ülke göstermektedir. Önemli: devir vergisi genellikle İKİNCİ EL taşınmaz için geçerlidir — yeni yapılarda birçok ülkede onun yerini KDV alır ve bu daha yüksek olabilir."
+      "Yabancı gayrimenkul alımında hoş olmayan sürprizlerin çoğu fiyatta değil, yan maliyettedir. Satın alma fiyatı üzerine ülkeye bağlı olarak genellikle %5–14 daha eklenir — 300 000 euroluk bir gayrimenkulde bu, yalnızca hangi ülkeden aldığınıza bağlı olarak 15 000 ile 42 000 euro arasında bir farktır.",
+      "Aşağıdaki tablo en önemli kalemleri ülkelere göre gösterir. Önemli: devir vergisi genellikle KULLANILMIŞ gayrimenkule ilişkindir — yeni yapıda birçok ülkede yerine KDV geçer, ki bu daha yüksek olabilir."
      ],
      "table": {
       "head": [
@@ -560,63 +560,63 @@
        "Devir vergisi",
        "Noter",
        "Avukat",
-       "Emlakçı"
+       "Aracı"
       ],
       "rows": [
        [
         "🇲🇪 Karadağ",
-        "%3–6 (dilimli)",
-        "%0,5 + 200 €",
+        "%3–6",
+        "%0.5 + 200 €",
         "%1",
         "%3"
        ],
        [
         "🇭🇷 Hırvatistan",
         "%3",
-        "%0,4 + 150 €",
+        "%0.4 + 150 €",
         "%1",
         "%3"
        ],
        [
         "🇦🇱 Arnavutluk",
         "%0",
-        "%0,5 + 120 €",
+        "%0.5 + 120 €",
         "%1",
         "%3"
        ],
        [
         "🇷🇸 Sırbistan",
-        "%2,5",
-        "%0,5 + 150 €",
+        "%2.5",
+        "%0.5 + 150 €",
         "%1",
         "%3"
        ],
        [
         "🇹🇷 Türkiye",
         "%4",
-        "%0,5 + 250 €",
-        "%1,2",
+        "%0.5 + 250 €",
+        "%1.2",
         "%2"
        ],
        [
         "🇮🇩 Bali (Endonezya)",
         "%5",
         "%1 + 300 €",
-        "%1,5",
+        "%1.5",
         "%5"
        ],
        [
         "🇭🇺 Macaristan",
         "%4",
-        "%0,5 + 150 €",
+        "%0.5 + 150 €",
         "%1",
         "%3"
        ],
        [
         "🇹🇭 Tayland",
         "%2",
-        "%0,5 + 200 €",
-        "%1,5",
+        "%0.5 + 200 €",
+        "%1.5",
         "%3"
        ],
        [
@@ -629,8 +629,8 @@
        [
         "🇬🇷 Yunanistan",
         "%3",
-        "%1,2 + 300 €",
-        "%1,2",
+        "%1.2 + 300 €",
+        "%1.2",
         "%2"
        ],
        [
@@ -642,10 +642,10 @@
        ],
        [
         "🇦🇪 Dubai (BAE)",
-        "4%",
-        "0% + 1200 €",
-        "0%",
-        "2%"
+        "%4",
+        "%0 + 1200 €",
+        "%0",
+        "%2"
        ]
       ]
      }
@@ -653,34 +653,34 @@
     {
      "h": "En ucuz ve en pahalı giriş",
      "p": [
-      "En elverişli işlem maliyetini Arnavutluk (%0 devir vergisi) ve Tayland (%2) sunmaktadır; onları %3–6 (dilimli) ile Karadağ ve Hırvatistan izler. Ölçeğin diğer ucunda ikinci konut için %9 ile İtalya ve bölgesel ITP'nin %6–10 arasında değiştiği İspanya yer alır.",
-      "Yaygın bir yanılgı, emlakçı komisyonunu her zaman satıcının ödediğidir. Bu, piyasadan piyasaya değişir: Balkan ve Türk piyasalarında komisyonun paylaşılması veya alıcı tarafından üstlenilmesi de yerleşik bir uygulamadır; bu nedenle konu, kapora verilmeden önce yazılı olarak açıklığa kavuşturulmalıdır."
+      "En uygun işlem maliyetini Arnavutluk sunar, orada alıcı değere orantılı devir vergisi hiç ödemez, ardından Tayland (%2) ve Sırbistan (%2.5) gelir. Hırvatistan'da harç sabit %3'tür. Karadağ 2024'ten beri KADEMELİ bir sistem uygular: 150 000 €'ya kadar %3, üzerinde %5, 500 000 € üzerinde %6 — 600 000 euroluk bir gayrimenkulde vergi yani 18 000 değil, 28 000 €'dur. Ölçeğin diğer ucunda ikinci konut durumunda %9 ile İtalya, ayrıca bölgesel ITP'nin yaklaşık %6–11 arasında hareket ettiği İspanya yer alır.",
+      "Sık yapılan bir yanlış, aracı komisyonunu her zaman satıcının ödediğini sanmaktır. Bu pazara göre farklıdır: Balkan ve Türk pazarında komisyonun paylaşılması veya alıcı tarafından üstlenilmesi de yaygındır, bu yüzden bu, kaporadan önce yazılı olarak açıklığa kavuşturulmalıdır."
      ],
      "table": null
     },
     {
      "h": "Tablonun ötesinde hesaba katılması gerekenler",
      "p": [
-      "Tercüme ve tasdik: birçok ülkede sözleşmelerin yeminli tercümeyle sunulması gerekir.",
-      "Vergi kimlik numarası ve banka hesabı: İspanya'da NIE, İtalya'da codice fiscale, Yunanistan'da AFM gerekir — bunlar olmadan sözleşme yapılamaz.",
-      "Yıllık idame: emlak vergisi, aidat, sigorta ve yazlık taşınmazlarda kışa hazırlık veya yönetim ücreti.",
-      "Döviz bozdurma: euro bölgesi dışındaki ülkelerde (Türkiye, Tayland, Endonezya, Macaristan) bankanın kur marjı tek başına %1–3'e ulaşabilir — ayrı bir döviz hizmeti sağlayıcısı kullanmakta yarar vardır."
+      "Çeviri ve onay: birçok ülkede sözleşmeler yeminli çeviri ile sunulmalıdır.",
+      "Vergi kimlik numarası ve banka hesabı: İspanya'da NIE, İtalya'da codice fiscale, Yunanistan'da AFM gereklidir — bunlar olmadan sözleşme yapılamaz.",
+      "Yıllık bakım: emlak vergisi, ortak gider, sigorta ve tatil gayrimenkulünde kışa hazırlık veya yönetim ücreti.",
+      "Döviz çevrimi: euro bölgesi dışındaki ülkelerde (Türkiye, Tayland, Endonezya, Macaristan) bankanın çevrim marjı tek başına %1–3 olabilir — ayrı bir döviz sağlayıcısı kullanmakta yarar vardır."
      ],
      "table": null
     }
    ],
    "faq": [
     {
-     "q": "Yurt dışı taşınmaz alımının toplam yan maliyeti ne kadardır?",
-     "a": "Ülkeye göre genellikle satış bedelinin %5–14'ü kadardır. En düşük Arnavutluk ve Tayland'dadır (yaklaşık %3–6); Karadağ, Hırvatistan, Macaristan ve Türkiye'de orta düzeydedir (yaklaşık %5–9); en yüksek ise İtalya ve İspanya'dadır (yaklaşık %10–14)."
+     "q": "Yabancı gayrimenkul alımının toplam yan maliyeti ne kadar?",
+     "a": "Ülkeye bağlı olarak genellikle satın alma fiyatının %5–14'ü. En düşük Arnavutluk ve Tayland'da (yaklaşık %3–6), orta düzeyde Karadağ, Hırvatistan, Macaristan ve Türkiye'de (yaklaşık %5–9), en yüksek İtalya ve İspanya'da (yaklaşık %10–14)."
     },
     {
-     "q": "Yurt dışı taşınmaz alımında emlakçı komisyonunu kim öder?",
-     "a": "Piyasadan piyasaya değişir. Batı Avrupa piyasalarında genellikle satıcı öder; Balkan ve Türk piyasalarında ise paylaşım ya da alıcının üstlenmesi de yerleşik bir uygulamadır. Her zaman kapora ödenmeden ÖNCE yazılı olarak açıklığa kavuşturulmalıdır."
+     "q": "Yabancı gayrimenkul alımında aracı komisyonunu kim öder?",
+     "a": "Pazara göre farklıdır. Batı Avrupa pazarlarında genellikle satıcı, Balkan ve Türk pazarında ise paylaşım veya alıcı tarafından üstlenim de yaygındır. Her zaman kaporanın ödenmesinden ÖNCE yazılı olarak açıklığa kavuşturulmalıdır."
     },
     {
-     "q": "Yeni yapılarda da devir vergisi ödenir mi?",
-     "a": "Genellikle hayır — çoğu ülkede geliştiriciden alınan yeni taşınmazın fiyatında KDV yer alır ve bu durumda ayrıca devir vergisi alınmaz. Ancak bu, mutlaka daha ucuz olduğu anlamına gelmez: İspanya'daki %10 veya İtalya'daki %10–22 KDV, ikinci el taşınmazın devir vergisinden daha yüksek olabilir."
+     "q": "Yeni yapıda da devir vergisi ödemek gerekir mi?",
+     "a": "Genellikle hayır — çoğu ülkede geliştiriciden alınan yeni gayrimenkulün fiyatına KDV dahildir ve bu durumda ayrı bir devir vergisi yoktur. Ancak bu mutlaka daha ucuz değildir: İspanyol %10 veya İtalyan %10–22 KDV, kullanılmış gayrimenkulün devir vergisinden daha yüksek olabilir."
     }
    ]
   },
@@ -750,6 +750,364 @@
     {
      "q": "Uzaktan, bizzat bulunmadan satın almak mümkün müdür?",
      "a": "Çoğu ülkede evet; avukata verilen, tasdik edilmiş ve apostille şerhli bir vekâletname ile. Uygulamada yine de taşınmazı en az bir kez bizzat görmekte yarar vardır — fotoğraflar sistematik olarak gerçekten daha güzeldir."
+    }
+   ]
+  },
+  "berleti-hozam-rangsor": {
+   "title": "Kira getirisi sıralaması: 12 ülkede en yüksek nerede?",
+   "description": "Kiraya vermek için gayrimenkul almak hangi ülkede en çok kazandırıyor? 12 pazarın brüt kira getirisi tek bir tabloda, mevsimsellik ve risk işaretleriyle.",
+   "answer": "En yüksek brüt kira getirisini Bali (%6–9), Dubai (~%7) ve yükselen Balkan-Türk şehir pazarları (%5–8) sunuyor. Olgun Batı Avrupa pazarları (İtalya, İspanya) daha düşük, %3–5 getiriye sahip; buna karşılık daha istikrarlı ve daha likit. Ancak brüt rakam yanıltıcıdır: yönetim ve vergi maliyetleriyle azalan gerçek NET getiri genellikle 2–4 yüzde puanı daha düşüktür.",
+   "sections": [
+    {
+     "h": "Ülkelere göre brüt kira getirisi",
+     "p": [
+      "Brüt kira getirisi, yıllık kira gelirinin satın alma fiyatına bölünmesidir. En sık reklamı yapılan rakam budur, ancak gerçek geri dönüşü net getiri gösterir (yönetim, bakım, vergi ve boşluk düşüldükten sonra). Tablo, şehir ortalaması gösterge niteliğindeki brüt getirileri gösterir — her zaman somut gayrimenkul için yeniden hesaplanmalıdır."
+     ],
+     "table": {
+      "head": [
+       "Ülke",
+       "Brüt getiri",
+       "Nitelik"
+      ],
+      "rows": [
+       [
+        "🇮🇩 Bali (Endonezya)",
+        "%6–9",
+        "Turistik, yüksek ama güçlü mevsimsel"
+       ],
+       [
+        "🇦🇪 Dubai (BAE)",
+        "~%7",
+        "Şehir, vergisiz; yüksek arz"
+       ],
+       [
+        "🇦🇱 Arnavutluk",
+        "%6–8",
+        "Yükselen kıyı turizmi"
+       ],
+       [
+        "🇹🇷 Türkiye",
+        "%5–8",
+        "Şehir + turistik"
+       ],
+       [
+        "🇹🇭 Tayland",
+        "%5–7",
+        "Turistik apartman"
+       ],
+       [
+        "🇷🇸 Sırbistan",
+        "%4–6",
+        "Yıl boyu şehir kirası"
+       ],
+       [
+        "🇭🇺 Macaristan",
+        "%4–6",
+        "Üniversite ve şehir talebi"
+       ],
+       [
+        "🇬🇷 Yunanistan",
+        "%4–6",
+        "Atina + adalar"
+       ],
+       [
+        "🇲🇪 Karadağ",
+        "%4–6",
+        "Mevsimsel kıyı"
+       ],
+       [
+        "🇪🇸 İspanya",
+        "%4–6",
+        "Likit tatil pazarı"
+       ],
+       [
+        "🇭🇷 Hırvatistan",
+        "%3–5",
+        "Güçlü mevsimsel (yaz)"
+       ],
+       [
+        "🇮🇹 İtalya",
+        "%3–4",
+        "Olgun, istikrarlı pazar"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Net getiri neden brütten daha önemli?",
+     "p": [
+      "Turistik (kısa süreli) kiralamada brüt ile net getiri arasındaki fark çok büyüktür. Profesyonel villa yönetimi %15–20 alır, buna bakım, temizlik, aracı platform ücreti (Airbnb/Booking %3–15) ve boşluk eklenir. Bali'de %6–9 brüt gerçekçi olarak %3–5 nete düşer.",
+      "Uzun süreli şehir kiralaması (Belgrad, Budapeşte) daha öngörülebilirdir: daha düşük brüt, ancak daha az kiracı kaybı ve mevsimsellik riski yok. Emeklilik veya pasif gelir amacında bu genellikle daha iyi seçenektir.",
+      "Döviz riski de önemlidir: euro bölgesi dışındaki getiri (Türk lirası, Tayland bahtı, Endonezya rupisi) yerel para biriminde yüksek olabilir, ancak forinte/euroya çevirirken kur zayıflaması kârı yiyip bitirebilir."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Kira getirisi hangi ülkede en yüksek?",
+     "a": "Brüt bazda Bali (%6–9), Dubai (~%7) ve Arnavutluk kıyısı (%6–8) başı çekiyor. Ancak net bazda şehir, yıl boyu pazarları (Belgrad, Budapeşte, %4–6 brüt) genellikle benzer şekilde iyi performans gösterir, çünkü mevsimsellik riskleri yoktur ve yönetim maliyetleri daha düşüktür."
+    },
+    {
+     "q": "Brüt ile net getiri arasındaki fark ne kadar?",
+     "a": "Turistik kiralamada genellikle 2–4 yüzde puanı. %8 brüt getirili bir Bali villası nette genellikle %4–5 getirir. Farkı villa yönetimi (%15–20), platform ücretleri, bakım, vergi ve boşluk yaratır."
+    },
+    {
+     "q": "Kiralamada döviz riski önemli mi?",
+     "a": "Evet, önemli ölçüde. Euro bölgesi dışındaki ülkelerde (Türkiye, Tayland, Endonezya, Macaristan) getiri yerel para biriminde oluşur ve forinte veya euroya çevirirken kur hareketi yılda birkaç yüzdeyi alabilir veya ekleyebilir. Dubai'de dirhem dolara sabitlenmiştir, bu daha istikrarlıdır, ancak USD maruziyeti anlamına gelir."
+    }
+   ]
+  },
+  "legolcsobb-tengerparti-ingatlan-europa": {
+   "title": "Avrupa'nın en ucuz sahil gayrimenkulü 2026'da",
+   "description": "Avrupa'da deniz manzaralı daireyi en ucuza nereden alabilirsiniz? Arnavutluk, Karadağ ve Balkanların fiyatları Hırvatistan ve Yunanistan pazarıyla karşılaştırıldı.",
+   "answer": "Avrupa'nın en ucuz sahil girişini Arnavutluk sunuyor: Arnavut Rivierası'nda (Ksamil, Sarandë) yeni yapılmış, deniz manzaralı daire 1 200–2 200 €/m². Bunu Karadağ'ın güney kıyısı (Bar, Ulcinj) ve Balkanlar izliyor. Hırvatistan ve Yunanistan belirgin şekilde daha pahalı (iyi kıyı lokasyonlarında genellikle 2 500–5 000+ €/m²), buna karşılık AB üyeliği ve daha likit bir pazar sunuyor.",
+   "sections": [
+    {
+     "h": "Sahil giriş fiyatları karşılaştırıldı",
+     "p": [
+      "Metrekare fiyatı, denizden uzaklığa, manzaraya ve yapım yılına göre güçlü şekilde değişir. Aşağıdaki aralıklar, yeni yapılmış veya iyi durumdaki, denize yakın (mutlaka ön cephe olmayan) dairelere ilişkindir, bilgilendirme amaçlıdır."
+     ],
+     "table": {
+      "head": [
+       "Ülke / bölge",
+       "Giriş €/m²",
+       "Aldığınız"
+      ],
+      "rows": [
+       [
+        "🇦🇱 Arnavut Rivierası (Ksamil, Sarandë)",
+        "1 200–2 200 €",
+        "Yeni yapı, deniz manzaralı, yüksek getiri"
+       ],
+       [
+        "🇲🇪 Karadağ güney (Bar, Ulcinj)",
+        "1 500–2 500 €",
+        "Euro, düşük %3 giriş harcı"
+       ],
+       [
+        "🇲🇪 Karadağ premium (Budva, Kotor)",
+        "2 500–4 500 €",
+        "Boka Körfezi, güçlü talep"
+       ],
+       [
+        "🇭🇷 Hırvatistan (Dalmaçya)",
+        "2 500–5 000 €",
+        "AB, Schengen, likit pazar"
+       ],
+       [
+        "🇬🇷 Yunanistan (adalar)",
+        "2 500–6 000 €",
+        "AB, Golden Visa olanağı"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Ucuz fiyatın bedeli: nelere dikkat etmeli",
+     "p": [
+      "Arnavutluk'ta giriş en düşüktür, ancak pazar en gençtir: düzenlenmemiş mülkiyet geçmişine sahip veya izinsiz inşa edilmiş gayrimenkuller görülebilir. Bağımsız avukatla yapılan due diligence (ASHK kadastrosunda tapu, inşaat ruhsatı) olmadan burada kesinlikle kapora ödemeyin.",
+      "Karadağ iyi bir orta yoldur: euro ile ödeme yaparsınız, devir harcı en düşükler arasındadır ve yabancı alıcı pratikte yerlilerle aynı haklarla satın alır. Buna karşılık AB üyesi değildir (aday ülke olmasına rağmen).",
+      "Hırvatistan ve Yunanistan daha pahalıdır, ancak AB üyeliği, Schengen serbest dolaşımı ve belirgin şekilde daha likit yeniden satış sunar — kolay çıkış önemliyse bu, fiyat avantajını geçersiz kılabilir."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Avrupa'da en ucuz sahil gayrimenkulü nerede?",
+     "a": "Arnavutluk'ta, Arnavut Rivierası'nda (Ksamil, Sarandë): yeni yapılmış, deniz manzaralı daireler 1 200–2 200 €/m² aralığında hareket eder, bu benzer Hırvat veya Yunan arzının yarısı veya üçte biridir. Alıcı yan maliyeti de en düşüktür, çünkü Arnavutluk'ta alıcı tarafında değere orantılı devir vergisi yoktur."
+    },
+    {
+     "q": "Arnavutluk'ta ucuza sahil gayrimenkulü almak güvenli mi?",
+     "a": "Hukuken evet — yabancı kendi adına daire alabilir —, ancak ana risk mülkiyet geçmişidir: izinsiz inşa edilmiş veya düzenlenmemiş tapulu gayrimenkuller görülebilir. Kaporadan önce bağımsız avukatla yapılan due diligence zorunludur."
+    },
+    {
+     "q": "Bir AB üyesi ülkede daha pahalıya almaya değer mi?",
+     "a": "Schengen serbest dolaşımı, hukuki öngörülebilirlik ve hızlı yeniden satış önemliyse, o zaman evet — Hırvatistan ve Yunanistan daha likit ve öngörülebilirdir. Amaç maksimum getiri veya en düşük giriş ise, Arnavutluk ve Karadağ daha iyidir."
+    }
+   ]
+  },
+  "kulfoldi-ingatlan-adozasa-magyar-tulajdonosnak": {
+   "title": "Yabancı gayrimenkulün Macar mülk sahibi olarak vergilendirilmesi",
+   "description": "Macar vergi mukimi bir mülk sahibinde yabancı gayrimenkulün kira geliri ve satış kazancı nasıl vergilendirilir? Çifte vergilendirmeyi önleme anlaşmalarının mantığı anlaşılır şekilde.",
+   "answer": "Macar vergi mukimi bir gerçek kişide, yabancı gayrimenkulün geliri iki kez ortaya çıkabilir: gayrimenkulün bulunduğu ülkede VE Macaristan'da. Çifte vergilendirmeyi Macaristan'ın imzaladığı anlaşmalar çözer — gayrimenkulde neredeyse her zaman BULUNDUĞU ülke önce vergilendirir, Macaristan ise ya muaf tutar ya da yurt dışında ödenen vergiyi mahsup eder. Somut kural ülkeden ülkeye farklıdır, bu yüzden yatırımdan önce bir vergi uzmanıyla açıklığa kavuşturmak yerinde olur.",
+   "sections": [
+    {
+     "h": "Anahtar kavram: vergi mukimliği",
+     "p": [
+      "Macar vatandaşı, yurt dışında gayrimenkulü olsa bile genellikle Macar vergi mukimi olarak kalır — dışarı taşınıp yaşamının merkezini kaydırmadıkça. Macar mukimi gerçek kişi, DÜNYA GELİRİ üzerinden Macaristan'da vergilendirilir, yani yabancı gayrimenkulün geliri de Macar vergilendirmesi kapsamına girer. Çifte vergiyi anlaşmalar dışlar.",
+      "Önemli: yurt dışında vatandaşlık veya Golden Visa edinmeniz, tek başına Macar vergi mukimliğini SONA ERDİRMEZ. Mukimlik, fiili ikamete ve menfaat merkezine bağlıdır, pasaporta değil."
+     ],
+     "table": null
+    },
+    {
+     "h": "Kira geliri",
+     "p": [
+      "Yabancı gayrimenkulün kira gelirini neredeyse her anlaşmaya göre gayrimenkulün bulunduğu ülke önce vergilendirir. Macaristan bunun ardından anlaşmaya bağlı olarak iki şekilde davranabilir: MUAFİYET yönteminde yurt dışında vergilendirilmiş kira gelirini burada yeniden vergilendirmez (ancak artan oranlılığı koruma ile dikkate alabilir), MAHSUP yönteminde vergiyi burada da hesaplar, ancak yurt dışında ödeneni düşer.",
+      "Bulunduğu ülkenin gerçek kişinin kira gelirini vergilendirmediği veya çok az vergilendirdiği durumlar vardır (örneğin Birleşik Arap Emirlikleri'nde kişisel gelir vergisi yoktur) — bu gibi durumlarda Macar tarafın muaf mı tuttuğu yoksa mahsup mu ettiğine bakmak özellikle önemlidir, çünkü ikisi çok farklı sonuç verir."
+     ],
+     "table": null
+    },
+    {
+     "h": "Satış (kur) kazancı",
+     "p": [
+      "Gayrimenkulün satışından elde edilen kazancı da anlaşmalar genellikle bulunduğu ülkenin vergilendirmesine izin verir. Macaristan'da gayrimenkul satışından elde edilen gelir 5 yıl sonra vergiden muaf olabilir (edinme yılını izleyen beşinci yıldan itibaren), ancak yabancı gayrimenkulde her zaman ilgili anlaşma ile bulunduğu ülkenin kuralı birlikte incelenmelidir.",
+      "Dövizli alım ve satımda kur da önemlidir: Macar vergi matrahı forint cinsinden belirlenmelidir, yani alım ve satım anındaki kur farkı tek başına hesaplanan kazancı etkiler."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Yabancı gayrimenkulüm için Macaristan'da vergi ödemem gerekir mi?",
+     "a": "Macar vergi mukimi olarak dünya geliriniz üzerinden burada da vergi yükümlüsüsünüz, ancak çifte vergilendirmeyi önleme anlaşması aynı şeyin iki kez vergilendirilmesini dışlar. Gayrimenkulde genellikle bulunduğu ülke önce vergilendirir, Macaristan ise ya geliri muaf tutar ya da yurt dışında ödenen vergiyi mahsup eder. Somut yöntem anlaşmaya göre farklıdır."
+    },
+    {
+     "q": "Vatandaşlık veya Golden Visa Macar vergi yükümlülüğünü sona erdirir mi?",
+     "a": "Hayır. Vergi mukimliği fiili ikamete ve menfaat merkezine bağlıdır, pasaporta değil. Dışarı taşınmaz ve yaşamınızın merkezini kaydırmazsanız, Macar mukimi olarak kalırsınız ve dünya geliriniz burada da vergiye tabidir."
+    },
+    {
+     "q": "Somut kural için nereden bilgi edinmeliyim?",
+     "a": "Macaristan ile ilgili ülke arasındaki çifte vergilendirmeyi önleme anlaşmasından ya da uluslararası vergi konularında uzmanlaşmış bir vergi danışmanından. Bu makale genel bilgilendirmedir, kişiye özel vergi danışmanlığı değildir — altı haneli bir yatırımdan önce mutlaka uzman görüşü alın."
+    }
+   ]
+  },
+  "deviza-arfolyamkockazat-kulfoldi-ingatlan": {
+   "title": "Yabancı gayrimenkul alımında döviz ve kur riski",
+   "description": "Euro, dolar, lira mı yoksa dirhem mi? 12 pazarda risk hangi para biriminde vergilenir ve yabancı gayrimenkul alımında döviz çevriminde nasıl tasarruf edebilirsiniz.",
+   "answer": "12 pazarın yarısı euro bölgesinde veya euro cinsinden fiyatlanır (Karadağ, Hırvatistan, Yunanistan, İtalya, İspanya, Arnavutluk), bu yüzden Macar alıcı için yalnızca EUR/HUF riski vardır. Diğerlerinde ayrı bir para birimi devreye girer: Dubai dirhemi dolara sabitlenmiştir (istikrarlı ama USD maruziyeti), Türk lirası, Tayland bahtı ve Endonezya rupisi ise dalgalıdır. Bankanın döviz çevrim marjı tek başına %1–3 olabilir — burada ayrı bir döviz sağlayıcısıyla çok tasarruf edilebilir.",
+   "sections": [
+    {
+     "h": "Hangi pazarda para birimi maruziyeti nasıl?",
+     "p": [
+      "Döviz riski iki noktada vurur: satın alma fiyatının ödenmesinde (tek seferlik çevrim) ve kira gelirinin yurda transferinde (tekrarlayan çevrim). Euro bölgesi pazarlarında Macar alıcı için yalnızca tek bir para birimi katmanı vardır (EUR/HUF), euro bölgesi dışındakilerde iki."
+     ],
+     "table": {
+      "head": [
+       "Pazar",
+       "Para birimi",
+       "Maruziyet"
+      ],
+      "rows": [
+       [
+        "🇲🇪🇭🇷🇬🇷🇮🇹🇪🇸🇦🇱",
+        "EUR",
+        "Yalnızca EUR/HUF"
+       ],
+       [
+        "🇦🇪 Dubai",
+        "AED (USD'ye sabit)",
+        "İstikrarlı ama USD/HUF"
+       ],
+       [
+        "🇹🇷 Türkiye",
+        "TRY (eşik USD cinsinden)",
+        "Güçlü lira dalgalanması"
+       ],
+       [
+        "🇹🇭 Tayland",
+        "THB",
+        "Orta dalgalanma"
+       ],
+       [
+        "🇮🇩 Bali",
+        "IDR",
+        "Dalgalı, dolarize ücretler"
+       ],
+       [
+        "🇷🇸 Sırbistan",
+        "RSD (fiyatlama genellikle EUR)",
+        "Düşük (dinar EUR'ya bağlı)"
+       ]
+      ]
+     }
+    },
+    {
+     "h": "Çevrim kaybını nasıl azaltırsınız?",
+     "p": [
+      "Ticari bankaların döviz çevrim marjı (alış ve satış kuru farkı) daha büyük bir gayrimenkul alımında ciddi bir tutardır: 300 000 euroda %2'lik bir marj 6 000 euro eder. Özel bir döviz sağlayıcısıyla (örneğin uluslararası havale platformları) bu, küçük bir kısmına indirilebilir.",
+      "Türk programı ayrı bir durumdur: 400 000 USD'lik vatandaşlık eşiği dolar cinsinden ölçülür, ancak satın alma fiyatı lira üzerinden akar — kur hareketi böylece yalnızca maliyeti değil, hak edişi de etkileyebilir.",
+      "Dubai dirhemi 1997'den beri dolara sabitlenmiştir (1 USD = 3,6725 AED), bu istikrarlıdır — ancak Macar/euro tabanlı bir alıcı aslında USD riski üstlenir, çünkü EUR/USD kurunun hareketi dirhem üzerinden geri dönüşü etkiler."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Yabancı gayrimenkul alımı için en güvenli para birimi hangisi?",
+     "a": "Macar/euro tabanlı bir alıcı için euro bölgesi veya euro cinsinden fiyatlanan pazarlar (Karadağ, Hırvatistan, Yunanistan, İtalya, İspanya, Arnavutluk) en öngörülebilir olanlardır, çünkü yalnızca tek bir çevrim katmanı vardır. Dubai dirhemi istikrarlıdır (dolara sabit), ancak USD maruziyeti taşır."
+    },
+    {
+     "q": "Döviz çevriminde ne kadar tasarruf edilebilir?",
+     "a": "Bankanın çevrim marjı %1–3'tür. 300 000 euroluk bir alımda bu 3 000–9 000 euro eder. Özel bir uluslararası döviz sağlayıcısıyla marj küçük bir kısmına indirilebilir, dolayısıyla büyük tutarlarda her zaman karşılaştırmakta yarar vardır."
+    },
+    {
+     "q": "Türk lirası Golden Visa'da neden riskli?",
+     "a": "Vatandaşlık eşiği (400 000 USD) dolar cinsinden ölçülür, ancak satın alma fiyatı lira üzerinden akar. Lira, alım ile değerleme arasında zayıflarsa, gayrimenkulün dolar cinsinden ölçülen değeri düşebilir ve eşiğin altına inebilir — bu yüzden döviz sabitlemesi ve zamanlama burada kritiktir."
+    }
+   ]
+  },
+  "ingatlanszotar-fogalmak": {
+   "title": "Gayrimenkul sözlüğü: yurt dışı alımdan önce bilinmesi gereken 18 kavram",
+   "description": "Freehold, Golden Visa, tapu, escrow, off-plan, NIE — yabancı gayrimenkul alımının en önemli terimleri kısa ve anlaşılır şekilde açıklandı.",
+   "answer": "Yabancı gayrimenkul alımı, yanlış anlaşılması para kaybettiren terimlerle doludur. En önemlileri: freehold tam (ebedi) mülkiyet, leasehold uzun süreli kira hakkıdır; Golden Visa yatırım karşılığı OTURMA iznidir, CBI (citizenship by investment) ise VATANDAŞLIK'tır; escrow kaporayı koruyan emanet hesabıdır; off-plan henüz inşa halindeki gayrimenkuldür; due diligence hukuki incelemedir. Bu sözlük 18 kavramı açıklıyor.",
+   "sections": [
+    {
+     "h": "Mülkiyet ve hak",
+     "p": [
+      "Freehold — tam, süresiz mülkiyet hakkı (Macarca „mülkiyet”in karşılığı).",
+      "Leasehold — uzun süreli kira/kullanım hakkı (örn. 25–99 yıl); mülkiyet değil, belirli süreli haktır. Bali ve Tayland'da yabancılar genellikle bunu edinir.",
+      "Usufruct (intifa hakkı) — gayrimenkulün kullanımı ve semerelerinden yararlanma hakkı, mülkiyetin devri olmaksızın.",
+      "Hak Pakai / Hak Sewa / Hak Guna Bangunan — yabancının freehold yerine edinebileceği Endonezya kullanım, kira ve inşaat haklarıdır.",
+      "Kadastro / tapu kaydı — resmi gayrimenkul sicili; mülkiyet hakkı burada tescil edildiğinde tam hale gelir. Türkiye'de bu „tapu”dur."
+     ],
+     "table": null
+    },
+    {
+     "h": "Göçmenlik ve yatırım",
+     "p": [
+      "Golden Visa — yatırım karşılığı (genellikle gayrimenkul alımı karşılığı) OTURMA izni; vatandaşlık ve pasaport değildir.",
+      "CBI (citizenship by investment) — yatırım karşılığı VATANDAŞLIK ve pasaport; gayrimenkulle bugün bunu öncelikle Türkiye sunuyor.",
+      "Due diligence — hukuki inceleme: alımdan önce tapu, takyidatlar, ruhsatlar ve alanın kontrolü."
+     ],
+     "table": null
+    },
+    {
+     "h": "Satın alma süreci",
+     "p": [
+      "Escrow / emanet hesabı — koşullar yerine gelene kadar kaporayı saklayan tarafsız (avukat veya banka) hesap; dolandırıcılığa karşı korur, özellikle off-plan alımda.",
+      "Off-plan — henüz inşa halinde, kağıt üzerinde satın alınmış gayrimenkul; daha ucuz olabilir, ancak geliştirici ve tamamlanma riski taşır.",
+      "Ön sözleşme — nihai alım satımı hazırlayan sözleşme, genellikle %10 kapora ile.",
+      "Snagging — teslim öncesi kusur listesi (yeni yapıda geliştirici tarafından giderilecek eksiklikler).",
+      "Service charge — apartman ortak gideri (Dubai'de, Tayland'da önemli bir kalem olabilir)."
+     ],
+     "table": null
+    },
+    {
+     "h": "Vergi ve finans",
+     "p": [
+      "Devir / edinim vergisi — mülkiyetin devrinde ödenen vergi (örn. Türk „tapu” harcı, İspanyol ITP).",
+      "ITP / AJD — İspanyol devir vergisi (ITP), sırasıyla belge harcı (AJD).",
+      "Prezzo-valore — gerçek kişiler arasında verginin matrahının satın alma fiyatı değil, (genellikle daha düşük) kadastro değeri olduğu İtalyan mekanizması.",
+      "NIE / codice fiscale / AFM — İspanyol, İtalyan ve Yunan yabancı vergi kimlik numarası, olmadan sözleşme yapılamaz.",
+      "LTV (loan-to-value) — kredinin gayrimenkul değerine oranı; yabancı alıcıya bankalar genellikle daha düşük LTV verir."
+     ],
+     "table": null
+    }
+   ],
+   "faq": [
+    {
+     "q": "Freehold ile leasehold arasındaki fark nedir?",
+     "a": "Freehold tam, süresiz mülkiyet hakkıdır. Leasehold belirli süreli (genellikle 25–99 yıllık) kira veya kullanım hakkıdır, süre sonunda sona erer veya uzatılması gerekir. Bali ve Tayland'da yabancılar genellikle yalnızca leasehold edinebilir — bu durumda uzatma koşulu kontrol edilmesi gereken en önemli noktadır."
+    },
+    {
+     "q": "Golden Visa vatandaşlıkla aynı mı?",
+     "a": "Hayır. Golden Visa yatırım karşılığı oturma iznidir — ilgili ülkede yaşayabilir ve gidip gelebilirsiniz, ancak pasaportunuz değişmez. Vatandaşlık (CBI) gerçek bir pasaport verir. İkisi sıkça karıştırılır; gayrimenkulle vatandaşlığı bugün öncelikle Türkiye sunuyor."
+    },
+    {
+     "q": "Escrow nedir ve neden önemlidir?",
+     "a": "Escrow, sözleşme koşulları yerine gelene kadar kaporayı veya satın alma fiyatını saklayan tarafsız bir emanet hesabıdır (avukat veya banka). Bu, dolandırıcılığa ve geliştiricinin yükümlülüğünü yerine getirmemesine karşı korur, bu yüzden özellikle off-plan (henüz inşa halinde) alımda paranın doğrudan satıcıya değil, escrow'a gitmesi çok önemlidir."
     }
    ]
   }

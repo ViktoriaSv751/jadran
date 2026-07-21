@@ -37,6 +37,12 @@ export default function Footer() {
           <Link href="/tudastar" className="hover:text-ink-900">
             {tr("knowledge_base", lang)}
           </Link>
+          <Link href="/celpontok" className="hover:text-ink-900">
+            {tr("destinations_nav", lang)}
+          </Link>
+          <Link href="/kalkulatorok" className="hover:text-ink-900">
+            {tr("calc_page_title", lang)}
+          </Link>
           <Link href="/listings/new" className="hover:text-ink-900">
             {tr("become_host", lang)}
           </Link>

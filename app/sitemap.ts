@@ -8,7 +8,7 @@ import { TYPE_FACETS, typeFacetSlug, INTENT_SLUG } from "@/lib/facets";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Csak PUBLIKUS oldalak (a /favorites felhasználó-specifikus és a robots is
   // tiltja — ezért kimarad a sitemapből).
-  const staticRoutes = ["", "/search", "/market", "/guide", "/pricing", "/tudastar"].map((p) => ({
+  const staticRoutes = ["", "/search", "/market", "/guide", "/pricing", "/tudastar", "/celpontok", "/kalkulatorok"].map((p) => ({
     url: `${SITE_URL}${p}`,
     changeFrequency: "daily" as const,
     priority: p === "" ? 1 : 0.7

@@ -194,9 +194,12 @@ export default function ListingCard({
         </div>
 
         <Link href={`/listing/${listing.id}`} className="mt-2">
-          <h3 className="line-clamp-1 text-[15px] font-bold tracking-tight text-ink-900 transition group-hover:text-brand-600">
+          {/* Kártya-cím: grid-kontextusban NEM dokumentum-fejléc (a saját
+              adatlapján az ingatlan címe H1). Ezért `div`, nem `h3` — így nincs
+              H1→H3 fejléc-ugrás a landing/kereső oldalakon. */}
+          <div className="line-clamp-1 text-[15px] font-bold tracking-tight text-ink-900 transition group-hover:text-brand-600">
             {loc(listing.title, lang)}
-          </h3>
+          </div>
         </Link>
         <p className="mt-0.5 inline-flex items-center gap-1 text-xs text-ink-400">
           <Icon name="mapPin" size={13} />
