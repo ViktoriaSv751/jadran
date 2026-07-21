@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
 import { supabaseServer, SITE_URL } from "@/lib/supabase-server";
-import { COUNTRY_CODES, citySlug, isCountryCode } from "@/lib/geo";
+import { COUNTRY_CODES, COUNTRY_BY_CODE, citySlug, isCountryCode } from "@/lib/geo";
 import { ARTICLES } from "@/lib/articles";
+import { TYPE_FACETS, typeFacetSlug, INTENT_SLUG } from "@/lib/facets";
 
 /** Dinamikus sitemap: statikus oldalak + ország-landingek + minden aktív hirdetés. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -35,7 +36,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   if (supabaseServer) {
     const { data } = await supabaseServer
       .from("listings")
-      .select("id, created_at, country, city")
+      .select("id, created_at, country, city, type")
       .eq("status", "active");
     const rows = data ?? [];
 
@@ -46,16 +47,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8
     }));
 
-    // Város-oldalak — CSAK azok, ahol van valós kínálat (a vékony, üres
-    // város-oldalak `noindex`-esek és nem kerülnek a sitemapbe).
+    // Facet-oldalak — CSAK a valós kínálatúak (a vékony, üres oldalak
+    // `noindex`-esek és nem kerülnek a sitemapbe).
     const seen = new Set<string>();
+    const add = (url: string, priority: number) => {
+      if (seen.has(url)) return;
+      seen.add(url);
+      cityRoutes.push({ url, changeFrequency: "daily" as const, priority });
+    };
     for (const l of rows) {
       const code = String(l.country);
-      if (!l.city || !isCountryCode(code)) continue;
-      const url = `${SITE_URL}/l/${code}/${citySlug(String(l.city))}`;
-      if (seen.has(url)) continue;
-      seen.add(url);
-      cityRoutes.push({ url, changeFrequency: "daily" as const, priority: 0.75 });
+      if (!isCountryCode(code)) continue;
+      // Város-oldal (van hozzá hirdetés).
+      if (l.city) add(`${SITE_URL}/l/${code}/${citySlug(String(l.city))}`, 0.75);
+      // Típus-oldal (a facetelt típusokra, ahol van hirdetés).
+      const t = String(l.type);
+      if ((TYPE_FACETS as string[]).includes(t)) {
+        add(`${SITE_URL}/l/${code}/${typeFacetSlug(t as (typeof TYPE_FACETS)[number])}`, 0.7);
+      }
+    }
+    // Szándék-oldalak (Golden Visa) — minden programos országhoz, függetlenül
+    // az aktuális kínálattól (önálló tartalmi értékük van).
+    for (const code of COUNTRY_CODES) {
+      if (COUNTRY_BY_CODE[code].goldenVisa) {
+        add(`${SITE_URL}/l/${code}/${INTENT_SLUG}`, 0.85);
+      }
     }
   }
 

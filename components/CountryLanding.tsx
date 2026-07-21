@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { useLang, useListings } from "@/lib/store";
-import { tr } from "@/lib/i18n";
+import { tr, typeLabels } from "@/lib/i18n";
 import { formatNumber } from "@/lib/format";
 import { COUNTRY_BY_CODE, citySlug } from "@/lib/geo";
 import type { CountryCode } from "@/lib/types";
+import { TYPE_FACETS, typeFacetSlug, INTENT_SLUG } from "@/lib/facets";
 import ListingCard from "@/components/ListingCard";
 import Icon from "@/components/ui/Icon";
 
@@ -70,6 +71,29 @@ export default function CountryLanding({ country }: { country: CountryCode }) {
           ))}
         </div>
       )}
+
+      {/* Típus- és szándék-chipek — belső linkek a facet-oldalakra (hub → küllők) */}
+      <div className="mt-3 flex flex-wrap justify-center gap-2">
+        {TYPE_FACETS.map((t) => (
+          <Link
+            key={t}
+            href={`/l/${country}/${typeFacetSlug(t)}`}
+            className="rounded-full border border-ink-100 bg-ink-50 px-3.5 py-1.5 text-xs font-semibold text-ink-600 transition hover:border-ink-900 hover:text-ink-900"
+          >
+            {typeLabels[t]?.[lang] ?? typeLabels[t]?.en ?? t}
+          </Link>
+        ))}
+        {info.goldenVisa && (
+          <Link
+            href={`/l/${country}/${INTENT_SLUG}`}
+            className="rounded-full border-2 border-ink-950 bg-[#c8ff00] px-3.5 py-1.5 text-xs font-bold text-ink-950 transition hover:brightness-95"
+          >
+            {info.goldenVisa.kind === "citizenship"
+              ? tr("kb_cat_citizenship", lang)
+              : tr("kb_cat_golden_visa", lang)}
+          </Link>
+        )}
+      </div>
 
       {/* Hirdetés-rács */}
       <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
