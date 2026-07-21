@@ -272,3 +272,43 @@ export function transferTaxFor(country: CountryCode, priceEur: number): number {
 /** Igaz, ha az adott ország átírási adója sávos (a felületnek jelezni kell). */
 export const hasProgressiveTransferTax = (country: CountryCode): boolean =>
   (COUNTRY_BY_CODE[country]?.costs.transferTaxBands?.length ?? 0) > 0;
+
+/* ------------------------------------------------------------------ *
+ * Város-szintű SEO (programmatic landing oldalak)
+ *
+ * A videó tanulsága: a query-paraméteres szűrő (/search?city=…) nem rangsorol;
+ * minden városnak DEDIKÁLT, kulcsszó-fókuszú URL-je kell (/l/ME/budva). Ez a
+ * réteg biztosítja a város ↔ URL-slug oda-vissza megfeleltetést.
+ * ------------------------------------------------------------------ */
+
+/** Város → URL-barát slug (ékezet-, kis/nagybetű- és szóköz-független). */
+export function citySlug(city: string): string {
+  return city
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+/** Országonként: slug → eredeti városnév (a landing-oldal feloldásához). */
+export const CITY_BY_SLUG: Record<CountryCode, Record<string, string>> = COUNTRIES.reduce(
+  (acc, c) => {
+    acc[c.code] = c.cities.reduce(
+      (m, city) => ((m[citySlug(city)] = city), m),
+      {} as Record<string, string>
+    );
+    return acc;
+  },
+  {} as Record<CountryCode, Record<string, string>>
+);
+
+/** Egy slug feloldása városnévvé az adott országban (ismeretlen → undefined). */
+export const cityFromSlug = (country: CountryCode, slug: string): string | undefined =>
+  CITY_BY_SLUG[country]?.[slug];
+
+/** Minden (ország, város-slug) pár — a generateStaticParams forrása. */
+export const COUNTRY_CITY_PARAMS: { country: CountryCode; city: string }[] = COUNTRIES.flatMap((c) =>
+  c.cities.map((city) => ({ country: c.code, city: citySlug(city) }))
+);

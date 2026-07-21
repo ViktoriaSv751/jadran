@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useLang, useListings } from "@/lib/store";
 import { tr } from "@/lib/i18n";
 import { formatNumber } from "@/lib/format";
-import { COUNTRY_BY_CODE } from "@/lib/geo";
+import { COUNTRY_BY_CODE, citySlug } from "@/lib/geo";
 import type { CountryCode } from "@/lib/types";
 import ListingCard from "@/components/ListingCard";
 import Icon from "@/components/ui/Icon";
@@ -33,7 +33,7 @@ export default function CountryLanding({ country }: { country: CountryCode }) {
       <div className="rounded-3xl border border-ink-100 bg-gradient-to-b from-ink-50 to-white p-8 text-center shadow-soft">
         <div className="text-5xl leading-none">{info.flag}</div>
         <h1 className="display mt-3 text-3xl text-ink-900 sm:text-4xl">
-          {tr("browse_by_country", lang)} — {tr(info.nameKey, lang)}
+          {tr("seo_country_h1", lang).replace("{country}", tr(info.nameKey, lang))}
         </h1>
         <p className="mt-2 text-sm text-ink-500">{tr("destinations_sub", lang)}</p>
 
@@ -62,7 +62,7 @@ export default function CountryLanding({ country }: { country: CountryCode }) {
           {citiesWithListings.map((c) => (
             <Link
               key={c}
-              href={`/search?country=${country}&city=${encodeURIComponent(c)}`}
+              href={`/l/${country}/${citySlug(c)}`}
               className="rounded-full border border-ink-200 bg-white px-4 py-2 text-sm font-medium text-ink-700 transition hover:border-ink-900 hover:bg-ink-900 hover:text-white"
             >
               {c}

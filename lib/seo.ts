@@ -1,5 +1,5 @@
 import type { CountryCode } from "./types";
-import { COUNTRY_BY_CODE, COUNTRIES } from "./geo";
+import { COUNTRY_BY_CODE, COUNTRIES, citySlug } from "./geo";
 import { SITE_URL } from "./supabase-server";
 
 /**
@@ -708,12 +708,39 @@ export function countryCollectionJsonLd(code: CountryCode, listingCount: number)
     mainEntity: {
       "@type": "ItemList",
       numberOfItems: listingCount,
+      // A városok a DEDIKÁLT város-oldalukra mutatnak (nem a query-paraméteres
+      // keresőre) — ez a hub → város belső linkelés a rangsoroláshoz.
       itemListElement: COUNTRY_BY_CODE[code].cities.slice(0, 10).map((city, i) => ({
         "@type": "ListItem",
         position: i + 1,
         name: city,
-        url: `${SITE_URL}/search?country=${code}&city=${encodeURIComponent(city)}`
+        url: `${SITE_URL}/l/${code}/${citySlug(city)}`
       }))
     }
+  };
+}
+
+/**
+ * Város-landing strukturált adata: gyűjtőoldal egy adott város kínálatáról,
+ * az országhoz mint szülőhöz kötve. A `about` egy `City` a `Country`-ban —
+ * ez adja a földrajzi jelentést a keresőnek/LLM-nek.
+ */
+export function cityCollectionJsonLd(code: CountryCode, city: string, listingCount: number) {
+  const seo = COUNTRY_SEO[code];
+  const url = `${SITE_URL}/l/${code}/${citySlug(city)}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${url}#collection`,
+    url,
+    name: `${city} — ${seo.name}`,
+    description: `Property for sale and rent in ${city}, ${seo.name}.`,
+    isPartOf: { "@id": `${SITE_URL}/l/${code}#collection` },
+    about: {
+      "@type": "City",
+      name: city,
+      containedInPlace: { "@type": "Country", name: seo.name }
+    },
+    mainEntity: { "@type": "ItemList", numberOfItems: listingCount }
   };
 }

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { supabaseServer, SITE_URL } from "@/lib/supabase-server";
-import { COUNTRY_CODES } from "@/lib/geo";
+import { COUNTRY_CODES, citySlug, isCountryCode } from "@/lib/geo";
 import { ARTICLES } from "@/lib/articles";
 
 /** Dinamikus sitemap: statikus oldalak + ország-landingek + minden aktív hirdetés. */
@@ -31,18 +31,33 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   let listingRoutes: MetadataRoute.Sitemap = [];
+  let cityRoutes: MetadataRoute.Sitemap = [];
   if (supabaseServer) {
     const { data } = await supabaseServer
       .from("listings")
-      .select("id, created_at")
+      .select("id, created_at, country, city")
       .eq("status", "active");
-    listingRoutes = (data ?? []).map((l) => ({
+    const rows = data ?? [];
+
+    listingRoutes = rows.map((l) => ({
       url: `${SITE_URL}/listing/${l.id}`,
       lastModified: l.created_at ? new Date(l.created_at) : undefined,
       changeFrequency: "weekly" as const,
       priority: 0.8
     }));
+
+    // Város-oldalak — CSAK azok, ahol van valós kínálat (a vékony, üres
+    // város-oldalak `noindex`-esek és nem kerülnek a sitemapbe).
+    const seen = new Set<string>();
+    for (const l of rows) {
+      const code = String(l.country);
+      if (!l.city || !isCountryCode(code)) continue;
+      const url = `${SITE_URL}/l/${code}/${citySlug(String(l.city))}`;
+      if (seen.has(url)) continue;
+      seen.add(url);
+      cityRoutes.push({ url, changeFrequency: "daily" as const, priority: 0.75 });
+    }
   }
 
-  return [...staticRoutes, ...countryRoutes, ...articleRoutes, ...listingRoutes];
+  return [...staticRoutes, ...countryRoutes, ...cityRoutes, ...articleRoutes, ...listingRoutes];
 }
