@@ -112,7 +112,7 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
       },
       {
         q: "Ad Montenegró tartózkodási engedélyt ingatlanvásárlásért?",
-        a: "Igen, ingatlantulajdon alapján egy évre szóló, évente megújítandó tartózkodási engedély kérhető. 2026. január 17-től harmadik országbeli állampolgárnak ehhez legalább 150 000 € adóhatósági értékű ingatlan kell — EU-, EGT- és svájci állampolgárokra viszont EZ AZ ÉRTÉKHATÁR NEM VONATKOZIK, tehát magyar vevőnek nincs minimum. A korábbi állampolgárság-befektetési program 2022. december 31-én lezárult, tehát ma Montenegróban ingatlannal állampolgárságot nem lehet szerezni — erre Törökország és Saint Kitts és Nevis kínál utat."
+        a: "Igen, ingatlantulajdon alapján egy évre szóló, évente megújítandó tartózkodási engedély kérhető. 2026. január 17-től harmadik országbeli állampolgárnak ehhez legalább 150 000 € adóhatósági értékű ingatlan kell — EU-, EGT- és svájci állampolgárokra viszont EZ AZ ÉRTÉKHATÁR NEM VONATKOZIK, tehát magyar vevőnek nincs minimum. A korábbi állampolgárság-befektetési program 2022. december 31-én lezárult, tehát ma Montenegróban ingatlannal állampolgárságot nem lehet szerezni — erre ingatlannal elsősorban Törökország kínál utat."
       }
     ]
   },
@@ -508,7 +508,7 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
       },
       {
         q: "A görög Golden Visa állampolgárságot ad?",
-        a: "Nem közvetlenül. A Golden Visa tartózkodási engedély; görög állampolgárságot hét év tényleges görögországi tartózkodás után lehet kérelmezni, nyelvi és integrációs feltételekkel. Ha a cél maga az útlevél, ingatlanbefektetéssel közvetlenül Törökország és Saint Kitts és Nevis ad állampolgárságot."
+        a: "Nem közvetlenül. A Golden Visa tartózkodási engedély; görög állampolgárságot hét év tényleges görögországi tartózkodás után lehet kérelmezni, nyelvi és integrációs feltételekkel. Ha a cél maga az útlevél, ingatlanbefektetéssel közvetlenül Törökország ad állampolgárságot."
       }
     ]
   },
@@ -540,7 +540,7 @@ export const COUNTRY_SEO: Record<CountryCode, CountrySeo> = {
     faqHu: [
       {
         q: "Létezik még a spanyol Golden Visa ingatlanvásárlással?",
-        a: "Nem. Spanyolország 2025 áprilisában megszüntette a Golden Visa ingatlanbefektetésen alapuló útját, így 500 000 eurós ingatlanvásárlással ma már nem szerezhető spanyol befektetői tartózkodási engedély. EU-n belül Görögország és Magyarország kínál ingatlanalapú letelepedési programot; állampolgárságot ingatlannal Törökország és Saint Kitts és Nevis ad."
+        a: "Nem. Spanyolország 2025 áprilisában megszüntette a Golden Visa ingatlanbefektetésen alapuló útját, így 500 000 eurós ingatlanvásárlással ma már nem szerezhető spanyol befektetői tartózkodási engedély. EU-n belül Görögország és Magyarország kínál ingatlanalapú letelepedési programot; állampolgárságot ingatlannal elsősorban Törökország ad."
       },
       {
         q: "Mennyi adót fizet a vevő Spanyolországban?",
