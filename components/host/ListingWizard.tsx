@@ -401,7 +401,7 @@ export default function ListingWizard() {
   const progressPct = Math.round((step / (STEPS.length - 1)) * 100);
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-6 sm:py-8">
+    <div className="mx-auto max-w-3xl px-4 pt-6 pb-[calc(5.5rem+env(safe-area-inset-bottom))] sm:pt-8 lg:pb-10">
       <PageHeading
         icon={editId ? "sliders" : "plus"}
         className="mb-0"
@@ -544,7 +544,7 @@ export default function ListingWizard() {
                       key={tp}
                       onClick={() => set("type", tp)}
                       className={cn(
-                        "group flex flex-col items-center rounded-2xl border p-2.5 text-center transition",
+                        "group flex min-h-[7.5rem] flex-col items-center justify-center gap-1 rounded-2xl border px-2.5 py-4 text-center transition sm:min-h-[8.5rem]",
                         activeType
                           ? "border-brand-500 bg-brand-50 ring-2 ring-brand-200"
                           : "border-ink-100 bg-gradient-to-br from-white to-ink-50 hover:-translate-y-0.5 hover:border-ink-200 hover:shadow-card"
@@ -555,7 +555,7 @@ export default function ListingWizard() {
                         src={`/cat/${tp}.png`}
                         alt={typeLabels[tp][lang]}
                         loading="lazy"
-                        className="h-12 w-12 object-contain transition duration-300 group-hover:scale-110 sm:h-14 sm:w-14"
+                        className="h-14 w-14 object-contain transition duration-300 group-hover:scale-110 sm:h-16 sm:w-16"
                       />
                       <span
                         className={cn(
@@ -904,10 +904,11 @@ export default function ListingWizard() {
         )}
       </div>
 
-      {/* Nav buttons — RAGADÓS alsó sáv. Mobilon az app alsó menüsora FÖLÖTT ül
-          (≈4.75rem), hogy ne takarja ki egymást; asztalon a menüsor rejtett, így
-          a sáv a képernyő aljára simul. */}
-      <div className="sticky bottom-[calc(4.75rem+env(safe-area-inset-bottom))] z-30 -mx-4 mt-6 flex items-center justify-between gap-3 border-t border-ink-100 bg-white/95 px-4 py-3 backdrop-blur lg:bottom-0">
+      {/* Nav gombok — NEM ragadós: a tartalom (leírás/űrlap) VÉGÉN, normál
+          folyásban ülnek, így csak az oldal aljára görgetve látszanak, nem
+          takarják a tartalmat. A szülő konténer alsó paddingje gondoskodik
+          róla, hogy mobilon az alsó menüsor ne fedje el. */}
+      <div className="-mx-4 mt-8 flex items-center justify-between gap-3 border-t border-ink-100 bg-white px-4 pt-4">
         <Button
           variant="ghost"
           size="lg"

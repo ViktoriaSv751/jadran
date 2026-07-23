@@ -60,6 +60,15 @@ export default function KnowledgeHub() {
 
   const pillars = useMemo(() => ARTICLES.filter((a) => a.category !== "country"), []);
 
+  // Lapozás a „Befektetői útvonalak" listán — oldalanként 5 cikk. Az
+  // országkalauzok NEM lapoznak, végig láthatók maradnak (külön szekció).
+  const PER_PAGE = 5;
+  const [page, setPage] = useState(0);
+  const pageCount = Math.max(1, Math.ceil(pillars.length / PER_PAGE));
+  const safePage = Math.min(page, pageCount - 1);
+  const pageStart = safePage * PER_PAGE;
+  const pagePillars = pillars.slice(pageStart, pageStart + PER_PAGE);
+
   // Kereshető index a MEGJELENÍTETT nyelven. A content vagy a nyelv váltásakor
   // épül újra.
   const { hits, qaAll } = useMemo(() => buildIndex(ct, lang), [ct, lang]);
@@ -93,7 +102,6 @@ export default function KnowledgeHub() {
         <h1 className="display text-[2.6rem] leading-none text-ink-900 sm:text-5xl">
           {tr("kb_title", lang)}
         </h1>
-        <p className="mt-3 text-[15px] leading-relaxed text-ink-600">{tr("kb_subtitle", lang)}</p>
       </header>
 
       {/* ---------- Kereső + kategóriaszűrő ---------- */}
@@ -182,14 +190,21 @@ export default function KnowledgeHub() {
         /* ---------- Alap nézet: pillérek + országkalauzok ---------- */
         <>
           <section className="mt-8 sm:mt-12">
-            <div className="flex items-baseline justify-between">
+            <div className="flex items-baseline justify-between gap-3">
               <h2 className="text-lg font-bold text-ink-900">{tr("kb_pillars", lang)}</h2>
-              <span className="text-xs font-semibold text-ink-400">
-                {pillars.length} {tr("kb_article_unit", lang)}
+              <span className="shrink-0 text-xs font-semibold text-ink-400">
+                {pageStart + 1}–{pageStart + pagePillars.length} / {pillars.length}{" "}
+                {tr("kb_article_unit", lang)}
+                {pageCount > 1 && (
+                  <>
+                    {" · "}
+                    {safePage + 1}/{pageCount} {tr("kb_page_unit", lang)}
+                  </>
+                )}
               </span>
             </div>
             <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {pillars.map((a) => {
+              {pagePillars.map((a) => {
                 const t = content.articles[a.slug];
                 return (
                   <Link
@@ -219,6 +234,47 @@ export default function KnowledgeHub() {
                 );
               })}
             </div>
+
+            {/* Oldalváltó — csak a befektetői útvonalak listáját lapozza; az
+                országkalauzok szekció ettől függetlenül végig ott marad. */}
+            {pageCount > 1 && (
+              <nav
+                className="mt-6 flex items-center justify-center gap-1.5"
+                aria-label={tr("kb_pagination", lang)}
+              >
+                <button
+                  onClick={() => setPage(safePage - 1)}
+                  disabled={safePage === 0}
+                  aria-label={tr("kb_prev_page", lang)}
+                  className="grid h-9 w-9 place-items-center rounded-full border border-ink-200 text-ink-600 transition enabled:hover:border-ink-900 enabled:hover:text-ink-900 disabled:opacity-40"
+                >
+                  <Icon name="arrowRight" size={16} strokeWidth={2.4} className="rotate-180" />
+                </button>
+                {Array.from({ length: pageCount }, (_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setPage(i)}
+                    aria-label={`${tr("kb_page_unit", lang)} ${i + 1}`}
+                    aria-current={i === safePage ? "page" : undefined}
+                    className={`h-9 min-w-9 rounded-full px-3 text-sm font-bold transition ${
+                      i === safePage
+                        ? "border-2 border-ink-950 bg-ink-950 text-white"
+                        : "border border-ink-200 text-ink-600 hover:border-ink-900"
+                    }`}
+                  >
+                    {i + 1}
+                  </button>
+                ))}
+                <button
+                  onClick={() => setPage(safePage + 1)}
+                  disabled={safePage >= pageCount - 1}
+                  aria-label={tr("kb_next_page", lang)}
+                  className="grid h-9 w-9 place-items-center rounded-full border border-ink-200 text-ink-600 transition enabled:hover:border-ink-900 enabled:hover:text-ink-900 disabled:opacity-40"
+                >
+                  <Icon name="arrowRight" size={16} strokeWidth={2.4} />
+                </button>
+              </nav>
+            )}
           </section>
 
           <section className="mt-12 sm:mt-16">

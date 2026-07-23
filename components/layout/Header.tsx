@@ -25,7 +25,7 @@ export default function Header() {
   const onSearch = pathname === "/search";
 
   return (
-    <header className="sticky top-0 z-30 border-b border-ink-100 bg-white/85 backdrop-blur-xl">
+    <header className="sticky top-0 z-30 border-b border-ink-100 bg-white/95 supports-[backdrop-filter]:bg-white/80 supports-[backdrop-filter]:backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-3">
         <Link href="/" className="flex shrink-0 items-center gap-2">
           <Logo size={32} wordmark={false} />
@@ -151,7 +151,6 @@ function AccountMenu({
               <MenuLink href="/profile" label={tr("profile", lang)} />
               <MenuLink href="/settings" label={tr("settings", lang)} />
               {user.isOwner && <MenuLink href="/owner" label="Tulajdonosi konzol" />}
-              {user.isAdmin && <MenuLink href="/admin" label={tr("admin_reports_title", lang)} />}
               <LogoutButton className="block w-full px-4 py-2 text-left text-sm text-ink-600 transition hover:bg-ink-50">
                 {tr("logout", lang)}
               </LogoutButton>

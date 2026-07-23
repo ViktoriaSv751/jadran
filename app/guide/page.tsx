@@ -6,7 +6,7 @@ import { tr, loc } from "@/lib/i18n";
 import type { Lang, CountryCode } from "@/lib/types";
 import { COUNTRIES, COUNTRY_BY_CODE } from "@/lib/geo";
 import { FOREIGN_BUYER } from "@/lib/legal";
-import PageHeading from "@/components/ui/PageHeading";
+import Icon from "@/components/ui/Icon";
 
 // Minden felület-nyelvet feloldó helper (a `loc()` csak 4 tartalom-nyelvet tud,
 // ez viszont a teljes 12 nyelvű felület-fordítást használja, angol fallbackkel).
@@ -38,7 +38,18 @@ export default function GuidePage() {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
-      <PageHeading icon="compass">{tr("guide_title", lang)}</PageHeading>
+      {/* Cím — a kiválasztott ország a cím alatt, jól láthatóan; országfüggő és
+          telefonon sem lóg ki (törhető sor, nem csonkolt). */}
+      <div className="mb-5">
+        <h1 className="flex items-start gap-2 text-2xl font-black leading-tight tracking-tight text-ink-900 sm:text-3xl">
+          <Icon name="compass" size={24} className="mt-1 shrink-0 text-brand-500" />
+          <span className="min-w-0 break-words">{tr("guide_title", lang)}</span>
+        </h1>
+        <div className="mt-3 inline-flex items-center gap-2 rounded-full border-2 border-ink-950 bg-[#c8ff00] px-4 py-1.5 text-sm font-bold text-ink-950">
+          <span className="text-base leading-none">{COUNTRY_BY_CODE[country].flag}</span>
+          {tr(COUNTRY_BY_CODE[country].nameKey, lang)}
+        </div>
+      </div>
 
       {/* Ország-választó — a jog/adó/mellékköltség ehhez igazodik. */}
       <div className="mt-5">
@@ -50,8 +61,11 @@ export default function GuidePage() {
             <button
               key={c.code}
               onClick={() => setCountry(c.code)}
+              aria-pressed={country === c.code}
               className={`flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-medium transition ${
-                country === c.code ? "border-ink-900 bg-ink-900 text-white" : "border-ink-200 text-ink-700 hover:border-ink-300"
+                country === c.code
+                  ? "border-ink-950 bg-ink-950 text-white ring-2 ring-brand-300 ring-offset-1"
+                  : "border-ink-200 text-ink-700 hover:border-ink-300"
               }`}
             >
               <span className="text-base leading-none">{c.flag}</span>
