@@ -169,7 +169,7 @@ function ArrowBtn({ dir, disabled, onClick }: { dir: 1 | -1; disabled: boolean; 
       aria-label={dir === 1 ? "next" : "previous"}
       onClick={onClick}
       disabled={disabled}
-      className={`absolute top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-ink-200 bg-white/95 text-ink-800 shadow-float backdrop-blur transition hover:bg-white hover:text-brand-600 active:scale-90 disabled:pointer-events-none disabled:opacity-0 ${
+      className={`absolute top-1/2 z-10 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-ink-200 bg-white text-ink-800 shadow-float transition hover:text-brand-600 active:scale-90 disabled:pointer-events-none disabled:opacity-0 ${
         dir === 1 ? "right-1" : "left-1"
       }`}
     >

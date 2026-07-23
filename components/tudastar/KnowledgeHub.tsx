@@ -60,9 +60,9 @@ export default function KnowledgeHub() {
 
   const pillars = useMemo(() => ARTICLES.filter((a) => a.category !== "country"), []);
 
-  // Lapozás a „Befektetői útvonalak" listán — oldalanként 5 cikk. Az
+  // Lapozás a „Befektetői útvonalak" listán — oldalanként 6 cikk. Az
   // országkalauzok NEM lapoznak, végig láthatók maradnak (külön szekció).
-  const PER_PAGE = 5;
+  const PER_PAGE = 6;
   const [page, setPage] = useState(0);
   const pageCount = Math.max(1, Math.ceil(pillars.length / PER_PAGE));
   const safePage = Math.min(page, pageCount - 1);

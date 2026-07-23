@@ -96,7 +96,7 @@ export default function ListingCard({
           )}
           <span
             className={`rounded-full px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide shadow-soft ${
-              listing.mode === "rent" ? "bg-brand-500 text-white" : "bg-ink-950/90 text-white backdrop-blur"
+              listing.mode === "rent" ? "bg-brand-500 text-white" : "bg-ink-950 text-white"
             }`}
           >
             {modeLabels[listing.mode][lang]}
@@ -141,7 +141,7 @@ export default function ListingCard({
           aria-pressed={isFav}
           aria-label="favorite"
           className={`absolute right-2.5 top-2.5 z-20 grid h-10 w-10 place-items-center rounded-full shadow-float transition active:scale-90 ${
-            isFav ? "bg-brand-500 text-white" : "bg-white/95 text-ink-700 backdrop-blur hover:text-brand-500"
+            isFav ? "bg-brand-500 text-white" : "bg-white text-ink-700 hover:text-brand-500"
           }`}
         >
           <Icon name={isFav ? "heartFilled" : "heart"} size={18} strokeWidth={2} />
@@ -219,13 +219,18 @@ export default function ListingCard({
           )}
         </div>
 
+        {/* Fix magasságú ár-blokk: így az eladó (van €/m² sor) és a kiadó (nincs)
+            kártya PONTOSAN egyforma magas — nincs több „egyik magasabb" eltérés. */}
         <div className="mt-3 flex items-end justify-between border-t border-ink-100 pt-3">
-          <div>
-            <span className="text-2xl font-black tracking-tight text-ink-900">{money(listing.price)}</span>
-            {listing.mode === "rent" ? (
-              <span className="text-sm font-semibold text-ink-400">{tr("per_month", lang)}</span>
-            ) : (
-              <span className="mt-1.5 block text-xs font-medium text-ink-400">
+          <div className="flex min-h-[3.25rem] flex-col justify-start">
+            <span className="text-2xl font-black leading-tight tracking-tight text-ink-900">
+              {money(listing.price)}
+              {listing.mode === "rent" && (
+                <span className="ml-1 text-sm font-semibold text-ink-400">{tr("per_month", lang)}</span>
+              )}
+            </span>
+            {listing.mode !== "rent" && (
+              <span className="mt-1 block text-xs font-medium text-ink-400">
                 {formatNumber(pricePerM2(listing.price, listing.area), lang)} €{tr("per_m2", lang)}
               </span>
             )}

@@ -10,25 +10,25 @@ const config: Record<
 > = {
   full: {
     icon: "shield",
-    cls: "bg-ink-950/90 text-white backdrop-blur",
+    cls: "bg-ink-950 text-white",
     labelKey: "verified_full",
     explainKey: "verif_explain_full"
   },
   deed: {
     icon: "shield",
-    cls: "bg-white/95 text-ink-900 backdrop-blur",
+    cls: "bg-white text-ink-900",
     labelKey: "verified_deed",
     explainKey: "verif_explain_deed"
   },
   basic: {
     icon: "check",
-    cls: "bg-white/90 text-ink-600 backdrop-blur",
+    cls: "bg-white text-ink-600",
     labelKey: "verified_basic",
     explainKey: "verif_explain_basic"
   },
   none: {
     icon: "minus",
-    cls: "bg-white/80 text-ink-400 backdrop-blur",
+    cls: "bg-white text-ink-400",
     labelKey: "verified_none",
     explainKey: "verif_explain_none"
   }
