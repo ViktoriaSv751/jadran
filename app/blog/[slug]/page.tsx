@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPostBySlug, getPublishedPosts } from "@/lib/blog";
-import { breadcrumbJsonLd, ORG_ID, SITE_ID } from "@/lib/seo";
+import { BLOG_POST_BY_SLUG } from "@/lib/blog/posts";
+import { HU_BLOG } from "@/lib/blog/content";
+import { breadcrumbJsonLd, faqJsonLd, ORG_ID, SITE_ID } from "@/lib/seo";
 import { SITE_URL } from "@/lib/supabase-server";
 import JsonLd from "@/components/JsonLd";
 import OwnerEditLink from "@/components/owner/OwnerEditLink";
+import BlogArticleBody from "@/components/blog/BlogArticleBody";
 
-// Új (tulajdonos által írt) cikkek dinamikusan jelennek meg — nem kell újradeploy.
+// A tulajdonos által írt cikkek dinamikusan jelennek meg — nem kell újradeploy.
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
@@ -15,6 +18,30 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }): Promise<Metadata> {
+  const meta = BLOG_POST_BY_SLUG[params.slug];
+  if (meta) {
+    // Kód-alapú SEO-cikk — a meta a magyar forrásból (szerver-render nyelve).
+    const t = HU_BLOG.posts[params.slug];
+    const url = `${SITE_URL}/blog/${params.slug}`;
+    const title = t?.title ?? params.slug;
+    const desc = (t?.excerpt ?? "").slice(0, 160);
+    return {
+      title,
+      description: desc,
+      keywords: meta.keywords,
+      alternates: { canonical: url },
+      openGraph: {
+        title,
+        description: desc,
+        url,
+        type: "article",
+        publishedTime: meta.date,
+        modifiedTime: meta.date,
+        images: [{ url: `${SITE_URL}${meta.cover}` }]
+      }
+    };
+  }
+
   const post = await getPostBySlug(params.slug);
   if (!post) return { title: "Blog" };
   const url = `${SITE_URL}/blog/${post.slug}`;
@@ -35,6 +62,51 @@ export async function generateMetadata({
 }
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+  const meta = BLOG_POST_BY_SLUG[params.slug];
+
+  /* ---------- Kód-alapú, többnyelvű SEO-cikk ---------- */
+  if (meta) {
+    const t = HU_BLOG.posts[params.slug];
+    const url = `${SITE_URL}/blog/${params.slug}`;
+    const title = t?.title ?? params.slug;
+
+    const articleJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "@id": `${url}#article`,
+      headline: title,
+      description: t?.excerpt ?? "",
+      abstract: t?.answer ?? "",
+      inLanguage: "hu",
+      datePublished: meta.date,
+      dateModified: meta.date,
+      author: { "@id": ORG_ID },
+      publisher: { "@id": ORG_ID },
+      isPartOf: { "@id": SITE_ID },
+      mainEntityOfPage: { "@type": "WebPage", "@id": url },
+      keywords: meta.keywords.join(", "),
+      image: `${SITE_URL}${meta.cover}`
+    };
+
+    return (
+      <article className="mx-auto max-w-3xl px-4 py-10">
+        <JsonLd
+          data={[
+            articleJsonLd,
+            ...(t?.faq?.length ? [faqJsonLd(t.faq)] : []),
+            breadcrumbJsonLd([
+              { name: "Főoldal", url: SITE_URL },
+              { name: "Blog", url: `${SITE_URL}/blog` },
+              { name: title, url }
+            ])
+          ]}
+        />
+        <BlogArticleBody slug={params.slug} />
+      </article>
+    );
+  }
+
+  /* ---------- Tulajdonosi (DB) cikk — a régi viselkedés ---------- */
   const post = await getPostBySlug(params.slug);
   if (!post) notFound();
 
@@ -77,20 +149,13 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       </nav>
 
       <h1 className="display mt-4 text-3xl leading-tight text-ink-900 sm:text-4xl">{post.title}</h1>
-      <p className="mt-3 text-sm text-ink-500">
-        {new Date(post.createdAt).toLocaleDateString("hu-HU")}
-      </p>
+      <p className="mt-3 text-sm text-ink-500">{new Date(post.createdAt).toLocaleDateString("hu-HU")}</p>
 
       <OwnerEditLink postId={post.id} />
 
-
       {post.cover && (
         // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={post.cover}
-          alt={post.title}
-          className="mt-6 aspect-[16/9] w-full rounded-2xl object-cover"
-        />
+        <img src={post.cover} alt={post.title} className="mt-6 aspect-[16/9] w-full rounded-2xl object-cover" />
       )}
 
       {post.excerpt && (
@@ -110,9 +175,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
 
       {related.length > 0 && (
         <section className="mt-12">
-          <h2 className="text-xs font-semibold uppercase tracking-wide text-ink-500">
-            További cikkek
-          </h2>
+          <h2 className="text-xs font-semibold uppercase tracking-wide text-ink-500">További cikkek</h2>
           <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
             {related.map((r) => (
               <Link

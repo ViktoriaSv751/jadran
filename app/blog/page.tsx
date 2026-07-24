@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { getPublishedPosts } from "@/lib/blog";
+import { BLOG_POSTS } from "@/lib/blog/posts";
+import { HU_BLOG } from "@/lib/blog/content";
 import { breadcrumbJsonLd, SITE_ID } from "@/lib/seo";
 import { SITE_URL } from "@/lib/supabase-server";
 import JsonLd from "@/components/JsonLd";
+import BlogHub, { type DbPost } from "@/components/blog/BlogHub";
 
+// A tulajdonosi (DB) cikkek dinamikusan jelenhetnek meg — nem kell újradeploy.
 export const dynamic = "force-dynamic";
 
-const TITLE = "Blog — friss cikkek külföldi ingatlanról";
-const DESC = "Naprakész írások, tippek és hírek a külföldi ingatlanvásárlásról és -befektetésről.";
+const TITLE = "Blog — külföldi ingatlanbefektetés, országkalauzok és piaci trendek";
+const DESC =
+  "Mélyre menő, friss cikkek külföldi ingatlanvásárlásról és -befektetésről: országkalauzok, hozam, adózás, finanszírozás és 2026-os piaci trendek — 14 nyelven.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -18,10 +22,36 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogIndexPage() {
-  const posts = await getPublishedPosts();
+  const db = await getPublishedPosts();
+  const dbPosts: DbPost[] = db.map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    excerpt: p.excerpt,
+    cover: p.cover,
+    createdAt: p.createdAt
+  }));
+
+  const codeSlugs = new Set(BLOG_POSTS.map((p) => p.slug));
+  const blogPostLd = [
+    ...BLOG_POSTS.map((p) => ({
+      "@type": "BlogPosting",
+      headline: HU_BLOG.posts[p.slug]?.title ?? p.slug,
+      url: `${SITE_URL}/blog/${p.slug}`,
+      datePublished: p.date,
+      image: `${SITE_URL}${p.cover}`
+    })),
+    ...dbPosts
+      .filter((d) => !codeSlugs.has(d.slug))
+      .map((d) => ({
+        "@type": "BlogPosting",
+        headline: d.title,
+        url: `${SITE_URL}/blog/${d.slug}`,
+        datePublished: d.createdAt
+      }))
+  ];
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10">
+    <>
       <JsonLd
         data={[
           {
@@ -31,12 +61,7 @@ export default async function BlogIndexPage() {
             name: TITLE,
             description: DESC,
             isPartOf: { "@id": SITE_ID },
-            blogPost: posts.map((p) => ({
-              "@type": "BlogPosting",
-              headline: p.title,
-              url: `${SITE_URL}/blog/${p.slug}`,
-              datePublished: p.createdAt
-            }))
+            blogPost: blogPostLd
           },
           breadcrumbJsonLd([
             { name: "Főoldal", url: SITE_URL },
@@ -44,41 +69,7 @@ export default async function BlogIndexPage() {
           ])
         ]}
       />
-
-      <header className="mx-auto max-w-2xl text-center">
-        <h1 className="display text-3xl text-ink-900 sm:text-4xl">Blog</h1>
-        <p className="mt-3 text-[15px] leading-relaxed text-ink-600">{DESC}</p>
-      </header>
-
-      {posts.length === 0 ? (
-        <p className="mt-12 text-center text-sm text-ink-400">Hamarosan érkeznek az első cikkek.</p>
-      ) : (
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
-          {posts.map((p) => (
-            <Link
-              key={p.slug}
-              href={`/blog/${p.slug}`}
-              className="group flex flex-col rounded-3xl border border-ink-100 bg-white p-6 shadow-soft transition hover:-translate-y-0.5 hover:border-ink-900 hover:shadow-pop"
-            >
-              {p.cover && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={p.cover}
-                  alt={p.title}
-                  className="mb-4 aspect-[16/9] w-full rounded-2xl object-cover"
-                />
-              )}
-              <h2 className="text-lg font-bold leading-snug text-ink-900 group-hover:underline">
-                {p.title}
-              </h2>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-600">{p.excerpt}</p>
-              <span className="mt-3 text-[11px] font-semibold uppercase tracking-wide text-ink-400">
-                {new Date(p.createdAt).toLocaleDateString("hu-HU")}
-              </span>
-            </Link>
-          ))}
-        </div>
-      )}
-    </div>
+      <BlogHub dbPosts={dbPosts} />
+    </>
   );
 }
